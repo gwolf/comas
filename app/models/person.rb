@@ -1,11 +1,15 @@
 class Person < ActiveRecord::Base
   belongs_to :person_type
+  has_many :authorships
+  has_many :proposals, :through => :authorships
 
   validates_presence_of :firstname
   validates_presence_of :famname
   validates_presence_of :login
   validates_presence_of :passwd
+  validates_presence_of :person_type_id
   validates_uniqueness_of :login
+  validates_associated :person_type
 
   def Person.ck_login(given_login, given_passwd)
     person = Person.find_by_login(given_login)
