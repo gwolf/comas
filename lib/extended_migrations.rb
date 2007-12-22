@@ -1,8 +1,8 @@
 #:title: Extended migrations
 #
-# This library extends ActiveRecord::Migration with some commonly used
-# functionality in, easily grouped, aiming at keeping your migrations
-# short and easy to understand.
+# This library extends the base Rails ActiveRecord::Migration with some 
+# commonly used functionality in, easily grouped, aiming at keeping your 
+# migrations short and easy to understand.
 #
 # = Catalogs
 # 
@@ -16,57 +16,78 @@
 #     validates_presence_of :name
 #     validates_uniqueness_of :name
 #   end
-
+#
+# = References
+# 
+# Rails is built upon a "dumb database" concept. Rails assumes the database
+# will not force restrictions upon the user - i.e. that the model validators
+# are all there is. But I disagree ;-)
+#
+# So, if you want to create a relation field, properly acting as a foreign
+# key and refering to another table, instead of doing it via the 
+# ActiveRecord::ConnectionAdapters::TableDefinition#column (or even 
+# ActiveRecord::ConnectionAdapters::TableDefinition#references) methods,
+# declare them this way:
+#
+#   def self.up
+#     create_table :proposals do |t|
+#       (...)
+#     end
+#   end
+#   self.add_reference(:proposals, :prop_types)
+#   self.add_reference(:proposals, :prop_statuses, :null => false, :default => 1)
+#
+# The corresponding fields (+prop_type_id+ and +prop_status_id+, respectively) 
+# will be created, and the foreign key will be set.
 class ActiveRecord::Migration 
-  # Specify the list of catalogs which will be created/destroyed when this
-  # migration is run:
-  #
-  #   class CreatePeople < ActiveRecord::Migration
-  #     self.include_catalogs [:countries, :person_types]
-  #     (...)
-  #   end
-  def self.include_catalogs(list)
-    @@catalogs = list
-  end
-
   # Creates the catalogs specified in include_catalogs. This method
-  # will usually be the first thing you call in +self.up+:
+  # will usually be the first thing you call in self.up:
   #
   #   def self.up
-  #     self.create_catalogs
+  #     self.create_catalogs :countries, :states
   #     ...
   #   end
-  # 
-  # You must either specify the list of catalogs to be created with
-  # include_catalogs or include it in the create_catalogs call - The
-  # first way is preferred.
-  def self.create_catalogs(list=nil)
-    list ||= @@catalogs
-    list.each do |tbl|
-      warn "Creando tabla: #{tbl}"
+  def self.create_catalogs(*catalogs)
+    catalogs.each do |tbl|
       create_table tbl do |t|
+        puts "****T es un #{t.class}: \n#{t.to_yaml}"
         t.column :name, :string, :null => false
       end
-      add_index tbl, [:name], :unique => true
+      add_index tbl, :name, :unique => true
     end
   end
 
   # Destroys the catalogs specified in include_catalogs. This method
-  # will usually be the last thing you call in +self.down+:
+  # will usually be the last thing you call in self.down:
   #
   #   def self.up
   #     ...
-  #     self.drop_catalogs
+  #     self.drop_catalogs :states, :countries
   #   end
-  # 
-  # You must either specify the list of catalogs to be destroyed with
-  # include_catalogs or include it in the drop_catalogs call - The
-  # first way is preferred.
-  def self.drop_catalogs(list=nil)
-    list ||= @@catalogs
-    list.each do |tbl|
-      warn "Creando tabla: #{tbl}"
+  def self.drop_catalogs(*catalogs)
+    catalogs.flatten.each do |tbl|
+      columns = self.columns(tbl).map {|c| c.name}
+      if columns.size != 2 and (columns - ['id','name']).size != 0
+        raise ArgumentError, "#{tbl} is not a regular catalog - Not dropping"
+      end
       drop_table tbl
+    end
+  end
+
+  # Adds a belongs_to relation from the first table to the second one, creating
+  # the foreign key, and creating the fields in the first table corresponding
+  # to what Rails expects them to be called. 
+  #
+  # The received options will be passed on to the add_column call.
+  def self.add_reference(from, dest, options = {})
+    fieldname = "#{dest.to_s.singularize}_id"
+
+    add_column(from, fieldname, :numeric, options)
+
+    if ActiveRecord::Base.connection.adapter_name == 'PostgreSQL'
+      execute "ALTER TABLE #{from} ADD CONSTRAINT #{from}_#{fieldname}_fkey " <<
+        "FOREIGN KEY (#{fieldname}) REFERENCES #{dest}(id) " <<
+        "ON DELETE RESTRICT"
     end
   end
 end
