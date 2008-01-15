@@ -1,8 +1,8 @@
 require File.dirname(__FILE__) + '/../test_helper'
+require File.dirname(__FILE__) + '/catalog_helper'
 
-class PropTypeTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  def test_truth
-    assert true
+class PropTypeTest < CatalogTest
+  def setup
+    @model = PropType
   end
 end
