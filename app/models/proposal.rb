@@ -1,6 +1,7 @@
 class Proposal < ActiveRecord::Base
   has_many :authorships
   has_many :people, :through => :authorships
+  has_many :documents
   belongs_to :prop_type
   belongs_to :prop_status
 
