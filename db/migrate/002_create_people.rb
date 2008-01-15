@@ -1,6 +1,6 @@
 class CreatePeople < ActiveRecord::Migration
   def self.up
-    self.create_catalogs :person_types
+    create_catalogs :person_types
 
     create_table :people do |t|
       t.column :login, :string, :null => false
@@ -13,12 +13,12 @@ class CreatePeople < ActiveRecord::Migration
       t.column :created_at, :timestamp
       t.column :last_login_at, :timestamp
     end
-    self.add_reference(:people, :person_types, :null => false)
+    add_reference(:people, :person_types, :null => false)
   end
 
   def self.down
     drop_table :people
 
-    self.drop_catalogs :person_types
+    drop_catalogs :person_types
   end
 end

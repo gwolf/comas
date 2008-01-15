@@ -1,6 +1,6 @@
 class CreateProposals < ActiveRecord::Migration
   def self.up
-    self.create_catalogs :prop_types, :prop_statuses
+    create_catalogs :prop_types, :prop_statuses
 
     create_table :proposals do |t|
       t.column :title, :string, :null => false
@@ -10,8 +10,8 @@ class CreateProposals < ActiveRecord::Migration
       t.column :updated_at, :timestamp
     end
 
-    self.add_reference(:proposals, :prop_types, :null => false)
-    self.add_reference(:proposals, :prop_statuses, :null => false, :default => 1)
+    add_reference(:proposals, :prop_types, :null => false)
+    add_reference(:proposals, :prop_statuses, :null => false, :default => 1)
 
     add_index :proposals, :prop_type_id
     add_index :proposals, :prop_status_id
@@ -20,8 +20,8 @@ class CreateProposals < ActiveRecord::Migration
       t.column :position, :integer
     end
 
-    self.add_reference(:authorships, :people, :null => false)
-    self.add_reference(:authorships, :proposals, :null => false)
+    add_reference(:authorships, :people, :null => false)
+    add_reference(:authorships, :proposals, :null => false)
 
     add_index :authorships, [:person_id, :proposal_id], :unique => true
     add_index :authorships, :proposal_id
@@ -32,7 +32,7 @@ class CreateProposals < ActiveRecord::Migration
     drop_table :authorships
     drop_table :proposals
 
-    self.drop_catalogs :prop_types, :prop_statuses
+    drop_catalogs :prop_types, :prop_statuses
   end
 
 end

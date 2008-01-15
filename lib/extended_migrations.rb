@@ -34,60 +34,97 @@
 #       (...)
 #     end
 #   end
-#   self.add_reference(:proposals, :prop_types)
-#   self.add_reference(:proposals, :prop_statuses, :null => false, :default => 1)
+#   add_reference(:proposals, :prop_types)
+#   add_reference(:proposals, :prop_statuses, :null => false, :default => 1)
 #
 # The corresponding fields (+prop_type_id+ and +prop_status_id+, respectively) 
 # will be created, and the foreign key will be set.
-class ActiveRecord::Migration 
-  # Creates the catalogs specified in include_catalogs. This method
-  # will usually be the first thing you call in self.up:
-  #
-  #   def self.up
-  #     self.create_catalogs :countries, :states
-  #     ...
-  #   end
-  def self.create_catalogs(*catalogs)
-    catalogs.each do |tbl|
-      create_table tbl do |t|
-        puts "****T es un #{t.class}: \n#{t.to_yaml}"
-        t.column :name, :string, :null => false
+module ActiveRecord
+  module ConnectionAdapters # :nodoc:
+    module SchemaStatements
+      # Creates the catalogs specified in include_catalogs. This method
+      # will usually be the first thing you call in self.up:
+      #
+      #   def self.up
+      #     create_catalogs :countries, :states
+      #     ...
+      #   end
+      def create_catalogs(*catalogs)
+        catalogs.each do |tbl|
+          create_table tbl do |t|
+            t.column :name, :string, :null => false
+          end
+          add_index tbl, :name, :unique => true
+        end
       end
-      add_index tbl, :name, :unique => true
-    end
-  end
 
-  # Destroys the catalogs specified in include_catalogs. This method
-  # will usually be the last thing you call in self.down:
-  #
-  #   def self.up
-  #     ...
-  #     self.drop_catalogs :states, :countries
-  #   end
-  def self.drop_catalogs(*catalogs)
-    catalogs.flatten.each do |tbl|
-      columns = self.columns(tbl).map {|c| c.name}
-      if columns.size != 2 and (columns - ['id','name']).size != 0
-        raise ArgumentError, "#{tbl} is not a regular catalog - Not dropping"
+      # Destroys the catalogs specified in include_catalogs. This method
+      # will usually be the last thing you call in self.down:
+      #
+      #   def self.up
+      #     ...
+      #     drop_catalogs :states, :countries
+      #   end
+      def drop_catalogs(*catalogs)
+        catalogs.flatten.each do |tbl|
+          columns = self.columns(tbl).map {|c| c.name}
+          if columns.size != 2 and (columns - ['id','name']).size != 0
+            raise ArgumentError, "#{tbl} is not a regular catalog - Not dropping"
+          end
+          drop_table tbl
+        end
       end
-      drop_table tbl
-    end
-  end
 
-  # Adds a belongs_to relation from the first table to the second one, creating
-  # the foreign key, and creating the fields in the first table corresponding
-  # to what Rails expects them to be called. 
-  #
-  # The received options will be passed on to the add_column call.
-  def self.add_reference(from, dest, options = {})
-    fieldname = "#{dest.to_s.singularize}_id"
+      # Adds a belongs_to relation from the first table to the second one, creating
+      # the foreign key, and creating the fields in the first table corresponding
+      # to what Rails expects them to be called. 
+      #
+      # The received options will be passed on to the add_column call.
+      def add_reference(from, dest, options = {})
+        fieldname = fldname(dest)
+        
+        add_column(from, fieldname, :integer, options)
+        
+        if ActiveRecord::Base.connection.adapter_name == 'PostgreSQL'
+          execute "ALTER TABLE #{from} ADD CONSTRAINT " <<
+            "#{from}_#{fieldname}_fkey FOREIGN KEY (#{fieldname}) " <<
+            "REFERENCES #{dest}(id) ON DELETE RESTRICT"
+        end
+      end
 
-    add_column(from, fieldname, :numeric, options)
+      # Creates a HABTM join-table between two given tables, so they can be 
+      # linked with a has_and_belongs_to_many declaration in the model.
+      #
+      # Three indexes will be created for the table: A unique index, ensuring
+      # only one relation is created between any two given records, and two
+      # regular indexes, to ensure speedy lookups.
+      def create_habtm(first, second)
+        first, second = second, first if first.to_s > second.to_s 
+        first_fld = fldname(first)
+        second_fld = fldname(second)
+        join_tbl = "#{first}_#{second}"
 
-    if ActiveRecord::Base.connection.adapter_name == 'PostgreSQL'
-      execute "ALTER TABLE #{from} ADD CONSTRAINT #{from}_#{fieldname}_fkey " <<
-        "FOREIGN KEY (#{fieldname}) REFERENCES #{dest}(id) " <<
-        "ON DELETE RESTRICT"
+        create_table(join_tbl, :id => false) {}
+
+        add_reference join_tbl, first 
+        add_reference join_tbl, second
+
+        add_index join_tbl, first_fld
+        add_index join_tbl, second_fld
+        add_index join_tbl, [first_fld, second_fld], :unique => true
+      end
+
+      # Drops a HABTM join-table between the two given tables.
+      def drop_habtm(first, second)
+        first, second = second, first if first.to_s > second.to_s 
+        drop_table "#{first}_#{second}"
+      end
+
+      private
+      #:nodoc:
+      def fldname(tbl)
+        "#{tbl.to_s.singularize}_id"
+      end
     end
   end
 end
