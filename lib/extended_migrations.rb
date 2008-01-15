@@ -92,6 +92,10 @@ module ActiveRecord
         end
       end
 
+      def remove_reference(from, dest)
+        remove_column from, fldname(dest)
+      end
+
       # Creates a HABTM join-table between two given tables, so they can be 
       # linked with a has_and_belongs_to_many declaration in the model.
       #
