@@ -16,7 +16,7 @@
 #     end
 #   end
 
-class CatalogTest < ActiveSupport::TestCase
+class CatalogTest < Test::Unit::TestCase
   def test_catalog_table_is_well_defined
     return if @model.nil?
 
