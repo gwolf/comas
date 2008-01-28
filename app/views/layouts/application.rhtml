@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<%  headers["Content-Type"] = "text/html; charset=utf-8" %>
+<%= stylesheet_link_tag('http://lafa.iiec.unam.mx/css_iiec/style.css',
+		        '/stylesheets/comas.css') %>
+
+<title><%= @title %></title>
+<script type="text/javascript" src="http://lafa.iiec.unam.mx/css_iiec/x.js"></script>
+<script type="text/javascript">
+function adjustDimensions() {
+    var menu_height, main_height, max_height, menu_width, total_width;
+    // The menu gets its witdth from the stylesheet; principal-menu
+    // grows to all of the available space menu leaves
+    menu_width = xWidth("menu");
+    total_width = xWidth("encabezado") || xWidth("encabezadologin");
+    xWidth("principal-menu", total_width - menu_width)
+    // Menu and principal-menu columns get the same height
+    menu_height = xHeight("menu");
+    main_height = xHeight("principal-menu");
+    max_height = Math.max(menu_height, main_height);
+    xHeight("menu", max_height);
+    xHeight("principal-menu", max_height);
+}
+window.onload = function() {
+  xAddEventListener(window, "resize", adjustDimensions, false);
+  adjustDimensions();
+}
+</script>
+</head>
+<body>
+
+<% activeuser = session[:user]
+   if ! activeuser.nil? %>
+<div id="encabezadologin">
+  <div id="iniciomenulogin"><%= @title %></div>
+</div>
+<% else %>
+<div id="encabezado">
+  <div id="iniciomenu"><%= @title %></div>
+</div>
+<% end %>
+
+<div id="menu">
+<%= render_menu %>
+</div>
+
+<div id="principal-menu">
+<% if ! activeuser.nil? %>
+  <div id="login">
+    <%= activeuser.login %> (<%= activeuser.name %>)
+      - <%= link_to logout_icon, :controller => 'usrlogin', :action => 'logout' %>
+  </div>
+<% end %>
+
+  <div id="contenido">
+
+<% if flash[:notice] or flash[:message] %>
+    <div class="msg">
+      <%= flash[:notice] %>
+      <%= flash[:message] %>
+      <% [:notice, :message].each {|fl| flash.discard(fl)} %>
+    </div>
+<% end %>
+
+<% if flash[:warning] or flash[:error] %>
+    <div class="error">
+      <%= flash[:error] %>
+      <%= flash[:warning] %>
+      <% [:error, :warning].each {|fl| flash.discard(fl)} %>
+    </div>
+<% end %>
+
+<%= yield %>
+
+  </div>
+  <div id="pie">
+    <div id="fincontenido">
+    </div>
+  </div>
+</div>
+</body>
+</html>
+

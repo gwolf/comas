@@ -1,0 +1,75 @@
+#contenido { padding: 1em; }
+
+#loginreq {  
+    background-image:url(/images/usrlogin.png);
+    background-repeat: no-repeat;
+    background-position: 0.5em 0.5em;
+}
+
+table { 
+    border-collapse: collapse;
+    border: solid #face78 2px;
+    margin: 0.5em;
+}
+
+td, th {  
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    text-align: left;
+}
+
+.form-row { 
+    padding: 0.1em;
+    border: solid 1px #eee;
+}
+
+.show-prompt {  
+    font-weight: bold;
+}
+
+.show-data {  
+}
+
+.form-prompt {
+    display: block;
+    font-weight: bold;
+}
+
+.form-note {
+    display: block;
+    font-style: italic;
+    font-size: 80%;
+}
+
+.form-input {
+    display: block;
+}
+
+.form-input textarea {  
+    height: 10em;
+    width: 40em;
+}
+
+.checkbox {  
+    border: solid 1px #fff;
+    background: #eee;
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+}
+
+.listing-head { 
+    background: #fff7e2;
+}
+
+.listing-even { 
+    background: #ccc5b0;
+}
+
+.listing-odd {  
+    background: #eee6d1;
+}
+
+.note { 
+    font-style: italic;
+    font-size: 70%;
+}
