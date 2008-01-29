@@ -56,8 +56,7 @@ class TableField < ActiveRecord::Base
     # Ok, create the class, and define it in 
     eval %Q(
     class ::#{modelname} < ActiveRecord::Base
-      validates_presence_of :name
-      validates_uniqueness_of :name
+      include Catalog
       has_many :#{ref_model.pluralize}
     end
 

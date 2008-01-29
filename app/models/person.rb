@@ -31,6 +31,10 @@ class Person < ActiveRecord::Base
     self['passwd'] = Digest::MD5.hexdigest(pw_salt + plain)
   end
 
+  def name
+    "#{firstname} #{famname}"
+  end
+
   private
   def pw_salt
     self[:pw_salt]

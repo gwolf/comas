@@ -1,5 +1,5 @@
 class PersonType < ActiveRecord::Base
-  validates_presence_of :name
-  validates_uniqueness_of :name
+  include Catalog
   has_many :people
+  translates :name
 end

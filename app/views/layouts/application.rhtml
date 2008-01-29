@@ -31,8 +31,7 @@ window.onload = function() {
 </head>
 <body>
 
-<% activeuser = session[:user]
-   if ! activeuser.nil? %>
+<% if ! @user.nil? %>
 <div id="encabezadologin">
   <div id="iniciomenulogin"><%= @title %></div>
 </div>
@@ -47,10 +46,10 @@ window.onload = function() {
 </div>
 
 <div id="principal-menu">
-<% if ! activeuser.nil? %>
+<% if ! @user.nil? %>
   <div id="login">
-    <%= activeuser.login %> (<%= activeuser.name %>)
-      - <%= link_to logout_icon, :controller => 'usrlogin', :action => 'logout' %>
+    <%= @user.login %> (<%= @user.name %>)
+      - <%= link_to 'Log out', :controller => 'people', :action => 'logout' %>
   </div>
 <% end %>
 
