@@ -48,26 +48,24 @@ window.onload = function() {
 <div id="principal-menu">
 <% if ! @user.nil? %>
   <div id="login">
-    <%= @user.login %> (<%= @user.name %>)
-      - <%= link_to 'Log out', :controller => 'people', :action => 'logout' %>
+    <%=h @user.login %> (<%=h @user.name %>)
+      - <%= link_to 'Log out'.t, :controller => 'people', :action => 'logout' %>
   </div>
 <% end %>
 
   <div id="contenido">
 
-<% if flash[:notice] or flash[:message] %>
-    <div class="msg">
-      <%= flash[:notice] %>
-      <%= flash[:message] %>
-      <% [:notice, :message].each {|fl| flash.discard(fl)} %>
+<% if flash[:error] %>
+    <div class="error">
+      <%= flash[:error].t %>
+      <% flash.discard(:error) %>
     </div>
 <% end %>
 
-<% if flash[:warning] or flash[:error] %>
-    <div class="error">
-      <%= flash[:error] %>
-      <%= flash[:warning] %>
-      <% [:error, :warning].each {|fl| flash.discard(fl)} %>
+<% if flash[:warning] %>
+    <div class="msg">
+      <%= flash[:warning].t %>
+      <% flash.discard(:warning) %>
     </div>
 <% end %>
 
