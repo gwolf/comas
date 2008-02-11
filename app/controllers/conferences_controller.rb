@@ -15,10 +15,11 @@ class ConferencesController < ApplicationController
 
   protected
   def get_conference
-    if id = params[:id]
-      @conference = Conference.find(id)
-    else
-      redirect_to :list
+    begin
+      @conference = Conference.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      flash[:error] = 'Invalid conference requested'.t
+      redirect_to :action => :list
       return false
     end
   end
