@@ -1,0 +1,18 @@
+sqlite:
+  :adapter: sqlite
+  :dbfile: acts_as_most_popular_test.sqlite.db
+sqlite3:
+  :adapter: sqlite3
+  :dbfile: acts_as_most_popular_test.sqlite3.db
+postgresql:
+  :adapter: postgresql
+  :username: postgres
+  :password: postgres
+  :database: acts_as_most_popular_test
+  :min_messages: ERROR
+mysql:
+  :adapter: mysql
+  :host: localhost
+  :username: root
+  :password:
+  :database: acts_as_most_popular_test
