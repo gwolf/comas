@@ -73,3 +73,32 @@ td, th {
     font-style: italic;
     font-size: 70%;
 }
+
+.comas-show-prompt {  
+    font-weight: bold;
+}
+
+.comas-show-data {  
+}
+
+.comas-form-prompt {
+    display: block;
+    font-weight: bold;
+}
+
+.comas-form-note {
+    display: block;
+    font-style: italic;
+    font-size: 80%;
+}
+
+.comas-form-input {
+    display: block;
+}
+
+.comas-checkbox {  
+    border: solid 1px #fff;
+    background: #eee;
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+}
