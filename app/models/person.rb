@@ -24,6 +24,17 @@ class Person < ActiveRecord::Base
     person
   end
 
+  def core_attributes
+    %w(created_at email famname firstname last_login_at login passwd 
+       person_type_id pw_salt)
+  end
+
+  # Returns a list of any user-listable attributes that are not part of the
+  # base Person data
+  def extra_listable_attributes 
+    self.attribute_names - self.core_attributes
+  end
+
   def passwd= plain
     # Don't accept empty passwords!
     return nil if plain.blank? or /^\s*$/.match(plain)
