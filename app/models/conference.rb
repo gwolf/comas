@@ -6,23 +6,18 @@ class Conference < ActiveRecord::Base
 
   validates_presence_of :name
   validates_uniqueness_of :name
+  validates_presence_of :descr
   validate :dates_are_correct
 
-  # Define a chronological default sorting
-  def self.find(*args)
-    order_arg = args.collect do |arg|
-      if arg.kind_of? Hash 
-        if arg.keys[0] == :order
-          arg
-        end
-      end
-    end
+  def accepts_registrations?
+    (reg_open_date || Date.today) <= Date.today and
+    (reg_close_date || finishes || Date.today) >= Date.today
+  end
 
-    if order_arg.compact.empty?
-      args << {:order=> :begins}
-    end
-          
-    super
+  def accepts_proposals?
+    return false if cfp_open_date.nil? and cfp_close_date.nil?
+    (cfp_open_date || Date.today) <= Date.today and
+      Date.today <= (cfp_close_date || begins || Date.today)
   end
 
   protected
@@ -30,8 +25,32 @@ class Conference < ActiveRecord::Base
     errors.add(:begins, "can't be blank") if begins.nil? 
     errors.add(:finishes, "can't be blank") if finishes.nil? 
 
-    if begins and finishes and begins > finishes
-      errors.add( :finishes, 'Conference must end after its start date')
-    end
+    dates_in_order?(begins, finishes) or
+      errors.add(:begins, 'Conference must end after its start date')
+
+    dates_in_order?(cfp_open_date, cfp_close_date) or
+      errors.add(:cfp_open_date, 'Call for papers must end after its start date')
+    dates_in_order?(cfp_close_date, begins) or
+      errors.add(:cfp_close_date, 
+                 'Call for papers must finish before the conference begins')
+
+    dates_in_order?(reg_open_date, reg_close_date) or
+      errors.add(:reg_open_date, 'Registration must end after its start date')
+    dates_in_order?(reg_close_date, finishes) or
+      errors.add(:reg_close_date, 
+                 'Registration must finish before the conference ends')
+  end
+
+  def in_period?(start, finish)
+    # If either start or finish dates are not defined, behave as an open
+    # lapse for this comparison
+    start ||= Date.today
+    finish ||= Date.today
+    Date.today.between?(start, finish)
+  end
+
+  def dates_in_order?(date1, date2)
+    return true if date1.nil? or date2.nil? or date2 >= date1
+    false
   end
 end

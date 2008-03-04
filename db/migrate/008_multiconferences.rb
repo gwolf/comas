@@ -4,8 +4,9 @@ class Multiconferences < ActiveRecord::Migration
       t.column :name, :string, :null => false
       t.column :descr, :text, :null => false
       t.column :active, :bool, :default => true, :null => false
-      t.column :has_cfp, :bool, :default => false, :null => true
       t.column :homepage, :string
+      t.column :reg_open_date, :date
+      t.column :reg_close_date, :date
       t.column :cfp_open_date, :date
       t.column :cfp_close_date, :date
       t.column :begins, :date, :null => false
