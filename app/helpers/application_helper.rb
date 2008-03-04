@@ -25,7 +25,7 @@ module ApplicationHelper
 
 
   ######################################################################
-  # Listing tables (alternating background colors
+  # Listing tables (alternating background colors)
   def list_row_classes
     ['listing-even', 'listing-odd']
   end
@@ -44,5 +44,65 @@ module ApplicationHelper
   end
 
   def end_table_row; '</tr>'; end
+
+  ############################################################
+  # Form builders
+  class ComasFormBuilder < ActionView::Helpers::FormBuilder
+    (field_helpers - %w(check_box radio_button select 
+                        hidden_field)).each do |fldtype|
+      src = <<-END_SRC
+        def #{fldtype}(field, options={})
+          title = options.delete(:title) || field.to_s.humanize
+          note = options.delete(:note)
+
+          options[:size] ||= 60 if '#{fldtype}' == 'text_field'
+
+          [before_elem(title,note), 
+           super(field,options), 
+           after_elem].join("\n")
+        end
+      END_SRC
+      class_eval src, __FILE__, __LINE__
+    end
+
+    def select(field, choices, options={})
+      title = options.delete(:title) || field.to_s.humanize
+      note = options.delete(:note)
+      [before_elem(title,note), 
+       super(field, choices ,options), 
+       after_elem].join("\n")
+    end
+
+    def info_row(field, options={})
+      title = options[:title] || ''
+      note = options[:note]
+
+      [ before_elem(title,note), 
+        info_elem(@object.send(field)), 
+        after_elem ].join("\n")
+    end
+
+    private
+    def before_elem(title, note=nil)
+      ['<div class="form-row">',
+       %Q(<span class="comas-form-prompt">#{title}</span>),
+       (note ? %Q(<span class="comas-form-note">#{note}</span>) : ''),
+      '<span class="comas-form-input">'
+      ].join("\n")
+    end
+
+    def after_elem
+      '</span></div>'
+    end
+
+    def info_elem(info)
+      %Q(<span class="comas-form-input">#{info}</span>)
+    end
+  end
+
+  def comas_form_for(name, object=nil, options=nil, &proc)
+    form_for(name, object,
+             (options||{}).merge(:builder => ComasFormBuilder), &proc)
+  end
 
 end
