@@ -4,19 +4,6 @@
 # with some commonly used functionality in, easily grouped, aiming at keeping
 # your  migrations short and easy to understand.
 #
-# = Catalogs
-# 
-# A catalog is defined as a table with only a +name+ column of
-# +string+ type, and with a unique index on it (this means, does not
-# allow for duplicate values). A catalog should have a model like the
-# following:
-# 
-#   def Mytable < ActiveRecord::Base
-#     belongs_to :some_other_table
-#     validates_presence_of :name
-#     validates_uniqueness_of :name
-#   end
-#
 # = References
 # 
 # Rails is built upon a "dumb database" concept. Rails assumes the database
@@ -30,7 +17,7 @@
 # methods, declare them with +add_refrence+:
 #
 #   def self.up
-#     create_catalogs :prop_types
+#     create_catalogs :prop_types # See the acts_as_catalog plugin
 #     create_table :proposals do |t|
 #       (...)
 #     end
@@ -47,7 +34,7 @@
 #   def self.down
 #     remove_reference(:proposals, :prop_types)
 #     drop_table :proposals
-#     drop_catalogs :prop_types
+#     drop_catalogs :prop_types # See the acts_as_catalog plugin
 #   end
 # 
 # Of course, in this case the +remove_reference+ call is not really needed - But
@@ -95,39 +82,6 @@
 module ActiveRecord
   module ConnectionAdapters # :nodoc:
     module SchemaStatements
-      # Creates the catalogs specified in include_catalogs. This method
-      # will usually be the first thing you call in self.up:
-      #
-      #   def self.up
-      #     create_catalogs :countries, :states
-      #     ...
-      #   end
-      def create_catalogs(*catalogs)
-        catalogs.each do |tbl|
-          create_table tbl do |t|
-            t.column :name, :string, :null => false
-          end
-          add_index tbl, :name, :unique => true
-        end
-      end
-
-      # Destroys the catalogs specified in include_catalogs. This method
-      # will usually be the last thing you call in self.down:
-      #
-      #   def self.up
-      #     ...
-      #     drop_catalogs :states, :countries
-      #   end
-      def drop_catalogs(*catalogs)
-        catalogs.flatten.each do |tbl|
-          columns = self.columns(tbl).map {|c| c.name}
-          if columns.size != 2 and (columns - ['id','name']).size != 0
-            raise ArgumentError, "#{tbl} is not a regular catalog - Not dropping"
-          end
-          drop_table tbl
-        end
-      end
-
       # Adds a belongs_to relation from the first table to the second one, creating
       # the foreign key, and creating the fields in the first table corresponding
       # to what Rails expects them to be called. 

@@ -1,5 +1,5 @@
 class AdminTask < ActiveRecord::Base
-  include Catalog
+  acts_as_catalog
   has_and_belongs_to_many :roles
   translates :name
 end

@@ -1,7 +1,8 @@
 require File.dirname(__FILE__) + '/../test_helper'
-require File.dirname(__FILE__) + '/catalog_helper'
+require 'catalog_test_helper'
 
-class RoleTest < CatalogTest
+class RoleTest < Test::Unit::TestCase
+  include CatalogTestHelper
   def setup
     @model = Role
   end

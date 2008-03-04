@@ -1,5 +1,5 @@
 class PersonType < ActiveRecord::Base
-  include Catalog
+  acts_as_catalog
   has_many :people
   translates :name
 end

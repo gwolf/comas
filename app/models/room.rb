@@ -1,4 +1,4 @@
 class Room < ActiveRecord::Base
-  include Catalog
+  acts_as_catalog
   has_many :timeslots
 end

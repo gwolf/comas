@@ -1,5 +1,5 @@
 class PropStatus < ActiveRecord::Base
-  include Catalog
+  acts_as_catalog
   has_many :proposals
   translates :name
 end
