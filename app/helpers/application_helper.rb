@@ -57,12 +57,34 @@ module ApplicationHelper
 
           options[:size] ||= 60 if '#{fldtype}' == 'text_field'
 
-          [before_elem(title,note), 
+          [before_elem(title, note), 
            super(field,options), 
            after_elem].join("\n")
         end
       END_SRC
       class_eval src, __FILE__, __LINE__
+    end
+
+    def auto_field(field, options={})
+      column = @object.class.columns.select {|col| col.name == field}.first
+      raise(NoMethodError, 
+            "Field #{field} not defined for #{@object.class}") if column.nil?
+
+      if column.text?
+        return text_field(field, options) 
+      elsif column.number?
+        if field =~ /_id$/ and model = table_from_field(field)
+          return select(field, model.find(:all).sort {|a,b| a.name <=> b.name}.
+                        collect {|item| [item.name, item.id]},
+                        {:include_blank => true})
+        else
+          options[:size] ||= 10
+          return text_field(field, options)
+        end
+      else
+
+      end
+
     end
 
     def select(field, choices, options={})
@@ -97,6 +119,20 @@ module ApplicationHelper
 
     def info_elem(info)
       %Q(<span class="comas-form-input">#{info}</span>)
+    end
+
+    def table_from_field(field)
+      return nil unless field =~ /_id$/
+      tablename = field.gsub(/_id$/, '')
+      return nil unless 
+        ActiveRecord::Base.connection.tables.include? tablename.pluralize
+      begin 
+        model = eval(tablename.camelcase)
+      rescue
+        return nil
+      end
+
+      model
     end
   end
 
