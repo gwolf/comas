@@ -49,7 +49,7 @@ window.onload = function() {
 <% if ! @user.nil? %>
   <div id="login">
     <%=h @user.login %> (<%=h @user.name %>)
-      - <%= link_to 'Log out'.t, :controller => 'people', :action => 'logout' %>
+      - <%= link_to 'Log out', :controller => 'people', :action => 'logout' %>
   </div>
 <% end %>
 
@@ -57,14 +57,14 @@ window.onload = function() {
 
 <% if flash[:error] %>
     <div class="error">
-      <%= flash[:error].map {|msg| msg.t}.join "<br/>" %>
+      <%= flash[:error].map {|msg| msg}.join "<br/>" %>
       <% flash.discard(:error) %>
     </div>
 <% end %>
 
 <% if flash[:warning] %>
     <div class="msg">
-      <%= flash[:warning].map {|msg| msg.t}.join "<br/>" %>
+      <%= flash[:warning].map {|msg| msg}.join "<br/>" %>
       <% flash.discard(:warning) %>
     </div>
 <% end %>
