@@ -57,14 +57,14 @@ window.onload = function() {
 
 <% if flash[:error] %>
     <div class="error">
-      <%= flash[:error].t %>
+      <%= flash[:error].map {|msg| msg.t}.join "<br/>" %>
       <% flash.discard(:error) %>
     </div>
 <% end %>
 
 <% if flash[:warning] %>
     <div class="msg">
-      <%= flash[:warning].t %>
+      <%= flash[:warning].map {|msg| msg.t}.join "<br/>" %>
       <% flash.discard(:warning) %>
     </div>
 <% end %>

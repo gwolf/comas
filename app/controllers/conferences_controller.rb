@@ -23,4 +23,9 @@ class ConferencesController < ApplicationController
       return false
     end
   end
+
+  def check_auth
+    public = [:index, :list, :show]
+    return true if public.include? request.path_parameters['action'].to_sym
+  end
 end

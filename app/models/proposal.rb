@@ -1,4 +1,5 @@
 class Proposal < ActiveRecord::Base
+  acts_as_magic_model
   has_many :authorships
   has_many :people, :through => :authorships
   has_many :documents

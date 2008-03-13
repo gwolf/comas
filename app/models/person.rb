@@ -1,4 +1,5 @@
 class Person < ActiveRecord::Base
+  acts_as_magic_model
   belongs_to :person_type
   has_many :authorships
   has_many :proposals, :through => :authorships
@@ -13,7 +14,7 @@ class Person < ActiveRecord::Base
   validates_uniqueness_of :login
   validates_associated :person_type
 
-  def Person.ck_login(given_login, given_passwd)
+  def self.ck_login(given_login, given_passwd)
     person = Person.find_by_login(given_login)
     return false if person.blank? or
       person.passwd != Digest::MD5.hexdigest(person.pw_salt + given_passwd)
@@ -24,16 +25,18 @@ class Person < ActiveRecord::Base
     person
   end
 
-  def core_attributes
-    %w(created_at email famname firstname last_login_at login passwd 
+  def self.core_attributes
+    %w(created_at email famname firstname id last_login_at login passwd 
        person_type_id pw_salt)
   end
+  def core_attributes; self.class.core_attributes; end
 
   # Returns a list of any user-listable attributes that are not part of the
   # base Person data
-  def extra_listable_attributes 
-    self.attribute_names - self.core_attributes
+  def self.extra_listable_attributes 
+    self.column_names - self.core_attributes
   end
+  def extra_listable_attributes; self.class.extra_listable_attributes; end
 
   def passwd= plain
     # Don't accept empty passwords!
