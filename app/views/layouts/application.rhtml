@@ -49,7 +49,7 @@ window.onload = function() {
 <% if ! @user.nil? %>
   <div id="login">
     <%=h @user.login %> (<%=h @user.name %>)
-      - <%= link_to 'Log out', :controller => 'people', :action => 'logout' %>
+      - <%= link_to 'Log out', :controller => '/people', :action => 'logout' %>
   </div>
 <% end %>
 

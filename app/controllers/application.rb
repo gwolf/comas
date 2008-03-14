@@ -22,19 +22,29 @@ class ApplicationController < ActionController::Base
 
   def generate_menu
     @menu = MenuTree.new(MenuItem.new( 'Conference listing',
-                                       url_for(:controller => 'conferences',
+                                       url_for(:controller => '/conferences',
                                                :action => 'list') ) )
 
     if @user.nil?
       @menu << MenuItem.new('Log in',
-                            url_for(:controller => 'people', 
+                            url_for(:controller => '/people', 
                                     :action => 'login')) <<
         MenuItem.new('New account',
-                     url_for(:controller => 'people', :action => 'new'))
+                     url_for(:controller => '/people', :action => 'new'))
     else
       @menu << MenuItem.new('My account',
-                            url_for(:controller => 'people',
+                            url_for(:controller => '/people',
                                     :action => 'account'))
+      if ! @user.admin_tasks.empty?
+        adm = MenuItem.new('Administration', nil, MenuTree.new)
+        
+        @user.admin_tasks.each do |at|
+        adm.tree << MenuItem.new(at.name, 
+                                 url_for(:controller => "/admin/#{at.name}"))
+        end
+        @menu << adm
+      end
     end
+
   end
 end

@@ -1,0 +1,10 @@
+<% # Ordered list of fields we will present to the user 
+   fields = %w(login passwd firstname famname person_type_id
+     ).concat @person.extra_listable_attributes %>
+<% comas_form_for(:person, @person, 
+                  :url => {:action => action, :id => @person}) do |f| %>
+  <% fields.each do |attr|%>
+    <%= f.auto_field attr %>
+  <% end %>
+<%= f.submit %>
+<% end %>

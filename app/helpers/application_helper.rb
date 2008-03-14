@@ -42,22 +42,49 @@ module ApplicationHelper
     end
 
     def auto_field(field, options={})
-      column = @object.class.columns.select {|col| col.name == field}.first
-      raise(NoMethodError, 
-            "Field #{field} not defined for #{@object.class}") if column.nil?
+      column = @object.class.columns.select { |col| 
+        col.name.to_s == field.to_s}.first or
+        raise(NoMethodError, 
+              "Field #{field} not defined for #{@object.class}")
 
-      if column.text?
+      # Specially treated fields
+      if field == 'id'
+        return info_row(field, options)
+
+      elsif field == 'passwd'
+        options[:value] = ''
+        return password_field(field, options)
+
+      elsif field =~ /_id$/ and column.type == :integer and
+          model = table_from_field(field)
+        # field_id and there is a corresponding table? Present the catalog.
+        return select(field, model.collection_by_id,
+                      {:include_blank => true})
+      end
+
+
+
+      # Generic fields, based on data type
+      case column.type.to_sym
+      when :string
         return text_field(field, options) 
-      elsif column.number?
-        if field =~ /_id$/ and model = table_from_field(field)
-          return select(field, model.find(:all).sort {|a,b| a.name <=> b.name}.
-                        collect {|item| [item.name, item.id]},
-                        {:include_blank => true})
-        else
-          options[:size] ||= 10
-          return text_field(field, options)
-        end
+
+      when :text
+        return text_area(field, options) 
+
+      when :integer, :decimal, :float
+        options[:class] ||= 'numeric'
+        return text_field(field, options)
+
+      when :boolean
+        return radio_group(field, [['Yes', true], ['No', false]], options)
+
+      when :date, :time, :datetime
+        return info_row field, {:note => "Lazy bum, finish your code!"}
+
       else
+        # What is it, then? just report it...
+        return info_row(field, options)
 
       end
 
@@ -71,8 +98,17 @@ module ApplicationHelper
        after_elem].join("\n")
     end
 
+    def radio_group(field, choices, options={})
+      title = options.delete(:title) || field.to_s.humanize
+      note = options.delete(:note)
+      [before_elem(title,note), 
+       choices.map { |item|
+         radio_button(field, item[1]) << ' ' << item[0]
+       }, after_elem].join("\n")
+    end
+
     def info_row(field, options={})
-      title = options[:title] || ''
+      title = options[:title] || field.to_s.humanize
       note = options[:note]
 
       [ before_elem(title,note), 
@@ -85,7 +121,7 @@ module ApplicationHelper
       ['<div class="form-row">',
        %Q(<span class="comas-form-prompt">#{title}</span>),
        (note ? %Q(<span class="comas-form-note">#{note}</span>) : ''),
-      '<span class="comas-form-input">'
+       '<span class="comas-form-input">'
       ].join("\n")
     end
 
@@ -103,7 +139,7 @@ module ApplicationHelper
       return nil unless 
         ActiveRecord::Base.connection.tables.include? tablename.pluralize
       begin 
-        model = eval(tablename.camelcase)
+        model = tablename.camelcase.constantize
       rescue
         return nil
       end

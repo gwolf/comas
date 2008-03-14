@@ -1,0 +1,28 @@
+<h1>Attendee administration</h1>
+<p><%= @people.size %> total registered attendees</p>
+<p><%= link_to 'Register new', :action => 'new' %></p>
+<%= start_table %>
+  <%= table_head_row %>
+    <th><%= link_to 'ID', :sort_by => 'id' %></th>
+    <th><%= link_to 'First name', :sort_by => 'firstname' %></th>
+    <th><%= link_to 'Family name', :sort_by => 'famname' %></th>
+    <th><%= link_to 'Attendee type', :sort_by => 'person_type_id' %></th>
+    <th><%= link_to 'Last login at', :sort_by => 'last_login_at' %></th>
+    <th></th>
+  <%= end_table_row %>
+  <% @people.each do |person| %>
+  <%= table_row %>
+    <td><%= link_to h(person.id), :action => 'show', :id => person %></td>
+    <td><%= link_to h(person.firstname), :action => 'show', :id => person %></td>
+    <td><%= link_to h(person.famname), :action => 'show', :id => person %></td>
+    <td><%= h(person.person_type.name) %></td>
+    <td><%= h(person.last_login_at) %></td>
+    <td><%= link_to_if(@user != person, 'Delete',
+		       {:action => 'destroy', :id => person},
+		       {:confirm => "Are you sure you want to " <<
+			 "permanently delete #{person.name}?",
+		       :method => :post})
+      %>
+  <%= end_table_row %>
+  <% end %>
+<%= end_table %>
