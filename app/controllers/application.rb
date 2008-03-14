@@ -21,16 +21,20 @@ class ApplicationController < ActionController::Base
   end
 
   def generate_menu
-    @menu = [{:label => 'Conference listing', 
-               :link => {:controller => 'conferences', :action => 'list'}}]
+    @menu = MenuTree.new(MenuItem.new( 'Conference listing',
+                                       url_for(:controller => 'conferences',
+                                               :action => 'list') ) )
 
     if @user.nil?
-      @menu << {:label => 'Log in',
-        :link => {:controller => 'people', :action => 'login'}}
+      @menu << MenuItem.new('Log in',
+                            url_for(:controller => 'people', 
+                                    :action => 'login')) <<
+        MenuItem.new('New account',
+                     url_for(:controller => 'people', :action => 'new'))
     else
-      @menu << {:label => 'My account',
-        :link => {:controller => 'people', :action => 'account'}}
+      @menu << MenuItem.new('My account',
+                            url_for(:controller => 'people',
+                                    :action => 'account'))
     end
   end
-
 end
