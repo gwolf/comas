@@ -51,7 +51,7 @@ class TableField < ActiveRecord::Base
     modelname = fldname.classify
     ref_model = self.model
 
-    raise NameError, 'Not a relation field' unless defines_relation?
+    raise NameError, _('Not a relation field') unless defines_relation?
 
     # Ok, create the class, and define it in 
     eval %Q(

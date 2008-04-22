@@ -24,6 +24,7 @@ module ApplicationHelper
   ############################################################
   # Form builders
   class ComasFormBuilder < ActionView::Helpers::FormBuilder
+    include GetText
     (field_helpers - %w(check_box radio_button select 
                         hidden_field)).each do |fldtype|
       src = <<-END_SRC
@@ -44,8 +45,8 @@ module ApplicationHelper
     def auto_field(field, options={})
       column = @object.class.columns.select { |col| 
         col.name.to_s == field.to_s}.first or
-        raise(NoMethodError, 
-              "Field #{field} not defined for #{@object.class}")
+        raise(NoMethodError,
+              _('Field %s not defined for %s') % field, @object.class)
 
       # Specially treated fields
       if field == 'id'
@@ -80,7 +81,7 @@ module ApplicationHelper
         return radio_group(field, [['Yes', true], ['No', false]], options)
 
       when :date, :time, :datetime
-        return info_row field, {:note => "Lazy bum, finish your code!"}
+        return info_row(field, {:note => "Lazy bum, finish your code!"})
 
       else
         # What is it, then? just report it...
@@ -119,8 +120,8 @@ module ApplicationHelper
     private
     def before_elem(title, note=nil)
       ['<div class="form-row">',
-       %Q(<span class="comas-form-prompt">#{title}</span>),
-       (note ? %Q(<span class="comas-form-note">#{note}</span>) : ''),
+       %Q(<span class="comas-form-prompt">#{_ title}</span>),
+       (note ? %Q(<span class="comas-form-note">#{_ note}</span>) : ''),
        '<span class="comas-form-input">'
       ].join("\n")
     end
@@ -130,7 +131,7 @@ module ApplicationHelper
     end
 
     def info_elem(info)
-      %Q(<span class="comas-form-input">#{info}</span>)
+      %Q(<span class="comas-form-input">#{_ info}</span>)
     end
 
     def table_from_field(field)
@@ -152,5 +153,4 @@ module ApplicationHelper
     form_for(name, object,
              (options||{}).merge(:builder => ComasFormBuilder), &proc)
   end
-
 end

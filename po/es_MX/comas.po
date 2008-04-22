@@ -1,0 +1,163 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Comas 1.0\n"
+"POT-Creation-Date: 2008-04-21 18:01-0500\n"
+"PO-Revision-Date: 2008-04-21 18:42-0600\n"
+"Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
+"Language-Team: Gunnar Wolf <gwolf@gwolf.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Spanish\n"
+"X-Poedit-Country: MEXICO\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: app/controllers/application.rb:23
+msgid "Controller %s must implement check_auth"
+msgstr "El controlador %s debe implementar check_auth"
+
+#: app/controllers/application.rb:28
+msgid "Conference listing"
+msgstr "Listado de congresos"
+
+#: app/controllers/application.rb:36
+msgid "New account"
+msgstr "Nueva cuenta"
+
+#: app/controllers/application.rb:39
+msgid "My account"
+msgstr "Mi cuenta"
+
+#: app/controllers/application.rb:43
+msgid "Administration"
+msgstr "Administración"
+
+#: app/controllers/admin/people_controller.rb:28
+msgid "New attendee successfully registered"
+msgstr "El nuevo asistente fue registrado exitosamente"
+
+#: app/controllers/admin/people_controller.rb:30
+msgid "Error registering requested attendee: "
+msgstr "Error registrando al asistente indicado:"
+
+#: app/controllers/admin/people_controller.rb:45
+msgid "Successfully removed requested attendee"
+msgstr "El asistente especificado fue eliminado exitosamente"
+
+#: app/controllers/admin/people_controller.rb:47
+msgid "Error removing requested attendee: "
+msgstr "Error eliminando al asistente solicitado:"
+
+#: app/controllers/admin/people_controller.rb:51
+#: app/controllers/admin.rb:13
+msgid "Invocation error"
+msgstr "Error de invocación"
+
+#: app/controllers/people_controller.rb:11
+msgid "Successfully logged out"
+msgstr "Salió del sistema exitosamente"
+
+#: app/controllers/people_controller.rb:23
+msgid "Incorrect user/password"
+msgstr "Usuario/contraseña equivocados"
+
+#: app/controllers/people_controller.rb:39
+msgid "New person successfully registered"
+msgstr "La nueva persona fue registrada exitosamente"
+
+#: app/controllers/people_controller.rb:42
+msgid "Could not register person: "
+msgstr "No fue posible registrar a la persona especificada:"
+
+#: app/controllers/admin.rb:9
+msgid "Access denied"
+msgstr "Acceso denegado"
+
+#: app/controllers/conferences_controller.rb:22
+msgid "Invalid conference requested"
+msgstr "Especificó un congreso inexistente"
+
+#: app/helpers/application_helper.rb:48
+msgid "Field %s not defined for %s"
+msgstr "El campo %s no esstá definido para %s"
+
+#: app/views/admin/people/show.rhtml:1
+msgid "Attendee %d's personal data"
+msgstr "Datos personales del asistente %d"
+
+#: app/views/admin/people/list.rhtml:1
+msgid "Attendee administration"
+msgstr "Administración de asistentes"
+
+#: app/views/admin/people/list.rhtml:2
+msgid "%d total registered attendees "
+msgstr "%d asistentes registrados"
+
+#: app/views/admin/people/list.rhtml:3
+msgid "Register new"
+msgstr "Registrar nuevo"
+
+#: app/views/admin/people/list.rhtml:6
+msgid "ID"
+msgstr "ID"
+
+#: app/views/admin/people/list.rhtml:7
+msgid "First name"
+msgstr "Nombre propio"
+
+#: app/views/admin/people/list.rhtml:8
+msgid "Family name"
+msgstr "Apellidos"
+
+#: app/views/admin/people/list.rhtml:9
+msgid "Attendee type"
+msgstr "Tipo de asistente"
+
+#: app/views/admin/people/list.rhtml:10
+msgid "Last login at"
+msgstr "Última entrada"
+
+#: app/views/admin/people/list.rhtml:20
+msgid "Delete"
+msgstr "Eliminar"
+
+#: app/views/admin/people/list.rhtml:22
+msgid "Are you sure you want to permanently delete %s?"
+msgstr "¿Está seguro de que desea eliminar permanentemente a %s?"
+
+#: app/views/admin/people/new.rhtml:1
+msgid "Register a new attendee"
+msgstr "Registrar a un nuevo asistente"
+
+#: app/views/admin/people/new.rhtml:2
+msgid "create"
+msgstr "crear"
+
+#: app/views/people/login.rhtml:3
+msgid "User name"
+msgstr "Nombre de usuario"
+
+#: app/views/people/login.rhtml:5
+msgid "Password"
+msgstr "Contraseña"
+
+#: app/views/people/login.rhtml:6
+msgid "Log in"
+msgstr "Entrar"
+
+#: app/views/conferences/show.rhtml:7
+msgid "Web site"
+msgstr "Sitio Web"
+
+#: app/views/conferences/list.rhtml:3
+msgid "Conference"
+msgstr "Congreso"
+
+#: app/views/conferences/list.rhtml:4
+msgid "Dates"
+msgstr "Fechas"
+
+#: app/views/layouts/application.rhtml:52
+msgid "Log out"
+msgstr "Salir"
+

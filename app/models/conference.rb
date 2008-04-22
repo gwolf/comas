@@ -22,23 +22,25 @@ class Conference < ActiveRecord::Base
 
   protected
   def dates_are_correct
-    errors.add(:begins, "can't be blank") if begins.nil? 
-    errors.add(:finishes, "can't be blank") if finishes.nil? 
+    errors.add(:begins, _("%{fn} can't be blank")) if begins.nil? 
+    errors.add(:finishes, _("%{fn} can't be blank")) if finishes.nil? 
 
     dates_in_order?(begins, finishes) or
-      errors.add(:begins, 'Conference must end after its start date')
+      errors.add(:begins, _('Conference must end after its start date'))
 
     dates_in_order?(cfp_open_date, cfp_close_date) or
-      errors.add(:cfp_open_date, 'Call for papers must end after its start date')
+      errors.add(:cfp_open_date, _('Call for papers must end after its ' +
+                                   'start date'))
     dates_in_order?(cfp_close_date, begins) or
-      errors.add(:cfp_close_date, 
-                 'Call for papers must finish before the conference begins')
+      errors.add(:cfp_close_date, _('Call for papers must finish before ' +
+                                    'the conference begins'))
 
     dates_in_order?(reg_open_date, reg_close_date) or
-      errors.add(:reg_open_date, 'Registration must end after its start date')
+      errors.add(:reg_open_date, _('Registration must end after its ' +
+                                   'start date'))
     dates_in_order?(reg_close_date, finishes) or
-      errors.add(:reg_close_date, 
-                 'Registration must finish before the conference ends')
+      errors.add(:reg_close_date, _('Registration must finish before the ' +
+                                    'conference ends'))
   end
 
   def in_period?(start, finish)

@@ -1,2 +1,2 @@
-<h1>Attendee <%= @person.id %>'s personal data</h1>
+<h1><%= _("Attendee %d's personal data") % @person.id %></h1>
 <%= render :partial => 'form', :locals => {:action => 'show'} %>

@@ -7,7 +7,7 @@ class PeopleController < ApplicationController
 
   def logout
     clear_session
-    flash[:notice] = 'Successfully logged out'
+    flash[:notice] = _ 'Successfully logged out'
     redirect_to '/'
   end
 
@@ -19,7 +19,7 @@ class PeopleController < ApplicationController
       session[:user_id] = user.id
       redirect_to dest_url
     else
-      flash[:warning] = 'Incorrect user/password'
+      flash[:warning] = _ 'Incorrect user/password'
       redirect_to :action => 'login'
     end
   end
@@ -35,11 +35,11 @@ class PeopleController < ApplicationController
       @person = Person.new(params[:person])
       if @person.save
         session[:user_id] = @person.id
-        flash[:notice] = 'New person successfully registered'
+        flash[:notice] = _ 'New person successfully registered'
         redirect_to :action => 'account'
         return true
       else
-        flash[:error] = ['Could not register person: ',
+        flash[:error] = [_('Could not register person: '),
                          @person.errors.full_messages].flatten
       end
     end

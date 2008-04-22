@@ -6,9 +6,9 @@ class Admin < ApplicationController
       if @user and @user.admin_tasks.include? task
         return true
       end
-      flash[:error] = "Access denied"
+      flash[:error] = _ "Access denied"
     end
-    flash[:error] = "Invocation error"
+    flash[:error] = _ "Invocation error"
 
     redirect_to '/'
   end

@@ -4,5 +4,5 @@
 <p><%= @conference.begins %> - <%= @conference.finishes %></p>
 
 <% if !@conference.homepage.blank? %>
-  <p><%= link_to 'Web site', @conference.homepage %></p>
+  <p><%= link_to _('Web site'), @conference.homepage %></p>
 <% end %>
