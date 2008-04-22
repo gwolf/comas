@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
   before_filter :get_user
   before_filter :check_auth
   before_filter :generate_menu
+  before_filter :set_lang
 
   protected
   def get_user
@@ -30,7 +31,7 @@ class ApplicationController < ActionController::Base
                                                :action => 'list') ) )
 
     if @user.nil?
-      @menu << MenuItem.new('Log in',
+      @menu << MenuItem.new(_('Log in'),
                             url_for(:controller => '/people', 
                                     :action => 'login')) <<
         MenuItem.new(_('New account'),
@@ -50,5 +51,10 @@ class ApplicationController < ActionController::Base
       end
     end
 
+  end
+
+  def set_lang
+    return true unless lang = params[:lang]
+    cookies[:lang] = {:value => lang, :expires => Time.now+1.day, :path => '/'}
   end
 end

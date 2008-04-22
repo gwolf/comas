@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2008-04-22 17:15-0500\n"
-"PO-Revision-Date: 2008-04-22 17:21-0600\n"
+"POT-Creation-Date: 2008-04-22 18:23-0500\n"
+"PO-Revision-Date: 2008-04-22 18:24-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: Gunnar Wolf <gwolf@gwolf.org>\n"
 "MIME-Version: 1.0\n"
@@ -337,6 +337,11 @@ msgstr "El controlador %s debe implementar check_auth"
 msgid "Conference listing"
 msgstr "Listado de congresos"
 
+#: app/controllers/application.rb:33
+#: app/views/people/login.rhtml:6
+msgid "Log in"
+msgstr "Entrar"
+
 #: app/controllers/application.rb:36
 msgid "New account"
 msgstr "Nueva cuenta"
@@ -402,6 +407,10 @@ msgstr "El campo %s no esstá definido para %s"
 msgid "Attendee %d's personal data"
 msgstr "Datos personales del asistente %d"
 
+#: app/views/admin/people/show.rhtml:3
+msgid "Save changes"
+msgstr "Grabar cambios"
+
 #: app/views/admin/people/list.rhtml:1
 msgid "Attendee administration"
 msgstr "Administración de asistentes"
@@ -446,9 +455,9 @@ msgstr "¿Está seguro de que desea eliminar permanentemente a %s?"
 msgid "Register a new attendee"
 msgstr "Registrar a un nuevo asistente"
 
-#: app/views/admin/people/new.rhtml:2
-msgid "create"
-msgstr "crear"
+#: app/views/admin/people/new.rhtml:3
+msgid "Create"
+msgstr "Crear"
 
 #: app/views/people/login.rhtml:3
 msgid "User name"
@@ -457,10 +466,6 @@ msgstr "Nombre de usuario"
 #: app/views/people/login.rhtml:5
 msgid "Password"
 msgstr "Contraseña"
-
-#: app/views/people/login.rhtml:6
-msgid "Log in"
-msgstr "Entrar"
 
 #: app/views/conferences/show.rhtml:7
 msgid "Web site"

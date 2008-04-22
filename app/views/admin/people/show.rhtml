@@ -1,2 +1,3 @@
 <h1><%= _("Attendee %d's personal data") % @person.id %></h1>
-<%= render :partial => 'form', :locals => {:action => 'show'} %>
+<%= render :partial => 'form', 
+           :locals => {:action => 'show', :submit => _('Save changes')} %>

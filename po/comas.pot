@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2008-04-22 17:15-0500\n"
+"POT-Creation-Date: 2008-04-22 18:23-0500\n"
 "PO-Revision-Date: 2008-04-21 17:30-0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -340,6 +340,10 @@ msgstr ""
 msgid "Conference listing"
 msgstr ""
 
+#: app/controllers/application.rb:33 app/views/people/login.rhtml:6
+msgid "Log in"
+msgstr ""
+
 #: app/controllers/application.rb:36
 msgid "New account"
 msgstr ""
@@ -404,6 +408,10 @@ msgstr ""
 msgid "Attendee %d's personal data"
 msgstr ""
 
+#: app/views/admin/people/show.rhtml:3
+msgid "Save changes"
+msgstr ""
+
 #: app/views/admin/people/list.rhtml:1
 msgid "Attendee administration"
 msgstr ""
@@ -448,8 +456,8 @@ msgstr ""
 msgid "Register a new attendee"
 msgstr ""
 
-#: app/views/admin/people/new.rhtml:2
-msgid "create"
+#: app/views/admin/people/new.rhtml:3
+msgid "Create"
 msgstr ""
 
 #: app/views/people/login.rhtml:3
@@ -458,10 +466,6 @@ msgstr ""
 
 #: app/views/people/login.rhtml:5
 msgid "Password"
-msgstr ""
-
-#: app/views/people/login.rhtml:6
-msgid "Log in"
 msgstr ""
 
 #: app/views/conferences/show.rhtml:7

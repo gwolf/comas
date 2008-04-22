@@ -8,5 +8,5 @@
   <% @person.extra_listable_attributes.each do |attr| %>
     <%= f.auto_field(attr) %>
   <% end %>
-  <%= f.submit %>
+  <%= f.submit _('Create') %>
 <% end %>
