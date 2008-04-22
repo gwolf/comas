@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2008-04-21 18:01-0500\n"
+"POT-Creation-Date: 2008-04-22 17:15-0500\n"
 "PO-Revision-Date: 2008-04-21 17:30-0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,6 +15,322 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: app/models/document.rb:-
+msgid "document"
+msgstr ""
+
+#: app/models/document.rb:-
+msgid "Document|Filename"
+msgstr ""
+
+#: app/models/document.rb:-
+msgid "Document|Descr"
+msgstr ""
+
+#: app/models/document.rb:-
+msgid "Document|Content type"
+msgstr ""
+
+#: app/models/document.rb:-
+msgid "Document|Data"
+msgstr ""
+
+#: app/models/document.rb:-
+msgid "Document|Created at"
+msgstr ""
+
+#: app/models/document.rb:-
+msgid "Document|Updated at"
+msgstr ""
+
+#: app/models/document.rb:-
+msgid "Document|Proposal"
+msgstr ""
+
+#: app/models/table_field.rb:-
+msgid "table field"
+msgstr ""
+
+#: app/models/table_field.rb:-
+msgid "TableField|Model"
+msgstr ""
+
+#: app/models/table_field.rb:-
+msgid "TableField|Field"
+msgstr ""
+
+#: app/models/table_field.rb:-
+msgid "TableField|Allow null"
+msgstr ""
+
+#: app/models/table_field.rb:-
+msgid "TableField|Valid regex"
+msgstr ""
+
+#: app/models/table_field.rb:-
+msgid "TableField|Order"
+msgstr ""
+
+#: app/models/table_field.rb:54
+msgid "Not a relation field"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "person"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Person|Login"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Person|Passwd"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Person|Firstname"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Person|Famname"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Person|Email"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Person|Pw salt"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Person|Created at"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Person|Last login at"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Person|Person type"
+msgstr ""
+
+#: app/models/conference.rb:-
+msgid "conference"
+msgstr ""
+
+#: app/models/conference.rb:-
+msgid "Conference|Name"
+msgstr ""
+
+#: app/models/conference.rb:-
+msgid "Conference|Descr"
+msgstr ""
+
+#: app/models/conference.rb:-
+msgid "Conference|Active"
+msgstr ""
+
+#: app/models/conference.rb:-
+msgid "Conference|Homepage"
+msgstr ""
+
+#: app/models/conference.rb:-
+msgid "Conference|Reg open date"
+msgstr ""
+
+#: app/models/conference.rb:-
+msgid "Conference|Reg close date"
+msgstr ""
+
+#: app/models/conference.rb:-
+msgid "Conference|Cfp open date"
+msgstr ""
+
+#: app/models/conference.rb:-
+msgid "Conference|Cfp close date"
+msgstr ""
+
+#: app/models/conference.rb:-
+msgid "Conference|Begins"
+msgstr ""
+
+#: app/models/conference.rb:-
+msgid "Conference|Finishes"
+msgstr ""
+
+#: app/models/conference.rb:25 app/models/conference.rb:26
+msgid "%{fn} can't be blank"
+msgstr ""
+
+#: app/models/conference.rb:29
+msgid "Conference must end after its start date"
+msgstr ""
+
+#: app/models/conference.rb:32
+msgid "Call for papers must end after its start date"
+msgstr ""
+
+#: app/models/conference.rb:35
+msgid "Call for papers must finish before the conference begins"
+msgstr ""
+
+#: app/models/conference.rb:39
+msgid "Registration must end after its start date"
+msgstr ""
+
+#: app/models/conference.rb:42
+msgid "Registration must finish before the conference ends"
+msgstr ""
+
+#: app/models/admin_task.rb:-
+msgid "admin task"
+msgstr ""
+
+#: app/models/admin_task.rb:-
+msgid "AdminTask|Name"
+msgstr ""
+
+#: app/models/person_type.rb:-
+msgid "person type"
+msgstr ""
+
+#: app/models/person_type.rb:-
+msgid "PersonType|Name"
+msgstr ""
+
+#: app/models/attendance.rb:-
+msgid "attendance"
+msgstr ""
+
+#: app/models/attendance.rb:-
+msgid "Attendance|Created at"
+msgstr ""
+
+#: app/models/attendance.rb:-
+msgid "Attendance|Person"
+msgstr ""
+
+#: app/models/attendance.rb:-
+msgid "Attendance|Timeslot"
+msgstr ""
+
+#: app/models/timeslot.rb:-
+msgid "timeslot"
+msgstr ""
+
+#: app/models/timeslot.rb:-
+msgid "Timeslot|Start time"
+msgstr ""
+
+#: app/models/timeslot.rb:-
+msgid "Timeslot|Tolerance pre"
+msgstr ""
+
+#: app/models/timeslot.rb:-
+msgid "Timeslot|Tolerance post"
+msgstr ""
+
+#: app/models/timeslot.rb:-
+msgid "Timeslot|Room"
+msgstr ""
+
+#: app/models/timeslot.rb:-
+msgid "Timeslot|Conference"
+msgstr ""
+
+#: app/models/authorship.rb:-
+msgid "authorship"
+msgstr ""
+
+#: app/models/authorship.rb:-
+msgid "Authorship|Position"
+msgstr ""
+
+#: app/models/authorship.rb:-
+msgid "Authorship|Person"
+msgstr ""
+
+#: app/models/authorship.rb:-
+msgid "Authorship|Proposal"
+msgstr ""
+
+#: app/models/prop_type.rb:-
+msgid "prop type"
+msgstr ""
+
+#: app/models/prop_type.rb:-
+msgid "PropType|Name"
+msgstr ""
+
+#: app/models/room.rb:-
+msgid "room"
+msgstr ""
+
+#: app/models/room.rb:-
+msgid "Room|Name"
+msgstr ""
+
+#: app/models/conference_logo.rb:-
+msgid "conference logo"
+msgstr ""
+
+#: app/models/conference_logo.rb:-
+msgid "ConferenceLogo|Filename"
+msgstr ""
+
+#: app/models/conference_logo.rb:-
+msgid "ConferenceLogo|Data"
+msgstr ""
+
+#: app/models/conference_logo.rb:-
+msgid "ConferenceLogo|Conference"
+msgstr ""
+
+#: app/models/proposal.rb:-
+msgid "proposal"
+msgstr ""
+
+#: app/models/proposal.rb:-
+msgid "Proposal|Title"
+msgstr ""
+
+#: app/models/proposal.rb:-
+msgid "Proposal|Abstract"
+msgstr ""
+
+#: app/models/proposal.rb:-
+msgid "Proposal|Created at"
+msgstr ""
+
+#: app/models/proposal.rb:-
+msgid "Proposal|Updated at"
+msgstr ""
+
+#: app/models/proposal.rb:-
+msgid "Proposal|Prop type"
+msgstr ""
+
+#: app/models/proposal.rb:-
+msgid "Proposal|Prop status"
+msgstr ""
+
+#: app/models/proposal.rb:-
+msgid "Proposal|Timeslot"
+msgstr ""
+
+#: app/models/proposal.rb:-
+msgid "Proposal|Conference"
+msgstr ""
+
+#: app/models/prop_status.rb:-
+msgid "prop status"
+msgstr ""
+
+#: app/models/prop_status.rb:-
+msgid "PropStatus|Name"
+msgstr ""
 
 #: app/controllers/application.rb:23
 msgid "Controller %s must implement check_auth"
@@ -80,7 +396,7 @@ msgstr ""
 msgid "Invalid conference requested"
 msgstr ""
 
-#: app/helpers/application_helper.rb:48
+#: app/helpers/application_helper.rb:49
 msgid "Field %s not defined for %s"
 msgstr ""
 

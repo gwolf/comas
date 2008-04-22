@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Comas 1.0\n"
-"POT-Creation-Date: 2008-04-21 18:01-0500\n"
-"PO-Revision-Date: 2008-04-21 18:42-0600\n"
+"Project-Id-Version: comas 1.0\n"
+"POT-Creation-Date: 2008-04-22 17:15-0500\n"
+"PO-Revision-Date: 2008-04-22 17:21-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: Gunnar Wolf <gwolf@gwolf.org>\n"
 "MIME-Version: 1.0\n"
@@ -11,6 +11,323 @@ msgstr ""
 "X-Poedit-Language: Spanish\n"
 "X-Poedit-Country: MEXICO\n"
 "X-Poedit-SourceCharset: utf-8\n"
+
+#: app/models/document.rb:-
+msgid "document"
+msgstr "documento"
+
+#: app/models/document.rb:-
+msgid "Document|Filename"
+msgstr "Nombre de archivo"
+
+#: app/models/document.rb:-
+msgid "Document|Descr"
+msgstr "Descripción"
+
+#: app/models/document.rb:-
+msgid "Document|Content type"
+msgstr "Tipo de contenido"
+
+#: app/models/document.rb:-
+msgid "Document|Data"
+msgstr "Datos"
+
+#: app/models/document.rb:-
+msgid "Document|Created at"
+msgstr "Fecha de creación"
+
+#: app/models/document.rb:-
+msgid "Document|Updated at"
+msgstr "Última actualización"
+
+#: app/models/document.rb:-
+msgid "Document|Proposal"
+msgstr "Propuesta"
+
+#: app/models/table_field.rb:-
+msgid "table field"
+msgstr "campo de tabla"
+
+#: app/models/table_field.rb:-
+msgid "TableField|Model"
+msgstr "Modelo"
+
+#: app/models/table_field.rb:-
+msgid "TableField|Field"
+msgstr "Campo"
+
+#: app/models/table_field.rb:-
+msgid "TableField|Allow null"
+msgstr "Permitir nulos"
+
+#: app/models/table_field.rb:-
+msgid "TableField|Valid regex"
+msgstr "Expresiones válidas"
+
+#: app/models/table_field.rb:-
+msgid "TableField|Order"
+msgstr "Órden"
+
+#: app/models/table_field.rb:54
+msgid "Not a relation field"
+msgstr "No es un campo de relación"
+
+#: app/models/person.rb:-
+msgid "person"
+msgstr "persona"
+
+#: app/models/person.rb:-
+msgid "Person|Login"
+msgstr "Nombre de usuario"
+
+#: app/models/person.rb:-
+msgid "Person|Passwd"
+msgstr "Contraseña"
+
+#: app/models/person.rb:-
+msgid "Person|Firstname"
+msgstr "Nombre propio"
+
+#: app/models/person.rb:-
+msgid "Person|Famname"
+msgstr "Apellido"
+
+#: app/models/person.rb:-
+msgid "Person|Email"
+msgstr "Correo electrónico"
+
+#: app/models/person.rb:-
+msgid "Person|Pw salt"
+msgstr "Salt aleatorio"
+
+#: app/models/person.rb:-
+msgid "Person|Created at"
+msgstr "Fecha de creación"
+
+#: app/models/person.rb:-
+msgid "Person|Last login at"
+msgstr "Última entrada"
+
+#: app/models/person.rb:-
+msgid "Person|Person type"
+msgstr "Tipo de persona"
+
+#: app/models/conference.rb:-
+msgid "conference"
+msgstr "Congreso"
+
+#: app/models/conference.rb:-
+msgid "Conference|Name"
+msgstr "Nombre"
+
+#: app/models/conference.rb:-
+msgid "Conference|Descr"
+msgstr "Descripción"
+
+#: app/models/conference.rb:-
+msgid "Conference|Active"
+msgstr "Activo"
+
+#: app/models/conference.rb:-
+msgid "Conference|Homepage"
+msgstr "Página de inicio"
+
+#: app/models/conference.rb:-
+msgid "Conference|Reg open date"
+msgstr "Fecha de inicio del registro"
+
+#: app/models/conference.rb:-
+msgid "Conference|Reg close date"
+msgstr "Fecha de cierre de registro"
+
+#: app/models/conference.rb:-
+msgid "Conference|Cfp open date"
+msgstr "Fecha de inicio de la convocatoria"
+
+#: app/models/conference.rb:-
+msgid "Conference|Cfp close date"
+msgstr "Fecha de cierre de convocatoria"
+
+#: app/models/conference.rb:-
+msgid "Conference|Begins"
+msgstr "Fecha de inicio de actividades"
+
+#: app/models/conference.rb:-
+msgid "Conference|Finishes"
+msgstr "Fecha de término de actividades"
+
+#: app/models/conference.rb:25
+#: app/models/conference.rb:26
+msgid "%{fn} can't be blank"
+msgstr "%{fn} requiere ser llenado"
+
+#: app/models/conference.rb:29
+msgid "Conference must end after its start date"
+msgstr "El congreso debe terminar después de su fecha de inicio"
+
+#: app/models/conference.rb:32
+msgid "Call for papers must end after its start date"
+msgstr "La convocatoria de participación debe concluir después de su fecha de inicio"
+
+#: app/models/conference.rb:35
+msgid "Call for papers must finish before the conference begins"
+msgstr "La convocatoria de participación debe concluir antes de que inicie el congreso"
+
+#: app/models/conference.rb:39
+msgid "Registration must end after its start date"
+msgstr "El registro debe concluir después de su fecha de inicio"
+
+#: app/models/conference.rb:42
+msgid "Registration must finish before the conference ends"
+msgstr "El registro debe finalizar antes de que el congreso concluya"
+
+#: app/models/admin_task.rb:-
+msgid "admin task"
+msgstr "tarea administrativa"
+
+#: app/models/admin_task.rb:-
+msgid "AdminTask|Name"
+msgstr "Nombre"
+
+#: app/models/person_type.rb:-
+msgid "person type"
+msgstr "tipo de persona"
+
+#: app/models/person_type.rb:-
+msgid "PersonType|Name"
+msgstr "Nombre"
+
+#: app/models/attendance.rb:-
+msgid "attendance"
+msgstr "asistencia"
+
+#: app/models/attendance.rb:-
+msgid "Attendance|Created at"
+msgstr "Fecha de creación"
+
+#: app/models/attendance.rb:-
+msgid "Attendance|Person"
+msgstr "Persona"
+
+#: app/models/attendance.rb:-
+msgid "Attendance|Timeslot"
+msgstr "Horario"
+
+#: app/models/timeslot.rb:-
+msgid "timeslot"
+msgstr "horario"
+
+#: app/models/timeslot.rb:-
+msgid "Timeslot|Start time"
+msgstr "Hora de inicio"
+
+#: app/models/timeslot.rb:-
+msgid "Timeslot|Tolerance pre"
+msgstr "Tiempo de tolerancia previo al inicio"
+
+#: app/models/timeslot.rb:-
+msgid "Timeslot|Tolerance post"
+msgstr "Tiempo de tolerancia pasado el inicio"
+
+#: app/models/timeslot.rb:-
+msgid "Timeslot|Room"
+msgstr "Cuarto"
+
+#: app/models/timeslot.rb:-
+msgid "Timeslot|Conference"
+msgstr "Congreso"
+
+#: app/models/authorship.rb:-
+msgid "authorship"
+msgstr "autoría"
+
+#: app/models/authorship.rb:-
+msgid "Authorship|Position"
+msgstr "Posición"
+
+#: app/models/authorship.rb:-
+msgid "Authorship|Person"
+msgstr "Persona"
+
+#: app/models/authorship.rb:-
+msgid "Authorship|Proposal"
+msgstr "Propuesta"
+
+#: app/models/prop_type.rb:-
+msgid "prop type"
+msgstr "tipo de propuesta"
+
+#: app/models/prop_type.rb:-
+msgid "PropType|Name"
+msgstr "Nombre"
+
+#: app/models/room.rb:-
+msgid "room"
+msgstr "cuarto"
+
+#: app/models/room.rb:-
+msgid "Room|Name"
+msgstr "Nombre"
+
+#: app/models/conference_logo.rb:-
+msgid "conference logo"
+msgstr "Imagen del congreso"
+
+#: app/models/conference_logo.rb:-
+msgid "ConferenceLogo|Filename"
+msgstr "Nombre de archivo"
+
+#: app/models/conference_logo.rb:-
+msgid "ConferenceLogo|Data"
+msgstr "Datos"
+
+#: app/models/conference_logo.rb:-
+msgid "ConferenceLogo|Conference"
+msgstr "Congreso"
+
+#: app/models/proposal.rb:-
+msgid "proposal"
+msgstr "propuesta"
+
+#: app/models/proposal.rb:-
+msgid "Proposal|Title"
+msgstr "título"
+
+#: app/models/proposal.rb:-
+msgid "Proposal|Abstract"
+msgstr "Resumen"
+
+#: app/models/proposal.rb:-
+msgid "Proposal|Created at"
+msgstr "Fecha de creación"
+
+#: app/models/proposal.rb:-
+msgid "Proposal|Updated at"
+msgstr "Última actualización"
+
+#: app/models/proposal.rb:-
+msgid "Proposal|Prop type"
+msgstr "Tipo de la propuesta"
+
+#: app/models/proposal.rb:-
+msgid "Proposal|Prop status"
+msgstr "Estado de la propuesta"
+
+#: app/models/proposal.rb:-
+msgid "Proposal|Timeslot"
+msgstr "Horario"
+
+#: app/models/proposal.rb:-
+msgid "Proposal|Conference"
+msgstr "Congreso"
+
+#: app/models/prop_status.rb:-
+msgid "prop status"
+msgstr "estado de la propuesta"
+
+#: app/models/prop_status.rb:-
+msgid "PropStatus|Name"
+msgstr "Nombre"
 
 #: app/controllers/application.rb:23
 msgid "Controller %s must implement check_auth"
@@ -77,7 +394,7 @@ msgstr "Acceso denegado"
 msgid "Invalid conference requested"
 msgstr "Especificó un congreso inexistente"
 
-#: app/helpers/application_helper.rb:48
+#: app/helpers/application_helper.rb:49
 msgid "Field %s not defined for %s"
 msgstr "El campo %s no esstá definido para %s"
 
@@ -160,4 +477,9 @@ msgstr "Fechas"
 #: app/views/layouts/application.rhtml:52
 msgid "Log out"
 msgstr "Salir"
+
+#~ msgid "Person|Nickname"
+#~ msgstr "Alias"
+#~ msgid "Person|Curriculum"
+#~ msgstr "Curriculum"
 
