@@ -1,8 +1,9 @@
 class Admin < ApplicationController
+  protected
   def check_auth
-    request.path_parameters['controller'] =~ /^admin\/(.+)$/
+    ctrl = request.path_parameters['controller']
 
-    if ctrl = $1 and task = AdminTask.find_by_name(ctrl)
+    if task = AdminTask.find_by_name(ctrl)
       if @user and @user.admin_tasks.include? task
         return true
       end

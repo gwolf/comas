@@ -25,32 +25,42 @@ class ApplicationController < ActionController::Base
       contr
   end
 
+  # The controller for each of the admin tasks can include a Menu
+  # constant. This constant will be an array, with each element being
+  # an array with two elements: The name to display for the option to
+  # show and the name of one of its actions. Thus, in order to provide
+  # links in the main menu to the 'list' and 'status' actions of a
+  # controller:
+  #
+  #   def SomeThingController < Admin
+  #     Menu = [[_('General list'), :list], [_('Status overview'), :status]]
+  # 
+  # Yes, don't forget i18n.
   def generate_menu
-    @menu = MenuTree.new(MenuItem.new( _('Conference listing'),
-                                       url_for(:controller => '/conferences',
-                                               :action => 'list') ) )
+    @menu = MenuTree.new
+    @menu.add( _('Conference listing'),
+               url_for(:controller => '/conferences', :action => 'list') )
 
     if @user.nil?
-      @menu << MenuItem.new(_('Log in'),
-                            url_for(:controller => '/people', 
-                                    :action => 'login')) <<
-        MenuItem.new(_('New account'),
-                     url_for(:controller => '/people', :action => 'new'))
+      @menu.add(_('Log in'),
+                url_for(:controller => '/people', :action => 'login'))
+      @menu.add(_('New account'),
+                url_for(:controller => '/people', :action => 'new'))
     else
-      @menu << MenuItem.new(_('My account'),
-                            url_for(:controller => '/people',
-                                    :action => 'account'))
-      if ! @user.admin_tasks.empty?
-        adm = MenuItem.new(_('Administration'), nil, MenuTree.new)
-        
-        @user.admin_tasks.each do |at|
-        adm.tree << MenuItem.new(_(at.name), 
-                                 url_for(:controller => "/admin/#{at.name}"))
+      @menu.add(_('My account'),
+                url_for(:controller => '/people', :action => 'account'))
+
+      @user.admin_tasks.each do |task|
+        control = "#{task.name.camelcase}Controller".constantize
+        menu = (control.constants.include?('Menu') ? 
+                control::Menu : []).map do |elem|
+          MenuItem.new(elem[0], 
+                       url_for(:controller => task.name, :action => elem[1]))
         end
-        @menu << adm
+
+        @menu.add(_(task.name), nil, MenuTree.new(menu))
       end
     end
-
   end
 
   def set_lang

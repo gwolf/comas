@@ -1,5 +1,6 @@
-class Admin::PeopleController < Admin
+class PeopleAdmController < Admin
   before_filter :get_person, :only => [:show, :destroy]
+  Menu = [[_('Registered people list'), :list] ]
 
   def index
     redirect_to :action => 'list'

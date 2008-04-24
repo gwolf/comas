@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2008-04-24 15:57-0500\n"
+"POT-Creation-Date: 2008-04-24 16:21-0500\n"
 "PO-Revision-Date: 2008-04-24 15:58-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: Gunnar Wolf <gwolf@gwolf.org>\n"
@@ -156,8 +156,7 @@ msgstr "Fecha de inicio de actividades"
 msgid "Conference|Finishes"
 msgstr "Fecha de término de actividades"
 
-#: app/models/conference.rb:25
-#: app/models/conference.rb:26
+#: app/models/conference.rb:25 app/models/conference.rb:26
 msgid "%{fn} can't be blank"
 msgstr "%{fn} requiere ser llenado"
 
@@ -167,11 +166,14 @@ msgstr "El congreso debe terminar después de su fecha de inicio"
 
 #: app/models/conference.rb:32
 msgid "Call for papers must end after its start date"
-msgstr "La convocatoria de participación debe concluir después de su fecha de inicio"
+msgstr ""
+"La convocatoria de participación debe concluir después de su fecha de inicio"
 
 #: app/models/conference.rb:35
 msgid "Call for papers must finish before the conference begins"
-msgstr "La convocatoria de participación debe concluir antes de que inicie el congreso"
+msgstr ""
+"La convocatoria de participación debe concluir antes de que inicie el "
+"congreso"
 
 #: app/models/conference.rb:39
 msgid "Registration must end after its start date"
@@ -333,26 +335,21 @@ msgstr "Nombre"
 msgid "Controller %s must implement check_auth"
 msgstr "El controlador %s debe implementar check_auth"
 
-#: app/controllers/application.rb:29
+#: app/controllers/application.rb:41
 msgid "Conference listing"
 msgstr "Listado de congresos"
 
-#: app/controllers/application.rb:34
-#: app/views/people/login.rhtml:6
+#: app/controllers/application.rb:45 app/views/people/login.rhtml:6
 msgid "Log in"
 msgstr "Entrar"
 
-#: app/controllers/application.rb:37
+#: app/controllers/application.rb:47
 msgid "New account"
 msgstr "Nueva cuenta"
 
-#: app/controllers/application.rb:40
+#: app/controllers/application.rb:50
 msgid "My account"
 msgstr "Mi cuenta"
-
-#: app/controllers/application.rb:44
-msgid "Administration"
-msgstr "Administración"
 
 #: app/controllers/people_controller.rb:11
 msgid "Successfully logged out"
@@ -374,8 +371,7 @@ msgstr "No fue posible registrar a la persona especificada:"
 msgid "Access denied"
 msgstr "Acceso denegado"
 
-#: app/controllers/admin.rb:14
-#: app/controllers/people_adm_controller.rb:52
+#: app/controllers/admin.rb:14 app/controllers/people_adm_controller.rb:52
 msgid "Invocation error"
 msgstr "Error de invocación"
 
@@ -459,8 +455,7 @@ msgstr "¿Está seguro de que desea eliminar permanentemente a %s?"
 msgid "Register a new attendee"
 msgstr "Registrar a un nuevo asistente"
 
-#: app/views/people_adm/new.rhtml:3
-#: app/views/people/new.rhtml:11
+#: app/views/people_adm/new.rhtml:3 app/views/people/new.rhtml:11
 msgid "Create"
 msgstr "Crear"
 
@@ -488,8 +483,15 @@ msgstr "Fechas"
 msgid "Log out"
 msgstr "Salir"
 
+#: lib/menu_tree.rb:16
+msgid "Unexpected arguments received: "
+msgstr ""
+
+#~ msgid "Administration"
+#~ msgstr "Administración"
+
 #~ msgid "Person|Nickname"
 #~ msgstr "Alias"
+
 #~ msgid "Person|Curriculum"
 #~ msgstr "Curriculum"
-

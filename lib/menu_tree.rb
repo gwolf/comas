@@ -13,7 +13,7 @@ class MenuTree  < Array
     @elem_tag = options.delete(:elem_tag) || 'li'
 
     options.empty? or raise(ArgumentError, 
-                            "Unexpected arguments received: " <<
+                            _("Unexpected arguments received: ") <<
                             options.keys.sort.join(', '))
   end
 
@@ -21,6 +21,12 @@ class MenuTree  < Array
     [menu_start, 
      self.map {|elem|  elem_start << elem.to_s << elem_end}.join("\n"),
      menu_end].join("\n")
+  end
+
+  def add(label, link=nil, tree=nil)
+    mi = MenuItem.new(label, link, tree)
+    self << mi
+    mi
   end
 
   private
@@ -35,10 +41,14 @@ class MenuTree  < Array
   def elem_end; "</#{elem_tag}>"; end
 end
 
-class MenuItem 
+class MenuItem
   include ActionView::Helpers::UrlHelper
 
   attr_accessor :label, :link, :tree
+  def self.set_base_url(url)
+    @@base_url = url
+  end
+
   def initialize(label, link=nil, tree=nil)
     @label = label.to_s
     @link = link
@@ -46,9 +56,16 @@ class MenuItem
   end
 
   def to_s
-    ret = @link ? link_to(@label, @link) : @label
+    ret = build_link
     ret << @tree.to_s if @tree
 
     ret
+  end
+
+  private
+  def build_link
+    @label ||= ''
+    return @label if @link.nil?
+    return link_to(@label, link)
   end
 end

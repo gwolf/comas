@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2008-04-24 15:57-0500\n"
+"POT-Creation-Date: 2008-04-24 16:21-0500\n"
 "PO-Revision-Date: 2008-04-21 17:30-0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -336,24 +336,20 @@ msgstr ""
 msgid "Controller %s must implement check_auth"
 msgstr ""
 
-#: app/controllers/application.rb:29
+#: app/controllers/application.rb:41
 msgid "Conference listing"
 msgstr ""
 
-#: app/controllers/application.rb:34 app/views/people/login.rhtml:6
+#: app/controllers/application.rb:45 app/views/people/login.rhtml:6
 msgid "Log in"
 msgstr ""
 
-#: app/controllers/application.rb:37
+#: app/controllers/application.rb:47
 msgid "New account"
 msgstr ""
 
-#: app/controllers/application.rb:40
+#: app/controllers/application.rb:50
 msgid "My account"
-msgstr ""
-
-#: app/controllers/application.rb:44
-msgid "Administration"
 msgstr ""
 
 #: app/controllers/people_controller.rb:11
@@ -486,4 +482,8 @@ msgstr ""
 
 #: app/views/layouts/application.rhtml:54
 msgid "Log out"
+msgstr ""
+
+#: lib/menu_tree.rb:16
+msgid "Unexpected arguments received: "
 msgstr ""
