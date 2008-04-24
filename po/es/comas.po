@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2008-04-22 18:23-0500\n"
-"PO-Revision-Date: 2008-04-22 18:24-0600\n"
+"POT-Creation-Date: 2008-04-24 15:57-0500\n"
+"PO-Revision-Date: 2008-04-24 15:58-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: Gunnar Wolf <gwolf@gwolf.org>\n"
 "MIME-Version: 1.0\n"
@@ -329,51 +329,30 @@ msgstr "estado de la propuesta"
 msgid "PropStatus|Name"
 msgstr "Nombre"
 
-#: app/controllers/application.rb:23
+#: app/controllers/application.rb:24
 msgid "Controller %s must implement check_auth"
 msgstr "El controlador %s debe implementar check_auth"
 
-#: app/controllers/application.rb:28
+#: app/controllers/application.rb:29
 msgid "Conference listing"
 msgstr "Listado de congresos"
 
-#: app/controllers/application.rb:33
+#: app/controllers/application.rb:34
 #: app/views/people/login.rhtml:6
 msgid "Log in"
 msgstr "Entrar"
 
-#: app/controllers/application.rb:36
+#: app/controllers/application.rb:37
 msgid "New account"
 msgstr "Nueva cuenta"
 
-#: app/controllers/application.rb:39
+#: app/controllers/application.rb:40
 msgid "My account"
 msgstr "Mi cuenta"
 
-#: app/controllers/application.rb:43
+#: app/controllers/application.rb:44
 msgid "Administration"
 msgstr "Administración"
-
-#: app/controllers/admin/people_controller.rb:28
-msgid "New attendee successfully registered"
-msgstr "El nuevo asistente fue registrado exitosamente"
-
-#: app/controllers/admin/people_controller.rb:30
-msgid "Error registering requested attendee: "
-msgstr "Error registrando al asistente indicado:"
-
-#: app/controllers/admin/people_controller.rb:45
-msgid "Successfully removed requested attendee"
-msgstr "El asistente especificado fue eliminado exitosamente"
-
-#: app/controllers/admin/people_controller.rb:47
-msgid "Error removing requested attendee: "
-msgstr "Error eliminando al asistente solicitado:"
-
-#: app/controllers/admin/people_controller.rb:51
-#: app/controllers/admin.rb:13
-msgid "Invocation error"
-msgstr "Error de invocación"
 
 #: app/controllers/people_controller.rb:11
 msgid "Successfully logged out"
@@ -391,9 +370,34 @@ msgstr "La nueva persona fue registrada exitosamente"
 msgid "Could not register person: "
 msgstr "No fue posible registrar a la persona especificada:"
 
-#: app/controllers/admin.rb:9
+#: app/controllers/admin.rb:10
 msgid "Access denied"
 msgstr "Acceso denegado"
+
+#: app/controllers/admin.rb:14
+#: app/controllers/people_adm_controller.rb:52
+msgid "Invocation error"
+msgstr "Error de invocación"
+
+#: app/controllers/people_adm_controller.rb:3
+msgid "Registered people list"
+msgstr "Lista de asistentes registrados"
+
+#: app/controllers/people_adm_controller.rb:29
+msgid "New attendee successfully registered"
+msgstr "El nuevo asistente fue registrado exitosamente"
+
+#: app/controllers/people_adm_controller.rb:31
+msgid "Error registering requested attendee: "
+msgstr "Error registrando al asistente indicado:"
+
+#: app/controllers/people_adm_controller.rb:46
+msgid "Successfully removed requested attendee"
+msgstr "El asistente especificado fue eliminado exitosamente"
+
+#: app/controllers/people_adm_controller.rb:48
+msgid "Error removing requested attendee: "
+msgstr "Error eliminando al asistente solicitado:"
 
 #: app/controllers/conferences_controller.rb:22
 msgid "Invalid conference requested"
@@ -403,59 +407,60 @@ msgstr "Especificó un congreso inexistente"
 msgid "Field %s not defined for %s"
 msgstr "El campo %s no esstá definido para %s"
 
-#: app/views/admin/people/show.rhtml:1
+#: app/views/people_adm/show.rhtml:1
 msgid "Attendee %d's personal data"
 msgstr "Datos personales del asistente %d"
 
-#: app/views/admin/people/show.rhtml:3
+#: app/views/people_adm/show.rhtml:3
 msgid "Save changes"
 msgstr "Grabar cambios"
 
-#: app/views/admin/people/list.rhtml:1
+#: app/views/people_adm/list.rhtml:1
 msgid "Attendee administration"
 msgstr "Administración de asistentes"
 
-#: app/views/admin/people/list.rhtml:2
+#: app/views/people_adm/list.rhtml:2
 msgid "%d total registered attendees "
 msgstr "%d asistentes registrados"
 
-#: app/views/admin/people/list.rhtml:3
+#: app/views/people_adm/list.rhtml:3
 msgid "Register new"
 msgstr "Registrar nuevo"
 
-#: app/views/admin/people/list.rhtml:6
+#: app/views/people_adm/list.rhtml:6
 msgid "ID"
 msgstr "ID"
 
-#: app/views/admin/people/list.rhtml:7
+#: app/views/people_adm/list.rhtml:7
 msgid "First name"
 msgstr "Nombre propio"
 
-#: app/views/admin/people/list.rhtml:8
+#: app/views/people_adm/list.rhtml:8
 msgid "Family name"
 msgstr "Apellidos"
 
-#: app/views/admin/people/list.rhtml:9
+#: app/views/people_adm/list.rhtml:9
 msgid "Attendee type"
 msgstr "Tipo de asistente"
 
-#: app/views/admin/people/list.rhtml:10
+#: app/views/people_adm/list.rhtml:10
 msgid "Last login at"
 msgstr "Última entrada"
 
-#: app/views/admin/people/list.rhtml:20
+#: app/views/people_adm/list.rhtml:20
 msgid "Delete"
 msgstr "Eliminar"
 
-#: app/views/admin/people/list.rhtml:22
+#: app/views/people_adm/list.rhtml:22
 msgid "Are you sure you want to permanently delete %s?"
 msgstr "¿Está seguro de que desea eliminar permanentemente a %s?"
 
-#: app/views/admin/people/new.rhtml:1
+#: app/views/people_adm/new.rhtml:1
 msgid "Register a new attendee"
 msgstr "Registrar a un nuevo asistente"
 
-#: app/views/admin/people/new.rhtml:3
+#: app/views/people_adm/new.rhtml:3
+#: app/views/people/new.rhtml:11
 msgid "Create"
 msgstr "Crear"
 
@@ -479,7 +484,7 @@ msgstr "Congreso"
 msgid "Dates"
 msgstr "Fechas"
 
-#: app/views/layouts/application.rhtml:52
+#: app/views/layouts/application.rhtml:54
 msgid "Log out"
 msgstr "Salir"
 
