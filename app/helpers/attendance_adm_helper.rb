@@ -1,0 +1,2 @@
+module AttendanceAdmHelper
+end

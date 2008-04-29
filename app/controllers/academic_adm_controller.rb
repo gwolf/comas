@@ -1,0 +1,2 @@
+class AcademicAdmController < Admin
+end

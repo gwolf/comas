@@ -1,0 +1,2 @@
+class AttendanceAdmController < Admin
+end

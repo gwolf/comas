@@ -1,0 +1,2 @@
+class SysConfAdmController < Admin
+end

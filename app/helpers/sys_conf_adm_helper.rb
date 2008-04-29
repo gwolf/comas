@@ -1,0 +1,2 @@
+module SysConfAdmHelper
+end
