@@ -44,9 +44,20 @@ module ApplicationHelper
 
     def auto_field(field, options={})
       column = @object.class.columns.select { |col| 
-        col.name.to_s == field.to_s}.first or
-        raise(NoMethodError,
-              _('Field %s not defined for %s') % field, @object.class)
+        col.name.to_s == field.to_s}.first
+
+      if !column
+        if @object.respond_to?(field) and 
+            @object.connection.tables.include?(field) and
+            model = field.camelcase.singularize.constantize
+          # HABTM relation
+          return checkbox_group(field, model.find(:all), options)
+        else
+          # Don't know how to handle this
+          raise(NoMethodError,
+                _('Field %s not defined for %s') % [field, @object.class])
+        end
+      end
 
       # Specially treated fields
       if field == 'id'
@@ -105,6 +116,28 @@ module ApplicationHelper
       [before_elem(title,note), 
        choices.map { |item|
          radio_button(field, item[1]) << ' ' << item[0]
+       }, after_elem].join("\n")
+    end
+
+    def checkbox_group(field, choices, options={})
+      title = options.delete(:title) || field.to_s.humanize
+      note = options.delete(:note)
+
+      fieldname = "#{@object_name}[#{field.singularize}_ids][]"
+
+      [before_elem(title,note), 
+       choices.map { |item|
+         res = []
+         res << '<span'
+         res << "class=\"#{options[:class]}\"" if options[:class]
+         res << '><input type="checkbox"'
+         if @object.send(field.to_s.pluralize).include? item
+           res << 'checked="checked"'
+         end
+         res << "id=\"#{fieldname}\" name=\"#{fieldname}\" value=\"#{item.id}\""
+         res << "> #{item.name}</span><br/>"
+
+         res.join(' ')
        }, after_elem].join("\n")
     end
 
