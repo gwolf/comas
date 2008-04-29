@@ -1,0 +1,9 @@
+<h1><%= _"Registered people with administrative tasks" %></h1>
+<% @tasks.sort_by {|t| t.name}.each do |task| %>
+<h3><%= _(task.name) %></h3>
+<ul>
+  <% task.people.sort_by {|p| p.name}.map do |person| %>
+  <li><%= link_to(h(person.name), :action => :show, :id => person) %></li>
+  <% end %>
+</ul>
+<% end %>

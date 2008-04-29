@@ -1,6 +1,7 @@
 class PeopleAdmController < Admin
   before_filter :get_person, :only => [:show, :destroy]
-  Menu = [[_('Registered people list'), :list] ]
+  Menu = [[_('Registered people list'), :list],
+          [_('By administrative task'), :by_task]]
 
   def index
     redirect_to :action => 'list'
@@ -15,7 +16,14 @@ class PeopleAdmController < Admin
     end
     session[:people_admin][:sort_by] ||= sortable[0]
 
-    @people = Person.find(:all, :order => session[:people_admin][:sort_by])
+    order = session[:people_admin][:sort_by]
+
+    @people = Person.paginate(:all, :order => "people.#{order}",
+                              :include => :person_type, :page => params[:page])
+  end
+
+  def by_task
+    @tasks = AdminTask.find(:all, :include => :people)
   end
 
   def new

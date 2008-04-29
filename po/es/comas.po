@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
 "POT-Creation-Date: 2008-04-24 16:21-0500\n"
-"PO-Revision-Date: 2008-04-24 15:58-0600\n"
+"PO-Revision-Date: 2008-04-29 13:09-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: Gunnar Wolf <gwolf@gwolf.org>\n"
 "MIME-Version: 1.0\n"
@@ -156,7 +156,8 @@ msgstr "Fecha de inicio de actividades"
 msgid "Conference|Finishes"
 msgstr "Fecha de término de actividades"
 
-#: app/models/conference.rb:25 app/models/conference.rb:26
+#: app/models/conference.rb:25
+#: app/models/conference.rb:26
 msgid "%{fn} can't be blank"
 msgstr "%{fn} requiere ser llenado"
 
@@ -166,14 +167,11 @@ msgstr "El congreso debe terminar después de su fecha de inicio"
 
 #: app/models/conference.rb:32
 msgid "Call for papers must end after its start date"
-msgstr ""
-"La convocatoria de participación debe concluir después de su fecha de inicio"
+msgstr "La convocatoria de participación debe concluir después de su fecha de inicio"
 
 #: app/models/conference.rb:35
 msgid "Call for papers must finish before the conference begins"
-msgstr ""
-"La convocatoria de participación debe concluir antes de que inicie el "
-"congreso"
+msgstr "La convocatoria de participación debe concluir antes de que inicie el congreso"
 
 #: app/models/conference.rb:39
 msgid "Registration must end after its start date"
@@ -339,7 +337,8 @@ msgstr "El controlador %s debe implementar check_auth"
 msgid "Conference listing"
 msgstr "Listado de congresos"
 
-#: app/controllers/application.rb:45 app/views/people/login.rhtml:6
+#: app/controllers/application.rb:45
+#: app/views/people/login.rhtml:6
 msgid "Log in"
 msgstr "Entrar"
 
@@ -371,7 +370,8 @@ msgstr "No fue posible registrar a la persona especificada:"
 msgid "Access denied"
 msgstr "Acceso denegado"
 
-#: app/controllers/admin.rb:14 app/controllers/people_adm_controller.rb:52
+#: app/controllers/admin.rb:14
+#: app/controllers/people_adm_controller.rb:52
 msgid "Invocation error"
 msgstr "Error de invocación"
 
@@ -401,7 +401,7 @@ msgstr "Especificó un congreso inexistente"
 
 #: app/helpers/application_helper.rb:49
 msgid "Field %s not defined for %s"
-msgstr "El campo %s no esstá definido para %s"
+msgstr "El campo %s no está definido para %s"
 
 #: app/views/people_adm/show.rhtml:1
 msgid "Attendee %d's personal data"
@@ -455,7 +455,8 @@ msgstr "¿Está seguro de que desea eliminar permanentemente a %s?"
 msgid "Register a new attendee"
 msgstr "Registrar a un nuevo asistente"
 
-#: app/views/people_adm/new.rhtml:3 app/views/people/new.rhtml:11
+#: app/views/people_adm/new.rhtml:3
+#: app/views/people/new.rhtml:11
 msgid "Create"
 msgstr "Crear"
 
@@ -489,9 +490,8 @@ msgstr ""
 
 #~ msgid "Administration"
 #~ msgstr "Administración"
-
 #~ msgid "Person|Nickname"
 #~ msgstr "Alias"
-
 #~ msgid "Person|Curriculum"
 #~ msgstr "Curriculum"
+

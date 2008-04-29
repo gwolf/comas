@@ -4,7 +4,7 @@ class Person < ActiveRecord::Base
   has_many :authorships
   has_many :proposals, :through => :authorships
   has_and_belongs_to_many :admin_tasks
-  has_and_belongs_to_many :conferences
+  has_and_belongs_to_many :conferences, :order => :id
 
   validates_presence_of :firstname
   validates_presence_of :famname

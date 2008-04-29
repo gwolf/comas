@@ -1,6 +1,7 @@
 <h1><%= _"Attendee administration" %></h1>
-<p><%= _("%d total registered attendees ") % @people.size %> </p>
+  <%= page_entries_info @people %>
 <p><%= link_to _('Register new'), :action => 'new' %></p>
+<%= will_paginate @people %>
 <%= start_table %>
   <%= table_head_row %>
     <th><%= link_to _('ID'), :sort_by => 'id' %></th>
