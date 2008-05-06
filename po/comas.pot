@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2008-04-24 16:21-0500\n"
+"POT-Creation-Date: 2008-05-06 12:34-0500\n"
 "PO-Revision-Date: 2008-04-21 17:30-0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -352,6 +352,35 @@ msgstr ""
 msgid "My account"
 msgstr ""
 
+#: app/controllers/conferences_adm_controller.rb:3
+msgid "Registered conferences"
+msgstr ""
+
+#: app/controllers/conferences_adm_controller.rb:22
+msgid "New conference successfully registered"
+msgstr ""
+
+#: app/controllers/conferences_adm_controller.rb:24
+msgid "Error registering requested conference: "
+msgstr ""
+
+#: app/controllers/conferences_adm_controller.rb:32
+msgid "Conference data successfully updated"
+msgstr ""
+
+#: app/controllers/conferences_adm_controller.rb:41
+msgid "Successfully removed requested conference"
+msgstr ""
+
+#: app/controllers/conferences_adm_controller.rb:43
+msgid "Error removing requested conference: "
+msgstr ""
+
+#: app/controllers/conferences_adm_controller.rb:47
+#: app/controllers/admin.rb:14 app/controllers/people_adm_controller.rb:60
+msgid "Invocation error"
+msgstr ""
+
 #: app/controllers/people_controller.rb:11
 msgid "Successfully logged out"
 msgstr ""
@@ -372,27 +401,31 @@ msgstr ""
 msgid "Access denied"
 msgstr ""
 
-#: app/controllers/admin.rb:14 app/controllers/people_adm_controller.rb:52
-msgid "Invocation error"
-msgstr ""
-
 #: app/controllers/people_adm_controller.rb:3
 msgid "Registered people list"
 msgstr ""
 
-#: app/controllers/people_adm_controller.rb:29
+#: app/controllers/people_adm_controller.rb:4
+msgid "By administrative task"
+msgstr ""
+
+#: app/controllers/people_adm_controller.rb:37
 msgid "New attendee successfully registered"
 msgstr ""
 
-#: app/controllers/people_adm_controller.rb:31
+#: app/controllers/people_adm_controller.rb:39
 msgid "Error registering requested attendee: "
 msgstr ""
 
-#: app/controllers/people_adm_controller.rb:46
+#: app/controllers/people_adm_controller.rb:47
+msgid "Person data successfully updated"
+msgstr ""
+
+#: app/controllers/people_adm_controller.rb:54
 msgid "Successfully removed requested attendee"
 msgstr ""
 
-#: app/controllers/people_adm_controller.rb:48
+#: app/controllers/people_adm_controller.rb:56
 msgid "Error removing requested attendee: "
 msgstr ""
 
@@ -400,15 +433,19 @@ msgstr ""
 msgid "Invalid conference requested"
 msgstr ""
 
-#: app/helpers/application_helper.rb:49
+#: app/helpers/application_helper.rb:58
 msgid "Field %s not defined for %s"
+msgstr ""
+
+#: app/views/people_adm/by_task.rhtml:1
+msgid "Registered people with administrative tasks"
 msgstr ""
 
 #: app/views/people_adm/show.rhtml:1
 msgid "Attendee %d's personal data"
 msgstr ""
 
-#: app/views/people_adm/show.rhtml:3
+#: app/views/people_adm/show.rhtml:3 app/views/conferences_adm/show.rhtml:3
 msgid "Save changes"
 msgstr ""
 
@@ -416,39 +453,35 @@ msgstr ""
 msgid "Attendee administration"
 msgstr ""
 
-#: app/views/people_adm/list.rhtml:2
-msgid "%d total registered attendees "
-msgstr ""
-
-#: app/views/people_adm/list.rhtml:3
+#: app/views/people_adm/list.rhtml:3 app/views/conferences_adm/list.rhtml:3
 msgid "Register new"
 msgstr ""
 
-#: app/views/people_adm/list.rhtml:6
+#: app/views/people_adm/list.rhtml:7 app/views/conferences_adm/list.rhtml:7
 msgid "ID"
 msgstr ""
 
-#: app/views/people_adm/list.rhtml:7
+#: app/views/people_adm/list.rhtml:8
 msgid "First name"
 msgstr ""
 
-#: app/views/people_adm/list.rhtml:8
+#: app/views/people_adm/list.rhtml:9
 msgid "Family name"
 msgstr ""
 
-#: app/views/people_adm/list.rhtml:9
+#: app/views/people_adm/list.rhtml:10
 msgid "Attendee type"
 msgstr ""
 
-#: app/views/people_adm/list.rhtml:10
+#: app/views/people_adm/list.rhtml:11
 msgid "Last login at"
 msgstr ""
 
-#: app/views/people_adm/list.rhtml:20
+#: app/views/people_adm/list.rhtml:21 app/views/conferences_adm/list.rhtml:24
 msgid "Delete"
 msgstr ""
 
-#: app/views/people_adm/list.rhtml:22
+#: app/views/people_adm/list.rhtml:23 app/views/conferences_adm/list.rhtml:25
 msgid "Are you sure you want to permanently delete %s?"
 msgstr ""
 
@@ -456,8 +489,49 @@ msgstr ""
 msgid "Register a new attendee"
 msgstr ""
 
-#: app/views/people_adm/new.rhtml:3 app/views/people/new.rhtml:11
+#: app/views/people_adm/new.rhtml:3 app/views/conferences_adm/new.rhtml:3
+#: app/views/people/new.rhtml:11
 msgid "Create"
+msgstr ""
+
+#: app/views/conferences_adm/show.rhtml:1
+msgid "Edit conference data"
+msgstr ""
+
+#: app/views/conferences_adm/list.rhtml:1
+msgid "List of registered conferences"
+msgstr ""
+
+#: app/views/conferences_adm/list.rhtml:8
+msgid "Name"
+msgstr ""
+
+#: app/views/conferences_adm/list.rhtml:9
+msgid "Begins at"
+msgstr ""
+
+#: app/views/conferences_adm/list.rhtml:10
+msgid "Registration opens"
+msgstr ""
+
+#: app/views/conferences_adm/list.rhtml:12
+msgid "Active"
+msgstr ""
+
+#: app/views/conferences_adm/list.rhtml:13
+msgid "Homepage"
+msgstr ""
+
+#: app/views/conferences_adm/list.rhtml:22
+msgid "Yes"
+msgstr ""
+
+#: app/views/conferences_adm/list.rhtml:22
+msgid "No"
+msgstr ""
+
+#: app/views/conferences_adm/new.rhtml:1
+msgid "Create a new conference"
 msgstr ""
 
 #: app/views/people/login.rhtml:3
@@ -482,6 +556,70 @@ msgstr ""
 
 #: app/views/layouts/application.rhtml:54
 msgid "Log out"
+msgstr ""
+
+#: lib/strings_in_db.rb:7
+msgid "PersonType|Attendee"
+msgstr ""
+
+#: lib/strings_in_db.rb:8
+msgid "PersonType|Speaker"
+msgstr ""
+
+#: lib/strings_in_db.rb:9
+msgid "PersonType|Organizer"
+msgstr ""
+
+#: lib/strings_in_db.rb:10
+msgid "PersonType|Moderator"
+msgstr ""
+
+#: lib/strings_in_db.rb:11
+msgid "PersonType|Guest"
+msgstr ""
+
+#: lib/strings_in_db.rb:12
+msgid "PersonType|Press"
+msgstr ""
+
+#: lib/strings_in_db.rb:15
+msgid "PropType|Round table"
+msgstr ""
+
+#: lib/strings_in_db.rb:16
+msgid "PropType|Tutorial"
+msgstr ""
+
+#: lib/strings_in_db.rb:17
+msgid "PropType|Talk"
+msgstr ""
+
+#: lib/strings_in_db.rb:18
+msgid "PropType|Workshop"
+msgstr ""
+
+#: lib/strings_in_db.rb:21
+msgid "PropStatus|Accepted"
+msgstr ""
+
+#: lib/strings_in_db.rb:22
+msgid "PropStatus|Cancelled"
+msgstr ""
+
+#: lib/strings_in_db.rb:23
+msgid "PropStatus|Further details required"
+msgstr ""
+
+#: lib/strings_in_db.rb:24
+msgid "PropStatus|New"
+msgstr ""
+
+#: lib/strings_in_db.rb:25
+msgid "PropStatus|Rejected"
+msgstr ""
+
+#: lib/strings_in_db.rb:26
+msgid "PropStatus|Withdrawn"
 msgstr ""
 
 #: lib/menu_tree.rb:16

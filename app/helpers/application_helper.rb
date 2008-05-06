@@ -70,11 +70,11 @@ module ApplicationHelper
       elsif field =~ /_id$/ and column.type == :integer and
           model = table_from_field(field)
         # field_id and there is a corresponding table? Present the catalog.
-        return select(field, model.collection_by_id,
+        choices = model.collection_for_gettext
+        return select(field, 
+                      choices.map {|it| [_(it[0]), it[1]]},
                       {:include_blank => true})
       end
-
-
 
       # Generic fields, based on data type
       case column.type.to_sym
@@ -92,7 +92,7 @@ module ApplicationHelper
         return radio_group(field, [['Yes', true], ['No', false]], options)
 
       when :date, :time, :datetime
-        return info_row(field, {:note => "Lazy bum, finish your code!"})
+        return text_field(field, {:note => "Lazy bum, finish your code"})
 
       else
         # What is it, then? just report it...
@@ -164,7 +164,7 @@ module ApplicationHelper
     end
 
     def info_elem(info)
-      %Q(<span class="comas-form-input">#{_ info}</span>)
+      %Q(<span class="comas-form-input">#{_ info.to_s}</span>)
     end
 
     def table_from_field(field)
