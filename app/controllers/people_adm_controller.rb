@@ -44,7 +44,7 @@ class PeopleAdmController < Admin
 
   def show
     if request.post? and @person.update_attributes(params[:person])
-      flash[:warning] = 'Person data successfully updated'
+      flash[:warning] = _('Person data successfully updated')
     end
   end
 

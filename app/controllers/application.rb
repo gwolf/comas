@@ -51,11 +51,11 @@ class ApplicationController < ActionController::Base
                 url_for(:controller => '/people', :action => 'account'))
 
       @user.admin_tasks.each do |task|
-        control = "#{task.name.camelcase}Controller".constantize
+        control = "#{task.sys_name.camelcase}Controller".constantize
         menu = (control.constants.include?('Menu') ? 
                 control::Menu : []).map do |elem|
           MenuItem.new(elem[0], 
-                       url_for(:controller => task.name, :action => elem[1]))
+                       url_for(:controller => task.sys_name, :action => elem[1]))
         end
 
         @menu.add(_(task.name), nil, MenuTree.new(menu))

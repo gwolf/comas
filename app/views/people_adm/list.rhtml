@@ -16,7 +16,7 @@
     <td><%= link_to h(person.id), :action => 'show', :id => person %></td>
     <td><%= link_to h(person.firstname), :action => 'show', :id => person %></td>
     <td><%= link_to h(person.famname), :action => 'show', :id => person %></td>
-    <td><%= h(person.person_type.name) %></td>
+    <td><%= h(_ person.person_type.qualified_name) %></td>
     <td><%= h(person.last_login_at) %></td>
     <td><%= link_to_if(@user != person, _('Delete'),
 		       {:action => 'destroy', :id => person},

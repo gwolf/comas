@@ -70,7 +70,7 @@ module ApplicationHelper
       elsif field =~ /_id$/ and column.type == :integer and
           model = table_from_field(field)
         # field_id and there is a corresponding table? Present the catalog.
-        choices = model.collection_for_gettext
+        choices = model.qualified_collection_by_id
         return select(field, 
                       choices.map {|it| [_(it[0]), it[1]]},
                       {:include_blank => true})
@@ -135,7 +135,7 @@ module ApplicationHelper
            res << 'checked="checked"'
          end
          res << "id=\"#{fieldname}\" name=\"#{fieldname}\" value=\"#{item.id}\""
-         res << "> #{item.name}</span><br/>"
+         res << "> #{_ item.name}</span><br/>"
 
          res.join(' ')
        }, after_elem].join("\n")
