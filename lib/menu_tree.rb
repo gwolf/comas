@@ -31,7 +31,7 @@ class MenuTree  < Array
 
   private
   def menu_start
-    @menu_id ? %Q(<#{menu_tag} id="#{@menu_id}">) : "<#{menu_tag}>"
+    @menu_id ? %Q(<#{menu_tag} class="#{@menu_id}">) : "<#{menu_tag}>"
   end
   def menu_end; "</#{menu_tag}>";  end
 
