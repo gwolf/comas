@@ -1,0 +1,8 @@
+<% comas_form_for(:conference, @conference,
+                  :url => {:action => action, :id => @conference}) do |f| %>
+  <% %w(name descr active homepage begins finishes reg_open_date
+        reg_close_date cfp_open_date cfp_close_date).each do |attr| %>
+    <%= f.auto_field attr %>
+  <% end %>
+  <%= f.submit submit %>
+<% end %>
