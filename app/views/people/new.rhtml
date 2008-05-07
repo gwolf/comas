@@ -4,7 +4,6 @@
   <%= f.auto_field('firstname') %>
   <%= f.auto_field('famname') %>
   <%= f.auto_field('email') %>
-  <%= f.auto_field('person_type_id') %>
   <% @person.extra_listable_attributes.each do |attr| %>
     <%= f.auto_field(attr) %>
   <% end %>

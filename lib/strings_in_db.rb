@@ -3,13 +3,13 @@
 # them to the .po - but it's easier to have them all refered from
 # here.
 
-# Person types
-_('PersonType|Attendee')
-_('PersonType|Speaker')
-_('PersonType|Organizer')
-_('PersonType|Moderator')
-_('PersonType|Guest')
-_('PersonType|Press')
+# Participation types
+_('ParticipationType|Attendee')
+_('ParticipationType|Speaker')
+_('ParticipationType|Organizer')
+_('ParticipationType|Moderator')
+_('ParticipationType|Guest')
+_('ParticipationType|Press')
 
 # Proposal types
 _('PropType|Round table')

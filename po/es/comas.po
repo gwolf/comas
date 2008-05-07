@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2008-05-06 17:18-0500\n"
-"PO-Revision-Date: 2008-05-06 17:20-0600\n"
+"POT-Creation-Date: 2008-05-07 18:27-0500\n"
+"PO-Revision-Date: 2008-05-07 18:28-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: Gunnar Wolf <gwolf@gwolf.org>\n"
 "MIME-Version: 1.0\n"
@@ -108,10 +108,6 @@ msgstr "Fecha de creación"
 msgid "Person|Last login at"
 msgstr "Última entrada"
 
-#: app/models/person.rb:-
-msgid "Person|Person type"
-msgstr "Tipo de persona"
-
 #: app/models/conference.rb:-
 msgid "conference"
 msgstr "Congreso"
@@ -156,28 +152,28 @@ msgstr "Fecha de inicio de actividades"
 msgid "Conference|Finishes"
 msgstr "Fecha de término de actividades"
 
-#: app/models/conference.rb:25
 #: app/models/conference.rb:26
+#: app/models/conference.rb:27
 msgid "%{fn} can't be blank"
 msgstr "%{fn} requiere ser llenado"
 
-#: app/models/conference.rb:29
+#: app/models/conference.rb:30
 msgid "Conference must end after its start date"
 msgstr "El congreso debe terminar después de su fecha de inicio"
 
-#: app/models/conference.rb:32
+#: app/models/conference.rb:33
 msgid "Call for papers must end after its start date"
 msgstr "La convocatoria de participación debe concluir después de su fecha de inicio"
 
-#: app/models/conference.rb:35
+#: app/models/conference.rb:36
 msgid "Call for papers must finish before the conference begins"
 msgstr "La convocatoria de participación debe concluir antes de que inicie el congreso"
 
-#: app/models/conference.rb:39
+#: app/models/conference.rb:40
 msgid "Registration must end after its start date"
 msgstr "El registro debe concluir después de su fecha de inicio"
 
-#: app/models/conference.rb:42
+#: app/models/conference.rb:43
 msgid "Registration must finish before the conference ends"
 msgstr "El registro debe finalizar antes de que el congreso concluya"
 
@@ -192,14 +188,6 @@ msgstr "Nombre"
 #: app/models/admin_task.rb:-
 msgid "AdminTask|Sys name"
 msgstr "Nombre de sistema"
-
-#: app/models/person_type.rb:-
-msgid "person type"
-msgstr "tipo de persona"
-
-#: app/models/person_type.rb:-
-msgid "PersonType|Name"
-msgstr "Nombre"
 
 #: app/models/attendance.rb:-
 msgid "attendance"
@@ -216,6 +204,22 @@ msgstr "Persona"
 #: app/models/attendance.rb:-
 msgid "Attendance|Timeslot"
 msgstr "Horario"
+
+#: app/models/participation.rb:-
+msgid "participation"
+msgstr "participación"
+
+#: app/models/participation.rb:-
+msgid "Participation|Person"
+msgstr "Persona"
+
+#: app/models/participation.rb:-
+msgid "Participation|Conference"
+msgstr "Congreso"
+
+#: app/models/participation.rb:-
+msgid "Participation|Participation type"
+msgstr "Tipo de participación"
 
 #: app/models/timeslot.rb:-
 msgid "timeslot"
@@ -325,6 +329,14 @@ msgstr "Horario"
 msgid "Proposal|Conference"
 msgstr "Congreso"
 
+#: app/models/participation_type.rb:-
+msgid "participation type"
+msgstr "tipo de participación"
+
+#: app/models/participation_type.rb:-
+msgid "ParticipationType|Name"
+msgstr "Nombre"
+
 #: app/models/prop_status.rb:-
 msgid "prop status"
 msgstr "estado de la propuesta"
@@ -358,29 +370,29 @@ msgstr "Mi cuenta"
 msgid "Registered conferences"
 msgstr "Congresos registrados"
 
-#: app/controllers/conferences_adm_controller.rb:22
+#: app/controllers/conferences_adm_controller.rb:26
 msgid "New conference successfully registered"
 msgstr "El nuevo congreso fue registrada exitosamente"
 
-#: app/controllers/conferences_adm_controller.rb:24
+#: app/controllers/conferences_adm_controller.rb:28
 msgid "Error registering requested conference: "
 msgstr "Error registrando al congreso indicado:"
 
-#: app/controllers/conferences_adm_controller.rb:32
+#: app/controllers/conferences_adm_controller.rb:36
 msgid "Conference data successfully updated"
 msgstr "Los datos del congreso fueron actualizados exitosamente"
 
-#: app/controllers/conferences_adm_controller.rb:41
+#: app/controllers/conferences_adm_controller.rb:45
 msgid "Successfully removed requested conference"
 msgstr "El congreso especificado fue eliminado exitosamente"
 
-#: app/controllers/conferences_adm_controller.rb:43
+#: app/controllers/conferences_adm_controller.rb:47
 msgid "Error removing requested conference: "
 msgstr "Error eliminando al congreso solicitado:"
 
-#: app/controllers/conferences_adm_controller.rb:47
+#: app/controllers/conferences_adm_controller.rb:51
 #: app/controllers/admin.rb:14
-#: app/controllers/people_adm_controller.rb:60
+#: app/controllers/people_adm_controller.rb:53
 msgid "Invocation error"
 msgstr "Error de invocación"
 
@@ -404,31 +416,31 @@ msgstr "No fue posible registrar a la persona especificada:"
 msgid "Access denied"
 msgstr "Acceso denegado"
 
-#: app/controllers/people_adm_controller.rb:3
+#: app/controllers/people_adm_controller.rb:4
 msgid "Registered people list"
 msgstr "Lista de asistentes registrados"
 
-#: app/controllers/people_adm_controller.rb:4
+#: app/controllers/people_adm_controller.rb:5
 msgid "By administrative task"
 msgstr "Por tarea administrativa"
 
-#: app/controllers/people_adm_controller.rb:37
+#: app/controllers/people_adm_controller.rb:30
 msgid "New attendee successfully registered"
 msgstr "El nuevo asistente fue registrado exitosamente"
 
-#: app/controllers/people_adm_controller.rb:39
+#: app/controllers/people_adm_controller.rb:32
 msgid "Error registering requested attendee: "
 msgstr "Error registrando al asistente indicado:"
 
-#: app/controllers/people_adm_controller.rb:47
+#: app/controllers/people_adm_controller.rb:40
 msgid "Person data successfully updated"
 msgstr "Los datos de la persona fueron actualizados exitosamente"
 
-#: app/controllers/people_adm_controller.rb:54
+#: app/controllers/people_adm_controller.rb:47
 msgid "Successfully removed requested attendee"
 msgstr "El asistente especificado fue eliminado exitosamente"
 
-#: app/controllers/people_adm_controller.rb:56
+#: app/controllers/people_adm_controller.rb:49
 msgid "Error removing requested attendee: "
 msgstr "Error eliminando al asistente solicitado:"
 
@@ -439,6 +451,16 @@ msgstr "Especificó un congreso inexistente"
 #: app/helpers/application_helper.rb:58
 msgid "Field %s not defined for %s"
 msgstr "El campo %s no está definido para %s"
+
+#: app/helpers/application_helper.rb:92
+#: app/views/conferences_adm/list.rhtml:24
+msgid "Yes"
+msgstr "Sí"
+
+#: app/helpers/application_helper.rb:92
+#: app/views/conferences_adm/list.rhtml:24
+msgid "No"
+msgstr "No"
 
 #: app/views/people_adm/by_task.rhtml:1
 msgid "Registered people with administrative tasks"
@@ -463,33 +485,32 @@ msgid "Register new"
 msgstr "Registrar nuevo"
 
 #: app/views/people_adm/list.rhtml:7
+#: app/views/conferences_adm/people_list.rhtml:6
 #: app/views/conferences_adm/list.rhtml:7
 msgid "ID"
 msgstr "ID"
 
 #: app/views/people_adm/list.rhtml:8
+#: app/views/conferences_adm/people_list.rhtml:7
 msgid "First name"
 msgstr "Nombre propio"
 
 #: app/views/people_adm/list.rhtml:9
+#: app/views/conferences_adm/people_list.rhtml:8
 msgid "Family name"
 msgstr "Apellidos"
 
 #: app/views/people_adm/list.rhtml:10
-msgid "Attendee type"
-msgstr "Tipo de asistente"
-
-#: app/views/people_adm/list.rhtml:11
 msgid "Last login at"
 msgstr "Última entrada"
 
-#: app/views/people_adm/list.rhtml:21
-#: app/views/conferences_adm/list.rhtml:24
+#: app/views/people_adm/list.rhtml:19
+#: app/views/conferences_adm/list.rhtml:32
 msgid "Delete"
 msgstr "Eliminar"
 
-#: app/views/people_adm/list.rhtml:23
-#: app/views/conferences_adm/list.rhtml:25
+#: app/views/people_adm/list.rhtml:21
+#: app/views/conferences_adm/list.rhtml:33
 msgid "Are you sure you want to permanently delete %s?"
 msgstr "¿Está seguro de que desea eliminar permanentemente a %s?"
 
@@ -499,13 +520,21 @@ msgstr "Registrar a un nuevo asistente"
 
 #: app/views/people_adm/new.rhtml:3
 #: app/views/conferences_adm/new.rhtml:3
-#: app/views/people/new.rhtml:11
+#: app/views/people/new.rhtml:10
 msgid "Create"
 msgstr "Crear"
 
 #: app/views/conferences_adm/show.rhtml:1
 msgid "Edit conference data"
 msgstr "Editar los datos del congreso"
+
+#: app/views/conferences_adm/people_list.rhtml:1
+msgid "People registered for <em>%s</em>"
+msgstr "Asistentes registrados para <em>%s</em>"
+
+#: app/views/conferences_adm/people_list.rhtml:9
+msgid "Attendee type"
+msgstr "Tipo de asistente"
 
 #: app/views/conferences_adm/list.rhtml:1
 msgid "List of registered conferences"
@@ -528,16 +557,20 @@ msgid "Active"
 msgstr "Activo"
 
 #: app/views/conferences_adm/list.rhtml:13
+msgid "Registered attendees"
+msgstr "Asistentes registrados"
+
+#: app/views/conferences_adm/list.rhtml:14
 msgid "Homepage"
 msgstr "Página Web"
 
-#: app/views/conferences_adm/list.rhtml:22
-msgid "Yes"
-msgstr "Sí"
+#: app/views/conferences_adm/list.rhtml:28
+msgid "Visit"
+msgstr "Visitar"
 
-#: app/views/conferences_adm/list.rhtml:22
-msgid "No"
-msgstr "No"
+#: app/views/conferences_adm/list.rhtml:30
+msgid "Not defined"
+msgstr "No definido"
 
 #: app/views/conferences_adm/new.rhtml:1
 msgid "Create a new conference"
@@ -568,27 +601,27 @@ msgid "Log out"
 msgstr "Salir"
 
 #: lib/strings_in_db.rb:7
-msgid "PersonType|Attendee"
+msgid "ParticipationType|Attendee"
 msgstr "Asistente"
 
 #: lib/strings_in_db.rb:8
-msgid "PersonType|Speaker"
+msgid "ParticipationType|Speaker"
 msgstr "Ponente"
 
 #: lib/strings_in_db.rb:9
-msgid "PersonType|Organizer"
+msgid "ParticipationType|Organizer"
 msgstr "Organizador"
 
 #: lib/strings_in_db.rb:10
-msgid "PersonType|Moderator"
+msgid "ParticipationType|Moderator"
 msgstr "Moderador"
 
 #: lib/strings_in_db.rb:11
-msgid "PersonType|Guest"
+msgid "ParticipationType|Guest"
 msgstr "Invitado"
 
 #: lib/strings_in_db.rb:12
-msgid "PersonType|Press"
+msgid "ParticipationType|Press"
 msgstr "Prensa"
 
 #: lib/strings_in_db.rb:15
@@ -654,6 +687,9 @@ msgstr "Configuración del sistema"
 #: lib/menu_tree.rb:16
 msgid "Unexpected arguments received: "
 msgstr "Argumentos inesperados recibidos:"
+
+#~ msgid "Person|Person type"
+#~ msgstr "Tipo de persona"
 
 #, fuzzy
 #~ msgid "Attendee"

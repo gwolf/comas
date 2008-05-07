@@ -7,7 +7,6 @@
     <th><%= link_to _('ID'), :sort_by => 'id' %></th>
     <th><%= link_to _('First name'), :sort_by => 'firstname' %></th>
     <th><%= link_to _('Family name'), :sort_by => 'famname' %></th>
-    <th><%= link_to _('Attendee type'), :sort_by => 'person_type_id' %></th>
     <th><%= link_to _('Last login at'), :sort_by => 'last_login_at' %></th>
     <th></th>
   <%= end_table_row %>
@@ -16,7 +15,6 @@
     <td><%= link_to h(person.id), :action => 'show', :id => person %></td>
     <td><%= link_to h(person.firstname), :action => 'show', :id => person %></td>
     <td><%= link_to h(person.famname), :action => 'show', :id => person %></td>
-    <td><%= h(_ person.person_type.qualified_name) %></td>
     <td><%= h(person.last_login_at) %></td>
     <td><%= link_to_if(@user != person, _('Delete'),
 		       {:action => 'destroy', :id => person},

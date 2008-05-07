@@ -1,18 +1,17 @@
 class Person < ActiveRecord::Base
   acts_as_magic_model
-  belongs_to :person_type
   has_many :authorships
   has_many :proposals, :through => :authorships
   has_and_belongs_to_many :admin_tasks
-  has_and_belongs_to_many :conferences, :order => :id
+  has_many :participations
+  has_many :conferences, :through => :participations, :order => :id
+  has_many :participation_types, :through => :participations
 
   validates_presence_of :firstname
   validates_presence_of :famname
   validates_presence_of :login
   validates_presence_of :passwd
-  validates_presence_of :person_type_id
   validates_uniqueness_of :login
-  validates_associated :person_type
 
   def self.ck_login(given_login, given_passwd)
     person = Person.find_by_login(given_login)
@@ -27,7 +26,7 @@ class Person < ActiveRecord::Base
 
   def self.core_attributes
     %w(created_at email famname firstname id last_login_at login passwd 
-       person_type_id pw_salt)
+       pw_salt)
   end
   def core_attributes; self.class.core_attributes; end
 
