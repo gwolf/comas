@@ -1,5 +1,6 @@
 class PeopleAdmController < Admin
   before_filter :get_person, :only => [:show, :destroy]
+
   Menu = [[_('Registered people list'), :list],
           [_('By administrative task'), :by_task]]
 
@@ -8,15 +9,8 @@ class PeopleAdmController < Admin
   end
 
   def list
-    session[:people_admin] ||= {}
-    sortable = [:id, :firstname, :famname, :person_type_id, :last_login_at]
-
-    if params[:sort_by] and sortable.include? params[:sort_by].to_sym
-      session[:people_admin][:sort_by] = params[:sort_by]
-    end
-    session[:people_admin][:sort_by] ||= sortable[0]
-
-    order = session[:people_admin][:sort_by]
+    order = sort_for_fields(['id', 'firstname', 'famname', 'person_type_id',
+                             'last_login_at'])
 
     @people = Person.paginate(:all, :order => "people.#{order}",
                               :include => :person_type, :page => params[:page])

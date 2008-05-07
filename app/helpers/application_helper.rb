@@ -89,7 +89,8 @@ module ApplicationHelper
         return text_field(field, options)
 
       when :boolean
-        return radio_group(field, [['Yes', true], ['No', false]], options)
+        return radio_group(field, [[_('Yes'), true], [_('No'), false]], 
+                           options)
 
       when :date, :time, :datetime
         return text_field(field, {:note => "Lazy bum, finish your code"})

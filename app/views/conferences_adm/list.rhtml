@@ -4,23 +4,31 @@
 <%= will_paginate @conferences %>
 <%= start_table %>
   <%= table_head_row %>
-    <th><%= link_to _('ID'), :sort_by => 'id' %></th>
+    <th><%= link_to _('ID'), :sort_by => 'conferences.id' %></th>
     <th><%= link_to _('Name'), :sort_by => 'name' %></th>
     <th><%= link_to _('Begins at'), :sort_by => 'begins' %></th>
     <th><%= link_to _('Registration opens'), 
 	              :sort_by => 'reg_open_date' %></th>
-    <th><%= link_to _('Active'), :sort_by => '' %></th>
+    <th><%= link_to _('Active'), :sort_by => 'active' %></th>
+    <th><%= _('Registered attendees') %></th>
     <th><%= _('Homepage') %></th>
     <th></th>
- <%= end_table_row %>
+  <%= end_table_row %>
   <% @conferences.each do |conf| %>
+    <% att_num = conf.people.size %>
   <%= table_row %>
     <td><%= link_to conf.id, :action => 'show', :id => conf %></td>
     <td><%= link_to h(conf.name), :action => 'show', :id => conf %></td>
     <td><%= conf.begins %></td>
     <td><%= conf.reg_open_date %></td>
     <td><%= conf.active ? _('Yes') : _('No') %></td>
-    <td><%= h(conf.homepage) %></td>
+    <td><%= link_to_if(att_num > 0, att_num, 
+                       { :action => 'people_list', :id => conf }) %></td>
+    <td><%= if !conf.homepage.blank? 
+              link_to(_('Visit'), conf.homepage)
+            else
+              _'Not defined'
+            end %></td>
     <td><%= link_to(_('Delete'), {:action => 'destroy', :id => conf},
                     {:confirm => _("Are you sure you want to " +
 			           "permanently delete %s?") % conf.name,

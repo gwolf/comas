@@ -24,3 +24,10 @@ _('PropStatus|Further details required')
 _('PropStatus|New')
 _('PropStatus|Rejected')
 _('PropStatus|Withdrawn')
+
+# Administrative tasks
+_('AdminTask|Attendee administration')
+_('AdminTask|Conferences administration')
+_('AdminTask|Academic committee')
+_('AdminTask|Attendance tracking')
+_('AdminTask|System configuration')

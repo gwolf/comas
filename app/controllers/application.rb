@@ -58,7 +58,7 @@ class ApplicationController < ActionController::Base
                        url_for(:controller => task.sys_name, :action => elem[1]))
         end
 
-        @menu.add(_(task.name), nil, MenuTree.new(menu))
+        @menu.add(_(task.qualified_name), nil, MenuTree.new(menu))
       end
     end
   end
@@ -66,5 +66,18 @@ class ApplicationController < ActionController::Base
   def set_lang
     return true unless lang = params[:lang]
     cookies[:lang] = {:value => lang, :expires => Time.now+1.day, :path => '/'}
+  end
+
+  # sortable: List of fields according to which the results can be sorted.
+  def sort_for_fields(sortable)
+    key = [:controller, :action].map {|k| request.path_parameters[k]}.join('/')
+    session[key] ||= {}
+
+    if params[:sort_by] and sortable.include? params[:sort_by].to_s
+      session[key][:sort_by] = params[:sort_by]
+    end
+    session[key][:sort_by] ||= sortable[0]
+
+    session[key][:sort_by]
   end
 end

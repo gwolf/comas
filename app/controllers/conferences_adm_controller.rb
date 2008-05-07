@@ -1,5 +1,5 @@
 class ConferencesAdmController < Admin
-  before_filter :get_conference, :only => [:show, :destroy]
+  before_filter :get_conference, :only => [:show, :destroy, :people_list]
   Menu = [[_('Registered conferences'), :list]]
 
   def index
@@ -7,8 +7,12 @@ class ConferencesAdmController < Admin
   end
 
   def list
-    @conferences = Conference.paginate(:all, :order => :begins, 
-                                       :page => params[:page])
+    order = sort_for_fields(['conferences.id', 'name', 'begins', 
+                             'reg_open_date', 'active'])
+
+    @conferences = Conference.paginate(:all, :order => order, 
+                                       :page => params[:page],
+                                       :include => :people)
   end
 
   def new
@@ -46,6 +50,14 @@ class ConferencesAdmController < Admin
     else
       flash[:error] = _'Invocation error'
     end
+  end
+
+  def people_list
+    order = sort_for_fields(['famname'])
+
+    @people = Person.paginate(:all, :order => order, :include => :conferences,
+                              :conditions => ['conferences.id = ?', @conference],
+                              :page => params[:page])
   end
 
   private

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2008-05-06 12:34-0500\n"
-"PO-Revision-Date: 2008-05-06 12:35-0600\n"
+"POT-Creation-Date: 2008-05-06 17:18-0500\n"
+"PO-Revision-Date: 2008-05-06 17:20-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: Gunnar Wolf <gwolf@gwolf.org>\n"
 "MIME-Version: 1.0\n"
@@ -188,6 +188,10 @@ msgstr "tarea administrativa"
 #: app/models/admin_task.rb:-
 msgid "AdminTask|Name"
 msgstr "Nombre"
+
+#: app/models/admin_task.rb:-
+msgid "AdminTask|Sys name"
+msgstr "Nombre de sistema"
 
 #: app/models/person_type.rb:-
 msgid "person type"
@@ -559,7 +563,7 @@ msgstr "Congreso"
 msgid "Dates"
 msgstr "Fechas"
 
-#: app/views/layouts/application.rhtml:54
+#: app/views/layouts/application.rhtml:56
 msgid "Log out"
 msgstr "Salir"
 
@@ -626,6 +630,26 @@ msgstr "Rechazado"
 #: lib/strings_in_db.rb:26
 msgid "PropStatus|Withdrawn"
 msgstr "Retirado"
+
+#: lib/strings_in_db.rb:29
+msgid "AdminTask|Attendee administration"
+msgstr "Administración de asistentes"
+
+#: lib/strings_in_db.rb:30
+msgid "AdminTask|Conferences administration"
+msgstr "Administración de congresos"
+
+#: lib/strings_in_db.rb:31
+msgid "AdminTask|Academic committee"
+msgstr "Comité Académico"
+
+#: lib/strings_in_db.rb:32
+msgid "AdminTask|Attendance tracking"
+msgstr "Seguimiento de asistencias"
+
+#: lib/strings_in_db.rb:33
+msgid "AdminTask|System configuration"
+msgstr "Configuración del sistema"
 
 #: lib/menu_tree.rb:16
 msgid "Unexpected arguments received: "

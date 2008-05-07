@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2008-05-06 12:34-0500\n"
+"POT-Creation-Date: 2008-05-06 17:18-0500\n"
 "PO-Revision-Date: 2008-04-21 17:30-0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -190,6 +190,10 @@ msgstr ""
 
 #: app/models/admin_task.rb:-
 msgid "AdminTask|Name"
+msgstr ""
+
+#: app/models/admin_task.rb:-
+msgid "AdminTask|Sys name"
 msgstr ""
 
 #: app/models/person_type.rb:-
@@ -554,7 +558,7 @@ msgstr ""
 msgid "Dates"
 msgstr ""
 
-#: app/views/layouts/application.rhtml:54
+#: app/views/layouts/application.rhtml:56
 msgid "Log out"
 msgstr ""
 
@@ -620,6 +624,26 @@ msgstr ""
 
 #: lib/strings_in_db.rb:26
 msgid "PropStatus|Withdrawn"
+msgstr ""
+
+#: lib/strings_in_db.rb:29
+msgid "AdminTask|Attendee administration"
+msgstr ""
+
+#: lib/strings_in_db.rb:30
+msgid "AdminTask|Conferences administration"
+msgstr ""
+
+#: lib/strings_in_db.rb:31
+msgid "AdminTask|Academic committee"
+msgstr ""
+
+#: lib/strings_in_db.rb:32
+msgid "AdminTask|Attendance tracking"
+msgstr ""
+
+#: lib/strings_in_db.rb:33
+msgid "AdminTask|System configuration"
 msgstr ""
 
 #: lib/menu_tree.rb:16
