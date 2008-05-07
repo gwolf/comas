@@ -9,12 +9,12 @@ class AdminTasks < ActiveRecord::Migration
 
     create_habtm :admin_tasks, :people
 
-    [['people_adm', 'Attendee administration',
-      ['conferences_adm', 'Conferences administration'],
-      ['academic_adm', 'Academic committee'],
-      ['attendance_adm', 'Attendance tracking'],
-      ['sys_conf_adm', 'System configuration']
-     ].each do |at|
+    [['people_adm', 'Attendee administration'],
+     ['conferences_adm', 'Conferences administration'],
+     ['academic_adm', 'Academic committee'],
+     ['attendance_adm', 'Attendance tracking'],
+     ['sys_conf_adm', 'System configuration']
+    ].each do |at|
       AdminTask.new(:sys_name => at[0], name => at[1]).save!
     end
   end
