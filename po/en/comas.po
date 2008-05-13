@@ -2,338 +2,333 @@ msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
 "POT-Creation-Date: 2008-05-12 18:30-0500\n"
-"PO-Revision-Date: 2008-05-12 18:24-0600\n"
+"PO-Revision-Date: 2008-05-12 18:25-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
-"Language-Team: Gunnar Wolf <gwolf@gwolf.org>\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: Spanish\n"
-"X-Poedit-Country: MEXICO\n"
-"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Language: English\n"
 
 #: app/models/document.rb:-
 msgid "document"
-msgstr "documento"
+msgstr ""
 
 #: app/models/document.rb:-
 msgid "Document|Filename"
-msgstr "Nombre de archivo"
+msgstr "Filename"
 
 #: app/models/document.rb:-
 msgid "Document|Descr"
-msgstr "Descripción"
+msgstr "Description"
 
 #: app/models/document.rb:-
 msgid "Document|Content type"
-msgstr "Tipo de contenido"
+msgstr "Content type"
 
 #: app/models/document.rb:-
 msgid "Document|Data"
-msgstr "Datos"
+msgstr "Data"
 
 #: app/models/document.rb:-
 msgid "Document|Created at"
-msgstr "Fecha de creación"
+msgstr "Created at"
 
 #: app/models/document.rb:-
 msgid "Document|Updated at"
-msgstr "Última actualización"
+msgstr "Updated at"
 
 #: app/models/document.rb:-
 msgid "Document|Proposal"
-msgstr "Propuesta"
+msgstr "Proposal"
 
 #: app/models/table_field.rb:-
 msgid "table field"
-msgstr "campo de tabla"
+msgstr ""
 
 #: app/models/table_field.rb:-
 msgid "TableField|Model"
-msgstr "Modelo"
+msgstr "Model"
 
 #: app/models/table_field.rb:-
 msgid "TableField|Field"
-msgstr "Campo"
+msgstr "Field"
 
 #: app/models/table_field.rb:-
 msgid "TableField|Allow null"
-msgstr "Permitir nulos"
+msgstr "Allow null"
 
 #: app/models/table_field.rb:-
 msgid "TableField|Valid regex"
-msgstr "Expresiones válidas"
+msgstr "Valid regex"
 
 #: app/models/table_field.rb:-
 msgid "TableField|Order"
-msgstr "Órden"
+msgstr "Order"
 
 #: app/models/table_field.rb:54
 msgid "Not a relation field"
-msgstr "No es un campo de relación"
+msgstr ""
 
 #: app/models/person.rb:-
 msgid "person"
-msgstr "persona"
+msgstr ""
 
 #: app/models/person.rb:-
 msgid "Person|Login"
-msgstr "Nombre de usuario"
+msgstr "Login"
 
 #: app/models/person.rb:-
 msgid "Person|Passwd"
-msgstr "Contraseña"
+msgstr "Password"
 
 #: app/models/person.rb:-
 msgid "Person|Firstname"
-msgstr "Nombre propio"
+msgstr "First name"
 
 #: app/models/person.rb:-
 msgid "Person|Famname"
-msgstr "Apellido"
+msgstr "Family name"
 
 #: app/models/person.rb:-
 msgid "Person|Email"
-msgstr "Correo electrónico"
+msgstr "Email"
 
 #: app/models/person.rb:-
 msgid "Person|Pw salt"
-msgstr "Salt aleatorio"
+msgstr "Password salt"
 
 #: app/models/person.rb:-
 msgid "Person|Created at"
-msgstr "Fecha de creación"
+msgstr "Created at"
 
 #: app/models/person.rb:-
 msgid "Person|Last login at"
-msgstr "Última entrada"
+msgstr "Last login at"
 
 #: app/models/conference.rb:-
 msgid "conference"
-msgstr "Congreso"
+msgstr ""
 
 #: app/models/conference.rb:-
 msgid "Conference|Name"
-msgstr "Nombre"
+msgstr "Name"
 
 #: app/models/conference.rb:-
 msgid "Conference|Descr"
-msgstr "Descripción"
+msgstr "Description"
 
 #: app/models/conference.rb:-
 msgid "Conference|Active"
-msgstr "Activo"
+msgstr "Active"
 
 #: app/models/conference.rb:-
 msgid "Conference|Homepage"
-msgstr "Página de inicio"
+msgstr "Homepage"
 
 #: app/models/conference.rb:-
 msgid "Conference|Reg open date"
-msgstr "Fecha de inicio del registro"
+msgstr "Registration opening date"
 
 #: app/models/conference.rb:-
 msgid "Conference|Reg close date"
-msgstr "Fecha de cierre de registro"
+msgstr "Registration closing date"
 
 #: app/models/conference.rb:-
 msgid "Conference|Cfp open date"
-msgstr "Fecha de inicio de la convocatoria"
+msgstr "Call for Papers opening date"
 
 #: app/models/conference.rb:-
 msgid "Conference|Cfp close date"
-msgstr "Fecha de cierre de convocatoria"
+msgstr "Call for papers closing date"
 
 #: app/models/conference.rb:-
 msgid "Conference|Begins"
-msgstr "Fecha de inicio de actividades"
+msgstr "Conference begins at"
 
 #: app/models/conference.rb:-
 msgid "Conference|Finishes"
-msgstr "Fecha de término de actividades"
+msgstr "Conference finishes at"
 
 #: app/models/conference.rb:26 app/models/conference.rb:27
 msgid "%{fn} can't be blank"
-msgstr "%{fn} requiere ser llenado"
+msgstr ""
 
 #: app/models/conference.rb:30
 msgid "Conference must end after its start date"
-msgstr "El congreso debe terminar después de su fecha de inicio"
+msgstr ""
 
 #: app/models/conference.rb:33
 msgid "Call for papers must end after its start date"
 msgstr ""
-"La convocatoria de participación debe concluir después de su fecha de inicio"
 
 #: app/models/conference.rb:36
 msgid "Call for papers must finish before the conference begins"
 msgstr ""
-"La convocatoria de participación debe concluir antes de que inicie el "
-"congreso"
 
 #: app/models/conference.rb:40
 msgid "Registration must end after its start date"
-msgstr "El registro debe concluir después de su fecha de inicio"
+msgstr ""
 
 #: app/models/conference.rb:43
 msgid "Registration must finish before the conference ends"
-msgstr "El registro debe finalizar antes de que el congreso concluya"
+msgstr ""
 
 #: app/models/admin_task.rb:-
 msgid "admin task"
-msgstr "rol administrativo"
+msgstr ""
 
 #: app/models/admin_task.rb:-
 msgid "AdminTask|Name"
-msgstr "Nombre"
+msgstr "Name"
 
 #: app/models/admin_task.rb:-
 msgid "AdminTask|Sys name"
-msgstr "Nombre de sistema"
+msgstr "System name"
 
 #: app/models/attendance.rb:-
 msgid "attendance"
-msgstr "asistencia"
+msgstr ""
 
 #: app/models/attendance.rb:-
 msgid "Attendance|Created at"
-msgstr "Fecha de creación"
+msgstr "Created at"
 
 #: app/models/attendance.rb:-
 msgid "Attendance|Person"
-msgstr "Persona"
+msgstr "Person"
 
 #: app/models/attendance.rb:-
 msgid "Attendance|Timeslot"
-msgstr "Horario"
+msgstr "Timeslot"
 
 #: app/models/participation.rb:-
 msgid "participation"
-msgstr "participación"
+msgstr ""
 
 #: app/models/participation.rb:-
 msgid "Participation|Person"
-msgstr "Persona"
+msgstr "Person"
 
 #: app/models/participation.rb:-
 msgid "Participation|Conference"
-msgstr "Congreso"
+msgstr "Conference"
 
 #: app/models/participation.rb:-
 msgid "Participation|Participation type"
-msgstr "Tipo de participación"
+msgstr "Participation type"
 
 #: app/models/timeslot.rb:-
 msgid "timeslot"
-msgstr "horario"
+msgstr ""
 
 #: app/models/timeslot.rb:-
 msgid "Timeslot|Start time"
-msgstr "Hora de inicio"
+msgstr "Start time"
 
 #: app/models/timeslot.rb:-
 msgid "Timeslot|Tolerance pre"
-msgstr "Tiempo de tolerancia previo al inicio"
+msgstr "Tolerance (before session starts)"
 
 #: app/models/timeslot.rb:-
 msgid "Timeslot|Tolerance post"
-msgstr "Tiempo de tolerancia pasado el inicio"
+msgstr "Tolerance (after session starts)"
 
 #: app/models/timeslot.rb:-
 msgid "Timeslot|Room"
-msgstr "Cuarto"
+msgstr "Room"
 
 #: app/models/timeslot.rb:-
 msgid "Timeslot|Conference"
-msgstr "Congreso"
+msgstr "Conference"
 
 #: app/models/authorship.rb:-
 msgid "authorship"
-msgstr "autoría"
+msgstr ""
 
 #: app/models/authorship.rb:-
 msgid "Authorship|Position"
-msgstr "Posición"
+msgstr "Position"
 
 #: app/models/authorship.rb:-
 msgid "Authorship|Person"
-msgstr "Persona"
+msgstr "Person"
 
 #: app/models/authorship.rb:-
 msgid "Authorship|Proposal"
-msgstr "Propuesta"
+msgstr "Proposal"
 
 #: app/models/prop_type.rb:-
 msgid "prop type"
-msgstr "tipo de propuesta"
+msgstr ""
 
 #: app/models/prop_type.rb:-
 msgid "PropType|Name"
-msgstr "Nombre"
+msgstr "Name"
 
 #: app/models/room.rb:-
 msgid "room"
-msgstr "cuarto"
+msgstr ""
 
 #: app/models/room.rb:-
 msgid "Room|Name"
-msgstr "Nombre"
+msgstr "Name"
 
 #: app/models/conference_logo.rb:-
 msgid "conference logo"
-msgstr "Imagen del congreso"
+msgstr ""
 
 #: app/models/conference_logo.rb:-
 msgid "ConferenceLogo|Filename"
-msgstr "Nombre de archivo"
+msgstr "Filename"
 
 #: app/models/conference_logo.rb:-
 msgid "ConferenceLogo|Data"
-msgstr "Datos"
+msgstr "Data"
 
 #: app/models/conference_logo.rb:-
 msgid "ConferenceLogo|Conference"
-msgstr "Congreso"
+msgstr "Conference"
 
 #: app/models/proposal.rb:-
 msgid "proposal"
-msgstr "propuesta"
+msgstr ""
 
 #: app/models/proposal.rb:-
 msgid "Proposal|Title"
-msgstr "título"
+msgstr "Title"
 
 #: app/models/proposal.rb:-
 msgid "Proposal|Abstract"
-msgstr "Resumen"
+msgstr "Abstract"
 
 #: app/models/proposal.rb:-
 msgid "Proposal|Created at"
-msgstr "Fecha de creación"
+msgstr "Created at"
 
 #: app/models/proposal.rb:-
 msgid "Proposal|Updated at"
-msgstr "Última actualización"
+msgstr "Updated at"
 
 #: app/models/proposal.rb:-
 msgid "Proposal|Prop type"
-msgstr "Tipo de la propuesta"
+msgstr "Proposal type"
 
 #: app/models/proposal.rb:-
 msgid "Proposal|Prop status"
-msgstr "Estado de la propuesta"
+msgstr "Proposal status"
 
 #: app/models/proposal.rb:-
 msgid "Proposal|Timeslot"
-msgstr "Horario"
+msgstr "Timeslot"
 
 #: app/models/proposal.rb:-
 msgid "Proposal|Conference"
-msgstr "Congreso"
+msgstr "Conference"
 
 #: app/models/participation_type.rb:-
 msgid "participation type"
-msgstr "tipo de participación"
+msgstr ""
 
 #: app/models/participation_type.rb:-
 msgid "ParticipationType|Name"
@@ -341,287 +336,287 @@ msgstr "Nombre"
 
 #: app/models/prop_status.rb:-
 msgid "prop status"
-msgstr "estado de la propuesta"
+msgstr ""
 
 #: app/models/prop_status.rb:-
 msgid "PropStatus|Name"
-msgstr "Nombre"
+msgstr "Name"
 
 #: app/controllers/application.rb:24
 msgid "Controller %s must implement check_auth"
-msgstr "El controlador %s debe implementar check_auth"
+msgstr ""
 
 #: app/controllers/application.rb:41
 msgid "Conference listing"
-msgstr "Listado de congresos"
+msgstr ""
 
 #: app/controllers/application.rb:45 app/views/people/login.rhtml:6
 msgid "Log in"
-msgstr "Entrar"
+msgstr ""
 
 #: app/controllers/application.rb:47
 msgid "New account"
-msgstr "Nueva cuenta"
+msgstr ""
 
 #: app/controllers/application.rb:50
 msgid "My account"
-msgstr "Mi cuenta"
+msgstr ""
 
 #: app/controllers/conferences_adm_controller.rb:3
 msgid "Registered conferences"
-msgstr "Congresos registrados"
+msgstr ""
 
 #: app/controllers/conferences_adm_controller.rb:26
 msgid "New conference successfully registered"
-msgstr "El nuevo congreso fue registrada exitosamente"
+msgstr ""
 
 #: app/controllers/conferences_adm_controller.rb:28
 msgid "Error registering requested conference: "
-msgstr "Error registrando al congreso indicado:"
+msgstr ""
 
 #: app/controllers/conferences_adm_controller.rb:36
 msgid "Conference data successfully updated"
-msgstr "Los datos del congreso fueron actualizados exitosamente"
+msgstr ""
 
 #: app/controllers/conferences_adm_controller.rb:45
 msgid "Successfully removed requested conference"
-msgstr "El congreso especificado fue eliminado exitosamente"
+msgstr ""
 
 #: app/controllers/conferences_adm_controller.rb:47
 msgid "Error removing requested conference: "
-msgstr "Error eliminando al congreso solicitado:"
+msgstr ""
 
 #: app/controllers/conferences_adm_controller.rb:51
 #: app/controllers/admin.rb:14 app/controllers/people_adm_controller.rb:53
 msgid "Invocation error"
-msgstr "Error de invocación"
+msgstr ""
 
 #: app/controllers/people_controller.rb:11
 msgid "Successfully logged out"
-msgstr "Salió del sistema exitosamente"
+msgstr ""
 
 #: app/controllers/people_controller.rb:23
 msgid "Incorrect user/password"
-msgstr "Usuario/contraseña equivocados"
+msgstr ""
 
 #: app/controllers/people_controller.rb:39
 msgid "New person successfully registered"
-msgstr "La nueva persona fue registrada exitosamente"
+msgstr ""
 
 #: app/controllers/people_controller.rb:42
 msgid "Could not register person: "
-msgstr "No fue posible registrar a la persona especificada:"
+msgstr ""
 
 #: app/controllers/admin.rb:10
 msgid "Access denied"
-msgstr "Acceso denegado"
+msgstr ""
 
 #: app/controllers/people_adm_controller.rb:4
 msgid "Registered people list"
-msgstr "Lista de asistentes registrados"
+msgstr ""
 
 #: app/controllers/people_adm_controller.rb:5
 msgid "By administrative task"
-msgstr "Por tarea administrativa"
+msgstr ""
 
 #: app/controllers/people_adm_controller.rb:30
 msgid "New attendee successfully registered"
-msgstr "El nuevo asistente fue registrado exitosamente"
+msgstr ""
 
 #: app/controllers/people_adm_controller.rb:32
 msgid "Error registering requested attendee: "
-msgstr "Error registrando al asistente indicado:"
+msgstr ""
 
 #: app/controllers/people_adm_controller.rb:40
 msgid "Person data successfully updated"
-msgstr "Los datos de la persona fueron actualizados exitosamente"
+msgstr ""
 
 #: app/controllers/people_adm_controller.rb:47
 msgid "Successfully removed requested attendee"
-msgstr "El asistente especificado fue eliminado exitosamente"
+msgstr ""
 
 #: app/controllers/people_adm_controller.rb:49
 msgid "Error removing requested attendee: "
-msgstr "Error eliminando al asistente solicitado:"
+msgstr ""
 
 #: app/controllers/conferences_controller.rb:22
 msgid "Invalid conference requested"
-msgstr "Especificó un congreso inexistente"
+msgstr ""
 
 #: app/helpers/application_helper.rb:58
 msgid "Field %s not defined for %s"
-msgstr "El campo %s no está definido para %s"
+msgstr ""
 
 #: app/helpers/application_helper.rb:92
 #: app/views/conferences_adm/list.rhtml:24
 msgid "Yes"
-msgstr "Sí"
+msgstr ""
 
 #: app/helpers/application_helper.rb:92
 #: app/views/conferences_adm/list.rhtml:24
 msgid "No"
-msgstr "No"
+msgstr ""
 
 #: app/views/people_adm/by_task.rhtml:1
 msgid "Registered people with administrative tasks"
-msgstr "Personas registradas con roles administrativos"
+msgstr ""
 
 #: app/views/people_adm/show.rhtml:1
 msgid "Attendee %d's personal data"
-msgstr "Datos personales del asistente %d"
+msgstr ""
 
 #: app/views/people_adm/show.rhtml:3 app/views/conferences_adm/show.rhtml:3
 msgid "Save changes"
-msgstr "Grabar cambios"
+msgstr ""
 
 #: app/views/people_adm/list.rhtml:1
 msgid "Attendee administration"
-msgstr "Administración de asistentes"
+msgstr ""
 
 #: app/views/people_adm/list.rhtml:3 app/views/conferences_adm/list.rhtml:3
 msgid "Register new"
-msgstr "Registrar nuevo"
+msgstr ""
 
 #: app/views/people_adm/list.rhtml:7
 #: app/views/conferences_adm/people_list.rhtml:6
 #: app/views/conferences_adm/list.rhtml:7
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #: app/views/people_adm/list.rhtml:8
 #: app/views/conferences_adm/people_list.rhtml:7
 msgid "First name"
-msgstr "Nombre propio"
+msgstr ""
 
 #: app/views/people_adm/list.rhtml:9
 #: app/views/conferences_adm/people_list.rhtml:8
 msgid "Family name"
-msgstr "Apellidos"
+msgstr ""
 
 #: app/views/people_adm/list.rhtml:10
 msgid "Last login at"
-msgstr "Última entrada"
+msgstr ""
 
 #: app/views/people_adm/list.rhtml:19 app/views/conferences_adm/list.rhtml:32
 msgid "Delete"
-msgstr "Eliminar"
+msgstr ""
 
 #: app/views/people_adm/list.rhtml:21 app/views/conferences_adm/list.rhtml:33
 msgid "Are you sure you want to permanently delete %s?"
-msgstr "¿Está seguro de que desea eliminar permanentemente a %s?"
+msgstr ""
 
 #: app/views/people_adm/new.rhtml:1
 msgid "Register a new attendee"
-msgstr "Registrar a un nuevo asistente"
+msgstr ""
 
 #: app/views/people_adm/new.rhtml:3 app/views/conferences_adm/new.rhtml:3
 #: app/views/people/new.rhtml:10
 msgid "Create"
-msgstr "Crear"
+msgstr ""
 
 #: app/views/conferences_adm/show.rhtml:1
 msgid "Edit conference data"
-msgstr "Editar los datos del congreso"
+msgstr ""
 
 #: app/views/conferences_adm/people_list.rhtml:1
 msgid "People registered for <em>%s</em>"
-msgstr "Asistentes registrados para <em>%s</em>"
+msgstr ""
 
 #: app/views/conferences_adm/people_list.rhtml:9
 msgid "Attendee type"
-msgstr "Tipo de asistente"
+msgstr ""
 
 #: app/views/conferences_adm/list.rhtml:1
 msgid "List of registered conferences"
-msgstr "Lista de congresos registrados"
+msgstr ""
 
 #: app/views/conferences_adm/list.rhtml:8
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 #: app/views/conferences_adm/list.rhtml:9
 msgid "Begins at"
-msgstr "Fecha de inicio"
+msgstr ""
 
 #: app/views/conferences_adm/list.rhtml:10
 msgid "Registration opens"
-msgstr "Inicio del registro"
+msgstr ""
 
 #: app/views/conferences_adm/list.rhtml:12
 msgid "Active"
-msgstr "Activo"
+msgstr ""
 
 #: app/views/conferences_adm/list.rhtml:13
 msgid "Registered attendees"
-msgstr "Asistentes registrados"
+msgstr ""
 
 #: app/views/conferences_adm/list.rhtml:14
 msgid "Homepage"
-msgstr "Página Web"
+msgstr ""
 
 #: app/views/conferences_adm/list.rhtml:28
 msgid "Visit"
-msgstr "Visitar"
+msgstr ""
 
 #: app/views/conferences_adm/list.rhtml:30
 msgid "Not defined"
-msgstr "No definido"
+msgstr ""
 
 #: app/views/conferences_adm/new.rhtml:1
 msgid "Create a new conference"
-msgstr "Registrar un nuevo congreso"
+msgstr ""
 
 #: app/views/people/login.rhtml:3
 msgid "User name"
-msgstr "Nombre de usuario"
+msgstr ""
 
 #: app/views/people/login.rhtml:5
 msgid "Password"
-msgstr "Contraseña"
+msgstr ""
 
 #: app/views/conferences/show.rhtml:7
 msgid "Web site"
-msgstr "Sitio Web"
+msgstr ""
 
 #: app/views/conferences/list.rhtml:3
 msgid "Conference"
-msgstr "Congreso"
+msgstr ""
 
 #: app/views/conferences/list.rhtml:4
 msgid "Dates"
-msgstr "Fechas"
+msgstr ""
 
 #: app/views/layouts/application.rhtml:56
 msgid "Log out"
-msgstr "Salir"
+msgstr ""
 
 #: lib/strings_in_db.rb:7
 msgid "ParticipationType|Attendee"
-msgstr "Asistente"
+msgstr "Attendee"
 
 #: lib/strings_in_db.rb:8
 msgid "ParticipationType|Speaker"
-msgstr "Ponente"
+msgstr "Speaker"
 
 #: lib/strings_in_db.rb:9
 msgid "ParticipationType|Organizer"
-msgstr "Organizador"
+msgstr "Organizer"
 
 #: lib/strings_in_db.rb:10
 msgid "ParticipationType|Moderator"
-msgstr "Moderador"
+msgstr "Moderator"
 
 #: lib/strings_in_db.rb:11
 msgid "ParticipationType|Guest"
-msgstr "Invitado"
+msgstr "Guest"
 
 #: lib/strings_in_db.rb:12
 msgid "ParticipationType|Press"
-msgstr "Prensa"
+msgstr "Press"
 
 #: lib/strings_in_db.rb:15
 msgid "PropType|Round table"
-msgstr "Mesa redonda"
+msgstr "Round table"
 
 #: lib/strings_in_db.rb:16
 msgid "PropType|Tutorial"
@@ -629,64 +624,64 @@ msgstr "Tutorial"
 
 #: lib/strings_in_db.rb:17
 msgid "PropType|Talk"
-msgstr "Conferencia"
+msgstr "Talk"
 
 #: lib/strings_in_db.rb:18
 msgid "PropType|Workshop"
-msgstr "Taller"
+msgstr "Workshop"
 
 #: lib/strings_in_db.rb:21
 msgid "PropStatus|Accepted"
-msgstr "Aceptado"
+msgstr "Accepted"
 
 #: lib/strings_in_db.rb:22
 msgid "PropStatus|Cancelled"
-msgstr "Cancelado"
+msgstr "Cancelled"
 
 #: lib/strings_in_db.rb:23
 msgid "PropStatus|Further details required"
-msgstr "Más datos requeridos"
+msgstr "Further details required"
 
 #: lib/strings_in_db.rb:24
 msgid "PropStatus|New"
-msgstr "Nuevo"
+msgstr "New"
 
 #: lib/strings_in_db.rb:25
 msgid "PropStatus|Rejected"
-msgstr "Rechazado"
+msgstr "Rejected"
 
 #: lib/strings_in_db.rb:26
 msgid "PropStatus|Withdrawn"
-msgstr "Retirado"
+msgstr "Withdrawn"
 
 #: lib/strings_in_db.rb:29
 msgid "AdminTask|Attendee administration"
-msgstr "Administración de asistentes"
+msgstr "Attendee administration"
 
 #: lib/strings_in_db.rb:30
 msgid "AdminTask|Conferences administration"
-msgstr "Administración de congresos"
+msgstr "Conferences administration"
 
 #: lib/strings_in_db.rb:31
 msgid "AdminTask|Academic committee"
-msgstr "Comité Académico"
+msgstr "Academic committee"
 
 #: lib/strings_in_db.rb:32
 msgid "AdminTask|Attendance tracking"
-msgstr "Seguimiento de asistencias"
+msgstr "Attendance tracking"
 
 #: lib/strings_in_db.rb:33
 msgid "AdminTask|System configuration"
-msgstr "Configuración del sistema"
+msgstr "System configuration"
 
 #: lib/strings_in_db.rb:36
 msgid "Person|Admin tasks"
-msgstr "Roles administrativos"
+msgstr "Administrative tasks"
 
 #: lib/strings_in_db.rb:37
 msgid "Person|Conferences"
-msgstr "Congresos"
+msgstr "Conferences"
 
 #: lib/menu_tree.rb:16
 msgid "Unexpected arguments received: "
-msgstr "Argumentos inesperados recibidos:"
+msgstr ""

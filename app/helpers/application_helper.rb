@@ -29,7 +29,7 @@ module ApplicationHelper
                         hidden_field)).each do |fldtype|
       src = <<-END_SRC
         def #{fldtype}(field, options={})
-          title = options.delete(:title) || field.to_s.humanize
+          title = options.delete(:title) || label_for_field(@object, field)
           note = options.delete(:note)
 
           options[:size] ||= 60 if '#{fldtype}' == 'text_field'
@@ -104,7 +104,7 @@ module ApplicationHelper
     end
 
     def select(field, choices, options={})
-      title = options.delete(:title) || field.to_s.humanize
+      title = options.delete(:title) || label_for_field(@object, field)
       note = options.delete(:note)
       [before_elem(title,note), 
        super(field, choices ,options), 
@@ -112,7 +112,7 @@ module ApplicationHelper
     end
 
     def radio_group(field, choices, options={})
-      title = options.delete(:title) || field.to_s.humanize
+      title = options.delete(:title) || label_for_field(@object, field)
       note = options.delete(:note)
       [before_elem(title,note), 
        choices.map { |item|
@@ -121,7 +121,7 @@ module ApplicationHelper
     end
 
     def checkbox_group(field, choices, options={})
-      title = options.delete(:title) || field.to_s.humanize
+      title = options.delete(:title) || label_for_field(@object, field)
       note = options.delete(:note)
 
       fieldname = "#{@object_name}[#{field.singularize}_ids][]"
@@ -143,7 +143,7 @@ module ApplicationHelper
     end
 
     def info_row(field, options={})
-      title = options[:title] || field.to_s.humanize
+      title = options[:title] || label_for_field(@object, field)
       note = options[:note]
 
       [ before_elem(title,note), 
@@ -166,6 +166,10 @@ module ApplicationHelper
 
     def info_elem(info)
       %Q(<span class="comas-form-input">#{_ info.to_s}</span>)
+    end
+
+    def label_for_field(model, field)
+      [model.class.to_s, field.to_s.humanize].join('|')
     end
 
     def table_from_field(field)
