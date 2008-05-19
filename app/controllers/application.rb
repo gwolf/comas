@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
   before_filter :check_auth
   before_filter :generate_menu
   before_filter :set_lang
+  before_filter :set_pagination_labels
 
   protected
   def get_user
@@ -66,6 +67,13 @@ class ApplicationController < ActionController::Base
   def set_lang
     return true unless lang = params[:lang]
     cookies[:lang] = {:value => lang, :expires => Time.now+1.day, :path => '/'}
+  end
+
+  def set_pagination_labels
+    { :prev_label   => _('&laquo; Previous'),
+      :next_label   => _('Next &raquo;') }.each do |k, v|
+      WillPaginate::ViewHelpers.pagination_options[k] = v
+    end
   end
 
   # sortable: List of fields according to which the results can be sorted.

@@ -22,6 +22,24 @@ module ApplicationHelper
   def end_table_row; '</tr>'; end
 
   ############################################################
+  # Show a translation-friendly pagination header (similar to WillPaginate's
+  # page_entries_info - in fact, derived from it)
+  def pagination_header(collection)
+    if collection.page_count < 2
+      case collection.size
+      when 0; _("No items found")
+      when 1; _("Displaying <b>1</b> items")
+      else;   _("Displaying <b>all %d</b> items") % [collection.size]
+      end
+      else
+      _('Displaying items <b>%d&nbsp;-&nbsp;%d</b> of <b>%d</b> in total') % 
+        [ collection.offset + 1,
+          collection.offset + collection.length,
+          collection.total_entries ]
+    end
+  end
+
+  ############################################################
   # Form builders
   class ComasFormBuilder < ActionView::Helpers::FormBuilder
     include GetText

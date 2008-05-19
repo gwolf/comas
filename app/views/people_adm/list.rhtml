@@ -1,5 +1,5 @@
 <h1><%= _"Attendee administration" %></h1>
-  <%= page_entries_info @people %>
+<%= pagination_header(@people) %>
 <p><%= link_to _('Register new'), :action => 'new' %></p>
 <%= will_paginate @people %>
 <%= start_table %>

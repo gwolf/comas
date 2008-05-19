@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2008-05-12 18:30-0500\n"
+"POT-Creation-Date: 2008-05-19 16:11-0500\n"
 "PO-Revision-Date: 2008-05-07 18:30-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -73,6 +73,18 @@ msgstr ""
 
 #: app/models/table_field.rb:54
 msgid "Not a relation field"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "admin task"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "AdminTask|Name"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "AdminTask|Sys name"
 msgstr ""
 
 #: app/models/person.rb:-
@@ -155,40 +167,28 @@ msgstr ""
 msgid "Conference|Finishes"
 msgstr ""
 
-#: app/models/conference.rb:26 app/models/conference.rb:27
+#: app/models/conference.rb:40 app/models/conference.rb:41
 msgid "%{fn} can't be blank"
 msgstr ""
 
-#: app/models/conference.rb:30
+#: app/models/conference.rb:44
 msgid "Conference must end after its start date"
 msgstr ""
 
-#: app/models/conference.rb:33
+#: app/models/conference.rb:47
 msgid "Call for papers must end after its start date"
 msgstr ""
 
-#: app/models/conference.rb:36
+#: app/models/conference.rb:50
 msgid "Call for papers must finish before the conference begins"
 msgstr ""
 
-#: app/models/conference.rb:40
+#: app/models/conference.rb:54
 msgid "Registration must end after its start date"
 msgstr ""
 
-#: app/models/conference.rb:43
+#: app/models/conference.rb:57
 msgid "Registration must finish before the conference ends"
-msgstr ""
-
-#: app/models/admin_task.rb:-
-msgid "admin task"
-msgstr ""
-
-#: app/models/admin_task.rb:-
-msgid "AdminTask|Name"
-msgstr ""
-
-#: app/models/admin_task.rb:-
-msgid "AdminTask|Sys name"
 msgstr ""
 
 #: app/models/attendance.rb:-
@@ -296,6 +296,14 @@ msgid "ConferenceLogo|Conference"
 msgstr ""
 
 #: app/models/proposal.rb:-
+msgid "prop status"
+msgstr ""
+
+#: app/models/proposal.rb:-
+msgid "PropStatus|Name"
+msgstr ""
+
+#: app/models/proposal.rb:-
 msgid "proposal"
 msgstr ""
 
@@ -339,32 +347,32 @@ msgstr ""
 msgid "ParticipationType|Name"
 msgstr ""
 
-#: app/models/prop_status.rb:-
-msgid "prop status"
-msgstr ""
-
-#: app/models/prop_status.rb:-
-msgid "PropStatus|Name"
-msgstr ""
-
-#: app/controllers/application.rb:24
+#: app/controllers/application.rb:25
 msgid "Controller %s must implement check_auth"
 msgstr ""
 
-#: app/controllers/application.rb:41
+#: app/controllers/application.rb:42
 msgid "Conference listing"
 msgstr ""
 
-#: app/controllers/application.rb:45 app/views/people/login.rhtml:6
+#: app/controllers/application.rb:46 app/views/people/login.rhtml:6
 msgid "Log in"
 msgstr ""
 
-#: app/controllers/application.rb:47
+#: app/controllers/application.rb:48
 msgid "New account"
 msgstr ""
 
-#: app/controllers/application.rb:50
+#: app/controllers/application.rb:51
 msgid "My account"
+msgstr ""
+
+#: app/controllers/application.rb:73
+msgid "&laquo; Previous"
+msgstr ""
+
+#: app/controllers/application.rb:74
+msgid "Next &raquo;"
 msgstr ""
 
 #: app/controllers/conferences_adm_controller.rb:3
@@ -448,16 +456,32 @@ msgstr ""
 msgid "Invalid conference requested"
 msgstr ""
 
-#: app/helpers/application_helper.rb:58
+#: app/helpers/application_helper.rb:30
+msgid "No items found"
+msgstr ""
+
+#: app/helpers/application_helper.rb:31
+msgid "Displaying <b>1</b> items"
+msgstr ""
+
+#: app/helpers/application_helper.rb:32
+msgid "Displaying <b>all %d</b> items"
+msgstr ""
+
+#: app/helpers/application_helper.rb:35
+msgid "Displaying items <b>%d&nbsp;-&nbsp;%d</b> of <b>%d</b> in total"
+msgstr ""
+
+#: app/helpers/application_helper.rb:76
 msgid "Field %s not defined for %s"
 msgstr ""
 
-#: app/helpers/application_helper.rb:92
+#: app/helpers/application_helper.rb:110
 #: app/views/conferences_adm/list.rhtml:24
 msgid "Yes"
 msgstr ""
 
-#: app/helpers/application_helper.rb:92
+#: app/helpers/application_helper.rb:110
 #: app/views/conferences_adm/list.rhtml:24
 msgid "No"
 msgstr ""
@@ -571,6 +595,14 @@ msgstr ""
 msgid "Create a new conference"
 msgstr ""
 
+#: app/views/people/account.rhtml:1
+msgid "Welcome, %s"
+msgstr ""
+
+#: app/views/people/account.rhtml:4 app/views/conferences/list.rhtml:1
+msgid "Upcoming conferences"
+msgstr ""
+
 #: app/views/people/login.rhtml:3
 msgid "User name"
 msgstr ""
@@ -583,11 +615,11 @@ msgstr ""
 msgid "Web site"
 msgstr ""
 
-#: app/views/conferences/list.rhtml:3
+#: app/views/conferences/_list.rhtml:3
 msgid "Conference"
 msgstr ""
 
-#: app/views/conferences/list.rhtml:4
+#: app/views/conferences/_list.rhtml:4
 msgid "Dates"
 msgstr ""
 

@@ -1,5 +1,5 @@
 <h1><%= _('List of registered conferences') %></h1>
-<%= page_entries_info @conferences %>
+<%= pagination_header @conferences %>
 <p><%= link_to _('Register new'), :action => 'new' %></p>
 <%= will_paginate @conferences %>
 <%= start_table %>
