@@ -52,9 +52,7 @@ module ApplicationHelper
 
           options[:size] ||= 60 if '#{fldtype}' == 'text_field'
 
-          [before_elem(title, note), 
-           super(field,options), 
-           after_elem].join("\n")
+          with_format(title, super(field, options), note)
         end
       END_SRC
       class_eval src, __FILE__, __LINE__
@@ -124,18 +122,15 @@ module ApplicationHelper
     def select(field, choices, options={})
       title = options.delete(:title) || label_for_field(@object, field)
       note = options.delete(:note)
-      [before_elem(title,note), 
-       super(field, choices ,options), 
-       after_elem].join("\n")
+      with_format(title, super(field, choices, options), note)
     end
 
     def radio_group(field, choices, options={})
       title = options.delete(:title) || label_for_field(@object, field)
       note = options.delete(:note)
-      [before_elem(title,note), 
-       choices.map { |item|
-         radio_button(field, item[1]) << ' ' << item[0]
-       }, after_elem].join("\n")
+      with_format(title, choices.map { |item|
+                    radio_button(field, item[1]) << ' ' << item[0] },
+                  note)
     end
 
     def checkbox_group(field, choices, options={})
@@ -144,32 +139,34 @@ module ApplicationHelper
 
       fieldname = "#{@object_name}[#{field.singularize}_ids][]"
 
-      [before_elem(title,note), 
-       choices.map { |item|
-         res = []
-         res << '<span'
-         res << "class=\"#{options[:class]}\"" if options[:class]
-         res << '><input type="checkbox"'
-         if @object.send(field.to_s.pluralize).include? item
-           res << 'checked="checked"'
-         end
-         res << "id=\"#{fieldname}\" name=\"#{fieldname}\" value=\"#{item.id}\""
-         res << "> #{_ item.name}</span><br/>"
-
-         res.join(' ')
-       }, after_elem].join("\n")
+      with_format(title,
+                  choices.map { |item|
+                    res = []
+                    res << '<span'
+                    res << "class=\"#{options[:class]}\"" if options[:class]
+                    res << '><input type="checkbox"'
+                    if @object.send(field.to_s.pluralize).include? item
+                      res << 'checked="checked"'
+                    end
+                    res << "id=\"#{fieldname}\" name=\"#{fieldname}\" "
+                    res << "value=\"#{item.id}\"> #{_ item.name}</span><br/>"
+                    
+                    res.join(' ') },
+                  note)
     end
 
     def info_row(field, options={})
       title = options[:title] || label_for_field(@object, field)
       note = options[:note]
 
-      [ before_elem(title,note), 
-        info_elem(@object.send(field)), 
-        after_elem ].join("\n")
+      with_format(title, info_elem(@object.send(field)), note)
     end
 
     private
+    def with_format(title, body, note=nil)
+      [before_elem(title, note), body, after_elem].join("\n")
+    end
+
     def before_elem(title, note=nil)
       ['<div class="form-row">',
        %Q(<span class="comas-form-prompt">#{_ title}</span>),
