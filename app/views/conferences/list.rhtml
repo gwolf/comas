@@ -1,12 +1,2 @@
-<%= start_table %>
-  <%= table_head_row %>
-    <th><%= _'Conference' %></th>
-    <th><%= _'Dates' %></th>
-  <%= end_table_row %>
-<% @conferences.each do |conf| %>
-  <%= table_row %>
-    <td><%= link_to(conf.name, :controller => 'conferences', :action => 'show', :id => conf) %></td>
-    <td><%= conf.begins %> - <%= conf.finishes %></td>
-  <%= end_table_row %>
-<% end %>
-<%= end_table %>
+<h1><%= _'Upcoming conferences' %></h1>
+<%= render :partial => 'list', :locals => {:confs => @conferences } %>

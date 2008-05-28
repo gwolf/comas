@@ -1,7 +1,7 @@
 class Conference < ActiveRecord::Base
   has_many :timeslots
   has_many :proposals
-  has_many :conference_logos
+  has_one :conference_logo
   has_many :participations
   has_many :people, :through => :participations
 
@@ -9,6 +9,20 @@ class Conference < ActiveRecord::Base
   validates_uniqueness_of :name
   validates_presence_of :descr
   validate :dates_are_correct
+
+  def self.upcoming(how_many=5)
+    self.find(:all,
+              :conditions => 'begins > now()', 
+              :order => :begins,
+              :limit => how_many)
+  end
+
+  def self.past(how_many=5)
+    self.find(:all, 
+              :conditions => 'begins < now()',
+              :order => 'begins desc',
+              :limit => how_many)
+  end
 
   def accepts_registrations?
     (reg_open_date || Date.today) <= Date.today and

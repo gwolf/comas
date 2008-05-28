@@ -6,7 +6,7 @@ class ConferencesController < ApplicationController
   end
 
   def list
-    @conferences = Conference.find(:all)
+    @conferences = Conference.upcoming
   end
 
   def show

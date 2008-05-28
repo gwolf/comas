@@ -47,6 +47,7 @@ class PeopleController < ApplicationController
   end
 
   def account
+    @upcoming = Conference.upcoming
   end
 
   ############################################################
