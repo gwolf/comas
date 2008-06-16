@@ -59,19 +59,14 @@ window.onload = function() {
 
   <div id="contenido">
 
-<% if flash[:error] %>
-    <div class="error">
-      <%= flash[:error].map {|msg| msg}.join "<br/>" %>
-      <% flash.discard(:error) %>
+<% [:error, :warning, :notice].each do |level|
+   if flash[level] %>
+    <div id="<%= level %>">
+      <%= flash[level].map {|elem| elem}.join "<br />" %>
+      <% flash.discard(level) %>
     </div>
-<% end %>
-
-<% if flash[:warning] %>
-    <div class="msg">
-      <%= flash[:warning].map {|msg| msg}.join "<br/>" %>
-      <% flash.discard(:warning) %>
-    </div>
-<% end %>
+<% end
+end %>
 
 <%= yield %>
 

@@ -6,6 +6,36 @@
     background-position: 0.5em 0.5em;
 }
 
+#error, #warning, #notice { 
+       padding: 0.2em;
+       margin-left: auto;
+       margin-right: auto;
+       margin-top: 0.1cm;
+       margin-bottom: 0.1cm;
+       width: 70%;
+       text-align: center;
+       font-size: 120%;
+       display: block;
+}
+
+#error { 
+       color: #f00;
+       background-color: #ffd;
+       border: solid #f00 2px;
+}
+
+#warning {  
+       color: #000;
+       background-color: #eee;
+       border: solid #000 2px;
+}
+
+#notice {  
+       color: #557;
+       background-color: #ddf;
+       border: solid #557 2px;
+}
+
 table { 
     border-collapse: collapse;
     border: solid #face78 2px;
