@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2008-05-19 16:11-0500\n"
-"PO-Revision-Date: 2008-05-12 18:25-0600\n"
+"POT-Creation-Date: 2008-06-16 14:27-0500\n"
+"PO-Revision-Date: 2008-06-16 14:29-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -118,6 +118,10 @@ msgstr "Created at"
 msgid "Person|Last login at"
 msgstr "Last login at"
 
+#: app/models/person.rb:-
+msgid "Person|Birthday"
+msgstr "Birth day"
+
 #: app/models/conference.rb:-
 msgid "conference"
 msgstr ""
@@ -162,7 +166,8 @@ msgstr "Conference begins at"
 msgid "Conference|Finishes"
 msgstr "Conference finishes at"
 
-#: app/models/conference.rb:40 app/models/conference.rb:41
+#: app/models/conference.rb:40
+#: app/models/conference.rb:41
 msgid "%{fn} can't be blank"
 msgstr ""
 
@@ -291,14 +296,6 @@ msgid "ConferenceLogo|Conference"
 msgstr "Conference"
 
 #: app/models/proposal.rb:-
-msgid "prop status"
-msgstr ""
-
-#: app/models/proposal.rb:-
-msgid "PropStatus|Name"
-msgstr "Name"
-
-#: app/models/proposal.rb:-
 msgid "proposal"
 msgstr ""
 
@@ -334,6 +331,14 @@ msgstr "Timeslot"
 msgid "Proposal|Conference"
 msgstr "Conference"
 
+#: app/models/proposal.rb:-
+msgid "prop status"
+msgstr ""
+
+#: app/models/proposal.rb:-
+msgid "PropStatus|Name"
+msgstr "Name"
+
 #: app/models/participation_type.rb:-
 msgid "participation type"
 msgstr ""
@@ -350,7 +355,8 @@ msgstr ""
 msgid "Conference listing"
 msgstr ""
 
-#: app/controllers/application.rb:46 app/views/people/login.rhtml:6
+#: app/controllers/application.rb:46
+#: app/views/people/login.rhtml:6
 msgid "Log in"
 msgstr ""
 
@@ -395,7 +401,8 @@ msgid "Error removing requested conference: "
 msgstr ""
 
 #: app/controllers/conferences_adm_controller.rb:51
-#: app/controllers/admin.rb:14 app/controllers/people_adm_controller.rb:53
+#: app/controllers/admin.rb:14
+#: app/controllers/people_adm_controller.rb:53
 msgid "Invocation error"
 msgstr ""
 
@@ -456,7 +463,7 @@ msgid "No items found"
 msgstr ""
 
 #: app/helpers/application_helper.rb:31
-msgid "Displaying <b>1</b> items"
+msgid "Displaying <b>1</b> item"
 msgstr ""
 
 #: app/helpers/application_helper.rb:32
@@ -467,16 +474,16 @@ msgstr ""
 msgid "Displaying items <b>%d&nbsp;-&nbsp;%d</b> of <b>%d</b> in total"
 msgstr ""
 
-#: app/helpers/application_helper.rb:76
+#: app/helpers/application_helper.rb:74
 msgid "Field %s not defined for %s"
 msgstr ""
 
-#: app/helpers/application_helper.rb:110
+#: app/helpers/application_helper.rb:108
 #: app/views/conferences_adm/list.rhtml:24
 msgid "Yes"
 msgstr ""
 
-#: app/helpers/application_helper.rb:110
+#: app/helpers/application_helper.rb:108
 #: app/views/conferences_adm/list.rhtml:24
 msgid "No"
 msgstr ""
@@ -489,7 +496,8 @@ msgstr ""
 msgid "Attendee %d's personal data"
 msgstr ""
 
-#: app/views/people_adm/show.rhtml:3 app/views/conferences_adm/show.rhtml:3
+#: app/views/people_adm/show.rhtml:3
+#: app/views/conferences_adm/show.rhtml:3
 msgid "Save changes"
 msgstr ""
 
@@ -497,7 +505,8 @@ msgstr ""
 msgid "Attendee administration"
 msgstr ""
 
-#: app/views/people_adm/list.rhtml:3 app/views/conferences_adm/list.rhtml:3
+#: app/views/people_adm/list.rhtml:3
+#: app/views/conferences_adm/list.rhtml:3
 msgid "Register new"
 msgstr ""
 
@@ -521,11 +530,13 @@ msgstr ""
 msgid "Last login at"
 msgstr ""
 
-#: app/views/people_adm/list.rhtml:19 app/views/conferences_adm/list.rhtml:32
+#: app/views/people_adm/list.rhtml:19
+#: app/views/conferences_adm/list.rhtml:32
 msgid "Delete"
 msgstr ""
 
-#: app/views/people_adm/list.rhtml:21 app/views/conferences_adm/list.rhtml:33
+#: app/views/people_adm/list.rhtml:21
+#: app/views/conferences_adm/list.rhtml:33
 msgid "Are you sure you want to permanently delete %s?"
 msgstr ""
 
@@ -533,7 +544,8 @@ msgstr ""
 msgid "Register a new attendee"
 msgstr ""
 
-#: app/views/people_adm/new.rhtml:3 app/views/conferences_adm/new.rhtml:3
+#: app/views/people_adm/new.rhtml:3
+#: app/views/conferences_adm/new.rhtml:3
 #: app/views/people/new.rhtml:10
 msgid "Create"
 msgstr ""
@@ -594,10 +606,10 @@ msgstr ""
 msgid "Welcome, %s"
 msgstr ""
 
-#: app/views/people/account.rhtml:4 app/views/conferences/list.rhtml:1
-#, fuzzy
+#: app/views/people/account.rhtml:4
+#: app/views/conferences/list.rhtml:1
 msgid "Upcoming conferences"
-msgstr "Conferences"
+msgstr "Upcoming conferences"
 
 #: app/views/people/login.rhtml:3
 msgid "User name"
@@ -718,3 +730,4 @@ msgstr "Conferences"
 #: lib/menu_tree.rb:16
 msgid "Unexpected arguments received: "
 msgstr ""
+

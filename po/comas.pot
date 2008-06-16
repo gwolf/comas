@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2008-05-19 16:11-0500\n"
+"POT-Creation-Date: 2008-06-16 14:27-0500\n"
 "PO-Revision-Date: 2008-05-07 18:30-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -121,6 +121,10 @@ msgstr ""
 
 #: app/models/person.rb:-
 msgid "Person|Last login at"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Person|Birthday"
 msgstr ""
 
 #: app/models/conference.rb:-
@@ -296,14 +300,6 @@ msgid "ConferenceLogo|Conference"
 msgstr ""
 
 #: app/models/proposal.rb:-
-msgid "prop status"
-msgstr ""
-
-#: app/models/proposal.rb:-
-msgid "PropStatus|Name"
-msgstr ""
-
-#: app/models/proposal.rb:-
 msgid "proposal"
 msgstr ""
 
@@ -337,6 +333,14 @@ msgstr ""
 
 #: app/models/proposal.rb:-
 msgid "Proposal|Conference"
+msgstr ""
+
+#: app/models/proposal.rb:-
+msgid "prop status"
+msgstr ""
+
+#: app/models/proposal.rb:-
+msgid "PropStatus|Name"
 msgstr ""
 
 #: app/models/participation_type.rb:-
@@ -461,7 +465,7 @@ msgid "No items found"
 msgstr ""
 
 #: app/helpers/application_helper.rb:31
-msgid "Displaying <b>1</b> items"
+msgid "Displaying <b>1</b> item"
 msgstr ""
 
 #: app/helpers/application_helper.rb:32
@@ -472,16 +476,16 @@ msgstr ""
 msgid "Displaying items <b>%d&nbsp;-&nbsp;%d</b> of <b>%d</b> in total"
 msgstr ""
 
-#: app/helpers/application_helper.rb:76
+#: app/helpers/application_helper.rb:74
 msgid "Field %s not defined for %s"
 msgstr ""
 
-#: app/helpers/application_helper.rb:110
+#: app/helpers/application_helper.rb:108
 #: app/views/conferences_adm/list.rhtml:24
 msgid "Yes"
 msgstr ""
 
-#: app/helpers/application_helper.rb:110
+#: app/helpers/application_helper.rb:108
 #: app/views/conferences_adm/list.rhtml:24
 msgid "No"
 msgstr ""

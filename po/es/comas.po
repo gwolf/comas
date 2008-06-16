@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2008-05-19 16:11-0500\n"
-"PO-Revision-Date: 2008-05-19 16:12-0600\n"
+"POT-Creation-Date: 2008-06-16 14:27-0500\n"
+"PO-Revision-Date: 2008-06-16 14:28-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: Gunnar Wolf <gwolf@gwolf.org>\n"
 "MIME-Version: 1.0\n"
@@ -120,9 +120,13 @@ msgstr "Fecha de creación"
 msgid "Person|Last login at"
 msgstr "Última entrada"
 
+#: app/models/person.rb:-
+msgid "Person|Birthday"
+msgstr "Fecha de nacimiento"
+
 #: app/models/conference.rb:-
 msgid "conference"
-msgstr "Congreso"
+msgstr "Actividad"
 
 #: app/models/conference.rb:-
 msgid "Conference|Name"
@@ -171,7 +175,7 @@ msgstr "%{fn} requiere ser llenado"
 
 #: app/models/conference.rb:44
 msgid "Conference must end after its start date"
-msgstr "El congreso debe terminar después de su fecha de inicio"
+msgstr "La actividad debe terminar después de su fecha de inicio"
 
 #: app/models/conference.rb:47
 msgid "Call for papers must end after its start date"
@@ -179,7 +183,7 @@ msgstr "La convocatoria de participación debe concluir después de su fecha de 
 
 #: app/models/conference.rb:50
 msgid "Call for papers must finish before the conference begins"
-msgstr "La convocatoria de participación debe concluir antes de que inicie el congreso"
+msgstr "La convocatoria de participación debe concluir antes de que inicie la actividad"
 
 #: app/models/conference.rb:54
 msgid "Registration must end after its start date"
@@ -187,7 +191,7 @@ msgstr "El registro debe concluir después de su fecha de inicio"
 
 #: app/models/conference.rb:57
 msgid "Registration must finish before the conference ends"
-msgstr "El registro debe finalizar antes de que el congreso concluya"
+msgstr "El registro debe finalizar antes de que la actividad concluya"
 
 #: app/models/attendance.rb:-
 msgid "attendance"
@@ -215,7 +219,7 @@ msgstr "Persona"
 
 #: app/models/participation.rb:-
 msgid "Participation|Conference"
-msgstr "Congreso"
+msgstr "Actividad"
 
 #: app/models/participation.rb:-
 msgid "Participation|Participation type"
@@ -243,7 +247,7 @@ msgstr "Cuarto"
 
 #: app/models/timeslot.rb:-
 msgid "Timeslot|Conference"
-msgstr "Congreso"
+msgstr "Actividad"
 
 #: app/models/authorship.rb:-
 msgid "authorship"
@@ -279,7 +283,7 @@ msgstr "Nombre"
 
 #: app/models/conference_logo.rb:-
 msgid "conference logo"
-msgstr "Imagen del congreso"
+msgstr "Imagen de la actividad"
 
 #: app/models/conference_logo.rb:-
 msgid "ConferenceLogo|Filename"
@@ -291,15 +295,7 @@ msgstr "Datos"
 
 #: app/models/conference_logo.rb:-
 msgid "ConferenceLogo|Conference"
-msgstr "Congreso"
-
-#: app/models/proposal.rb:-
-msgid "prop status"
-msgstr "estado de la propuesta"
-
-#: app/models/proposal.rb:-
-msgid "PropStatus|Name"
-msgstr "Nombre"
+msgstr "Actividad"
 
 #: app/models/proposal.rb:-
 msgid "proposal"
@@ -335,7 +331,15 @@ msgstr "Horario"
 
 #: app/models/proposal.rb:-
 msgid "Proposal|Conference"
-msgstr "Congreso"
+msgstr "Actividad"
+
+#: app/models/proposal.rb:-
+msgid "prop status"
+msgstr "estado de la propuesta"
+
+#: app/models/proposal.rb:-
+msgid "PropStatus|Name"
+msgstr "Nombre"
 
 #: app/models/participation_type.rb:-
 msgid "participation type"
@@ -351,7 +355,7 @@ msgstr "El controlador %s debe implementar check_auth"
 
 #: app/controllers/application.rb:42
 msgid "Conference listing"
-msgstr "Listado de congresos"
+msgstr "Listado de actividades"
 
 #: app/controllers/application.rb:46
 #: app/views/people/login.rhtml:6
@@ -376,27 +380,27 @@ msgstr "Siguiente &raquo;"
 
 #: app/controllers/conferences_adm_controller.rb:3
 msgid "Registered conferences"
-msgstr "Congresos registrados"
+msgstr "Actividades registradas"
 
 #: app/controllers/conferences_adm_controller.rb:26
 msgid "New conference successfully registered"
-msgstr "El nuevo congreso fue registrada exitosamente"
+msgstr "La nueva actividad fue registrada exitosamente"
 
 #: app/controllers/conferences_adm_controller.rb:28
 msgid "Error registering requested conference: "
-msgstr "Error registrando al congreso indicado:"
+msgstr "Error registrando la actividad indicada:"
 
 #: app/controllers/conferences_adm_controller.rb:36
 msgid "Conference data successfully updated"
-msgstr "Los datos del congreso fueron actualizados exitosamente"
+msgstr "Los datos de la actividad fueron actualizados exitosamente"
 
 #: app/controllers/conferences_adm_controller.rb:45
 msgid "Successfully removed requested conference"
-msgstr "El congreso especificado fue eliminado exitosamente"
+msgstr "La actividad especificada fue eliminada exitosamente"
 
 #: app/controllers/conferences_adm_controller.rb:47
 msgid "Error removing requested conference: "
-msgstr "Error eliminando al congreso solicitado:"
+msgstr "Error eliminando la actividad solicitada:"
 
 #: app/controllers/conferences_adm_controller.rb:51
 #: app/controllers/admin.rb:14
@@ -454,14 +458,14 @@ msgstr "Error eliminando al asistente solicitado:"
 
 #: app/controllers/conferences_controller.rb:22
 msgid "Invalid conference requested"
-msgstr "Especificó un congreso inexistente"
+msgstr "Especificó una actividad inexistente"
 
 #: app/helpers/application_helper.rb:30
 msgid "No items found"
 msgstr "No hay registros que mostrar"
 
 #: app/helpers/application_helper.rb:31
-msgid "Displaying <b>1</b> items"
+msgid "Displaying <b>1</b> item"
 msgstr "Mostrando <b>1</b> registro"
 
 #: app/helpers/application_helper.rb:32
@@ -472,16 +476,16 @@ msgstr "Mostrando <b>todos los %d</b> registros"
 msgid "Displaying items <b>%d&nbsp;-&nbsp;%d</b> of <b>%d</b> in total"
 msgstr "Mostrando los registros <b>%d&nbsp;-&nbsp;%d</b> de un total de <b>%d</b>"
 
-#: app/helpers/application_helper.rb:76
+#: app/helpers/application_helper.rb:74
 msgid "Field %s not defined for %s"
 msgstr "El campo %s no está definido para %s"
 
-#: app/helpers/application_helper.rb:110
+#: app/helpers/application_helper.rb:108
 #: app/views/conferences_adm/list.rhtml:24
 msgid "Yes"
 msgstr "Sí"
 
-#: app/helpers/application_helper.rb:110
+#: app/helpers/application_helper.rb:108
 #: app/views/conferences_adm/list.rhtml:24
 msgid "No"
 msgstr "No"
@@ -550,7 +554,7 @@ msgstr "Crear"
 
 #: app/views/conferences_adm/show.rhtml:1
 msgid "Edit conference data"
-msgstr "Editar los datos del congreso"
+msgstr "Editar los datos de la actividad"
 
 #: app/views/conferences_adm/people_list.rhtml:1
 msgid "People registered for <em>%s</em>"
@@ -562,7 +566,7 @@ msgstr "Tipo de asistente"
 
 #: app/views/conferences_adm/list.rhtml:1
 msgid "List of registered conferences"
-msgstr "Lista de congresos registrados"
+msgstr "Lista de actividades registradas"
 
 #: app/views/conferences_adm/list.rhtml:8
 msgid "Name"
@@ -598,7 +602,7 @@ msgstr "No definido"
 
 #: app/views/conferences_adm/new.rhtml:1
 msgid "Create a new conference"
-msgstr "Registrar un nuevo congreso"
+msgstr "Registrar una nueva actividad"
 
 #: app/views/people/account.rhtml:1
 msgid "Welcome, %s"
@@ -607,7 +611,7 @@ msgstr "Bienvenido, %s"
 #: app/views/people/account.rhtml:4
 #: app/views/conferences/list.rhtml:1
 msgid "Upcoming conferences"
-msgstr "Próximos congresos"
+msgstr "Próximas actividades"
 
 #: app/views/people/login.rhtml:3
 msgid "User name"
@@ -623,7 +627,7 @@ msgstr "Sitio Web"
 
 #: app/views/conferences/_list.rhtml:3
 msgid "Conference"
-msgstr "Congreso"
+msgstr "Actividad"
 
 #: app/views/conferences/_list.rhtml:4
 msgid "Dates"
@@ -703,7 +707,7 @@ msgstr "Administración de asistentes"
 
 #: lib/strings_in_db.rb:30
 msgid "AdminTask|Conferences administration"
-msgstr "Administración de congresos"
+msgstr "Administración de actividades"
 
 #: lib/strings_in_db.rb:31
 msgid "AdminTask|Academic committee"
@@ -723,7 +727,7 @@ msgstr "Roles administrativos"
 
 #: lib/strings_in_db.rb:37
 msgid "Person|Conferences"
-msgstr "Congresos"
+msgstr "Actividades"
 
 #: lib/menu_tree.rb:16
 msgid "Unexpected arguments received: "
