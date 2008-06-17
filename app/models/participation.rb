@@ -1,11 +1,13 @@
 class Participation < ActiveRecord::Base
   belongs_to :person
   belongs_to :conference
-  belongs_to :participation_types
+  belongs_to :participation_type
 
   validates_presence_of :person_id
   validates_presence_of :conference_id
-  validates_presence_of :participation_type_id
+  validate do |part|
+    part.participation_type ||= ParticipationType.default
+  end
   validates_associated :person
   validates_associated :conference
   validates_associated :participation_type

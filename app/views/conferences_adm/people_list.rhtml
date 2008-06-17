@@ -3,17 +3,12 @@
 <%= will_paginate @people %>
 <%= start_table %>
   <%= table_head_row %>
-    <th><%= link_to _('ID'), :sort_by => '' %></th>
-    <th><%= link_to _('First name'), :sort_by => '' %></th>
-    <th><%= link_to _('Family name'), :sort_by => '' %></th>
-    <th><%= link_to _('Attendee type'), :sort_by => '' %></th>
+    <th><%= link_to _('ID'), :sort_by => 'id' %></th>
+    <th><%= link_to _('First name'), :sort_by => 'famname' %></th>
+    <th><%= link_to _('Family name'), :sort_by => 'firstname' %></th>
+    <th><%= link_to _('Attendee type'), :sort_by => 'participation' %></th>
   <% end_table_row %>
   <% @people.each do |pers| %>
-  <%= table_row %>
-    <td><%= pers.id %></td>
-    <td><%= pers.firstname %></td>
-    <td><%= pers.famname %></td>
-    <td><%= _(pers.person_type.qualified_name) %></td>
-  <%= end_table_row %>
+    <%= row_for_attendee_listing(pers) %>
   <% end %>
 <%= end_table %>

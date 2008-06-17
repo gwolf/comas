@@ -1,5 +1,13 @@
 <h1><%= _('Welcome, %s') % @user.name %></h1>
 
+<div id="my-upcoming">
+  <h3><%= _'Next conferences you are signed up for' %></h3>
+  <%= render :partial => 'conferences/list', 
+             :locals => {:confs => @user.conferences} %>
+</div>
+
 <div id="upcoming">
   <h3><%= _'Upcoming conferences' %></h3>
+  <%= render :partial => 'conferences/list', 
+             :locals => {:confs => @upcoming} %>
 </div>

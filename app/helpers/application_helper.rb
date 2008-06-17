@@ -25,10 +25,10 @@ module ApplicationHelper
   # Show a translation-friendly pagination header (similar to WillPaginate's
   # page_entries_info - in fact, derived from it)
   def pagination_header(collection)
-    if collection.page_count < 2
+    if collection.total_pages < 2
       case collection.size
       when 0; _("No items found")
-      when 1; _("Displaying <b>1</b> items")
+      when 1; _("Displaying <b>1</b> item")
       else;   _("Displaying <b>all %d</b> items") % [collection.size]
       end
       else
@@ -36,6 +36,29 @@ module ApplicationHelper
         [ collection.offset + 1,
           collection.offset + collection.length,
           collection.total_entries ]
+    end
+  end
+
+
+  ############################################################
+  # To be shown in different conference listings - Allows a person to
+  # sign up or remove his registration from a conference
+  def sign_up_person_for_conf_link(user, conf)
+    return unless user
+    if user.conferences.include? conf
+      text = link_to(_('Unregister'),
+                     { :controller => 'people',
+                       :action => 'conference_unregister',
+                       :conference_id => conf},
+                     { :method => :post,
+                       :confirm => _('Confirm: Do you want to unregister' <<
+                                     'from "%s"? ') % conf.name})
+    else
+      text = link_to(_('Sign up'),
+                     { :controller => 'people', 
+                       :action => 'conference_sign_up',
+                       :conference_id => conf}, 
+                     { :method => :post })
     end
   end
 

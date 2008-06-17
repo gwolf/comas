@@ -10,18 +10,25 @@ class Conference < ActiveRecord::Base
   validates_presence_of :descr
   validate :dates_are_correct
 
-  def self.upcoming(how_many=5)
-    self.find(:all,
-              :conditions => 'begins > now()', 
-              :order => :begins,
-              :limit => how_many)
+  def self.upcoming(req={})
+    self.paginate(:all,
+                  { :conditions => 'begins > now()', 
+                    :order => :begins,
+                    :page => 1}.merge(req))
   end
 
-  def self.past(how_many=5)
-    self.find(:all, 
-              :conditions => 'begins < now()',
-              :order => 'begins desc',
-              :limit => how_many)
+  def self.upcoming_for_person(person, req={})
+    self.paginate(:all,
+                  { :conditions => ['person_id=? and begins > now()', person],
+                    :order => :begins,
+                    :page => 1}.merge(req))
+  end
+
+  def self.past(req={})
+    self.paginate(:all, 
+                  { :conditions => 'begins < now()',
+                    :order => 'begins desc',
+                    :page => 1}.merge(req))
   end
 
   def accepts_registrations?

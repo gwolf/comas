@@ -6,7 +6,9 @@ class ConferencesController < ApplicationController
   end
 
   def list
-    @conferences = Conference.upcoming
+    per_page = params[:per_page] || 5
+    @conferences = Conference.upcoming(:per_page => per_page, 
+                                       :page => params[:page])
   end
 
   def show
