@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2008-06-16 14:27-0500\n"
-"PO-Revision-Date: 2008-06-16 14:28-0600\n"
+"POT-Creation-Date: 2008-06-16 19:04-0500\n"
+"PO-Revision-Date: 2008-06-16 19:07-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: Gunnar Wolf <gwolf@gwolf.org>\n"
 "MIME-Version: 1.0\n"
@@ -168,28 +168,28 @@ msgstr "Fecha de inicio de actividades"
 msgid "Conference|Finishes"
 msgstr "Fecha de término de actividades"
 
-#: app/models/conference.rb:40
-#: app/models/conference.rb:41
+#: app/models/conference.rb:47
+#: app/models/conference.rb:48
 msgid "%{fn} can't be blank"
 msgstr "%{fn} requiere ser llenado"
 
-#: app/models/conference.rb:44
+#: app/models/conference.rb:51
 msgid "Conference must end after its start date"
 msgstr "La actividad debe terminar después de su fecha de inicio"
 
-#: app/models/conference.rb:47
+#: app/models/conference.rb:54
 msgid "Call for papers must end after its start date"
 msgstr "La convocatoria de participación debe concluir después de su fecha de inicio"
 
-#: app/models/conference.rb:50
+#: app/models/conference.rb:57
 msgid "Call for papers must finish before the conference begins"
 msgstr "La convocatoria de participación debe concluir antes de que inicie la actividad"
 
-#: app/models/conference.rb:54
+#: app/models/conference.rb:61
 msgid "Registration must end after its start date"
 msgstr "El registro debe concluir después de su fecha de inicio"
 
-#: app/models/conference.rb:57
+#: app/models/conference.rb:64
 msgid "Registration must finish before the conference ends"
 msgstr "El registro debe finalizar antes de que la actividad concluya"
 
@@ -424,6 +424,22 @@ msgstr "La nueva persona fue registrada exitosamente"
 msgid "Could not register person: "
 msgstr "No fue posible registrar a la persona especificada:"
 
+#: app/controllers/people_controller.rb:63
+msgid "You have successfully registered for "
+msgstr "Fue registrado exitosamente para "
+
+#: app/controllers/people_controller.rb:66
+msgid "Could not register you for conference %s: %s"
+msgstr "No fue posible registrarlo para «%s»: %s"
+
+#: app/controllers/people_controller.rb:80
+msgid "You have successfully unregistered from "
+msgstr "Su registro fue eliminado exitosamente de "
+
+#: app/controllers/people_controller.rb:83
+msgid "Could not unregister you from conference %s: %s"
+msgstr "No fue posible cancelar su registro de «%s»: %s"
+
 #: app/controllers/admin.rb:10
 msgid "Access denied"
 msgstr "Acceso denegado"
@@ -456,7 +472,7 @@ msgstr "El asistente especificado fue eliminado exitosamente"
 msgid "Error removing requested attendee: "
 msgstr "Error eliminando al asistente solicitado:"
 
-#: app/controllers/conferences_controller.rb:22
+#: app/controllers/conferences_controller.rb:24
 msgid "Invalid conference requested"
 msgstr "Especificó una actividad inexistente"
 
@@ -476,16 +492,28 @@ msgstr "Mostrando <b>todos los %d</b> registros"
 msgid "Displaying items <b>%d&nbsp;-&nbsp;%d</b> of <b>%d</b> in total"
 msgstr "Mostrando los registros <b>%d&nbsp;-&nbsp;%d</b> de un total de <b>%d</b>"
 
-#: app/helpers/application_helper.rb:74
+#: app/helpers/application_helper.rb:49
+msgid "Unregister"
+msgstr "Cancelar registro"
+
+#: app/helpers/application_helper.rb:54
+msgid "Confirm: Do you want to unregister"
+msgstr "Confirme: ¿Seguro que desea cancelar su registro?"
+
+#: app/helpers/application_helper.rb:57
+msgid "Sign up"
+msgstr "regístrese"
+
+#: app/helpers/application_helper.rb:97
 msgid "Field %s not defined for %s"
 msgstr "El campo %s no está definido para %s"
 
-#: app/helpers/application_helper.rb:108
+#: app/helpers/application_helper.rb:131
 #: app/views/conferences_adm/list.rhtml:24
 msgid "Yes"
 msgstr "Sí"
 
-#: app/helpers/application_helper.rb:108
+#: app/helpers/application_helper.rb:131
 #: app/views/conferences_adm/list.rhtml:24
 msgid "No"
 msgstr "No"
@@ -609,6 +637,10 @@ msgid "Welcome, %s"
 msgstr "Bienvenido, %s"
 
 #: app/views/people/account.rhtml:4
+msgid "Next conferences you are signed up for"
+msgstr "Próximas actividades para las cuales usted está registrado"
+
+#: app/views/people/account.rhtml:10
 #: app/views/conferences/list.rhtml:1
 msgid "Upcoming conferences"
 msgstr "Próximas actividades"
@@ -632,6 +664,18 @@ msgstr "Actividad"
 #: app/views/conferences/_list.rhtml:4
 msgid "Dates"
 msgstr "Fechas"
+
+#: app/views/conferences/list.rhtml:4
+msgid "To register for any of the conferences shown, please %s or %s"
+msgstr "Para registrarse para alguna de las actividades aquí mostradas, por favor %s o %s"
+
+#: app/views/conferences/list.rhtml:5
+msgid "create a new account"
+msgstr "Registrar una nueva cuenta"
+
+#: app/views/conferences/list.rhtml:7
+msgid "log in to your account"
+msgstr "entre a su cuenta"
 
 #: app/views/layouts/application.rhtml:56
 msgid "Log out"
