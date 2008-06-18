@@ -45,18 +45,24 @@ module ApplicationHelper
   # sign up or remove his registration from a conference
   def sign_up_person_for_conf_link(user, conf)
     return unless user
+
+    if ! conf.accepts_registrations?
+      return _('Registered') if user.conferences.include?(conf)
+      return _('Registration closed')
+    end
+
     if user.conferences.include? conf
-      text = link_to(_('Unregister'),
-                     { :controller => 'people',
-                       :action => 'conference_unregister',
+      return link_to(_('Unregister'),
+                     { :controller => 'conferences',
+                       :action => 'unregister',
                        :conference_id => conf},
                      { :method => :post,
-                       :confirm => _('Confirm: Do you want to unregister' <<
+                       :confirm => _('Confirm: Do you want to unregister ' +
                                      'from "%s"? ') % conf.name})
     else
-      text = link_to(_('Sign up'),
-                     { :controller => 'people', 
-                       :action => 'conference_sign_up',
+      return link_to(_('Sign up'),
+                     { :controller => 'conferences', 
+                       :action => 'sign_up',
                        :conference_id => conf}, 
                      { :method => :post })
     end

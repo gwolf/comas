@@ -11,3 +11,10 @@
 <%= pagination_header @conferences %>
 <%= will_paginate @conferences %>
 <%= render :partial => 'list', :locals => {:confs => @conferences } %>
+<div class="note">
+  <% if session[:conf_list_include_past] %>
+    <%= link_to _('Hide past conferences'), :hide_old => 1 %>
+  <% else %>
+    <%= link_to _('Show also past conferences'), :show_old => 1 %>
+  <% end %>
+</div>

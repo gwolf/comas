@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2008-06-16 19:04-0500\n"
+"POT-Creation-Date: 2008-06-18 13:52-0500\n"
 "PO-Revision-Date: 2008-05-07 18:30-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -171,28 +171,32 @@ msgstr ""
 msgid "Conference|Finishes"
 msgstr ""
 
-#: app/models/conference.rb:47 app/models/conference.rb:48
+#: app/models/conference.rb:100 app/models/conference.rb:101
 msgid "%{fn} can't be blank"
 msgstr ""
 
-#: app/models/conference.rb:51
+#: app/models/conference.rb:104
 msgid "Conference must end after its start date"
 msgstr ""
 
-#: app/models/conference.rb:54
+#: app/models/conference.rb:107
 msgid "Call for papers must end after its start date"
 msgstr ""
 
-#: app/models/conference.rb:57
+#: app/models/conference.rb:110
 msgid "Call for papers must finish before the conference begins"
 msgstr ""
 
-#: app/models/conference.rb:61
+#: app/models/conference.rb:114
 msgid "Registration must end after its start date"
 msgstr ""
 
-#: app/models/conference.rb:64
+#: app/models/conference.rb:117
 msgid "Registration must finish before the conference ends"
+msgstr ""
+
+#: app/models/conference.rb:128
+msgid "There are %d timeslots for this conference outside its time span: %s"
 msgstr ""
 
 #: app/models/attendance.rb:-
@@ -251,6 +255,10 @@ msgstr ""
 msgid "Timeslot|Conference"
 msgstr ""
 
+#: app/models/timeslot.rb:19
+msgid "Must start within the conference dates (%s - %s)"
+msgstr ""
+
 #: app/models/authorship.rb:-
 msgid "authorship"
 msgstr ""
@@ -300,6 +308,14 @@ msgid "ConferenceLogo|Conference"
 msgstr ""
 
 #: app/models/proposal.rb:-
+msgid "prop status"
+msgstr ""
+
+#: app/models/proposal.rb:-
+msgid "PropStatus|Name"
+msgstr ""
+
+#: app/models/proposal.rb:-
 msgid "proposal"
 msgstr ""
 
@@ -333,14 +349,6 @@ msgstr ""
 
 #: app/models/proposal.rb:-
 msgid "Proposal|Conference"
-msgstr ""
-
-#: app/models/proposal.rb:-
-msgid "prop status"
-msgstr ""
-
-#: app/models/proposal.rb:-
-msgid "PropStatus|Name"
 msgstr ""
 
 #: app/models/participation_type.rb:-
@@ -424,20 +432,12 @@ msgstr ""
 msgid "Could not register person: "
 msgstr ""
 
-#: app/controllers/people_controller.rb:63
-msgid "You have successfully registered for "
+#: app/controllers/attendance_adm_controller.rb:2
+msgid "Choose current session"
 msgstr ""
 
-#: app/controllers/people_controller.rb:66
-msgid "Could not register you for conference %s: %s"
-msgstr ""
-
-#: app/controllers/people_controller.rb:80
-msgid "You have successfully unregistered from "
-msgstr ""
-
-#: app/controllers/people_controller.rb:83
-msgid "Could not unregister you from conference %s: %s"
+#: app/controllers/attendance_adm_controller.rb:3
+msgid "Take attendance"
 msgstr ""
 
 #: app/controllers/admin.rb:10
@@ -472,7 +472,33 @@ msgstr ""
 msgid "Error removing requested attendee: "
 msgstr ""
 
-#: app/controllers/conferences_controller.rb:24
+#: app/controllers/conferences_controller.rb:33
+msgid "You have successfully registered for conference \"%s\""
+msgstr ""
+
+#: app/controllers/conferences_controller.rb:36
+msgid "Could not register you for conference %s: %s"
+msgstr ""
+
+#: app/controllers/conferences_controller.rb:48
+msgid "You have successfully unregistered from conference \"%s\""
+msgstr ""
+
+#: app/controllers/conferences_controller.rb:51
+msgid "Could not unregister you from conference %s: %s"
+msgstr ""
+
+#: app/controllers/conferences_controller.rb:63
+msgid ""
+"This conference does not currently accept changing your registration status "
+"- please visit %s for more details"
+msgstr ""
+
+#: app/controllers/conferences_controller.rb:66
+msgid "its information page"
+msgstr ""
+
+#: app/controllers/conferences_controller.rb:78
 msgid "Invalid conference requested"
 msgstr ""
 
@@ -492,28 +518,36 @@ msgstr ""
 msgid "Displaying items <b>%d&nbsp;-&nbsp;%d</b> of <b>%d</b> in total"
 msgstr ""
 
-#: app/helpers/application_helper.rb:49
+#: app/helpers/application_helper.rb:50
+msgid "Registered"
+msgstr ""
+
+#: app/helpers/application_helper.rb:51
+msgid "Registration closed"
+msgstr ""
+
+#: app/helpers/application_helper.rb:55
 msgid "Unregister"
 msgstr ""
 
-#: app/helpers/application_helper.rb:54
-msgid "Confirm: Do you want to unregister"
+#: app/helpers/application_helper.rb:60
+msgid "Confirm: Do you want to unregister from \"%s\"? "
 msgstr ""
 
-#: app/helpers/application_helper.rb:57
+#: app/helpers/application_helper.rb:63
 msgid "Sign up"
 msgstr ""
 
-#: app/helpers/application_helper.rb:97
+#: app/helpers/application_helper.rb:103
 msgid "Field %s not defined for %s"
 msgstr ""
 
-#: app/helpers/application_helper.rb:131
+#: app/helpers/application_helper.rb:137
 #: app/views/conferences_adm/list.rhtml:24
 msgid "Yes"
 msgstr ""
 
-#: app/helpers/application_helper.rb:131
+#: app/helpers/application_helper.rb:137
 #: app/views/conferences_adm/list.rhtml:24
 msgid "No"
 msgstr ""
@@ -669,6 +703,14 @@ msgstr ""
 
 #: app/views/conferences/list.rhtml:7
 msgid "log in to your account"
+msgstr ""
+
+#: app/views/conferences/list.rhtml:16
+msgid "Hide past conferences"
+msgstr ""
+
+#: app/views/conferences/list.rhtml:18
+msgid "Show also past conferences"
 msgstr ""
 
 #: app/views/layouts/application.rhtml:56

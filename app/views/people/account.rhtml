@@ -3,7 +3,7 @@
 <div id="my-upcoming">
   <h3><%= _'Next conferences you are signed up for' %></h3>
   <%= render :partial => 'conferences/list', 
-             :locals => {:confs => @user.conferences} %>
+             :locals => {:confs => @mine} %>
 </div>
 
 <div id="upcoming">
