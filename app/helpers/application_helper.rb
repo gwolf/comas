@@ -72,7 +72,8 @@ module ApplicationHelper
   # Form builders
   class ComasFormBuilder < ActionView::Helpers::FormBuilder
     include GetText
-    (field_helpers - %w(check_box radio_button select 
+    (%w(date_field) +
+     field_helpers - %w(check_box radio_button select 
                         hidden_field)).each do |fldtype|
       src = <<-END_SRC
         def #{fldtype}(field, options={})
@@ -137,7 +138,10 @@ module ApplicationHelper
         return radio_group(field, [[_('Yes'), true], [_('No'), false]], 
                            options)
 
-      when :date, :time, :datetime
+      when :date
+        return date_field(field, options)
+
+      when :time, :datetime
         return text_field(field, {:note => "Lazy bum, finish your code"})
 
       else

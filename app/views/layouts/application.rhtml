@@ -7,9 +7,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%  headers["Content-Type"] = "text/html; charset=utf-8" %>
 <%= stylesheet_link_tag('http://lafa.iiec.unam.mx/css_iiec/style.css',
-		        '/stylesheets/comas.css') %>
+		        'comas.css',
+			'calendar.css') %>
 
 <title><%= @title %></title>
+<%= javascript_include_tag 'calendar' %>
 <script type="text/javascript"
 	src="http://lafa.iiec.unam.mx/css_iiec/x.js"></script> 
 <script type="text/javascript">

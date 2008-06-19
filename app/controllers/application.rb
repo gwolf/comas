@@ -5,6 +5,10 @@ require 'pseudo_gettext'
 class ApplicationController < ActionController::Base
   init_gettext 'comas'
 
+  # Load the Rails Date Kit helpers
+  # (http://www.methods.co.nz/rails_date_kit/rails_date_kit.html)
+  helper :date
+
   # Pick a unique cookie name to distinguish our session data from others'
   session :session_key => '_comas_session_id'
 
