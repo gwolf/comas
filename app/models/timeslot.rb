@@ -11,6 +11,15 @@ class Timeslot < ActiveRecord::Base
   validates_associated :room, :conference
   validate :during_conference_days
 
+  # Returns all of the timeslots for the specified date, ordered by
+  # start time
+  def self.for_day(date)
+    self.find(:all, 
+              :conditions => ['start_time BETWEEN ? and ?',
+                              date.beginning_of_day, date.end_of_day],
+              :order => :start_time)
+  end
+
   protected
   def during_conference_days
     conf = self.conference

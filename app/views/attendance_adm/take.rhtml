@@ -1,0 +1,23 @@
+<h1><%= _ 'Take attendance' %></h1>
+<p class="note">
+  <%= _('Taking attendance for session starting at %s, belonging '+
+        'to <em>%s</em>') % [@tslot.start_time, @tslot.conference.name]
+        %>
+</p>
+<% form_tag url_for(:action => 'take', :id => @tslot.id),
+            :id => 'take_attendance' do %>
+  <%= text_field_tag('person_id', nil, :class => 'attendance-fld', :size => 6) %>
+  <%= submit_tag _('Save attendance') %>
+<% end %>
+<script language="JavaScript"> 
+  document.getElementById("take_attendance").elements[0].focus()
+</script>
+
+<div id="last-attendances">
+<h3><%= _'Last attendances registered for this timeslot' %></h3>
+<ul>
+  <% @last_att.each do |att| %>
+  <li>(<%= att.created_at.strftime('%d/%m/%Y %H:%M:%S') %>) <%= att.person.name %></li>
+  <% end %>
+</ul>
+</div>
