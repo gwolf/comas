@@ -11,14 +11,14 @@ class Conference < ActiveRecord::Base
   validate :dates_are_correct
   validate :timeslots_during_conference
 
-  # Produce a paginated list of conferences which have not yet begun,
-  # ordered by their beginning date (i.e. the closest first)
+  # Produce a paginated list of conferences which have not yet
+  # finished, ordered by their beginning date (i.e. the closest first)
   # 
   # It can take whatever parameters you would send to a
   # WillPaginate#paginate call.
   def self.upcoming(req={})
     self.paginate(:all,
-                  { :conditions => 'begins > now()', 
+                  { :conditions => 'finishes >= now()::date', 
                     :order => :begins,
                     :page => 1}.merge(req))
   end

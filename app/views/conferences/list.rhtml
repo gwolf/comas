@@ -1,4 +1,11 @@
-<h1><%= _'Upcoming conferences' %></h1>
+<% if session[:conf_list_include_past] 
+     title = _'Registered conferences'
+     link = link_to _('Hide past conferences'), :hide_old => 1
+   else
+     title = _'Upcoming conferences'
+     link = link_to _('Show also past conferences'), :show_old => 1 
+   end %>
+<h1><%= title %></h1>
 <% if @user.nil? %>
 <p class="note">
   <%= _('To register for any of the conferences shown, please %s or %s') %
@@ -11,10 +18,4 @@
 <%= pagination_header @conferences %>
 <%= will_paginate @conferences %>
 <%= render :partial => 'list', :locals => {:confs => @conferences } %>
-<div class="note">
-  <% if session[:conf_list_include_past] %>
-    <%= link_to _('Hide past conferences'), :hide_old => 1 %>
-  <% else %>
-    <%= link_to _('Show also past conferences'), :show_old => 1 %>
-  <% end %>
-</div>
+<div class="note"><%= link %></div>

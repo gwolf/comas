@@ -1,4 +1,15 @@
 <h1><%= @conference.name %></h1>
+<% if @can_edit %>
+  <div class="note">
+    <%= link_to(_('%d registered attendees') % @conference.people.size,
+	        :controller => 'conferences_adm', 
+                :action => 'people_list', :id => @conference) %>
+    |
+    <%= link_to(_('Edit conference'), :controller => 'conferences_adm',
+                 :action => :show, :id => @conference) %>
+  </div>
+<% end %>
+
 <p><%= @conference.descr %></p>
 
 <p><%= @conference.begins %> - <%= @conference.finishes %></p>

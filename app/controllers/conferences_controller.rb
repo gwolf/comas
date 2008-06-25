@@ -19,6 +19,7 @@ class ConferencesController < ApplicationController
   end
 
   def show
+    @can_edit = true if @user.has_admin_task? 'conferences_adm'
   end
 
   ############################################################
