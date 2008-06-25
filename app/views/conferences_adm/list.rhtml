@@ -9,7 +9,6 @@
     <th><%= link_to _('Begins at'), :sort_by => 'begins' %></th>
     <th><%= link_to _('Registration opens'), 
 	              :sort_by => 'reg_open_date' %></th>
-    <th><%= link_to _('Active'), :sort_by => 'active' %></th>
     <th><%= _('Registered attendees') %></th>
     <th><%= _('Homepage') %></th>
     <th></th>
@@ -21,7 +20,6 @@
     <td><%= link_to h(conf.name), :action => 'show', :id => conf %></td>
     <td><%= conf.begins %></td>
     <td><%= conf.reg_open_date %></td>
-    <td><%= conf.active ? _('Yes') : _('No') %></td>
     <td><%= link_to_if(att_num > 0, att_num, 
                        { :action => 'people_list', :id => conf }) %></td>
     <td><%= if !conf.homepage.blank? 

@@ -5,7 +5,6 @@ class Multiconferences < ActiveRecord::Migration
     create_table :conferences do |t|
       t.column :name, :string, :null => false
       t.column :descr, :text, :null => false
-      t.column :active, :bool, :default => true, :null => false
       t.column :homepage, :string
       t.column :reg_open_date, :date
       t.column :reg_close_date, :date

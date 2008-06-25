@@ -19,7 +19,6 @@ class ConferencesController < ApplicationController
   end
 
   def show
-    redirect_to :list if !@conference.active?
   end
 
   ############################################################
