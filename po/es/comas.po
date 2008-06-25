@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2008-06-18 13:52-0500\n"
-"PO-Revision-Date: 2008-06-18 13:52-0600\n"
+"POT-Creation-Date: 2008-06-25 13:12-0500\n"
+"PO-Revision-Date: 2008-06-25 13:12-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: Gunnar Wolf <gwolf@gwolf.org>\n"
 "MIME-Version: 1.0\n"
@@ -137,10 +137,6 @@ msgid "Conference|Descr"
 msgstr "Descripción"
 
 #: app/models/conference.rb:-
-msgid "Conference|Active"
-msgstr "Activo"
-
-#: app/models/conference.rb:-
 msgid "Conference|Homepage"
 msgstr "Página de inicio"
 
@@ -168,8 +164,7 @@ msgstr "Fecha de inicio de actividades"
 msgid "Conference|Finishes"
 msgstr "Fecha de término de actividades"
 
-#: app/models/conference.rb:100
-#: app/models/conference.rb:101
+#: app/models/conference.rb:100 app/models/conference.rb:101
 msgid "%{fn} can't be blank"
 msgstr "%{fn} requiere ser llenado"
 
@@ -179,11 +174,14 @@ msgstr "La actividad debe terminar después de su fecha de inicio"
 
 #: app/models/conference.rb:107
 msgid "Call for papers must end after its start date"
-msgstr "La convocatoria de participación debe concluir después de su fecha de inicio"
+msgstr ""
+"La convocatoria de participación debe concluir después de su fecha de inicio"
 
 #: app/models/conference.rb:110
 msgid "Call for papers must finish before the conference begins"
-msgstr "La convocatoria de participación debe concluir antes de que inicie la actividad"
+msgstr ""
+"La convocatoria de participación debe concluir antes de que inicie la "
+"actividad"
 
 #: app/models/conference.rb:114
 msgid "Registration must end after its start date"
@@ -212,6 +210,10 @@ msgstr "Persona"
 #: app/models/attendance.rb:-
 msgid "Attendance|Timeslot"
 msgstr "Horario"
+
+#: app/models/attendance.rb:10
+msgid "Requested person already registered for this timeslot"
+msgstr "La persona especificada ya había sido registrada para esta sesión"
 
 #: app/models/participation.rb:-
 msgid "participation"
@@ -253,7 +255,7 @@ msgstr "Cuarto"
 msgid "Timeslot|Conference"
 msgstr "Actividad"
 
-#: app/models/timeslot.rb:19
+#: app/models/timeslot.rb:47
 msgid "Must start within the conference dates (%s - %s)"
 msgstr "Debe iniciar dentro de las fechas de su actividad (%s - %s)"
 
@@ -306,14 +308,6 @@ msgid "ConferenceLogo|Conference"
 msgstr "Actividad"
 
 #: app/models/proposal.rb:-
-msgid "prop status"
-msgstr "estado de la propuesta"
-
-#: app/models/proposal.rb:-
-msgid "PropStatus|Name"
-msgstr "Nombre"
-
-#: app/models/proposal.rb:-
 msgid "proposal"
 msgstr "propuesta"
 
@@ -349,6 +343,14 @@ msgstr "Horario"
 msgid "Proposal|Conference"
 msgstr "Actividad"
 
+#: app/models/proposal.rb:-
+msgid "prop status"
+msgstr "estado de la propuesta"
+
+#: app/models/proposal.rb:-
+msgid "PropStatus|Name"
+msgstr "Nombre"
+
 #: app/models/participation_type.rb:-
 msgid "participation type"
 msgstr "tipo de participación"
@@ -357,36 +359,36 @@ msgstr "tipo de participación"
 msgid "ParticipationType|Name"
 msgstr "Nombre"
 
-#: app/controllers/application.rb:25
+#: app/controllers/application.rb:29
 msgid "Controller %s must implement check_auth"
 msgstr "El controlador %s debe implementar check_auth"
 
-#: app/controllers/application.rb:42
+#: app/controllers/application.rb:46
 msgid "Conference listing"
 msgstr "Listado de actividades"
 
-#: app/controllers/application.rb:46
-#: app/views/people/login.rhtml:6
+#: app/controllers/application.rb:50 app/views/people/login.rhtml:6
 msgid "Log in"
 msgstr "Entrar"
 
-#: app/controllers/application.rb:48
+#: app/controllers/application.rb:52
 msgid "New account"
 msgstr "Nueva cuenta"
 
-#: app/controllers/application.rb:51
+#: app/controllers/application.rb:55
 msgid "My account"
 msgstr "Mi cuenta"
 
-#: app/controllers/application.rb:73
+#: app/controllers/application.rb:77
 msgid "&laquo; Previous"
 msgstr "&laquo; Anterior"
 
-#: app/controllers/application.rb:74
+#: app/controllers/application.rb:78
 msgid "Next &raquo;"
 msgstr "Siguiente &raquo;"
 
 #: app/controllers/conferences_adm_controller.rb:3
+#: app/views/conferences/list.rhtml:3
 msgid "Registered conferences"
 msgstr "Actividades registradas"
 
@@ -411,8 +413,7 @@ msgid "Error removing requested conference: "
 msgstr "Error eliminando la actividad solicitada:"
 
 #: app/controllers/conferences_adm_controller.rb:51
-#: app/controllers/admin.rb:14
-#: app/controllers/people_adm_controller.rb:53
+#: app/controllers/admin.rb:14 app/controllers/people_adm_controller.rb:53
 msgid "Invocation error"
 msgstr "Error de invocación"
 
@@ -433,12 +434,36 @@ msgid "Could not register person: "
 msgstr "No fue posible registrar a la persona especificada:"
 
 #: app/controllers/attendance_adm_controller.rb:2
-msgid "Choose current session"
-msgstr "Elegir la sesión actual"
+msgid "Choose a timeslot"
+msgstr "Elegir sesión"
 
 #: app/controllers/attendance_adm_controller.rb:3
+#: app/views/attendance_adm/take.rhtml:1
 msgid "Take attendance"
 msgstr "Tomar asistencia"
+
+#: app/controllers/attendance_adm_controller.rb:23
+msgid "Please select a timeslot to take attendance for"
+msgstr "Seleccione una sesión para la cual tomar asistencia"
+
+#: app/controllers/attendance_adm_controller.rb:34
+msgid "Requested person (%d) does not exist"
+msgstr "La persona especificada (%d) no existe"
+
+#: app/controllers/attendance_adm_controller.rb:58
+msgid ""
+"Person <em>%s</em> was not yet registered for this conference - Registering."
+msgstr ""
+"La persona <em>%s</em> no estaba aún registrada para esta actividad - "
+"Registrando."
+
+#: app/controllers/attendance_adm_controller.rb:63
+msgid "Attendance successfully registered"
+msgstr "La asistencia fue registrada exitosamente"
+
+#: app/controllers/attendance_adm_controller.rb:65
+msgid "Could not register person <em>%s</em> for this timeslot: %s"
+msgstr "No fue posible registrar a la persona <em>%s</em> para esta sesión: %s"
 
 #: app/controllers/admin.rb:10
 msgid "Access denied"
@@ -489,8 +514,12 @@ msgid "Could not unregister you from conference %s: %s"
 msgstr "No fue posible cancelar su registro de «%s»: %s"
 
 #: app/controllers/conferences_controller.rb:63
-msgid "This conference does not currently accept changing your registration status - please visit %s for more details"
-msgstr "En este momento, es imposible cambiar su estado de registro para esta actividad. Por favor, visite %s para mayores informes."
+msgid ""
+"This conference does not currently accept changing your registration status "
+"- please visit %s for more details"
+msgstr ""
+"En este momento, es imposible cambiar su estado de registro para esta "
+"actividad. Por favor, visite %s para mayores informes."
 
 #: app/controllers/conferences_controller.rb:66
 msgid "its information page"
@@ -500,55 +529,103 @@ msgstr "su página de información"
 msgid "Invalid conference requested"
 msgstr "Especificó una actividad inexistente"
 
-#: app/helpers/application_helper.rb:30
+#: app/helpers/application_helper.rb:45
 msgid "No items found"
 msgstr "No hay registros que mostrar"
 
-#: app/helpers/application_helper.rb:31
+#: app/helpers/application_helper.rb:46
 msgid "Displaying <b>1</b> item"
 msgstr "Mostrando <b>1</b> registro"
 
-#: app/helpers/application_helper.rb:32
+#: app/helpers/application_helper.rb:47
 msgid "Displaying <b>all %d</b> items"
 msgstr "Mostrando <b>todos los %d</b> registros"
 
-#: app/helpers/application_helper.rb:35
-msgid "Displaying items <b>%d&nbsp;-&nbsp;%d</b> of <b>%d</b> in total"
-msgstr "Mostrando los registros <b>%d&nbsp;-&nbsp;%d</b> de un total de <b>%d</b>"
-
 #: app/helpers/application_helper.rb:50
+msgid "Displaying items <b>%d&nbsp;-&nbsp;%d</b> of <b>%d</b> in total"
+msgstr ""
+"Mostrando los registros <b>%d&nbsp;-&nbsp;%d</b> de un total de <b>%d</b>"
+
+#: app/helpers/application_helper.rb:65
 msgid "Registered"
 msgstr "Registrado"
 
-#: app/helpers/application_helper.rb:51
+#: app/helpers/application_helper.rb:66
 msgid "Registration closed"
 msgstr "Registro cerrado"
 
-#: app/helpers/application_helper.rb:55
+#: app/helpers/application_helper.rb:70
 msgid "Unregister"
 msgstr "Cancelar registro"
 
-#: app/helpers/application_helper.rb:60
+#: app/helpers/application_helper.rb:75
 msgid "Confirm: Do you want to unregister from \"%s\"? "
 msgstr "Confirme: ¿Seguro que desea cancelar su registro de «%s»?"
 
-#: app/helpers/application_helper.rb:63
+#: app/helpers/application_helper.rb:78
 msgid "Sign up"
 msgstr "Registrarme"
 
-#: app/helpers/application_helper.rb:103
+#: app/helpers/application_helper.rb:119
 msgid "Field %s not defined for %s"
 msgstr "El campo %s no está definido para %s"
 
-#: app/helpers/application_helper.rb:137
-#: app/views/conferences_adm/list.rhtml:24
+#: app/helpers/application_helper.rb:153
 msgid "Yes"
 msgstr "Sí"
 
-#: app/helpers/application_helper.rb:137
-#: app/views/conferences_adm/list.rhtml:24
+#: app/helpers/application_helper.rb:153
 msgid "No"
 msgstr "No"
+
+#: app/helpers/attendance_adm_helper.rb:18 app/views/conferences/_list.rhtml:3
+msgid "Conference"
+msgstr "Actividad"
+
+#: app/helpers/attendance_adm_helper.rb:18
+msgid "Room"
+msgstr "Cuarto"
+
+#: app/helpers/attendance_adm_helper.rb:18
+msgid "Start time"
+msgstr "Hora de inicio"
+
+#: app/helpers/attendance_adm_helper.rb:29
+msgid "Choose"
+msgstr "Elegir"
+
+#: app/views/attendance_adm/choose_session.rhtml:1
+msgid "Choose a session to take attendance for"
+msgstr "Elija una sesión para tomar asistencia"
+
+#: app/views/attendance_adm/choose_session.rhtml:4
+msgid "%d total registered timeslots"
+msgstr "%d sesiones registradas en total"
+
+#: app/views/attendance_adm/choose_session.rhtml:5
+msgid "Show only today's timeslots"
+msgstr "Mostrar únicamente las sesiones de hoy"
+
+#: app/views/attendance_adm/choose_session.rhtml:8
+msgid "%d timeslots for today"
+msgstr "%d sesiones registradas para hoy"
+
+#: app/views/attendance_adm/choose_session.rhtml:9
+msgid "Show all registered timeslots"
+msgstr "Mostrar todas las sesiones registradas"
+
+#: app/views/attendance_adm/take.rhtml:3
+msgid "Taking attendance for session starting at %s, belonging to <em>%s</em>"
+msgstr ""
+"Tomando asistencia para la sesión iniciada el %s, perteneciente a <em>%s</em>"
+
+#: app/views/attendance_adm/take.rhtml:10
+msgid "Save attendance"
+msgstr "Registrar la asistencia"
+
+#: app/views/attendance_adm/take.rhtml:17
+msgid "Last attendances registered for this timeslot"
+msgstr "Últimas asistencias registradas para esta sesión"
 
 #: app/views/people_adm/by_task.rhtml:1
 msgid "Registered people with administrative tasks"
@@ -558,8 +635,7 @@ msgstr "Personas registradas con roles administrativos"
 msgid "Attendee %d's personal data"
 msgstr "Datos personales del asistente %d"
 
-#: app/views/people_adm/show.rhtml:3
-#: app/views/conferences_adm/show.rhtml:3
+#: app/views/people_adm/show.rhtml:3 app/views/conferences_adm/show.rhtml:3
 msgid "Save changes"
 msgstr "Grabar cambios"
 
@@ -567,8 +643,7 @@ msgstr "Grabar cambios"
 msgid "Attendee administration"
 msgstr "Administración de asistentes"
 
-#: app/views/people_adm/list.rhtml:3
-#: app/views/conferences_adm/list.rhtml:3
+#: app/views/people_adm/list.rhtml:3 app/views/conferences_adm/list.rhtml:3
 msgid "Register new"
 msgstr "Registrar nuevo"
 
@@ -592,13 +667,11 @@ msgstr "Apellidos"
 msgid "Last login at"
 msgstr "Última entrada"
 
-#: app/views/people_adm/list.rhtml:19
-#: app/views/conferences_adm/list.rhtml:32
+#: app/views/people_adm/list.rhtml:19 app/views/conferences_adm/list.rhtml:30
 msgid "Delete"
 msgstr "Eliminar"
 
-#: app/views/people_adm/list.rhtml:21
-#: app/views/conferences_adm/list.rhtml:33
+#: app/views/people_adm/list.rhtml:21 app/views/conferences_adm/list.rhtml:31
 msgid "Are you sure you want to permanently delete %s?"
 msgstr "¿Está seguro de que desea eliminar permanentemente a %s?"
 
@@ -606,8 +679,7 @@ msgstr "¿Está seguro de que desea eliminar permanentemente a %s?"
 msgid "Register a new attendee"
 msgstr "Registrar a un nuevo asistente"
 
-#: app/views/people_adm/new.rhtml:3
-#: app/views/conferences_adm/new.rhtml:3
+#: app/views/people_adm/new.rhtml:3 app/views/conferences_adm/new.rhtml:3
 #: app/views/people/new.rhtml:10
 msgid "Create"
 msgstr "Crear"
@@ -641,22 +713,18 @@ msgid "Registration opens"
 msgstr "Inicio del registro"
 
 #: app/views/conferences_adm/list.rhtml:12
-msgid "Active"
-msgstr "Activo"
-
-#: app/views/conferences_adm/list.rhtml:13
 msgid "Registered attendees"
 msgstr "Asistentes registrados"
 
-#: app/views/conferences_adm/list.rhtml:14
+#: app/views/conferences_adm/list.rhtml:13
 msgid "Homepage"
 msgstr "Página Web"
 
-#: app/views/conferences_adm/list.rhtml:28
+#: app/views/conferences_adm/list.rhtml:26
 msgid "Visit"
 msgstr "Visitar"
 
-#: app/views/conferences_adm/list.rhtml:30
+#: app/views/conferences_adm/list.rhtml:28
 msgid "Not defined"
 msgstr "No definido"
 
@@ -672,8 +740,7 @@ msgstr "Bienvenido, %s"
 msgid "Next conferences you are signed up for"
 msgstr "Próximas actividades para las cuales usted está registrado"
 
-#: app/views/people/account.rhtml:10
-#: app/views/conferences/list.rhtml:1
+#: app/views/people/account.rhtml:10 app/views/conferences/list.rhtml:6
 msgid "Upcoming conferences"
 msgstr "Próximas actividades"
 
@@ -685,39 +752,45 @@ msgstr "Nombre de usuario"
 msgid "Password"
 msgstr "Contraseña"
 
-#: app/views/conferences/show.rhtml:7
+#: app/views/conferences/show.rhtml:4
+msgid "%d registered attendees"
+msgstr "%d asistentes registrados"
+
+#: app/views/conferences/show.rhtml:8
+msgid "Edit conference"
+msgstr "Editar la actividad"
+
+#: app/views/conferences/show.rhtml:18
 msgid "Web site"
 msgstr "Sitio Web"
-
-#: app/views/conferences/_list.rhtml:3
-msgid "Conference"
-msgstr "Actividad"
 
 #: app/views/conferences/_list.rhtml:4
 msgid "Dates"
 msgstr "Fechas"
 
-#: app/views/conferences/list.rhtml:4
-msgid "To register for any of the conferences shown, please %s or %s"
-msgstr "Para registrarse para alguna de las actividades aquí mostradas, por favor %s o %s"
-
-#: app/views/conferences/list.rhtml:5
-msgid "create a new account"
-msgstr "Registrar una nueva cuenta"
-
-#: app/views/conferences/list.rhtml:7
-msgid "log in to your account"
-msgstr "entre a su cuenta"
-
-#: app/views/conferences/list.rhtml:16
+#: app/views/conferences/list.rhtml:3
 msgid "Hide past conferences"
 msgstr "Ocultar las actividades pasadas"
 
-#: app/views/conferences/list.rhtml:18
+#: app/views/conferences/list.rhtml:6
 msgid "Show also past conferences"
 msgstr "Mostrar también las actividades pasadas"
 
-#: app/views/layouts/application.rhtml:56
+#: app/views/conferences/list.rhtml:11
+msgid "To register for any of the conferences shown, please %s or %s"
+msgstr ""
+"Para registrarse para alguna de las actividades aquí mostradas, por favor %s "
+"o %s"
+
+#: app/views/conferences/list.rhtml:12
+msgid "create a new account"
+msgstr "Registrar una nueva cuenta"
+
+#: app/views/conferences/list.rhtml:14
+msgid "log in to your account"
+msgstr "entre a su cuenta"
+
+#: app/views/layouts/application.rhtml:58
 msgid "Log out"
 msgstr "Salir"
 
@@ -816,4 +889,3 @@ msgstr "Actividades"
 #: lib/menu_tree.rb:16
 msgid "Unexpected arguments received: "
 msgstr "Argumentos inesperados recibidos:"
-

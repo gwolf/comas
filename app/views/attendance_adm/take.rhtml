@@ -1,7 +1,7 @@
 <h1><%= _ 'Take attendance' %></h1>
 <p class="note">
   <%= _('Taking attendance for session starting at %s, belonging '+
-        'to <em>%s</em>') % [@tslot.start_time, @tslot.conference.name]
+        'to <em>%s</em>') % [@tslot.short_start_time, @tslot.conference.name]
         %>
 </p>
 <% form_tag url_for(:action => 'take', :id => @tslot.id),

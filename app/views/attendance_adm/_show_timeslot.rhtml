@@ -1,6 +1,0 @@
-<div class="<%= row%2 == 0 ? 'listing-odd' : 'listing-even' %>">
-  <b><%= _'Conference: ' %></b> <%=h tslot.conference.name %><br/>
-  <b><%= _'Room: ' %></b> <%=h tslot.room.name %><br/>
-  <b><%= _'Session start time: ' %></b> <%=h tslot.start_time %><br/>
-  <%= link_to _('Choose'), :action => 'take', :id => tslot %>
-</div>

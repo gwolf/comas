@@ -11,13 +11,32 @@ class Timeslot < ActiveRecord::Base
   validates_associated :room, :conference
   validate :during_conference_days
 
-  # Returns all of the timeslots for the specified date, ordered by
-  # start time
-  def self.for_day(date)
-    self.find(:all, 
-              :conditions => ['start_time BETWEEN ? and ?',
-                              date.beginning_of_day, date.end_of_day],
-              :order => :start_time)
+  # Returns a paginated list with all of the timeslots for the
+  # specified date, ordered by start time
+  def self.for_day(date, req={})
+    self.paginate(:all, 
+                  {:conditions => ['start_time BETWEEN ? and ?',
+                                  date.beginning_of_day, date.end_of_day],
+                    :order => :start_time,
+                    :page => 1}.merge(req))
+  end
+
+  # Produce a paginated list of timeslots, ordered by the absolute
+  # distance between their start_time and the current time. 
+  #
+  # It can take whatever parameters you would send to a
+  # WillPaginate#paginate call. Of course, you can specify a different
+  # ordering - in which case this would act as a normal paginator 
+  def self.by_time_distance(req={})
+    self.paginate(:all, 
+                  { :order => 'CASE WHEN start_time > now() THEN start_time ' +
+                    ' - now() ELSE now() - start_time END',
+                    :page => 1}.merge(req))
+  end
+
+  # An easier-on-the-eyes format...
+  def short_start_time
+    start_time.strftime('%d-%m-%Y %H:%M')
   end
 
   protected

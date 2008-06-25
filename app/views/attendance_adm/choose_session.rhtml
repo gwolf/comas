@@ -1,13 +1,17 @@
-<% row=0 %>
 <h1><%= _'Choose a session to take attendance for' %></h1>
 
-<% if @todays and !@todays.empty? %>
-<div class="timeslot-list">
-  <h3><%= _'Timeslots for today' %></h3>
-  <% @todays.each do |tslot| %>
-  <%= row += 1
-      render(:partial => 'show_timeslot', 
-             :locals => {:tslot => tslot, :row => row}) %>
-  <% end %>
-</div>
+<% if @shown == :all %>
+<h3><%=_('%d total registered timeslots') %  @tslots.total_entries %></h3>
+<p><%= link_to _("Show only today's timeslots"),
+               :show_all => false %></p>
+<% else %>
+<h3><%=_('%d timeslots for today') % @tslots.total_entries %></h3>
+<p><%= link_to _("Show all registered timeslots"),
+               :show_all => true %></p>
 <% end %>
+
+<div class="timeslot-list">
+  <%= pagination_header @tslots %>
+  <%= will_paginate @tslots %>
+  <%= tslot_table(@tslots) %>
+</div>

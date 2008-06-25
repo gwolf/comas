@@ -1,15 +1,18 @@
 class AttendanceAdmController < Admin
-  Menu = [[_('Choose current session'), :choose_session],
+  Menu = [[_('Choose a timeslot'), :choose_session],
           [_('Take attendance'), :take]]
 
   def choose_session
-    @todays = Timeslot.for_day(Date.today)
-    ### What should be done here?
-    ###
-    ### If the timeslot is not for today, present a list of available
-    ### conferences - probably, ordered by their distance from
-    ### today(?). The user chooses the conference, and then present
-    ### the list of timeslots for it. And only then, redirect to take.
+    options = {:per_page => 10,
+      :include => [:room, :conference], 
+      :page => params[:page]}
+    if params[:show_all]
+      @tslots = Timeslot.by_time_distance(options)
+      @shown = :all
+    else
+      @tslots = Timeslot.for_day(Date.today, options)
+      @shown = :today
+    end
   end
 
   def take
@@ -53,7 +56,7 @@ class AttendanceAdmController < Admin
     unless person.conferences.include? conf
       person.conferences << conf 
       flash[:warning] = _('Person <em>%s</em> was not yet registered for ' +
-                          'this conference - Registering.' % person.name)
+                          'this conference - Registering.') % person.name
     end
 
     if att.save
