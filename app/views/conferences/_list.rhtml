@@ -1,14 +1,1 @@
-<%= start_table %>
-  <%= table_head_row %>
-    <th><%= _'Conference' %></th>
-    <th><%= _'Dates' %></th>
-    <th></th>
-  <%= end_table_row %>
-<% confs.each do |conf| %>
-  <%= table_row %>
-    <td><%= link_to(conf.name, :controller => 'conferences', :action => 'show', :id => conf) %></td>
-    <td><%= conf.begins %> - <%= conf.finishes %></td>
-    <td><%= sign_up_person_for_conf_link(@user, conf) %></td>
-  <%= end_table_row %>
-<% end %>
-<%= end_table %>
+<%= conf_list_table(confs) %>

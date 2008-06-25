@@ -17,5 +17,5 @@
 <% end %>
 <%= pagination_header @conferences %>
 <%= will_paginate @conferences %>
-<%= render :partial => 'list', :locals => {:confs => @conferences } %>
+<%= conf_list_table @conferences %>
 <div class="note"><%= link %></div>

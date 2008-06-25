@@ -2,12 +2,10 @@
 
 <div id="my-upcoming">
   <h3><%= _'Next conferences you are signed up for' %></h3>
-  <%= render :partial => 'conferences/list', 
-             :locals => {:confs => @mine} %>
+  <%= conf_list_table @mine %>
 </div>
 
 <div id="upcoming">
   <h3><%= _'Upcoming conferences' %></h3>
-  <%= render :partial => 'conferences/list', 
-             :locals => {:confs => @upcoming} %>
+  <%= conf_list_table @upcoming %>
 </div>

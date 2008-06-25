@@ -1,4 +1,5 @@
 class PeopleController < ApplicationController
+  helper :conferences
   ############################################################
   # Session handling
   def login
