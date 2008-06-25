@@ -4,8 +4,8 @@ class AdminTasks < ActiveRecord::Migration
       t.column :name, :string, :null => false
       t.column :sys_name, :string, :null => false
     end
-    add_index tbl, :name, :unique => true
-    add_index tbl, :sys_name, :unique => true
+    add_index :admin_tasks, :name, :unique => true
+    add_index :admin_tasks, :sys_name, :unique => true
 
     create_habtm :admin_tasks, :people
 
@@ -15,7 +15,7 @@ class AdminTasks < ActiveRecord::Migration
      ['attendance_adm', 'Attendance tracking'],
      ['sys_conf_adm', 'System configuration']
     ].each do |at|
-      AdminTask.new(:sys_name => at[0], name => at[1]).save!
+      AdminTask.new(:sys_name => at[0], :name => at[1]).save!
     end
   end
 
