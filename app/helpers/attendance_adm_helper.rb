@@ -15,7 +15,8 @@ module AttendanceAdmHelper
 
   def tslot_head
     ret = '<tr class="listing-head">'
-    [_('Conference'), _('Room'), _('Start time'), ''].each do |col|
+    [_('Conference'), _('Room'), _('Start time'), _('Tolerance (pre)'),
+     _('Tolerance (post)'), ''].each do |col|
       ret << "<th>#{col}</th>"
     end
     ret << '</tr>'
@@ -26,6 +27,7 @@ module AttendanceAdmHelper
   def tslot_row(rowclass, item)
     ret = "<tr class=\"#{rowclass}\">"
     [ item.conference.name, item.room.name, item.short_start_time, 
+      item.tolerance_pre, item.tolerance_post,
       link_to(_('Choose'), :action => 'take', :id => item)].each do |col|
       ret << "<td>#{col}</td>" 
     end
