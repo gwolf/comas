@@ -4,13 +4,15 @@ class Admin < ApplicationController
     ctrl = request.path_parameters['controller']
 
     if task = AdminTask.find_by_sys_name(ctrl)
-      if @user and @user.admin_tasks.include? task
+      if @user and @user.has_admin_task? task
         return true
       end
       flash[:error] = _ "Access denied"
+    else
+      flash[:error] = _ "Invocation error"
     end
-    flash[:error] = _ "Invocation error"
 
-    redirect_to '/'
+    redirect_to :controller => 'people', :action => 'login'
+    return false
   end
 end

@@ -5,10 +5,12 @@ class Attendance < ActiveRecord::Base
   validates_presence_of :timeslot_id
   validates_presence_of :person_id
   validates_associated :timeslot
+  validate :person_registered_in_conference
   validates_associated :person
   validates_uniqueness_of(:person_id, :scope => :timeslot_id,
                           :message => _('Requested person already ' +
                                         'registered for this timeslot'))
+
 
   # We _could_ add a validation for a person not to be registered for
   # a timeslot belonging to a conference he is not part of - But
@@ -35,5 +37,15 @@ class Attendance < ActiveRecord::Base
   def self.for_conference(conf)
     conf = Conference.find_by_id(conf) if conf.is_a? Fixnum
     self.find(:all, :conditions => ['timeslot_id in (?)', conf.timeslot_ids])
+  end
+
+  protected
+  def person_registered_in_conference
+    conf = timeslot.conference
+
+    return true if person.conferences.include? conf
+    part = Participation.new(:person => person, 
+                             :conference => conf)
+    part.save or errors.add_to_base(part.errors.full_messages.join)
   end
 end

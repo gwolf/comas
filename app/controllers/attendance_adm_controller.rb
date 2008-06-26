@@ -53,10 +53,17 @@ class AttendanceAdmController < Admin
     # If the person did not register for this conference, add him now
     # (with the default participation type)
     conf = tslot.conference
-    unless person.conferences.include? conf
-      person.conferences << conf 
+    if ! person.conferences.include?(conf)
+      unless conf.accepts_registrations?
+        flash[:error] = _('<em>%s</em> is not registered for <em>%s</em>, ' +
+                          'and registrations are closed.') % 
+          [person.name, conf.name]
+        return false
+      end
+
       flash[:warning] = _('Person <em>%s</em> was not yet registered for ' +
                           'this conference - Registering.') % person.name
+      person.conferences << conf
     end
 
     if att.save
