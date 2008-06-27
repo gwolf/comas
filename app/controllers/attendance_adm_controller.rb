@@ -10,15 +10,16 @@ class AttendanceAdmController < Admin
       @tslots = Timeslot.by_time_distance(options)
       @shown = :all
     else
-      @tslots = Timeslot.for_day(Date.today, options)
-      @shown = :today
+      @tslots = Timeslot.current
+      @shown = :current
     end
   end
 
   def take
-    # Do we have a timeslot we are working on? If not, redirect the
-    # user to choose it.
-    unless @tslot = Timeslot.find_by_id(params[:id])
+    # Do we have a timeslot we are working on? Or is there one (and
+    # only one) currently active timeslot? If not, redirect the user
+    # to choose it.
+    unless @tslot = Timeslot.find_by_id(params[:id]) || Timeslot.single_current
       flash[:warning] = _'Please select a timeslot to take attendance for'
       redirect_to :action => 'choose_session'
       return false

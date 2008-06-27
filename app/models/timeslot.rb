@@ -34,24 +34,67 @@ class Timeslot < ActiveRecord::Base
                     :page => 1}.merge(req))
   end
 
-  # Returns the list of current timeslots - those for which attendance
-  # can be taken now. This means, those timeslots for which the
-  # current system clock is between tolerance_pre and
+  # Returns the paginated list of current timeslots - those for which
+  # attendance can be taken now. This means, those timeslots for which
+  # the current system clock is between tolerance_pre and
   # tolerance_post. If either of them is not defined, we take the
   # globally configured values in SysConf, or if neither they are
   # present, 30 minutes.
-  def self.current
-    self.find(:all, :conditions => 
-              [%Q(now() BETWEEN start_time - coalesce(tolerance_pre, ?, 
+  #
+  # It can take whatever parameters you would send to a
+  # WillPaginate#paginate call. Of course, you can specify a different
+  # search criteria - in which case this would act as a normal
+  # paginator
+  def self.current(req={})
+    self.paginate(:all, {:conditions => 
+                    [%Q(now() BETWEEN start_time - coalesce(tolerance_pre, ?, 
                         '30 minutes')::interval AND start_time +
                         coalesce(tolerance_post, ?, '30 minutes')::interval ),
-               SysConf.value_for('tolerance_pre'),
-               SysConf.value_for('tolerance_post')] )
+                     SysConf.value_for('tolerance_pre'),
+                     SysConf.value_for('tolerance_post')],
+                    :page => 1}.merge(req))
+  end
+
+  # There are many operations which want to get the current timeslot,
+  # in case there is only one - So, if there is only a single current
+  # timeslot, return it. If there is none (or there are more), return
+  # nil.
+  def self.single_current
+    curr = self.current
+    return nil unless curr.size == 1
+    return curr[0]
   end
 
   # An easier-on-the-eyes format...
   def short_start_time
     start_time.strftime('%d-%m-%Y %H:%M')
+  end
+
+  # The time difference between now and the timeslot's start_time,
+  # returned as the number of seconds for its beginning (i.e. Ruby's
+  # natural interval representation).
+  # 
+  # The result will be negative for timeslots which have already
+  # begun.
+  def seconds_to_start
+    Time.now - start_time
+  end
+
+  # The time difference between now and the timeslot's start_time,
+  # returned as a d+hh:mm:ss string ('d+' is the number of days - I
+  # could not find a more natural notation).
+  def time_to_start
+    total = seconds_to_start
+    direction = total < 0 ? '-' : ''
+    total = total.abs
+
+    days = (total / 86400).to_i
+    days = '' if days == 0 # Ugly, but more readable in the end :-/
+    hours = (total % 86400) / 3600
+    minutes = (total % 3600) / 60
+    seconds = total % 60
+
+    '%s%s %02d:%02d:%02d' % [direction, days, hours, minutes, seconds]
   end
 
   # Intervals in Ruby are represented as a semi-opaque "thing" that
