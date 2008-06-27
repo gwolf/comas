@@ -42,14 +42,14 @@ class ConferencesController < ApplicationController
     registrations_sanity_checks or return false
 
     # Avoid silly mistakes due to reloads
-    return unless @user.conferences.include? conf
+    return unless @user.conferences.include? @conference
 
-    if @user.conferences.delete conf
+    if @user.conferences.delete @conference
       flash[:notice] = _('You have successfully unregistered from ' +
-                         'conference "%s"') % conf.name
+                         'conference "%s"') % @conference.name
     else
       flash[:error] = _('Could not unregister you from conference %s: %s') %
-        [conf.name, @user.errors.full_messages]
+        [@conference.name, @user.errors.full_messages]
     end
   end
 

@@ -28,4 +28,30 @@ module ConferencesHelper
       ].map {|col| "<td>#{col}</td>"}.join <<
       '</tr>'
   end
+
+  def sign_up_person_for_conf_link(user, conf)
+    return unless user
+
+    if ! conf.accepts_registrations?
+      return _('Registered') if user.conferences.include?(conf)
+      return _('Registration closed')
+    end
+
+    if user.conferences.include? conf
+      return link_to(_('Unregister'),
+                     { :controller => 'conferences',
+                       :action => 'unregister',
+                       :id => conf},
+                     { :method => :post,
+                       :confirm => _('Confirm: Do you want to unregister ' +
+                                     'from "%s"? ') % conf.name})
+    else
+      return link_to(_('Sign up'),
+                     { :controller => 'conferences', 
+                       :action => 'sign_up',
+                       :id => conf}, 
+                     { :method => :post })
+    end
+  end
+
 end
