@@ -9,6 +9,7 @@
     <th><%= link_to _('Begins at'), :sort_by => 'begins' %></th>
     <th><%= link_to _('Registration opens'), 
 	              :sort_by => 'reg_open_date' %></th>
+    <th><%= _('Defined timeslots') %></th>
     <th><%= _('Registered attendees') %></th>
     <th><%= _('Homepage') %></th>
     <th></th>
@@ -20,6 +21,8 @@
     <td><%= link_to h(conf.name), :action => 'show', :id => conf %></td>
     <td><%= conf.begins %></td>
     <td><%= conf.reg_open_date %></td>
+    <td><%= link_to(conf.timeslots.size,
+                    {:action => 'timeslots', :id => conf} ) %></td>
     <td><%= link_to_if(att_num > 0, att_num, 
                        { :action => 'people_list', :id => conf }) %></td>
     <td><%= if !conf.homepage.blank? 
@@ -27,10 +30,11 @@
             else
               _'Not defined'
             end %></td>
-    <td><%= link_to(_('Delete'), {:action => 'destroy', :id => conf},
-                    {:confirm => _("Are you sure you want to " +
-			           "permanently delete %s?") % conf.name,
-		     :method => :post}) %></td>
+    <td>
+      <%= link_to(_('Delete'), {:action => 'destroy', :id => conf},
+		  {:confirm => _("Are you sure you want to " +
+				 "permanently delete %s?") % conf.name,
+		    :method => :post}) %></td>
   <%= end_table_row %>
   <% end %>
 <%= end_table %>

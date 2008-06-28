@@ -1,8 +1,8 @@
 class Timeslot < ActiveRecord::Base
   belongs_to :room
   belongs_to :conference
-  has_many :proposals
-  has_many :attendances
+  has_one :proposal
+  has_many :attendances, :dependent => :destroy
   has_and_belongs_to_many :prop_types
 
   validates_presence_of :start_time
@@ -107,6 +107,14 @@ class Timeslot < ActiveRecord::Base
 
   def tolerance_post=(time)
     self[:tolerance_post] = interval_to_seconds(time)
+  end
+
+  def effective_tolerance_pre
+    tolerance_pre || SysConf.value_for(:tolerance_pre) || '00:30:00'
+  end
+
+  def effective_tolerance_post
+    tolerance_post || SysConf.value_for(:tolerance_post) || '00:30:00'
   end
 
   protected

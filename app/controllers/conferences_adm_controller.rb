@@ -1,5 +1,5 @@
 class ConferencesAdmController < Admin
-  before_filter :get_conference, :only => [:show, :destroy, :people_list]
+  before_filter :get_conference, :except => [:index, :list, :new, :create]
   Menu = [[_('Registered conferences'), :list]]
 
   def index
@@ -12,7 +12,7 @@ class ConferencesAdmController < Admin
 
     @conferences = Conference.paginate(:all, :order => order, 
                                        :page => params[:page],
-                                       :include => :people)
+                                       :include => [:people, :timeslots])
   end
 
   def new
@@ -58,6 +58,29 @@ class ConferencesAdmController < Admin
     @people = Person.paginate(:all, :order => order, :include => :conferences,
                               :conditions => ['conferences.id = ?', @conference],
                               :page => params[:page])
+  end
+
+  def timeslots
+    @tslots = Timeslot.paginate(:all, :page => params[:page],
+                                :include => [:attendances, :room],
+                                :conditions => ['conference_id = ?',
+                                                @conference.id])
+  end
+
+  def create_timeslot
+  end
+
+  def destroy_timeslot
+    redirect_to :action => :timeslots, :id => @conference.id
+
+    if tslot = Timeslot.find_by_id(params[:timeslot_id]) and
+        tslot.conference == @conference and tslot.destroy
+      flash[:notice] = _('The requested timeslot was successfully deleted')
+    else
+      flash[:error] = _('Could not find requested timeslot (%d) for ' +
+                        'deletion - Maybe it was already deleted?') % 
+        params[:timeslot_id]
+    end
   end
 
   private
