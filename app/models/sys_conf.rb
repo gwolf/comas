@@ -4,6 +4,7 @@ class SysConf < ActiveRecord::Base
 
   # Shorthand for find_by_key
   def self.value_for(key)
-    self.find_by_key(key).value
+    item = self.find_by_key(key.to_s)
+    item.value if item
   end
 end
