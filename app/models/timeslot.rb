@@ -10,6 +10,7 @@ class Timeslot < ActiveRecord::Base
   validates_presence_of :conference_id
   validates_associated :room, :conference
   validate :during_conference_days
+  validate :no_overlapping_timeslots
 
   # Returns a paginated list with all of the timeslots for the
   # specified date, ordered by start time
@@ -35,8 +36,19 @@ class Timeslot < ActiveRecord::Base
   end
 
   # Returns the paginated list of current timeslots - those for which
-  # attendance can be taken now. This means, those timeslots for which
-  # the current system clock is between tolerance_pre and
+  # attendance can be taken now. 
+  #
+  # It can take whatever parameters you would send to a
+  # WillPaginate#paginate call. Of course, you can specify a different
+  # search criteria - in which case this would act as a normal
+  # paginator
+  def self.current(req={})
+    self.concurrent_with(Time.now, req)
+  end
+
+  # Returns the paginated list of timeslots concurrent with the Time
+  # object passed as the first parameter - This means, those timeslots
+  # for which the current system clock is between tolerance_pre and
   # tolerance_post. If either of them is not defined, we take the
   # globally configured values in SysConf, or if neither they are
   # present, 30 minutes.
@@ -45,11 +57,12 @@ class Timeslot < ActiveRecord::Base
   # WillPaginate#paginate call. Of course, you can specify a different
   # search criteria - in which case this would act as a normal
   # paginator
-  def self.current(req={})
+  def self.concurrent_with(moment, req={})
     self.paginate(:all, {:conditions => 
-                    [%Q(now() BETWEEN start_time - coalesce(tolerance_pre, ?, 
+                    [%Q(? BETWEEN start_time - coalesce(tolerance_pre, ?, 
                         '30 minutes')::interval AND start_time +
                         coalesce(tolerance_post, ?, '30 minutes')::interval ),
+                     moment,
                      SysConf.value_for('tolerance_pre'),
                      SysConf.value_for('tolerance_post')],
                     :page => 1}.merge(req))
@@ -135,5 +148,20 @@ class Timeslot < ActiveRecord::Base
                                                conf.finishes)
     errors.add(:start_time, _('Must start within the conference dates ' +
                               '(%s - %s)') % [conf.begins, conf.finishes])
+  end
+
+  # Two timeslots are overlapping if they happen at the same room, and
+  # their tolerance periods overlap.
+  # 
+  # Evaluate for the future: Will we implement proposal types per
+  # timeslot? If so, we could manage timeslot duration and have a more
+  # complete and real timeslot overlapping checks... Meanwhile, here
+  # we go
+  def no_overlapping_timeslots
+    others = self.class.concurrent_with(start_time).select {|ts|
+      ts.room_id == self.room_id}.reject {|ts| ts.id=self.id}
+    return true if others.empty?
+    errors.add(:start_time, _('Timeslot is overlapping on room %s with %s') %
+               [self.room.name, others.map {|ts| ts.id}.join(', ')])
   end
 end
