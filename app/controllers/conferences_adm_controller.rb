@@ -60,14 +60,30 @@ class ConferencesAdmController < Admin
                               :page => params[:page])
   end
 
+  ############################################################
+  # Timeslots management
   def timeslots
     @tslots = Timeslot.paginate(:all, :page => params[:page],
+                                :per_page => 10,
                                 :include => [:attendances, :room],
                                 :conditions => ['conference_id = ?',
-                                                @conference.id])
+                                                @conference.id],
+                                :order => 'start_time')
+    @new_ts = Timeslot.new(:start_time => @conference.begins+10.hours,
+                           :conference_id => @conference.id)
   end
 
   def create_timeslot
+    redirect_to :action => :timeslots, :id => @conference.id
+
+    ts = Timeslot.new(params[:timeslot])
+    ts.conference = @conference
+    if ts.save
+      flash[:notice] = _('The requested timeslot was successfully created')
+    else 
+      flash[:error] = _('Error creating the requested timeslot:<br/> %s') %
+        ts.errors.full_messages.join("<br/>")
+    end
   end
 
   def destroy_timeslot
@@ -83,6 +99,7 @@ class ConferencesAdmController < Admin
     end
   end
 
+  ############################################################
   private
   def get_conference
     return true if params[:id] and 

@@ -10,6 +10,7 @@ class Timeslot < ActiveRecord::Base
   validates_presence_of :conference_id
   validates_associated :room, :conference
   validate :during_conference_days
+  validate :tolerances_correctly_formatted
   validate :no_overlapping_timeslots
 
   # Returns a paginated list with all of the timeslots for the
@@ -50,8 +51,7 @@ class Timeslot < ActiveRecord::Base
   # object passed as the first parameter - This means, those timeslots
   # for which the current system clock is between tolerance_pre and
   # tolerance_post. If either of them is not defined, we take the
-  # globally configured values in SysConf, or if neither they are
-  # present, 30 minutes.
+  # default values (see default_tolerance_pre, default_tolerance_post)
   #
   # It can take whatever parameters you would send to a
   # WillPaginate#paginate call. Of course, you can specify a different
@@ -59,12 +59,13 @@ class Timeslot < ActiveRecord::Base
   # paginator
   def self.concurrent_with(moment, req={})
     self.paginate(:all, {:conditions => 
-                    [%Q(? BETWEEN start_time - coalesce(tolerance_pre, ?, 
-                        '30 minutes')::interval AND start_time +
-                        coalesce(tolerance_post, ?, '30 minutes')::interval ),
+                    [%Q(? BETWEEN start_time - 
+                        coalesce(tolerance_pre, ?)::interval AND 
+                        start_time +
+                        coalesce(tolerance_post, ?)::interval ),
                      moment,
-                     SysConf.value_for('tolerance_pre'),
-                     SysConf.value_for('tolerance_post')],
+                     self.default_tolerance_pre,
+                     self.default_tolerance_post],
                     :page => 1}.merge(req))
   end
 
@@ -110,24 +111,50 @@ class Timeslot < ActiveRecord::Base
     '%s%s %02d:%02d:%02d' % [direction, days, hours, minutes, seconds]
   end
 
+  # The systemwide default value for pre-timeslot tolerance: Whatever
+  # is defined in SysConf for tolerance_pre, or 30 minutes if not
+  # defined.
+  def self.default_tolerance_pre
+    SysConf.value_for('tolerance_pre') || '00:30:00'
+  end
+
+  # The systemwide default value for post-timeslot tolerance: Whatever
+  # is defined in SysConf for tolerance_post, or 30 minutes if not
+  # defined.
+  def self.default_tolerance_post
+    SysConf.value_for('tolerance_post') || '00:30:00'
+  end
+
   # Intervals in Ruby are represented as a semi-opaque "thing" that
   # becomes an integer number of seconds when needed... Treating them
   # in any other way breaks applications. So, as soon as we get them,
   # stringify them to something PostgreSQL will grok.
   def tolerance_pre=(time)
-    self[:tolerance_pre] = interval_to_seconds(time)
+    if time.nil? or time.blank? or time==0
+      self[:tolerance_pre] = nil
+    else
+      self[:tolerance_pre] = interval_to_seconds(time)
+    end
   end
 
+  # Intervals in Ruby are represented as a semi-opaque "thing" that
+  # becomes an integer number of seconds when needed... Treating them
+  # in any other way breaks applications. So, as soon as we get them,
+  # stringify them to something PostgreSQL will grok.
   def tolerance_post=(time)
-    self[:tolerance_post] = interval_to_seconds(time)
+    if time.nil? or time.blank? or time==0
+      self[:tolerance_post] = nil
+    else
+      self[:tolerance_post] = interval_to_seconds(time)
+    end
   end
 
   def effective_tolerance_pre
-    tolerance_pre || SysConf.value_for(:tolerance_pre) || '00:30:00'
+    tolerance_pre || self.class.default_tolerance_pre
   end
 
   def effective_tolerance_post
-    tolerance_post || SysConf.value_for(:tolerance_post) || '00:30:00'
+    tolerance_post || self.class.default_tolerance_post
   end
 
   protected
@@ -150,6 +177,18 @@ class Timeslot < ActiveRecord::Base
                               '(%s - %s)') % [conf.begins, conf.finishes])
   end
 
+  # The tolerance periods are just strings. However, they must make
+  # sense - So, we limit them to be hh:mm:ss.
+  #
+  # Nil/blank is acceptable (i.e. it means "default value is OK")
+  def tolerances_correctly_formatted
+    [:tolerance_pre, :tolerance_post].each do |attr| 
+      field = self.send(attr)
+      field.nil? or field.blank? or field =~ /^\d\d?:\d\d(:\d\d)?$/ or
+        errors.add(field, _('Wrong format (should be hh:mm or hh:mm:ss)'))
+    end
+  end
+
   # Two timeslots are overlapping if they happen at the same room, and
   # their tolerance periods overlap.
   # 
@@ -158,9 +197,26 @@ class Timeslot < ActiveRecord::Base
   # complete and real timeslot overlapping checks... Meanwhile, here
   # we go
   def no_overlapping_timeslots
-    others = self.class.concurrent_with(start_time).select {|ts|
-      ts.room_id == self.room_id}.reject {|ts| ts.id=self.id}
+    # Ugly, ugly, SQL query follows... Still, it's the clearest way I
+    # could find to check for overlapping timeslots
+    sql_cond = "room_id = ? AND
+        (start_time-COALESCE(tolerance_pre, ?)::interval BETWEEN 
+             ?::timestamp - ?::interval AND ?::timestamp + ?::interval OR 
+         start_time+COALESCE(tolerance_post, ?)::interval BETWEEN 
+             ?::timestamp - ?::interval AND ?::timestamp + ?::interval)"
+
+    pre = effective_tolerance_pre
+    d_pre = self.class.default_tolerance_pre
+    post = effective_tolerance_post
+    d_post = self.class.default_tolerance_pre
+
+    others = self.class.find(:all, 
+        :conditions => [sql_cond, room_id,
+                        d_pre, start_time, pre, start_time, post,
+                        d_post, start_time, pre, start_time, post]
+                             ).select {|ts| ts.id != self.id}
     return true if others.empty?
+
     errors.add(:start_time, _('Timeslot is overlapping on room %s with %s') %
                [self.room.name, others.map {|ts| ts.id}.join(', ')])
   end
