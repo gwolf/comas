@@ -43,6 +43,8 @@ module ApplicationHelper
   # Form builders
   class ComasFormBuilder < ActionView::Helpers::FormBuilder
     include GetText
+    include ActionView::Helpers::DateHelper
+
     (%w(date_field) +
      field_helpers - %w(check_box radio_button select 
                         hidden_field)).each do |fldtype|
@@ -62,6 +64,10 @@ module ApplicationHelper
     def auto_field(field, options={})
       column = @object.class.columns.select { |col| 
         col.name.to_s == field.to_s}.first
+
+      # To check for specially treated fields, we need the field to be
+      # a string (not a symbol, as it is usually specified)
+      field = field.to_s
 
       if !column
         if @object.respond_to?(field) and 
@@ -112,8 +118,8 @@ module ApplicationHelper
       when :date
         return date_field(field, options)
 
-      when :time, :datetime
-        return text_field(field, {:note => "Lazy bum, finish your code"})
+      when :datetime
+        return datetime_select(field, options)
 
       else
         # What is it, then? just report it...
@@ -121,6 +127,15 @@ module ApplicationHelper
 
       end
 
+    end
+
+    def datetime_select(field, options={})
+      title = options.delete(:title) || label_for_field(@object, field)
+      note = options.delete(:note)
+      options[:default] = @object.send(field)
+      with_format(title, super(@object_name, field, 
+                               {:default=>@object.send(field)}.merge(options)),
+                  note)
     end
 
     def select(field, choices, options={})
