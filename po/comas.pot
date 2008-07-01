@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2008-06-18 13:52-0500\n"
+"POT-Creation-Date: 2008-07-01 12:53-0500\n"
 "PO-Revision-Date: 2008-05-07 18:30-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -123,10 +123,6 @@ msgstr ""
 msgid "Person|Last login at"
 msgstr ""
 
-#: app/models/person.rb:-
-msgid "Person|Birthday"
-msgstr ""
-
 #: app/models/conference.rb:-
 msgid "conference"
 msgstr ""
@@ -137,10 +133,6 @@ msgstr ""
 
 #: app/models/conference.rb:-
 msgid "Conference|Descr"
-msgstr ""
-
-#: app/models/conference.rb:-
-msgid "Conference|Active"
 msgstr ""
 
 #: app/models/conference.rb:-
@@ -199,6 +191,22 @@ msgstr ""
 msgid "There are %d timeslots for this conference outside its time span: %s"
 msgstr ""
 
+#: app/models/sys_conf.rb:-
+msgid "sys conf"
+msgstr ""
+
+#: app/models/sys_conf.rb:-
+msgid "SysConf|Key"
+msgstr ""
+
+#: app/models/sys_conf.rb:-
+msgid "SysConf|Descr"
+msgstr ""
+
+#: app/models/sys_conf.rb:-
+msgid "SysConf|Value"
+msgstr ""
+
 #: app/models/attendance.rb:-
 msgid "attendance"
 msgstr ""
@@ -213,6 +221,10 @@ msgstr ""
 
 #: app/models/attendance.rb:-
 msgid "Attendance|Timeslot"
+msgstr ""
+
+#: app/models/attendance.rb:11
+msgid "Requested person already registered for this timeslot"
 msgstr ""
 
 #: app/models/participation.rb:-
@@ -231,12 +243,12 @@ msgstr ""
 msgid "Participation|Participation type"
 msgstr ""
 
-#: app/models/timeslot.rb:-
-msgid "timeslot"
+#: app/models/participation.rb:24
+msgid "Registrations for this conference are closed"
 msgstr ""
 
 #: app/models/timeslot.rb:-
-msgid "Timeslot|Start time"
+msgid "timeslot"
 msgstr ""
 
 #: app/models/timeslot.rb:-
@@ -255,8 +267,20 @@ msgstr ""
 msgid "Timeslot|Conference"
 msgstr ""
 
-#: app/models/timeslot.rb:19
+#: app/models/timeslot.rb:-
+msgid "Timeslot|Start time"
+msgstr ""
+
+#: app/models/timeslot.rb:176
 msgid "Must start within the conference dates (%s - %s)"
+msgstr ""
+
+#: app/models/timeslot.rb:188
+msgid "Wrong format (should be hh:mm or hh:mm:ss)"
+msgstr ""
+
+#: app/models/timeslot.rb:220
+msgid "Timeslot is overlapping on room %s with %s"
 msgstr ""
 
 #: app/models/authorship.rb:-
@@ -308,14 +332,6 @@ msgid "ConferenceLogo|Conference"
 msgstr ""
 
 #: app/models/proposal.rb:-
-msgid "prop status"
-msgstr ""
-
-#: app/models/proposal.rb:-
-msgid "PropStatus|Name"
-msgstr ""
-
-#: app/models/proposal.rb:-
 msgid "proposal"
 msgstr ""
 
@@ -351,6 +367,14 @@ msgstr ""
 msgid "Proposal|Conference"
 msgstr ""
 
+#: app/models/proposal.rb:-
+msgid "prop status"
+msgstr ""
+
+#: app/models/proposal.rb:-
+msgid "PropStatus|Name"
+msgstr ""
+
 #: app/models/participation_type.rb:-
 msgid "participation type"
 msgstr ""
@@ -359,35 +383,36 @@ msgstr ""
 msgid "ParticipationType|Name"
 msgstr ""
 
-#: app/controllers/application.rb:25
+#: app/controllers/application.rb:29
 msgid "Controller %s must implement check_auth"
 msgstr ""
 
-#: app/controllers/application.rb:42
+#: app/controllers/application.rb:46
 msgid "Conference listing"
 msgstr ""
 
-#: app/controllers/application.rb:46 app/views/people/login.rhtml:6
+#: app/controllers/application.rb:50 app/views/people/login.rhtml:6
 msgid "Log in"
 msgstr ""
 
-#: app/controllers/application.rb:48
+#: app/controllers/application.rb:52
 msgid "New account"
 msgstr ""
 
-#: app/controllers/application.rb:51
+#: app/controllers/application.rb:55
 msgid "My account"
 msgstr ""
 
-#: app/controllers/application.rb:73
+#: app/controllers/application.rb:77
 msgid "&laquo; Previous"
 msgstr ""
 
-#: app/controllers/application.rb:74
+#: app/controllers/application.rb:78
 msgid "Next &raquo;"
 msgstr ""
 
 #: app/controllers/conferences_adm_controller.rb:3
+#: app/views/conferences/list.rhtml:3
 msgid "Registered conferences"
 msgstr ""
 
@@ -412,32 +437,77 @@ msgid "Error removing requested conference: "
 msgstr ""
 
 #: app/controllers/conferences_adm_controller.rb:51
-#: app/controllers/admin.rb:14 app/controllers/people_adm_controller.rb:53
+#: app/controllers/admin.rb:12 app/controllers/people_adm_controller.rb:53
 msgid "Invocation error"
 msgstr ""
 
-#: app/controllers/people_controller.rb:11
+#: app/controllers/conferences_adm_controller.rb:82
+msgid "The requested timeslot was successfully created"
+msgstr ""
+
+#: app/controllers/conferences_adm_controller.rb:84
+msgid "Error creating the requested timeslot:<br/> %s"
+msgstr ""
+
+#: app/controllers/conferences_adm_controller.rb:94
+msgid "The requested timeslot was successfully deleted"
+msgstr ""
+
+#: app/controllers/conferences_adm_controller.rb:96
+msgid ""
+"Could not find requested timeslot (%d) for deletion - Maybe it was already "
+"deleted?"
+msgstr ""
+
+#: app/controllers/people_controller.rb:12
 msgid "Successfully logged out"
 msgstr ""
 
-#: app/controllers/people_controller.rb:23
+#: app/controllers/people_controller.rb:24
 msgid "Incorrect user/password"
 msgstr ""
 
-#: app/controllers/people_controller.rb:39
+#: app/controllers/people_controller.rb:40
 msgid "New person successfully registered"
 msgstr ""
 
-#: app/controllers/people_controller.rb:42
+#: app/controllers/people_controller.rb:43
 msgid "Could not register person: "
 msgstr ""
 
 #: app/controllers/attendance_adm_controller.rb:2
-msgid "Choose current session"
+msgid "Choose a timeslot"
 msgstr ""
 
 #: app/controllers/attendance_adm_controller.rb:3
+#: app/views/attendance_adm/take.rhtml:1
 msgid "Take attendance"
+msgstr ""
+
+#: app/controllers/attendance_adm_controller.rb:24
+msgid "Please select a timeslot to take attendance for"
+msgstr ""
+
+#: app/controllers/attendance_adm_controller.rb:35
+msgid "Requested person (%d) does not exist"
+msgstr ""
+
+#: app/controllers/attendance_adm_controller.rb:59
+msgid ""
+"<em>%s</em> is not registered for <em>%s</em>, and registrations are closed."
+msgstr ""
+
+#: app/controllers/attendance_adm_controller.rb:65
+msgid ""
+"Person <em>%s</em> was not yet registered for this conference - Registering."
+msgstr ""
+
+#: app/controllers/attendance_adm_controller.rb:71
+msgid "Attendance successfully registered"
+msgstr ""
+
+#: app/controllers/attendance_adm_controller.rb:73
+msgid "Could not register person <em>%s</em> for this timeslot: %s"
 msgstr ""
 
 #: app/controllers/admin.rb:10
@@ -518,38 +588,116 @@ msgstr ""
 msgid "Displaying items <b>%d&nbsp;-&nbsp;%d</b> of <b>%d</b> in total"
 msgstr ""
 
-#: app/helpers/application_helper.rb:50
-msgid "Registered"
-msgstr ""
-
-#: app/helpers/application_helper.rb:51
-msgid "Registration closed"
-msgstr ""
-
-#: app/helpers/application_helper.rb:55
-msgid "Unregister"
-msgstr ""
-
-#: app/helpers/application_helper.rb:60
-msgid "Confirm: Do you want to unregister from \"%s\"? "
-msgstr ""
-
-#: app/helpers/application_helper.rb:63
-msgid "Sign up"
-msgstr ""
-
-#: app/helpers/application_helper.rb:103
+#: app/helpers/application_helper.rb:81
 msgid "Field %s not defined for %s"
 msgstr ""
 
-#: app/helpers/application_helper.rb:137
-#: app/views/conferences_adm/list.rhtml:24
+#: app/helpers/application_helper.rb:115
 msgid "Yes"
 msgstr ""
 
-#: app/helpers/application_helper.rb:137
-#: app/views/conferences_adm/list.rhtml:24
+#: app/helpers/application_helper.rb:115
 msgid "No"
+msgstr ""
+
+#: app/helpers/conferences_helper.rb:18
+#: app/helpers/attendance_adm_helper.rb:18
+msgid "Conference"
+msgstr ""
+
+#: app/helpers/conferences_helper.rb:18
+msgid "Dates"
+msgstr ""
+
+#: app/helpers/conferences_helper.rb:36
+msgid "Registered"
+msgstr ""
+
+#: app/helpers/conferences_helper.rb:37
+msgid "Registration closed"
+msgstr ""
+
+#: app/helpers/conferences_helper.rb:41
+msgid "Unregister"
+msgstr ""
+
+#: app/helpers/conferences_helper.rb:46
+msgid "Confirm: Do you want to unregister from \"%s\"? "
+msgstr ""
+
+#: app/helpers/conferences_helper.rb:49
+msgid "Sign up"
+msgstr ""
+
+#: app/helpers/conferences_adm_helper.rb:23 app/views/people_adm/list.rhtml:19
+#: app/views/conferences_adm/list.rhtml:34
+msgid "Delete"
+msgstr ""
+
+#: app/helpers/conferences_adm_helper.rb:26
+msgid ""
+"Are you sure you want to permanently delete this timeslot? This will also "
+"destroy any attendances it has recorded"
+msgstr ""
+
+#: app/helpers/attendance_adm_helper.rb:18
+#: app/views/conferences_adm/timeslots.rhtml:14
+msgid "Room"
+msgstr ""
+
+#: app/helpers/attendance_adm_helper.rb:18
+#: app/views/conferences_adm/timeslots.rhtml:10
+msgid "Start time"
+msgstr ""
+
+#: app/helpers/attendance_adm_helper.rb:18
+msgid "Time distance"
+msgstr ""
+
+#: app/helpers/attendance_adm_helper.rb:19
+#: app/views/conferences_adm/timeslots.rhtml:11
+msgid "Tolerance (pre)"
+msgstr ""
+
+#: app/helpers/attendance_adm_helper.rb:19
+#: app/views/conferences_adm/timeslots.rhtml:12
+msgid "Tolerance (post)"
+msgstr ""
+
+#: app/helpers/attendance_adm_helper.rb:31
+msgid "Choose"
+msgstr ""
+
+#: app/views/attendance_adm/choose_session.rhtml:1
+msgid "Choose a session to take attendance for"
+msgstr ""
+
+#: app/views/attendance_adm/choose_session.rhtml:4
+msgid "%d total registered timeslots"
+msgstr ""
+
+#: app/views/attendance_adm/choose_session.rhtml:5
+msgid "Show only current timeslots"
+msgstr ""
+
+#: app/views/attendance_adm/choose_session.rhtml:8
+msgid "%d currently active timeslots"
+msgstr ""
+
+#: app/views/attendance_adm/choose_session.rhtml:9
+msgid "Show all registered timeslots"
+msgstr ""
+
+#: app/views/attendance_adm/take.rhtml:3
+msgid "Taking attendance for session starting at %s, belonging to <em>%s</em>"
+msgstr ""
+
+#: app/views/attendance_adm/take.rhtml:10
+msgid "Save attendance"
+msgstr ""
+
+#: app/views/attendance_adm/take.rhtml:17
+msgid "Last attendances registered for this timeslot"
 msgstr ""
 
 #: app/views/people_adm/by_task.rhtml:1
@@ -592,11 +740,7 @@ msgstr ""
 msgid "Last login at"
 msgstr ""
 
-#: app/views/people_adm/list.rhtml:19 app/views/conferences_adm/list.rhtml:32
-msgid "Delete"
-msgstr ""
-
-#: app/views/people_adm/list.rhtml:21 app/views/conferences_adm/list.rhtml:33
+#: app/views/people_adm/list.rhtml:21 app/views/conferences_adm/list.rhtml:35
 msgid "Are you sure you want to permanently delete %s?"
 msgstr ""
 
@@ -609,8 +753,38 @@ msgstr ""
 msgid "Create"
 msgstr ""
 
+#: app/views/conferences_adm/timeslots.rhtml:1
+msgid "Defined timeslots for %s"
+msgstr ""
+
+#: app/views/conferences_adm/timeslots.rhtml:4
+msgid "No timeslots have yet been defined"
+msgstr ""
+
+#: app/views/conferences_adm/timeslots.rhtml:13
+msgid "Attendances"
+msgstr ""
+
+#: app/views/conferences_adm/timeslots.rhtml:23
+msgid "Create a new timeslot for this conference"
+msgstr ""
+
+#: app/views/conferences_adm/timeslots.rhtml:24
+msgid ""
+"Enter the tolerance in <em>hh:mm:ss</em> format. If not specified, it will "
+"use the system-wide default (%s)"
+msgstr ""
+
+#: app/views/conferences_adm/timeslots.rhtml:35
+msgid "Create timeslot"
+msgstr ""
+
 #: app/views/conferences_adm/show.rhtml:1
 msgid "Edit conference data"
+msgstr ""
+
+#: app/views/conferences_adm/show.rhtml:4
+msgid "Edit timeslots for this conference"
 msgstr ""
 
 #: app/views/conferences_adm/people_list.rhtml:1
@@ -638,7 +812,7 @@ msgid "Registration opens"
 msgstr ""
 
 #: app/views/conferences_adm/list.rhtml:12
-msgid "Active"
+msgid "Defined timeslots"
 msgstr ""
 
 #: app/views/conferences_adm/list.rhtml:13
@@ -649,11 +823,11 @@ msgstr ""
 msgid "Homepage"
 msgstr ""
 
-#: app/views/conferences_adm/list.rhtml:28
+#: app/views/conferences_adm/list.rhtml:29
 msgid "Visit"
 msgstr ""
 
-#: app/views/conferences_adm/list.rhtml:30
+#: app/views/conferences_adm/list.rhtml:31
 msgid "Not defined"
 msgstr ""
 
@@ -669,7 +843,7 @@ msgstr ""
 msgid "Next conferences you are signed up for"
 msgstr ""
 
-#: app/views/people/account.rhtml:10 app/views/conferences/list.rhtml:1
+#: app/views/people/account.rhtml:9 app/views/conferences/list.rhtml:6
 msgid "Upcoming conferences"
 msgstr ""
 
@@ -681,39 +855,39 @@ msgstr ""
 msgid "Password"
 msgstr ""
 
-#: app/views/conferences/show.rhtml:7
+#: app/views/conferences/show.rhtml:4
+msgid "%d registered attendees"
+msgstr ""
+
+#: app/views/conferences/show.rhtml:8
+msgid "Edit conference"
+msgstr ""
+
+#: app/views/conferences/show.rhtml:18
 msgid "Web site"
 msgstr ""
 
-#: app/views/conferences/_list.rhtml:3
-msgid "Conference"
-msgstr ""
-
-#: app/views/conferences/_list.rhtml:4
-msgid "Dates"
-msgstr ""
-
-#: app/views/conferences/list.rhtml:4
-msgid "To register for any of the conferences shown, please %s or %s"
-msgstr ""
-
-#: app/views/conferences/list.rhtml:5
-msgid "create a new account"
-msgstr ""
-
-#: app/views/conferences/list.rhtml:7
-msgid "log in to your account"
-msgstr ""
-
-#: app/views/conferences/list.rhtml:16
+#: app/views/conferences/list.rhtml:3
 msgid "Hide past conferences"
 msgstr ""
 
-#: app/views/conferences/list.rhtml:18
+#: app/views/conferences/list.rhtml:6
 msgid "Show also past conferences"
 msgstr ""
 
-#: app/views/layouts/application.rhtml:56
+#: app/views/conferences/list.rhtml:11
+msgid "To register for any of the conferences shown, please %s or %s"
+msgstr ""
+
+#: app/views/conferences/list.rhtml:12
+msgid "create a new account"
+msgstr ""
+
+#: app/views/conferences/list.rhtml:14
+msgid "log in to your account"
+msgstr ""
+
+#: app/views/layouts/application.rhtml:58
 msgid "Log out"
 msgstr ""
 
@@ -794,18 +968,23 @@ msgid "AdminTask|Academic committee"
 msgstr "Academic committee"
 
 #: lib/strings_in_db.rb:32
-msgid "AdminTask|Attendance tracking"
+#, fuzzy
+msgid "AdminTask|Attendance management"
 msgstr "Attendance tracking"
 
 #: lib/strings_in_db.rb:33
+msgid "AdminTask|Attendance tracking"
+msgstr "Attendance tracking"
+
+#: lib/strings_in_db.rb:34
 msgid "AdminTask|System configuration"
 msgstr "System configuration"
 
-#: lib/strings_in_db.rb:36
+#: lib/strings_in_db.rb:37
 msgid "Person|Admin tasks"
 msgstr ""
 
-#: lib/strings_in_db.rb:37
+#: lib/strings_in_db.rb:38
 msgid "Person|Conferences"
 msgstr ""
 

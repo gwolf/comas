@@ -12,7 +12,8 @@ class AdminTasks < ActiveRecord::Migration
     [['people_adm', 'Attendee administration'],
      ['conferences_adm', 'Conferences administration'],
      ['academic_adm', 'Academic committee'],
-     ['attendance_adm', 'Attendance tracking'],
+     ['attendance', 'Attendance tracking'],
+     ['attendance_adm', 'Attendance management'],
      ['sys_conf_adm', 'System configuration']
     ].each do |at|
       AdminTask.new(:sys_name => at[0], :name => at[1]).save!
