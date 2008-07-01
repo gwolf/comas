@@ -64,4 +64,4 @@ end
 require 'classinherit'
 require 'strings_with_random'
 require 'pseudo_gettext'
-require 'will_paginate
+require 'will_paginate'
