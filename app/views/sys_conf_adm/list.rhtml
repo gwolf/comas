@@ -12,7 +12,9 @@
     <td><%=h conf.value %></td>
     <td><%= link_to _('Edit'), :action => :edit, :id => conf %>
       <%= link_to(_('Delete'), {:action => :delete, :id => conf},
-                  {:method => :post, :confirm => _('Sure?')}) %></td>
+                  {:method => :post, 
+                   :confirm => _('Are you sure you want to delete ' +
+                                 'this configuration entry?')}) %></td>
   </tr>
 <% end %>
   <%= table_row %>
