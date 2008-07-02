@@ -52,6 +52,40 @@ class PeopleController < ApplicationController
     @mine = Conference.upcoming_for_person(@user)
   end
 
+  def personal
+    return true unless request.post?
+    if @user.update_attributes(params[:person])
+      flash[:notice] = _'Your personal data has been updated successfully'
+    else
+      flash[:error] = _('Error updating your personal data: ') +
+        @user.errors.full_messages.join('<br>')
+    end
+  end
+
+  def password
+    return true unless request.post?
+    err = []
+
+    err << _('All fields are required') if
+      params[:current].blank? or params[:new].blank? or params[:confirm].blank?
+    err << _('New password does not match confirmation') unless
+      params[:new] == params[:confirm]
+    err << _('Current password is not valid') unless 
+      Person.ck_login(@user.login, params[:current])
+    
+    @user.passwd = params[:new]
+    @user.save or err << _('Error changing your password: ') + 
+      @user.errors.full_messages.join('<br/>')
+
+    if !err.empty?
+      flash[:error] = err
+      return false
+    end
+
+    flash[:notice] = _('Your password was successfully changed')
+    redirect_to :action => 'account'
+  end
+
   ############################################################
   # Internal use...
   protected

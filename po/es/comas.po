@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2008-07-02 12:24-0500\n"
-"PO-Revision-Date: 2008-07-02 12:23-0600\n"
+"POT-Creation-Date: 2008-07-02 14:31-0500\n"
+"PO-Revision-Date: 2008-07-02 14:33-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: Gunnar Wolf <gwolf@gwolf.org>\n"
 "MIME-Version: 1.0\n"
@@ -160,7 +160,8 @@ msgstr "Fecha de inicio de actividades"
 msgid "Conference|Finishes"
 msgstr "Fecha de término de actividades"
 
-#: app/models/conference.rb:100 app/models/conference.rb:101
+#: app/models/conference.rb:100
+#: app/models/conference.rb:101
 msgid "%{fn} can't be blank"
 msgstr "%{fn} requiere ser llenado"
 
@@ -170,14 +171,11 @@ msgstr "La actividad debe terminar después de su fecha de inicio"
 
 #: app/models/conference.rb:107
 msgid "Call for papers must end after its start date"
-msgstr ""
-"La convocatoria de participación debe concluir después de su fecha de inicio"
+msgstr "La convocatoria de participación debe concluir después de su fecha de inicio"
 
 #: app/models/conference.rb:110
 msgid "Call for papers must finish before the conference begins"
-msgstr ""
-"La convocatoria de participación debe concluir antes de que inicie la "
-"actividad"
+msgstr "La convocatoria de participación debe concluir antes de que inicie la actividad"
 
 #: app/models/conference.rb:114
 msgid "Registration must end after its start date"
@@ -391,7 +389,8 @@ msgstr "El controlador %s debe implementar check_auth"
 msgid "Conference listing"
 msgstr "Listado de actividades"
 
-#: app/controllers/application.rb:50 app/views/people/login.rhtml:6
+#: app/controllers/application.rb:50
+#: app/views/people/login.rhtml:6
 msgid "Log in"
 msgstr "Entrar"
 
@@ -399,15 +398,25 @@ msgstr "Entrar"
 msgid "New account"
 msgstr "Nueva cuenta"
 
-#: app/controllers/application.rb:55
+#: app/controllers/application.rb:56
+#: app/views/people/personal.rhtml:1
+msgid "Personal information"
+msgstr "Información personal"
+
+#: app/controllers/application.rb:58
+#: app/views/people/password.rhtml:24
+msgid "Change password"
+msgstr "Cambiar contraseña"
+
+#: app/controllers/application.rb:61
 msgid "My account"
 msgstr "Mi cuenta"
 
-#: app/controllers/application.rb:77
+#: app/controllers/application.rb:84
 msgid "&laquo; Previous"
 msgstr "&laquo; Anterior"
 
-#: app/controllers/application.rb:78
+#: app/controllers/application.rb:85
 msgid "Next &raquo;"
 msgstr "Siguiente &raquo;"
 
@@ -437,7 +446,8 @@ msgid "Error removing requested conference: "
 msgstr "Error eliminando la actividad solicitada:"
 
 #: app/controllers/conferences_adm_controller.rb:51
-#: app/controllers/admin.rb:12 app/controllers/people_adm_controller.rb:53
+#: app/controllers/admin.rb:12
+#: app/controllers/people_adm_controller.rb:53
 msgid "Invocation error"
 msgstr "Error de invocación"
 
@@ -454,12 +464,8 @@ msgid "The requested timeslot was successfully deleted"
 msgstr "La sesión especificada fue eliminada exitosamente"
 
 #: app/controllers/conferences_adm_controller.rb:96
-msgid ""
-"Could not find requested timeslot (%d) for deletion - Maybe it was already "
-"deleted?"
-msgstr ""
-"No fue posible encontrar la sesión especificada (%d) para eliminarla - "
-"Posiblemente ya la había eliminado"
+msgid "Could not find requested timeslot (%d) for deletion - Maybe it was already deleted?"
+msgstr "No fue posible encontrar la sesión especificada (%d) para eliminarla - Posiblemente ya la había eliminado"
 
 #: app/controllers/people_controller.rb:12
 msgid "Successfully logged out"
@@ -476,6 +482,34 @@ msgstr "La nueva persona fue registrada exitosamente"
 #: app/controllers/people_controller.rb:43
 msgid "Could not register person: "
 msgstr "No fue posible registrar a la persona especificada:"
+
+#: app/controllers/people_controller.rb:58
+msgid "Your personal data has been updated successfully"
+msgstr "Sus datos personales han sido actualizados exitosamente"
+
+#: app/controllers/people_controller.rb:60
+msgid "Error updating your personal data: "
+msgstr "Error actualizando sus datos personales"
+
+#: app/controllers/people_controller.rb:69
+msgid "All fields are required"
+msgstr "Todos los campos son requeridos"
+
+#: app/controllers/people_controller.rb:71
+msgid "New password does not match confirmation"
+msgstr "La nueva contraseña no concuerda con la confirmación"
+
+#: app/controllers/people_controller.rb:73
+msgid "Current password is not valid"
+msgstr "La contraseña actual no es válida"
+
+#: app/controllers/people_controller.rb:77
+msgid "Error changing your password: "
+msgstr "Error cambiando su contraseña"
+
+#: app/controllers/people_controller.rb:85
+msgid "Your password was successfully changed"
+msgstr "Su nueva contraseña fue registrada exitosamente"
 
 #: app/controllers/attendance_adm_controller.rb:2
 msgid "Choose a timeslot"
@@ -495,18 +529,12 @@ msgid "Requested person (%d) does not exist"
 msgstr "La persona especificada (%d) no existe"
 
 #: app/controllers/attendance_adm_controller.rb:59
-msgid ""
-"<em>%s</em> is not registered for <em>%s</em>, and registrations are closed."
-msgstr ""
-"La persona <em>%s</em> no estaba aún registrada para esta actividad, y el "
-"registro está cerrado"
+msgid "<em>%s</em> is not registered for <em>%s</em>, and registrations are closed."
+msgstr "La persona <em>%s</em> no estaba aún registrada para esta actividad, y el registro está cerrado"
 
 #: app/controllers/attendance_adm_controller.rb:65
-msgid ""
-"Person <em>%s</em> was not yet registered for this conference - Registering."
-msgstr ""
-"La persona <em>%s</em> no estaba aún registrada para esta actividad - "
-"Registrando."
+msgid "Person <em>%s</em> was not yet registered for this conference - Registering."
+msgstr "La persona <em>%s</em> no estaba aún registrada para esta actividad - Registrando."
 
 #: app/controllers/attendance_adm_controller.rb:71
 msgid "Attendance successfully registered"
@@ -589,12 +617,8 @@ msgid "Could not unregister you from conference %s: %s"
 msgstr "No fue posible cancelar su registro de «%s»: %s"
 
 #: app/controllers/conferences_controller.rb:63
-msgid ""
-"This conference does not currently accept changing your registration status "
-"- please visit %s for more details"
-msgstr ""
-"En este momento, es imposible cambiar su estado de registro para esta "
-"actividad. Por favor, visite %s para mayores informes."
+msgid "This conference does not currently accept changing your registration status - please visit %s for more details"
+msgstr "En este momento, es imposible cambiar su estado de registro para esta actividad. Por favor, visite %s para mayores informes."
 
 #: app/controllers/conferences_controller.rb:66
 msgid "its information page"
@@ -618,8 +642,7 @@ msgstr "Mostrando <b>todos los %d</b> registros"
 
 #: app/helpers/application_helper.rb:39
 msgid "Displaying items <b>%d&nbsp;-&nbsp;%d</b> of <b>%d</b> in total"
-msgstr ""
-"Mostrando los registros <b>%d&nbsp;-&nbsp;%d</b> de un total de <b>%d</b>"
+msgstr "Mostrando los registros <b>%d&nbsp;-&nbsp;%d</b> de un total de <b>%d</b>"
 
 #: app/helpers/application_helper.rb:85
 msgid "Field %s not defined for %s"
@@ -662,19 +685,16 @@ msgstr "Confirme: ¿Seguro que desea cancelar su registro de «%s»?"
 msgid "Sign up"
 msgstr "Registrarme"
 
-#: app/helpers/conferences_adm_helper.rb:23 app/views/people_adm/list.rhtml:19
+#: app/helpers/conferences_adm_helper.rb:23
+#: app/views/people_adm/list.rhtml:19
 #: app/views/conferences_adm/list.rhtml:34
 #: app/views/sys_conf_adm/list.rhtml:14
 msgid "Delete"
 msgstr "Eliminar"
 
 #: app/helpers/conferences_adm_helper.rb:26
-msgid ""
-"Are you sure you want to permanently delete this timeslot? This will also "
-"destroy any attendances it has recorded"
-msgstr ""
-"¿Está seguro que desea eliminar permanentemente esta sesión? Eso eliminará "
-"también todas las asistencias que ha registrado en ella"
+msgid "Are you sure you want to permanently delete this timeslot? This will also destroy any attendances it has recorded"
+msgstr "¿Está seguro que desea eliminar permanentemente esta sesión? Eso eliminará también todas las asistencias que ha registrado en ella"
 
 #: app/helpers/attendance_adm_helper.rb:18
 #: app/views/conferences_adm/timeslots.rhtml:14
@@ -726,8 +746,7 @@ msgstr "Mostrar todas las sesiones registradas"
 
 #: app/views/attendance_adm/take.rhtml:3
 msgid "Taking attendance for session starting at %s, belonging to <em>%s</em>"
-msgstr ""
-"Tomando asistencia para la sesión iniciada el %s, perteneciente a <em>%s</em>"
+msgstr "Tomando asistencia para la sesión iniciada el %s, perteneciente a <em>%s</em>"
 
 #: app/views/attendance_adm/take.rhtml:10
 msgid "Save attendance"
@@ -745,7 +764,9 @@ msgstr "Personas registradas con roles administrativos"
 msgid "Attendee %d's personal data"
 msgstr "Datos personales del asistente %d"
 
-#: app/views/people_adm/show.rhtml:3 app/views/conferences_adm/show.rhtml:3
+#: app/views/people_adm/show.rhtml:3
+#: app/views/conferences_adm/show.rhtml:3
+#: app/views/people/personal.rhtml:6
 #: app/views/sys_conf_adm/edit.rhtml:9
 msgid "Save changes"
 msgstr "Grabar cambios"
@@ -754,7 +775,8 @@ msgstr "Grabar cambios"
 msgid "Attendee administration"
 msgstr "Administración de asistentes"
 
-#: app/views/people_adm/list.rhtml:3 app/views/conferences_adm/list.rhtml:3
+#: app/views/people_adm/list.rhtml:3
+#: app/views/conferences_adm/list.rhtml:3
 msgid "Register new"
 msgstr "Registrar nuevo"
 
@@ -778,7 +800,8 @@ msgstr "Apellidos"
 msgid "Last login at"
 msgstr "Última entrada"
 
-#: app/views/people_adm/list.rhtml:21 app/views/conferences_adm/list.rhtml:35
+#: app/views/people_adm/list.rhtml:21
+#: app/views/conferences_adm/list.rhtml:35
 msgid "Are you sure you want to permanently delete %s?"
 msgstr "¿Está seguro de que desea eliminar permanentemente a %s?"
 
@@ -786,8 +809,10 @@ msgstr "¿Está seguro de que desea eliminar permanentemente a %s?"
 msgid "Register a new attendee"
 msgstr "Registrar a un nuevo asistente"
 
-#: app/views/people_adm/new.rhtml:3 app/views/conferences_adm/new.rhtml:3
-#: app/views/people/new.rhtml:10 app/views/sys_conf_adm/list.rhtml:26
+#: app/views/people_adm/new.rhtml:3
+#: app/views/conferences_adm/new.rhtml:3
+#: app/views/people/new.rhtml:10
+#: app/views/sys_conf_adm/list.rhtml:26
 msgid "Create"
 msgstr "Crear"
 
@@ -808,12 +833,8 @@ msgid "Create a new timeslot for this conference"
 msgstr "Crear una nueva sesión para esta actividad"
 
 #: app/views/conferences_adm/timeslots.rhtml:24
-msgid ""
-"Enter the tolerance in <em>hh:mm:ss</em> format. If not specified, it will "
-"use the system-wide default (%s)"
-msgstr ""
-"Proporcione la tolerancia en un formato <em>hh:mm:ss</em>. Si no la "
-"especifica, utilizaré el valor por omisión en el sistema (%s)"
+msgid "Enter the tolerance in <em>hh:mm:ss</em> format. If not specified, it will use the system-wide default (%s)"
+msgstr "Proporcione la tolerancia en un formato <em>hh:mm:ss</em>. Si no la especifica, utilizaré el valor por omisión en el sistema (%s)"
 
 #: app/views/conferences_adm/timeslots.rhtml:35
 msgid "Create timeslot"
@@ -883,9 +904,26 @@ msgstr "Bienvenido, %s"
 msgid "Next conferences you are signed up for"
 msgstr "Próximas actividades para las cuales usted está registrado"
 
-#: app/views/people/account.rhtml:9 app/views/conferences/list.rhtml:6
+#: app/views/people/account.rhtml:9
+#: app/views/conferences/list.rhtml:6
 msgid "Upcoming conferences"
 msgstr "Próximas actividades"
+
+#: app/views/people/password.rhtml:1
+msgid "Change your password"
+msgstr "Cambio de contraseña"
+
+#: app/views/people/password.rhtml:5
+msgid "Current password"
+msgstr "Contraseña actual"
+
+#: app/views/people/password.rhtml:11
+msgid "New password"
+msgstr "Nueva contraseña"
+
+#: app/views/people/password.rhtml:17
+msgid "Confirm new password"
+msgstr "Confirme la nueva contraseña"
 
 #: app/views/people/login.rhtml:3
 msgid "User name"
@@ -917,9 +955,7 @@ msgstr "Mostrar también las actividades pasadas"
 
 #: app/views/conferences/list.rhtml:11
 msgid "To register for any of the conferences shown, please %s or %s"
-msgstr ""
-"Para registrarse para alguna de las actividades aquí mostradas, por favor %s "
-"o %s"
+msgstr "Para registrarse para alguna de las actividades aquí mostradas, por favor %s o %s"
 
 #: app/views/conferences/list.rhtml:12
 msgid "create a new account"
@@ -934,28 +970,16 @@ msgid "Editing configuration entry <em>%s</em>"
 msgstr "Editando la entrada de configuración <em>%s</em>"
 
 #: app/views/sys_conf_adm/edit.rhtml:2
-msgid ""
-"<b>Caution</b>: Modifying this configuration entry might render your system "
-"inoperable. Proceed at your own risk, and only if you know what you are "
-"doing."
-msgstr ""
-"<b>Precaución</b>: Modificar esta entrada de configuración puede dejar a su "
-"sistema inutilizable. Hágalo bajo su propio riesgo, y únicamente si sabe lo "
-"que hace."
+msgid "<b>Caution</b>: Modifying this configuration entry might render your system inoperable. Proceed at your own risk, and only if you know what you are doing."
+msgstr "<b>Precaución</b>: Modificar esta entrada de configuración puede dejar a su sistema inutilizable. Hágalo bajo su propio riesgo, y únicamente si sabe lo que hace."
 
 #: app/views/sys_conf_adm/list.rhtml:1
 msgid "Configuration entries"
 msgstr "Entradas de configuración"
 
 #: app/views/sys_conf_adm/list.rhtml:2
-msgid ""
-"<b>Caution</b>: Modifying the configuration entries shown here might render "
-"your system inoperable. Proceed at your own risk, and only if you know what "
-"you are doing."
-msgstr ""
-"<b>Precaución</b>: Modificar las entradas de configuración desplegadas a "
-"continuación puede dejar a su sistema inutilizable. Hágalo bajo su propio "
-"riesgo, y únicamente si sabe lo que hace."
+msgid "<b>Caution</b>: Modifying the configuration entries shown here might render your system inoperable. Proceed at your own risk, and only if you know what you are doing."
+msgstr "<b>Precaución</b>: Modificar las entradas de configuración desplegadas a continuación puede dejar a su sistema inutilizable. Hágalo bajo su propio riesgo, y únicamente si sabe lo que hace."
 
 #: app/views/sys_conf_adm/list.rhtml:7
 msgid "Key"
@@ -1080,3 +1104,4 @@ msgstr "Actividades"
 #: lib/menu_tree.rb:16
 msgid "Unexpected arguments received: "
 msgstr "Argumentos inesperados recibidos:"
+

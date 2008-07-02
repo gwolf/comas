@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2008-07-02 12:24-0500\n"
+"POT-Creation-Date: 2008-07-02 14:31-0500\n"
 "PO-Revision-Date: 2008-05-07 18:30-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -399,15 +399,23 @@ msgstr ""
 msgid "New account"
 msgstr ""
 
-#: app/controllers/application.rb:55
+#: app/controllers/application.rb:56 app/views/people/personal.rhtml:1
+msgid "Personal information"
+msgstr ""
+
+#: app/controllers/application.rb:58 app/views/people/password.rhtml:24
+msgid "Change password"
+msgstr ""
+
+#: app/controllers/application.rb:61
 msgid "My account"
 msgstr ""
 
-#: app/controllers/application.rb:77
+#: app/controllers/application.rb:84
 msgid "&laquo; Previous"
 msgstr ""
 
-#: app/controllers/application.rb:78
+#: app/controllers/application.rb:85
 msgid "Next &raquo;"
 msgstr ""
 
@@ -473,6 +481,34 @@ msgstr ""
 
 #: app/controllers/people_controller.rb:43
 msgid "Could not register person: "
+msgstr ""
+
+#: app/controllers/people_controller.rb:58
+msgid "Your personal data has been updated successfully"
+msgstr ""
+
+#: app/controllers/people_controller.rb:60
+msgid "Error updating your personal data: "
+msgstr ""
+
+#: app/controllers/people_controller.rb:69
+msgid "All fields are required"
+msgstr ""
+
+#: app/controllers/people_controller.rb:71
+msgid "New password does not match confirmation"
+msgstr ""
+
+#: app/controllers/people_controller.rb:73
+msgid "Current password is not valid"
+msgstr ""
+
+#: app/controllers/people_controller.rb:77
+msgid "Error changing your password: "
+msgstr ""
+
+#: app/controllers/people_controller.rb:85
+msgid "Your password was successfully changed"
 msgstr ""
 
 #: app/controllers/attendance_adm_controller.rb:2
@@ -735,7 +771,7 @@ msgid "Attendee %d's personal data"
 msgstr ""
 
 #: app/views/people_adm/show.rhtml:3 app/views/conferences_adm/show.rhtml:3
-#: app/views/sys_conf_adm/edit.rhtml:9
+#: app/views/people/personal.rhtml:6 app/views/sys_conf_adm/edit.rhtml:9
 msgid "Save changes"
 msgstr ""
 
@@ -872,6 +908,22 @@ msgstr ""
 
 #: app/views/people/account.rhtml:9 app/views/conferences/list.rhtml:6
 msgid "Upcoming conferences"
+msgstr ""
+
+#: app/views/people/password.rhtml:1
+msgid "Change your password"
+msgstr ""
+
+#: app/views/people/password.rhtml:5
+msgid "Current password"
+msgstr ""
+
+#: app/views/people/password.rhtml:11
+msgid "New password"
+msgstr ""
+
+#: app/views/people/password.rhtml:17
+msgid "Confirm new password"
 msgstr ""
 
 #: app/views/people/login.rhtml:3

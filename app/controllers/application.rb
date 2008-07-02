@@ -52,8 +52,15 @@ class ApplicationController < ActionController::Base
       @menu.add(_('New account'),
                 url_for(:controller => '/people', :action => 'new'))
     else
+      personal = MenuTree.new
+      personal.add(_('Personal information'),
+                   url_for(:controller => '/people', :action => 'personal'))
+      personal.add(_('Change password'),
+                   url_for(:controllre => '/people', :action => 'password'))
+
       @menu.add(_('My account'),
-                url_for(:controller => '/people', :action => 'account'))
+                url_for(:controller => '/people', :action => 'account'),
+                personal)
 
       @user.admin_tasks.each do |task|
         control = "#{task.sys_name.camelcase}Controller".constantize
