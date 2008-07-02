@@ -14,6 +14,10 @@ module ApplicationHelper
   def end_table; '</table>'; end
   def table_head_row; '<tr class="listing-head">'; end
 
+  def table_head_row_for(*items)
+    [table_head_row, items.map {|it| "<th>#{it}</th>"}, '</tr>'].join("\n")
+  end
+
   def table_row
     @table_rows += 1
     "<tr class=\"#{list_row_classes[@table_rows % list_row_classes.size]}\">"

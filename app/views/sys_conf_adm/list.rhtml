@@ -1,0 +1,27 @@
+<h1><%= _'Configuration entries' %></h1>
+<p><%= _'<b>Caution</b>: Modifying the configuration entries shown ' +
+       'here might render your system inoperable. Proceed at ' +
+       'your own risk, and only if you know what you are doing.'  %></p>
+
+<%= start_table %>
+  <%= table_head_row_for(_('Key'), _('Description'), _('Value'), '') %>
+<% @confs.each do |conf| %>
+  <%= table_row %>
+    <td><%=h conf.key %></td>
+    <td><%=h conf.descr %></td>
+    <td><%=h conf.value %></td>
+    <td><%= link_to _('Edit'), :action => :edit, :id => conf %>
+      <%= link_to(_('Delete'), {:action => :delete, :id => conf},
+                  {:method => :post, :confirm => _('Sure?')}) %></td>
+  </tr>
+<% end %>
+  <%= table_row %>
+  <% form_for :sys_conf, @new_conf, 
+               :url => {:action => :create} do |f|%>
+    <td><%= f.text_field :key, :size => 10 %></td>
+    <td><%= f.text_field :descr, :size => 20 %></td>
+    <td><%= f.text_field :value, :size => 10 %></td>
+    <td><%= f.submit _'Create' %> </td>
+  <% end %>
+  </tr>
+<%= end_table %>
