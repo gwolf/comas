@@ -24,7 +24,7 @@ body {
           color: #face89;
           font-size: 150%;
           height: 86px;
-          background-image:url(/images/css/header.png); 
+          background-image:url(header.png); 
           padding-left: 1em;
 }
 
@@ -34,7 +34,7 @@ body {
           width:100%; 
           margin-top: 305px;
           background-color: #666699; 
-          background-image:url(/images/css/footer.png);
+          background-image:url(footer.png);
           text-align: center;
           font-size: 70%;
 }
@@ -59,7 +59,7 @@ body {
 #menu { float: left;
         background-color: #CBCBE1;
         width: 20%;
-        background-image: url(/images/css/menu.png);
+        background-image: url(menu.png);
         vertical-align: top;
         font-family:"Trebuchet MS", Tahoma, Verdana, Arial, sans-serif;
         font-size: 80%;
@@ -154,7 +154,7 @@ a:hover {
 }
 
 #loginreq {  
-    background-image:url(/images/usrlogin.png);
+    background-image:url(usrlogin.png);
     background-repeat: no-repeat;
     background-position: 0.5em 0.5em;
 }

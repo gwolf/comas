@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
   session :session_key => '_comas_session_id'
 
   before_filter :get_user
+  before_filter :require_user_for_non_public_areas
   before_filter :check_auth
   before_filter :generate_menu
   before_filter :set_lang
@@ -23,6 +24,20 @@ class ApplicationController < ActionController::Base
   def get_user
     return false unless id = session[:user_id]
     @user = Person.find(id)
+  end
+
+  def require_user_for_non_public_areas
+    return true if @user
+
+    public = {:people => [:login, :logout, :validate],
+      :conferences => [:list, :show]}
+
+    ctrl = request.path_parameters['controller'].to_sym
+    act = request.path_parameters['action'].to_sym
+
+    return true if public.has_key?(ctrl) and public[ctrl].include?(act)
+    redirect_to :controller => :people, :action => :login
+    return false
   end
 
   def check_auth
