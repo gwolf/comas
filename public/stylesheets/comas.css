@@ -32,7 +32,6 @@ body {
 #footer { clear: both;
           height: 84px; 
           width:100%; 
-          margin-top: 305px;
           background-color: #666699; 
           background-image:url(footer.png);
           text-align: center;
@@ -49,7 +48,7 @@ body {
         margin-right: auto;
 	margin-top: 3em;
 	margin-bottom: 7em;
-        padding: 0.5cm;
+        padding: 1em;
         text-align: center;
         width: 60%;
 }
@@ -163,8 +162,8 @@ a:hover {
        padding: 0.2em;
        margin-left: auto;
        margin-right: auto;
-       margin-top: 0.1cm;
-       margin-bottom: 0.1cm;
+       margin-top: 0.2em;
+       margin-bottom: 0.2em;
        width: 70%;
        text-align: center;
        font-size: 120%;
