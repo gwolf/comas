@@ -56,9 +56,9 @@ body {
 /* Menu */
 
 #menu { float: left;
-        background-color: #CBCBE1;
+/*         background-color: #CBCBE1; */
         width: 20%;
-        background-image: url(menu.png);
+/*         background-image: url(menu.png); */
         vertical-align: top;
         font-family:"Trebuchet MS", Tahoma, Verdana, Arial, sans-serif;
         font-size: 80%;
@@ -92,7 +92,9 @@ body {
         color:#663300; 
 }
 
-#main { float: left;
+#main { /*float: left;*/
+        padding-left: 20%;
+        background-image: url(background.png);
         background-color:#FFF;
 	font-family: Verdana, "Trebuchet MS", Arial, sans-serif;
 	font-size:90%;
