@@ -1,11 +1,10 @@
+<h1><%= _'New account' %></h1>
+<p><%= _'Please fill in the following required details for your '+
+        'account creation' %></p>
 <% comas_form_for :person, @person, :url => {:action => 'register'} do |f| %>
-  <%= f.auto_field('login') %>
-  <%= f.password_field('passwd') %>
-  <%= f.auto_field('firstname') %>
-  <%= f.auto_field('famname') %>
-  <%= f.auto_field('email') %>
+  <%= %w(login passwd firstname famname email).map {|fld| f.auto_field(fld)} %>
   <% @person.extra_listable_attributes.each do |attr| %>
     <%= f.auto_field(attr) %>
   <% end %>
-  <%= f.submit _('Create') %>
+  <%= f.submit _('Create account') %>
 <% end %>

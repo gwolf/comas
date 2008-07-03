@@ -1,6 +1,24 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
   ######################################################################
+  # Layout-related elements
+  def show_flash
+    flash.map do |level, message|
+      message = message.join("<br/>") if message.is_a? Array
+      flash.discard(level)
+      '<div id="flash-%s">%s</div>' % [level, message]
+    end
+  end
+
+  def login_data
+    return '' unless @user
+    '<div id="logindata">%s (%s) - %s</div>' % 
+      [h(@user.login), h(@user.name), 
+       link_to(_('Log out'), {:controller => '/people', 
+         :action => 'logout'})]
+  end
+
+  ######################################################################
   # Listing tables (alternating background colors)
   def list_row_classes
     ['listing-even', 'listing-odd']

@@ -17,6 +17,7 @@ class ApplicationController < ActionController::Base
   before_filter :generate_menu
   before_filter :set_lang
   before_filter :set_pagination_labels
+  before_filter :head_and_foot_text
 
   protected
   def get_user
@@ -98,5 +99,10 @@ class ApplicationController < ActionController::Base
     session[key][:sort_by] ||= sortable[0]
 
     session[key][:sort_by]
+  end
+
+  def head_and_foot_text
+    @title = SysConf.value_for('title_text')
+    @footer = SysConf.value_for('footer_text')
   end
 end
