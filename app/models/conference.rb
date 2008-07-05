@@ -1,8 +1,8 @@
 class Conference < ActiveRecord::Base
-  has_many :timeslots
+  has_many :timeslots, :dependent => :destroy
   has_many :proposals
-  has_one :conference_logo
-  has_many :participations
+  has_one :conference_logo, :dependent => :destroy
+  has_many :participations, :dependent => :destroy
   has_many :people, :through => :participations
 
   validates_presence_of :name

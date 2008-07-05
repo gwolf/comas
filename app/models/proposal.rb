@@ -1,8 +1,8 @@
 class Proposal < ActiveRecord::Base
   acts_as_magic_model
-  has_many :authorships
+  has_many :authorships, :dependent => :destroy
   has_many :people, :through => :authorships
-  has_many :documents
+  has_many :documents, :dependent => :destroy
   belongs_to :prop_type
   belongs_to :prop_status
   belongs_to :timeslot

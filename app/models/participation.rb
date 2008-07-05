@@ -13,6 +13,9 @@ class Participation < ActiveRecord::Base
   validates_uniqueness_of(:participation_type_id, 
                           :scope => [ :person_id, :conference_id ])
 
+  before_destroy :dont_unregister_if_has_proposals
+
+
   protected
   def default_type_if_empty
     self.participation_type ||= ParticipationType.default
@@ -23,5 +26,11 @@ class Participation < ActiveRecord::Base
       self.errors.add(:conference,
                       _('Registrations for this conference are closed'))
     end  
+  end
+
+  def dont_unregister_if_has_proposals
+    return true if self.person.authorships.select {|author|
+      author.proposal.conference_id==self.conference_id}.empty?
+    return false
   end
 end

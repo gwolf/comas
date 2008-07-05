@@ -1,9 +1,9 @@
 class Person < ActiveRecord::Base
   acts_as_magic_model
-  has_many :authorships
+  has_many :authorships, :dependent => :destroy
   has_many :proposals, :through => :authorships
   has_and_belongs_to_many :admin_tasks
-  has_many :participations
+  has_many :participations, :dependent => :destroy
   has_many :conferences, :through => :participations, :order => :begins
   has_many :participation_types, :through => :participations
 
