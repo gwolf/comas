@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
   def require_user_for_non_public_areas
     return true if @user
 
-    public = {:people => [:login, :logout, :validate],
+    public = {:people => [:login, :logout, :validate, :new],
       :conferences => [:list, :show]}
 
     ctrl = request.path_parameters['controller'].to_sym
@@ -72,7 +72,7 @@ class ApplicationController < ActionController::Base
       personal.add(_('Personal information'),
                    url_for(:controller => '/people', :action => 'personal'))
       personal.add(_('Change password'),
-                   url_for(:controllre => '/people', :action => 'password'))
+                   url_for(:controller => '/people', :action => 'password'))
 
       @menu.add(_('My account'),
                 url_for(:controller => '/people', :action => 'account'),
