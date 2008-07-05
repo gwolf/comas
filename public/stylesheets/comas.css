@@ -92,9 +92,13 @@ body {
         color:#663300; 
 }
 
+
 #main { /*float: left;*/
         padding-left: 20%;
         background-image: url(background.png);
+        background-position: 20% 0;
+        background-repeat: repeat-y;
+        min-height: 500px;
         background-color:#FFF;
 	font-family: Verdana, "Trebuchet MS", Arial, sans-serif;
 	font-size:90%;

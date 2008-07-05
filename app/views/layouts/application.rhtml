@@ -13,7 +13,6 @@
 <%= javascript_include_tag 'calendar' %>
 </head>
 <body>
-<div class="global">
   <div id="header"><%= @title %></div>
   <div id="menu"><%= @menu %></div>
   <div id="main">
@@ -21,9 +20,7 @@
     <%= show_flash %>
     <div id="contents"><%= yield %></div>
   </div>
-</div>
 <div id="footer"><%= @footer %></div>
-</div>
 </body>
 </html>
 
