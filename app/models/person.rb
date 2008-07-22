@@ -63,6 +63,20 @@ class Person < ActiveRecord::Base
     self.admin_tasks.include? task
   end
 
+  def upcoming_conferences
+    Conference.upcoming_for_person(self)
+  end
+
+  def conferences_for_submitting
+    self.upcoming_conferences.select {|conf| conf.accepts_proposals?}
+  end
+
+  # Is this user signed up for any conferences which accept proposals
+  # now?
+  def can_submit_proposals_now?
+    ! conferences_for_submitting.empty?
+  end
+
   private
   def pw_salt
     self[:pw_salt]

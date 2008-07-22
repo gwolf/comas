@@ -73,6 +73,10 @@ class ApplicationController < ActionController::Base
                    url_for(:controller => '/people', :action => 'personal'))
       personal.add(_('Change password'),
                    url_for(:controller => '/people', :action => 'password'))
+      @user.can_submit_proposals_now? and
+        personal.add(_('My proposals'),
+                     url_for(:controller=>'/people', :action => 'proposals')) 
+        
 
       @menu.add(_('My account'),
                 url_for(:controller => '/people', :action => 'account'),

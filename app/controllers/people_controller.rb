@@ -47,11 +47,13 @@ class PeopleController < ApplicationController
     redirect_to :action => 'new'
   end
 
+  # Base data shown when logging in (i.e. account index)
   def account
-    @upcoming = Conference.upcoming(:per_page=>5)
+    @upcoming = Conference.upcoming(:per_page=>5, :page => params[:page])
     @mine = Conference.upcoming_for_person(@user)
   end
 
+  # General personal information
   def personal
     return true unless request.post?
     if @user.update_attributes(params[:person])
@@ -62,6 +64,7 @@ class PeopleController < ApplicationController
     end
   end
 
+  # Password change
   def password
     return true unless request.post?
     err = []
@@ -84,6 +87,11 @@ class PeopleController < ApplicationController
 
     flash[:notice] = _('Your password was successfully changed')
     redirect_to :action => 'account'
+  end
+
+  # List my proposals
+  def proposals
+    @props = @user.proposals
   end
 
   ############################################################

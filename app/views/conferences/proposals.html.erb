@@ -1,0 +1,20 @@
+<h1><%= _('Proposals for %s') % @conference.name %></h1>
+<%= pagination_header @props %>
+<%= will_paginate @props %>
+<%= start_table %>
+  <%= table_head_row %>
+    <th><%= _'Title' %></th>
+    <th><%= _'Authors' %></th>
+    <th><%= _'Proposal type' %></th>
+    <th><%= _'Proposal status' %></th>
+  <%= end_table_row %>
+  <% @props.each do |prop| %>
+    <%= table_row %>
+      <td><%= link_to(prop.title, :controller => 'proposals',
+	              :action => 'show', :id => prop)%></td>
+      <td><%=h  prop.people.map {|p| p.name}.join(', ') %></td>
+      <td><%=h prop.prop_type.name %></td>
+      <td><%=h prop.prop_status.name %></td>
+    <%= end_table_row %>
+  <% end %>
+<%= end_table %>

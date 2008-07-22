@@ -22,6 +22,18 @@ class ConferencesController < ApplicationController
     @can_edit = true if @user and @user.has_admin_task? 'conferences_adm'
   end
 
+  def proposals
+    # We could just use @conference.proposals, but... lets paginate
+    # nicely
+    per_page = params[:per_page] || 20
+    @props = Proposal.paginate(:page => params[:page],
+                               :per_page => per_page,
+                               :conditions => ['conference_id = ?',
+                                               @conference.id],
+                               :include => [:people, :conference, :prop_type],
+                               :order => 'title')
+  end
+
   ############################################################
   # Person sign up for/removal
   def sign_up

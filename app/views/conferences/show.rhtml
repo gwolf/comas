@@ -10,9 +10,24 @@
   </div>
 <% end %>
 
+<% if (props=@conference.proposals.size) > 0 %>
+  <p><%= link_to(_('%d proposals registered for this conference') %
+                 props, :action => 'proposals', :id => @conference) %></p>
+<% end %>
+
 <p><%= @conference.descr %></p>
 
 <p><%= @conference.begins %> - <%= @conference.finishes %></p>
+
+<% if @user %>
+  <% if @user.conferences_for_submitting.include? @conference %>
+    <%= link_to(_('Submit a proposal for this conference'),
+	        :controller => 'proposals', :action => 'new',
+                :conference_id => @conference) %>
+  <% elsif @conference.accepts_proposals? %>
+
+  <% end %>
+<% end %>
 
 <% if !@conference.homepage.blank? %>
   <p><%= link_to _('Web site'), @conference.homepage %></p>

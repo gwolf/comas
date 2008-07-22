@@ -44,6 +44,15 @@ module ApplicationHelper
   def end_table_row; '</tr>'; end
 
   ############################################################
+  # Regular information elements
+  def info_row(title, data)
+    %Q(<div class="info-row">
+         <span class="info-title">#{title}</span>
+         <span class="info-data">#{h data}</span>
+       </div>)
+  end
+
+  ############################################################
   # Show a translation-friendly pagination header (similar to WillPaginate's
   # page_entries_info - in fact, derived from it)
   def pagination_header(collection)
@@ -127,6 +136,7 @@ module ApplicationHelper
         return text_field(field, options) 
 
       when :text
+        options[:size] ||= '70x15'
         return text_area(field, options) 
 
       when :integer, :decimal, :float

@@ -1,0 +1,16 @@
+<h1><%=h @proposal.title %></h1>
+
+<%= info_row _('Submitted for'), @proposal.conference.name %>
+<%= info_row _('Proposal type'), @proposal.prop_type.name %>
+<%= info_row _('Abstract'), @proposal.abstract %>
+<% if tslot = @proposal.timeslot %>
+  <%= info_row _('Room'), tslot.room.name %>
+  <%= info_row _('Start time'), tslot.start_time %>
+<% end %>
+
+<h3><%= _'Authors' %></h3>
+<ul>
+<% @proposal.people.each do |author| %>
+  <li><%=h author.name %></li>
+<% end %>
+</ul>

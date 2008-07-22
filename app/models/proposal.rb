@@ -13,8 +13,24 @@ class Proposal < ActiveRecord::Base
   validates_presence_of :prop_status_id
   validates_presence_of :conference_id
   validates_associated :prop_type, :prop_status, :timeslot, :conference
+  validate_on_create :in_conference_cfp_period
 
   def scheduled?
     ! self.timeslot.empty?
+  end
+
+  # Possibly we should use something fixed and reliable instead of a
+  # regular catalog here?
+  def accepted?
+    self.prop_status_id == SysConf.value_for('accepted_prop_status_id').to_i
+  end
+
+  protected
+  def in_conference_cfp_period
+    return true if self.conference and self.conference.accepts_proposals?
+    self.errors.add(:conference_id,
+                    _('Call for papers period for this conference is ' +
+                      'not current'))
+    false
   end
 end

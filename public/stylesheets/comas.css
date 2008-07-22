@@ -206,16 +206,16 @@ td, th {
     text-align: left;
 }
 
-.form-row { 
+.info-row, .form-row { 
     padding: 0.1em;
     border: solid 1px #eee;
 }
 
-.show-prompt {  
+.info-title, .show-prompt {  
     font-weight: bold;
 }
 
-.show-data {  
+.info-data, .show-data {  
 }
 
 .form-prompt {

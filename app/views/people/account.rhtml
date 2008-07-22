@@ -7,5 +7,7 @@
 
 <div id="upcoming">
   <h3><%= _'Upcoming conferences' %></h3>
+  <%= pagination_header @upcoming %>
+  <%= will_paginate @upcoming %>
   <%= conf_list_table @upcoming %>
 </div>

@@ -1,0 +1,13 @@
+<h1><%= _'Submit a new proposal' %></h1>
+
+<% comas_form_for :proposal, @proposal, :url => {:action => 'create'} do |f| %>
+<%= f.select :conference_id, @confs.map {|c| [c.name, c.id]},
+             :note => _('In order to submit a proposal for a conference ' +
+                        'not listed below, please %s') %
+                      link_to(_('register as an attendee'), 
+                           :controller => 'conferences', :action => 'list') %>
+<%= f.auto_field :title %>
+<%= f.auto_field :abstract %>
+<%= f.auto_field :prop_type_id %>
+<%= f.submit _'Register proposal' %>
+<% end %>

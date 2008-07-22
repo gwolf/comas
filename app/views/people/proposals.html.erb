@@ -1,0 +1,28 @@
+<h1><%= _'My proposals' %></h1>
+
+<% if @user.can_submit_proposals_now? %>
+  <p><%= link_to(_('Submit a new proposal'), :controller => 'proposals',
+                 :action => 'new') %></p>
+<% end %>
+
+<% if @props.size == 0 %>
+  <p><%= _'You have not sent any proposals yet. ' %></p>
+<% else %>
+  <p><%= _('Showing the %d proposals you have submitted') % @props.size %></p>
+  <%= start_table %>
+    <%= table_head_row %>
+      <th><%= _'Title' %></th>
+      <th><%= _'Conference' %></th>
+      <th><%= _'Proposal type' %></th>
+    <% end_table_row %>
+  <% @props.each do |prop| %>
+    <%= table_row %>
+      <td><%= link_to(prop.title, :controller => 'proposals',
+	              :action => 'show', :id => prop.id) %></td>
+      <td><%= link_to(prop.conference.name, :controller => 'conferences',
+	              :action => 'show', :id => prop.conference.id) %></td>
+      <td><%= prop.prop_type.name %></td>
+    <%= end_table_row %>
+  <% end %>
+  <%= end_table %>
+<% end %>
