@@ -30,7 +30,8 @@ class ApplicationController < ActionController::Base
     return true if @user
 
     public = {:people => [:login, :logout, :validate, :new],
-      :conferences => [:list, :show]}
+      :conferences => [:index, :list, :show, :proposals],
+      :proposals => [:index, :list, :show, :by_author]}
 
     ctrl = request.path_parameters['controller'].to_sym
     act = request.path_parameters['action'].to_sym

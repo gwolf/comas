@@ -1,2 +1,7 @@
-<h1>Proposals#edit</h1>
-<p>Find me in app/views/proposals/edit.html.erb</p>
+<h1><%= _'Edit your proposal' %></h1>
+
+<%= render(:partial => 'form', 
+           :locals => {:proposal => @proposal,
+                       :action => 'edit',
+                       :choose_confs => false,
+                       :submit_label => _('Save changes') }) %>

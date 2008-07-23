@@ -10,7 +10,7 @@
 
 <h3><%= _'Authors' %></h3>
 <ul>
-<% @proposal.people.each do |author| %>
-  <li><%=h author.name %></li>
+<% authors_list_for_proposal(@proposal).each do |author| %>
+  <li><%= author %></li>
 <% end %>
 </ul>

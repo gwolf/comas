@@ -1,12 +1,11 @@
 class ProposalsController < ApplicationController
+  before_filter :get_proposal, :except => [:new, :create, :list, :by_author]
+
   def new
     @confs = @user.conferences_for_submitting
     if @confs.empty?
       flash[:warnings] = _('There are currently no conferences for which ' +
-                           'you can submit proposals. You can %s first if ' +
-                           'you want to submit a proposal for them') %
-        link_to('register for additional conferences', 
-                :controller => 'conferences', :action => 'list')
+                           'you can submit proposals. Please register first.')
       redirect_to :controller => 'people', :action => 'proposals'
       return false
     end
@@ -40,22 +39,65 @@ class ProposalsController < ApplicationController
   end
 
   def show
-    @proposal = Proposal.find_by_id(params[:id])
-    if !@proposal 
-      redirect_to :action => :list
-      return false
-    end
   end
 
   def list
   end
 
   def edit
+    return true unless request.post?
+    if @proposal.update_attributes(params[:proposal])
+      flash[:notice] = _'The proposal has been modified successfully'
+    else
+      flash[:error] = _('Error updating the proposal: ') +
+        @proposal.errors.full_messages.join('<br/>')
+    end
+  end
+
+  def authors
+  end
+
+  def author_up
+    redirect_to :action => 'authors', :id => @proposal.id
+    auth = Authorship.find_by_id(params[:authorship_id])
+    return false unless auth and auth.proposal_id = @proposal.id
+
+    auth.move_higher
+  end
+
+  def author_down
+    redirect_to :action => 'authors', :id => @proposal.id
+    auth = Authorship.find_by_id(params[:authorship_id])
+    return false unless auth and auth.proposal_id = @proposal.id
+
+    auth.move_lower
+  end
+
+  def by_author
+    @author = Person.find_by_id(params[:author_id].to_i)
+    unless @author
+      redirect_to :action => 'list'
+      flash[:error] = _('No author specified - rendering general list')
+      return false
+    end
+
+    @props = Proposal.list_paginator(:page => params[:page],
+                                     :conditions => ['people.id = ?', 
+                                                     @author.id])
   end
 
   protected
   def check_auth
-    public = [:show, :list]
+    public = [:show, :list, :by_author]
     return true if public.include? request.path_parameters['action'].to_sym
+  end
+
+  def get_proposal
+    @proposal = Proposal.find_by_id(params[:id])
+    if @proposal.nil?
+      flash[:error] = _'Invalid proposal requested'
+      redirect_to :action => :list
+      return false
+    end
   end
 end

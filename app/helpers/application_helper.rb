@@ -19,6 +19,20 @@ module ApplicationHelper
   end
 
   ######################################################################
+  # Icon buttons
+  def icon_up
+    image_tag 'up.png', :border => 0, :alt => _('Up'), :size => '16x16'
+  end
+
+  def icon_down
+    image_tag 'down.png', :border => 0, :alt => _('Down'), :size => '16x16'
+  end
+
+  def icon_space
+    image_tag 'space.png', :border => 0, :alt => _('-'), :size => '16x16'
+  end
+
+  ######################################################################
   # Listing tables (alternating background colors)
   def list_row_classes
     ['listing-even', 'listing-odd']

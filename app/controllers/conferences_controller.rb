@@ -1,5 +1,6 @@
 class ConferencesController < ApplicationController
   before_filter :get_conference, :except => [:index, :list]
+  helper :proposals
 
   def index
     redirect_to :action => :list
@@ -24,14 +25,11 @@ class ConferencesController < ApplicationController
 
   def proposals
     # We could just use @conference.proposals, but... lets paginate
-    # nicely
-    per_page = params[:per_page] || 20
-    @props = Proposal.paginate(:page => params[:page],
-                               :per_page => per_page,
-                               :conditions => ['conference_id = ?',
-                                               @conference.id],
-                               :include => [:people, :conference, :prop_type],
-                               :order => 'title')
+    # nicely and bring all the information at once!
+    @props = Proposal.list_paginator(:page => params[:page],
+                                     :per_page => params[:per_page]|| 20,
+                                     :conditions => ['conference_id = ?',
+                                                     @conference.id])
   end
 
   ############################################################
@@ -55,6 +53,13 @@ class ConferencesController < ApplicationController
 
     # Avoid silly mistakes due to reloads
     return unless @user.conferences.include? @conference
+
+    if props = @conference.proposals_by_person(@user)
+      flash[:error] = _('You have %d proposals registered for this ' +
+                        'conference. Please withdraw them before ' +
+                        'unregistering.') % props.size
+      return false
+    end
 
     if @user.conferences.delete @conference
       flash[:notice] = _('You have successfully unregistered from ' +
@@ -93,7 +98,7 @@ class ConferencesController < ApplicationController
   end
 
   def check_auth
-    public = [:index, :list, :show]
+    public = [:index, :list, :show, :proposals]
     return true if public.include? request.path_parameters['action'].to_sym
   end
 end

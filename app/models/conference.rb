@@ -93,6 +93,12 @@ class Conference < ActiveRecord::Base
     Date.today.between?(begins, finishes)
   end
 
+  # Do we have propsals submitted by a given user? Give back the list
+  def proposals_by_person(person)
+    person=Person.find_by_id(person) if person.is_a? Fixnum
+    self.proposals.select {|p| p.people.include? person}
+  end
+
   protected
   # Verify the submitted dates are coherent (i.e. none of the periods
   # we care about finishes before it begins)

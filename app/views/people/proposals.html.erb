@@ -14,6 +14,7 @@
       <th><%= _'Title' %></th>
       <th><%= _'Conference' %></th>
       <th><%= _'Proposal type' %></th>
+      <th><%= _'Action' %></th>
     <% end_table_row %>
   <% @props.each do |prop| %>
     <%= table_row %>
@@ -22,6 +23,14 @@
       <td><%= link_to(prop.conference.name, :controller => 'conferences',
 	              :action => 'show', :id => prop.conference.id) %></td>
       <td><%= prop.prop_type.name %></td>
+      <td>
+	<%= link_to(_('Edit'), :controller => 'proposals', 
+	            :action => 'edit', :id => prop.id) %> |
+	<%= link_to(_('Coauthors'), :controller => 'proposals', 
+	            :action => 'coauthors', :id => prop.id) %> |
+	<%= link_to(_('Files'), :controller => 'proposals', 
+	            :action => 'files', :id => prop.id) %> 
+      </td>
     <%= end_table_row %>
   <% end %>
   <%= end_table %>

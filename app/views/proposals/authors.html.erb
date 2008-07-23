@@ -1,0 +1,16 @@
+<h1><%= _"Manage the coauthors for your proposal" %></h1>
+
+<h3><%= _('Current list of authors for <em>%s</em>') % 
+	@proposal.title %></h3>
+
+<ol>
+<% @proposal.authorships.each do |auth| %>
+  <li><%= auth.first? ? icon_space : 
+	  link_to(icon_up, :action => 'author_up', :id => @proposal,
+                  :authorship_id => auth.id) %>
+    <%= auth.last? ? icon_space : 
+	link_to(icon_down, :action => 'author_down', :id => @proposal,
+                :authorship_id => auth.id) %>
+<%= auth.person.name %></li>
+<% end %>
+</ol>
