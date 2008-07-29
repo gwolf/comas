@@ -26,8 +26,8 @@
       <td>
 	<%= link_to(_('Edit'), :controller => 'proposals', 
 	            :action => 'edit', :id => prop.id) %> |
-	<%= link_to(_('Coauthors'), :controller => 'proposals', 
-	            :action => 'coauthors', :id => prop.id) %> |
+	<%= link_to(_('Manage authors'), :controller => 'proposals', 
+	            :action => 'authors', :id => prop.id) %> |
 	<%= link_to(_('Files'), :controller => 'proposals', 
 	            :action => 'files', :id => prop.id) %> 
       </td>

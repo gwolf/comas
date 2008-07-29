@@ -32,6 +32,10 @@ module ApplicationHelper
     image_tag 'space.png', :border => 0, :alt => _('-'), :size => '16x16'
   end
 
+  def icon_trash
+    image_tag 'trash.png', :border => 0, :alt => _('-'), :size => '16x16'
+  end
+
   ######################################################################
   # Listing tables (alternating background colors)
   def list_row_classes
@@ -56,6 +60,10 @@ module ApplicationHelper
   end
 
   def end_table_row; '</tr>'; end
+
+  def table_col(*items)
+    "<td>#{items.join("\n")}</td>"
+  end
 
   ############################################################
   # Regular information elements

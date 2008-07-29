@@ -3,14 +3,17 @@
 <h3><%= _('Current list of authors for <em>%s</em>') % 
 	@proposal.title %></h3>
 
-<ol>
-<% @proposal.authorships.each do |auth| %>
-  <li><%= auth.first? ? icon_space : 
-	  link_to(icon_up, :action => 'author_up', :id => @proposal,
-                  :authorship_id => auth.id) %>
-    <%= auth.last? ? icon_space : 
-	link_to(icon_down, :action => 'author_down', :id => @proposal,
-                :authorship_id => auth.id) %>
-<%= auth.person.name %></li>
+<%= author_list_edition_table(@proposal.authorships) %>
+
+<h3><%= _'Add an author to this proposal' %></h3>
+<p><%= _"Please enter the new author's <em>login</em>. The login " +
+       "must be an exact match (i.e., performing searches on similar " +
+       "logins will not work). A mail will be sent to the new " +
+       "author notifying him of this operation." %></p>
+  
+<% form_tag url_for(:action => 'author_add', :id => @proposal) do %>
+  <p>
+    <%= text_field_tag 'login', '', :size => 30 %>
+    <%= submit_tag _'Add author' %>
+  </p>
 <% end %>
-</ol>

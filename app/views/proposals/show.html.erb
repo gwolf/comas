@@ -1,4 +1,7 @@
 <h1><%=h @proposal.title %></h1>
+<% if @can_edit %>
+  <p><%= link_to _('Edit'), :action => 'edit', :id => @proposal %></p>
+<% end %>
 
 <%= info_row _('Submitted for'), @proposal.conference.name %>
 <%= info_row _('Proposal type'), @proposal.prop_type.name %>
@@ -9,6 +12,10 @@
 <% end %>
 
 <h3><%= _'Authors' %></h3>
+<% if @can_edit %>
+  <p><%= link_to _('Manage authors'), :action => 'authors', :id => @proposal %></p>
+<% end %>
+
 <ul>
 <% authors_list_for_proposal(@proposal).each do |author| %>
   <li><%= author %></li>
