@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2008-07-23 00:04-0500\n"
+"POT-Creation-Date: 2008-08-05 10:17-0500\n"
 "PO-Revision-Date: 2008-07-22 22:39-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: \n"
@@ -42,8 +42,36 @@ msgstr ""
 msgid "Sign up"
 msgstr ""
 
-#: app/helpers/proposals_helper.rb:4
+#: app/helpers/proposals_helper.rb:7
 msgid "%s (%d)"
+msgstr ""
+
+#: app/helpers/proposals_helper.rb:16
+msgid "Position"
+msgstr ""
+
+#: app/helpers/proposals_helper.rb:16
+#: app/views/conferences_adm/list.html.erb:8
+msgid "Name"
+msgstr ""
+
+#: app/helpers/proposals_helper.rb:33
+msgid "Are you sure you want to delete author\"%s\" from proposal \"%s\"? "
+msgstr ""
+
+#: app/helpers/proposals_helper.rb:37
+msgid ""
+"Removing the only registered author for this proposal will also remove the "
+"proposal from the system. This action cannot be undone. Are you sure you "
+"want to continue?"
+msgstr ""
+
+#: app/helpers/proposals_helper.rb:74
+msgid "Are you sure you want to delete this document?"
+msgstr ""
+
+#: app/helpers/proposals_helper.rb:77
+msgid "%s %s: %s (%s)"
 msgstr ""
 
 #: app/helpers/application_helper.rb:17
@@ -58,35 +86,35 @@ msgstr ""
 msgid "Down"
 msgstr ""
 
-#: app/helpers/application_helper.rb:32
+#: app/helpers/application_helper.rb:32 app/helpers/application_helper.rb:36
 msgid "-"
 msgstr ""
 
-#: app/helpers/application_helper.rb:75
+#: app/helpers/application_helper.rb:83
 msgid "No items found"
 msgstr ""
 
-#: app/helpers/application_helper.rb:76
+#: app/helpers/application_helper.rb:84
 msgid "Displaying <b>1</b> item"
 msgstr ""
 
-#: app/helpers/application_helper.rb:77
+#: app/helpers/application_helper.rb:85
 msgid "Displaying <b>all %d</b> items"
 msgstr ""
 
-#: app/helpers/application_helper.rb:80
+#: app/helpers/application_helper.rb:88
 msgid "Displaying items <b>%d&nbsp;-&nbsp;%d</b> of <b>%d</b> in total"
 msgstr ""
 
-#: app/helpers/application_helper.rb:126
+#: app/helpers/application_helper.rb:134
 msgid "Field %s not defined for %s"
 msgstr ""
 
-#: app/helpers/application_helper.rb:161
+#: app/helpers/application_helper.rb:169
 msgid "Yes"
 msgstr ""
 
-#: app/helpers/application_helper.rb:161
+#: app/helpers/application_helper.rb:169
 msgid "No"
 msgstr ""
 
@@ -103,12 +131,14 @@ msgid ""
 "destroy any attendances it has recorded"
 msgstr ""
 
-#: app/helpers/attendance_adm_helper.rb:18 app/views/proposals/show.html.erb:7
+#: app/helpers/attendance_adm_helper.rb:18
+#: app/views/proposals/show.html.erb:10
 #: app/views/conferences_adm/timeslots.html.erb:14
 msgid "Room"
 msgstr ""
 
-#: app/helpers/attendance_adm_helper.rb:18 app/views/proposals/show.html.erb:8
+#: app/helpers/attendance_adm_helper.rb:18
+#: app/views/proposals/show.html.erb:11
 #: app/views/conferences_adm/timeslots.html.erb:10
 msgid "Start time"
 msgstr ""
@@ -202,6 +232,26 @@ msgstr "Updated at"
 #: app/models/document.rb:-
 msgid "Document|Proposal"
 msgstr "Proposal"
+
+#: app/models/document.rb:9
+msgid "A file with this name has already been uploaded to this proposal"
+msgstr ""
+
+#: app/models/document.rb:42
+msgid "%.2f GB"
+msgstr ""
+
+#: app/models/document.rb:43
+msgid "%.2f MB"
+msgstr ""
+
+#: app/models/document.rb:44
+msgid "%.2f KB"
+msgstr ""
+
+#: app/models/document.rb:45
+msgid "%d bytes"
+msgstr ""
 
 #: app/models/participation_type.rb:-
 msgid "participation type"
@@ -560,34 +610,84 @@ msgid ""
 "deleted?"
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:7
+#: app/controllers/proposals_controller.rb:10
 msgid ""
 "There are currently no conferences for which you can submit proposals. "
 "Please register first."
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:31
+#: app/controllers/proposals_controller.rb:34
 msgid "Error saving your proposal: %s"
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:38
+#: app/controllers/proposals_controller.rb:41
 msgid "Your proposal was successfully registered"
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:50
+#: app/controllers/proposals_controller.rb:56
 msgid "The proposal has been modified successfully"
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:52
+#: app/controllers/proposals_controller.rb:58
 msgid "Error updating the proposal: "
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:80
+#: app/controllers/proposals_controller.rb:90
+msgid ""
+"Requested author does not exist or is not listed in this proposal. Maybe you "
+"already deleted him?"
+msgstr ""
+
+#: app/controllers/proposals_controller.rb:96
+msgid "Requested author was successfully removed"
+msgstr ""
+
+#: app/controllers/proposals_controller.rb:98
+msgid ""
+"Unexpected error removing requested author. Please try again, or contact "
+"system administrator"
+msgstr ""
+
+#: app/controllers/proposals_controller.rb:108
+msgid "The specified login is not valid or does not match any valid users"
+msgstr ""
+
+#: app/controllers/proposals_controller.rb:119
+msgid "Error adding person to requested proposal: "
+msgstr ""
+
+#: app/controllers/proposals_controller.rb:123
+msgid "The specified author was successfully added to this proposal"
+msgstr ""
+
+#: app/controllers/proposals_controller.rb:133
 msgid "No author specified - rendering general list"
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:99
+#: app/controllers/proposals_controller.rb:161
+msgid "The document was successfully saved"
+msgstr ""
+
+#: app/controllers/proposals_controller.rb:163
+msgid "Error receiving the document:"
+msgstr ""
+
+#: app/controllers/proposals_controller.rb:173
+msgid "The document was successfully deleted"
+msgstr ""
+
+#: app/controllers/proposals_controller.rb:175
+msgid ""
+"Error removing requested document. Please try again later, or contact the "
+"system administrator."
+msgstr ""
+
+#: app/controllers/proposals_controller.rb:190
 msgid "Invalid proposal requested"
+msgstr ""
+
+#: app/controllers/proposals_controller.rb:199
+msgid "Invalid document requested for this proposal"
 msgstr ""
 
 #: app/controllers/sys_conf_adm_controller.rb:3
@@ -844,13 +944,13 @@ msgid "Title"
 msgstr ""
 
 #: app/views/conferences/proposals.html.erb:8
-#: app/views/proposals/show.html.erb:11
+#: app/views/proposals/show.html.erb:14
 msgid "Authors"
 msgstr ""
 
 #: app/views/conferences/proposals.html.erb:9
 #: app/views/proposals/by_author.html.erb:12
-#: app/views/proposals/show.html.erb:4 app/views/people/proposals.html.erb:16
+#: app/views/proposals/show.html.erb:7 app/views/people/proposals.html.erb:16
 msgid "Proposal type"
 msgstr ""
 
@@ -938,12 +1038,46 @@ msgstr ""
 msgid "%d proposals have been submitted by %s"
 msgstr ""
 
-#: app/views/proposals/show.html.erb:3
+#: app/views/proposals/show.html.erb:3 app/views/people/proposals.html.erb:27
+#: app/views/sys_conf_adm/list.html.erb:13
+msgid "Edit"
+msgstr ""
+
+#: app/views/proposals/show.html.erb:6
 msgid "Submitted for"
 msgstr ""
 
-#: app/views/proposals/show.html.erb:5
+#: app/views/proposals/show.html.erb:8
 msgid "Abstract"
+msgstr ""
+
+#: app/views/proposals/show.html.erb:16 app/views/people/proposals.html.erb:29
+msgid "Manage authors"
+msgstr ""
+
+#: app/views/proposals/show.html.erb:25
+#, fuzzy
+msgid "Documents"
+msgstr "Description"
+
+#: app/views/proposals/show.html.erb:28
+msgid "There are no files for this proposal"
+msgstr ""
+
+#: app/views/proposals/show.html.erb:38
+msgid "Upload a new document"
+msgstr ""
+
+#: app/views/proposals/show.html.erb:42
+msgid "Choose the file to upload"
+msgstr ""
+
+#: app/views/proposals/show.html.erb:46
+msgid "File description"
+msgstr ""
+
+#: app/views/proposals/show.html.erb:52
+msgid "Upload"
 msgstr ""
 
 #: app/views/proposals/authors.html.erb:1
@@ -952,6 +1086,22 @@ msgstr ""
 
 #: app/views/proposals/authors.html.erb:3
 msgid "Current list of authors for <em>%s</em>"
+msgstr ""
+
+#: app/views/proposals/authors.html.erb:8
+#, fuzzy
+msgid "Add an author to this proposal"
+msgstr "Proposal"
+
+#: app/views/proposals/authors.html.erb:9
+msgid ""
+"Please enter the new author's <em>login</em>. The login must be an exact "
+"match (i.e., performing searches on similar logins will not work). A mail "
+"will be sent to the new author notifying him of this operation."
+msgstr ""
+
+#: app/views/proposals/authors.html.erb:17
+msgid "Add author"
 msgstr ""
 
 #: app/views/people/password.html.erb:1
@@ -988,15 +1138,6 @@ msgstr ""
 
 #: app/views/people/proposals.html.erb:17
 msgid "Action"
-msgstr ""
-
-#: app/views/people/proposals.html.erb:27
-#: app/views/sys_conf_adm/list.html.erb:13
-msgid "Edit"
-msgstr ""
-
-#: app/views/people/proposals.html.erb:29
-msgid "Coauthors"
 msgstr ""
 
 #: app/views/people/proposals.html.erb:31
@@ -1085,10 +1226,6 @@ msgstr ""
 #: app/views/conferences_adm/list.html.erb:3
 #: app/views/people_adm/list.html.erb:3
 msgid "Register new"
-msgstr ""
-
-#: app/views/conferences_adm/list.html.erb:8
-msgid "Name"
 msgstr ""
 
 #: app/views/conferences_adm/list.html.erb:9
