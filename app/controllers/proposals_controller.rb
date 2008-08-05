@@ -1,5 +1,8 @@
 class ProposalsController < ApplicationController
   before_filter :get_proposal, :except => [:new, :create, :list, :by_author]
+  before_filter :ck_document, :only => [:get_document, :delete_document]
+  ############################################################
+  # General operations to perform on a proposal as a whole
 
   def new
     @confs = @user.conferences_for_submitting
@@ -57,6 +60,8 @@ class ProposalsController < ApplicationController
     end
   end
 
+  ############################################################
+  # Operations regarding the proposal's authors
   def authors
   end
 
@@ -134,6 +139,44 @@ class ProposalsController < ApplicationController
                                                      @author.id])
   end
 
+  ############################################################
+  # Operations regarding the proposal's files
+  def get_document
+    send_data(@document.data,
+              :filename => @document.filename,
+              :type => @document.content_type || 'application/octet-stream',
+              :disposition => 'inline')
+  end
+
+  def new_document
+    redirect_to(:action => :show, :id => @proposal)
+    if upload = params[:data] and !upload.is_a? String
+      doc = Document.new(:proposal => @proposal,
+                         :descr => params[:descr],
+                         :filename => upload.original_filename,
+                         :content_type => upload.content_type,
+                         :data => upload.read)
+
+      if doc.save
+        flash[:notice] = _('The document was successfully saved')
+      else
+        flash[:error] = _('Error receiving the document:') +
+          doc.errors.full_messages.join('<br/>')
+      end
+    end
+  end
+
+  def delete_document
+    redirect_to :action => :show, :id => @proposal
+    return true unless request.post?
+    if @document.destroy
+      flash[:notice] = _'The document was successfully deleted'
+    else
+      flash[:error] = _'Error removing requested document. Please try ' +
+        'again later, or contact the system administrator.'
+    end
+  end
+
   protected
   def check_auth
     public = [:show, :list, :by_author]
@@ -144,7 +187,16 @@ class ProposalsController < ApplicationController
     @proposal = Proposal.find_by_id(params[:id])
     if @proposal.nil?
       flash[:error] = _'Invalid proposal requested'
-      redirect_to :action => :list
+      redirect_to :action => 'list'
+      return false
+    end
+  end
+
+  def ck_document
+    unless @document = Document.find_by_id(params[:document_id]) and
+        @document.proposal == @proposal
+      flash[:error] = _'Invalid document requested for this proposal'
+      redirect_to :action => 'show', :id => @proposal
       return false
     end
   end

@@ -21,3 +21,35 @@
   <li><%= author %></li>
 <% end %>
 </ul>
+
+<h3><%= _'Documents' %></h3>
+
+<% if @proposal.documents.empty? %>
+  <p><%= _'There are no files for this proposal' %></p>
+<% end %>
+
+<ul>
+<% @proposal.documents.each do |doc| %>
+  <li><%= link_to_document(doc, @can_edit) %></li>
+<% end %>
+</ul>
+
+<% if @can_edit %>
+  <h3><%= _'Upload a new document' %></h3>
+  <% form_tag(url_for(:action => 'new_document', :id => @proposal),
+              :multipart => true) do %>
+    <div class="info-row">
+      <span class="info-title"><%= _('Choose the file to upload') %></span>
+      <span class="info-data"><%= file_field_tag(:data) %></span>
+    </div>
+    <div class="info-row">
+      <span class="info-title"><%= _('File description') %></span>
+      <span class="info-data">
+	<%= text_field_tag(:descr, '', :size =>70) %>
+      </span>
+    </div>
+    <div class="info-row">
+      <span class="info-data"><%= submit_tag(_'Upload') %></span>
+    </div>
+  <% end %>
+<% end %>

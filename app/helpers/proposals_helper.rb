@@ -1,4 +1,7 @@
 module ProposalsHelper
+  ############################################################
+  # For authors listings (incl. management)
+
   def authors_list_for_proposal(prop)
     prop.people.map do |p|
       link_to(_('%s (%d)') % [p.name, p.proposals.size],
@@ -54,5 +57,28 @@ module ProposalsHelper
     return icon_space if auth.last?
     link_to(icon_down, :action => 'author_down', :id => @proposal,
             :authorship_id => auth.id)
+  end
+
+  ############################################################
+  # Documents display and handling
+
+  # Produce the link to a document, accompanied by the relevant
+  # information (description, size). The link will have a :filename
+  # parameter, which will be ignored by us but might be meaningful to
+  # the user.
+  def link_to_document(doc, can_edit)
+    delete_link = (can_edit ?
+                   link_to(icon_trash, {:action => 'delete_document',
+                             :id => @proposal, :document_id => doc},
+                           :method => 'post',
+                           :confirm => _('Are you sure you want to delete ' +
+                                         'this document?')) : 
+                   '')
+    _('%s %s: %s (%s)') % [delete_link,
+                           link_to(doc.filename, :action => 'get_document', 
+                                   :id => @proposal, :document_id => doc.id,
+                                   :filename => doc.filename),
+                           doc.descr, doc.human_size ]
+      
   end
 end
