@@ -1,12 +1,32 @@
 <h1><%= @conference.name %></h1>
-<% if @can_edit %>
+<% if @user %>
   <div class="note">
+  <% if @can_edit %>
     <%= link_to(_('%d registered attendees') % @conference.people.size,
 	        :controller => 'conferences_adm', 
                 :action => 'people_list', :id => @conference) %>
     |
     <%= link_to(_('Edit conference'), :controller => 'conferences_adm',
                  :action => :show, :id => @conference) %>
+  <br/>
+  <% end %>
+
+  <% if @user.conferences.include? @conference %>
+    <%= _'You are currently registered for this conference. ' %>
+    <%= link_to(_('Click here to unregister'),
+                { :controller => 'conferences',
+                  :action => 'unregister',
+                  :id => @conference},
+                { :method => :post,
+                  :confirm => _('Confirm: Do you want to unregister ' +
+                                'from "%s"? ') % @conference.name}) %>
+  <% else %>
+    <%= link_to(_('Click here to sign up for this conference'),
+                { :controller => 'conferences', 
+                  :action => 'sign_up',
+                  :id => @conference}, 
+                { :method => :post }) %>
+  <% end %>
   </div>
 <% end %>
 
