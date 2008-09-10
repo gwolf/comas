@@ -22,7 +22,7 @@ begin
     MY_APP_TEXT_DOMAIN = "comas" 
     MY_APP_VERSION     = "comas 1.0" 
     GetText.update_pofiles(MY_APP_TEXT_DOMAIN,
-                           Dir.glob("{app,lib}/**/*.{rb,html.erb,rhtml}"),
+                           Dir.glob("{app,lib}/**/*.{rb,erb,rhtml}"),
                            MY_APP_VERSION)
   end
 rescue LoadError => err

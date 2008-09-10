@@ -1,0 +1,21 @@
+<%= _('Hi, %s
+
+This is an auto-generated mail, sent by the conference administration
+system for %s.
+
+Your chosen system login is "%s".
+
+You have successfully registered in our system - The next step is to
+select the one or more conferences you are interested in. The easiest
+way to do so is to log in to our system, at:
+
+%s
+
+Upon your login, you will be presented with the "%s" page, where you
+will find a listing with the upcoming conferences. Click on their
+names to get further information on each of them, or click "%s" 
+to register for it.
+
+') % [ @name, @sys_name, @login, @login_url, 
+       _('My account'), _('Sign up')
+     ] %>

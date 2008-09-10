@@ -60,6 +60,14 @@ end
 # Mime::Type.register "text/richtext", :rtf
 # Mime::Type.register "application/x-mobile", :mobile
 
+# Mail configurations should be set in config/mail_settings - If it
+# does not exist, mail will just not be sent (they will be handled as
+# if testing)
+File.exists?('config/mail_settings.rb') ? 
+  require('config/mail_settings') :
+  ActionMailer::Base.perform_deliveries = false
+ActionMailer::Base.raise_delivery_errors ||= false
+
 # Include your application configuration below
 require 'classinherit'
 require 'strings_with_random'

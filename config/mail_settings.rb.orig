@@ -1,0 +1,17 @@
+# You can use this file as an example for your mail configuration,
+# just copy it over to mail_settings.rb
+#
+# For further instructions on how to configure mail in Rails, look up
+# on the API reference:
+#
+# http://api.rubyonrails.org/classes/ActionMailer/Base.html
+#
+# This is a very simplistic mail configuration, but should suffice in
+# most situations.
+
+ActionMailer::Base.delivery_method = :sendmail
+ActionMailer::Base.raise_delivery_errors = false
+ActionMailer::Base.perform_deliveries = true
+
+# Important! Set the default_url to your system's base URL.
+ActionMailer::Base.default_url_options[:host] = "nonexistant.comas-code.org"

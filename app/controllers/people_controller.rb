@@ -38,6 +38,9 @@ class PeopleController < ApplicationController
         session[:user_id] = @person.id
         flash[:notice] = _ 'New person successfully registered'
         redirect_to :action => 'account'
+
+        Notification.deliver_welcome(@person)
+
         return true
       else
         flash[:error] = [_('Could not register person: '),

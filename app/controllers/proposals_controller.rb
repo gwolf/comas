@@ -123,7 +123,7 @@ class ProposalsController < ApplicationController
     flash[:message] = _'The specified author was successfully added to ' +
       'this proposal'
 
-    ### STILL MISSING: Generate and send the notification
+    Notification.deliver_added_as_coauthor(new_auth, @proposal, @user)
   end
 
   def by_author

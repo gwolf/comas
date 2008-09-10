@@ -48,10 +48,23 @@ class Person < ActiveRecord::Base
     "#{firstname} #{famname}"
   end
 
+  def name_and_email
+    "#{name} <#{email}>"
+  end
+
+  # Just remember that 'participation' sometimes sounds nebulous... A
+  # participation might be as a speaker, as an organizer, as an
+  # atendee.. As any ParticipationType.
   def participation_in(conf)
     # Accept either a conference object or a conference ID
     conf = Conference.find_by_id(conf) if conf.is_a? Integer
     self.participations.select {|part| part.conference == conf}.first
+  end
+
+  def has_proposal_for?(conf)
+    # Accept either a conference object or a conference ID
+    conf = Conference.find_by_id(conf) if conf.is_a? Integer
+    self.proposals.map {|p| p.conference}.include?(conf)
   end
 
   def has_admin_task?(task)

@@ -1,0 +1,23 @@
+<%= _('Hi, %s
+
+This is an auto-generated mail, sent by the conference administration
+system for %s.
+
+The reason you are getting this mail is because you have been
+registered by %s as a coauthor for:
+
+%s
+
+For further details on the proposal, enter:
+
+%s
+
+In case you think this is a mistake, please click on the "My
+proposals" link after logging in at:
+
+%s
+
+') % [ @new_author_name, @conference_name, @orig_author_name, 
+       @proposal_title, @proposal_url,
+       @login_url
+     ] %>
