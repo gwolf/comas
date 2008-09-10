@@ -54,7 +54,8 @@ class ConferencesController < ApplicationController
     # Avoid silly mistakes due to reloads
     return unless @user.conferences.include? @conference
 
-    if props = @conference.proposals_by_person(@user)
+    if props = @conference.proposals_by_person(@user) and
+        !props.empty?
       flash[:error] = _('You have %d proposals registered for this ' +
                         'conference. Please withdraw them before ' +
                         'unregistering.') % props.size
