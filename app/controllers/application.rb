@@ -29,7 +29,8 @@ class ApplicationController < ActionController::Base
   def require_user_for_non_public_areas
     return true if @user
 
-    public = {:people => [:login, :logout, :validate, :new],
+    public = {:people => [:login, :logout, :validate, :new, :request_passwd,
+                          :recover],
       :conferences => [:index, :list, :show, :proposals],
       :proposals => [:index, :list, :show, :by_author]}
 

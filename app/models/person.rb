@@ -1,5 +1,6 @@
 class Person < ActiveRecord::Base
   acts_as_magic_model
+  has_one :rescue_session, :dependent => :destroy
   has_many :authorships, :dependent => :destroy
   has_many :proposals, :through => :authorships
   has_and_belongs_to_many :admin_tasks

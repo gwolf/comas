@@ -26,6 +26,65 @@ class PeopleController < ApplicationController
   end
 
   ############################################################
+  # Dealing with lost passwords...
+  def request_passwd
+    clear_session
+    return true unless request.post?
+
+    if person = Person.find_by_login(params[:login_or_email]) ||
+        Person.find_by_email(params[:login_or_email])
+      Notification.deliver_request_passwd(person, request.remote_ip)
+
+      flash[:notice] = _'An email has been sent to you, with instructions '+
+        'on how to enter the system and change your password.'
+      redirect_to :action => '/'
+
+    else
+      flash[:error] = _'Nobody was found with the specified login or E-mail ' +
+        'address. Please make sure it was correctly specified. Keep in mind ' +
+        'this system is case-sensitive.'
+    end
+  end
+
+  def recover
+    if person = RescueSession.person_for(params[:r_session])
+      session[:user_id] = person.id
+      session[:recovered_at] = Time.now
+    else
+      flash[:error] = _ 'Incorrect session specified - Remember session ' +
+        'URLs can be used only once'
+      redirect_to :action => 'login'
+    end
+  end
+
+  def rec_pass_chg
+    if session[:recovered_at].nil? 
+      redirect_to :action => 'logout'
+      flash[:error] = _'Invalid attempt to change password'
+      return false
+    end
+
+    if session[:recovered_at] + 10.minutes < Time.now
+      redirect_to :action => 'login'
+      flash[:error] = _'Timeout waiting for your new password - You can ' +
+        'request for a new password recovery if needed.'
+      return false
+    end
+
+    if !params[:new] or params[:new].empty? or
+        params[:new] != params[:confirm]
+      flash[:error] = _'New password does not match confirmation'
+      render :action => recover
+      return false
+    end
+
+    @user.passwd = params[:new]
+    @user.save!
+    flash[:notice] = _'Your password was successfully changed'
+    redirect_to :action => 'account'
+  end
+
+  ############################################################
   # Person registration, personal data editing, ...
   def new
     @person = Person.new
@@ -105,7 +164,7 @@ class PeopleController < ApplicationController
   end
 
   def check_auth
-    public = [:login, :validate, :new, :register]
+    public = [:login, :validate, :new, :register, :request_passwd]
     return true if public.include? request.path_parameters['action'].to_sym
   end
 end

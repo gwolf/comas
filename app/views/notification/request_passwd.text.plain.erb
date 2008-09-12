@@ -1,0 +1,19 @@
+<%= _('Hi, %s
+
+Somebody -probably you- requested help to log in with your account to
+%s. 
+
+Please click on the following link, and you will be logged in:
+
+%s
+
+Note that this link can be used only once - It will be disabled as
+soon as you log in.
+
+Remember your system login is "%s".
+
+If you did not request this mail, please disregard it - This
+information is sent exclusively to you. For your information, the
+request was received from IP address %s.
+
+') % [@name, @sys_name, @login_url, @login, @ip] %>

@@ -1,0 +1,27 @@
+<h1><%= _('Specify a new password') %></h1>
+<p><%= _('You have just logged in using a one-time only URL. Please, ' +
+         'set a new password for your account.') %></p>
+<p><%= _('Please note you have only ten minutes to fill this form - ' +
+         'If you do not fill it in this time, you will have to %s.') %
+        link_to(_('request a new session to be sent to you'),
+                :action => 'request_passwd') %></p>
+
+<% form_tag :action => 'rec_pass_chg' do %>
+<div class="form-row">
+  <span class="comas-form-prompt"><%= _'New password' %></span>
+  <span class="comas-form-input">
+    <input type="password" size="20" name="new">
+  </span>
+</div>
+<div class="form-row">
+  <span class="comas-form-prompt"><%= _'Confirm new password' %></span>
+  <span class="comas-form-input">
+    <input type="password" size="20" name="confirm">
+  </span>
+</div>
+<div class="form-row">
+  <span class="comas-form-input">
+    <input type="submit" value="<%= _'Set password' %>" name="submit">
+  </span>
+</div>
+<% end %>

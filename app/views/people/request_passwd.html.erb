@@ -1,0 +1,20 @@
+<h1><%= 'Request a new password' %></h1>
+
+<% form_tag do %>
+<div class="form-row">
+  <span class="comas-form-prompt">
+    <%= _("You lost or forgot your password? Don't worry, it can " +
+          "happen to anybody! Please enter the login or E-mail address " +
+          "with which you registered, and we will send you a mail " +
+          " with all the needed information.") %>
+  </span>
+  <span class="comas-form-input">
+    <%= text_field_tag :login_or_email, '', :size => 30 %>
+  </span>
+</div>
+<div class="form-row">
+  <span class="comas-form-input">
+    <%= submit_tag _'Request password' %>
+  </span>
+</div>
+<% end %>

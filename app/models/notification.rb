@@ -7,10 +7,27 @@ class Notification < ActionMailer::Base
       sys_name
     body :name => person.name, 
          :login => person.login,
-         :sys_name => sys_name
+         :sys_name => sys_name,
          :login_url => url_for(:only_path => false,
                                :controller => 'people',
-                               :action => 'login'),
+                               :action => 'login')
+  end
+
+  def request_passwd(person, ip)
+    sess = RescueSession.create_for(person)
+    sys_name = SysConf.value_for('title_text')
+
+    recipients person.name_and_email
+    from SysConf.value_for('mail_from')
+    subject _('New password request for %s') % sys_name
+    body :name => person.name,
+         :login => person.login,
+         :sys_name => sys_name,
+         :ip => ip,
+         :login_url => url_for(:only_path => false,
+                               :controller => 'people',
+                               :action => 'recover',
+                               :r_session => sess.link)
   end
 
   def added_as_coauthor(new_author, proposal, author)
