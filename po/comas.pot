@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2008-09-12 18:39-0500\n"
+"POT-Creation-Date: 2008-09-23 13:54-0500\n"
 "PO-Revision-Date: 2008-05-07 18:30-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -96,6 +96,18 @@ msgid "Not a relation field"
 msgstr ""
 
 #: app/models/person.rb:-
+msgid "admin task"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "AdminTask|Name"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "AdminTask|Sys name"
+msgstr ""
+
+#: app/models/person.rb:-
 msgid "person"
 msgstr ""
 
@@ -129,18 +141,6 @@ msgstr ""
 
 #: app/models/person.rb:-
 msgid "Person|Last login at"
-msgstr ""
-
-#: app/models/person.rb:-
-msgid "admin task"
-msgstr ""
-
-#: app/models/person.rb:-
-msgid "AdminTask|Name"
-msgstr ""
-
-#: app/models/person.rb:-
-msgid "AdminTask|Sys name"
 msgstr ""
 
 #: app/models/conference.rb:-
@@ -1007,6 +1007,10 @@ msgstr ""
 
 #: app/views/people_adm/by_task.html.erb:1
 msgid "Registered people with administrative tasks"
+msgstr ""
+
+#: app/views/people_adm/by_task.html.erb:6
+msgid "%d people"
 msgstr ""
 
 #: app/views/people_adm/new.html.erb:1
