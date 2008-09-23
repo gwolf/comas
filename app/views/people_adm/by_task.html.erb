@@ -1,9 +1,17 @@
 <h1><%= _"Registered people with administrative tasks" %></h1>
 <% @tasks.sort_by {|t| t.name}.each do |task| %>
-<h3><%= _(task.qualified_name) %></h3>
-<ul>
-  <% task.people.sort_by {|p| p.name}.map do |person| %>
-  <li><%= link_to(h(person.name), :action => :show, :id => person) %></li>
-  <% end %>
-</ul>
+  <h3><%= link_to_function(_(task.qualified_name),
+                           visual_effect(:toggle_blind,
+                                         "details-for-#{task.id}")) %>: 
+      <%= _('%d people') % task.people.size %></h3>
+  <%= end_table_row %>
+  <div id="details-for-<%= task.id %>" style="display:none">
+    <%= start_table %>
+    <% task.people.sort_by {|p| p.name}.map do |person| %>
+      <%= table_row %>
+        <td><%= link_to(h(person.name), :action => :show, :id => person) %></td>
+      <%= end_table_row %>
+    <% end %>
+    <%= end_table %>
+  </div>
 <% end %>
