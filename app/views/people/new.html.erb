@@ -4,7 +4,7 @@
 <% comas_form_for :person, @person, :url => {:action => 'register'} do |f| %>
   <%= %w(login passwd firstname famname email).map {|fld| f.auto_field(fld)} %>
   <% @person.extra_listable_attributes.each do |attr| %>
-    <%= f.auto_field(attr) %>
+    <%= f.auto_field(attr.name) %>
   <% end %>
   <%= f.submit _('Create account') %>
 <% end %>

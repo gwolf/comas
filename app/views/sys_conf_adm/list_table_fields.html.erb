@@ -1,0 +1,38 @@
+<h1><%= _('Manage fields for registered %s') % @table %></h1>
+
+<p><%= _("This interface is provided as a general facility - " +
+         "However, redefining your tables' configuration, handling " +
+         "DBMS-based validations and default values will often " +
+         "require doing so directly interacting directly with your " +
+         "database system.") %></p>
+
+<h3><%= _'Core attributes' %></h3>
+<p><%= _("The following fields are <em>core</em> - That means, they " +
+         "will always be part of a person's definition:") %></p>
+<%= attributes_table(@core) %>
+
+<h3><%= _'Extra attributes' %></h3>
+<% if @extra.empty? %>
+  <p><%= 'No extra fields are currently defined' %></p>
+<% else %>
+  <%= attributes_table(@extra, true) %>
+<% end %>
+
+<h3><%= _'Add a new attribute' %></h3>
+<% form_tag url_for(:action => 'create_table_field') do %>
+  <%= hidden_field_tag :table, @table %>
+  <%= start_table %>
+    <%= table_head_row %>
+      <th><%= _'Field name' %></th>
+      <th><%= _'Field type' %></th>
+      <th><%= _'Default' %></th>
+      <th></th>
+    <%= end_table_row %>
+    <%= table_row %>
+      <td><%= text_field_tag :fldname %></td>
+      <td><%= select_tag :fldtype, options_for_select(@types.invert) %></td>
+      <td><%= text_field_tag :flddefault %></td>
+      <td><%= submit_tag _'Create' %></td>
+    <%= end_table_row %>
+  <%= end_table %>
+<% end %>

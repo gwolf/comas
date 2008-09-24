@@ -1,0 +1,50 @@
+<h1><%= _('Edit field %s on %s') % [@field.name, @table] %></h1>
+<p class="note">
+  <%= _'The values set in this screen are very database-dependent. We '+
+      'strongly suggest working with a PostgreSQL RDBMS - Any other ' +
+      'system is not guaranteed to work with the values selected here.'
+  %><br/>
+   <%= link_to _('Go back to the table definition'), 
+                 :action => 'list_table_fields', :table => @table %></p>
+<% form_tag url_for(:action => 'edit_table_field') do %>
+  <%= hidden_field_tag :table, @table %>
+  <%= hidden_field_tag :field, @field.name %>
+  <div class="form-row">
+    <span class="comas-form-prompt"><%= _'Data type' %></span>
+    <span class="comas-form-input"><%= @types[@field.type] %></span>
+  </div>
+  <div class="form-row">
+    <span class="comas-form-prompt"><%= _'Default' %></span>
+    <span class="comas-form-note">
+      <%= _'If you specify a default value, it should be valid for ' +
+	  'its data type. Note that the default value you specify ' + 
+	  'here is trusted to be sane - you can, of course, give ' +
+	  'illegal or dangerous values here. After all, you _are_ ' +
+	  'an administrator!'  %>
+    </span>
+    <span class="comas-form-input">
+      <%= text_field_tag :default, @field.default %>
+    </span>
+  </div>
+  <div class="form-row">
+    <span class="comas-form-prompt"><%= _'Null OK' %></span>
+    <span class="comas-form-note">
+      <%= _'Keep in mind that, in order for the database to allow you '+
+	  'to require no null values to be entered in a given field, '+
+	  'they should all have a value set (this means, older records '+
+	  'are not allowed to break the rules).<br/>'+
+	  'If you set a nonempty default value, we will set all the ' +
+	  'NULL values to it, and you will be able to set Null OK.'
+	  %>
+    </span>
+    <span class="comas-form-input">
+      <%= select_tag :null_ok, options_for_select({_('Yes') => true,
+      _('No') => false}, @field.null) %>
+    </span>
+  </div>
+  <div class="form-row">
+    <span class="comas-form-input">
+      <%= submit_tag _'Modify' %>
+    </span>
+  </div>
+<% end %>

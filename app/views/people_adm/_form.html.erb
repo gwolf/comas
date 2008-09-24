@@ -1,6 +1,6 @@
 <% # Ordered list of fields we will present to the user 
    fields = %w(login passwd firstname famname admin_tasks conferences 
-     ).concat @person.extra_listable_attributes %>
+     ).concat @person.extra_listable_attributes.map {|fld| fld.name} %>
 <% comas_form_for(:person, @person, 
                   :url => {:action => action, :id => @person}) do |f| %>
   <% fields.each do |attr|%>

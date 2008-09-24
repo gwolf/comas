@@ -27,14 +27,14 @@ class Person < ActiveRecord::Base
 
   def self.core_attributes
     %w(created_at email famname firstname id last_login_at login passwd 
-       pw_salt)
+       pw_salt).map {|attr| self.columns.select{|col| col.name == attr}[0] }
   end
   def core_attributes; self.class.core_attributes; end
 
   # Returns a list of any user-listable attributes that are not part of the
   # base Person data
   def self.extra_listable_attributes 
-    self.column_names - self.core_attributes
+    self.columns - self.core_attributes
   end
   def extra_listable_attributes; self.class.extra_listable_attributes; end
 
