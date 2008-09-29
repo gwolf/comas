@@ -17,6 +17,12 @@ ActionController::Routing::Routes.draw do |map|
               :controller => 'sys_conf_adm',
               :action => 'list_table_fields',
               :table => 'people')
+  map.connect('sys_conf_adm/show_catalog/:catalog',
+              :controller => 'sys_conf_adm',
+              :action => 'show_catalog')
+  map.connect('sys_conf_adm/delete_catalog_row/:catalog/:id',
+              :controller => 'sys_conf_adm',
+              :action => 'delete_catalog_row')
 
   # Sample of named route:
   # map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'

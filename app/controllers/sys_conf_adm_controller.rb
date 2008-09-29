@@ -2,14 +2,17 @@ class SysConfAdmController < Admin
   before_filter :get_sysconf, :only => [:delete, :edit, :update]
   before_filter :get_table, :only => [:list_table_fields, :delete_table_field,
                                       :create_table_field, :edit_table_field]
+  before_filter :get_catalog, :only => [:show_catalog, :delete_catalog_row,
+                                        :add_catalog_row]
   before_filter :field_types, :only => [:list_table_fields, :create_table_field,
                                         :edit_table_field]
 
   Menu = [[_('Show configuration'), :list],
-          [_('Manage fields for people'), :list_people_fields]]
+          [_('Manage fields for people'), :list_people_fields],
+          [_('Catalogs management'), :list_catalogs]]
 
   ############################################################
-  # Manage SysConf entries
+  # SysConf entries management
   def list
     @confs = SysConf.find(:all, :order => :key)
     @new_conf = SysConf.new()
@@ -47,7 +50,7 @@ class SysConfAdmController < Admin
   end
 
   ############################################################
-  # Manage dynamic tables
+  # Dynamic tables management
   def list_table_fields
     @core = @model.core_attributes
     @extra = @model.extra_listable_attributes
@@ -178,6 +181,50 @@ class SysConfAdmController < Admin
 
     flash[:notice] = _("The field's values were correctly updated")
   end
+
+  ############################################################
+  # Catalogs management
+  def list_catalogs
+    @catalogs = ActiveRecord::Base.connection.catalogs.sort.map { |cat|
+      begin
+        model = cat.classify.constantize
+      rescue NameError
+        # Just ignore it
+      end
+    }.select {|cat| cat}
+  end
+
+  def show_catalog
+    @data = @catalog.paginate(:page => params[:page], :order => 'id')
+    @blank = @catalog.new
+  end
+
+  def delete_catalog_row
+    redirect_to(:action => 'show_catalog', :catalog => @cat_name)
+    return true unless request.post?
+    begin
+      @catalog.find(params[:id]).destroy
+      flash[:notice] = _'The requested record was successfully deleted'
+    rescue ActiveRecord::RecordNotFound, ActiveRecord::StatementInvalid => err
+      flash[:error] = _('Error deleting the requested record: %s') % err
+    end
+  end
+
+  def add_catalog_row
+    redirect_to(:action => 'show_catalog', :catalog => @cat_name)
+    return true unless request.post? 
+
+    param_cat = @cat_name.singularize
+    return true unless params.has_key?(param_cat)
+    begin
+      @catalog.new(:name => params[param_cat][:name]).save!
+      flash[:notice] = _('The new %s was successfully registered') % param_cat
+    rescue ActiveRecord::RecordInvalid => err
+      flash[:error] = _('Could not create new %s: %s') % 
+        [param_cat, err.to_s]
+    end
+  end
+
   ############################################################
   protected
   def get_sysconf
@@ -202,6 +249,25 @@ class SysConfAdmController < Admin
       redirect_to '/'
       return false
    end
+  end
+
+  def get_catalog
+    begin
+      cat = params[:catalog]
+
+      ActiveRecord::Base.connection.catalogs.include?(cat) or
+        raise NameError, _('Invalid catalog requested: %s') % cat
+
+      model = cat.classify.constantize
+
+    rescue NameError => err
+      flash[:error] = err.to_s
+      redirect_to :action => 'list_catalogs'
+      return false
+    end
+
+    @cat_name = cat
+    @catalog = model
   end
 
   def field_types
