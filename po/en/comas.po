@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2008-09-29 12:57-0500\n"
+"POT-Creation-Date: 2008-09-29 14:16-0500\n"
 "PO-Revision-Date: 2008-09-12 18:39-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: \n"
@@ -744,129 +744,154 @@ msgstr ""
 msgid "Error removing requested attendee: "
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:8
+#: app/controllers/sys_conf_adm_controller.rb:10
 msgid "Show configuration"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:9
+#: app/controllers/sys_conf_adm_controller.rb:11
 msgid "Manage fields for people"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:22
+#: app/controllers/sys_conf_adm_controller.rb:12
+#: app/views/sys_conf_adm/list_catalogs.html.erb:1
+msgid "Catalogs management"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:25
 msgid "Error destroying requested entry: "
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:30
+#: app/controllers/sys_conf_adm_controller.rb:33
 msgid "Error creating requested entry: "
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:42
+#: app/controllers/sys_conf_adm_controller.rb:45
 msgid "The configuration entry was successfully updated"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:44
+#: app/controllers/sys_conf_adm_controller.rb:47
 msgid "Error updating requested configuration entry: "
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:70
+#: app/controllers/sys_conf_adm_controller.rb:73
 msgid "Invalid column name"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:71
+#: app/controllers/sys_conf_adm_controller.rb:74
 msgid "A field by that name is already defined"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:73
+#: app/controllers/sys_conf_adm_controller.rb:76
 msgid "Invalid data type specified"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:87
+#: app/controllers/sys_conf_adm_controller.rb:90
 msgid "Successfully created %s field in %s"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:91
+#: app/controllers/sys_conf_adm_controller.rb:94
 msgid "Unable to create requested column: %s"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:102
+#: app/controllers/sys_conf_adm_controller.rb:105
 msgid "Attempting to remove invalid field: %s"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:108
+#: app/controllers/sys_conf_adm_controller.rb:111
 msgid "Successfully removed field %s"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:110
+#: app/controllers/sys_conf_adm_controller.rb:113
 msgid "Error removing specified field: %s"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:115
+#: app/controllers/sys_conf_adm_controller.rb:118
 msgid ""
 "Please note we have _not_ dropped the corresponding catalog for this column, "
 "<em>%s</em>, to avoid data loss. You can manually remove it."
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:129
+#: app/controllers/sys_conf_adm_controller.rb:132
 msgid "Invalid field specified"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:146
+#: app/controllers/sys_conf_adm_controller.rb:149
 msgid "Error setting the requested default value: %s"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:168
+#: app/controllers/sys_conf_adm_controller.rb:171
 msgid "Error setting the field as not null: %s"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:173
+#: app/controllers/sys_conf_adm_controller.rb:176
 msgid "Cannot set field %s to reject null values: No default value "
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:179
+#: app/controllers/sys_conf_adm_controller.rb:182
 msgid "The field's values were correctly updated"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:187
-msgid "Invalid configuration entry %d requested"
-msgstr ""
-
-#: app/controllers/sys_conf_adm_controller.rb:202
-msgid "Invalid table requested"
+#: app/controllers/sys_conf_adm_controller.rb:207
+msgid "The requested record was successfully deleted"
 msgstr ""
 
 #: app/controllers/sys_conf_adm_controller.rb:209
+msgid "Error deleting the requested record: %s"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:221
+msgid "The new %s was successfully registered"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:223
+msgid "Could not create new %s: %s"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:234
+msgid "Invalid configuration entry %d requested"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:249
+msgid "Invalid table requested"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:259
+msgid "Invalid catalog requested: %s"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:275
 msgid "Boolean"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:210
+#: app/controllers/sys_conf_adm_controller.rb:276
 msgid "Date"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:211
+#: app/controllers/sys_conf_adm_controller.rb:277
 msgid "Timestamp"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:212
+#: app/controllers/sys_conf_adm_controller.rb:278
 msgid "String"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:213
+#: app/controllers/sys_conf_adm_controller.rb:279
 msgid "Text"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:214
+#: app/controllers/sys_conf_adm_controller.rb:280
 msgid "Integer"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:215
+#: app/controllers/sys_conf_adm_controller.rb:281
 msgid "Decimal"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:216
+#: app/controllers/sys_conf_adm_controller.rb:282
 msgid "Float"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:217
+#: app/controllers/sys_conf_adm_controller.rb:283
 msgid "Catalog"
 msgstr ""
 
@@ -988,6 +1013,7 @@ msgstr ""
 #: app/helpers/conferences_adm_helper.rb:23
 #: app/helpers/sys_conf_adm_helper.rb:21 app/views/people_adm/list.html.erb:19
 #: app/views/conferences_adm/list.html.erb:34
+#: app/views/sys_conf_adm/show_catalog.html.erb:15
 #: app/views/sys_conf_adm/list.html.erb:14
 msgid "Delete"
 msgstr ""
@@ -1078,6 +1104,9 @@ msgstr ""
 
 #: app/helpers/proposals_helper.rb:16
 #: app/views/conferences_adm/list.html.erb:8
+#: app/views/sys_conf_adm/show_catalog.html.erb:8
+#: app/views/sys_conf_adm/show_catalog.html.erb:27
+#: app/views/sys_conf_adm/list_catalogs.html.erb:7
 msgid "Name"
 msgstr ""
 
@@ -1158,6 +1187,7 @@ msgstr ""
 #: app/views/people_adm/new.html.erb:3
 #: app/views/conferences_adm/new.html.erb:3
 #: app/views/sys_conf_adm/list_table_fields.html.erb:35
+#: app/views/sys_conf_adm/show_catalog.html.erb:28
 #: app/views/sys_conf_adm/list.html.erb:26
 msgid "Create"
 msgstr ""
@@ -1174,6 +1204,7 @@ msgstr ""
 #: app/views/people_adm/list.html.erb:7
 #: app/views/conferences_adm/people_list.html.erb:6
 #: app/views/conferences_adm/list.html.erb:7
+#: app/views/sys_conf_adm/show_catalog.html.erb:7
 msgid "ID"
 msgstr ""
 
@@ -1690,6 +1721,22 @@ msgid ""
 "<b>Caution</b>: Modifying this configuration entry might render your system "
 "inoperable. Proceed at your own risk, and only if you know what you are "
 "doing."
+msgstr ""
+
+#: app/views/sys_conf_adm/show_catalog.html.erb:1
+msgid "Showing records for the <em>%s</em> catalog"
+msgstr ""
+
+#: app/views/sys_conf_adm/show_catalog.html.erb:30
+msgid "Go back to the catalogs listing"
+msgstr ""
+
+#: app/views/sys_conf_adm/list_catalogs.html.erb:3
+msgid "The following catalogs are defined in your system"
+msgstr ""
+
+#: app/views/sys_conf_adm/list_catalogs.html.erb:8
+msgid "Records"
 msgstr ""
 
 #: app/views/sys_conf_adm/list.html.erb:1
