@@ -1,4 +1,4 @@
-<h1><%= _('Manage fields for registered %s') % @table %></h1>
+<h1><%= _('Manage fields for table <em>%s</em>') % @table %></h1>
 
 <p><%= _("This interface is provided as a general facility - " +
          "However, redefining your tables' configuration, handling " +
@@ -13,7 +13,7 @@
 
 <h3><%= _'Extra attributes' %></h3>
 <% if @extra.empty? %>
-  <p><%= 'No extra fields are currently defined' %></p>
+  <p><%= _'No extra fields are currently defined' %></p>
 <% else %>
   <%= attributes_table(@extra, true) %>
 <% end %>

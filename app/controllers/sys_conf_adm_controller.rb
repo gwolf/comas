@@ -6,7 +6,7 @@ class SysConfAdmController < Admin
                                         :edit_table_field]
 
   Menu = [[_('Show configuration'), :list],
-          [_('Manage fields for registered people'), :list_people_fields]]
+          [_('Manage fields for people'), :list_people_fields]]
 
   ############################################################
   # Manage SysConf entries

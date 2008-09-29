@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2008-09-23 13:54-0500\n"
+"POT-Creation-Date: 2008-09-29 12:57-0500\n"
 "PO-Revision-Date: 2008-09-12 18:39-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: \n"
@@ -744,28 +744,130 @@ msgstr ""
 msgid "Error removing requested attendee: "
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:3
+#: app/controllers/sys_conf_adm_controller.rb:8
 msgid "Show configuration"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:14
-msgid "Error destroying requested entry: "
+#: app/controllers/sys_conf_adm_controller.rb:9
+msgid "Manage fields for people"
 msgstr ""
 
 #: app/controllers/sys_conf_adm_controller.rb:22
+msgid "Error destroying requested entry: "
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:30
 msgid "Error creating requested entry: "
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:34
+#: app/controllers/sys_conf_adm_controller.rb:42
 msgid "The configuration entry was successfully updated"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:36
+#: app/controllers/sys_conf_adm_controller.rb:44
 msgid "Error updating requested configuration entry: "
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:46
+#: app/controllers/sys_conf_adm_controller.rb:70
+msgid "Invalid column name"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:71
+msgid "A field by that name is already defined"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:73
+msgid "Invalid data type specified"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:87
+msgid "Successfully created %s field in %s"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:91
+msgid "Unable to create requested column: %s"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:102
+msgid "Attempting to remove invalid field: %s"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:108
+msgid "Successfully removed field %s"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:110
+msgid "Error removing specified field: %s"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:115
+msgid ""
+"Please note we have _not_ dropped the corresponding catalog for this column, "
+"<em>%s</em>, to avoid data loss. You can manually remove it."
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:129
+msgid "Invalid field specified"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:146
+msgid "Error setting the requested default value: %s"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:168
+msgid "Error setting the field as not null: %s"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:173
+msgid "Cannot set field %s to reject null values: No default value "
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:179
+msgid "The field's values were correctly updated"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:187
 msgid "Invalid configuration entry %d requested"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:202
+msgid "Invalid table requested"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:209
+msgid "Boolean"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:210
+msgid "Date"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:211
+msgid "Timestamp"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:212
+msgid "String"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:213
+msgid "Text"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:214
+msgid "Integer"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:215
+msgid "Decimal"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:216
+msgid "Float"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:217
+msgid "Catalog"
 msgstr ""
 
 #: app/controllers/conferences_controller.rb:43
@@ -840,11 +942,13 @@ msgstr ""
 msgid "Field %s not defined for %s"
 msgstr ""
 
-#: app/helpers/application_helper.rb:169
+#: app/helpers/application_helper.rb:169 app/helpers/sys_conf_adm_helper.rb:19
+#: app/views/sys_conf_adm/edit_table_field.html.erb:41
 msgid "Yes"
 msgstr ""
 
-#: app/helpers/application_helper.rb:169
+#: app/helpers/application_helper.rb:169 app/helpers/sys_conf_adm_helper.rb:19
+#: app/views/sys_conf_adm/edit_table_field.html.erb:42
 msgid "No"
 msgstr ""
 
@@ -882,7 +986,7 @@ msgid "Sign up"
 msgstr ""
 
 #: app/helpers/conferences_adm_helper.rb:23
-#: app/views/people_adm/list.html.erb:19
+#: app/helpers/sys_conf_adm_helper.rb:21 app/views/people_adm/list.html.erb:19
 #: app/views/conferences_adm/list.html.erb:34
 #: app/views/sys_conf_adm/list.html.erb:14
 msgid "Delete"
@@ -892,6 +996,46 @@ msgstr ""
 msgid ""
 "Are you sure you want to permanently delete this timeslot? This will also "
 "destroy any attendances it has recorded"
+msgstr ""
+
+#: app/helpers/sys_conf_adm_helper.rb:10
+#: app/views/sys_conf_adm/list_table_fields.html.erb:26
+msgid "Field name"
+msgstr ""
+
+#: app/helpers/sys_conf_adm_helper.rb:10
+#: app/views/sys_conf_adm/list_table_fields.html.erb:27
+msgid "Field type"
+msgstr ""
+
+#: app/helpers/sys_conf_adm_helper.rb:11
+#: app/views/sys_conf_adm/edit_table_field.html.erb:30
+msgid "Null OK"
+msgstr ""
+
+#: app/helpers/sys_conf_adm_helper.rb:11
+#: app/views/sys_conf_adm/list_table_fields.html.erb:28
+#: app/views/sys_conf_adm/edit_table_field.html.erb:17
+msgid "Default"
+msgstr ""
+
+#: app/helpers/sys_conf_adm_helper.rb:11
+#: app/views/people/proposals.html.erb:17
+msgid "Action"
+msgstr ""
+
+#: app/helpers/sys_conf_adm_helper.rb:25
+msgid ""
+"Removing this field from the table definition will cause ALL OF ITS DATA to "
+"be destroyed. \n"
+"This is an irreversible action.\n"
+"Are you sure?"
+msgstr ""
+
+#: app/helpers/sys_conf_adm_helper.rb:31
+#: app/views/people/proposals.html.erb:27 app/views/proposals/show.html.erb:3
+#: app/views/sys_conf_adm/list.html.erb:13
+msgid "Edit"
 msgstr ""
 
 #: app/helpers/attendance_adm_helper.rb:18
@@ -1013,6 +1157,7 @@ msgstr ""
 
 #: app/views/people_adm/new.html.erb:3
 #: app/views/conferences_adm/new.html.erb:3
+#: app/views/sys_conf_adm/list_table_fields.html.erb:35
 #: app/views/sys_conf_adm/list.html.erb:26
 msgid "Create"
 msgstr ""
@@ -1235,15 +1380,6 @@ msgstr ""
 #: app/views/proposals/show.html.erb:7
 #: app/views/conferences/proposals.html.erb:9
 msgid "Proposal type"
-msgstr ""
-
-#: app/views/people/proposals.html.erb:17
-msgid "Action"
-msgstr ""
-
-#: app/views/people/proposals.html.erb:27 app/views/proposals/show.html.erb:3
-#: app/views/sys_conf_adm/list.html.erb:13
-msgid "Edit"
 msgstr ""
 
 #: app/views/people/proposals.html.erb:29 app/views/proposals/show.html.erb:16
@@ -1469,6 +1605,80 @@ msgstr ""
 
 #: app/views/conferences/list.html.erb:14
 msgid "log in to your account"
+msgstr ""
+
+#: app/views/sys_conf_adm/list_table_fields.html.erb:1
+msgid "Manage fields for table <em>%s</em>"
+msgstr ""
+
+#: app/views/sys_conf_adm/list_table_fields.html.erb:3
+msgid ""
+"This interface is provided as a general facility - However, redefining your "
+"tables' configuration, handling DBMS-based validations and default values "
+"will often require doing so directly interacting directly with your database "
+"system."
+msgstr ""
+
+#: app/views/sys_conf_adm/list_table_fields.html.erb:9
+msgid "Core attributes"
+msgstr ""
+
+#: app/views/sys_conf_adm/list_table_fields.html.erb:10
+msgid ""
+"The following fields are <em>core</em> - That means, they will always be "
+"part of a person's definition:"
+msgstr ""
+
+#: app/views/sys_conf_adm/list_table_fields.html.erb:14
+msgid "Extra attributes"
+msgstr ""
+
+#: app/views/sys_conf_adm/list_table_fields.html.erb:16
+msgid "No extra fields are currently defined"
+msgstr ""
+
+#: app/views/sys_conf_adm/list_table_fields.html.erb:21
+msgid "Add a new attribute"
+msgstr ""
+
+#: app/views/sys_conf_adm/edit_table_field.html.erb:1
+msgid "Edit field %s on %s"
+msgstr ""
+
+#: app/views/sys_conf_adm/edit_table_field.html.erb:3
+msgid ""
+"The values set in this screen are very database-dependent. We strongly "
+"suggest working with a PostgreSQL RDBMS - Any other system is not guaranteed "
+"to work with the values selected here."
+msgstr ""
+
+#: app/views/sys_conf_adm/edit_table_field.html.erb:7
+msgid "Go back to the table definition"
+msgstr ""
+
+#: app/views/sys_conf_adm/edit_table_field.html.erb:13
+msgid "Data type"
+msgstr ""
+
+#: app/views/sys_conf_adm/edit_table_field.html.erb:19
+msgid ""
+"If you specify a default value, it should be valid for its data type. Note "
+"that the default value you specify here is trusted to be sane - you can, of "
+"course, give illegal or dangerous values here. After all, you _are_ an "
+"administrator! With great power comes great responsability."
+msgstr ""
+
+#: app/views/sys_conf_adm/edit_table_field.html.erb:32
+msgid ""
+"Keep in mind that, in order for the database to allow you to require no null "
+"values to be entered in a given field, they should all have a value set "
+"(this means, older records are not allowed to break the rules).<br/>If you "
+"set a nonempty default value, we will set all the NULL values to it, and you "
+"will be able to set it to NOT NULL."
+msgstr ""
+
+#: app/views/sys_conf_adm/edit_table_field.html.erb:47
+msgid "Modify"
 msgstr ""
 
 #: app/views/sys_conf_adm/edit.html.erb:1

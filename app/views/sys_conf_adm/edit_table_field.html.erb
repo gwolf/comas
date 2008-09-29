@@ -20,7 +20,7 @@
 	  'its data type. Note that the default value you specify ' + 
 	  'here is trusted to be sane - you can, of course, give ' +
 	  'illegal or dangerous values here. After all, you _are_ ' +
-	  'an administrator!'  %>
+	  'an administrator! With great power comes great responsability.'  %>
     </span>
     <span class="comas-form-input">
       <%= text_field_tag :default, @field.default %>
@@ -34,7 +34,7 @@
 	  'they should all have a value set (this means, older records '+
 	  'are not allowed to break the rules).<br/>'+
 	  'If you set a nonempty default value, we will set all the ' +
-	  'NULL values to it, and you will be able to set Null OK.'
+	  'NULL values to it, and you will be able to set it to NOT NULL.'
 	  %>
     </span>
     <span class="comas-form-input">
