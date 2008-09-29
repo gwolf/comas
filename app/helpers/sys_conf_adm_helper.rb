@@ -14,8 +14,7 @@ module SysConfAdmHelper
   end
 
   def attributes_row(attr, modifiable=false)
-    columns = [attr.name, 
-               (@types[attr.type] || attr.type)]
+    columns = [attr.name, field_type_for(attr)]
 
     columns << (attr.null ? _('Yes') : _('No') ) <<
       attr.default <<
@@ -35,5 +34,22 @@ module SysConfAdmHelper
       ].join(' - ') if modifiable
 
     table_row + columns.map {|col| "<td>#{col}</td>" }.join + end_table_row
+  end
+
+
+  def field_type_for(field)
+    type = field.type
+    return type unless @types.include?(type)
+
+    if type == :integer and field.name =~ /^(.*)_id$/ 
+      begin
+        ref_model = $1.pluralize.classify.constantize
+        type = :catalog
+      rescue NameError, NoMethodError
+        # Don't panic, it is just... not a catalog. Go on.
+      end
+    end
+
+    @types[type]
   end
 end

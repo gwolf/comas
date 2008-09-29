@@ -57,6 +57,10 @@ class SysConfAdmController < Admin
     redirect_to :action => :list_table_fields, :table => @table
     return true unless request.post?
 
+    # Several things can go wrong when creating a column - In order
+    # not to leave the DB in a state we don't want to, and to avoid
+    # having the code too messed up with validations and if/elses,
+    # just rescue it in case of failure.
     begin
       field = params[:fldname].downcase
       type = params[:fldtype].to_sym
@@ -69,7 +73,16 @@ class SysConfAdmController < Admin
       raise TypeError, _('Invalid data type specified') unless
         @types.include?(type)
 
-      @model.connection.add_column(@table, field, type, :default => default)
+      if type == :catalog
+        # A catalog is not a native type - fake it!
+        catalog = field.pluralize
+        ActiveRecord::Base.transaction do
+          @model.connection.create_catalogs(catalog)
+          @model.connection.add_reference(@table, catalog, :default => default)
+        end
+      else
+        @model.connection.add_column(@table, field, type, :default => default)
+      end
 
       flash[:notice] = _("Successfully created %s field in %s") % 
         [field, @table]
@@ -95,6 +108,14 @@ class SysConfAdmController < Admin
       flash[:notice] = _('Successfully removed field %s') % field
     rescue Exception => err
       flash[:error] = _('Error removing specified field: %s') % err
+    end
+
+    if field.to_s =~ /^(.*)_id$/ and 
+        @model.connection.catalogs.include?($1.pluralize)
+      flash[:warning] = _('Please note we have _not_ dropped the ' +
+                          'corresponding catalog for this column, ' +
+                          '<em>%s</em>, to avoid data loss. You can manually ' +
+                          'remove it.') % $1.pluralize
     end
   end
 
@@ -192,7 +213,8 @@ class SysConfAdmController < Admin
       :text => _('Text'),
       :integer => _('Integer'),
       :decimal => _('Decimal'),
-      :float => _('Float')
+      :float => _('Float'),
+      :catalog => _('Catalog') # Not a real type, but hand-mangled by us
     }
   end
 end

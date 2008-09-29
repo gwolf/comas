@@ -13,6 +13,11 @@ ActionController::Routing::Routes.draw do |map|
               :controller => 'proposals',
               :action => 'get_document')
 
+  map.connect('sys_conf_adm/list_people_fields',
+              :controller => 'sys_conf_adm',
+              :action => 'list_table_fields',
+              :table => 'people')
+
   # Sample of named route:
   # map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'
   # This route can be invoked with purchase_url(:id => product.id)
