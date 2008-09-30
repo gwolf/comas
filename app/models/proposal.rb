@@ -12,6 +12,7 @@ class Proposal < ActiveRecord::Base
   validates_presence_of :prop_type_id
   validates_presence_of :prop_status_id
   validates_presence_of :conference_id
+  validates_uniqueness_of :timeslot_id
   validates_associated :prop_type, :prop_status, :timeslot, :conference
   validate_on_create :in_conference_cfp_period
   validate_on_update :dont_change_conference
