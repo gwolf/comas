@@ -34,10 +34,40 @@ class Attendance < ActiveRecord::Base
     self.find(:all, :conditions => ['person_id = ?', person.id])
   end
 
+  # All of the attendances registered for a given conference
+  # 
+  # Very often, calling this method will be immediately followed by
+  # finding each of its results' associated people - Make it easy on
+  # the database by including the people on the query itself.
   def self.for_conference(conf)
     conf = Conference.find_by_id(conf) if conf.is_a? Fixnum
-    self.find(:all, :conditions => ['timeslot_id in (?)', conf.timeslot_ids])
+    self.find(:all, :conditions => ['timeslot_id in (?)', conf.timeslot_ids],
+              :include => :person)
   end
+
+  # Gives the full list of people who attended the specified
+  # conference. The results are given back as a hash, where the keys
+  # are the number of attendances each given person had.
+  def self.totalized_for_conference(conf)
+    totals = {}
+    people = {}
+
+    self.for_conference(conf).each do |att|
+      people[att.person] ||= 0
+      people[att.person] += 1
+    end
+
+    people.keys.each do |att|
+      totals[people[att]] ||= []
+      totals[people[att]] << att
+    end
+
+    totals
+  end
+
+  # The conference to which this attendance belongs
+  def conference_id; self.timeslot.conference_id; end
+  def conference; Conference.find_by_id(self.conference_id); end
 
   protected
   def person_registered_in_conference

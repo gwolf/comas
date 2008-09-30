@@ -5,6 +5,7 @@ ActionController::Routing::Routes.draw do |map|
   # map.connect 'products/:id', :controller => 'catalog', :action => 'view'
   # Keep in mind you can assign values other than :controller and :action
   map.connect 'recover/:r_session', :controller => 'people', :action => 'recover'
+
   map.connect 'proposals/:id', :controller => 'proposals', :action => 'show'
   map.connect('proposals/by_author/:author_id', 
               :controller => 'proposals', 
@@ -24,9 +25,13 @@ ActionController::Routing::Routes.draw do |map|
   map.connect('sys_conf_adm/delete_catalog_row/:catalog/:id',
               :controller => 'sys_conf_adm',
               :action => 'delete_catalog_row')
-  map.connect('/sys_conf_adm/add_catalog_row/:catalog',
+  map.connect('sys_conf_adm/add_catalog_row/:catalog',
               :controller => 'sys_conf_adm',
               :action => 'add_catalog_row')
+
+  map.connect('attendance_adm/list/:conference_id',
+              :controller => 'attendance_adm',
+              :action => 'list')
 
   # Sample of named route:
   # map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'

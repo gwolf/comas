@@ -7,6 +7,7 @@ class Person < ActiveRecord::Base
   has_many :participations, :dependent => :destroy
   has_many :conferences, :through => :participations, :order => :begins
   has_many :participation_types, :through => :participations
+  has_many :attendances
 
   validates_presence_of :firstname
   validates_presence_of :famname

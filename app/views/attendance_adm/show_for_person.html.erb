@@ -1,0 +1,23 @@
+<h1><%= _('Attendances for <em>%s</em> on <em>%s</em>') %
+	[h(@person.name), @conference.name] %></h1>
+
+<%= start_table %>
+  <%= table_head_row %>
+    <th><%= _'Session started at' %></th>
+    <th><%= _'Attendance taken at' %></th>
+    <th><%= _'Proposal' %></th>
+  <%= end_table_row %>
+  <% @attendances.sort_by {|att| att.created_at}.each do |att| %>
+    <% prop = att.timeslot.proposal
+       title = prop ? prop.title : '' %>
+    <%= table_row %>
+      <td><%= att.timeslot.start_time.to_s(:listing) %></td>
+      <td><%= att.created_at.to_s(:listing) %></td>
+      <td><%= title %></td>
+    <%= end_table_row %>
+  <% end %>
+<%= end_table %>
+
+<p><%= link_to(_('Create certificate'), 
+               :action => 'certificate_for_person', 
+               :person_id => @person, :conference_id => @conference) %></p>

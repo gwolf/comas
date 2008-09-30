@@ -1,0 +1,22 @@
+<%= start_table %>
+  <%= table_head_row %>
+    <th colspan="4"><%= _'By session' %></th>
+  <%= end_table_row %>
+  <%= table_head_row %>
+    <th><%= _'Session starting at' %></th>
+    <th><%= _'Room' %></th>
+    <th><%= _'Attendees' %></th>
+    <th><%= _'Proposal' %></th>
+  <%= end_table_row %>
+  <% tslots.sort_by {|ts| ts.start_time}.each do |ts| %>
+    <% att = ts.attendances.size; next if att == 0
+       prop = ts.proposal
+       title = prop ? prop.title : '' %>
+    <%= table_row %>
+      <td><%= ts.start_time.to_s(:listing) %></td>
+      <td><%= ts.room.name %></td>
+      <td><%= att %></td>
+      <td><%= title %></td>
+    <%= end_table_row %>
+  <% end %>
+<%= end_table %>
