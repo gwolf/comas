@@ -1,5 +1,5 @@
-<h3><%= _('%d attendances: %d people') %
-        [num, list.size] %> - 
+<h3><%= _('%d attendances: %d people (exact), %d people (including higher)') %
+        [num, list.size, or_higher] %> - 
     <%= link_to_function(_('Show'), 
                     visual_effect(:toggle_blind, "#{num}-att")) %> -
     <%= link_to(_('Generate certificates'), 

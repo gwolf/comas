@@ -20,7 +20,10 @@
   <h2><%= _'Full listing, ordered by number of attendances' %></h2>
   <% @totals.keys.sort.each do |num| %>
     <%= render(:partial => 'list_by_attendances', 
-               :locals => {:num => num, :list => @totals[num]} ) %>
+               :locals => {:num => num, :list => @totals[num],
+                           :or_higher => @totals.keys.map { |k| 
+                               next if k < num
+                               @totals[k].size}.select{|k| k}.sum} ) %>
 
   <% end %>
 <% end %>
