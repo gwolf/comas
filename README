@@ -52,7 +52,17 @@ tarballs.
 
 Hack on!
 
-=== Who made it?
+=== Dependencies
+
+Rails (>= 2.0):: http://www.rubyonrails.org/
+Acts as catalog:: http://rubyforge.org/projects/realfk
+Acts as list:: http://github.com/rails/acts_as_list/tree/master
+Acts as magic model:: http://magicmodel.rubyforge.org/
+Real FK:: http://realfk.rubyforge.org/
+Will Paginate:: http://github.com/mislav/will_paginate/wikis
+PDF Writer:: http://ruby-pdf.rubyforge.org/
+
+=== Authors and copyright
 
 The original Comas was written mainly by Manuel Rábade and Gunnar
 Wolf. 
@@ -60,9 +70,22 @@ Wolf.
 The current implementation, with somewhat different goals and mindset,
 has been so far written by Gunnar Wolf.
 
+Comas is released under the GPL license, version 3or higher (at your
+option). 
+
+Copyright (c) 2008 Gunnar Wolf <gwolf@gwolf.org>
+
+Comas includes code written by third parties:
+
+   class inherit:: Thomas Sawyer (License: Same as Ruby)
+   Rails date kit:: Stuart Rackham (License: MIT)
+   Pseudo gettext:: Masao Mutoh (License: Same as Ruby)
+
 == TO-DO
 
 * Proper installation documentation
 * Find the right way to indicate the plugin dependencies we have (via
   submodules?) and find the right way to distribute them in-band
 * Check what to-do items we really have!
+* Move the included third-party code out of the tree, make it a clean
+  dependency 
