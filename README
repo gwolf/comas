@@ -70,8 +70,9 @@ Wolf.
 The current implementation, with somewhat different goals and mindset,
 has been so far written by Gunnar Wolf.
 
-Comas is released under the GPL license, version 3or higher (at your
-option). 
+Comas is released under the GPL license, version 3 or higher (at your
+option). A copy of the GPLv3 license is included in the 'COPYING'
+file in Comas' source directory.
 
 Copyright (c) 2008 Gunnar Wolf <gwolf@gwolf.org>
 
