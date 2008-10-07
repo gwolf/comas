@@ -56,12 +56,20 @@ Hack on!
 
 Ruby 1.8
 Rails (>= 2.0):: http://www.rubyonrails.org/
-Acts as catalog:: http://rubyforge.org/projects/realfk
+Acts as catalog:: http://actsascatalog.rubyforge.org/
 Acts as list:: http://github.com/rails/acts_as_list/tree/master
 Acts as magic model:: http://magicmodel.rubyforge.org/
 Real FK:: http://realfk.rubyforge.org/
 Will Paginate:: http://github.com/mislav/will_paginate/wikis
 PDF Writer:: http://ruby-pdf.rubyforge.org/
+GetText:: http://www.yotabanana.com/hiki/ruby-gettext.html
+
+If you _cloned_ the Git repository, the plugins in this list (realfk,
+acts_as_list, magicmodel and actsascatalog) are available as Git
+submodules. From Comas' top directory, just run:
+
+    $ git submodule init
+    $ git submodule update
 
 === Authors and copyright
 
