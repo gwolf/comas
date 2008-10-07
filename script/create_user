@@ -1,8 +1,5 @@
-#
-# This script should be invoked through script/runner:
-#
-#     $ ./script/runner script/create_user
-
+#!/usr/bin/env ./script/runner
+# Hey, emacs, this is a -*- Ruby -*- file!
 class DataError < Exception; end
 class EmptyField < Exception; end
 
