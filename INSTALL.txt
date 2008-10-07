@@ -1,0 +1,60 @@
+= Setting up Comas
+
+== Get the code
+
+The first step towards Comas bliss is, of course, getting the Comas
+code. You can clone from its public Git repository at:
+
+    git://github.com/gwolf/comas.git
+
+As stable releases arrive, I will also have them for direct download
+at our homepage. Comas' homepage is:
+
+    http://www.comas-code.org/
+
+There, you will be able to find latest releases and documentation.
+
+== Base application setup
+
+=== Install the dependencies
+
+Install Comas' dependencies on your system. They are outlined in the
+_Dependencies_ section of the #README file - Instead of maintaining two
+separate lists (prone to get out of sync), please refer to that file.
+
+=== Set up your database
+
+You should now configure config/database.yml - It is a #YAML file. You
+can copy it from config/database.yml.orig and edit to suit your
+site. Please note that Comas was developed with PostgreSQL in mind -
+It might work with other databases, but nothing is guaranteed. And
+then again, why would you want to use anything else? ;-)
+
+Once your database is created, run Rails' _migrations_ to create
+Comas' tables:
+
+    $ rake db:migrate
+
+If everything goes well, you should have a working (although minimal
+and probably unusable) Comas installation. Congratulations! You now
+need to make your system useful.
+
+== First steps for Comas' administration
+
+=== Administrating Comas: Via the command line
+
+As Comas is a Rails application, probably the most powerful
+administrative interface is Rails' _interactive console_. Of course,
+it will require you to know some Ruby - but it will allow for the
+greatest of powers.
+
+To run the interactive console, enter Comas' main directory and type:
+
+    $ ./script/console
+
+=== Administrative user
+
+The first thing you should do -specially if you are not very
+comfortable with the interactive console- is to create an
+administrative user with enough privileges to do anything else you
+will need via the Web front-end. 

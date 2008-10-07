@@ -54,6 +54,7 @@ Hack on!
 
 === Dependencies
 
+Ruby 1.8
 Rails (>= 2.0):: http://www.rubyonrails.org/
 Acts as catalog:: http://rubyforge.org/projects/realfk
 Acts as list:: http://github.com/rails/acts_as_list/tree/master
@@ -90,3 +91,8 @@ Pseudo gettext:: Masao Mutoh (License: Same as Ruby)
 * Check what to-do items we really have!
 * Move the included third-party code out of the tree, make it a clean
   dependency 
+* Tests!
+* Provide for a better way for themability (not requiring the user to
+  modify provided files, as it makes integration with newer versions
+  painful) 
+
