@@ -1,0 +1,12 @@
+[submodule "vendor/plugins/acts_as_catalog"]
+	path = vendor/plugins/acts_as_catalog
+	url = git://rubyforge.org/actsascatalog.git
+[submodule "vendor/plugins/real_fk"]
+	path = vendor/plugins/real_fk
+	url = git://rubyforge.org/realfk.git
+[submodule "vendor/plugins/acts_as_magic_model"]
+	path = vendor/plugins/acts_as_magic_model
+	url = git://rubyforge.org/magicmodel.git
+[submodule "vendor/plugins/acts_as_list"]
+	path = vendor/plugins/acts_as_list
+	url = git://github.com/rails/acts_as_list.git
