@@ -65,13 +65,11 @@ PDF Writer:: http://ruby-pdf.rubyforge.org/
 GetText:: http://www.yotabanana.com/hiki/ruby-gettext.html
 
 If you _cloned_ the Git repository, the plugins in this list (realfk,
-acts_as_list, magicmodel and actsascatalog) as well as Rails itself
-are available as Git submodules. From Comas' top directory, just run:
+acts_as_list, magicmodel and actsascatalog) are available as Git
+submodules. From Comas' top directory, just run:
 
     $ git submodule init
     $ git submodule update
-
-And they will be incorporated in your tree.
 
 === Authors and copyright
 
