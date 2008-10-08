@@ -93,9 +93,6 @@ Pseudo gettext:: Masao Mutoh (License: Same as Ruby)
 
 == TO-DO
 
-* Proper installation documentation
-* Find the right way to indicate the plugin dependencies we have (via
-  submodules?) and find the right way to distribute them in-band
 * Check what to-do items we really have!
 * Move the included third-party code out of the tree, make it a clean
   dependency 
