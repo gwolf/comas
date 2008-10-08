@@ -1,0 +1,69 @@
+#!/usr/bin/env ./script/runner
+# Hey, emacs, this is a -*- Ruby -*- file!
+class DataError < Exception; end
+class EmptyField < Exception; end
+
+def read(prompt)
+  print prompt
+  ret = $stdin.readline.chomp
+  raise EmptyField, "No fields should be left blank - Stopping." if ret.blank?
+  ret
+end
+
+begin
+  Person.transaction do
+    puts "This script will create a new user for your Comas system."
+    puts "In order to abort, just answer with a blank line."
+    puts ""
+    puts "Note we are running under the -={#{RAILS_ENV}}=- environment"
+
+    login = read('Login: ')
+    firstname = read('First name: ')
+    famname = read('Family name: ')
+    email = read('E-mail: ')
+    passwd = read('Password (WILL be displayed): ')
+    puts ""
+
+    person = Person.new(:login => login, :firstname => firstname,
+                        :famname => famname, :email => email,
+                        :passwd => passwd)
+
+    begin
+      person.save!
+    rescue ActiveRecord::RecordInvalid
+      raise DataError, "Cannot create requested person:\n" +
+        person.errors.full_messages.join("\n")
+    end
+
+    tasks = AdminTask.find(:all, :order => :id)
+    puts "Please select any administrative tasks this person should have. Enter "
+    puts "just the task IDs (i.e., just the numbers), separated by commas"
+    puts ""
+    tasks.each { |task| puts "#{task.id}- #{task.name}" }
+    puts ""
+    task_ids = read("Desired tasks for #{person.name}: ").split(/\s*,\s*/).uniq
+    
+    task_ids.each do |id|
+      raise DataError, "Invalid task ID: #{id}" unless 
+        tasks.map{|t| t.id}.include?(id.to_i)
+    end
+    person.admin_task_ids = task_ids
+
+    puts "The person was created successfully!"
+  end
+  
+rescue EmptyField => msg
+  puts msg
+  exit 1
+
+rescue DataError => err
+  puts "*** No person was added: "
+  puts err
+  exit 2
+
+rescue Interrupt
+  puts "No work done, no harm done. Goodbye!"
+  exit 130
+end
+
+exit 0
