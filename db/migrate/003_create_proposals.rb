@@ -11,7 +11,7 @@ class CreateProposals < ActiveRecord::Migration
     end
 
     add_reference(:proposals, :prop_types, :null => false)
-    add_reference(:proposals, :prop_statuses, :null => false, :default => 1)
+    add_reference(:proposals, :prop_statuses, :null => false)
 
     add_index :proposals, :prop_type_id
     add_index :proposals, :prop_status_id

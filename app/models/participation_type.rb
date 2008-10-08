@@ -1,10 +1,8 @@
 class ParticipationType < ActiveRecord::Base
+  acts_as_catalog
   has_many :participations
 
-  validates_presence_of :name
-  validates_uniqueness_of :name
-
   def self.default
-    self.find(:first)
+    self.find(:first, :order_by => 'id')
   end
 end

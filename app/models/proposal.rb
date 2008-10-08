@@ -10,7 +10,7 @@ class Proposal < ActiveRecord::Base
 
   validates_presence_of :title
   validates_presence_of :prop_type_id
-  validates_presence_of :prop_status_id
+  validate :default_status_if_empty
   validates_presence_of :conference_id
   validates_uniqueness_of :timeslot_id
   validates_associated :prop_type, :prop_status, :timeslot, :conference
@@ -21,10 +21,8 @@ class Proposal < ActiveRecord::Base
     ! self.timeslot.empty?
   end
 
-  # Possibly we should use something fixed and reliable instead of a
-  # regular catalog here?
   def accepted?
-    self.prop_status_id == SysConf.value_for('accepted_prop_status_id').to_i
+    self.prop_status == PropStatus.accepted
   end
 
   # Paginates with the most common options set for a listing which
@@ -38,6 +36,10 @@ class Proposal < ActiveRecord::Base
   end
 
   protected
+  def default_status_if_empty
+    self.prop_status ||= PropStatus.default
+  end
+
   def in_conference_cfp_period
     return true if self.conference and self.conference.accepts_proposals?
     self.errors.add(:conference_id,
