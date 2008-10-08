@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2008-09-29 14:16-0500\n"
-"PO-Revision-Date: 2008-09-29 14:18-0600\n"
+"POT-Creation-Date: 2008-10-08 14:05-0500\n"
+"PO-Revision-Date: 2008-10-08 14:08-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: Gunnar Wolf <gwolf@gwolf.org>\n"
 "MIME-Version: 1.0\n"
@@ -93,18 +93,6 @@ msgid "Not a relation field"
 msgstr "No es un campo de relación"
 
 #: app/models/person.rb:-
-msgid "admin task"
-msgstr "rol administrativo"
-
-#: app/models/person.rb:-
-msgid "AdminTask|Name"
-msgstr "Nombre"
-
-#: app/models/person.rb:-
-msgid "AdminTask|Sys name"
-msgstr "Nombre de sistema"
-
-#: app/models/person.rb:-
 msgid "person"
 msgstr "persona"
 
@@ -139,6 +127,18 @@ msgstr "Fecha de creación"
 #: app/models/person.rb:-
 msgid "Person|Last login at"
 msgstr "Última entrada"
+
+#: app/models/person.rb:-
+msgid "admin task"
+msgstr "rol administrativo"
+
+#: app/models/person.rb:-
+msgid "AdminTask|Name"
+msgstr "Nombre"
+
+#: app/models/person.rb:-
+msgid "AdminTask|Sys name"
+msgstr "Nombre de sistema"
 
 #: app/models/conference.rb:-
 msgid "conference"
@@ -362,6 +362,14 @@ msgid "ConferenceLogo|Conference"
 msgstr "Actividad"
 
 #: app/models/proposal.rb:-
+msgid "prop status"
+msgstr "estado de la propuesta"
+
+#: app/models/proposal.rb:-
+msgid "PropStatus|Name"
+msgstr "Nombre"
+
+#: app/models/proposal.rb:-
 msgid "proposal"
 msgstr "propuesta"
 
@@ -397,19 +405,11 @@ msgstr "Horario"
 msgid "Proposal|Conference"
 msgstr "Actividad"
 
-#: app/models/proposal.rb:-
-msgid "prop status"
-msgstr "estado de la propuesta"
-
-#: app/models/proposal.rb:-
-msgid "PropStatus|Name"
-msgstr "Nombre"
-
-#: app/models/proposal.rb:43
+#: app/models/proposal.rb:46
 msgid "Call for papers period for this conference is not current"
 msgstr "Esta actividad no está dentro del periodo definido para convocatoria de ponencias"
 
-#: app/models/proposal.rb:53
+#: app/models/proposal.rb:56
 msgid "An already submitted proposal can not be moved to a different conference"
 msgstr "Una ponencia ya recibida no puede ser asignada a una actividad diferente"
 
@@ -677,27 +677,27 @@ msgstr "Elegir sesión"
 msgid "Take attendance"
 msgstr "Tomar asistencia"
 
-#: app/controllers/attendance_adm_controller.rb:24
+#: app/controllers/attendance_adm_controller.rb:4
+msgid "Attendance lists"
+msgstr "Listas de asistencia"
+
+#: app/controllers/attendance_adm_controller.rb:31
 msgid "Please select a timeslot to take attendance for"
 msgstr "Seleccione una sesión para la cual tomar asistencia"
 
-#: app/controllers/attendance_adm_controller.rb:35
-msgid "Requested person (%d) does not exist"
-msgstr "La persona especificada (%d) no existe"
-
-#: app/controllers/attendance_adm_controller.rb:59
+#: app/controllers/attendance_adm_controller.rb:113
 msgid "<em>%s</em> is not registered for <em>%s</em>, and registrations are closed."
 msgstr "La persona <em>%s</em> no estaba aún registrada para esta actividad, y el registro está cerrado"
 
-#: app/controllers/attendance_adm_controller.rb:65
+#: app/controllers/attendance_adm_controller.rb:119
 msgid "Person <em>%s</em> was not yet registered for this conference - Registering."
 msgstr "La persona <em>%s</em> no estaba aún registrada para esta actividad - Registrando."
 
-#: app/controllers/attendance_adm_controller.rb:71
+#: app/controllers/attendance_adm_controller.rb:125
 msgid "Attendance successfully registered"
 msgstr "La asistencia fue registrada exitosamente"
 
-#: app/controllers/attendance_adm_controller.rb:73
+#: app/controllers/attendance_adm_controller.rb:127
 msgid "Could not register person <em>%s</em> for this timeslot: %s"
 msgstr "No fue posible registrar a la persona <em>%s</em> para esta sesión: %s"
 
@@ -1054,6 +1054,7 @@ msgid "Edit"
 msgstr "Editar"
 
 #: app/helpers/attendance_adm_helper.rb:18
+#: app/views/attendance_adm/_by_session.html.erb:7
 #: app/views/conferences_adm/timeslots.html.erb:14
 #: app/views/proposals/show.html.erb:10
 msgid "Room"
@@ -1092,6 +1093,7 @@ msgid "Position"
 msgstr "Posición"
 
 #: app/helpers/proposals_helper.rb:16
+#: app/views/attendance_adm/_list_by_attendances.html.erb:14
 #: app/views/conferences_adm/list.html.erb:8
 #: app/views/sys_conf_adm/show_catalog.html.erb:8
 #: app/views/sys_conf_adm/show_catalog.html.erb:27
@@ -1146,6 +1148,71 @@ msgstr "%d sesiones activas"
 #: app/views/attendance_adm/choose_session.html.erb:9
 msgid "Show all registered timeslots"
 msgstr "Mostrar todas las sesiones registradas"
+
+#: app/views/attendance_adm/_list_by_attendances.html.erb:1
+msgid "%d attendances: %d people (exact), %d people (including higher)"
+msgstr "%d asistencias: %d personas (exacto), %d personas (incluyendo aquellos con más registros)"
+
+#: app/views/attendance_adm/_list_by_attendances.html.erb:3
+msgid "Show"
+msgstr "Mostrar"
+
+#: app/views/attendance_adm/_list_by_attendances.html.erb:5
+msgid "Generate certificates"
+msgstr "Generar certificados"
+
+#: app/views/attendance_adm/show_for_person.html.erb:1
+msgid "Attendances for <em>%s</em> on <em>%s</em>"
+msgstr "Asistencias para <em>%s</em> en <em>%s</em>"
+
+#: app/views/attendance_adm/show_for_person.html.erb:6
+msgid "Session started at"
+msgstr "Incio de sesión"
+
+#: app/views/attendance_adm/show_for_person.html.erb:7
+msgid "Attendance taken at"
+msgstr "Toma de asistencia"
+
+#: app/views/attendance_adm/show_for_person.html.erb:8
+#: app/views/attendance_adm/_by_session.html.erb:9
+msgid "Proposal"
+msgstr "Propuesta"
+
+#: app/views/attendance_adm/show_for_person.html.erb:21
+msgid "Create certificate"
+msgstr "Crear certificado"
+
+#: app/views/attendance_adm/_by_session.html.erb:3
+msgid "By session"
+msgstr "Por sesión"
+
+#: app/views/attendance_adm/_by_session.html.erb:6
+msgid "Session starting at"
+msgstr "Inicio de sesión"
+
+#: app/views/attendance_adm/_by_session.html.erb:8
+msgid "Attendees"
+msgstr "Asistentes"
+
+#: app/views/attendance_adm/list.html.erb:1
+msgid "Attendance list for <em>%s</em>"
+msgstr "Lista de asistencia para <em>%s</em>"
+
+#: app/views/attendance_adm/list.html.erb:3
+msgid "Select any other conference you want the attendance list for"
+msgstr "Seleccione otra actividad para la cual quiera la lista de asistencia"
+
+#: app/views/attendance_adm/list.html.erb:14
+msgid "No attendances registered"
+msgstr "No hay asistentes registrados"
+
+#: app/views/attendance_adm/list.html.erb:16
+msgid "Attendance statistics"
+msgstr "Estadísticas de asistencia"
+
+#: app/views/attendance_adm/list.html.erb:20
+msgid "Full listing, ordered by number of attendances"
+msgstr "Listado completo, ordenado por el número de asistencias"
 
 #: app/views/people_adm/show.html.erb:1
 msgid "Attendee %d's personal data"
@@ -1876,4 +1943,5 @@ msgstr "Actividades"
 #: lib/menu_tree.rb:16
 msgid "Unexpected arguments received: "
 msgstr "Argumentos inesperados recibidos:"
+
 
