@@ -63,10 +63,21 @@ end
 # Mail configurations should be set in config/mail_settings - If it
 # does not exist, mail will just not be sent (they will be handled as
 # if testing)
-File.exists?('config/mail_settings.rb') ? 
-  require('config/mail_settings') :
-  ActionMailer::Base.perform_deliveries = false
-ActionMailer::Base.raise_delivery_errors ||= false
+begin
+  require('config/mail_settings') 
+rescue MissingSourceFile
+  warn "*** Mail configuration not set"
+  warn "Please create config/mail_settings.rb with your mail configuration. "
+  warn "You can base your configuration off the template mail_settings.rb.orig"
+  warn ""
+  warn "The most basic configuration file, indicating no mail should be sent,"
+  warn "would be:"
+  warn ""
+  warn "ActionMailer::Base.perform_deliveries = false"
+  warn ""
+  warn "Please create config/mail_settings.rb and try again."
+  exit 2
+end
 
 # Include your application configuration below
 require 'classinherit'
