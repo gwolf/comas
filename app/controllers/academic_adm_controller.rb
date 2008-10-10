@@ -1,2 +1,0 @@
-class AcademicAdmController < Admin
-end

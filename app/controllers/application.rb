@@ -85,11 +85,16 @@ class ApplicationController < ActionController::Base
                 personal)
 
       @user.admin_tasks.each do |task|
-        control = "#{task.sys_name.camelcase}Controller".constantize
-        menu = (control.constants.include?('Menu') ? 
-                control::Menu : []).map do |elem|
-          MenuItem.new(elem[0], 
-                       url_for(:controller => task.sys_name, :action => elem[1]))
+        begin
+          control = "#{task.sys_name.camelcase}Controller".constantize
+          menu = (control.constants.include?('Menu') ? 
+                  control::Menu : []).map do |elem|
+            MenuItem.new(elem[0], 
+                         url_for(:controller => task.sys_name, :action => elem[1]))
+          end
+        rescue NameError
+          # Probably caused by an unimplemented controller?
+          menu = MenuItem.new(_'Unimplemented')
         end
 
         @menu.add(_(task.qualified_name), nil, MenuTree.new(menu))
