@@ -36,8 +36,12 @@ class PeopleAdmController < Admin
   end
 
   def show
-    if request.post? and @person.update_attributes(params[:person])
-      flash[:warning] = _('Person data successfully updated')
+    return true unless request.post? 
+    begin
+      @person.update_attributes(params[:person])
+      flash[:notice] = _('Person data successfully updated')
+   rescue TypeError => err
+     flash[:error] = _("Error recording requested data: %s") % err
     end
   end
 

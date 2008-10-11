@@ -63,6 +63,37 @@ class Person < ActiveRecord::Base
     self.participations.select {|part| part.conference == conf}.first
   end
 
+  # As people and conferences are not related directly but through the
+  # Participations, we have to emulate this handy method
+  def conference_ids=(list)
+    req = list.map {|l| l.to_i}
+    my_part = self.participations
+    my_confs = my_part.map {|p| p.conference_id}
+    confs = Conference.find(:all).map {|c| c.id}
+
+    # All-or-nothing, please
+    self.transaction do
+      part = nil # Just to have it available at rescue time
+      confs.each do |conf|
+        # No-ops get out!
+        next if my_confs.include? conf and req.include? conf
+        next if !my_confs.include? conf and !req.include? conf
+
+        # Only real action follows
+        if req.include? conf
+          part = Participation.new(:person_id => self.id, :conference_id => conf)
+          part.save
+          raise TypeError, _("Cannot register this person for %s: %s") % 
+            [part.conference.name, part.errors.full_messages.join("n")]
+        else
+          my_part.select {|p| p.conference_id == conf}[0].destroy or
+            raise TypeError, _("Cannot remove this person from %s") %
+              Conference.find_by_id(conf).name
+        end
+      end
+    end
+  end
+
   def has_proposal_for?(conf)
     # Accept either a conference object or a conference ID
     conf = Conference.find_by_id(conf) if conf.is_a? Integer

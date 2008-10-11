@@ -3,6 +3,6 @@ class ParticipationType < ActiveRecord::Base
   has_many :participations
 
   def self.default
-    self.find(:first, :order_by => 'id')
+    self.find(:first, :order => 'id')
   end
 end
