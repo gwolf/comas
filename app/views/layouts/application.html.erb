@@ -14,7 +14,9 @@
 <%= javascript_include_tag 'calendar' %>
 </head>
 <body>
-  <div id="header"><%= @title %></div>
+  <div id="header"><%= @title %>
+    <div id="locales"><%= locale_links %></div>
+  </div>
   <div id="menu"><%= @menu %></div>
   <div id="main">
     <%= login_data %>

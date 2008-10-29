@@ -38,6 +38,19 @@ body {
           font-size: 70%;
 }
 
+/* Language selection */
+#locales {  
+          text-align: right;
+         margin-top: 2em;
+          margin-right: 3em;
+          font-size: 50%
+}
+
+#locales a { 
+          color: #face89; 
+          background-image:url(header.png); 
+}
+
 /* Login request */
 
 #loginreq {  

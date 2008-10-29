@@ -19,7 +19,7 @@ module ApplicationHelper
   end
 
   ######################################################################
-  # Icon buttons
+  # Icon buttons and similar stuff
   def icon_up
     image_tag 'up.png', :border => 0, :alt => _('Up'), :size => '16x16'
   end
@@ -34,6 +34,13 @@ module ApplicationHelper
 
   def icon_trash
     image_tag 'trash.png', :border => 0, :alt => _('-'), :size => '16x16'
+  end
+
+  def locale_links
+    available_locales.map { |loc|
+      '[%s]' % link_to_unless(normalized_locale == loc,
+                              loc, :lang => loc)
+    }.join(' ')
   end
 
   ######################################################################
