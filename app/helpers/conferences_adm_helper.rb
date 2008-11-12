@@ -10,8 +10,6 @@ module ConferencesAdmHelper
       end
     end
 
-    res << _(pers.participation_in(@conference).participation_type.name)
-
     [table_row, res.map {|col| "<td>#{col}</td>"},
      end_table_row].join("\n")
   end

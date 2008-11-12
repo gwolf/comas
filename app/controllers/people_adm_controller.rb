@@ -38,8 +38,14 @@ class PeopleAdmController < Admin
   def show
     return true unless request.post? 
     begin
-      @person.update_attributes(params[:person])
-      flash[:notice] = _('Person data successfully updated')
+      @person.transaction do
+        @person.update_attributes(params[:person])
+        # HABTM attributes: Clear them if they are empty
+        [:conference_ids, :admin_task_ids].each do |rel|
+          @person.send("#{rel}=", []) if ! params[:person][rel]
+        end
+        flash[:notice] = _('Person data successfully updated')
+      end
    rescue TypeError => err
      flash[:error] = _("Error recording requested data: %s") % err
     end

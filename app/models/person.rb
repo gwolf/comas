@@ -4,9 +4,7 @@ class Person < ActiveRecord::Base
   has_many :authorships, :dependent => :destroy
   has_many :proposals, :through => :authorships
   has_and_belongs_to_many :admin_tasks
-  has_many :participations, :dependent => :destroy
-  has_many :conferences, :through => :participations, :order => :begins
-  has_many :participation_types, :through => :participations
+  has_and_belongs_to_many :conferences, :order => :begins
   has_many :attendances
 
   validates_presence_of :firstname
@@ -14,6 +12,29 @@ class Person < ActiveRecord::Base
   validates_presence_of :login
   validates_presence_of :passwd
   validates_uniqueness_of :login
+
+  #### PENDING: Reimplement :ensure_conference_accepts_registrations
+  #### and :dont_unregister_if_has_proposals (that were in
+  #### Participation):
+  ####
+  #### def ensure_conference_accepts_registrations
+  ####   if ! self.conference.accepts_registrations?
+  ####     self.errors.add(:conference,
+  ####                     _('Registrations for this conference are closed'))
+  ####     end  
+  ####  end
+  ####
+  #### def dont_unregister_if_has_proposals
+  ####   return true if self.person.authorships.select {|author|
+  ####     author.proposal.conference_id==self.conference_id}.empty?
+  ####   return false
+  #### end
+  ####
+  #### Idea: Don't implement this as a real trigger; allow for
+  #### untimely registration/de-registration, _but_ provide a
+  #### validated method call that should be invoked by non-admin-level
+  #### controllers. That way, an administrator can still perform those
+  #### actions. But... Think it over :-)
 
   def self.ck_login(given_login, given_passwd)
     person = Person.find_by_login(given_login)
@@ -54,46 +75,6 @@ class Person < ActiveRecord::Base
     "#{name} <#{email}>"
   end
 
-  # Just remember that 'participation' sometimes sounds nebulous... A
-  # participation might be as a speaker, as an organizer, as an
-  # atendee.. As any ParticipationType.
-  def participation_in(conf)
-    # Accept either a conference object or a conference ID
-    conf = Conference.find_by_id(conf) if conf.is_a? Integer
-    self.participations.select {|part| part.conference == conf}.first
-  end
-
-  # As people and conferences are not related directly but through the
-  # Participations, we have to emulate this handy method
-  def conference_ids=(list)
-    req = list.map {|l| l.to_i}
-    my_part = self.participations
-    my_confs = my_part.map {|p| p.conference_id}
-    confs = Conference.find(:all).map {|c| c.id}
-
-    # All-or-nothing, please
-    self.transaction do
-      part = nil # Just to have it available at rescue time
-      confs.each do |conf|
-        # No-ops get out!
-        next if my_confs.include? conf and req.include? conf
-        next if !my_confs.include? conf and !req.include? conf
-
-        # Only real action follows
-        if req.include? conf
-          part = Participation.new(:person_id => self.id, :conference_id => conf)
-          part.save
-          raise TypeError, _("Cannot register this person for %s: %s") % 
-            [part.conference.name, part.errors.full_messages.join("n")]
-        else
-          my_part.select {|p| p.conference_id == conf}[0].destroy or
-            raise TypeError, _("Cannot remove this person from %s") %
-              Conference.find_by_id(conf).name
-        end
-      end
-    end
-  end
-
   def has_proposal_for?(conf)
     # Accept either a conference object or a conference ID
     conf = Conference.find_by_id(conf) if conf.is_a? Integer
@@ -115,6 +96,21 @@ class Person < ActiveRecord::Base
 
   def conferences_for_submitting
     self.upcoming_conferences.select {|conf| conf.accepts_proposals?}
+  end
+
+  def register_for(conf)
+    conf = Conference.find(conf) if conf.is_a?(Fixnum)
+    if conf.accepts_registrations?
+      self.conferences << conf
+      return true
+    end
+
+    #### Check this over:
+    #### It does not work as it is (i.e. it fails but does not send the
+    #### error message)
+    self.errors.add(:conferences,
+                    _('Registrations for this conference are closed'))
+    false
   end
 
   # Is this user signed up for any conferences which accept proposals

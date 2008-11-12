@@ -39,7 +39,7 @@ class ConferencesController < ApplicationController
 
     # Avoid silly mistakes due to reloads
     return if @user.conferences.include? @conference
-    if @user.conferences << @conference
+    if @user.register_for(@conference)
       flash[:notice] = _('You have successfully registered for ' +
                          'conference "%s"') % @conference.name
     else
@@ -78,11 +78,9 @@ class ConferencesController < ApplicationController
     return false unless @user
 
     if !@conference.accepts_registrations?
-      flash[:error] = [_('This conference does not currently accept ' +
-                         'changing your registration status - please visit ' +
-                         '%s for more details') %
-                       link_to(_('its information page'), 
-                               :action => show, :id => @conference)]
+      flash[:error] = _('This conference does not currently accept ' +
+                        'changing your registration status - please visit ' +
+                        'its information page for more details') 
       return false
     end
     return true

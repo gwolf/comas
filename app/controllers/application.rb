@@ -94,7 +94,7 @@ class ApplicationController < ActionController::Base
           end
         rescue NameError
           # Probably caused by an unimplemented controller?
-          menu = MenuItem.new(_'Unimplemented')
+          menu = MenuItem.new(_'-*- Unimplemented')
         end
 
         @menu.add(_(task.qualified_name), nil, MenuTree.new(menu))

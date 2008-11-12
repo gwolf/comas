@@ -6,7 +6,6 @@
     <th><%= link_to _('ID'), :sort_by => 'id' %></th>
     <th><%= link_to _('First name'), :sort_by => 'famname' %></th>
     <th><%= link_to _('Family name'), :sort_by => 'firstname' %></th>
-    <th><%= link_to _('Attendee type'), :sort_by => 'participation' %></th>
   <% end_table_row %>
   <% @people.each do |pers| %>
     <%= row_for_attendee_listing(pers) %>

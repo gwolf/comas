@@ -74,8 +74,7 @@ class Attendance < ActiveRecord::Base
     conf = timeslot.conference
 
     return true if person.conferences.include? conf
-    part = Participation.new(:person => person, 
-                             :conference => conf)
+    person.conferences << conf
     part.save or errors.add_to_base(part.errors.full_messages.join)
   end
 end

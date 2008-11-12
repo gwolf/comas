@@ -2,14 +2,36 @@ class Conference < ActiveRecord::Base
   has_many :timeslots, :dependent => :destroy
   has_many :proposals
   has_one :conference_logo, :dependent => :destroy
-  has_many :participations, :dependent => :destroy
-  has_many :people, :through => :participations
+  has_and_belongs_to_many :people
 
   validates_presence_of :name
   validates_uniqueness_of :name
   validates_presence_of :descr
   validate :dates_are_correct
   validate :timeslots_during_conference
+
+  #### PENDING: Reimplement :ensure_conference_accepts_registrations
+  #### and :dont_unregister_if_has_proposals (that were in
+  #### Participation):
+  ####
+  #### def ensure_conference_accepts_registrations
+  ####   if ! self.conference.accepts_registrations?
+  ####     self.errors.add(:conference,
+  ####                     _('Registrations for this conference are closed'))
+  ####     end  
+  ####  end
+  ####
+  #### def dont_unregister_if_has_proposals
+  ####   return true if self.person.authorships.select {|author|
+  ####     author.proposal.conference_id==self.conference_id}.empty?
+  ####   return false
+  #### end
+  ####
+  #### Idea: Don't implement this as a real trigger; allow for
+  #### untimely registration/de-registration, _but_ provide a
+  #### validated method call that should be invoked by non-admin-level
+  #### controllers. That way, an administrator can still perform those
+  #### actions. But... Think it over :-)
 
   # Produce a paginated list of conferences which have not yet
   # finished, ordered by their beginning date (i.e. the closest first)
@@ -30,10 +52,10 @@ class Conference < ActiveRecord::Base
   # It can take whatever parameters you would send to a
   # WillPaginate#paginate call.
   def self.upcoming_for_person(person, req={})
+    p_id = person.is_a?(Fixnum) ? person : person.id
     self.paginate(:all,
-                  { :joins => 'LEFT OUTER JOIN participations ON ' <<
-                    'participations.conference_id = conferences.id',
-                    :conditions => ['person_id=? and begins > now()', person],
+                  { :include => :people,
+                    :conditions => ['people.id=? and begins > now()', p_id],
                     :order => 'begins',
                     :page => 1}.merge(req))
   end
@@ -60,10 +82,10 @@ class Conference < ActiveRecord::Base
   # It can take whatever parameters you would send to a
   # WillPaginate#paginate call.
   def self.past_for_person(person, req={})
+    p_id = person.is_a?(Fixnum) ? person : person.id
     self.paginate(:all,
-                  { :joins => 'LEFT OUTER JOIN participations ON ' <<
-                    'participations.conference_id = conferences.id',
-                    :conditions => ['person_id=? and begins > now()', person],
+                  { :include => :people,
+                    :conditions => ['people.id=? and begins < now()', p_id],
                     :order => 'begins',
                     :page => 1}.merge(req))
   end

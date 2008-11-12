@@ -106,7 +106,6 @@ class AttendanceAdmController < Admin
                          :timeslot_id => tslot.id)
 
     # If the person did not register for this conference, add him now
-    # (with the default participation type)
     conf = tslot.conference
     if ! person.conferences.include?(conf)
       unless conf.accepts_registrations?
