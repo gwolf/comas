@@ -19,7 +19,7 @@ class Multiconferences < ActiveRecord::Migration
     end
     add_reference :conference_logos, :conferences, :null => false
 
-    add_habtm :conferences, :people
+    create_habtm :conferences, :people
 
     add_reference :timeslots, :conferences, :null => false
     add_reference :proposals, :conferences, :null => false
