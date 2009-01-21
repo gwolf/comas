@@ -46,6 +46,11 @@ class AttendanceAdmController < Admin
   end
 
   def list
+    if @conference.nil?
+      redirect_to '/'
+      flash[:error] = _'Could not find which conference to report'
+      return false
+    end
     @other_confs = Conference.past
     @timeslots = @conference.timeslots
     @totals = Attendance.totalized_for_conference(@conference)
