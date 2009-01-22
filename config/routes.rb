@@ -6,11 +6,10 @@ ActionController::Routing::Routes.draw do |map|
   # Keep in mind you can assign values other than :controller and :action
   map.connect 'recover/:r_session', :controller => 'people', :action => 'recover'
 
-  map.connect 'proposals/:id', :controller => 'proposals', :action => 'show'
   map.connect('proposals/by_author/:author_id', 
               :controller => 'proposals', 
               :action => 'by_author')
-  map.connect('proposals/:id/:document_id', 
+  map.connect('proposals/:id/doc/:document_id', 
               :controller => 'proposals',
               :action => 'get_document')
 
