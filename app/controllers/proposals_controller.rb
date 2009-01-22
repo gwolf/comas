@@ -1,6 +1,8 @@
 class ProposalsController < ApplicationController
   before_filter :get_proposal, :except => [:new, :create, :list, :by_author]
   before_filter :ck_document, :only => [:get_document, :delete_document]
+  before_filter :ck_ownership, :except => [:new, :create, :show, :list, 
+                                           :by_author, :get_document]
   ############################################################
   # General operations to perform on a proposal as a whole
 
@@ -22,19 +24,19 @@ class ProposalsController < ApplicationController
       return false
     end
 
-    begin
-      @proposal = Proposal.new(params[:proposal])
-      @proposal.transaction do
+    @proposal = Proposal.new(params[:proposal])
+    @proposal.transaction do
+      begin
         @proposal.save or 
           raise ActiveRecord::Rollback, @proposal.errors.full_messages
         auth = Authorship.new(:person => @user, :proposal => @proposal)
         auth.save or raise ActiveRecord::Rollback, auth.errors.full_messages
+      rescue ActiveRecord::Rollback => msg
+        flash[:error] = _('Error saving your proposal: %s') % msg.message
+        @confs = @user.conferences_for_submitting
+        render :action => 'new'
+        return false
       end
-    rescue ActiveRecord::Rollback => msg
-      flash[:error] = _('Error saving your proposal: %s') % msg.join("\n")
-      @confs = @user.conferences_for_submitting
-      render :action => new
-      return false
     end
 
     flash[:notice] = _'Your proposal was successfully registered'
@@ -42,9 +44,7 @@ class ProposalsController < ApplicationController
   end
 
   def show
-    if @proposal.people.include?(@user)
-      @can_edit = true
-    end
+    @can_edit = @proposal.people.include?(@user)
   end
 
   def list
@@ -134,9 +134,11 @@ class ProposalsController < ApplicationController
       return false
     end
 
-    @props = Proposal.list_paginator(:page => params[:page],
-                                     :conditions => ['people.id = ?', 
-                                                     @author.id])
+    @props = @author.proposals.
+      paginate(:page => params[:page],
+               :per_page => 20,
+               :include => [:people, :conference, :prop_type, :prop_status],
+               :order => 'title, authorships.position')
   end
 
   ############################################################
@@ -196,6 +198,14 @@ class ProposalsController < ApplicationController
     unless @document = Document.find_by_id(params[:document_id]) and
         @document.proposal == @proposal
       flash[:error] = _'Invalid document requested for this proposal'
+      redirect_to :action => 'show', :id => @proposal
+      return false
+    end
+  end
+
+  def ck_ownership
+    unless @user.proposals.include?(@proposal)
+      flash[:error] = _'You are not allowed to modify this proposal'
       redirect_to :action => 'show', :id => @proposal
       return false
     end

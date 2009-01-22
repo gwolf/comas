@@ -12,7 +12,7 @@ class Proposal < ActiveRecord::Base
   validates_presence_of :prop_type_id
   validate :default_status_if_empty
   validates_presence_of :conference_id
-  validates_uniqueness_of :timeslot_id
+  validates_uniqueness_of :timeslot_id, :allow_nil => true
   validates_associated :prop_type, :prop_status, :timeslot, :conference
   validate_on_create :in_conference_cfp_period
   validate_on_update :dont_change_conference
@@ -23,16 +23,6 @@ class Proposal < ActiveRecord::Base
 
   def accepted?
     self.prop_status == PropStatus.accepted
-  end
-
-  # Paginates with the most common options set for a listing which
-  # does not thrash the DB
-  def self.list_paginator(options={})
-    defaults = { :page => 1,
-      :per_page => 20,
-      :include => [:people, :conference, :prop_type, :prop_status],
-      :order => 'title, authorships.position' }
-    self.paginate(defaults.merge(options))
   end
 
   protected

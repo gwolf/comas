@@ -1,6 +1,6 @@
 class Notification < ActionMailer::Base
   def welcome(person)
-    sys_name = Sysconf.value_for('title_text')
+    sys_name = SysConf.value_for('title_text')
     recipients person.name_and_email
     from SysConf.value_for('mail_from')
     subject _('Welcome! You have successfully registered at %s') % 

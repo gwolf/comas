@@ -55,9 +55,8 @@ class ConferencesAdmController < Admin
   def people_list
     order = sort_for_fields(['famname'])
 
-    @people = Person.paginate(:all, :order => order, :include => :conferences,
-                              :conditions => ['conferences.id = ?', @conference],
-                              :page => params[:page])
+    @people = @conference.people.paginate(:all, :order => order, 
+                                          :page => params[:page])
   end
 
   ############################################################

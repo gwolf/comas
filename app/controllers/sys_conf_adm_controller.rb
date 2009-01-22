@@ -205,8 +205,12 @@ class SysConfAdmController < Admin
     begin
       @catalog.find(params[:id]).destroy
       flash[:notice] = _'The requested record was successfully deleted'
-    rescue ActiveRecord::RecordNotFound, ActiveRecord::StatementInvalid => err
-      flash[:error] = _('Error deleting the requested record: %s') % err
+    rescue ActiveRecord::RecordNotFound
+      flash[:error] = _('Requested record not found - '+
+                        'Maybe it had already been deleted?')
+    rescue  ActiveRecord::StatementInvalid
+      flash[:error] = _('Error deleting the requested record - A catalog ' +
+                        'entry will not be deleted if it is still referenced.')
     end
   end
 

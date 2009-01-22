@@ -24,12 +24,11 @@ class ConferencesController < ApplicationController
   end
 
   def proposals
-    # We could just use @conference.proposals, but... lets paginate
-    # nicely and bring all the information at once!
-    @props = Proposal.list_paginator(:page => params[:page],
-                                     :per_page => params[:per_page]|| 20,
-                                     :conditions => ['conference_id = ?',
-                                                     @conference.id])
+    @props = @conference.proposals.
+      paginate(:page => params[:page],
+               :per_page => params[:per_page] || 20,
+               :include => [:authorships, :people, :prop_type, :prop_status],
+               :order => 'title, authorships.position')
   end
 
   ############################################################

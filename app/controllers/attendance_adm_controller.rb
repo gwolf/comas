@@ -107,6 +107,12 @@ class AttendanceAdmController < Admin
   end
 
   def register_attendance(person, tslot)
+    if previous = Person.find(1).
+        attendances.find(:first, :conditions =>['timeslot_id = ?', tslot.id])
+      flash[:notice] = _('This person has already been registered for this ' +
+                         'timeslot. No action taken.')
+      return false
+    end
     att = Attendance.new(:person_id => person.id,
                          :timeslot_id => tslot.id)
 
@@ -144,5 +150,6 @@ class AttendanceAdmController < Admin
 
   def get_person
     @person = Person.find_by_id(params[:person_id])
+    flash[:error] = _('Invalid person specified') if @person.nil?
   end
 end
