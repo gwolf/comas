@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2008-11-12 17:26-0600\n"
+"POT-Creation-Date: 2009-01-26 16:54-0600\n"
 "PO-Revision-Date: 2008-05-07 18:30-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -100,11 +100,11 @@ msgid "Conference|Cfp close date"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Begins"
+msgid "Conference|Conference begins at"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Finishes"
+msgid "Conference|Conference finishes at"
 msgstr ""
 
 #: app/models/person.rb:-
@@ -116,8 +116,9 @@ msgid "AdminTask|Name"
 msgstr ""
 
 #: app/models/person.rb:-
+#, fuzzy
 msgid "AdminTask|Sys name"
-msgstr ""
+msgstr "System configuration"
 
 #: app/models/person.rb:-
 msgid "person"
@@ -155,7 +156,7 @@ msgstr ""
 msgid "Person|Last login at"
 msgstr ""
 
-#: app/models/person.rb:112
+#: app/models/person.rb:119
 msgid "Registrations for this conference are closed"
 msgstr ""
 
@@ -240,7 +241,7 @@ msgid "timeslot"
 msgstr ""
 
 #: app/models/timeslot.rb:-
-msgid "Timeslot|Tolerance pre"
+msgid "Timeslot|Tolerance (before session starts)"
 msgstr ""
 
 #: app/models/timeslot.rb:-
@@ -363,11 +364,11 @@ msgstr ""
 msgid "PropStatus|Name"
 msgstr ""
 
-#: app/models/proposal.rb:46
+#: app/models/proposal.rb:36
 msgid "Call for papers period for this conference is not current"
 msgstr ""
 
-#: app/models/proposal.rb:56
+#: app/models/proposal.rb:46
 msgid ""
 "An already submitted proposal can not be moved to a different conference"
 msgstr ""
@@ -459,106 +460,117 @@ msgid "Error removing requested conference: "
 msgstr ""
 
 #: app/controllers/conferences_adm_controller.rb:51
-#: app/controllers/admin.rb:12 app/controllers/people_adm_controller.rb:63
+#: app/controllers/admin.rb:12 app/controllers/people_adm_controller.rb:65
 msgid "Invocation error"
 msgstr ""
 
-#: app/controllers/conferences_adm_controller.rb:82
+#: app/controllers/conferences_adm_controller.rb:81
 msgid "The requested timeslot was successfully created"
 msgstr ""
 
-#: app/controllers/conferences_adm_controller.rb:84
+#: app/controllers/conferences_adm_controller.rb:83
 msgid "Error creating the requested timeslot:<br/> %s"
 msgstr ""
 
-#: app/controllers/conferences_adm_controller.rb:94
+#: app/controllers/conferences_adm_controller.rb:93
 msgid "The requested timeslot was successfully deleted"
 msgstr ""
 
-#: app/controllers/conferences_adm_controller.rb:96
+#: app/controllers/conferences_adm_controller.rb:95
 msgid ""
 "Could not find requested timeslot (%d) for deletion - Maybe it was already "
 "deleted?"
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:10
+#: app/controllers/proposals_controller.rb:15
 msgid ""
 "There are currently no conferences for which you can submit proposals. "
 "Please register first."
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:34
+#: app/controllers/proposals_controller.rb:38
 msgid "Error saving your proposal: %s"
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:41
+#: app/controllers/proposals_controller.rb:46
 msgid "Your proposal was successfully registered"
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:56
+#: app/controllers/proposals_controller.rb:59
 msgid "The proposal has been modified successfully"
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:58
+#: app/controllers/proposals_controller.rb:61
 msgid "Error updating the proposal: "
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:90
+#: app/controllers/proposals_controller.rb:93
 msgid ""
 "Requested author does not exist or is not listed in this proposal. Maybe you "
 "already deleted him?"
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:96
-msgid "Requested author was successfully removed"
+#: app/controllers/proposals_controller.rb:99
+msgid "Requested author (%s) was successfully removed from this proposal"
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:98
+#: app/controllers/proposals_controller.rb:102
 msgid ""
 "Unexpected error removing requested author. Please try again, or contact "
 "system administrator"
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:108
-msgid "The specified login is not valid or does not match any valid users"
+#: app/controllers/proposals_controller.rb:114
+#: app/controllers/proposals_controller.rb:127
+msgid ""
+"The requested author (%s) was already registered as an author for this "
+"proposal"
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:119
-msgid "Error adding person to requested proposal: "
+#: app/controllers/proposals_controller.rb:135
+msgid "Error adding person (%s) to requested proposal: "
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:126
-msgid "The specified author was successfully added to this proposal"
+#: app/controllers/proposals_controller.rb:141
+msgid "%s was successfully added as an author to this proposal"
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:133
+#: app/controllers/proposals_controller.rb:151
 msgid "No author specified - rendering general list"
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:161
+#: app/controllers/proposals_controller.rb:181
 msgid "The document was successfully saved"
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:163
+#: app/controllers/proposals_controller.rb:183
 msgid "Error receiving the document:"
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:173
+#: app/controllers/proposals_controller.rb:193
 msgid "The document was successfully deleted"
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:175
+#: app/controllers/proposals_controller.rb:195
 msgid ""
 "Error removing requested document. Please try again later, or contact the "
 "system administrator."
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:190
+#: app/controllers/proposals_controller.rb:210
 msgid "Invalid proposal requested"
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:199
+#: app/controllers/proposals_controller.rb:217
+msgid "The specified login is not valid or does not match any valid users"
+msgstr ""
+
+#: app/controllers/proposals_controller.rb:230
 msgid "Invalid document requested for this proposal"
+msgstr ""
+
+#: app/controllers/proposals_controller.rb:238
+msgid "You are not allowed to modify this proposal"
 msgstr ""
 
 #: app/controllers/people_controller.rb:12
@@ -651,22 +663,35 @@ msgstr ""
 msgid "Please select a timeslot to take attendance for"
 msgstr ""
 
+#: app/controllers/attendance_adm_controller.rb:51
+msgid "Could not find which conference to report"
+msgstr ""
+
 #: app/controllers/attendance_adm_controller.rb:112
+msgid ""
+"This person has already been registered for this timeslot. No action taken."
+msgstr ""
+
+#: app/controllers/attendance_adm_controller.rb:123
 msgid ""
 "<em>%s</em> is not registered for <em>%s</em>, and registrations are closed."
 msgstr ""
 
-#: app/controllers/attendance_adm_controller.rb:118
+#: app/controllers/attendance_adm_controller.rb:129
 msgid ""
 "Person <em>%s</em> was not yet registered for this conference - Registering."
 msgstr ""
 
-#: app/controllers/attendance_adm_controller.rb:124
+#: app/controllers/attendance_adm_controller.rb:135
 msgid "Attendance successfully registered"
 msgstr ""
 
-#: app/controllers/attendance_adm_controller.rb:126
+#: app/controllers/attendance_adm_controller.rb:137
 msgid "Could not register person <em>%s</em> for this timeslot: %s"
+msgstr ""
+
+#: app/controllers/attendance_adm_controller.rb:153
+msgid "Invalid person specified"
 msgstr ""
 
 #: app/controllers/admin.rb:10
@@ -681,27 +706,27 @@ msgstr ""
 msgid "By administrative task"
 msgstr ""
 
-#: app/controllers/people_adm_controller.rb:30
+#: app/controllers/people_adm_controller.rb:32
 msgid "New attendee successfully registered"
 msgstr ""
 
-#: app/controllers/people_adm_controller.rb:32
+#: app/controllers/people_adm_controller.rb:34
 msgid "Error registering requested attendee: "
 msgstr ""
 
-#: app/controllers/people_adm_controller.rb:47
+#: app/controllers/people_adm_controller.rb:49
 msgid "Person data successfully updated"
 msgstr ""
 
-#: app/controllers/people_adm_controller.rb:50
+#: app/controllers/people_adm_controller.rb:52
 msgid "Error recording requested data: %s"
 msgstr ""
 
-#: app/controllers/people_adm_controller.rb:57
+#: app/controllers/people_adm_controller.rb:59
 msgid "Successfully removed requested attendee"
 msgstr ""
 
-#: app/controllers/people_adm_controller.rb:59
+#: app/controllers/people_adm_controller.rb:61
 msgid "Error removing requested attendee: "
 msgstr ""
 
@@ -798,94 +823,100 @@ msgid "The requested record was successfully deleted"
 msgstr ""
 
 #: app/controllers/sys_conf_adm_controller.rb:209
-msgid "Error deleting the requested record: %s"
+msgid "Requested record not found - Maybe it had already been deleted?"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:221
+#: app/controllers/sys_conf_adm_controller.rb:212
+msgid ""
+"Error deleting the requested record - A catalog entry will not be deleted if "
+"it is still referenced."
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:225
 msgid "The new %s was successfully registered"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:223
+#: app/controllers/sys_conf_adm_controller.rb:227
 msgid "Could not create new %s: %s"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:234
+#: app/controllers/sys_conf_adm_controller.rb:238
 msgid "Invalid configuration entry %d requested"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:249
+#: app/controllers/sys_conf_adm_controller.rb:253
 msgid "Invalid table requested"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:259
+#: app/controllers/sys_conf_adm_controller.rb:263
 msgid "Invalid catalog requested: %s"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:275
+#: app/controllers/sys_conf_adm_controller.rb:279
 msgid "Boolean"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:276
+#: app/controllers/sys_conf_adm_controller.rb:280
 msgid "Date"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:277
+#: app/controllers/sys_conf_adm_controller.rb:281
 msgid "Timestamp"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:278
+#: app/controllers/sys_conf_adm_controller.rb:282
 msgid "String"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:279
+#: app/controllers/sys_conf_adm_controller.rb:283
 msgid "Text"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:280
+#: app/controllers/sys_conf_adm_controller.rb:284
 msgid "Integer"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:281
+#: app/controllers/sys_conf_adm_controller.rb:285
 msgid "Decimal"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:282
+#: app/controllers/sys_conf_adm_controller.rb:286
 msgid "Float"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:283
+#: app/controllers/sys_conf_adm_controller.rb:287
 msgid "Catalog"
 msgstr ""
 
-#: app/controllers/conferences_controller.rb:43
+#: app/controllers/conferences_controller.rb:42
 msgid "You have successfully registered for conference \"%s\""
 msgstr ""
 
-#: app/controllers/conferences_controller.rb:46
+#: app/controllers/conferences_controller.rb:45
 msgid "Could not register you for conference %s: %s"
 msgstr ""
 
-#: app/controllers/conferences_controller.rb:59
+#: app/controllers/conferences_controller.rb:58
 msgid ""
 "You have %d proposals registered for this conference. Please withdraw them "
 "before unregistering."
 msgstr ""
 
-#: app/controllers/conferences_controller.rb:66
+#: app/controllers/conferences_controller.rb:65
 msgid "You have successfully unregistered from conference \"%s\""
 msgstr ""
 
-#: app/controllers/conferences_controller.rb:69
+#: app/controllers/conferences_controller.rb:68
 msgid "Could not unregister you from conference %s: %s"
 msgstr ""
 
-#: app/controllers/conferences_controller.rb:81
+#: app/controllers/conferences_controller.rb:80
 msgid ""
 "This conference does not currently accept changing your registration status "
 "- please visit its information page for more details"
 msgstr ""
 
-#: app/controllers/conferences_controller.rb:94
+#: app/controllers/conferences_controller.rb:93
 msgid "Invalid conference requested"
 msgstr ""
 
@@ -939,7 +970,7 @@ msgstr ""
 #: app/helpers/attendance_adm_helper.rb:18
 #: app/views/people/proposals.html.erb:15
 #: app/views/proposals/by_author.html.erb:11
-#: app/views/proposals/_form.html.erb:10
+#: app/views/proposals/_form.html.erb:12
 msgid "Conference"
 msgstr ""
 
@@ -969,7 +1000,7 @@ msgid "Sign up"
 msgstr ""
 
 #: app/helpers/conferences_adm_helper.rb:21
-#: app/helpers/sys_conf_adm_helper.rb:21 app/views/people_adm/list.html.erb:19
+#: app/helpers/people_adm_helper.rb:24 app/helpers/sys_conf_adm_helper.rb:21
 #: app/views/conferences_adm/list.html.erb:34
 #: app/views/sys_conf_adm/show_catalog.html.erb:15
 #: app/views/sys_conf_adm/list.html.erb:14
@@ -980,6 +1011,36 @@ msgstr ""
 msgid ""
 "Are you sure you want to permanently delete this timeslot? This will also "
 "destroy any attendances it has recorded"
+msgstr ""
+
+#: app/helpers/people_adm_helper.rb:4
+#: app/views/conferences_adm/people_list.html.erb:6
+#: app/views/conferences_adm/list.html.erb:7
+#: app/views/sys_conf_adm/show_catalog.html.erb:7
+msgid "ID"
+msgstr ""
+
+#: app/helpers/people_adm_helper.rb:5
+msgid "Login"
+msgstr ""
+
+#: app/helpers/people_adm_helper.rb:6
+#: app/views/conferences_adm/people_list.html.erb:7
+msgid "First name"
+msgstr ""
+
+#: app/helpers/people_adm_helper.rb:7
+#: app/views/conferences_adm/people_list.html.erb:8
+msgid "Family name"
+msgstr ""
+
+#: app/helpers/people_adm_helper.rb:8
+msgid "Last login at"
+msgstr ""
+
+#: app/helpers/people_adm_helper.rb:26
+#: app/views/conferences_adm/list.html.erb:35
+msgid "Are you sure you want to permanently delete %s?"
 msgstr ""
 
 #: app/helpers/sys_conf_adm_helper.rb:10
@@ -1053,15 +1114,15 @@ msgstr ""
 msgid "Choose"
 msgstr ""
 
-#: app/helpers/proposals_helper.rb:7
-msgid "%s (%d)"
+#: app/helpers/proposals_helper.rb:8
+msgid "%d registered proposals"
 msgstr ""
 
-#: app/helpers/proposals_helper.rb:16
+#: app/helpers/proposals_helper.rb:17
 msgid "Position"
 msgstr ""
 
-#: app/helpers/proposals_helper.rb:16
+#: app/helpers/proposals_helper.rb:17
 #: app/views/attendance_adm/_list_by_attendances.html.erb:14
 #: app/views/conferences_adm/list.html.erb:8
 #: app/views/sys_conf_adm/show_catalog.html.erb:8
@@ -1070,22 +1131,22 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: app/helpers/proposals_helper.rb:33
+#: app/helpers/proposals_helper.rb:34
 msgid "Are you sure you want to delete author\"%s\" from proposal \"%s\"? "
 msgstr ""
 
-#: app/helpers/proposals_helper.rb:37
+#: app/helpers/proposals_helper.rb:38
 msgid ""
 "Removing the only registered author for this proposal will also remove the "
 "proposal from the system. This action cannot be undone. Are you sure you "
 "want to continue?"
 msgstr ""
 
-#: app/helpers/proposals_helper.rb:74
+#: app/helpers/proposals_helper.rb:75
 msgid "Are you sure you want to delete this document?"
 msgstr ""
 
-#: app/helpers/proposals_helper.rb:77
+#: app/helpers/proposals_helper.rb:78
 msgid "%s %s: %s (%s)"
 msgstr ""
 
@@ -1222,35 +1283,17 @@ msgstr ""
 msgid "Attendee administration"
 msgstr ""
 
-#: app/views/people_adm/list.html.erb:3
-#: app/views/conferences_adm/list.html.erb:3
-msgid "Register new"
+#: app/views/people_adm/list.html.erb:4
+msgid "Filter by: (on login, firstname or family name)"
 msgstr ""
 
-#: app/views/people_adm/list.html.erb:7
-#: app/views/conferences_adm/people_list.html.erb:6
-#: app/views/conferences_adm/list.html.erb:7
-#: app/views/sys_conf_adm/show_catalog.html.erb:7
-msgid "ID"
-msgstr ""
-
-#: app/views/people_adm/list.html.erb:8
-#: app/views/conferences_adm/people_list.html.erb:7
-msgid "First name"
-msgstr ""
-
-#: app/views/people_adm/list.html.erb:9
-#: app/views/conferences_adm/people_list.html.erb:8
-msgid "Family name"
-msgstr ""
-
-#: app/views/people_adm/list.html.erb:10
-msgid "Last login at"
+#: app/views/people_adm/list.html.erb:6
+msgid "Filter"
 msgstr ""
 
 #: app/views/people_adm/list.html.erb:21
-#: app/views/conferences_adm/list.html.erb:35
-msgid "Are you sure you want to permanently delete %s?"
+#: app/views/conferences_adm/list.html.erb:3
+msgid "Register new"
 msgstr ""
 
 #: app/views/notification/request_passwd.text.plain.erb:1
@@ -1552,10 +1595,12 @@ msgstr ""
 
 #: app/views/proposals/_form.html.erb:5
 msgid ""
-"In order to submit a proposal for a conference not listed below, please %s"
+"In order to submit a proposal for a conference not listed below, please %s. "
+"<br/>Take into account that not all conferences will accept proposals "
+"submission."
 msgstr ""
 
-#: app/views/proposals/_form.html.erb:7
+#: app/views/proposals/_form.html.erb:9
 msgid "register as an attendee"
 msgstr ""
 
@@ -1602,6 +1647,25 @@ msgstr ""
 
 #: app/views/proposals/edit.html.erb:1
 msgid "Edit your proposal"
+msgstr ""
+
+#: app/views/proposals/author_add_confirm.html.erb:1
+#, fuzzy
+msgid "New author confirmation"
+msgstr "System configuration"
+
+#: app/views/proposals/author_add_confirm.html.erb:3
+msgid ""
+"You have requested adding <em>%s</em> (specified login: <em>%s</em>) as a "
+"coauthor for your proposal titled <em>%s</em>. <br/>"
+msgstr ""
+
+#: app/views/proposals/author_add_confirm.html.erb:8
+msgid "Confirm as a coauthor"
+msgstr ""
+
+#: app/views/proposals/author_add_confirm.html.erb:11
+msgid "go back to your proposal"
 msgstr ""
 
 #: app/views/conferences/proposals.html.erb:1
