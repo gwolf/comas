@@ -60,6 +60,13 @@ class Person < ActiveRecord::Base
   end
   def extra_listable_attributes; self.class.extra_listable_attributes; end
 
+  def self.pag_search(name=nil, params={})
+    params.merge!(:conditions=>['firstname ~* ? or famname ~* ? or login ~* ?',
+                                name, name, name]) unless name.nil?
+    params[:page] = 1 if params[:page].nil?
+    self.paginate(params)
+  end
+
   def passwd= plain
     # Don't accept empty passwords!
     return nil if plain.blank? or /^\s*$/.match(plain)

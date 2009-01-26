@@ -1,27 +1,21 @@
 <h1><%= _"Attendee administration" %></h1>
+<div class="filter">
+  <% form_tag do %>
+    <%= _'Filter by: (on login, firstname or family name)' %><br/>
+    <%= text_field_tag :filter_by, h(@filter_by) %>
+    <%= submit_tag _'Filter' %>
+  <% end %>
+</div>
 <%= pagination_header(@people) %>
-<p><%= link_to _('Register new'), :action => 'new' %></p>
 <%= will_paginate @people %>
 <%= start_table %>
   <%= table_head_row %>
-    <th><%= link_to _('ID'), :sort_by => 'id' %></th>
-    <th><%= link_to _('First name'), :sort_by => 'firstname' %></th>
-    <th><%= link_to _('Family name'), :sort_by => 'famname' %></th>
-    <th><%= link_to _('Last login at'), :sort_by => 'last_login_at' %></th>
-    <th></th>
+  <%= people_list_head %>
   <%= end_table_row %>
   <% @people.each do |person| %>
   <%= table_row %>
-    <td><%= link_to h(person.id), :action => 'show', :id => person %></td>
-    <td><%= link_to h(person.firstname), :action => 'show', :id => person %></td>
-    <td><%= link_to h(person.famname), :action => 'show', :id => person %></td>
-    <td><%= h(person.last_login_at) %></td>
-    <td><%= link_to_if(@user != person, _('Delete'),
-		       {:action => 'destroy', :id => person},
-		       {:confirm => _("Are you sure you want to " +
-				      "permanently delete %s?") % person.name,
-		       :method => :post})
-      %>
+  <%= list_row_for person %>
   <%= end_table_row %>
   <% end %>
 <%= end_table %>
+<p><%= link_to _('Register new'), :action => 'new' %></p>

@@ -9,10 +9,12 @@ class PeopleAdmController < Admin
   end
 
   def list
-    order = sort_for_fields(['id', 'firstname', 'famname', 'last_login_at'])
-
-    @people = Person.paginate(:all, :order => "people.#{order}",
-                              :page => params[:page])
+    order = sort_for_fields(['id', 'login', 'firstname', 'famname',
+                             'last_login_at'])
+    @filter_by = params[:filter_by]
+    @people = Person.pag_search(@filter_by, 
+                                :order => "people.#{order}",
+                                :page => params[:page])
   end
 
   def by_task
