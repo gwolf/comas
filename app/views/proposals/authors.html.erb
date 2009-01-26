@@ -11,7 +11,7 @@
        "logins will not work). A mail will be sent to the new " +
        "author notifying him of this operation." %></p>
   
-<% form_tag url_for(:action => 'author_add', :id => @proposal) do %>
+<% form_tag url_for(:action => 'author_add_confirm', :id => @proposal) do %>
   <p>
     <%= text_field_tag 'login', '', :size => 30 %>
     <%= submit_tag _'Add author' %>

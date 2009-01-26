@@ -1,8 +1,11 @@
 class ProposalsController < ApplicationController
   before_filter :get_proposal, :except => [:new, :create, :list, :by_author]
+  before_filter :get_person_by_login, :only => [:author_add, :author_add_confirm]
   before_filter :ck_document, :only => [:get_document, :delete_document]
   before_filter :ck_ownership, :except => [:new, :create, :show, :list, 
                                            :by_author, :get_document]
+  class NotPost < Exception; end
+  class AlreadyAnAuthor < Exception; end
   ############################################################
   # General operations to perform on a proposal as a whole
 
@@ -93,37 +96,52 @@ class ProposalsController < ApplicationController
     end
 
     if @proposal.authorships.delete(auth) and @proposal.save
-      flash[:notice] = _('Requested author was successfully removed')
+      flash[:notice] = _('Requested author (%s) was successfully removed ' +
+                         'from this proposal') % auth.person.name
     else
       flash[:error] = _('Unexpected error removing requested author. Please ' +
                         'try again, or contact system administrator')
     end
   end
 
+  def author_add_confirm
+    confirmed = false
+    begin
+      raise NotPost unless request.post?
+      raise AlreadyAnAuthor if @proposal.people.include? @person
+      confirmed = true
+    rescue AlreadyAnAuthor
+      flash[:notice] = _('The requested author (%s) was already registered ' +
+                         'as an author for this proposal') % @person.name
+    rescue NotPost
+    end
+
+    redirect_to(:action => :authors, :id => @proposal) unless confirmed
+  end
+
   def author_add
     redirect_to :action => :authors, :id => @proposal
     return true unless request.post?
 
-    unless new_auth = Person.find_by_login(params[:login])
-      flash[:error] = _('The specified login is not valid or does not match ' +
-                        'any valid users')
-      return false
+    if @proposal.people.include? @person
+      flash[:notice] = _('The requested author (%s) was already registered ' +
+                         'as an author for this proposal') % @person.name
+      return true 
     end
 
-    return true if @proposal.people.include? new_auth
-
     unless auth = Authorship.new(:proposal => @proposal, 
-                                 :person => new_auth) and
+                                 :person => @person) and
         auth.save
-      flash[:message] = _'Error adding person to requested proposal: ' +
+      flash[:error] = (_('Error adding person (%s) to requested proposal: ') % 
+                       @person.name) +
         auth.errors.full_messages.join('<br/>')
       return false
     end
 
-    flash[:message] = _'The specified author was successfully added to ' +
-      'this proposal'
+    flash[:notice] = _('%s was successfully added as an author to this ' +
+                       'proposal') % @person.name
 
-    Notification.deliver_added_as_coauthor(new_auth, @proposal, @user)
+    Notification.deliver_added_as_coauthor(@person, @proposal, @user)
   end
 
   def by_author
@@ -190,6 +208,17 @@ class ProposalsController < ApplicationController
     if @proposal.nil?
       flash[:error] = _'Invalid proposal requested'
       redirect_to :action => 'list'
+      return false
+    end
+  end
+
+  def get_person_by_login
+    unless @person = Person.find_by_login(params[:login])
+      flash[:error] = _('The specified login is not valid or does not match ' +
+                        'any valid users')
+      redirect_to ( @proposal ? 
+                    {:action => 'authors', :id => @proposal} :
+                    {:action => 'list'})
       return false
     end
   end
