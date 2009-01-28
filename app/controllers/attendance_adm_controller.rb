@@ -3,11 +3,12 @@ class AttendanceAdmController < Admin
           [_('Take attendance'), :take],
           [_('Attendance lists'), :list]]
 
-  before_filter :get_person, :only => [:take, :show_for_person, 
+  before_filter :get_person, :only => [:take, :for_person, 
                                        :certificate_for_person]
-  before_filter :get_conference, :only => [:list, :show_for_person,
+  before_filter :get_conference, :only => [:list, :for_person,
                                            :certificates_by_attendances,
-                                           :certificate_for_person]
+                                           :certificate_for_person,
+                                           :att_by_tslot ]
 
   def choose_session
     options = {:per_page => 10,
@@ -51,12 +52,25 @@ class AttendanceAdmController < Admin
       flash[:error] = _'Could not find which conference to report'
       return false
     end
-    @other_confs = Conference.past
-    @timeslots = @conference.timeslots
+    @other_confs = Conference.past_with_timeslots
     @totals = Attendance.totalized_for_conference(@conference)
   end
 
-  def show_for_person
+  def att_by_tslot
+    begin
+      @tslot = Timeslot.find_by_id(params[:timeslot_id])
+      raise ActiveRecord::RecordInvalid unless 
+        @conference.timeslots.include? @tslot
+    rescue
+      flash[:error] = _('Invalid timeslot requested')
+      redirect_to :action => 'list', :conference_id => @conference
+      return false
+    end
+
+    @attendances = @tslot.attendances.sort_by {|a| a.created_at}
+  end
+
+  def for_person
     @attendances = @person.attendances.select {|att|
       att.conference_id == @conference.id
     }
@@ -141,15 +155,17 @@ class AttendanceAdmController < Admin
   end
 
   # Get either the conference specified in the parameters, or the
-  # latest one which started already
+  # latest one with registered timeslots which started already
   def get_conference
     @conference = Conference.find_by_id(params[:conference_id]) || 
-      Conference.past[0]
+      Conference.past_with_timeslots[0]
     return false unless @conference
   end
 
   def get_person
-    @person = Person.find_by_id(params[:person_id])
+    pers_id = params[:person_id]
+    return true if pers_id.nil? or pers_id.blank?
+    @person = Person.find_by_id(pers_id)
     flash[:error] = _('Invalid person specified') if @person.nil?
   end
 end

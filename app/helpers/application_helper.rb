@@ -43,6 +43,12 @@ module ApplicationHelper
     }.join(' ')
   end
 
+  def link_to_proposal(prop)
+    return '' unless prop.is_a? Proposal
+    link_to(prop.title, :controller => 'proposals', 
+            :action => 'show', :id => prop)
+  end
+
   ######################################################################
   # Listing tables (alternating background colors)
   def list_row_classes

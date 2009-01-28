@@ -9,14 +9,16 @@
     <th><%= _'Proposal' %></th>
   <%= end_table_row %>
   <% tslots.sort_by {|ts| ts.start_time}.each do |ts| %>
-    <% att = ts.attendances.size; next if att == 0
-       prop = ts.proposal
-       title = prop ? prop.title : '' %>
+    <% att = ts.attendances.size
+       tslot_link = url_for(:action => 'att_by_tslot', 
+                            :conference_id => @conference, 
+                            :timeslot_id => ts) %>
     <%= table_row %>
-      <td><%= ts.start_time.to_s(:listing) %></td>
+      <td><%= link_to_if att>0, ts.start_time.to_s(:listing),
+                         tslot_link  %></td>
       <td><%= ts.room.name %></td>
-      <td><%= att %></td>
-      <td><%= title %></td>
+      <td><%= link_to_if att>0, att, tslot_link %></td>
+      <td><%= link_to_proposal(ts.proposal) %></td>
     <%= end_table_row %>
   <% end %>
 <%= end_table %>

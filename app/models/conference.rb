@@ -73,6 +73,16 @@ class Conference < ActiveRecord::Base
                     :page => 1}.merge(req))
   end
 
+  # All of the conferences which have registered timeslots (this
+  # means, those conferences for which we might generate attendance
+  # lists)
+  def self.past_with_timeslots
+    # We don't filter on self.past because the uses for this method
+    # will most probably require the full list, not a paginated collection
+    self.find(:all, :include => 'timeslots',
+              :conditions => 'begins < now()',
+              :order => 'begins desc').select {|c| !c.timeslots.empty?}
+  end
 
   # Produce a paginated list of conferences which have already begun
   # (and have probably finished) for which the person specified as the

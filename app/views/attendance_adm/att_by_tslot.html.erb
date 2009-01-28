@@ -1,0 +1,24 @@
+<h1><%= _('Attendance listing by timeslot') %></h1>
+
+<p><%= _('Showing the %d registered attendances for the session ' +
+         'started at <em>%s</em>, room <em>%s</em> (%s)') % 
+       [@attendances.size, @tslot.start_time.to_s(:listing), 
+        @tslot.room.name, 
+        (@tslot.proposal.nil? ? _('No proposal defined') : 
+         link_to_proposal(@tslot.proposal))] %></p>
+
+<%= start_table %>
+  <%= table_head_row %>
+    <th><%= _'Attendee' %></th>
+    <th><%= _'Registration time' %></th>
+  <%= end_table_row %>
+  <% @attendances.each do |att| %>
+    <%= table_row %>
+      <td><%= link_to att.person.name,
+                      :action => 'for_person', 
+                      :person_id => att.person, 
+                      :conference_id => @conference %></td>
+      <td><%= att.created_at %></td>
+    <%= end_table_row %>
+  <% end %>
+<%= end_table %>

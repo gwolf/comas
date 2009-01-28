@@ -8,12 +8,13 @@
     <th><%= _'Proposal' %></th>
   <%= end_table_row %>
   <% @attendances.sort_by {|att| att.created_at}.each do |att| %>
-    <% prop = att.timeslot.proposal
-       title = prop ? prop.title : '' %>
     <%= table_row %>
-      <td><%= att.timeslot.start_time.to_s(:listing) %></td>
+      <td><%= link_to att.timeslot.start_time.to_s(:listing),
+                      :action => 'att_by_tslot',
+                      :timeslot_id => att.timeslot,
+                      :conference_id => @conference %></td>
       <td><%= att.created_at.to_s(:listing) %></td>
-      <td><%= title %></td>
+      <td><%= link_to_proposal att.timeslot.proposal %></td>
     <%= end_table_row %>
   <% end %>
 <%= end_table %>

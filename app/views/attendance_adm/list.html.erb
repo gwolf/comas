@@ -10,13 +10,14 @@
                  {:onchange => "this.form.submit()"}) %>
 <% end %>
 
+<h3><%= _('Attendance distribution for %d registered timeslots') %
+        @conference.timeslots.size %></h3>
+
+  <%= render :partial => 'by_session', 
+             :locals => {:tslots => @conference.timeslots} %>
 <% if @totals.empty? %>
   <h3><%= _'No attendances registered' %></h3>
 <% else %>
-  <h3><%= _'Attendance statistics' %></h3>
-
-  <%= render :partial => 'by_session', :locals => {:tslots => @timeslots} %>
-
   <h2><%= _'Full listing, ordered by number of attendances' %></h2>
   <% @totals.keys.sort.each do |num| %>
     <%= render(:partial => 'list_by_attendances', 

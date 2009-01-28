@@ -1,6 +1,7 @@
 class ConferencesAdmController < Admin
   before_filter :get_conference, :except => [:index, :list, :new, :create]
-  Menu = [[_('Registered conferences'), :list]]
+  Menu = [[_('Registered conferences'), :list],
+          [_('Register a new conference'), :new]]
 
   def index
     redirect_to :action => 'list'
