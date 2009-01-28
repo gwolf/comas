@@ -28,11 +28,11 @@ class PeopleAdmController < Admin
   def create
     @person = Person.new(params[:person])
     if @person.save
-      flash[:notice] = _ 'New attendee successfully registered'
+      flash[:notice] << _ 'New attendee successfully registered'
       redirect_to :action => 'list'
     else
-      flash[:error] = [_("Error registering requested attendee: "),
-                       @person.errors.full_messages ]
+      flash[:error] << [_("Error registering requested attendee: "),
+                        @person.errors.full_messages ]
       render :action => 'new'
     end
   end
@@ -82,20 +82,20 @@ class PeopleAdmController < Admin
         flash[:notice] << _('Person data successfully updated')
       end
    rescue TypeError => err
-     flash[:error] = _("Error recording requested data: %s") % err
+     flash[:error] << _("Error recording requested data: %s") % err
     end
   end
 
   def destroy
     if request.post? 
       if @person != @user and @person.destroy
-        flash[:notice] = _ 'Successfully removed requested attendee'
+        flash[:notice] << _ 'Successfully removed requested attendee'
       else
-        flash[:error] = [_('Error removing requested attendee: '),
-                         @person.errors.full_messages]
+        flash[:error] << [_('Error removing requested attendee: '),
+                          @person.errors.full_messages]
       end
     else
-      flash[:error] = _'Invocation error'
+      flash[:error] << _'Invocation error'
     end
 
     redirect_to :action => 'list'

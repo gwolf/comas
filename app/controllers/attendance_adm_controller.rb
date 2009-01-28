@@ -28,7 +28,7 @@ class AttendanceAdmController < Admin
     # only one) currently active timeslot? If not, redirect the user
     # to choose it.
     unless @tslot = Timeslot.find_by_id(params[:id]) || Timeslot.single_current
-      flash[:warning] = _'Please select a timeslot to take attendance for'
+      flash[:warning] << _'Please select a timeslot to take attendance for'
       redirect_to :action => 'choose_session'
       return false
     end
@@ -49,7 +49,7 @@ class AttendanceAdmController < Admin
   def list
     if @conference.nil?
       redirect_to '/'
-      flash[:error] = _'Could not find which conference to report'
+      flash[:error] << _'Could not find which conference to report'
       return false
     end
     @other_confs = Conference.past_with_timeslots
@@ -62,7 +62,7 @@ class AttendanceAdmController < Admin
       raise ActiveRecord::RecordInvalid unless 
         @conference.timeslots.include? @tslot
     rescue
-      flash[:error] = _('Invalid timeslot requested')
+      flash[:error] << _('Invalid timeslot requested')
       redirect_to :action => 'list', :conference_id => @conference
       return false
     end
@@ -123,8 +123,8 @@ class AttendanceAdmController < Admin
   def register_attendance(person, tslot)
     if previous = Person.find(1).
         attendances.find(:first, :conditions =>['timeslot_id = ?', tslot.id])
-      flash[:notice] = _('This person has already been registered for this ' +
-                         'timeslot. No action taken.')
+      flash[:notice] << _('This person has already been registered for this ' +
+                          'timeslot. No action taken.')
       return false
     end
     att = Attendance.new(:person_id => person.id,
@@ -134,22 +134,22 @@ class AttendanceAdmController < Admin
     conf = tslot.conference
     if ! person.conferences.include?(conf)
       unless conf.accepts_registrations?
-        flash[:error] = _('<em>%s</em> is not registered for <em>%s</em>, ' +
-                          'and registrations are closed.') % 
+        flash[:error] << _('<em>%s</em> is not registered for <em>%s</em>, ' +
+                           'and registrations are closed.') % 
           [person.name, conf.name]
         return false
       end
 
-      flash[:warning] = _('Person <em>%s</em> was not yet registered for ' +
+      flash[:warning] << _('Person <em>%s</em> was not yet registered for ' +
                           'this conference - Registering.') % person.name
       person.conferences << conf
     end
 
     if att.save
-      flash[:notice] = _('Attendance successfully registered')
+      flash[:notice] << _('Attendance successfully registered')
     else
-      flash[:error] = _('Could not register person <em>%s</em> for this ' +
-                        'timeslot: %s') % 
+      flash[:error] << _('Could not register person <em>%s</em> for this ' +
+                         'timeslot: %s') % 
         [person.name, att.errors.full_messages.join('<br/>')]
     end
   end
@@ -166,6 +166,6 @@ class AttendanceAdmController < Admin
     pers_id = params[:person_id]
     return true if pers_id.nil? or pers_id.blank?
     @person = Person.find_by_id(pers_id)
-    flash[:error] = _('Invalid person specified') if @person.nil?
+    flash[:error] << _('Invalid person specified') if @person.nil?
   end
 end

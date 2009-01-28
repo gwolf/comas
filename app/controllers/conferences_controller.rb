@@ -39,10 +39,10 @@ class ConferencesController < ApplicationController
     # Avoid silly mistakes due to reloads
     return if @user.conferences.include? @conference
     if @user.register_for(@conference)
-      flash[:notice] = _('You have successfully registered for ' +
-                         'conference "%s"') % @conference.name
+      flash[:notice] << _('You have successfully registered for ' +
+                          'conference "%s"') % @conference.name
     else
-      flash[:error] = _('Could not register you for conference %s: %s') %
+      flash[:error] << _('Could not register you for conference %s: %s') %
         [@conference.name, @user.errors.full_messages]
     end
   end
@@ -55,17 +55,17 @@ class ConferencesController < ApplicationController
 
     if props = @conference.proposals_by_person(@user) and
         !props.empty?
-      flash[:error] = _('You have %d proposals registered for this ' +
-                        'conference. Please withdraw them before ' +
-                        'unregistering.') % props.size
+      flash[:error] << _('You have %d proposals registered for this ' +
+                         'conference. Please withdraw them before ' +
+                         'unregistering.') % props.size
       return false
     end
 
     if @user.conferences.delete @conference
-      flash[:notice] = _('You have successfully unregistered from ' +
-                         'conference "%s"') % @conference.name
+      flash[:notice] << _('You have successfully unregistered from ' +
+                          'conference "%s"') % @conference.name
     else
-      flash[:error] = _('Could not unregister you from conference %s: %s') %
+      flash[:error] << _('Could not unregister you from conference %s: %s') %
         [@conference.name, @user.errors.full_messages]
     end
   end
@@ -77,9 +77,9 @@ class ConferencesController < ApplicationController
     return false unless @user
 
     if !@conference.accepts_registrations?
-      flash[:error] = _('This conference does not currently accept ' +
-                        'changing your registration status - please visit ' +
-                        'its information page for more details') 
+      flash[:error] << _('This conference does not currently accept ' +
+                         'changing your registration status - please visit ' +
+                         'its information page for more details') 
       return false
     end
     return true
@@ -89,7 +89,7 @@ class ConferencesController < ApplicationController
     begin
       @conference = Conference.find(params[:id])
     rescue ActiveRecord::RecordNotFound
-      flash[:error] = _'Invalid conference requested'
+      flash[:error] << _'Invalid conference requested'
       redirect_to :action => :list
       return false
     end

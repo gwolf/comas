@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_lang
   before_filter :set_pagination_labels
   before_filter :head_and_foot_text
+  before_filter :setup_flash
 
   protected
   def get_user
@@ -130,5 +131,11 @@ class ApplicationController < ActionController::Base
   def head_and_foot_text
     @title = SysConf.value_for('title_text')
     @footer = SysConf.value_for('footer_text')
+  end
+
+  # Ensure there is a flash, and that it contains empty arrays for the
+  # three message levels
+  def setup_flash
+    [:warning, :error, :notice].each {|level| flash[level] ||= []}
   end
 end

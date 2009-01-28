@@ -12,8 +12,8 @@ class ProposalsController < ApplicationController
   def new
     @confs = @user.conferences_for_submitting
     if @confs.empty?
-      flash[:warnings] = _('There are currently no conferences for which ' +
-                           'you can submit proposals. Please register first.')
+      flash[:warnings] << _('There are currently no conferences for which ' +
+                            'you can submit proposals. Please register first.')
       redirect_to :controller => 'people', :action => 'proposals'
       return false
     end
@@ -35,14 +35,14 @@ class ProposalsController < ApplicationController
         auth = Authorship.new(:person => @user, :proposal => @proposal)
         auth.save or raise ActiveRecord::Rollback, auth.errors.full_messages
       rescue ActiveRecord::Rollback => msg
-        flash[:error] = _('Error saving your proposal: %s') % msg.message
+        flash[:error] << _('Error saving your proposal: %s') % msg.message
         @confs = @user.conferences_for_submitting
         render :action => 'new'
         return false
       end
     end
 
-    flash[:notice] = _'Your proposal was successfully registered'
+    flash[:notice] << _'Your proposal was successfully registered'
     redirect_to :action => :show, :id => @proposal.id
   end
 
@@ -56,9 +56,9 @@ class ProposalsController < ApplicationController
   def edit
     return true unless request.post?
     if @proposal.update_attributes(params[:proposal])
-      flash[:notice] = _'The proposal has been modified successfully'
+      flash[:notice] << _'The proposal has been modified successfully'
     else
-      flash[:error] = _('Error updating the proposal: ') +
+      flash[:error] << _('Error updating the proposal: ') +
         @proposal.errors.full_messages.join('<br/>')
     end
   end
@@ -90,17 +90,17 @@ class ProposalsController < ApplicationController
 
     auth = Authorship.find_by_id(params[:authorship_id].to_i)
     unless auth and @proposal.authorships.include? auth
-      flash[:error] = _('Requested author does not exist or is not listed ' +
-                        'in this proposal. Maybe you already deleted him?')
+      flash[:error] << _('Requested author does not exist or is not listed ' +
+                         'in this proposal. Maybe you already deleted him?')
       return false
     end
 
     if @proposal.authorships.delete(auth) and @proposal.save
-      flash[:notice] = _('Requested author (%s) was successfully removed ' +
-                         'from this proposal') % auth.person.name
+      flash[:notice] << _('Requested author (%s) was successfully removed ' +
+                          'from this proposal') % auth.person.name
     else
-      flash[:error] = _('Unexpected error removing requested author. Please ' +
-                        'try again, or contact system administrator')
+      flash[:error] << _('Unexpected error removing requested author. Please ' +
+                         'try again, or contact system administrator')
     end
   end
 
@@ -111,8 +111,8 @@ class ProposalsController < ApplicationController
       raise AlreadyAnAuthor if @proposal.people.include? @person
       confirmed = true
     rescue AlreadyAnAuthor
-      flash[:notice] = _('The requested author (%s) was already registered ' +
-                         'as an author for this proposal') % @person.name
+      flash[:notice] << _('The requested author (%s) was already registered ' +
+                          'as an author for this proposal') % @person.name
     rescue NotPost
     end
 
@@ -124,21 +124,21 @@ class ProposalsController < ApplicationController
     return true unless request.post?
 
     if @proposal.people.include? @person
-      flash[:notice] = _('The requested author (%s) was already registered ' +
-                         'as an author for this proposal') % @person.name
+      flash[:notice] << _('The requested author (%s) was already registered ' +
+                          'as an author for this proposal') % @person.name
       return true 
     end
 
     unless auth = Authorship.new(:proposal => @proposal, 
                                  :person => @person) and
         auth.save
-      flash[:error] = (_('Error adding person (%s) to requested proposal: ') % 
-                       @person.name) +
+      flash[:error] << (_('Error adding person (%s) to requested proposal: ') % 
+                        @person.name) +
         auth.errors.full_messages.join('<br/>')
       return false
     end
 
-    flash[:notice] = _('%s was successfully added as an author to this ' +
+    flash[:notice] << _('%s was successfully added as an author to this ' +
                        'proposal') % @person.name
 
     Notification.deliver_added_as_coauthor(@person, @proposal, @user)
@@ -148,7 +148,7 @@ class ProposalsController < ApplicationController
     @author = Person.find_by_id(params[:author_id].to_i)
     unless @author
       redirect_to :action => 'list'
-      flash[:error] = _('No author specified - rendering general list')
+      flash[:error] << _('No author specified - rendering general list')
       return false
     end
 
@@ -178,9 +178,9 @@ class ProposalsController < ApplicationController
                          :data => upload.read)
 
       if doc.save
-        flash[:notice] = _('The document was successfully saved')
+        flash[:notice] << _('The document was successfully saved')
       else
-        flash[:error] = _('Error receiving the document:') +
+        flash[:error] << _('Error receiving the document:') +
           doc.errors.full_messages.join('<br/>')
       end
     end
@@ -190,9 +190,9 @@ class ProposalsController < ApplicationController
     redirect_to :action => :show, :id => @proposal
     return true unless request.post?
     if @document.destroy
-      flash[:notice] = _'The document was successfully deleted'
+      flash[:notice] << _'The document was successfully deleted'
     else
-      flash[:error] = _'Error removing requested document. Please try ' +
+      flash[:error] << _'Error removing requested document. Please try ' +
         'again later, or contact the system administrator.'
     end
   end
@@ -206,7 +206,7 @@ class ProposalsController < ApplicationController
   def get_proposal
     @proposal = Proposal.find_by_id(params[:id])
     if @proposal.nil?
-      flash[:error] = _'Invalid proposal requested'
+      flash[:error] << _'Invalid proposal requested'
       redirect_to :action => 'list'
       return false
     end
@@ -214,8 +214,8 @@ class ProposalsController < ApplicationController
 
   def get_person_by_login
     unless @person = Person.find_by_login(params[:login])
-      flash[:error] = _('The specified login is not valid or does not match ' +
-                        'any valid users')
+      flash[:error] << _('The specified login is not valid or does not match ' +
+                         'any valid users')
       redirect_to ( @proposal ? 
                     {:action => 'authors', :id => @proposal} :
                     {:action => 'list'})
@@ -226,7 +226,7 @@ class ProposalsController < ApplicationController
   def ck_document
     unless @document = Document.find_by_id(params[:document_id]) and
         @document.proposal == @proposal
-      flash[:error] = _'Invalid document requested for this proposal'
+      flash[:error] << _'Invalid document requested for this proposal'
       redirect_to :action => 'show', :id => @proposal
       return false
     end
@@ -234,7 +234,7 @@ class ProposalsController < ApplicationController
 
   def ck_ownership
     unless @user.proposals.include?(@proposal)
-      flash[:error] = _'You are not allowed to modify this proposal'
+      flash[:error] << _'You are not allowed to modify this proposal'
       redirect_to :action => 'show', :id => @proposal
       return false
     end
