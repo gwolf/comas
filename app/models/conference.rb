@@ -2,36 +2,15 @@ class Conference < ActiveRecord::Base
   has_many :timeslots, :dependent => :destroy
   has_many :proposals
   has_one :conference_logo, :dependent => :destroy
-  has_and_belongs_to_many :people
+  has_and_belongs_to_many(:people, 
+                          :before_add => :ck_accepts_registrations,
+                          :before_remove => :dont_unregiser_if_has_proposals)
 
   validates_presence_of :name
   validates_uniqueness_of :name
   validates_presence_of :descr
   validate :dates_are_correct
   validate :timeslots_during_conference
-
-  #### PENDING: Reimplement :ensure_conference_accepts_registrations
-  #### and :dont_unregister_if_has_proposals (that were in
-  #### Participation):
-  ####
-  #### def ensure_conference_accepts_registrations
-  ####   if ! self.conference.accepts_registrations?
-  ####     self.errors.add(:conference,
-  ####                     _('Registrations for this conference are closed'))
-  ####     end  
-  ####  end
-  ####
-  #### def dont_unregister_if_has_proposals
-  ####   return true if self.person.authorships.select {|author|
-  ####     author.proposal.conference_id==self.conference_id}.empty?
-  ####   return false
-  #### end
-  ####
-  #### Idea: Don't implement this as a real trigger; allow for
-  #### untimely registration/de-registration, _but_ provide a
-  #### validated method call that should be invoked by non-admin-level
-  #### controllers. That way, an administrator can still perform those
-  #### actions. But... Think it over :-)
 
   # Produce a paginated list of conferences which have not yet
   # finished, ordered by their beginning date (i.e. the closest first)
@@ -131,7 +110,7 @@ class Conference < ActiveRecord::Base
     self.proposals.select {|p| p.people.include? person}
   end
 
-  protected
+  private
   # Verify the submitted dates are coherent (i.e. none of the periods
   # we care about finishes before it begins)
   def dates_are_correct
@@ -175,5 +154,18 @@ class Conference < ActiveRecord::Base
   def dates_in_order?(date1, date2)
     return true if date1.nil? or date2.nil? or date2 >= date1
     false
+  end
+
+  def ck_accepts_registrations(person)
+    return true if self.accepts_registrations?
+    raise(ActiveRecord::RecordNotSaved,
+          _('This conference does not currently accept registrations'))
+  end
+
+  def dont_unregister_if_has_proposals(person)
+    return true if self.proposals_by_person(person).empty?
+    raise(ActiveRecord::RecordNotSaved, 
+          _('Cannot remove %s from this conference - Remove or reassign '+
+            'his proposals first') % person.name)
   end
 end

@@ -1,17 +1,16 @@
-<h1><%= _"Registered people with administrative tasks" %></h1>
-<% @tasks.sort_by {|t| t.name}.each do |task| %>
+<h1><%= _"Administrative tasks" %></h1>
+<% @tasks.sort_by {|t| t.id}.each do |task| %>
   <h3><%= link_to_function(_(task.qualified_name),
                            visual_effect(:toggle_blind,
                                          "details-for-#{task.id}")) %>: 
       <%= _('%d people') % task.people.size %></h3>
   <%= end_table_row %>
   <div id="details-for-<%= task.id %>" style="display:none">
-    <%= start_table %>
-    <% task.people.sort_by {|p| p.name}.map do |person| %>
-      <%= table_row %>
-        <td><%= link_to(h(person.name), :action => :show, :id => person) %></td>
-      <%= end_table_row %>
+    <% if task.people.empty? %>
+      <p><%= _'No people authorized for this task' %></p>
+    <% else %>
+      <%= render :partial => 'people_for_task', 
+                 :locals => {:task => task} %>
     <% end %>
-    <%= end_table %>
   </div>
 <% end %>

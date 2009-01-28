@@ -4,7 +4,9 @@ class Person < ActiveRecord::Base
   has_many :authorships, :dependent => :destroy
   has_many :proposals, :through => :authorships
   has_and_belongs_to_many :admin_tasks
-  has_and_belongs_to_many :conferences, :order => :begins
+  has_and_belongs_to_many(:conferences, :order => :begins, 
+                          :before_add => :ck_accepts_registrations,
+                          :before_remove => :dont_unregister_if_has_proposals)
   has_many :attendances
 
   validates_presence_of :firstname
@@ -12,29 +14,6 @@ class Person < ActiveRecord::Base
   validates_presence_of :login
   validates_presence_of :passwd
   validates_uniqueness_of :login
-
-  #### PENDING: Reimplement :ensure_conference_accepts_registrations
-  #### and :dont_unregister_if_has_proposals (that were in
-  #### Participation):
-  ####
-  #### def ensure_conference_accepts_registrations
-  ####   if ! self.conference.accepts_registrations?
-  ####     self.errors.add(:conference,
-  ####                     _('Registrations for this conference are closed'))
-  ####     end  
-  ####  end
-  ####
-  #### def dont_unregister_if_has_proposals
-  ####   return true if self.person.authorships.select {|author|
-  ####     author.proposal.conference_id==self.conference_id}.empty?
-  ####   return false
-  #### end
-  ####
-  #### Idea: Don't implement this as a real trigger; allow for
-  #### untimely registration/de-registration, _but_ provide a
-  #### validated method call that should be invoked by non-admin-level
-  #### controllers. That way, an administrator can still perform those
-  #### actions. But... Think it over :-)
 
   def self.ck_login(given_login, given_passwd)
     person = Person.find_by_login(given_login)
@@ -129,5 +108,19 @@ class Person < ActiveRecord::Base
   private
   def pw_salt
     self[:pw_salt]
+  end
+
+  def ck_accepts_registrations(conf)
+    return true if conf.accepts_registrations?
+    raise(ActiveRecord::RecordNotSaved,
+          _('Conference %s does not currently accept registrations') % 
+          conf.name)
+  end
+
+  def dont_unregister_if_has_proposals(conf)
+    return true unless self.has_proposal_for? conf
+    raise(ActiveRecord::RecordNotSaved, 
+          _('Cannot leave %s - This user still has proposals '+
+            'on this conference') % conf.name)
   end
 end

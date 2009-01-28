@@ -2,7 +2,7 @@ class PeopleAdmController < Admin
   before_filter :get_person, :only => [:show, :destroy]
 
   Menu = [[_('Registered people list'), :list],
-          [_('By administrative task'), :by_task]]
+          [_('Administrative tasks'), :by_task]]
 
   def index
     redirect_to :action => 'list'
@@ -41,12 +41,45 @@ class PeopleAdmController < Admin
     return true unless request.post? 
     begin
       @person.transaction do
+        # Split the HABTM-tasks into each of their components, so in
+        # case one of the associations fail, the request continues to
+        # be carried out (and chicken out only if it is on an
+        # unforseen situation)
+        conference_ids = params[:person].delete(:conference_ids)
+
         @person.update_attributes(params[:person])
-        # HABTM attributes: Clear them if they are empty
-        [:conference_ids, :admin_task_ids].each do |rel|
-          @person.send("#{rel}=", []) if ! params[:person][rel]
+
+        # Conferences: The cleanest thing I could come up with is to
+        # go over the complete list of conferences, one by one. Just
+        # assigning the conference_ids hash to person#conference_ids
+        # raises an exception upon the first mishap, and we want to
+        # continue.
+        Conference.find(:all, :order => 'id').each do |conf|
+          present = @person.conferences.include?(conf)
+          desired = conference_ids.include?(conf.id.to_s)
+          next if present == desired
+
+          begin
+            if desired
+              @person.conferences += [conf] 
+            else 
+              @person.conferences -= [conf]
+            end
+          rescue ActiveRecord::RecordNotSaved => err
+            flash[:warning] << err.message
+          end
         end
-        flash[:notice] = _('Person data successfully updated')
+
+        # Admin tasks - Just ensure you are not removing people_adm
+        # privileges from yourself
+        this_task = AdminTask.find_by_sys_name('people_adm')
+        if @person == @user  and !@person.admin_tasks.include? this_task
+          flash[:notice] << _('Removing this administrative task from your ' +
+                              'own account is not allowed - Restoring.')
+          @person.admin_tasks << this_task 
+        end
+
+        flash[:notice] << _('Person data successfully updated')
       end
    rescue TypeError => err
      flash[:error] = _("Error recording requested data: %s") % err
