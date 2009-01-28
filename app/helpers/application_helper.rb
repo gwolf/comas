@@ -5,6 +5,7 @@ module ApplicationHelper
   def show_flash
     flash.map do |level, message|
       message = message.join("<br/>") if message.is_a? Array
+      next if message.blank? 
       flash.discard(level)
       '<div id="flash-%s">%s</div>' % [level, message]
     end
