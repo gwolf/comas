@@ -22,15 +22,15 @@ class SysConfAdmController < Admin
     redirect_to :action => :list
     return false unless request.post?
     @conf.destroy or
-      flash[:error] = _('Error destroying requested entry: ') +
-      @conf.errors.full_messages.join('<br/>')
+      flash[:error] << _('Error destroying requested entry: ') +
+        @conf.errors.full_messages.join('<br/>')
   end
 
   def create
     redirect_to :action => :list
     return false unless request.post?
     conf = SysConf.new(params[:sys_conf])
-    conf.save or flash[:error] = _('Error creating requested entry: ') +
+    conf.save or flash[:error] << _('Error creating requested entry: ') +
       conf.errors.full_messages.join('<br/>')
   end
 
@@ -42,9 +42,9 @@ class SysConfAdmController < Admin
     return false unless request.post?
 
     if @conf.update_attributes(params[:sys_conf])
-      flash[:notice] = _'The configuration entry was successfully updated'
+      flash[:notice] << _'The configuration entry was successfully updated'
     else 
-      flash[:error] = _('Error updating requested configuration entry: ') +
+      flash[:error] << _('Error updating requested configuration entry: ') +
         @conf.errors.full_messages.join("<br/>")
     end
   end
@@ -87,11 +87,11 @@ class SysConfAdmController < Admin
         @model.connection.add_column(@table, field, type, :default => default)
       end
 
-      flash[:notice] = _("Successfully created %s field in %s") % 
+      flash[:notice] << _("Successfully created %s field in %s") % 
         [field, @table]
 
     rescue TypeError, NameError, ActiveRecord::StatementInvalid => err
-      flash[:error] = _('Unable to create requested column: %s') % err
+      flash[:error] << _('Unable to create requested column: %s') % err
     end
   end
 
@@ -102,23 +102,23 @@ class SysConfAdmController < Admin
 
     if @model.extra_listable_attributes.select { |attr| 
         attr.name.to_sym == field }.empty?
-      flash[:error] = _('Attempting to remove invalid field: %s') % field
+      flash[:error] << _('Attempting to remove invalid field: %s') % field
       return false
     end
 
     begin
       @model.connection.remove_column(@table, field)
-      flash[:notice] = _('Successfully removed field %s') % field
+      flash[:notice] << _('Successfully removed field %s') % field
     rescue Exception => err
-      flash[:error] = _('Error removing specified field: %s') % err
+      flash[:error] << _('Error removing specified field: %s') % err
     end
 
     if field.to_s =~ /^(.*)_id$/ and 
         @model.connection.catalogs.include?($1.pluralize)
-      flash[:warning] = _('Please note we have _not_ dropped the ' +
-                          'corresponding catalog for this column, ' +
-                          '<em>%s</em>, to avoid data loss. You can manually ' +
-                          'remove it.') % $1.pluralize
+      flash[:warning] << _('Please note we have _not_ dropped the ' +
+                           'corresponding catalog for this column, ' +
+                           '<em>%s</em>, to avoid data loss. You can manually ' +
+                           'remove it.') % $1.pluralize
     end
   end
 
@@ -129,7 +129,7 @@ class SysConfAdmController < Admin
         a.name.to_sym == fld }[0] or raise NameError
     rescue NameError
       redirect_to :action => 'list_table_fields', :table => @table
-      flash[:error] = _'Invalid field specified'
+      flash[:error] << _'Invalid field specified'
       return false
     end
     return true unless request.post?
@@ -146,7 +146,7 @@ class SysConfAdmController < Admin
     begin
       @model.connection.change_column_default(@table, name, default)
     rescue ActiveRecord::StatementInvalid => err
-      flash[:error] = _('Error setting the requested default value: %s') %
+      flash[:error] << _('Error setting the requested default value: %s') %
         err
       return false
     end
@@ -168,18 +168,18 @@ class SysConfAdmController < Admin
           # And now, the magic!
           @model.connection.change_column_null(@table, name, false)
         rescue ActiveRecord::StatementInvalid => err
-          flash[:error] = _("Error setting the field as not null: %s") % err
+          flash[:error] << _("Error setting the field as not null: %s") % err
           return false
         end
       else
         # Sorry, not much we can do...
-        flash[:error] = _('Cannot set field %s to reject null values: No ' +
-                          'default value ') % name
+        flash[:error] << _('Cannot set field %s to reject null values: No ' +
+                           'default value ') % name
         return false
       end
     end
 
-    flash[:notice] = _("The field's values were correctly updated")
+    flash[:notice] << _("The field's values were correctly updated")
   end
 
   ############################################################
@@ -204,13 +204,13 @@ class SysConfAdmController < Admin
     return true unless request.post?
     begin
       @catalog.find(params[:id]).destroy
-      flash[:notice] = _'The requested record was successfully deleted'
+      flash[:notice] << _'The requested record was successfully deleted'
     rescue ActiveRecord::RecordNotFound
-      flash[:error] = _('Requested record not found - '+
-                        'Maybe it had already been deleted?')
+      flash[:error] << _('Requested record not found - '+
+                         'Maybe it had already been deleted?')
     rescue  ActiveRecord::StatementInvalid
-      flash[:error] = _('Error deleting the requested record - A catalog ' +
-                        'entry will not be deleted if it is still referenced.')
+      flash[:error] << _('Error deleting the requested record - A catalog ' +
+                         'entry will not be deleted if it is still referenced.')
     end
   end
 
@@ -222,9 +222,9 @@ class SysConfAdmController < Admin
     return true unless params.has_key?(param_cat)
     begin
       @catalog.new(:name => params[param_cat][:name]).save!
-      flash[:notice] = _('The new %s was successfully registered') % param_cat
+      flash[:notice] << _('The new %s was successfully registered') % param_cat
     rescue ActiveRecord::RecordInvalid => err
-      flash[:error] = _('Could not create new %s: %s') % 
+      flash[:error] << _('Could not create new %s: %s') % 
         [param_cat, err.to_s]
     end
   end
@@ -235,7 +235,8 @@ class SysConfAdmController < Admin
     begin
       @conf = SysConf.find(params[:id])
     rescue ActiveRecord::RecordNotFound
-      flash[:error]= _('Invalid configuration entry %d requested')% params[:id]
+      flash[:error] << _('Invalid configuration entry %d requested') % 
+        params[:id]
       redirect_to :action => :list
       return false
     end
@@ -249,7 +250,7 @@ class SysConfAdmController < Admin
       raise NameError unless valid_tables.include? @table
       @model = @table.to_s.classify.constantize
     rescue NameError, NoMethodError
-      flash[:error] = _'Invalid table requested'
+      flash[:error] << _'Invalid table requested'
       redirect_to '/'
       return false
    end
@@ -265,7 +266,7 @@ class SysConfAdmController < Admin
       model = cat.classify.constantize
 
     rescue NameError => err
-      flash[:error] = err.to_s
+      flash[:error] << err.to_s
       redirect_to :action => 'list_catalogs'
       return false
     end

@@ -23,10 +23,10 @@ class ConferencesAdmController < Admin
   def create
     @conference = Conference.new(params[:conference])
     if @conference.save
-      flash[:notice] = _ 'New conference successfully registered'
+      flash[:notice] << _ 'New conference successfully registered'
       redirect_to :action => 'list'
     else
-      flash[:error] = [_("Error registering requested conference: "),
+      flash[:error] << [_("Error registering requested conference: "),
                        @conference.errors.full_messages ]
       render :action => 'new'
     end
@@ -34,7 +34,7 @@ class ConferencesAdmController < Admin
 
   def show
     if request.post? and @conference.update_attributes(params[:conference])
-      flash[:warning] = _('Conference data successfully updated')
+      flash[:warning] << _('Conference data successfully updated')
     end
   end
 
@@ -43,13 +43,13 @@ class ConferencesAdmController < Admin
 
     if request.post? 
       if @conference.destroy
-        flash[:notice] = _ 'Successfully removed requested conference'
+        flash[:notice] << _ 'Successfully removed requested conference'
       else
-        flash[:error] = [_('Error removing requested conference: '),
-                         @conference.errors.full_messages]
+        flash[:error] << [_('Error removing requested conference: '),
+                          @conference.errors.full_messages]
       end
     else
-      flash[:error] = _'Invocation error'
+      flash[:error] << _'Invocation error'
     end
   end
 
@@ -79,9 +79,9 @@ class ConferencesAdmController < Admin
     ts = Timeslot.new(params[:timeslot])
     ts.conference = @conference
     if ts.save
-      flash[:notice] = _('The requested timeslot was successfully created')
+      flash[:notice] << _('The requested timeslot was successfully created')
     else 
-      flash[:error] = _('Error creating the requested timeslot:<br/> %s') %
+      flash[:error] << _('Error creating the requested timeslot:<br/> %s') %
         ts.errors.full_messages.join("<br/>")
     end
   end
@@ -91,10 +91,10 @@ class ConferencesAdmController < Admin
 
     if tslot = Timeslot.find_by_id(params[:timeslot_id]) and
         tslot.conference == @conference and tslot.destroy
-      flash[:notice] = _('The requested timeslot was successfully deleted')
+      flash[:notice] << _('The requested timeslot was successfully deleted')
     else
-      flash[:error] = _('Could not find requested timeslot (%d) for ' +
-                        'deletion - Maybe it was already deleted?') % 
+      flash[:error] << _('Could not find requested timeslot (%d) for ' +
+                         'deletion - Maybe it was already deleted?') % 
         params[:timeslot_id]
     end
   end

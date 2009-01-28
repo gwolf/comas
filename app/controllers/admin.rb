@@ -7,9 +7,9 @@ class Admin < ApplicationController
       if @user and @user.has_admin_task? task
         return true
       end
-      flash[:error] = _ "Access denied"
+      flash[:error] << _ "Access denied"
     else
-      flash[:error] = _ "Invocation error"
+      flash[:error] << _ "Invocation error"
     end
 
     redirect_to :controller => 'people', :action => 'login'
