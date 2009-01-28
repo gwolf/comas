@@ -12,7 +12,6 @@ class AdminTasks < ActiveRecord::Migration
     [['people_adm', 'Attendee administration'],
      ['conferences_adm', 'Conferences administration'],
      ['academic_adm', 'Academic committee'],
-     ['attendance', 'Attendance tracking'],
      ['attendance_adm', 'Attendance management'],
      ['sys_conf_adm', 'System configuration']
     ].each do |at|

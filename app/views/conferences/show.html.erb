@@ -11,22 +11,7 @@
   <br/>
   <% end %>
 
-  <% if @user.conferences.include? @conference %>
-    <%= _'You are currently registered for this conference. ' %>
-    <%= link_to(_('Click here to unregister'),
-                { :controller => 'conferences',
-                  :action => 'unregister',
-                  :id => @conference},
-                { :method => :post,
-                  :confirm => _('Confirm: Do you want to unregister ' +
-                                'from "%s"? ') % @conference.name}) %>
-  <% else %>
-    <%= link_to(_('Click here to sign up for this conference'),
-                { :controller => 'conferences', 
-                  :action => 'sign_up',
-                  :id => @conference}, 
-                { :method => :post }) %>
-  <% end %>
+  <%= sign_up_person_for_conf_link(@user, @conference) %>
   </div>
 <% end %>
 
@@ -44,8 +29,6 @@
     <%= link_to(_('Submit a proposal for this conference'),
 	        :controller => 'proposals', :action => 'new',
                 :conference_id => @conference) %>
-  <% elsif @conference.accepts_proposals? %>
-
   <% end %>
 <% end %>
 
