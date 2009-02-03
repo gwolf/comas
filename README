@@ -63,6 +63,7 @@ Real FK:: http://realfk.rubyforge.org/
 Will Paginate:: http://github.com/mislav/will_paginate/wikis
 PDF Writer:: http://ruby-pdf.rubyforge.org/
 GetText:: http://www.yotabanana.com/hiki/ruby-gettext.html
+Redcloth:: http://rubyforge.org/projects/redcloth/
 
 If you _cloned_ the Git repository, the plugins in this list (realfk,
 acts_as_list, magicmodel and actsascatalog) are available as Git

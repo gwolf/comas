@@ -88,6 +88,13 @@ module ApplicationHelper
        </div>)
   end
 
+  def redcloth_info_row(title, data)
+    %Q(<div class="info-row">
+         <span class="info-title">#{title}</span>
+         <span class="info-data">#{RedCloth.new(data).to_html}</span>
+       </div>)
+  end
+
   ############################################################
   # Show a translation-friendly pagination header (similar to WillPaginate's
   # page_entries_info - in fact, derived from it)

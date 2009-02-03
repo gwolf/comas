@@ -57,6 +57,7 @@ class ProposalsController < ApplicationController
     return true unless request.post?
     if @proposal.update_attributes(params[:proposal])
       flash[:notice] << _'The proposal has been modified successfully'
+      redirect_to :action => 'show', :id => @proposal
     else
       flash[:error] << _('Error updating the proposal: ') +
         @proposal.errors.full_messages.join('<br/>')

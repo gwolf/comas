@@ -7,7 +7,11 @@
                 :action => 'people_list', :id => @conference) %>
     |
     <%= link_to(_('Edit conference'), :controller => 'conferences_adm',
-                 :action => :show, :id => @conference) %>
+                 :action => :show, :id => @conference) %> |
+    <%= link_to(_('Edit timeslots'),
+	        :controller => 'conferences_adm',
+                :action => 'timeslots', 
+                :id => @conference) %>
   <br/>
   <% end %>
 
@@ -20,7 +24,7 @@
                  props, :action => 'proposals', :id => @conference) %></p>
 <% end %>
 
-<p><%= @conference.descr %></p>
+<p><%= RedCloth.new(@conference.descr).to_html %></p>
 
 <p><%= @conference.begins %> - <%= @conference.finishes %></p>
 
