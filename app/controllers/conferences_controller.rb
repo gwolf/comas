@@ -89,7 +89,7 @@ class ConferencesController < ApplicationController
     begin
       @conference = Conference.find(params[:id])
     rescue ActiveRecord::RecordNotFound
-      flash[:error] << _'Invalid conference requested'
+      flash[:error] << _('Invalid conference requested')
       redirect_to :action => :list
       return false
     end

@@ -42,7 +42,7 @@ class ProposalsController < ApplicationController
       end
     end
 
-    flash[:notice] << _'Your proposal was successfully registered'
+    flash[:notice] << _('Your proposal was successfully registered')
     redirect_to :action => :show, :id => @proposal.id
   end
 
@@ -56,7 +56,7 @@ class ProposalsController < ApplicationController
   def edit
     return true unless request.post?
     if @proposal.update_attributes(params[:proposal])
-      flash[:notice] << _'The proposal has been modified successfully'
+      flash[:notice] << _('The proposal has been modified successfully')
     else
       flash[:error] << _('Error updating the proposal: ') +
         @proposal.errors.full_messages.join('<br/>')
@@ -190,10 +190,10 @@ class ProposalsController < ApplicationController
     redirect_to :action => :show, :id => @proposal
     return true unless request.post?
     if @document.destroy
-      flash[:notice] << _'The document was successfully deleted'
+      flash[:notice] << _('The document was successfully deleted')
     else
-      flash[:error] << _'Error removing requested document. Please try ' +
-        'again later, or contact the system administrator.'
+      flash[:error] << _('Error removing requested document. Please try ' +
+                         'again later, or contact the system administrator.')
     end
   end
 
@@ -206,7 +206,7 @@ class ProposalsController < ApplicationController
   def get_proposal
     @proposal = Proposal.find_by_id(params[:id])
     if @proposal.nil?
-      flash[:error] << _'Invalid proposal requested'
+      flash[:error] << _('Invalid proposal requested')
       redirect_to :action => 'list'
       return false
     end
@@ -226,7 +226,7 @@ class ProposalsController < ApplicationController
   def ck_document
     unless @document = Document.find_by_id(params[:document_id]) and
         @document.proposal == @proposal
-      flash[:error] << _'Invalid document requested for this proposal'
+      flash[:error] << _('Invalid document requested for this proposal')
       redirect_to :action => 'show', :id => @proposal
       return false
     end
@@ -234,7 +234,7 @@ class ProposalsController < ApplicationController
 
   def ck_ownership
     unless @user.proposals.include?(@proposal)
-      flash[:error] << _'You are not allowed to modify this proposal'
+      flash[:error] << _('You are not allowed to modify this proposal')
       redirect_to :action => 'show', :id => @proposal
       return false
     end

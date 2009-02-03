@@ -28,7 +28,7 @@ class AttendanceAdmController < Admin
     # only one) currently active timeslot? If not, redirect the user
     # to choose it.
     unless @tslot = Timeslot.find_by_id(params[:id]) || Timeslot.single_current
-      flash[:warning] << _'Please select a timeslot to take attendance for'
+      flash[:warning] << _('Please select a timeslot to take attendance for')
       redirect_to :action => 'choose_session'
       return false
     end
@@ -49,7 +49,7 @@ class AttendanceAdmController < Admin
   def list
     if @conference.nil?
       redirect_to '/'
-      flash[:error] << _'Could not find which conference to report'
+      flash[:error] << _('Could not find which conference to report')
       return false
     end
     @other_confs = Conference.past_with_timeslots

@@ -42,7 +42,7 @@ class SysConfAdmController < Admin
     return false unless request.post?
 
     if @conf.update_attributes(params[:sys_conf])
-      flash[:notice] << _'The configuration entry was successfully updated'
+      flash[:notice] << _('The configuration entry was successfully updated')
     else 
       flash[:error] << _('Error updating requested configuration entry: ') +
         @conf.errors.full_messages.join("<br/>")
@@ -129,7 +129,7 @@ class SysConfAdmController < Admin
         a.name.to_sym == fld }[0] or raise NameError
     rescue NameError
       redirect_to :action => 'list_table_fields', :table => @table
-      flash[:error] << _'Invalid field specified'
+      flash[:error] << _('Invalid field specified')
       return false
     end
     return true unless request.post?
@@ -204,7 +204,7 @@ class SysConfAdmController < Admin
     return true unless request.post?
     begin
       @catalog.find(params[:id]).destroy
-      flash[:notice] << _'The requested record was successfully deleted'
+      flash[:notice] << _('The requested record was successfully deleted')
     rescue ActiveRecord::RecordNotFound
       flash[:error] << _('Requested record not found - '+
                          'Maybe it had already been deleted?')
@@ -250,7 +250,7 @@ class SysConfAdmController < Admin
       raise NameError unless valid_tables.include? @table
       @model = @table.to_s.classify.constantize
     rescue NameError, NoMethodError
-      flash[:error] << _'Invalid table requested'
+      flash[:error] << _('Invalid table requested')
       redirect_to '/'
       return false
    end

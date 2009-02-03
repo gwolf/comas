@@ -8,7 +8,7 @@ class PeopleController < ApplicationController
 
   def logout
     clear_session
-    flash[:notice] << _ 'Successfully logged out'
+    flash[:notice] << _('Successfully logged out')
     redirect_to '/'
   end
 
@@ -20,7 +20,7 @@ class PeopleController < ApplicationController
       session[:user_id] = user.id
       redirect_to dest_url
     else
-      flash[:warning] << _ 'Incorrect user/password'
+      flash[:warning] << _('Incorrect user/password')
       redirect_to :action => 'login'
     end
   end
@@ -35,14 +35,16 @@ class PeopleController < ApplicationController
         Person.find_by_email(params[:login_or_email])
       Notification.deliver_request_passwd(person, request.remote_ip)
 
-      flash[:notice] << _'An email has been sent to you, with instructions '+
-        'on how to enter the system and change your password.'
+      flash[:notice] << _('An email has been sent to you, with instructions ' +
+                          'on how to enter the system and change your ' +
+                          'password.')
       redirect_to :action => '/'
 
     else
-      flash[:error] << _'Nobody was found with the specified login or E-mail '+
-        'address. Please make sure it was correctly specified. Keep in mind ' +
-        'this system is case-sensitive.'
+      flash[:error] << _('Nobody was found with the specified login or ' +
+                         'E-mail address. Please make sure it was correctly ' +
+                         'specified. Keep in mind this system is ' +
+                         'case-sensitive.')
     end
   end
 
@@ -51,8 +53,8 @@ class PeopleController < ApplicationController
       session[:user_id] = person.id
       session[:recovered_at] = Time.now
     else
-      flash[:error] << _ 'Incorrect session specified - Remember session ' +
-        'URLs can be used only once'
+      flash[:error] << _('Incorrect session specified - Remember session ' +
+                         'URLs can be used only once')
       redirect_to :action => 'login'
     end
   end
@@ -60,27 +62,27 @@ class PeopleController < ApplicationController
   def rec_pass_chg
     if session[:recovered_at].nil? 
       redirect_to :action => 'logout'
-      flash[:error] << _'Invalid attempt to change password'
+      flash[:error] << _('Invalid attempt to change password')
       return false
     end
 
     if session[:recovered_at] + 10.minutes < Time.now
       redirect_to :action => 'login'
-      flash[:error] << _'Timeout waiting for your new password - You can ' +
-        'request for a new password recovery if needed.'
+      flash[:error] << _('Timeout waiting for your new password - You can ' +
+                         'request for a new password recovery if needed.')
       return false
     end
 
     if !params[:new] or params[:new].empty? or
         params[:new] != params[:confirm]
-      flash[:error] << _'New password does not match confirmation'
+      flash[:error] << _('New password does not match confirmation')
       render :action => recover
       return false
     end
 
     @user.passwd = params[:new]
     @user.save!
-    flash[:notice] << _'Your password was successfully changed'
+    flash[:notice] << _('Your password was successfully changed')
     redirect_to :action => 'account'
   end
 
@@ -95,7 +97,7 @@ class PeopleController < ApplicationController
       @person = Person.new(params[:person])
       if @person.save
         session[:user_id] = @person.id
-        flash[:notice] << _ 'New person successfully registered'
+        flash[:notice] << _('New person successfully registered')
         redirect_to :action => 'account'
 
         Notification.deliver_welcome(@person)
@@ -119,7 +121,7 @@ class PeopleController < ApplicationController
   def personal
     return true unless request.post?
     if @user.update_attributes(params[:person])
-      flash[:notice] << _'Your personal data has been updated successfully'
+      flash[:notice] << _('Your personal data has been updated successfully')
     else
       flash[:error] << _('Error updating your personal data: ') +
         @user.errors.full_messages.join('<br>')

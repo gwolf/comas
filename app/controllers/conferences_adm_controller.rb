@@ -23,7 +23,7 @@ class ConferencesAdmController < Admin
   def create
     @conference = Conference.new(params[:conference])
     if @conference.save
-      flash[:notice] << _ 'New conference successfully registered'
+      flash[:notice] << _('New conference successfully registered')
       redirect_to :action => 'list'
     else
       flash[:error] << [_("Error registering requested conference: "),
@@ -43,13 +43,13 @@ class ConferencesAdmController < Admin
 
     if request.post? 
       if @conference.destroy
-        flash[:notice] << _ 'Successfully removed requested conference'
+        flash[:notice] << _('Successfully removed requested conference')
       else
         flash[:error] << [_('Error removing requested conference: '),
                           @conference.errors.full_messages]
       end
     else
-      flash[:error] << _'Invocation error'
+      flash[:error] << _('Invocation error')
     end
   end
 
