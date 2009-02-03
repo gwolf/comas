@@ -35,6 +35,9 @@ class ConferencesAdmController < Admin
   def show
     if request.post? and @conference.update_attributes(params[:conference])
       flash[:warning] << _('Conference data successfully updated')
+      redirect_to( :controller => 'conferences',
+                   :action => 'show', 
+                   :id => @conference )
     end
   end
 
