@@ -39,6 +39,12 @@ class Person < ActiveRecord::Base
   end
   def extra_listable_attributes; self.class.extra_listable_attributes; end
 
+  # Returns the person's publicly listable attributes - this means,
+  # the extra attributes whose names start with pub_
+  def public_attributes
+    extra_listable_attributes.select {|a| a.name =~ /^pub_/}
+  end
+
   def self.pag_search(name=nil, params={})
     params.merge!(:conditions=>['firstname ~* ? or famname ~* ? or login ~* ?',
                                 name, name, name]) unless name.nil?

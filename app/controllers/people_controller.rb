@@ -158,6 +158,16 @@ class PeopleController < ApplicationController
     @props = @user.proposals
   end
 
+  # Public profile
+  def profile
+    @person = Person.find_by_id(params[:id],
+                                :include => [:proposals, :conferences])
+    if @person.nil?
+      flash[:error] << _('Requested person is not registered')
+      redirect_to '/'
+    end
+  end
+
   ############################################################
   # Internal use...
   protected

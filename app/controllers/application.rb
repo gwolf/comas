@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
     return true if @user
 
     public = {:people => [:login, :logout, :validate, :new, :register, 
-                          :request_passwd, :recover],
+                          :request_passwd, :recover, :profile],
       :conferences => [:index, :list, :show, :proposals],
       :proposals => [:index, :list, :show, :by_author, :get_document]}
 

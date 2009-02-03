@@ -1,0 +1,21 @@
+<h1><%= _('Public information for %s') % @person.name %></h1>
+
+<%= public_attributes(@person) %>
+
+<% if ! @person.proposals.nil? %>
+  <h3><%= _('Proposals submitted') %></h3>
+  <%= start_table %>
+    <%= table_head_row %>
+      <th><%= _'Conference' %></th>
+      <th><%= _'Title' %></th>
+    <%= end_table_row %>
+    <% @person.proposals.each do |prop| %>
+      <%= table_row %>
+	<td><%= link_to(prop.conference.name, :controller => 'conferences',
+	                :action => 'show', :id => prop.conference) %></td>
+        <td><%= link_to(prop.title, :controller => 'proposals', 
+	                :action => 'show', :id => prop)%></td>
+      <%= end_table_row %>
+    <% end %>
+  <%= end_table %>
+<% end %>

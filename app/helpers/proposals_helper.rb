@@ -4,7 +4,8 @@ module ProposalsHelper
 
   def authors_list_for_proposal(prop)
     prop.people.map do |p|
-      '%s (%s)' % [p.name,
+      '%s (%s)' % [link_to(p.name, :controller => 'people', 
+                           :action => 'profile', :id => p),
                    link_to(_('%d registered proposals') % p.proposals.size,
                            :controller => 'proposals', :action => 'by_author',
                            :author_id => p) ]
