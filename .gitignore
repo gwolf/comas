@@ -1,4 +1,5 @@
 *~
+lib/strings_in_db.rb
 log/*.log
 tmp/**/*
 doc/api
