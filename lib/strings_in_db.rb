@@ -37,7 +37,7 @@ _('PropType|Talk')
 _('PropType|Workshop')
 
 # Room
-_('Room|Auditorio')
+_('Room|Auditorium')
 
 # AdminTask
 _('AdminTask|Attendee administration')
