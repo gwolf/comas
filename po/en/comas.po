@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2009-01-28 17:45-0600\n"
-"PO-Revision-Date: 2009-01-28 17:47-0600\n"
+"POT-Creation-Date: 2009-02-04 12:28-0600\n"
+"PO-Revision-Date: 2009-02-04 12:31-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -143,12 +143,12 @@ msgid "Conference|Call for papers closing date"
 msgstr "Call for papers closing date"
 
 #: app/models/person.rb:-
-msgid "Conference|Conference start date"
-msgstr "Conference start date"
+msgid "Conference|Begins"
+msgstr "Beginning date"
 
 #: app/models/person.rb:-
-msgid "Conference|Conference finish date"
-msgstr "Conference finish date"
+msgid "Conference|Finishes"
+msgstr "Finishing date"
 
 #: app/models/person.rb:98
 msgid "Registrations for this conference are closed"
@@ -252,7 +252,7 @@ msgid "timeslot"
 msgstr ""
 
 #: app/models/timeslot.rb:-
-msgid "Timeslot|Tolerance (before session starts)"
+msgid "Timeslot|Tolerance pre"
 msgstr "Tolerance (before session starts)"
 
 #: app/models/timeslot.rb:-
@@ -389,7 +389,7 @@ msgstr ""
 
 #: app/models/rescue_session.rb:-
 msgid "RescueSession|Link"
-msgstr ""
+msgstr "Link"
 
 #: app/models/rescue_session.rb:-
 msgid "RescueSession|Created at"
@@ -397,7 +397,7 @@ msgstr "Created at"
 
 #: app/models/rescue_session.rb:-
 msgid "RescueSession|Person"
-msgstr ""
+msgstr "Person"
 
 #: app/controllers/application.rb:48
 msgid "Controller %s must implement check_auth"
@@ -1836,86 +1836,76 @@ msgstr ""
 msgid "Are you sure you want to delete this configuration entry?"
 msgstr ""
 
-#: lib/strings_in_db.rb:7
-msgid "PropType|Round table"
-msgstr "Round table"
-
-#: lib/strings_in_db.rb:8
-msgid "PropType|Tutorial"
-msgstr "Tutorial"
-
-#: lib/strings_in_db.rb:9
-msgid "PropType|Talk"
-msgstr "Talk"
-
-#: lib/strings_in_db.rb:10
-msgid "PropType|Workshop"
-msgstr "Workshop"
-
-#: lib/strings_in_db.rb:13
-msgid "PropStatus|Accepted"
-msgstr "Accepted"
-
-#: lib/strings_in_db.rb:14
-msgid "PropStatus|Cancelled"
-msgstr "Cancelled"
-
-#: lib/strings_in_db.rb:15
-msgid "PropStatus|Further details required"
-msgstr "Further details required"
-
-#: lib/strings_in_db.rb:16
+#: lib/strings_in_db.rb:26
 msgid "PropStatus|New"
 msgstr "New"
 
-#: lib/strings_in_db.rb:17
-msgid "PropStatus|Rejected"
-msgstr "Rejected"
+#: lib/strings_in_db.rb:27
+msgid "PropStatus|Cancelled"
+msgstr "Cancelled"
 
-#: lib/strings_in_db.rb:18
+#: lib/strings_in_db.rb:28
+msgid "PropStatus|Further details required"
+msgstr "Further details required"
+
+#: lib/strings_in_db.rb:29
 msgid "PropStatus|Withdrawn"
 msgstr "Withdrawn"
 
-#: lib/strings_in_db.rb:21
+#: lib/strings_in_db.rb:30
+msgid "PropStatus|Rejected"
+msgstr "Rejected"
+
+#: lib/strings_in_db.rb:31
+msgid "PropStatus|Accepted"
+msgstr "Accepted"
+
+#: lib/strings_in_db.rb:34
+msgid "PropType|Round table"
+msgstr "Round table"
+
+#: lib/strings_in_db.rb:35
+msgid "PropType|Tutorial"
+msgstr "Tutorial"
+
+#: lib/strings_in_db.rb:36
+msgid "PropType|Talk"
+msgstr "Talk"
+
+#: lib/strings_in_db.rb:37
+msgid "PropType|Workshop"
+msgstr "Workshop"
+
+#: lib/strings_in_db.rb:40
+msgid "Room|Auditorium"
+msgstr ""
+
+#: lib/strings_in_db.rb:43
 msgid "AdminTask|Attendee administration"
 msgstr "Attendee administration"
 
-#: lib/strings_in_db.rb:22
+#: lib/strings_in_db.rb:44
 msgid "AdminTask|Conferences administration"
 msgstr "Conferences administration"
 
-#: lib/strings_in_db.rb:23
+#: lib/strings_in_db.rb:45
 msgid "AdminTask|Academic committee"
 msgstr "Academic committee"
 
-#: lib/strings_in_db.rb:24
+#: lib/strings_in_db.rb:46
 msgid "AdminTask|Attendance management"
 msgstr "Attendance management"
 
-#: lib/strings_in_db.rb:25
-msgid "AdminTask|Attendance tracking"
-msgstr "Attendance tracking"
-
-#: lib/strings_in_db.rb:26
+#: lib/strings_in_db.rb:47
 msgid "AdminTask|System configuration"
 msgstr "System configuration"
-
-#: lib/strings_in_db.rb:29
-msgid "Person|Admin tasks"
-msgstr "Administrative tasks"
-
-#: lib/strings_in_db.rb:30
-msgid "Person|Conferences"
-msgstr "Conferences"
 
 #: lib/menu_tree.rb:16
 msgid "Unexpected arguments received: "
 msgstr ""
 
-#~ msgid "Conference|Begins"
+#~ msgid "Conference|Conference start date"
 #~ msgstr "Conference start date"
-#~ msgid "Conference|Finishes"
+#~ msgid "Conference|Conference finish date"
 #~ msgstr "Conference finish date"
-#~ msgid "Timeslot|Tolerance pre"
-#~ msgstr "Tolerance (before session starts)"
 
