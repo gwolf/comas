@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2009-01-27 20:05-0600\n"
+"POT-Creation-Date: 2009-01-28 17:45-0600\n"
 "PO-Revision-Date: 2008-05-07 18:30-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,7 +24,7 @@ msgid "Document|Filename"
 msgstr ""
 
 #: app/models/document.rb:-
-msgid "Document|Descr"
+msgid "Document|Description"
 msgstr ""
 
 #: app/models/document.rb:-
@@ -68,46 +68,6 @@ msgid "%d bytes"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "conference"
-msgstr ""
-
-#: app/models/person.rb:-
-msgid "Conference|Name"
-msgstr ""
-
-#: app/models/person.rb:-
-msgid "Conference|Descr"
-msgstr ""
-
-#: app/models/person.rb:-
-msgid "Conference|Homepage"
-msgstr ""
-
-#: app/models/person.rb:-
-msgid "Conference|Reg open date"
-msgstr ""
-
-#: app/models/person.rb:-
-msgid "Conference|Reg close date"
-msgstr ""
-
-#: app/models/person.rb:-
-msgid "Conference|Cfp open date"
-msgstr ""
-
-#: app/models/person.rb:-
-msgid "Conference|Cfp close date"
-msgstr ""
-
-#: app/models/person.rb:-
-msgid "Conference|Conference start date"
-msgstr ""
-
-#: app/models/person.rb:-
-msgid "Conference|Conference finish date"
-msgstr ""
-
-#: app/models/person.rb:-
 msgid "person"
 msgstr ""
 
@@ -116,15 +76,15 @@ msgid "Person|Login"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|Passwd"
+msgid "Person|Password"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|Firstname"
+msgid "Person|First name"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|Famname"
+msgid "Person|Family name"
 msgstr ""
 
 #: app/models/person.rb:-
@@ -153,39 +113,97 @@ msgstr ""
 
 #: app/models/person.rb:-
 #, fuzzy
-msgid "AdminTask|Sys name"
+msgid "AdminTask|System name"
 msgstr "System configuration"
 
-#: app/models/person.rb:119
+#: app/models/person.rb:-
+msgid "conference"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Conference|Name"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Conference|Description"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Conference|Homepage"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Conference|Registration opening date"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Conference|Registration closing date"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Conference|Call for Papers opening date"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Conference|Call for papers closing date"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Conference|Conference start date"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Conference|Conference finish date"
+msgstr ""
+
+#: app/models/person.rb:98
 msgid "Registrations for this conference are closed"
 msgstr ""
 
-#: app/models/conference.rb:138 app/models/conference.rb:139
+#: app/models/person.rb:116
+msgid "Conference %s does not currently accept registrations"
+msgstr ""
+
+#: app/models/person.rb:123
+msgid "Cannot leave %s - This user still has proposals on this conference"
+msgstr ""
+
+#: app/models/conference.rb:117 app/models/conference.rb:118
 msgid "%{fn} can't be blank"
 msgstr ""
 
-#: app/models/conference.rb:142
+#: app/models/conference.rb:121
 msgid "Conference must end after its start date"
 msgstr ""
 
-#: app/models/conference.rb:145
+#: app/models/conference.rb:124
 msgid "Call for papers must end after its start date"
 msgstr ""
 
-#: app/models/conference.rb:148
+#: app/models/conference.rb:127
 msgid "Call for papers must finish before the conference begins"
 msgstr ""
 
-#: app/models/conference.rb:152
+#: app/models/conference.rb:131
 msgid "Registration must end after its start date"
 msgstr ""
 
-#: app/models/conference.rb:155
+#: app/models/conference.rb:134
 msgid "Registration must finish before the conference ends"
 msgstr ""
 
-#: app/models/conference.rb:166
+#: app/models/conference.rb:145
 msgid "There are %d timeslots for this conference outside its time span: %s"
+msgstr ""
+
+#: app/models/conference.rb:162
+msgid "This conference does not currently accept registrations"
+msgstr ""
+
+#: app/models/conference.rb:168
+msgid ""
+"Cannot remove %s from this conference - Remove or reassign his proposals "
+"first"
 msgstr ""
 
 #: app/models/sys_conf.rb:-
@@ -197,7 +215,7 @@ msgid "SysConf|Key"
 msgstr ""
 
 #: app/models/sys_conf.rb:-
-msgid "SysConf|Descr"
+msgid "SysConf|Description"
 msgstr ""
 
 #: app/models/sys_conf.rb:-
@@ -321,14 +339,6 @@ msgid "ConferenceLogo|Conference"
 msgstr ""
 
 #: app/models/proposal.rb:-
-msgid "prop status"
-msgstr ""
-
-#: app/models/proposal.rb:-
-msgid "PropStatus|Name"
-msgstr ""
-
-#: app/models/proposal.rb:-
 msgid "proposal"
 msgstr ""
 
@@ -349,11 +359,11 @@ msgid "Proposal|Updated at"
 msgstr ""
 
 #: app/models/proposal.rb:-
-msgid "Proposal|Prop type"
+msgid "Proposal|Proposal type"
 msgstr ""
 
 #: app/models/proposal.rb:-
-msgid "Proposal|Prop status"
+msgid "Proposal|Proposal status"
 msgstr ""
 
 #: app/models/proposal.rb:-
@@ -362,6 +372,14 @@ msgstr ""
 
 #: app/models/proposal.rb:-
 msgid "Proposal|Conference"
+msgstr ""
+
+#: app/models/proposal.rb:-
+msgid "prop status"
+msgstr ""
+
+#: app/models/proposal.rb:-
+msgid "PropStatus|Name"
 msgstr ""
 
 #: app/models/proposal.rb:36
@@ -389,48 +407,48 @@ msgstr ""
 msgid "RescueSession|Person"
 msgstr ""
 
-#: app/controllers/application.rb:47
+#: app/controllers/application.rb:48
 msgid "Controller %s must implement check_auth"
 msgstr ""
 
-#: app/controllers/application.rb:64
+#: app/controllers/application.rb:65
 msgid "Conference listing"
 msgstr ""
 
-#: app/controllers/application.rb:68 app/views/people/login.html.erb:6
+#: app/controllers/application.rb:69 app/views/people/login.html.erb:6
 msgid "Log in"
 msgstr ""
 
-#: app/controllers/application.rb:70 app/views/people/new.html.erb:1
+#: app/controllers/application.rb:71 app/views/people/new.html.erb:1
 msgid "New account"
 msgstr ""
 
-#: app/controllers/application.rb:74 app/views/people/personal.html.erb:1
+#: app/controllers/application.rb:75 app/views/people/personal.html.erb:1
 msgid "Personal information"
 msgstr ""
 
-#: app/controllers/application.rb:76 app/views/people/password.html.erb:24
+#: app/controllers/application.rb:77 app/views/people/password.html.erb:24
 msgid "Change password"
 msgstr ""
 
-#: app/controllers/application.rb:79 app/views/people/proposals.html.erb:1
+#: app/controllers/application.rb:80 app/views/people/proposals.html.erb:1
 msgid "My proposals"
 msgstr ""
 
-#: app/controllers/application.rb:83
+#: app/controllers/application.rb:84
 #: app/views/notification/welcome.text.plain.erb:20
 msgid "My account"
 msgstr ""
 
-#: app/controllers/application.rb:97
+#: app/controllers/application.rb:98
 msgid "-*- Unimplemented"
 msgstr ""
 
-#: app/controllers/application.rb:111
+#: app/controllers/application.rb:112
 msgid "&laquo; Previous"
 msgstr ""
 
-#: app/controllers/application.rb:112
+#: app/controllers/application.rb:113
 msgid "Next &raquo;"
 msgstr ""
 
@@ -465,7 +483,7 @@ msgid "Error removing requested conference: "
 msgstr ""
 
 #: app/controllers/conferences_adm_controller.rb:52
-#: app/controllers/admin.rb:12 app/controllers/people_adm_controller.rb:65
+#: app/controllers/admin.rb:12 app/controllers/people_adm_controller.rb:98
 msgid "Invocation error"
 msgstr ""
 
@@ -712,7 +730,8 @@ msgid "Registered people list"
 msgstr ""
 
 #: app/controllers/people_adm_controller.rb:5
-msgid "By administrative task"
+#: app/views/people_adm/by_task.html.erb:1
+msgid "Administrative tasks"
 msgstr ""
 
 #: app/controllers/people_adm_controller.rb:32
@@ -723,19 +742,25 @@ msgstr ""
 msgid "Error registering requested attendee: "
 msgstr ""
 
-#: app/controllers/people_adm_controller.rb:49
+#: app/controllers/people_adm_controller.rb:77
+msgid ""
+"Removing this administrative task from your own account is not allowed - "
+"Restoring."
+msgstr ""
+
+#: app/controllers/people_adm_controller.rb:82
 msgid "Person data successfully updated"
 msgstr ""
 
-#: app/controllers/people_adm_controller.rb:52
+#: app/controllers/people_adm_controller.rb:85
 msgid "Error recording requested data: %s"
 msgstr ""
 
-#: app/controllers/people_adm_controller.rb:59
+#: app/controllers/people_adm_controller.rb:92
 msgid "Successfully removed requested attendee"
 msgstr ""
 
-#: app/controllers/people_adm_controller.rb:61
+#: app/controllers/people_adm_controller.rb:94
 msgid "Error removing requested attendee: "
 msgstr ""
 
@@ -853,47 +878,47 @@ msgstr ""
 msgid "Invalid configuration entry %d requested"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:253
+#: app/controllers/sys_conf_adm_controller.rb:254
 msgid "Invalid table requested"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:263
+#: app/controllers/sys_conf_adm_controller.rb:264
 msgid "Invalid catalog requested: %s"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:279
+#: app/controllers/sys_conf_adm_controller.rb:280
 msgid "Boolean"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:280
+#: app/controllers/sys_conf_adm_controller.rb:281
 msgid "Date"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:281
+#: app/controllers/sys_conf_adm_controller.rb:282
 msgid "Timestamp"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:282
+#: app/controllers/sys_conf_adm_controller.rb:283
 msgid "String"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:283
+#: app/controllers/sys_conf_adm_controller.rb:284
 msgid "Text"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:284
+#: app/controllers/sys_conf_adm_controller.rb:285
 msgid "Integer"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:285
+#: app/controllers/sys_conf_adm_controller.rb:286
 msgid "Decimal"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:286
+#: app/controllers/sys_conf_adm_controller.rb:287
 msgid "Float"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:287
+#: app/controllers/sys_conf_adm_controller.rb:288
 msgid "Catalog"
 msgstr ""
 
@@ -929,48 +954,48 @@ msgstr ""
 msgid "Invalid conference requested"
 msgstr ""
 
-#: app/helpers/application_helper.rb:17
+#: app/helpers/application_helper.rb:18
 msgid "Log out"
 msgstr ""
 
-#: app/helpers/application_helper.rb:24
+#: app/helpers/application_helper.rb:25
 msgid "Up"
 msgstr ""
 
-#: app/helpers/application_helper.rb:28
+#: app/helpers/application_helper.rb:29
 msgid "Down"
 msgstr ""
 
-#: app/helpers/application_helper.rb:32 app/helpers/application_helper.rb:36
+#: app/helpers/application_helper.rb:33 app/helpers/application_helper.rb:37
 msgid "-"
 msgstr ""
 
-#: app/helpers/application_helper.rb:96
+#: app/helpers/application_helper.rb:97
 msgid "No items found"
 msgstr ""
 
-#: app/helpers/application_helper.rb:97
+#: app/helpers/application_helper.rb:98
 msgid "Displaying <b>1</b> item"
 msgstr ""
 
-#: app/helpers/application_helper.rb:98
+#: app/helpers/application_helper.rb:99
 msgid "Displaying <b>all %d</b> items"
 msgstr ""
 
-#: app/helpers/application_helper.rb:101
+#: app/helpers/application_helper.rb:102
 msgid "Displaying items <b>%d&nbsp;-&nbsp;%d</b> of <b>%d</b> in total"
 msgstr ""
 
-#: app/helpers/application_helper.rb:147
+#: app/helpers/application_helper.rb:148
 msgid "Field %s not defined for %s"
 msgstr ""
 
-#: app/helpers/application_helper.rb:182 app/helpers/sys_conf_adm_helper.rb:19
+#: app/helpers/application_helper.rb:183 app/helpers/sys_conf_adm_helper.rb:19
 #: app/views/sys_conf_adm/edit_table_field.html.erb:41
 msgid "Yes"
 msgstr ""
 
-#: app/helpers/application_helper.rb:182 app/helpers/sys_conf_adm_helper.rb:19
+#: app/helpers/application_helper.rb:183 app/helpers/sys_conf_adm_helper.rb:19
 #: app/views/sys_conf_adm/edit_table_field.html.erb:42
 msgid "No"
 msgstr ""
@@ -1023,6 +1048,7 @@ msgid ""
 msgstr ""
 
 #: app/helpers/people_adm_helper.rb:4
+#: app/views/people_adm/_people_for_task.html.erb:3
 #: app/views/conferences_adm/people_list.html.erb:6
 #: app/views/conferences_adm/list.html.erb:7
 #: app/views/sys_conf_adm/show_catalog.html.erb:7
@@ -1030,15 +1056,18 @@ msgid "ID"
 msgstr ""
 
 #: app/helpers/people_adm_helper.rb:5
+#: app/views/people_adm/_people_for_task.html.erb:4
 msgid "Login"
 msgstr ""
 
 #: app/helpers/people_adm_helper.rb:6
+#: app/views/people_adm/_people_for_task.html.erb:5
 #: app/views/conferences_adm/people_list.html.erb:7
 msgid "First name"
 msgstr ""
 
 #: app/helpers/people_adm_helper.rb:7
+#: app/views/people_adm/_people_for_task.html.erb:6
 #: app/views/conferences_adm/people_list.html.erb:8
 msgid "Family name"
 msgstr ""
@@ -1291,12 +1320,12 @@ msgstr ""
 msgid "Save changes"
 msgstr ""
 
-#: app/views/people_adm/by_task.html.erb:1
-msgid "Registered people with administrative tasks"
-msgstr ""
-
 #: app/views/people_adm/by_task.html.erb:6
 msgid "%d people"
+msgstr ""
+
+#: app/views/people_adm/by_task.html.erb:10
+msgid "No people authorized for this task"
 msgstr ""
 
 #: app/views/people_adm/new.html.erb:1

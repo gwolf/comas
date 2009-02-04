@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2009-01-27 20:05-0600\n"
-"PO-Revision-Date: 2009-01-27 20:06-0600\n"
+"POT-Creation-Date: 2009-01-28 17:45-0600\n"
+"PO-Revision-Date: 2009-01-28 17:46-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: Gunnar Wolf <gwolf@gwolf.org>\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgid "Document|Filename"
 msgstr "Nombre de archivo"
 
 #: app/models/document.rb:-
-msgid "Document|Descr"
+msgid "Document|Description"
 msgstr "Descripción"
 
 #: app/models/document.rb:-
@@ -65,46 +65,6 @@ msgid "%d bytes"
 msgstr "%d bytes"
 
 #: app/models/person.rb:-
-msgid "conference"
-msgstr "Actividad"
-
-#: app/models/person.rb:-
-msgid "Conference|Name"
-msgstr "Nombre"
-
-#: app/models/person.rb:-
-msgid "Conference|Descr"
-msgstr "Descripción"
-
-#: app/models/person.rb:-
-msgid "Conference|Homepage"
-msgstr "Página de inicio"
-
-#: app/models/person.rb:-
-msgid "Conference|Reg open date"
-msgstr "Fecha de inicio del registro"
-
-#: app/models/person.rb:-
-msgid "Conference|Reg close date"
-msgstr "Fecha de cierre de registro"
-
-#: app/models/person.rb:-
-msgid "Conference|Cfp open date"
-msgstr "Fecha de inicio de la convocatoria de propuestas"
-
-#: app/models/person.rb:-
-msgid "Conference|Cfp close date"
-msgstr "Fecha de cierre de convocatoria de propuesta"
-
-#: app/models/person.rb:-
-msgid "Conference|Conference start date"
-msgstr "Inicio de la actividad"
-
-#: app/models/person.rb:-
-msgid "Conference|Conference finish date"
-msgstr "Finalización de la actividad"
-
-#: app/models/person.rb:-
 msgid "person"
 msgstr "persona"
 
@@ -113,15 +73,15 @@ msgid "Person|Login"
 msgstr "Nombre de usuario"
 
 #: app/models/person.rb:-
-msgid "Person|Passwd"
+msgid "Person|Password"
 msgstr "Contraseña"
 
 #: app/models/person.rb:-
-msgid "Person|Firstname"
+msgid "Person|First name"
 msgstr "Nombre propio"
 
 #: app/models/person.rb:-
-msgid "Person|Famname"
+msgid "Person|Family name"
 msgstr "Apellido"
 
 #: app/models/person.rb:-
@@ -149,41 +109,97 @@ msgid "AdminTask|Name"
 msgstr "Nombre"
 
 #: app/models/person.rb:-
-msgid "AdminTask|Sys name"
+msgid "AdminTask|System name"
 msgstr "Nombre de sistema"
 
-#: app/models/person.rb:119
+#: app/models/person.rb:-
+msgid "conference"
+msgstr "Actividad"
+
+#: app/models/person.rb:-
+msgid "Conference|Name"
+msgstr "Nombre"
+
+#: app/models/person.rb:-
+msgid "Conference|Description"
+msgstr "Descripción"
+
+#: app/models/person.rb:-
+msgid "Conference|Homepage"
+msgstr "Página de inicio"
+
+#: app/models/person.rb:-
+msgid "Conference|Registration opening date"
+msgstr "Fecha de inicio del registro"
+
+#: app/models/person.rb:-
+msgid "Conference|Registration closing date"
+msgstr "Fecha de cierre de registro"
+
+#: app/models/person.rb:-
+msgid "Conference|Call for Papers opening date"
+msgstr "Fecha de inicio de la convocatoria de propuestas"
+
+#: app/models/person.rb:-
+msgid "Conference|Call for papers closing date"
+msgstr "Fecha de cierre de convocatoria de propuesta"
+
+#: app/models/person.rb:-
+msgid "Conference|Conference start date"
+msgstr "Fecha de inicio de la actividad"
+
+#: app/models/person.rb:-
+msgid "Conference|Conference finish date"
+msgstr "Fecha de término de la actividad"
+
+#: app/models/person.rb:98
 msgid "Registrations for this conference are closed"
 msgstr "El registro para esta actividad está cerrado"
 
-#: app/models/conference.rb:138
-#: app/models/conference.rb:139
+#: app/models/person.rb:116
+msgid "Conference %s does not currently accept registrations"
+msgstr "La actividad %s actualmente no acepta registros"
+
+#: app/models/person.rb:123
+msgid "Cannot leave %s - This user still has proposals on this conference"
+msgstr "No puede abandonar %s - El usuario tiene aún propuestas para esta actividad"
+
+#: app/models/conference.rb:117
+#: app/models/conference.rb:118
 msgid "%{fn} can't be blank"
 msgstr "%{fn} requiere ser llenado"
 
-#: app/models/conference.rb:142
+#: app/models/conference.rb:121
 msgid "Conference must end after its start date"
 msgstr "La actividad debe terminar después de su fecha de inicio"
 
-#: app/models/conference.rb:145
+#: app/models/conference.rb:124
 msgid "Call for papers must end after its start date"
 msgstr "La convocatoria de participación debe concluir después de su fecha de inicio"
 
-#: app/models/conference.rb:148
+#: app/models/conference.rb:127
 msgid "Call for papers must finish before the conference begins"
 msgstr "La convocatoria de participación debe concluir antes de que inicie la actividad"
 
-#: app/models/conference.rb:152
+#: app/models/conference.rb:131
 msgid "Registration must end after its start date"
 msgstr "El registro debe concluir después de su fecha de inicio"
 
-#: app/models/conference.rb:155
+#: app/models/conference.rb:134
 msgid "Registration must finish before the conference ends"
 msgstr "El registro debe finalizar antes de que la actividad concluya"
 
-#: app/models/conference.rb:166
+#: app/models/conference.rb:145
 msgid "There are %d timeslots for this conference outside its time span: %s"
 msgstr "Hay %d espacios para esta actividad fuera de sus días: %s"
+
+#: app/models/conference.rb:162
+msgid "This conference does not currently accept registrations"
+msgstr "Esta actividad actualmente no acepta registros"
+
+#: app/models/conference.rb:168
+msgid "Cannot remove %s from this conference - Remove or reassign his proposals first"
+msgstr "No es posible eliminar a %s de esta actividad - Elimine o reasigne sus propuestas primero"
 
 #: app/models/sys_conf.rb:-
 msgid "sys conf"
@@ -194,7 +210,7 @@ msgid "SysConf|Key"
 msgstr "Llave"
 
 #: app/models/sys_conf.rb:-
-msgid "SysConf|Descr"
+msgid "SysConf|Description"
 msgstr "Descripción"
 
 #: app/models/sys_conf.rb:-
@@ -239,11 +255,11 @@ msgstr "horario"
 
 #: app/models/timeslot.rb:-
 msgid "Timeslot|Tolerance (before session starts)"
-msgstr "Tiempo de tolerancia antes del inicio de sesión"
+msgstr "Tiempo de tolerancia antes de iniciar la sesión"
 
 #: app/models/timeslot.rb:-
 msgid "Timeslot|Tolerance (after session starts)"
-msgstr "Tiempo de tolerancia después del inicio de sesión"
+msgstr "Tiempo de tolerancia una vez iniciada la sesión"
 
 #: app/models/timeslot.rb:-
 msgid "Timeslot|Room"
@@ -318,14 +334,6 @@ msgid "ConferenceLogo|Conference"
 msgstr "Actividad"
 
 #: app/models/proposal.rb:-
-msgid "prop status"
-msgstr "estado de la propuesta"
-
-#: app/models/proposal.rb:-
-msgid "PropStatus|Name"
-msgstr "Nombre"
-
-#: app/models/proposal.rb:-
 msgid "proposal"
 msgstr "propuesta"
 
@@ -346,11 +354,11 @@ msgid "Proposal|Updated at"
 msgstr "Última actualización"
 
 #: app/models/proposal.rb:-
-msgid "Proposal|Prop type"
+msgid "Proposal|Proposal type"
 msgstr "Tipo de la propuesta"
 
 #: app/models/proposal.rb:-
-msgid "Proposal|Prop status"
+msgid "Proposal|Proposal status"
 msgstr "Estado de la propuesta"
 
 #: app/models/proposal.rb:-
@@ -360,6 +368,14 @@ msgstr "Horario"
 #: app/models/proposal.rb:-
 msgid "Proposal|Conference"
 msgstr "Actividad"
+
+#: app/models/proposal.rb:-
+msgid "prop status"
+msgstr "estado de la propuesta"
+
+#: app/models/proposal.rb:-
+msgid "PropStatus|Name"
+msgstr "Nombre"
 
 #: app/models/proposal.rb:36
 msgid "Call for papers period for this conference is not current"
@@ -385,53 +401,53 @@ msgstr "Fecha de creación"
 msgid "RescueSession|Person"
 msgstr "Persona"
 
-#: app/controllers/application.rb:47
+#: app/controllers/application.rb:48
 msgid "Controller %s must implement check_auth"
 msgstr "El controlador %s debe implementar check_auth"
 
-#: app/controllers/application.rb:64
+#: app/controllers/application.rb:65
 msgid "Conference listing"
 msgstr "Listado de actividades"
 
-#: app/controllers/application.rb:68
+#: app/controllers/application.rb:69
 #: app/views/people/login.html.erb:6
 msgid "Log in"
 msgstr "Entrar"
 
-#: app/controllers/application.rb:70
+#: app/controllers/application.rb:71
 #: app/views/people/new.html.erb:1
 msgid "New account"
 msgstr "Nueva cuenta"
 
-#: app/controllers/application.rb:74
+#: app/controllers/application.rb:75
 #: app/views/people/personal.html.erb:1
 msgid "Personal information"
 msgstr "Información personal"
 
-#: app/controllers/application.rb:76
+#: app/controllers/application.rb:77
 #: app/views/people/password.html.erb:24
 msgid "Change password"
 msgstr "Cambiar contraseña"
 
-#: app/controllers/application.rb:79
+#: app/controllers/application.rb:80
 #: app/views/people/proposals.html.erb:1
 msgid "My proposals"
 msgstr "Mis ponencias"
 
-#: app/controllers/application.rb:83
+#: app/controllers/application.rb:84
 #: app/views/notification/welcome.text.plain.erb:20
 msgid "My account"
 msgstr "Mi cuenta"
 
-#: app/controllers/application.rb:97
+#: app/controllers/application.rb:98
 msgid "-*- Unimplemented"
 msgstr "-*- No implementado"
 
-#: app/controllers/application.rb:111
+#: app/controllers/application.rb:112
 msgid "&laquo; Previous"
 msgstr "&laquo; Anterior"
 
-#: app/controllers/application.rb:112
+#: app/controllers/application.rb:113
 msgid "Next &raquo;"
 msgstr "Siguiente &raquo;"
 
@@ -467,7 +483,7 @@ msgstr "Error eliminando la actividad solicitada:"
 
 #: app/controllers/conferences_adm_controller.rb:52
 #: app/controllers/admin.rb:12
-#: app/controllers/people_adm_controller.rb:65
+#: app/controllers/people_adm_controller.rb:98
 msgid "Invocation error"
 msgstr "Error de invocación"
 
@@ -692,8 +708,9 @@ msgid "Registered people list"
 msgstr "Lista de asistentes registrados"
 
 #: app/controllers/people_adm_controller.rb:5
-msgid "By administrative task"
-msgstr "Por tarea administrativa"
+#: app/views/people_adm/by_task.html.erb:1
+msgid "Administrative tasks"
+msgstr "Tareas administrativas"
 
 #: app/controllers/people_adm_controller.rb:32
 msgid "New attendee successfully registered"
@@ -703,19 +720,23 @@ msgstr "El nuevo asistente fue registrado exitosamente"
 msgid "Error registering requested attendee: "
 msgstr "Error registrando al asistente indicado:"
 
-#: app/controllers/people_adm_controller.rb:49
+#: app/controllers/people_adm_controller.rb:77
+msgid "Removing this administrative task from your own account is not allowed - Restoring."
+msgstr "No está permitido eliminar esta tarea administrativa de su propia cuenta - Reestableciendo."
+
+#: app/controllers/people_adm_controller.rb:82
 msgid "Person data successfully updated"
 msgstr "Los datos de la persona fueron actualizados exitosamente"
 
-#: app/controllers/people_adm_controller.rb:52
+#: app/controllers/people_adm_controller.rb:85
 msgid "Error recording requested data: %s"
 msgstr "Error registrando los datos especificados: %s"
 
-#: app/controllers/people_adm_controller.rb:59
+#: app/controllers/people_adm_controller.rb:92
 msgid "Successfully removed requested attendee"
 msgstr "El asistente especificado fue eliminado exitosamente"
 
-#: app/controllers/people_adm_controller.rb:61
+#: app/controllers/people_adm_controller.rb:94
 msgid "Error removing requested attendee: "
 msgstr "Error eliminando al asistente solicitado:"
 
@@ -828,47 +849,47 @@ msgstr "No fue posible crear un nuevo %s: %s"
 msgid "Invalid configuration entry %d requested"
 msgstr "Especificó una entrada de configuración inválida: %d"
 
-#: app/controllers/sys_conf_adm_controller.rb:253
+#: app/controllers/sys_conf_adm_controller.rb:254
 msgid "Invalid table requested"
 msgstr "Especificó una tabla inválida"
 
-#: app/controllers/sys_conf_adm_controller.rb:263
+#: app/controllers/sys_conf_adm_controller.rb:264
 msgid "Invalid catalog requested: %s"
 msgstr "Especificó una catálogo inválido"
 
-#: app/controllers/sys_conf_adm_controller.rb:279
+#: app/controllers/sys_conf_adm_controller.rb:280
 msgid "Boolean"
 msgstr "Booleano"
 
-#: app/controllers/sys_conf_adm_controller.rb:280
+#: app/controllers/sys_conf_adm_controller.rb:281
 msgid "Date"
 msgstr "Fecha"
 
-#: app/controllers/sys_conf_adm_controller.rb:281
+#: app/controllers/sys_conf_adm_controller.rb:282
 msgid "Timestamp"
 msgstr "Hora y fecha"
 
-#: app/controllers/sys_conf_adm_controller.rb:282
+#: app/controllers/sys_conf_adm_controller.rb:283
 msgid "String"
 msgstr "Cadena"
 
-#: app/controllers/sys_conf_adm_controller.rb:283
+#: app/controllers/sys_conf_adm_controller.rb:284
 msgid "Text"
 msgstr "Texto"
 
-#: app/controllers/sys_conf_adm_controller.rb:284
+#: app/controllers/sys_conf_adm_controller.rb:285
 msgid "Integer"
 msgstr "Entero"
 
-#: app/controllers/sys_conf_adm_controller.rb:285
+#: app/controllers/sys_conf_adm_controller.rb:286
 msgid "Decimal"
 msgstr "Decimal"
 
-#: app/controllers/sys_conf_adm_controller.rb:286
+#: app/controllers/sys_conf_adm_controller.rb:287
 msgid "Float"
 msgstr "Flotante"
 
-#: app/controllers/sys_conf_adm_controller.rb:287
+#: app/controllers/sys_conf_adm_controller.rb:288
 msgid "Catalog"
 msgstr "Catálogo"
 
@@ -900,50 +921,50 @@ msgstr "En este momento, es imposible cambiar su estado de registro para esta ac
 msgid "Invalid conference requested"
 msgstr "Especificó una actividad inexistente"
 
-#: app/helpers/application_helper.rb:17
+#: app/helpers/application_helper.rb:18
 msgid "Log out"
 msgstr "Salir"
 
-#: app/helpers/application_helper.rb:24
+#: app/helpers/application_helper.rb:25
 msgid "Up"
 msgstr "Arriba"
 
-#: app/helpers/application_helper.rb:28
+#: app/helpers/application_helper.rb:29
 msgid "Down"
 msgstr "Abajo"
 
-#: app/helpers/application_helper.rb:32
-#: app/helpers/application_helper.rb:36
+#: app/helpers/application_helper.rb:33
+#: app/helpers/application_helper.rb:37
 msgid "-"
 msgstr "-"
 
-#: app/helpers/application_helper.rb:96
+#: app/helpers/application_helper.rb:97
 msgid "No items found"
 msgstr "No hay registros que mostrar"
 
-#: app/helpers/application_helper.rb:97
+#: app/helpers/application_helper.rb:98
 msgid "Displaying <b>1</b> item"
 msgstr "Mostrando <b>1</b> registro"
 
-#: app/helpers/application_helper.rb:98
+#: app/helpers/application_helper.rb:99
 msgid "Displaying <b>all %d</b> items"
 msgstr "Mostrando <b>todos los %d</b> registros"
 
-#: app/helpers/application_helper.rb:101
+#: app/helpers/application_helper.rb:102
 msgid "Displaying items <b>%d&nbsp;-&nbsp;%d</b> of <b>%d</b> in total"
 msgstr "Mostrando los registros <b>%d&nbsp;-&nbsp;%d</b> de un total de <b>%d</b>"
 
-#: app/helpers/application_helper.rb:147
+#: app/helpers/application_helper.rb:148
 msgid "Field %s not defined for %s"
 msgstr "El campo %s no está definido para %s"
 
-#: app/helpers/application_helper.rb:182
+#: app/helpers/application_helper.rb:183
 #: app/helpers/sys_conf_adm_helper.rb:19
 #: app/views/sys_conf_adm/edit_table_field.html.erb:41
 msgid "Yes"
 msgstr "Sí"
 
-#: app/helpers/application_helper.rb:182
+#: app/helpers/application_helper.rb:183
 #: app/helpers/sys_conf_adm_helper.rb:19
 #: app/views/sys_conf_adm/edit_table_field.html.erb:42
 msgid "No"
@@ -996,6 +1017,7 @@ msgid "Are you sure you want to permanently delete this timeslot? This will also
 msgstr "¿Está seguro que desea eliminar permanentemente esta sesión? Eso eliminará también todas las asistencias que ha registrado en ella"
 
 #: app/helpers/people_adm_helper.rb:4
+#: app/views/people_adm/_people_for_task.html.erb:3
 #: app/views/conferences_adm/people_list.html.erb:6
 #: app/views/conferences_adm/list.html.erb:7
 #: app/views/sys_conf_adm/show_catalog.html.erb:7
@@ -1003,15 +1025,18 @@ msgid "ID"
 msgstr "ID"
 
 #: app/helpers/people_adm_helper.rb:5
+#: app/views/people_adm/_people_for_task.html.erb:4
 msgid "Login"
-msgstr "Entrar"
+msgstr "Nombre de usuario"
 
 #: app/helpers/people_adm_helper.rb:6
+#: app/views/people_adm/_people_for_task.html.erb:5
 #: app/views/conferences_adm/people_list.html.erb:7
 msgid "First name"
 msgstr "Nombre propio"
 
 #: app/helpers/people_adm_helper.rb:7
+#: app/views/people_adm/_people_for_task.html.erb:6
 #: app/views/conferences_adm/people_list.html.erb:8
 msgid "Family name"
 msgstr "Apellidos"
@@ -1261,13 +1286,13 @@ msgstr "Datos personales del asistente %d"
 msgid "Save changes"
 msgstr "Grabar cambios"
 
-#: app/views/people_adm/by_task.html.erb:1
-msgid "Registered people with administrative tasks"
-msgstr "Personas registradas con roles administrativos"
-
 #: app/views/people_adm/by_task.html.erb:6
 msgid "%d people"
 msgstr "%d personas"
+
+#: app/views/people_adm/by_task.html.erb:10
+msgid "No people authorized for this task"
+msgstr "No hay gente autorizada para esta tarea"
 
 #: app/views/people_adm/new.html.erb:1
 msgid "Register a new attendee"
@@ -1952,34 +1977,6 @@ msgstr "Argumentos inesperados recibidos:"
 #~ msgstr "Inicio de la actividad"
 #~ msgid "Conference|Finishes"
 #~ msgstr "Fin de la actividad"
-#~ msgid "Person|Pw salt"
-#~ msgstr "Salt aleatorio"
 #~ msgid "Timeslot|Tolerance pre"
 #~ msgstr "Tiempo de tolerancia previo al inicio"
-#~ msgid "Timeslot|Tolerance post"
-#~ msgstr "Tiempo de tolerancia una vez iniciada la sesión"
-#~ msgid "Attendance statistics"
-#~ msgstr "Estadísticas de asistencia"
-#~ msgid "You are currently registered for this conference. "
-#~ msgstr "Está registrado actualmente para esta actividad"
-#~ msgid "Click here to unregister"
-#~ msgstr "Seleccione aquí para cancelar su registro"
-#~ msgid "Click here to sign up for this conference"
-#~ msgstr "Haga click aquí para registrarse para esta actividad"
-#~ msgid "refered by"
-#~ msgstr "¿Por qué medio se enteró de esta actividad?"
-#~ msgid "ReferedBy|Name"
-#~ msgstr "Nombre"
-#~ msgid "Person|Refered by"
-#~ msgstr "Referido por"
-#~ msgid "Person|Phone"
-#~ msgstr "Teléfono"
-#~ msgid "Person|Fax"
-#~ msgstr "Fax"
-#~ msgid "Person|More info"
-#~ msgstr ""
-#~ "¿Desea recibir mayor información respecto a las actividades organizadas "
-#~ "por el Instituto?"
-#~ msgid "Person|Org"
-#~ msgstr "Institución"
 
