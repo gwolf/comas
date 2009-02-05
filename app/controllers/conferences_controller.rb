@@ -12,11 +12,14 @@ class ConferencesController < ApplicationController
     session[:conf_list_include_past] = false if params[:hide_old]
 
     per_page = params[:per_page] || 5
-    method = session[:conf_list_include_past] ? :paginate : :upcoming
-    @conferences = Conference.send(method, 
-                                   :per_page => per_page, 
-                                   :order => :begins,
-                                   :page => params[:page])
+    @conferences = if session[:conf_list_include_past]
+                     Conference.paginate(:per_page => per_page,
+                                         :order => :begins,
+                                         :page => params[:page])
+                   else
+                     Conference.find(:all, :order => :begins).
+                       paginate(:page => params[:page], :per_page => per_page)
+                   end
   end
 
   def show

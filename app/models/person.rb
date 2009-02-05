@@ -83,7 +83,7 @@ class Person < ActiveRecord::Base
   end
 
   def upcoming_conferences
-    Conference.upcoming_for_person(self)
+    self.conferences.select {|c| c.upcoming?}.sort_by {|c| c.begins}
   end
 
   def conferences_for_submitting

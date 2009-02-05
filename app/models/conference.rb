@@ -12,71 +12,90 @@ class Conference < ActiveRecord::Base
   validate :dates_are_correct
   validate :timeslots_during_conference
 
-  # Produce a paginated list of conferences which have not yet
-  # finished, ordered by their beginning date (i.e. the closest first)
+  # Produce a list of conferences which have not yet finished, ordered
+  # by their beginning date (i.e. the closest first)
   # 
   # It can take whatever parameters you would send to a
-  # WillPaginate#paginate call.
+  # Conference#find call.
   def self.upcoming(req={})
-    self.paginate(:all,
-                  { :conditions => 'finishes >= now()::date', 
-                    :order => :begins,
-                    :page => 1}.merge(req))
+    self.find(:all, { :conditions => 'finishes >= now()::date', 
+                :order => :begins}.merge(req))
   end
 
-  # Produce a paginated list of conferences which have not yet begun,
-  # for which the person specified as the first parameter is
-  # registered, ordered by their beginning date (i.e. the closest first)
+  # Produce a list of conferences which are in their registration
+  # period (this means, for which a person can currently register as
+  # an attendee)
   # 
   # It can take whatever parameters you would send to a
-  # WillPaginate#paginate call.
-  def self.upcoming_for_person(person, req={})
+  # Conference#find call.
+  def self.in_reg_period(req={})
+    self.find(:all, { :conditions => 'now()::date BETWEEN ' +
+                'COALESCE(reg_open_date, now()::date) AND ' +
+                'COALESCE(reg_close_date, finishes, now()::date)',
+                :order => :begins}.merge(req))
+  end
+  
+  # Produce a list of conferences which are in their Call For Papers
+  # period (this means, for which a person can currently submit a
+  # proposal)
+  # 
+  # It can take whatever parameters you would send to a
+  # Conference#find call.
+  def self.in_cfp_period(req={})
+    self.find(:all, { :conditions => '(cfp_open_date IS NOT NULL OR ' +
+                'cfp_close_date IS NOT NULL) AND now()::date BETWEEN ' +
+                'COALESCE(cfp_open_date, now()::date) AND ' +
+                'COALESCE(cfp_close_date, begins, now()::date)',
+                :order => :begins}.merge(req))
+  end
+
+  # Produce a list of conferences which have not yet begun, for which
+  # the person specified as the first parameter is registered, ordered
+  # by their beginning date (i.e. the closest first)
+  def self.upcoming_for_person(person)
     p_id = person.is_a?(Fixnum) ? person : person.id
-    self.paginate(:all,
-                  { :include => :people,
-                    :conditions => ['people.id=? and begins > now()', p_id],
-                    :order => 'begins',
-                    :page => 1}.merge(req))
+    person.conferences.sort_by {|c| c.begins}.select {|c| c.upcoming?}
   end
 
-  # Produce a paginated list of conferences which already begun (and
-  # have probably finished), inversely ordered by their beginning date
-  # (i.e. most recent first)
+  # Produce a list of conferences which already begun (and might have
+  # finished), inversely ordered by their beginning date (i.e. most
+  # recent first)
   # 
-  # It can take whatever parameters you would send to a
-  # WillPaginate#paginate call.
+  # It can take whatever parameters you would send to a Person#find
+  # call.
   def self.past(req={})
-    self.paginate(:all, 
-                  { :conditions => 'begins < now()',
-                    :order => 'begins desc',
-                    :page => 1}.merge(req))
+    self.find(:all, 
+              { :conditions => 'begins < now()',
+                :order => 'begins desc'
+              }.merge(req))
   end
 
   # All of the conferences which have registered timeslots (this
   # means, those conferences for which we might generate attendance
   # lists)
   def self.past_with_timeslots
-    # We don't filter on self.past because the uses for this method
-    # will most probably require the full list, not a paginated collection
-    self.find(:all, :include => 'timeslots',
-              :conditions => 'begins < now()',
-              :order => 'begins desc').select {|c| !c.timeslots.empty?}
+    self.past(:include => 'timeslots').select {|c| !c.timeslots.empty?}
   end
 
-  # Produce a paginated list of conferences which have already begun
-  # (and have probably finished) for which the person specified as the
-  # first parameter is registered, inversely ordered by their
-  # beginning date (i.e. most recent first)
-  # 
-  # It can take whatever parameters you would send to a
-  # WillPaginate#paginate call.
-  def self.past_for_person(person, req={})
+  # Produce a list of conferences which have already begun (and might
+  # have finished) for which the person specified as the first
+  # parameter is registered, inversely ordered by their beginning date
+  # (i.e. most recent first)
+  def self.past_for_person(person)
     p_id = person.is_a?(Fixnum) ? person : person.id
-    self.paginate(:all,
-                  { :include => :people,
-                    :conditions => ['people.id=? and begins < now()', p_id],
-                    :order => 'begins',
-                    :page => 1}.merge(req))
+    person.conferences.order_by {|c| c.begins}.select {|c| c.past?}
+  end
+
+  # Returns whether this conference's beginning time is still in the
+  # future
+  def upcoming?
+    begins.to_time > Time.now
+  end
+
+  # Returns whether this conference's beginning time is in the past
+  # (and might have finished)
+  def past?
+    begins.to_time < Time.now
   end
 
   # Can people sign up for this conference? This means, are we in the
@@ -84,7 +103,13 @@ class Conference < ActiveRecord::Base
   # yet finished?
   def accepts_registrations?
     (reg_open_date || Date.today) <= Date.today and
-    (reg_close_date || finishes || Date.today) >= Date.today
+    (last_reg_date || Date.today) >= Date.today
+  end
+
+  # What is the last valid date for registration? This will return
+  # reg_close_date if defined, or the conference finish date otherwise
+  def last_reg_date
+    reg_close_date || finishes 
   end
 
   # Does this conference accept registering new proposals? This means,
@@ -94,9 +119,23 @@ class Conference < ActiveRecord::Base
   # conference beginning date as a deadline (i.e. no proposals might
   # be submitted once the conference has started)
   def accepts_proposals?
-    return false if cfp_open_date.nil? and cfp_close_date.nil?
+    return false unless !has_cfp?
     Date.today.between?(cfp_open_date || Date.today,
-                        cfp_close_date || begins || Date.today)
+                        last_cfp_date || Date.today)
+  end
+
+  # Does this conference have a Call For Papers period? (even if it is
+  # not current) 
+  def has_cfp?
+    return false if cfp_open_date.nil? and cfp_close_date.nil?
+    true
+  end
+
+  # What is the last valid date for the Call For Papers period? This
+  # will return cfp_close_date if defined, or the conference beginning
+  # date otherwise
+  def last_cfp_date
+    cfp_close_date || begins
   end
 
   # Is this conference taking place now?

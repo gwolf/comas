@@ -113,7 +113,8 @@ class PeopleController < ApplicationController
 
   # Base data shown when logging in (i.e. account index)
   def account
-    @upcoming = Conference.upcoming(:per_page=>5, :page => params[:page])
+    @upcoming = Conference.upcoming.paginate(:per_page=>5, 
+                                             :page => params[:page])
     @mine = Conference.upcoming_for_person(@user)
   end
 
