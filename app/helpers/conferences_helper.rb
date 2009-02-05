@@ -54,4 +54,25 @@ module ConferencesHelper
     end
   end
 
+  def all_details_for(conf)
+    res = [ RedCloth.new(conf.descr).to_html ]
+    res << ('<h3>%s</h3>' % _('Conference dates')) << 
+      ('<p><b>%s:</b> %s<br/><b>%s: </b> %s</p>' %
+       [_('Begins'), conf.begins, _('Finishes'), conf.finishes])
+
+    res << ('<h3>%s</h3>' % _('Registration period')) <<
+      ('<p><b>%s:</b> %s<br/><b>%s: </b> %s</p>' %
+       [_('Begins'), conf.reg_open_date || _('Open'),
+        _('Finishes'), conf.last_reg_date])
+
+    res << ('<h3>%s</h3>' % _('Call for papers period')) 
+    if conf.has_cfp?
+      res << ('<p><b>%s:</b> %s<br/><b>%s: </b> %s</p>' %
+              [_('Begins'), conf.cfp_open_date || _('Open'),
+               _('Finishes'), conf.last_cfp_date])
+    else
+      res << ('<p>%s</p>' % _('No public call for papers'))
+    end
+    res.join("\n")
+  end
 end

@@ -19,6 +19,15 @@ module ApplicationHelper
          :action => 'logout'})]
   end
 
+  def rss_links
+    return '' unless @rss_links.is_a? Hash
+    @rss_links.keys.map { |source|
+      ( '<link rel="alternate" type="application/rss+xml" ' +
+        'title="%s" href="%s" />' ) % 
+      [@rss_links[source], url_for(:action => 'rss', :id => source)]
+    }.join("\n")
+  end
+
   ######################################################################
   # Icon buttons and similar stuff
   def icon_up

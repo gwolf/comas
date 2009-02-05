@@ -4,6 +4,7 @@ require 'pseudo_gettext'
 
 class ApplicationController < ActionController::Base
   init_gettext 'comas'
+  exempt_from_layout :rxml
 
   # Load the Rails Date Kit helpers
   # (http://www.methods.co.nz/rails_date_kit/rails_date_kit.html)
@@ -32,7 +33,7 @@ class ApplicationController < ActionController::Base
 
     public = {:people => [:login, :logout, :validate, :new, :register, 
                           :request_passwd, :recover, :profile],
-      :conferences => [:index, :list, :show, :proposals],
+      :conferences => [:index, :list, :show, :proposals, :rss],
       :proposals => [:index, :list, :show, :by_author, :get_document]}
 
     ctrl = request.path_parameters['controller'].to_sym

@@ -1,6 +1,12 @@
 class ConferencesController < ApplicationController
-  before_filter :get_conference, :except => [:index, :list]
+  before_filter :get_conference, :except => [:index, :list, :rss]
   helper :proposals
+
+  RssLinks = {'latest' => _('Latest registered conferences'),
+    'upcoming' => _('Upcoming conferences'),
+    'reg_open' => _('Conferences for which registration is open'),
+    'cfp_open' => _('Conferences on which Call For Papers is open')
+  }
 
   def index
     redirect_to :action => :list
@@ -11,6 +17,8 @@ class ConferencesController < ApplicationController
     session[:conf_list_include_past] = true if params[:show_old]
     session[:conf_list_include_past] = false if params[:hide_old]
 
+    @rss_links = RssLinks
+
     per_page = params[:per_page] || 5
     @conferences = if session[:conf_list_include_past]
                      Conference.paginate(:per_page => per_page,
@@ -20,6 +28,28 @@ class ConferencesController < ApplicationController
                      Conference.find(:all, :order => :begins).
                        paginate(:page => params[:page], :per_page => per_page)
                    end
+  end
+
+  def rss
+    conf = []
+    how_many = params[:how_many].to_i 
+    how_many = 10 if how_many == 0
+    @rss_descr = RssLinks[params[:id]]
+
+    case params[:id] 
+    when 'latest'
+      conf = Conference.find(:all,
+                             :order => 'id DESC')
+    when 'upcoming'
+      conf = Conference.upcoming
+    when 'reg_open'
+      conf = Conference.in_reg_period
+    when 'cfp_open'
+      conf = Conference.in_cfp_period
+    else
+      raise NoMethodError, _('No such RSS defined') % params[:id]
+    end
+    @conferences = conf[0..how_many-1]
   end
 
   def show
