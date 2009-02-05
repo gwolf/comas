@@ -25,8 +25,8 @@ class ConferencesController < ApplicationController
                                          :order => :begins,
                                          :page => params[:page])
                    else
-                     Conference.find(:all, :order => :begins).
-                       paginate(:page => params[:page], :per_page => per_page)
+                     Conference.upcoming.paginate(:page => params[:page],
+                                                  :per_page => per_page)
                    end
   end
 
