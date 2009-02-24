@@ -59,6 +59,17 @@ module ApplicationHelper
             :action => 'show', :id => prop)
   end
 
+  def link_to_login_or_new
+    return '' if @user
+    ('<div class="note">%s or %s if you are interested in attending this ' +
+     'conference</div>') %  [ link_to('Please register',
+                                      :controller => '/people', 
+                                      :action => 'new'),
+                              link_to('log in', 
+                                      :controller => '/people', 
+                                      :action => 'login') ]
+  end
+
   ######################################################################
   # Listing tables (alternating background colors)
   def list_row_classes

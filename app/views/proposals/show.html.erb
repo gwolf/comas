@@ -1,3 +1,4 @@
+<%= link_to_login_or_new %>
 <h1><%=h @proposal.title %></h1>
 <% if @can_edit %>
   <p><%= link_to _('Edit'), :action => 'edit', :id => @proposal %></p>
