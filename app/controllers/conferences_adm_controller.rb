@@ -1,7 +1,9 @@
 class ConferencesAdmController < Admin
-  before_filter :get_conference, :except => [:index, :list, :new, :create]
+  before_filter :get_conference, :except => [:index, :list, :new, :create, 
+                                             :mail_attendees]
   Menu = [[_('Registered conferences'), :list],
-          [_('Register a new conference'), :new]]
+          [_('Register a new conference'), :new],
+          [_('Mail attendees'), :mail_attendees]]
 
   def index
     redirect_to :action => 'list'
@@ -100,6 +102,45 @@ class ConferencesAdmController < Admin
                          'deletion - Maybe it was already deleted?') % 
         params[:timeslot_id]
     end
+  end
+
+  ############################################################
+  # Mass-mailing the registered people for a conference
+  def mail_attendees
+    @conferences = Conference.upcoming + Conference.past
+    return true unless request.post?
+
+    if params[:title].nil? or params[:title].empty? or 
+        params[:body].nil? or params[:body].empty?
+      flash[:error] << _('You must specify both email title and body')
+      return false
+    end
+
+    unless conf = Conference.find_by_id(params[:dest_conf_id])
+      flash[:error] << _('Invalid conference specified')
+      return false
+    end
+
+    rcpts = conf.people_for_mailing
+    rcpts.each do |rcpt|
+      begin
+        Notification.deliver_conf_attendees_mail(@user, rcpt, conf,
+                                       params[:title], params[:body])
+      rescue Notification::InvalidEmail
+        flash[:warning] << _('User %s (ID: %s) is registered with an ' +
+                              'invalid email address (%s). Skipping...') %
+          [rcpt.name, rcpt.id, rcpt.email]
+      end
+    end
+
+    if rcpts.empty?
+      flash[:notice] << _('No registered attendees for %s have chosen to '+
+                          'receive mails - Not sending.') % conf.name
+    else
+      flash[:notice] << _('The %d requested mails for "%s" attendees have ' +
+                          'been sent.') % [rcpts.size, conf.name]
+    end
+    redirect_to :action => 'list'
   end
 
   ############################################################

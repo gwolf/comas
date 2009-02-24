@@ -1,0 +1,24 @@
+<%= _('Hi, 
+
+This is an auto-generated mail, sent by the conference administration
+system for %s.') % @conf_name %>
+
+<%= _('You are getting this mail because you stated in your personal
+profile you agreed to receive general information - You can select not
+to receive any more mails by logging in at the following URL, and
+clicking on the "%s" link:') % 'My account' %> 
+
+<%= @login_url %>
+
+<%= _('%s, administrator for the Conference Management System,
+requested the following message to be delivered to registered people
+who chose to receive conference-specific mails:' % @admin_name) %>
+
+=======================================
+<%= @mail_title %>
+---------------------------------------
+<%= @mail_body %>
+=======================================
+
+<%= _('If you want to directly contact %s, the registered mail address
+is %s.') % [@admin_name, @admin_mail] %>
