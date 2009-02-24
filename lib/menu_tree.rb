@@ -57,7 +57,7 @@ class MenuItem
 
   def to_s
     ret = build_link
-    ret << @tree.to_s if @tree
+    ret += @tree.to_s if @tree
 
     ret
   end
