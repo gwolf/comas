@@ -1,0 +1,25 @@
+<h1><%= _('Invite a friend') %></h1>
+
+<p><%= _('If you know somebody who might be interested in joining ' +
+         'any of the conferences you have signed up for, you can use ' +
+         'this form to invite him. <br/>' +
+         'Please note that abusing this feature can lead to disabling' +
+         'your account.') %></p>
+
+<% form_tag do |f| %>
+  <%= form_row(_('Destination E-mail address'), 
+               text_field_tag(:email, '', :size => 60)) %>
+  <%= form_row(_('Conference to invite the destinatary to'),
+               select_tag(:dest_conf_id,
+                          options_from_collection_for_select(@my_confs, 
+                                                             'id', 'name') ),
+               _('Select one of the conferences presented below. Note that' +
+                 'you can only send invitations to conferences you are ' +
+	         'currently registered for.') ) %>
+  <%= form_row(_('Text of your message'), 
+               text_area_tag(:body, '', :size => '60x5'),
+               _('Please note an auto-generated portion with the ' +
+	         'relevant URL (and including your contact information) ' +
+                 'will be added.') ) %>
+  <%= form_row('', submit_tag(_'Send invitation')) %>
+<% end %>

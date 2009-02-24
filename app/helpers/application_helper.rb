@@ -116,6 +116,18 @@ module ApplicationHelper
   end
 
   ############################################################
+  # From rows (for regular layout, whether we use ComasFormBuilder or not)
+  def form_row(title, input, note=nil)
+    res = ['<div class="form-row">',
+           '<span class="comas-form-prompt">%s</span>' % title]
+    res << '<span class="comas-form-note">%s</span>' % note if note
+    res << '<span class="comas-form-input">%s</span>' % input
+    res << '</div>'
+
+    res.join("\n")
+  end
+
+  ############################################################
   # Show a translation-friendly pagination header (similar to WillPaginate's
   # page_entries_info - in fact, derived from it)
   def pagination_header(collection)
@@ -278,19 +290,15 @@ module ApplicationHelper
 
     private
     def with_format(title, body, note=nil)
-      [before_elem(title, note), body, after_elem].join("\n")
-    end
-
-    def before_elem(title, note=nil)
-      ['<div class="form-row">',
-       %Q(<span class="comas-form-prompt">#{_ title}</span>),
-       (note ? %Q(<span class="comas-form-note">#{_ note}</span>) : ''),
-       '<span class="comas-form-input">'
-      ].join("\n")
-    end
-
-    def after_elem
-      '</span></div>'
+      # Ugh... Straight copied from form_row above. How to call
+      # this function from this very same module!?
+      res = ['<div class="form-row">',
+             '<span class="comas-form-prompt">%s</span>' % _(title)]
+      res << '<span class="comas-form-note">%s</span>' % _(note) if note
+      res << '<span class="comas-form-input">%s</span>' % body
+      res << '</div>'
+      
+      res.join("\n")
     end
 
     def info_elem(info)

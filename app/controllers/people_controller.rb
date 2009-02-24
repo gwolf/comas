@@ -169,6 +169,28 @@ class PeopleController < ApplicationController
     end
   end
 
+  # Invite a friend (to a specific conference)
+  def invite
+    @my_confs = @user.upcoming_conferences
+    return true unless request.post?
+
+    begin
+      conf = Conference.find_by_id(params[:dest_conf_id])
+      Notification.deliver_conference_invitation(@user, params[:email], 
+                                                 conf, params[:body])
+
+      flash[:notice] << _('The requested e-mail was successfully sent')
+      redirect_to :action => 'account'
+    rescue ActiveRecord::RecordNotFound
+      flash[:error] << _('Invalid conference requested')
+    rescue Notification::MustSupplyBody
+      flash[:error] << _('You must supply a body for your mail')
+    rescue Notification::InvalidEmail
+      flash[:error] << _('The specified e-mail address (%s) is not valid') %
+        params[:email]
+    end
+  end
+
   ############################################################
   # Internal use...
   protected

@@ -80,7 +80,9 @@ class ApplicationController < ActionController::Base
       @user.can_submit_proposals_now? and
         personal.add(_('My proposals'),
                      url_for(:controller=>'/people', :action => 'proposals')) 
-        
+      @user.conferences.size > 0 and
+        personal.add(_('Invite a friend'),
+                     url_for(:controller=>'/people', :action => 'invite'))
 
       @menu.add(_('My account'),
                 url_for(:controller => '/people', :action => 'account'),
