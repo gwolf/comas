@@ -1,27 +1,28 @@
 class Notification < ActionMailer::Base
   class InvalidEmail < Exception; end
   class MustSupplyBody < Exception; end
+
+  # Welcome mail - Sent to everybody at account creation time
   def welcome(person)
     sys_name = SysConf.value_for('title_text')
     recipients person.name_and_email
     from SysConf.value_for('mail_from')
-    subject _('Welcome! You have successfully registered at %s') % 
-      sys_name
+    subject comas_title(_('Welcome! You have successfully registered at %s') % 
+                        sys_name)
     body :name => person.name, 
          :login => person.login,
          :sys_name => sys_name,
-         :login_url => url_for(:only_path => false,
-                               :controller => 'people',
-                               :action => 'login')
+         :login_url => login_url
   end
 
+  # Password recovery mail
   def request_passwd(person, ip)
     sess = RescueSession.create_for(person)
     sys_name = SysConf.value_for('title_text')
 
     recipients person.name_and_email
     from SysConf.value_for('mail_from')
-    subject _('New password request for %s') % sys_name
+    subject comas_title(_('New password request for %s') % sys_name)
     body :name => person.name,
          :login => person.login,
          :sys_name => sys_name,
@@ -32,11 +33,12 @@ class Notification < ActionMailer::Base
                                :r_session => sess.link)
   end
 
+  # Mail to send when somebody adds a user as a coauthor
   def added_as_coauthor(new_author, proposal, author)
     recipients new_author.name_and_email
     cc author.name_and_email
     from SysConf.value_for('mail_from')
-    subject _("You have been added as a coauthor")
+    subject comas_title(_("You have been added as a coauthor"))
     body :conference_name => proposal.conference.name,
          :orig_author_name => author.name, 
          :new_author_name => new_author.name,
@@ -45,49 +47,84 @@ class Notification < ActionMailer::Base
                                   :controller => 'proposals',
                                   :action => 'show',
                                   :id => proposal),
-         :login_url => url_for(:only_path => false,
-                               :controller => 'people',
-                               :action => 'login')
+         :login_url => login_url
   end
 
+  # Inviting a friend to a conference
   def conference_invitation(sender, dest, conference, invitation_text)
-    dest =~ RFC822::EmailAddress or raise InvalidEmail
-    raise MustSupplyBody if invitation_text.nil? or invitation_text.empty?
+    checks_for_open_mails(dest.email, mail_body)
 
     recipients dest
     from SysConf.value_for('mail_from')
-    subject _('Invitation to %s, sent by %s') % [conference.name, sender.name]
+    subject comas_title(_('Invitation to %s, sent by %s') % 
+                        [conference.name, sender.name])
     body :conference => conference.name,
          :sender_name => sender.name,
          :sender_email => sender.email,
-         :conference_url => url_for(:only_path => false,
-                                    :controller => 'conferences',
-                                    :action => 'show',
-                                    :id => conference),
+         :conference_url => conf_url(conference),
          :invitation_text => invitation_text
   end
 
+  # Arbitrary administrator-generated mail
   def admin_mail(sender, dest, title, mail_body)
-    dest.email =~ RFC822::EmailAddress or raise InvalidEmail
-    raise MustSupplyBody if mail_body.nil? or mail_body.empty?
-
-    cms_title = SysConf.value_for('title_text')
+    checks_for_open_mails(dest.email, mail_body)
 
     recipients dest.name_and_email
-    from cms_mail_from
-    subject '[cms_title] title' % [cms_title, title]
-    body :comas_title => cms_title,
+    from comas_mail_from
+    subject comas_title(title)
+    body(:comas_title => SysConf.value_for('title_text'),
          :mail_title => title,
          :mail_body => mail_body,
          :admin_name => sender.name,
          :admin_mail => sender.email,
-         :login_url => url_for(:only_path => false,
-                                    :controller => 'people',
-                                    :action => 'login')
+         :login_url => login_url)
+  end
+
+  # Mail sent to registered conference membres (who opted in)
+  def conf_attendees_mail(sender, dest, conf, title, mail_body)
+    checks_for_open_mails(dest.email, mail_body)
+
+    recipients dest.name_and_email
+    from comas_mail_from
+    subject comas_title(title)
+    body(:conf_name => conf.name,
+         :conf_url => conf_url(conf),
+         :mail_title => title,
+         :mail_body => mail_body,
+         :admin_name => sender.name,
+         :admin_mail => sender.email)
   end
 
   private
-  def cms_mail_from
+  # Basic sanity checks for mails sent with user-supplied data: Email
+  # address looks sane? Does it have a nonempty body?
+  def checks_for_open_mails(dest, body)
+    raise InvalidEmail unless dest =~ RFC822::EmailAddress
+    raise MustSupplyBody if body.nil? or body.empty?
+  end
+
+  # Generate an URL for the system login
+  def login_url
+    url_for(:only_path => false,
+            :controller => 'people',
+            :action => 'login')
+  end
+
+  # Generate the URL for the specified conference's information page
+  def conf_url(conf)
+    url_for(:only_path => false,
+            :controller => 'conference',
+            :action => 'show',
+            :id => conf)
+  end
+
+  # This Comas' title (including an easily identifiable prefix)
+  def comas_title(title='')
+    '[%s] %s' % [SysConf.value_for('title_text'), title]
+  end
+
+  # Who should system-generated mails be sent as?
+  def comas_mail_from
     '%s <%s>' % [SysConf.value_for('title_text'), 
                  SysConf.value_for('mail_from')]
   end
