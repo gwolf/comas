@@ -1,4 +1,5 @@
 class Notification < ActionMailer::Base
+  class InvalidEmail < Exception; end
   def welcome(person)
     sys_name = SysConf.value_for('title_text')
     recipients person.name_and_email
@@ -46,5 +47,21 @@ class Notification < ActionMailer::Base
          :login_url => url_for(:only_path => false,
                                :controller => 'people',
                                :action => 'login')
+  end
+
+  def conference_invitation(sender, dest, conference, invitation_text)
+    dest =~ RFC822::EmailAddress or raise InvalidEmail
+
+    recipients dest
+    from SysConf.value_for('mail_from')
+    subject _('Invitation to %s, sent by %s') % [conference.name, sender.name]
+    body :conference => conference.name,
+         :sender_name => sender.name,
+         :sender_email => sender.email,
+         :conference_url => url_for(:only_path => false,
+                                    :controller => 'conferences',
+                                    :action => 'show',
+                                    :id => conference),
+         :invitation_text => invitation_text
   end
 end
