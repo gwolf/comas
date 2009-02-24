@@ -7,43 +7,19 @@
          'your account.') %></p>
 
 <% form_tag do |f| %>
-  <div class="form-row">
-    <span class="comas-form-prompt">
-      <%= _('Destination E-mail address') %>
-    </span>
-    <span class="comas-form-input">
-      <%= text_field_tag :email, '', :size => 60 %>
-    </span>
-  </div>
-  <div class="form_row">
-    <span class="comas-form-prompt">
-      <%= _('Conference to invite the destinatary to') %>
-    </span>
-    <span class="comas-form-note">
-      <%= _('Select one of the conferences presented below. Note that' +
-	    'you can only send invitations to conferences you are ' +
-	    'currently registered for.')%>
-    </span>
-    <span class="comas-form-input">
-      <%= select_tag(:dest_conf_id,
-            options_from_collection_for_select(@my_confs, 'id', 'name') ) %>
-    </span>
-  </div>
-  <div class="form-row">
-    <span class="comas-form-prompt">
-      <%= _('Text of your message') %>
-    </span>
-    <span class="comas-form-note">
-      <%= _('Please note an auto-generated portion with the relevant ' +
-	    'URL (and including your contact information) will be added.') %>
-    </span>
-    <span class="comas-form-input">
-      <%= text_area :body, '', :size => '60x5' %>
-    </span>
-  </div>
-  <div class="form-row">
-    <span class="comas-form-input">
-      <%= submit_tag _'Send invitation' %>
-    </span>
-  </div>
+  <%= form_row(_('Destination E-mail address'), 
+               text_field_tag(:email, '', :size => 60)) %>
+  <%= form_row(_('Conference to invite the destinatary to'),
+               select_tag(:dest_conf_id,
+                          options_from_collection_for_select(@my_confs, 
+                                                             'id', 'name') ),
+               _('Select one of the conferences presented below. Note that' +
+                 'you can only send invitations to conferences you are ' +
+	         'currently registered for.') ) %>
+  <%= form_row(_('Text of your message'), 
+               text_area_tag(:body, '', :size => '60x5'),
+               _('Please note an auto-generated portion with the ' +
+	         'relevant URL (and including your contact information) ' +
+                 'will be added.') ) %>
+  <%= form_row('', submit_tag(_'Send invitation')) %>
 <% end %>

@@ -49,13 +49,27 @@ class Person < ActiveRecord::Base
     extra_listable_attributes.select {|a| a.name =~ /^pub_/}
   end
 
+  # List of users which accepted to receive general information mails
+  def self.mailable
+    self.find(:all, :conditions => 'ok_general_mails')
+  end
+
+  # Performs a (paginated) search. If no parameters are specified, it
+  # just returns the first page of a paginated full listing, ordered
+  # by ID. A string can be specified as a firstname - it will be
+  # searched in firstname, famname and login. Any additional
+  # parameters for the search can be specified in the second parameter
+  # (as a hash).
   def self.pag_search(name=nil, params={})
     params.merge!(:conditions=>['firstname ~* ? or famname ~* ? or login ~* ?',
                                 name, name, name]) unless name.nil?
+    params[:order] = 'id' if params[:order].nil?
     params[:page] = 1 if params[:page].nil?
     self.paginate(params)
   end
 
+  # Sets the encrypted password - Regenerates the random salt and
+  # computes a MD5 for the supplied plaintext password.
   def passwd= plain
     # Don't accept empty passwords!
     return nil if plain.blank? or /^\s*$/.match(plain)

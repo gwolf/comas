@@ -2,8 +2,11 @@ class PeopleAdmController < Admin
   before_filter :get_person, :only => [:show, :destroy]
 
   Menu = [[_('Registered people list'), :list],
-          [_('Administrative tasks'), :by_task]]
+          [_('Administrative tasks'), :by_task],
+          [_('Massive mailing'), :mass_mail]]
 
+  ############################################################
+  # Generic CRUD functions for people
   def index
     redirect_to :action => 'list'
   end
@@ -15,10 +18,6 @@ class PeopleAdmController < Admin
     @people = Person.pag_search(@filter_by, 
                                 :order => "people.#{order}",
                                 :page => params[:page])
-  end
-
-  def by_task
-    @tasks = AdminTask.find(:all, :include => :people)
   end
 
   def new
@@ -45,7 +44,7 @@ class PeopleAdmController < Admin
         # case one of the associations fail, the request continues to
         # be carried out (and chicken out only if it is on an
         # unforseen situation)
-        conference_ids = params[:person].delete(:conference_ids)
+        conference_ids = params[:person].delete(:conference_ids) || []
 
         @person.update_attributes(params[:person])
 
@@ -98,6 +97,39 @@ class PeopleAdmController < Admin
       flash[:error] << _('Invocation error')
     end
 
+    redirect_to :action => 'list'
+  end
+
+  ############################################################
+  # List of all people with administrative privileges
+  def by_task
+    @tasks = AdminTask.find(:all, :include => :people)
+  end
+
+  ############################################################
+  # Mass-mailing
+  def mass_mail
+    @recipients = Person.mailable
+    return true unless request.post?
+    if params[:title].nil? or params[:title].empty? or 
+        params[:body].nil? or params[:body].empty?
+      flash[:error] << _('You must specify both email title and body')
+      return false
+    end
+
+    @recipients.each do |rcpt|
+      begin
+        Notification.deliver_admin_mail(@user, rcpt, 
+                                        params[:title], params[:body])
+      rescue Notification::InvalidEmail
+        flash[:warning] << _('User %s (ID: %s) is registered with an ' +
+                              'invalid email address (%s). Skipping...') %
+          [rcpt.name, rcpt.id, rcpt.email]
+      end
+    end
+
+    flash[:notice] << _('The %d requested mails have been sent.') % 
+      @recipients.size
     redirect_to :action => 'list'
   end
 
