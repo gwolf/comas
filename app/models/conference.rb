@@ -149,6 +149,12 @@ class Conference < ActiveRecord::Base
     self.proposals.select {|p| p.people.include? person}
   end
 
+  # List of people who are registered for this conference and who have
+  # accepted the "ok_conf_mails" boolean
+  def people_for_mailing
+    self.people.select {|p| p.ok_conf_mails?}
+  end
+
   private
   # Verify the submitted dates are coherent (i.e. none of the periods
   # we care about finishes before it begins)

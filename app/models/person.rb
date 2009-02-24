@@ -13,7 +13,11 @@ class Person < ActiveRecord::Base
   validates_presence_of :famname
   validates_presence_of :login
   validates_presence_of :passwd
+  validates_presence_of :email
   validates_uniqueness_of :login
+  validates_format_of(:email,
+                      :with => RFC822::EmailAddress,
+                      :message => _('A valid e-mail address is required'))
 
   def self.ck_login(given_login, given_passwd)
     person = Person.find_by_login(given_login)
