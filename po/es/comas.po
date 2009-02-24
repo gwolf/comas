@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2009-02-23 19:56-0600\n"
-"PO-Revision-Date: 2009-02-23 20:05-0600\n"
+"POT-Creation-Date: 2009-02-24 14:23-0600\n"
+"PO-Revision-Date: 2009-02-24 16:35-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: Gunnar Wolf <gwolf@gwolf.org>\n"
 "MIME-Version: 1.0\n"
@@ -65,6 +65,58 @@ msgid "%d bytes"
 msgstr "%d bytes"
 
 #: app/models/person.rb:-
+msgid "conference"
+msgstr "Actividad"
+
+#: app/models/person.rb:-
+msgid "Conference|Name"
+msgstr "Nombre"
+
+#: app/models/person.rb:-
+msgid "Conference|Descr"
+msgstr "Descripción"
+
+#: app/models/person.rb:-
+msgid "Conference|Homepage"
+msgstr "Página de inicio"
+
+#: app/models/person.rb:-
+msgid "Conference|Reg open date"
+msgstr "Fecha de inicio del registro"
+
+#: app/models/person.rb:-
+msgid "Conference|Reg close date"
+msgstr "Fecha de cierre de registro"
+
+#: app/models/person.rb:-
+msgid "Conference|Cfp open date"
+msgstr "Fecha de inicio de la convocatoria de propuestas"
+
+#: app/models/person.rb:-
+msgid "Conference|Cfp close date"
+msgstr "Fecha de cierre de convocatoria de propuesta"
+
+#: app/models/person.rb:-
+msgid "Conference|Begins"
+msgstr "Fecha de inicio"
+
+#: app/models/person.rb:-
+msgid "Conference|Finishes"
+msgstr "Fecha de finalización"
+
+#: app/models/person.rb:-
+msgid "admin task"
+msgstr "rol administrativo"
+
+#: app/models/person.rb:-
+msgid "AdminTask|Name"
+msgstr "Nombre"
+
+#: app/models/person.rb:-
+msgid "AdminTask|Sys name"
+msgstr "Nombre de sistema"
+
+#: app/models/person.rb:-
 msgid "person"
 msgstr "persona"
 
@@ -108,71 +160,19 @@ msgstr "¿Recibir correos de las actividades?"
 msgid "Person|Ok general mails"
 msgstr "¿Recibir correos generales?"
 
-#: app/models/person.rb:-
-msgid "admin task"
-msgstr "rol administrativo"
-
-#: app/models/person.rb:-
-msgid "AdminTask|Name"
-msgstr "Nombre"
-
-#: app/models/person.rb:-
-msgid "AdminTask|Sys name"
-msgstr "Nombre de sistema"
-
-#: app/models/person.rb:-
-msgid "conference"
-msgstr "Actividad"
-
-#: app/models/person.rb:-
-msgid "Conference|Name"
-msgstr "Nombre"
-
-#: app/models/person.rb:-
-msgid "Conference|Descr"
-msgstr "Descripción"
-
-#: app/models/person.rb:-
-msgid "Conference|Homepage"
-msgstr "Página de inicio"
-
-#: app/models/person.rb:-
-msgid "Conference|Reg open date"
-msgstr "Fecha de inicio del registro"
-
-#: app/models/person.rb:-
-msgid "Conference|Reg close date"
-msgstr "Fecha de cierre de registro"
-
-#: app/models/person.rb:-
-msgid "Conference|Cfp open date"
-msgstr "Fecha de inicio de la convocatoria de propuestas"
-
-#: app/models/person.rb:-
-msgid "Conference|Cfp close date"
-msgstr "Fecha de cierre de convocatoria de propuesta"
-
-#: app/models/person.rb:-
-msgid "Conference|Beginning date"
-msgstr "Fecha de inicio del registro"
-
-#: app/models/person.rb:-
-msgid "Conference|Finishing date"
-msgstr "Fecha de finalización"
-
 #: app/models/person.rb:20
 msgid "A valid e-mail address is required"
 msgstr "Una dirección de correo válida es requerida"
 
-#: app/models/person.rb:108
+#: app/models/person.rb:122
 msgid "Registrations for this conference are closed"
 msgstr "El registro para esta actividad está cerrado"
 
-#: app/models/person.rb:126
+#: app/models/person.rb:140
 msgid "Conference %s does not currently accept registrations"
 msgstr "La actividad %s actualmente no acepta registros"
 
-#: app/models/person.rb:133
+#: app/models/person.rb:147
 msgid "Cannot leave %s - This user still has proposals on this conference"
 msgstr "No puede abandonar %s - El usuario tiene aún propuestas para esta actividad"
 
@@ -229,19 +229,19 @@ msgstr "Descripción"
 msgid "SysConf|Value"
 msgstr "Valor"
 
-#: app/models/notification.rb:7
+#: app/models/notification.rb:10
 msgid "Welcome! You have successfully registered at %s"
 msgstr "¡Bienvenido! Su registro para «%s» fue exitoso"
 
-#: app/models/notification.rb:23
+#: app/models/notification.rb:25
 msgid "New password request for %s"
 msgstr "Solicitud de nueva contraseña para %s"
 
-#: app/models/notification.rb:38
+#: app/models/notification.rb:41
 msgid "You have been added as a coauthor"
 msgstr "Ha sido agregado como coautor"
 
-#: app/models/notification.rb:57
+#: app/models/notification.rb:59
 msgid "Invitation to %s, sent by %s"
 msgstr "Invitación para %s, enviada por %s"
 
@@ -270,8 +270,8 @@ msgid "timeslot"
 msgstr "horario"
 
 #: app/models/timeslot.rb:-
-msgid "Timeslot|Tolerance (before session starts)"
-msgstr "Tiempo de tolerancia previa al inicio"
+msgid "Timeslot|Tolerance pre"
+msgstr "Tiempo de tolerancia previo al inicio"
 
 #: app/models/timeslot.rb:-
 msgid "Timeslot|Tolerance post"
@@ -350,14 +350,6 @@ msgid "ConferenceLogo|Conference"
 msgstr "Actividad"
 
 #: app/models/proposal.rb:-
-msgid "prop status"
-msgstr "estado de la propuesta"
-
-#: app/models/proposal.rb:-
-msgid "PropStatus|Name"
-msgstr "Nombre"
-
-#: app/models/proposal.rb:-
 msgid "proposal"
 msgstr "propuesta"
 
@@ -392,6 +384,14 @@ msgstr "Horario"
 #: app/models/proposal.rb:-
 msgid "Proposal|Conference"
 msgstr "Actividad"
+
+#: app/models/proposal.rb:-
+msgid "prop status"
+msgstr "estado de la propuesta"
+
+#: app/models/proposal.rb:-
+msgid "PropStatus|Name"
+msgstr "Nombre"
 
 #: app/models/proposal.rb:36
 msgid "Call for papers period for this conference is not current"
@@ -473,57 +473,83 @@ msgstr "&laquo; Anterior"
 msgid "Next &raquo;"
 msgstr "Siguiente &raquo;"
 
-#: app/controllers/conferences_adm_controller.rb:3
+#: app/controllers/conferences_adm_controller.rb:4
 #: app/views/conferences/list.html.erb:3
 msgid "Registered conferences"
 msgstr "Actividades registradas"
 
-#: app/controllers/conferences_adm_controller.rb:4
+#: app/controllers/conferences_adm_controller.rb:5
 #: app/views/conferences_adm/list.html.erb:3
 msgid "Register a new conference"
 msgstr "Registrar una nueva actividad"
 
-#: app/controllers/conferences_adm_controller.rb:26
+#: app/controllers/conferences_adm_controller.rb:6
+msgid "Mail attendees"
+msgstr "Correo a asistentes"
+
+#: app/controllers/conferences_adm_controller.rb:28
 msgid "New conference successfully registered"
 msgstr "La nueva actividad fue registrada exitosamente"
 
-#: app/controllers/conferences_adm_controller.rb:29
+#: app/controllers/conferences_adm_controller.rb:31
 msgid "Error registering requested conference: "
 msgstr "Error registrando la actividad indicada:"
 
-#: app/controllers/conferences_adm_controller.rb:37
+#: app/controllers/conferences_adm_controller.rb:39
 msgid "Conference data successfully updated"
 msgstr "Los datos de la actividad fueron actualizados exitosamente"
 
-#: app/controllers/conferences_adm_controller.rb:49
+#: app/controllers/conferences_adm_controller.rb:51
 msgid "Successfully removed requested conference"
 msgstr "La actividad especificada fue eliminada exitosamente"
 
-#: app/controllers/conferences_adm_controller.rb:51
+#: app/controllers/conferences_adm_controller.rb:53
 msgid "Error removing requested conference: "
 msgstr "Error eliminando la actividad solicitada:"
 
-#: app/controllers/conferences_adm_controller.rb:55
+#: app/controllers/conferences_adm_controller.rb:57
 #: app/controllers/admin.rb:12
-#: app/controllers/people_adm_controller.rb:98
+#: app/controllers/people_adm_controller.rb:97
 msgid "Invocation error"
 msgstr "Error de invocación"
 
-#: app/controllers/conferences_adm_controller.rb:85
+#: app/controllers/conferences_adm_controller.rb:87
 msgid "The requested timeslot was successfully created"
 msgstr "La sesión especificada fue creada exitosamente"
 
-#: app/controllers/conferences_adm_controller.rb:87
+#: app/controllers/conferences_adm_controller.rb:89
 msgid "Error creating the requested timeslot:<br/> %s"
 msgstr "Error creando la sesión especificada:<br/> %s"
 
-#: app/controllers/conferences_adm_controller.rb:97
+#: app/controllers/conferences_adm_controller.rb:99
 msgid "The requested timeslot was successfully deleted"
 msgstr "La sesión especificada fue eliminada exitosamente"
 
-#: app/controllers/conferences_adm_controller.rb:99
+#: app/controllers/conferences_adm_controller.rb:101
 msgid "Could not find requested timeslot (%d) for deletion - Maybe it was already deleted?"
 msgstr "No fue posible encontrar la sesión especificada (%d) para eliminarla - Posiblemente ya la había eliminado"
+
+#: app/controllers/conferences_adm_controller.rb:115
+#: app/controllers/people_adm_controller.rb:116
+msgid "You must specify both email title and body"
+msgstr "Debe especificar tanto el título como el cuerpo del correo."
+
+#: app/controllers/conferences_adm_controller.rb:120
+msgid "Invalid conference specified"
+msgstr "Especificó una actividad inexistente"
+
+#: app/controllers/conferences_adm_controller.rb:130
+#: app/controllers/people_adm_controller.rb:125
+msgid "User %s (ID: %s) is registered with an invalid email address (%s). Skipping..."
+msgstr "El usuario %s (ID: %s) está registrado con una dirección de correo inválida (%s). Omitiéndolo."
+
+#: app/controllers/conferences_adm_controller.rb:137
+msgid "No registered attendees for %s have chosen to receive mails - Not sending."
+msgstr "No hay asistentes registrados para %s que hayan elegido recibir correos - No enviando."
+
+#: app/controllers/conferences_adm_controller.rb:140
+msgid "The %d requested mails for \"%s\" attendees have been sent."
+msgstr "Los %d correos solicitados para los asistentes de «%s» han sido enviados."
 
 #: app/controllers/proposals_controller.rb:15
 msgid "There are currently no conferences for which you can submit proposals. Please register first."
@@ -677,17 +703,21 @@ msgid "Requested person is not registered"
 msgstr "La persona especificada no está registrada"
 
 #: app/controllers/people_controller.rb:182
+msgid "The requested e-mail was successfully sent"
+msgstr "El correo electrónico fue enviado exitosamente"
+
+#: app/controllers/people_controller.rb:185
 #: app/controllers/conferences_controller.rb:125
 msgid "Invalid conference requested"
 msgstr "Especificó una actividad inexistente"
 
-#: app/controllers/people_controller.rb:184
+#: app/controllers/people_controller.rb:187
+msgid "You must supply a body for your mail"
+msgstr "Debe especificar un cuerpo para el correo"
+
+#: app/controllers/people_controller.rb:189
 msgid "The specified e-mail address (%s) is not valid"
 msgstr "La dirección de correo especificada (%s) no es válida"
-
-#: app/controllers/people_controller.rb:188
-msgid "The requested e-mail was successfully sent"
-msgstr "El correo electrónico fue enviado exitosamente"
 
 #: app/controllers/attendance_adm_controller.rb:2
 msgid "Choose a timeslot"
@@ -751,33 +781,42 @@ msgstr "Lista de asistentes registrados"
 msgid "Administrative tasks"
 msgstr "Tareas administrativas"
 
-#: app/controllers/people_adm_controller.rb:31
+#: app/controllers/people_adm_controller.rb:6
+#: app/views/people_adm/mass_mail.html.erb:1
+msgid "Massive mailing"
+msgstr "Correo masivo"
+
+#: app/controllers/people_adm_controller.rb:30
 msgid "New attendee successfully registered"
 msgstr "El nuevo asistente fue registrado exitosamente"
 
-#: app/controllers/people_adm_controller.rb:34
+#: app/controllers/people_adm_controller.rb:33
 msgid "Error registering requested attendee: "
 msgstr "Error registrando al asistente indicado:"
 
-#: app/controllers/people_adm_controller.rb:77
+#: app/controllers/people_adm_controller.rb:76
 msgid "Removing this administrative task from your own account is not allowed - Restoring."
 msgstr "No está permitido eliminar esta tarea administrativa de su propia cuenta - Reestableciendo."
 
-#: app/controllers/people_adm_controller.rb:82
+#: app/controllers/people_adm_controller.rb:81
 msgid "Person data successfully updated"
 msgstr "Los datos de la persona fueron actualizados exitosamente"
 
-#: app/controllers/people_adm_controller.rb:85
+#: app/controllers/people_adm_controller.rb:84
 msgid "Error recording requested data: %s"
 msgstr "Error registrando los datos especificados: %s"
 
-#: app/controllers/people_adm_controller.rb:92
+#: app/controllers/people_adm_controller.rb:91
 msgid "Successfully removed requested attendee"
 msgstr "El asistente especificado fue eliminado exitosamente"
 
-#: app/controllers/people_adm_controller.rb:94
+#: app/controllers/people_adm_controller.rb:93
 msgid "Error removing requested attendee: "
 msgstr "Error eliminando al asistente solicitado:"
+
+#: app/controllers/people_adm_controller.rb:131
+msgid "The %d requested mails have been sent."
+msgstr "Los %d correos electrónicos fueron enviados exitosamente"
 
 #: app/controllers/sys_conf_adm_controller.rb:10
 msgid "Show configuration"
@@ -995,33 +1034,33 @@ msgstr "Abajo"
 msgid "-"
 msgstr "-"
 
-#: app/helpers/application_helper.rb:113
+#: app/helpers/application_helper.rb:136
 msgid "No items found"
 msgstr "No hay registros que mostrar"
 
-#: app/helpers/application_helper.rb:114
+#: app/helpers/application_helper.rb:137
 msgid "Displaying <b>1</b> item"
 msgstr "Mostrando <b>1</b> registro"
 
-#: app/helpers/application_helper.rb:115
+#: app/helpers/application_helper.rb:138
 msgid "Displaying <b>all %d</b> items"
 msgstr "Mostrando <b>todos los %d</b> registros"
 
-#: app/helpers/application_helper.rb:118
+#: app/helpers/application_helper.rb:141
 msgid "Displaying items <b>%d&nbsp;-&nbsp;%d</b> of <b>%d</b> in total"
 msgstr "Mostrando los registros <b>%d&nbsp;-&nbsp;%d</b> de un total de <b>%d</b>"
 
-#: app/helpers/application_helper.rb:164
+#: app/helpers/application_helper.rb:187
 msgid "Field %s not defined for %s"
 msgstr "El campo %s no está definido para %s"
 
-#: app/helpers/application_helper.rb:199
+#: app/helpers/application_helper.rb:222
 #: app/helpers/sys_conf_adm_helper.rb:19
 #: app/views/sys_conf_adm/edit_table_field.html.erb:41
 msgid "Yes"
 msgstr "Sí"
 
-#: app/helpers/application_helper.rb:199
+#: app/helpers/application_helper.rb:222
 #: app/helpers/sys_conf_adm_helper.rb:19
 #: app/views/sys_conf_adm/edit_table_field.html.erb:42
 msgid "No"
@@ -1179,7 +1218,7 @@ msgstr ""
 
 #: app/helpers/sys_conf_adm_helper.rb:31
 #: app/views/people/proposals.html.erb:27
-#: app/views/proposals/show.html.erb:3
+#: app/views/proposals/show.html.erb:4
 #: app/views/sys_conf_adm/list.html.erb:13
 msgid "Edit"
 msgstr "Editar"
@@ -1187,13 +1226,13 @@ msgstr "Editar"
 #: app/helpers/attendance_adm_helper.rb:18
 #: app/views/attendance_adm/_by_session.html.erb:7
 #: app/views/conferences_adm/timeslots.html.erb:14
-#: app/views/proposals/show.html.erb:10
+#: app/views/proposals/show.html.erb:11
 msgid "Room"
 msgstr "Salón"
 
 #: app/helpers/attendance_adm_helper.rb:18
 #: app/views/conferences_adm/timeslots.html.erb:10
-#: app/views/proposals/show.html.erb:11
+#: app/views/proposals/show.html.erb:12
 msgid "Start time"
 msgstr "Hora de inicio"
 
@@ -1365,6 +1404,39 @@ msgstr "Asistente"
 msgid "Registration time"
 msgstr "Hora de registro"
 
+#: app/views/people_adm/mass_mail.html.erb:3
+#: app/views/conferences_adm/mail_attendees.html.erb:3
+msgid "Be aware that massive mailings can be <b>very</b> unpolite for your audience! <b>Use this feature sparingly</b>."
+msgstr "Tome en cuenta que los correos masivos pueden ser vistos como <b>muy poco</b> adecuados por su audiencia! <b>Utilice esta funcionalidad con mesura</b>."
+
+#: app/views/people_adm/mass_mail.html.erb:6
+msgid "There are %d people who have accepted to receive general mails about our conferences. "
+msgstr "Hay %d personas que han aceptado recibir correos generales para nuestras actividades."
+
+#: app/views/people_adm/mass_mail.html.erb:10
+#: app/views/conferences_adm/mail_attendees.html.erb:12
+#: app/views/people/proposals.html.erb:14
+#: app/views/people/profile.html.erb:10
+#: app/views/proposals/by_author.html.erb:10
+#: app/views/conferences/proposals.html.erb:8
+msgid "Title"
+msgstr "Título"
+
+#: app/views/people_adm/mass_mail.html.erb:11
+#: app/views/conferences_adm/mail_attendees.html.erb:13
+msgid "Mail body"
+msgstr "Cuerpo del correo"
+
+#: app/views/people_adm/mass_mail.html.erb:13
+#: app/views/conferences_adm/mail_attendees.html.erb:15
+msgid "Please enter the body for the mass-mailing you will send. General information regarding this site will be automatically added."
+msgstr "Especifique el cuerpo del envío masivo que desea realizar. La información general respecto a este sitio será agregada automáticamente."
+
+#: app/views/people_adm/mass_mail.html.erb:16
+#: app/views/conferences_adm/mail_attendees.html.erb:18
+msgid "Send mail"
+msgstr "Enviar correo"
+
 #: app/views/people_adm/show.html.erb:1
 msgid "Attendee %d's personal data"
 msgstr "Datos personales del asistente %d"
@@ -1494,6 +1566,51 @@ msgstr ""
 "de ellas, o seleccione «%s» para registrarse.\n"
 "\n"
 
+#: app/views/notification/admin_mail.text.plain.erb:1
+msgid ""
+"Hi, \n"
+"\n"
+"This is an auto-generated mail, sent by the conference administration\n"
+"system for the Conference Management System at %s."
+msgstr ""
+"Hola,\n"
+"\n"
+"Este es un correo auto-generado, enviado por el sistema de administración\n"
+"de actividades para %s."
+
+#: app/views/notification/admin_mail.text.plain.erb:6
+#: app/views/notification/conf_attendees_mail.text.plain.erb:6
+msgid ""
+"You are getting this mail because you stated in your personal\n"
+"profile you agreed to receive general information - You can select not\n"
+"to receive any more mails by logging in at the following URL, and\n"
+"clicking on the \"%s\" link:"
+msgstr ""
+"Usted recibe este correo dado que especificó en su perfil personal\n"
+"el estar de acuerdo con recibir información general - Puede especificar\n"
+"que ya no le enviemos más correos entrando a la siguiente dirección,\n"
+"y seleccionando la liga \"%s\":"
+
+#: app/views/notification/admin_mail.text.plain.erb:13
+msgid ""
+"%s, administrator for the Conference Management System,\n"
+"requested the following message to be delivered to registered people\n"
+"who chose to receive informative mails:"
+msgstr ""
+"%s, administrador del Sistema de Gestión de Actividades,\n"
+"solicitó que el siguiente mensaje se enviara a las personas registradas\n"
+"que indicaron estar interesadas en recibir correos de información:"
+
+#: app/views/notification/admin_mail.text.plain.erb:23
+#: app/views/notification/conference_invitation.text.plain.erb:24
+#: app/views/notification/conf_attendees_mail.text.plain.erb:23
+msgid ""
+"If you want to directly contact %s, the registered mail address\n"
+"is %s."
+msgstr ""
+"En caso de que desee contactar directamente a %s, la dirección\n"
+"de correo que tenemos registrada es %s."
+
 #: app/views/notification/added_as_coauthor.text.plain.erb:1
 msgid ""
 "Hi, %s\n"
@@ -1537,6 +1654,7 @@ msgstr ""
 "\n"
 
 #: app/views/notification/conference_invitation.text.plain.erb:1
+#: app/views/notification/conf_attendees_mail.text.plain.erb:1
 msgid ""
 "Hi, \n"
 "\n"
@@ -1578,13 +1696,24 @@ msgstr ""
 "En caso de estar interesado, puede registrarse creando una\n"
 "cuenta, haciendo click en la liga «%s»."
 
-#: app/views/notification/conference_invitation.text.plain.erb:24
+#: app/views/notification/conf_attendees_mail.text.plain.erb:13
 msgid ""
-"If you want to directly contact %s, the registered mail address\n"
-"is %s."
+"%s, administrator for the Conference Management System,\n"
+"requested the following message to be delivered to registered people\n"
+"who chose to receive conference-specific mails:"
 msgstr ""
-"En caso de que desee contactar directamente a %s, la dirección\n"
-"de correo que tenemos registrada es %s."
+"%s, administrador del Sistema de Gestión de Actividades,\n"
+"solicitó que el siguiente mensaje se enviara a las personas registradas\n"
+"que indicaron estar interesadas en recibir correos específicos a nuestras\n"
+"actividades:"
+
+#: app/views/conferences_adm/mail_attendees.html.erb:1
+msgid "Mail a conference's registered attendees"
+msgstr "Enviar correo a los asistentes registrados de una actividad"
+
+#: app/views/conferences_adm/mail_attendees.html.erb:7
+msgid "Choose which conference's attendees to mail"
+msgstr "Elija a los asistentes de cuál actividad enviar el correo"
 
 #: app/views/conferences_adm/people_list.html.erb:1
 msgid "People registered for <em>%s</em>"
@@ -1690,27 +1819,27 @@ msgstr "Solicitar una nueva contraseña"
 msgid "If you know somebody who might be interested in joining any of the conferences you have signed up for, you can use this form to invite him. <br/>Please note that abusing this feature can lead to disablingyour account."
 msgstr "Si conoce a alguien que pueda estar interesado en unirse a alguna de las actividades para las cuales usted se ha registrado, puede utilizar este formato para invitarlo.<br/> Tome en cuenta que el abuso de esta funcionalidad puede llevar a la suspensión de su cuenta."
 
-#: app/views/people/invite.html.erb:12
+#: app/views/people/invite.html.erb:10
 msgid "Destination E-mail address"
 msgstr "Dirección de correo destino"
 
-#: app/views/people/invite.html.erb:20
+#: app/views/people/invite.html.erb:12
 msgid "Conference to invite the destinatary to"
 msgstr "Actividad a la cual invitar al destinatario"
 
-#: app/views/people/invite.html.erb:23
+#: app/views/people/invite.html.erb:16
 msgid "Select one of the conferences presented below. Note thatyou can only send invitations to conferences you are currently registered for."
 msgstr "Seleccione una de las actividades presentadas a continuación. Tome en cuenta que sólo puede enviar invitaciones para aquellas actividades para las cuales usted está registrado."
 
-#: app/views/people/invite.html.erb:34
+#: app/views/people/invite.html.erb:19
 msgid "Text of your message"
 msgstr "Texto de su mensaje"
 
-#: app/views/people/invite.html.erb:37
+#: app/views/people/invite.html.erb:21
 msgid "Please note an auto-generated portion with the relevant URL (and including your contact information) will be added."
 msgstr "Recuerde que un texto auto-generado, incluyendo la dirección Web de esta actividad (e incluyendo su información personal de contacto) será agregada."
 
-#: app/views/people/invite.html.erb:46
+#: app/views/people/invite.html.erb:24
 msgid "Send invitation"
 msgstr "Enviar invitación"
 
@@ -1727,22 +1856,15 @@ msgstr "Aún no ha enviado ninguna ponencia"
 msgid "Showing the %d proposals you have submitted"
 msgstr "Mostrando las %d ponencias en las que usted participa"
 
-#: app/views/people/proposals.html.erb:14
-#: app/views/people/profile.html.erb:10
-#: app/views/proposals/by_author.html.erb:10
-#: app/views/conferences/proposals.html.erb:7
-msgid "Title"
-msgstr "Título"
-
 #: app/views/people/proposals.html.erb:16
 #: app/views/proposals/by_author.html.erb:12
-#: app/views/proposals/show.html.erb:7
-#: app/views/conferences/proposals.html.erb:9
+#: app/views/proposals/show.html.erb:8
+#: app/views/conferences/proposals.html.erb:10
 msgid "Proposal type"
 msgstr "Tipo de propuesta"
 
 #: app/views/people/proposals.html.erb:29
-#: app/views/proposals/show.html.erb:16
+#: app/views/proposals/show.html.erb:17
 msgid "Manage authors"
 msgstr "Manejo de autores"
 
@@ -1849,7 +1971,7 @@ msgid "%d proposals have been submitted by %s"
 msgstr "%d ponencias han sido enviadas por%s"
 
 #: app/views/proposals/by_author.html.erb:13
-#: app/views/conferences/proposals.html.erb:10
+#: app/views/conferences/proposals.html.erb:11
 msgid "Proposal status"
 msgstr "Estado de la propuesta"
 
@@ -1861,40 +1983,40 @@ msgstr "Para enviar una propuesta para una actividad que no aparezca listada a c
 msgid "register as an attendee"
 msgstr "regístrese como asistente"
 
-#: app/views/proposals/show.html.erb:6
+#: app/views/proposals/show.html.erb:7
 msgid "Submitted for"
 msgstr "Enviada para"
 
-#: app/views/proposals/show.html.erb:8
+#: app/views/proposals/show.html.erb:9
 msgid "Abstract"
 msgstr "Resumen"
 
-#: app/views/proposals/show.html.erb:14
-#: app/views/conferences/proposals.html.erb:8
+#: app/views/proposals/show.html.erb:15
+#: app/views/conferences/proposals.html.erb:9
 msgid "Authors"
 msgstr "Autores"
 
-#: app/views/proposals/show.html.erb:25
+#: app/views/proposals/show.html.erb:26
 msgid "Documents"
 msgstr "Documentos"
 
-#: app/views/proposals/show.html.erb:28
+#: app/views/proposals/show.html.erb:29
 msgid "There are no files for this proposal"
 msgstr "Esta propuesta no tiene archivos registrados"
 
-#: app/views/proposals/show.html.erb:38
+#: app/views/proposals/show.html.erb:39
 msgid "Upload a new document"
 msgstr "Subir un nuevo documento"
 
-#: app/views/proposals/show.html.erb:42
+#: app/views/proposals/show.html.erb:43
 msgid "Choose the file to upload"
 msgstr "Elija el archivo a subir"
 
-#: app/views/proposals/show.html.erb:46
+#: app/views/proposals/show.html.erb:47
 msgid "File description"
 msgstr "Descripción del archivo"
 
-#: app/views/proposals/show.html.erb:52
+#: app/views/proposals/show.html.erb:53
 msgid "Upload"
 msgstr "Subir"
 
@@ -1922,31 +2044,31 @@ msgstr "Confirmar como coautor"
 msgid "go back to your proposal"
 msgstr "volver a la propuesta"
 
-#: app/views/conferences/proposals.html.erb:1
+#: app/views/conferences/proposals.html.erb:2
 msgid "Proposals for %s"
 msgstr "Ponencias para %s"
 
-#: app/views/conferences/show.html.erb:5
+#: app/views/conferences/show.html.erb:4
 msgid "%d registered attendees"
 msgstr "%d asistentes registrados"
 
-#: app/views/conferences/show.html.erb:9
+#: app/views/conferences/show.html.erb:8
 msgid "Edit conference"
 msgstr "Editar la actividad"
 
-#: app/views/conferences/show.html.erb:11
+#: app/views/conferences/show.html.erb:10
 msgid "Edit timeslots"
 msgstr "Editar horarios"
 
-#: app/views/conferences/show.html.erb:23
+#: app/views/conferences/show.html.erb:25
 msgid "%d proposals registered for this conference"
 msgstr "%d ponencias registradas para esta actividad"
 
-#: app/views/conferences/show.html.erb:33
+#: app/views/conferences/show.html.erb:35
 msgid "Submit a proposal for this conference"
 msgstr "Enviar una ponencia para esta actividad"
 
-#: app/views/conferences/show.html.erb:40
+#: app/views/conferences/show.html.erb:42
 msgid "Web site"
 msgstr "Sitio Web"
 
@@ -2142,10 +2264,12 @@ msgstr "Configuración del sistema"
 msgid "Unexpected arguments received: "
 msgstr "Argumentos inesperados recibidos:"
 
+#~ msgid "Conference|Beginning date"
+#~ msgstr "Fecha de inicio del registro"
+#~ msgid "Timeslot|Tolerance (before session starts)"
+#~ msgstr "Tiempo de tolerancia previa al inicio"
 #~ msgid "Person|Random password salt"
 #~ msgstr "Salt aleatorio de la contraseña"
-#~ msgid "Conference|Begins"
-#~ msgstr "Fecha de inicio"
 #~ msgid "Conference|Conference start date"
 #~ msgstr "Fecha de inicio de la actividad"
 #~ msgid "Conference|Conference finish date"

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2009-02-23 19:56-0600\n"
+"POT-Creation-Date: 2009-02-24 14:23-0600\n"
 "PO-Revision-Date: 2008-05-07 18:30-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -68,6 +68,59 @@ msgid "%d bytes"
 msgstr ""
 
 #: app/models/person.rb:-
+msgid "conference"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Conference|Name"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Conference|Descr"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Conference|Homepage"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Conference|Reg open date"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Conference|Reg close date"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Conference|Cfp open date"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Conference|Cfp close date"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Conference|Begins"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Conference|Finishes"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "admin task"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "AdminTask|Name"
+msgstr ""
+
+#: app/models/person.rb:-
+#, fuzzy
+msgid "AdminTask|Sys name"
+msgstr "System configuration"
+
+#: app/models/person.rb:-
 msgid "person"
 msgstr ""
 
@@ -111,72 +164,19 @@ msgstr ""
 msgid "Person|Ok general mails"
 msgstr ""
 
-#: app/models/person.rb:-
-msgid "admin task"
-msgstr ""
-
-#: app/models/person.rb:-
-msgid "AdminTask|Name"
-msgstr ""
-
-#: app/models/person.rb:-
-#, fuzzy
-msgid "AdminTask|Sys name"
-msgstr "System configuration"
-
-#: app/models/person.rb:-
-msgid "conference"
-msgstr ""
-
-#: app/models/person.rb:-
-msgid "Conference|Name"
-msgstr ""
-
-#: app/models/person.rb:-
-msgid "Conference|Descr"
-msgstr ""
-
-#: app/models/person.rb:-
-msgid "Conference|Homepage"
-msgstr ""
-
-#: app/models/person.rb:-
-msgid "Conference|Reg open date"
-msgstr ""
-
-#: app/models/person.rb:-
-msgid "Conference|Reg close date"
-msgstr ""
-
-#: app/models/person.rb:-
-msgid "Conference|Cfp open date"
-msgstr ""
-
-#: app/models/person.rb:-
-msgid "Conference|Cfp close date"
-msgstr ""
-
-#: app/models/person.rb:-
-msgid "Conference|Beginning date"
-msgstr ""
-
-#: app/models/person.rb:-
-msgid "Conference|Finishing date"
-msgstr ""
-
 #: app/models/person.rb:20
 msgid "A valid e-mail address is required"
 msgstr ""
 
-#: app/models/person.rb:108
+#: app/models/person.rb:122
 msgid "Registrations for this conference are closed"
 msgstr ""
 
-#: app/models/person.rb:126
+#: app/models/person.rb:140
 msgid "Conference %s does not currently accept registrations"
 msgstr ""
 
-#: app/models/person.rb:133
+#: app/models/person.rb:147
 msgid "Cannot leave %s - This user still has proposals on this conference"
 msgstr ""
 
@@ -234,19 +234,19 @@ msgstr ""
 msgid "SysConf|Value"
 msgstr ""
 
-#: app/models/notification.rb:7
+#: app/models/notification.rb:10
 msgid "Welcome! You have successfully registered at %s"
 msgstr ""
 
-#: app/models/notification.rb:23
+#: app/models/notification.rb:25
 msgid "New password request for %s"
 msgstr ""
 
-#: app/models/notification.rb:38
+#: app/models/notification.rb:41
 msgid "You have been added as a coauthor"
 msgstr ""
 
-#: app/models/notification.rb:57
+#: app/models/notification.rb:59
 msgid "Invitation to %s, sent by %s"
 msgstr ""
 
@@ -275,7 +275,7 @@ msgid "timeslot"
 msgstr ""
 
 #: app/models/timeslot.rb:-
-msgid "Timeslot|Tolerance (before session starts)"
+msgid "Timeslot|Tolerance pre"
 msgstr ""
 
 #: app/models/timeslot.rb:-
@@ -355,14 +355,6 @@ msgid "ConferenceLogo|Conference"
 msgstr ""
 
 #: app/models/proposal.rb:-
-msgid "prop status"
-msgstr ""
-
-#: app/models/proposal.rb:-
-msgid "PropStatus|Name"
-msgstr ""
-
-#: app/models/proposal.rb:-
 msgid "proposal"
 msgstr ""
 
@@ -396,6 +388,14 @@ msgstr ""
 
 #: app/models/proposal.rb:-
 msgid "Proposal|Conference"
+msgstr ""
+
+#: app/models/proposal.rb:-
+msgid "prop status"
+msgstr ""
+
+#: app/models/proposal.rb:-
+msgid "PropStatus|Name"
 msgstr ""
 
 #: app/models/proposal.rb:36
@@ -474,57 +474,86 @@ msgstr ""
 msgid "Next &raquo;"
 msgstr ""
 
-#: app/controllers/conferences_adm_controller.rb:3
+#: app/controllers/conferences_adm_controller.rb:4
 #: app/views/conferences/list.html.erb:3
 msgid "Registered conferences"
 msgstr ""
 
-#: app/controllers/conferences_adm_controller.rb:4
+#: app/controllers/conferences_adm_controller.rb:5
 #: app/views/conferences_adm/list.html.erb:3
 msgid "Register a new conference"
 msgstr ""
 
-#: app/controllers/conferences_adm_controller.rb:26
+#: app/controllers/conferences_adm_controller.rb:6
+msgid "Mail attendees"
+msgstr ""
+
+#: app/controllers/conferences_adm_controller.rb:28
 msgid "New conference successfully registered"
 msgstr ""
 
-#: app/controllers/conferences_adm_controller.rb:29
+#: app/controllers/conferences_adm_controller.rb:31
 msgid "Error registering requested conference: "
 msgstr ""
 
-#: app/controllers/conferences_adm_controller.rb:37
+#: app/controllers/conferences_adm_controller.rb:39
 msgid "Conference data successfully updated"
 msgstr ""
 
-#: app/controllers/conferences_adm_controller.rb:49
+#: app/controllers/conferences_adm_controller.rb:51
 msgid "Successfully removed requested conference"
 msgstr ""
 
-#: app/controllers/conferences_adm_controller.rb:51
+#: app/controllers/conferences_adm_controller.rb:53
 msgid "Error removing requested conference: "
 msgstr ""
 
-#: app/controllers/conferences_adm_controller.rb:55
-#: app/controllers/admin.rb:12 app/controllers/people_adm_controller.rb:98
+#: app/controllers/conferences_adm_controller.rb:57
+#: app/controllers/admin.rb:12 app/controllers/people_adm_controller.rb:97
 msgid "Invocation error"
 msgstr ""
 
-#: app/controllers/conferences_adm_controller.rb:85
+#: app/controllers/conferences_adm_controller.rb:87
 msgid "The requested timeslot was successfully created"
 msgstr ""
 
-#: app/controllers/conferences_adm_controller.rb:87
+#: app/controllers/conferences_adm_controller.rb:89
 msgid "Error creating the requested timeslot:<br/> %s"
 msgstr ""
 
-#: app/controllers/conferences_adm_controller.rb:97
+#: app/controllers/conferences_adm_controller.rb:99
 msgid "The requested timeslot was successfully deleted"
 msgstr ""
 
-#: app/controllers/conferences_adm_controller.rb:99
+#: app/controllers/conferences_adm_controller.rb:101
 msgid ""
 "Could not find requested timeslot (%d) for deletion - Maybe it was already "
 "deleted?"
+msgstr ""
+
+#: app/controllers/conferences_adm_controller.rb:115
+#: app/controllers/people_adm_controller.rb:116
+msgid "You must specify both email title and body"
+msgstr ""
+
+#: app/controllers/conferences_adm_controller.rb:120
+msgid "Invalid conference specified"
+msgstr ""
+
+#: app/controllers/conferences_adm_controller.rb:130
+#: app/controllers/people_adm_controller.rb:125
+msgid ""
+"User %s (ID: %s) is registered with an invalid email address (%s). "
+"Skipping..."
+msgstr ""
+
+#: app/controllers/conferences_adm_controller.rb:137
+msgid ""
+"No registered attendees for %s have chosen to receive mails - Not sending."
+msgstr ""
+
+#: app/controllers/conferences_adm_controller.rb:140
+msgid "The %d requested mails for \"%s\" attendees have been sent."
 msgstr ""
 
 #: app/controllers/proposals_controller.rb:15
@@ -696,16 +725,20 @@ msgid "Requested person is not registered"
 msgstr ""
 
 #: app/controllers/people_controller.rb:182
+msgid "The requested e-mail was successfully sent"
+msgstr ""
+
+#: app/controllers/people_controller.rb:185
 #: app/controllers/conferences_controller.rb:125
 msgid "Invalid conference requested"
 msgstr ""
 
-#: app/controllers/people_controller.rb:184
-msgid "The specified e-mail address (%s) is not valid"
+#: app/controllers/people_controller.rb:187
+msgid "You must supply a body for your mail"
 msgstr ""
 
-#: app/controllers/people_controller.rb:188
-msgid "The requested e-mail was successfully sent"
+#: app/controllers/people_controller.rb:189
+msgid "The specified e-mail address (%s) is not valid"
 msgstr ""
 
 #: app/controllers/attendance_adm_controller.rb:2
@@ -773,34 +806,43 @@ msgstr ""
 msgid "Administrative tasks"
 msgstr ""
 
-#: app/controllers/people_adm_controller.rb:31
+#: app/controllers/people_adm_controller.rb:6
+#: app/views/people_adm/mass_mail.html.erb:1
+msgid "Massive mailing"
+msgstr ""
+
+#: app/controllers/people_adm_controller.rb:30
 msgid "New attendee successfully registered"
 msgstr ""
 
-#: app/controllers/people_adm_controller.rb:34
+#: app/controllers/people_adm_controller.rb:33
 msgid "Error registering requested attendee: "
 msgstr ""
 
-#: app/controllers/people_adm_controller.rb:77
+#: app/controllers/people_adm_controller.rb:76
 msgid ""
 "Removing this administrative task from your own account is not allowed - "
 "Restoring."
 msgstr ""
 
-#: app/controllers/people_adm_controller.rb:82
+#: app/controllers/people_adm_controller.rb:81
 msgid "Person data successfully updated"
 msgstr ""
 
-#: app/controllers/people_adm_controller.rb:85
+#: app/controllers/people_adm_controller.rb:84
 msgid "Error recording requested data: %s"
 msgstr ""
 
-#: app/controllers/people_adm_controller.rb:92
+#: app/controllers/people_adm_controller.rb:91
 msgid "Successfully removed requested attendee"
 msgstr ""
 
-#: app/controllers/people_adm_controller.rb:94
+#: app/controllers/people_adm_controller.rb:93
 msgid "Error removing requested attendee: "
+msgstr ""
+
+#: app/controllers/people_adm_controller.rb:131
+msgid "The %d requested mails have been sent."
 msgstr ""
 
 #: app/controllers/sys_conf_adm_controller.rb:10
@@ -1026,32 +1068,32 @@ msgstr ""
 msgid "-"
 msgstr ""
 
-#: app/helpers/application_helper.rb:113
+#: app/helpers/application_helper.rb:136
 msgid "No items found"
 msgstr ""
 
-#: app/helpers/application_helper.rb:114
+#: app/helpers/application_helper.rb:137
 msgid "Displaying <b>1</b> item"
 msgstr ""
 
-#: app/helpers/application_helper.rb:115
+#: app/helpers/application_helper.rb:138
 msgid "Displaying <b>all %d</b> items"
 msgstr ""
 
-#: app/helpers/application_helper.rb:118
+#: app/helpers/application_helper.rb:141
 msgid "Displaying items <b>%d&nbsp;-&nbsp;%d</b> of <b>%d</b> in total"
 msgstr ""
 
-#: app/helpers/application_helper.rb:164
+#: app/helpers/application_helper.rb:187
 msgid "Field %s not defined for %s"
 msgstr ""
 
-#: app/helpers/application_helper.rb:199 app/helpers/sys_conf_adm_helper.rb:19
+#: app/helpers/application_helper.rb:222 app/helpers/sys_conf_adm_helper.rb:19
 #: app/views/sys_conf_adm/edit_table_field.html.erb:41
 msgid "Yes"
 msgstr ""
 
-#: app/helpers/application_helper.rb:199 app/helpers/sys_conf_adm_helper.rb:19
+#: app/helpers/application_helper.rb:222 app/helpers/sys_conf_adm_helper.rb:19
 #: app/views/sys_conf_adm/edit_table_field.html.erb:42
 msgid "No"
 msgstr ""
@@ -1202,7 +1244,7 @@ msgid ""
 msgstr ""
 
 #: app/helpers/sys_conf_adm_helper.rb:31
-#: app/views/people/proposals.html.erb:27 app/views/proposals/show.html.erb:3
+#: app/views/people/proposals.html.erb:27 app/views/proposals/show.html.erb:4
 #: app/views/sys_conf_adm/list.html.erb:13
 msgid "Edit"
 msgstr ""
@@ -1210,13 +1252,13 @@ msgstr ""
 #: app/helpers/attendance_adm_helper.rb:18
 #: app/views/attendance_adm/_by_session.html.erb:7
 #: app/views/conferences_adm/timeslots.html.erb:14
-#: app/views/proposals/show.html.erb:10
+#: app/views/proposals/show.html.erb:11
 msgid "Room"
 msgstr ""
 
 #: app/helpers/attendance_adm_helper.rb:18
 #: app/views/conferences_adm/timeslots.html.erb:10
-#: app/views/proposals/show.html.erb:11
+#: app/views/proposals/show.html.erb:12
 msgid "Start time"
 msgstr ""
 
@@ -1395,6 +1437,44 @@ msgstr ""
 msgid "Registration time"
 msgstr ""
 
+#: app/views/people_adm/mass_mail.html.erb:3
+#: app/views/conferences_adm/mail_attendees.html.erb:3
+msgid ""
+"Be aware that massive mailings can be <b>very</b> unpolite for your "
+"audience! <b>Use this feature sparingly</b>."
+msgstr ""
+
+#: app/views/people_adm/mass_mail.html.erb:6
+msgid ""
+"There are %d people who have accepted to receive general mails about our "
+"conferences. "
+msgstr ""
+
+#: app/views/people_adm/mass_mail.html.erb:10
+#: app/views/conferences_adm/mail_attendees.html.erb:12
+#: app/views/people/proposals.html.erb:14 app/views/people/profile.html.erb:10
+#: app/views/proposals/by_author.html.erb:10
+#: app/views/conferences/proposals.html.erb:8
+msgid "Title"
+msgstr ""
+
+#: app/views/people_adm/mass_mail.html.erb:11
+#: app/views/conferences_adm/mail_attendees.html.erb:13
+msgid "Mail body"
+msgstr ""
+
+#: app/views/people_adm/mass_mail.html.erb:13
+#: app/views/conferences_adm/mail_attendees.html.erb:15
+msgid ""
+"Please enter the body for the mass-mailing you will send. General "
+"information regarding this site will be automatically added."
+msgstr ""
+
+#: app/views/people_adm/mass_mail.html.erb:16
+#: app/views/conferences_adm/mail_attendees.html.erb:18
+msgid "Send mail"
+msgstr ""
+
 #: app/views/people_adm/show.html.erb:1
 msgid "Attendee %d's personal data"
 msgstr ""
@@ -1486,6 +1566,38 @@ msgid ""
 "\n"
 msgstr ""
 
+#: app/views/notification/admin_mail.text.plain.erb:1
+msgid ""
+"Hi, \n"
+"\n"
+"This is an auto-generated mail, sent by the conference administration\n"
+"system for the Conference Management System at %s."
+msgstr ""
+
+#: app/views/notification/admin_mail.text.plain.erb:6
+#: app/views/notification/conf_attendees_mail.text.plain.erb:6
+msgid ""
+"You are getting this mail because you stated in your personal\n"
+"profile you agreed to receive general information - You can select not\n"
+"to receive any more mails by logging in at the following URL, and\n"
+"clicking on the \"%s\" link:"
+msgstr ""
+
+#: app/views/notification/admin_mail.text.plain.erb:13
+msgid ""
+"%s, administrator for the Conference Management System,\n"
+"requested the following message to be delivered to registered people\n"
+"who chose to receive informative mails:"
+msgstr ""
+
+#: app/views/notification/admin_mail.text.plain.erb:23
+#: app/views/notification/conference_invitation.text.plain.erb:24
+#: app/views/notification/conf_attendees_mail.text.plain.erb:23
+msgid ""
+"If you want to directly contact %s, the registered mail address\n"
+"is %s."
+msgstr ""
+
 #: app/views/notification/added_as_coauthor.text.plain.erb:1
 msgid ""
 "Hi, %s\n"
@@ -1510,6 +1622,7 @@ msgid ""
 msgstr ""
 
 #: app/views/notification/conference_invitation.text.plain.erb:1
+#: app/views/notification/conf_attendees_mail.text.plain.erb:1
 msgid ""
 "Hi, \n"
 "\n"
@@ -1540,10 +1653,19 @@ msgid ""
 "account, by clicking on the \"%s\" link."
 msgstr ""
 
-#: app/views/notification/conference_invitation.text.plain.erb:24
+#: app/views/notification/conf_attendees_mail.text.plain.erb:13
 msgid ""
-"If you want to directly contact %s, the registered mail address\n"
-"is %s."
+"%s, administrator for the Conference Management System,\n"
+"requested the following message to be delivered to registered people\n"
+"who chose to receive conference-specific mails:"
+msgstr ""
+
+#: app/views/conferences_adm/mail_attendees.html.erb:1
+msgid "Mail a conference's registered attendees"
+msgstr ""
+
+#: app/views/conferences_adm/mail_attendees.html.erb:7
+msgid "Choose which conference's attendees to mail"
 msgstr ""
 
 #: app/views/conferences_adm/people_list.html.erb:1
@@ -1655,31 +1777,31 @@ msgid ""
 ">Please note that abusing this feature can lead to disablingyour account."
 msgstr ""
 
-#: app/views/people/invite.html.erb:12
+#: app/views/people/invite.html.erb:10
 msgid "Destination E-mail address"
 msgstr ""
 
-#: app/views/people/invite.html.erb:20
+#: app/views/people/invite.html.erb:12
 msgid "Conference to invite the destinatary to"
 msgstr ""
 
-#: app/views/people/invite.html.erb:23
+#: app/views/people/invite.html.erb:16
 msgid ""
 "Select one of the conferences presented below. Note thatyou can only send "
 "invitations to conferences you are currently registered for."
 msgstr ""
 
-#: app/views/people/invite.html.erb:34
+#: app/views/people/invite.html.erb:19
 msgid "Text of your message"
 msgstr ""
 
-#: app/views/people/invite.html.erb:37
+#: app/views/people/invite.html.erb:21
 msgid ""
 "Please note an auto-generated portion with the relevant URL (and including "
 "your contact information) will be added."
 msgstr ""
 
-#: app/views/people/invite.html.erb:46
+#: app/views/people/invite.html.erb:24
 msgid "Send invitation"
 msgstr ""
 
@@ -1695,20 +1817,14 @@ msgstr ""
 msgid "Showing the %d proposals you have submitted"
 msgstr ""
 
-#: app/views/people/proposals.html.erb:14 app/views/people/profile.html.erb:10
-#: app/views/proposals/by_author.html.erb:10
-#: app/views/conferences/proposals.html.erb:7
-msgid "Title"
-msgstr ""
-
 #: app/views/people/proposals.html.erb:16
 #: app/views/proposals/by_author.html.erb:12
-#: app/views/proposals/show.html.erb:7
-#: app/views/conferences/proposals.html.erb:9
+#: app/views/proposals/show.html.erb:8
+#: app/views/conferences/proposals.html.erb:10
 msgid "Proposal type"
 msgstr ""
 
-#: app/views/people/proposals.html.erb:29 app/views/proposals/show.html.erb:16
+#: app/views/people/proposals.html.erb:29 app/views/proposals/show.html.erb:17
 msgid "Manage authors"
 msgstr ""
 
@@ -1823,7 +1939,7 @@ msgid "%d proposals have been submitted by %s"
 msgstr ""
 
 #: app/views/proposals/by_author.html.erb:13
-#: app/views/conferences/proposals.html.erb:10
+#: app/views/conferences/proposals.html.erb:11
 msgid "Proposal status"
 msgstr ""
 
@@ -1838,40 +1954,40 @@ msgstr ""
 msgid "register as an attendee"
 msgstr ""
 
-#: app/views/proposals/show.html.erb:6
+#: app/views/proposals/show.html.erb:7
 msgid "Submitted for"
 msgstr ""
 
-#: app/views/proposals/show.html.erb:8
+#: app/views/proposals/show.html.erb:9
 msgid "Abstract"
 msgstr ""
 
-#: app/views/proposals/show.html.erb:14
-#: app/views/conferences/proposals.html.erb:8
+#: app/views/proposals/show.html.erb:15
+#: app/views/conferences/proposals.html.erb:9
 msgid "Authors"
 msgstr ""
 
-#: app/views/proposals/show.html.erb:25
+#: app/views/proposals/show.html.erb:26
 msgid "Documents"
 msgstr ""
 
-#: app/views/proposals/show.html.erb:28
+#: app/views/proposals/show.html.erb:29
 msgid "There are no files for this proposal"
 msgstr ""
 
-#: app/views/proposals/show.html.erb:38
+#: app/views/proposals/show.html.erb:39
 msgid "Upload a new document"
 msgstr ""
 
-#: app/views/proposals/show.html.erb:42
+#: app/views/proposals/show.html.erb:43
 msgid "Choose the file to upload"
 msgstr ""
 
-#: app/views/proposals/show.html.erb:46
+#: app/views/proposals/show.html.erb:47
 msgid "File description"
 msgstr ""
 
-#: app/views/proposals/show.html.erb:52
+#: app/views/proposals/show.html.erb:53
 msgid "Upload"
 msgstr ""
 
@@ -1902,31 +2018,31 @@ msgstr ""
 msgid "go back to your proposal"
 msgstr ""
 
-#: app/views/conferences/proposals.html.erb:1
+#: app/views/conferences/proposals.html.erb:2
 msgid "Proposals for %s"
 msgstr ""
 
-#: app/views/conferences/show.html.erb:5
+#: app/views/conferences/show.html.erb:4
 msgid "%d registered attendees"
 msgstr ""
 
-#: app/views/conferences/show.html.erb:9
+#: app/views/conferences/show.html.erb:8
 msgid "Edit conference"
 msgstr ""
 
-#: app/views/conferences/show.html.erb:11
+#: app/views/conferences/show.html.erb:10
 msgid "Edit timeslots"
 msgstr ""
 
-#: app/views/conferences/show.html.erb:23
+#: app/views/conferences/show.html.erb:25
 msgid "%d proposals registered for this conference"
 msgstr ""
 
-#: app/views/conferences/show.html.erb:33
+#: app/views/conferences/show.html.erb:35
 msgid "Submit a proposal for this conference"
 msgstr ""
 
-#: app/views/conferences/show.html.erb:40
+#: app/views/conferences/show.html.erb:42
 msgid "Web site"
 msgstr ""
 
