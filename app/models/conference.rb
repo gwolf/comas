@@ -9,6 +9,7 @@ class Conference < ActiveRecord::Base
   validates_presence_of :name
   validates_uniqueness_of :name
   validates_presence_of :descr
+  validate :ensure_short_name
   validate :dates_are_correct
   validate :timeslots_during_conference
 
@@ -156,6 +157,38 @@ class Conference < ActiveRecord::Base
   end
 
   private
+  # Ensure the conference has a short name. If none was provided, come
+  # up with one - It is basically a readable-URL-helper, so it can be
+  # derived from the conference name... Although it's better if a
+  # human can properly provide one.
+  def ensure_short_name
+    # Drop any non-alphanumerics - It is meant to be a _rememberable_
+    # and easily inputtable field!
+    self.short_name.gsub! /[^a-zA-Z0-9_+\-]/, ''
+
+    # No short name? Duplicated? Just auto-generate a new one
+    if short_name.nil? or short_name.blank? or 
+        ( other = self.class.find_by_short_name(short_name) and 
+          other.id != self.id )
+      # Try to get the first 10 characters of the conference name - And
+      # keep adding characters if needed (first from the name, then just
+      # '+' signs) if it is not unique.
+      prepared = name.gsub(/\s/, '_').gsub(/[^\w]/,'').downcase
+      cutoff = 10
+      short = prepared[0..cutoff]
+      while self.class.find_by_short_name(short)
+        cutoff += 1
+        short << (prepared[cutoff] || '+')
+      end
+
+      self.short_name = short
+    end
+
+    # This is called as a validation... but corrects instead of
+    # warning. So, our return value should be:
+    true
+  end
+
   # Verify the submitted dates are coherent (i.e. none of the periods
   # we care about finishes before it begins)
   def dates_are_correct

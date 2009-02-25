@@ -22,7 +22,8 @@ module ConferencesHelper
   def conf_list_row(rowclass, conf)
     "<tr class=\"#{rowclass}\">" <<
       [ link_to(conf.name, :controller => 'conferences', 
-                :action => 'show', :id => conf),
+                :action => 'show', 
+                :short_name => conf.short_name),
         "#{conf.begins} - #{conf.finishes}",
         sign_up_person_for_conf_link(@user, conf)
       ].map {|col| "<td>#{col}</td>"}.join <<
