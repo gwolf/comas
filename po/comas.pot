@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2009-02-24 14:23-0600\n"
+"POT-Creation-Date: 2009-03-03 20:03-0600\n"
 "PO-Revision-Date: 2008-05-07 18:30-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,7 +24,7 @@ msgid "Document|Filename"
 msgstr ""
 
 #: app/models/document.rb:-
-msgid "Document|Descr"
+msgid "Document|Description"
 msgstr ""
 
 #: app/models/document.rb:-
@@ -76,7 +76,7 @@ msgid "Conference|Name"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Descr"
+msgid "Conference|Description"
 msgstr ""
 
 #: app/models/person.rb:-
@@ -84,27 +84,31 @@ msgid "Conference|Homepage"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Reg open date"
+msgid "Conference|Registration opening date"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Reg close date"
+msgid "Conference|Registration closing date"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Cfp open date"
+msgid "Conference|Call for Papers opening date"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Cfp close date"
+msgid "Conference|Call for papers closing date"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Begins"
+msgid "Conference|Beginning date"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Finishes"
+msgid "Conference|Finishing date"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Conference|Short name"
 msgstr ""
 
 #: app/models/person.rb:-
@@ -117,7 +121,7 @@ msgstr ""
 
 #: app/models/person.rb:-
 #, fuzzy
-msgid "AdminTask|Sys name"
+msgid "AdminTask|System name"
 msgstr "System configuration"
 
 #: app/models/person.rb:-
@@ -129,15 +133,15 @@ msgid "Person|Login"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|Passwd"
+msgid "Person|Password"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|Firstname"
+msgid "Person|First name"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|Famname"
+msgid "Person|Family name"
 msgstr ""
 
 #: app/models/person.rb:-
@@ -145,7 +149,7 @@ msgid "Person|Email"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|Pw salt"
+msgid "Person|Random password salt"
 msgstr ""
 
 #: app/models/person.rb:-
@@ -157,11 +161,11 @@ msgid "Person|Last login at"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|Ok conf mails"
+msgid "Person|OK to receive conference-specific mails?"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|Ok general mails"
+msgid "Person|OK to receive general information amils?"
 msgstr ""
 
 #: app/models/person.rb:20
@@ -180,39 +184,39 @@ msgstr ""
 msgid "Cannot leave %s - This user still has proposals on this conference"
 msgstr ""
 
-#: app/models/conference.rb:162 app/models/conference.rb:163
+#: app/models/conference.rb:199 app/models/conference.rb:200
 msgid "%{fn} can't be blank"
 msgstr ""
 
-#: app/models/conference.rb:166
+#: app/models/conference.rb:203
 msgid "Conference must end after its start date"
 msgstr ""
 
-#: app/models/conference.rb:169
+#: app/models/conference.rb:206
 msgid "Call for papers must end after its start date"
 msgstr ""
 
-#: app/models/conference.rb:172
+#: app/models/conference.rb:209
 msgid "Call for papers must finish before the conference begins"
 msgstr ""
 
-#: app/models/conference.rb:176
+#: app/models/conference.rb:213
 msgid "Registration must end after its start date"
 msgstr ""
 
-#: app/models/conference.rb:179
+#: app/models/conference.rb:216
 msgid "Registration must finish before the conference ends"
 msgstr ""
 
-#: app/models/conference.rb:190
+#: app/models/conference.rb:227
 msgid "There are %d timeslots for this conference outside its time span: %s"
 msgstr ""
 
-#: app/models/conference.rb:207
+#: app/models/conference.rb:244
 msgid "This conference does not currently accept registrations"
 msgstr ""
 
-#: app/models/conference.rb:213
+#: app/models/conference.rb:250
 msgid ""
 "Cannot remove %s from this conference - Remove or reassign his proposals "
 "first"
@@ -227,7 +231,7 @@ msgid "SysConf|Key"
 msgstr ""
 
 #: app/models/sys_conf.rb:-
-msgid "SysConf|Descr"
+msgid "SysConf|Description"
 msgstr ""
 
 #: app/models/sys_conf.rb:-
@@ -275,11 +279,11 @@ msgid "timeslot"
 msgstr ""
 
 #: app/models/timeslot.rb:-
-msgid "Timeslot|Tolerance pre"
+msgid "Timeslot|Tolerance (before session starts)"
 msgstr ""
 
 #: app/models/timeslot.rb:-
-msgid "Timeslot|Tolerance post"
+msgid "Timeslot|Tolerance (after session starts)"
 msgstr ""
 
 #: app/models/timeslot.rb:-
@@ -338,20 +342,12 @@ msgstr ""
 msgid "Room|Name"
 msgstr ""
 
-#: app/models/conference_logo.rb:-
-msgid "conference logo"
+#: app/models/proposal.rb:-
+msgid "prop status"
 msgstr ""
 
-#: app/models/conference_logo.rb:-
-msgid "ConferenceLogo|Filename"
-msgstr ""
-
-#: app/models/conference_logo.rb:-
-msgid "ConferenceLogo|Data"
-msgstr ""
-
-#: app/models/conference_logo.rb:-
-msgid "ConferenceLogo|Conference"
+#: app/models/proposal.rb:-
+msgid "PropStatus|Name"
 msgstr ""
 
 #: app/models/proposal.rb:-
@@ -375,11 +371,11 @@ msgid "Proposal|Updated at"
 msgstr ""
 
 #: app/models/proposal.rb:-
-msgid "Proposal|Prop type"
+msgid "Proposal|Proposal type"
 msgstr ""
 
 #: app/models/proposal.rb:-
-msgid "Proposal|Prop status"
+msgid "Proposal|Proposal status"
 msgstr ""
 
 #: app/models/proposal.rb:-
@@ -388,14 +384,6 @@ msgstr ""
 
 #: app/models/proposal.rb:-
 msgid "Proposal|Conference"
-msgstr ""
-
-#: app/models/proposal.rb:-
-msgid "prop status"
-msgstr ""
-
-#: app/models/proposal.rb:-
-msgid "PropStatus|Name"
 msgstr ""
 
 #: app/models/proposal.rb:36
@@ -423,136 +411,172 @@ msgstr ""
 msgid "RescueSession|Person"
 msgstr ""
 
-#: app/controllers/application.rb:49
+#: app/models/logo.rb:-
+msgid "logo"
+msgstr ""
+
+#: app/models/logo.rb:-
+msgid "Logo|Conference"
+msgstr ""
+
+#: app/models/logo.rb:-
+msgid "Logo|Data"
+msgstr ""
+
+#: app/models/logo.rb:-
+msgid "Logo|Thumb"
+msgstr ""
+
+#: app/models/logo.rb:-
+msgid "Logo|Medium"
+msgstr ""
+
+#: app/models/logo.rb:-
+msgid "Logo|Width"
+msgstr ""
+
+#: app/models/logo.rb:-
+msgid "Logo|Height"
+msgstr ""
+
+#: app/models/logo.rb:-
+msgid "Logo|Updated at"
+msgstr ""
+
+#: app/controllers/application.rb:50
 msgid "Controller %s must implement check_auth"
 msgstr ""
 
-#: app/controllers/application.rb:66
+#: app/controllers/application.rb:67
 msgid "Conference listing"
 msgstr ""
 
-#: app/controllers/application.rb:70 app/views/people/login.html.erb:6
+#: app/controllers/application.rb:71 app/views/people/login.html.erb:6
 msgid "Log in"
 msgstr ""
 
-#: app/controllers/application.rb:72
+#: app/controllers/application.rb:73
 #: app/views/notification/conference_invitation.text.plain.erb:22
 #: app/views/people/new.html.erb:1
 msgid "New account"
 msgstr ""
 
-#: app/controllers/application.rb:76 app/views/people/personal.html.erb:1
+#: app/controllers/application.rb:77 app/views/people/personal.html.erb:1
 msgid "Personal information"
 msgstr ""
 
-#: app/controllers/application.rb:78 app/views/people/password.html.erb:24
+#: app/controllers/application.rb:79 app/views/people/password.html.erb:24
 msgid "Change password"
 msgstr ""
 
-#: app/controllers/application.rb:81 app/views/people/proposals.html.erb:1
+#: app/controllers/application.rb:82 app/views/people/proposals.html.erb:1
 msgid "My proposals"
 msgstr ""
 
-#: app/controllers/application.rb:84 app/views/people/invite.html.erb:1
+#: app/controllers/application.rb:85 app/views/people/invite.html.erb:1
 msgid "Invite a friend"
 msgstr ""
 
-#: app/controllers/application.rb:87
+#: app/controllers/application.rb:88
 #: app/views/notification/welcome.text.plain.erb:20
 msgid "My account"
 msgstr ""
 
-#: app/controllers/application.rb:101
+#: app/controllers/application.rb:102
 msgid "-*- Unimplemented"
 msgstr ""
 
-#: app/controllers/application.rb:115
+#: app/controllers/application.rb:116
 msgid "&laquo; Previous"
 msgstr ""
 
-#: app/controllers/application.rb:116
+#: app/controllers/application.rb:117
 msgid "Next &raquo;"
 msgstr ""
 
-#: app/controllers/conferences_adm_controller.rb:4
+#: app/controllers/conferences_adm_controller.rb:5
 #: app/views/conferences/list.html.erb:3
 msgid "Registered conferences"
 msgstr ""
 
-#: app/controllers/conferences_adm_controller.rb:5
+#: app/controllers/conferences_adm_controller.rb:6
 #: app/views/conferences_adm/list.html.erb:3
 msgid "Register a new conference"
 msgstr ""
 
-#: app/controllers/conferences_adm_controller.rb:6
+#: app/controllers/conferences_adm_controller.rb:7
 msgid "Mail attendees"
 msgstr ""
 
-#: app/controllers/conferences_adm_controller.rb:28
+#: app/controllers/conferences_adm_controller.rb:29
 msgid "New conference successfully registered"
 msgstr ""
 
-#: app/controllers/conferences_adm_controller.rb:31
+#: app/controllers/conferences_adm_controller.rb:32
 msgid "Error registering requested conference: "
 msgstr ""
 
-#: app/controllers/conferences_adm_controller.rb:39
-msgid "Conference data successfully updated"
+#: app/controllers/conferences_adm_controller.rb:46
+msgid "The uploaded file could not be processed as an image: %s"
 msgstr ""
 
 #: app/controllers/conferences_adm_controller.rb:51
+msgid "Conference data successfully updated"
+msgstr ""
+
+#: app/controllers/conferences_adm_controller.rb:64
 msgid "Successfully removed requested conference"
 msgstr ""
 
-#: app/controllers/conferences_adm_controller.rb:53
+#: app/controllers/conferences_adm_controller.rb:66
 msgid "Error removing requested conference: "
 msgstr ""
 
-#: app/controllers/conferences_adm_controller.rb:57
+#: app/controllers/conferences_adm_controller.rb:70
 #: app/controllers/admin.rb:12 app/controllers/people_adm_controller.rb:97
 msgid "Invocation error"
 msgstr ""
 
-#: app/controllers/conferences_adm_controller.rb:87
+#: app/controllers/conferences_adm_controller.rb:100
 msgid "The requested timeslot was successfully created"
 msgstr ""
 
-#: app/controllers/conferences_adm_controller.rb:89
+#: app/controllers/conferences_adm_controller.rb:102
 msgid "Error creating the requested timeslot:<br/> %s"
 msgstr ""
 
-#: app/controllers/conferences_adm_controller.rb:99
+#: app/controllers/conferences_adm_controller.rb:112
 msgid "The requested timeslot was successfully deleted"
 msgstr ""
 
-#: app/controllers/conferences_adm_controller.rb:101
+#: app/controllers/conferences_adm_controller.rb:114
 msgid ""
 "Could not find requested timeslot (%d) for deletion - Maybe it was already "
 "deleted?"
 msgstr ""
 
-#: app/controllers/conferences_adm_controller.rb:115
+#: app/controllers/conferences_adm_controller.rb:128
 #: app/controllers/people_adm_controller.rb:116
 msgid "You must specify both email title and body"
 msgstr ""
 
-#: app/controllers/conferences_adm_controller.rb:120
+#: app/controllers/conferences_adm_controller.rb:133
 msgid "Invalid conference specified"
 msgstr ""
 
-#: app/controllers/conferences_adm_controller.rb:130
+#: app/controllers/conferences_adm_controller.rb:143
 #: app/controllers/people_adm_controller.rb:125
 msgid ""
 "User %s (ID: %s) is registered with an invalid email address (%s). "
 "Skipping..."
 msgstr ""
 
-#: app/controllers/conferences_adm_controller.rb:137
+#: app/controllers/conferences_adm_controller.rb:150
 msgid ""
 "No registered attendees for %s have chosen to receive mails - Not sending."
 msgstr ""
 
-#: app/controllers/conferences_adm_controller.rb:140
+#: app/controllers/conferences_adm_controller.rb:153
 msgid "The %d requested mails for \"%s\" attendees have been sent."
 msgstr ""
 
@@ -729,7 +753,7 @@ msgid "The requested e-mail was successfully sent"
 msgstr ""
 
 #: app/controllers/people_controller.rb:185
-#: app/controllers/conferences_controller.rb:125
+#: app/controllers/conferences_controller.rb:131
 msgid "Invalid conference requested"
 msgstr ""
 
@@ -1110,55 +1134,71 @@ msgstr ""
 msgid "Dates"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:36
+#: app/helpers/conferences_helper.rb:38
 msgid "Registered"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:37
+#: app/helpers/conferences_helper.rb:39
 msgid "Registration closed"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:41
+#: app/helpers/conferences_helper.rb:43
 msgid "Unregister"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:46
+#: app/helpers/conferences_helper.rb:48
 msgid "Confirm: Do you want to unregister from \"%s\"? "
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:49
+#: app/helpers/conferences_helper.rb:51
 #: app/views/notification/welcome.text.plain.erb:20
 msgid "Sign up"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:59
+#: app/helpers/conferences_helper.rb:61
 msgid "Conference dates"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:61 app/helpers/conferences_helper.rb:65
-#: app/helpers/conferences_helper.rb:71
+#: app/helpers/conferences_helper.rb:63 app/helpers/conferences_helper.rb:67
+#: app/helpers/conferences_helper.rb:73
 msgid "Begins"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:61 app/helpers/conferences_helper.rb:66
-#: app/helpers/conferences_helper.rb:72
+#: app/helpers/conferences_helper.rb:63 app/helpers/conferences_helper.rb:68
+#: app/helpers/conferences_helper.rb:74
 msgid "Finishes"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:63
+#: app/helpers/conferences_helper.rb:65
 msgid "Registration period"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:65 app/helpers/conferences_helper.rb:71
+#: app/helpers/conferences_helper.rb:67 app/helpers/conferences_helper.rb:73
 msgid "Open"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:68
+#: app/helpers/conferences_helper.rb:70
 msgid "Call for papers period"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:74
+#: app/helpers/conferences_helper.rb:76
 msgid "No public call for papers"
+msgstr ""
+
+#: app/helpers/conferences_helper.rb:84
+msgid "%d registered attendees"
+msgstr ""
+
+#: app/helpers/conferences_helper.rb:87
+msgid "Edit conference"
+msgstr ""
+
+#: app/helpers/conferences_helper.rb:89
+msgid "Edit timeslots"
+msgstr ""
+
+#: app/helpers/conferences_helper.rb:111
+msgid "Invalid logo size specified: %s"
 msgstr ""
 
 #: app/helpers/conferences_adm_helper.rb:21
@@ -1698,6 +1738,10 @@ msgstr ""
 msgid "Create timeslot"
 msgstr ""
 
+#: app/views/conferences_adm/_form.html.erb:5
+msgid "Conference|Logo"
+msgstr ""
+
 #: app/views/conferences_adm/show.html.erb:1
 msgid "Edit conference data"
 msgstr ""
@@ -2022,27 +2066,15 @@ msgstr ""
 msgid "Proposals for %s"
 msgstr ""
 
-#: app/views/conferences/show.html.erb:4
-msgid "%d registered attendees"
-msgstr ""
-
-#: app/views/conferences/show.html.erb:8
-msgid "Edit conference"
-msgstr ""
-
-#: app/views/conferences/show.html.erb:10
-msgid "Edit timeslots"
-msgstr ""
-
-#: app/views/conferences/show.html.erb:25
+#: app/views/conferences/show.html.erb:14
 msgid "%d proposals registered for this conference"
 msgstr ""
 
-#: app/views/conferences/show.html.erb:35
+#: app/views/conferences/show.html.erb:24
 msgid "Submit a proposal for this conference"
 msgstr ""
 
-#: app/views/conferences/show.html.erb:42
+#: app/views/conferences/show.html.erb:31
 msgid "Web site"
 msgstr ""
 
