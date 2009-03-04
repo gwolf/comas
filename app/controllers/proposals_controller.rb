@@ -225,8 +225,8 @@ class ProposalsController < ApplicationController
   end
 
   def ck_document
-    unless @document = Document.find_by_id(params[:document_id]) and
-        @document.proposal == @proposal
+    # Ensure the requested document belongs to this proposal
+    unless @document = @proposal.documents.find_by_id(params[:document_id])
       flash[:error] << _('Invalid document requested for this proposal')
       redirect_to :action => 'show', :id => @proposal
       return false

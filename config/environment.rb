@@ -81,8 +81,9 @@ end
 
 # Include your application configuration below
 require 'classinherit'
-require 'strings_with_random'
 require 'pseudo_gettext'
-require 'will_paginate'
 require 'pdf/writer'
 require 'redcloth'
+require 'RMagick'
+require 'strings_with_random'
+require 'will_paginate'

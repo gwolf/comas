@@ -1,25 +1,14 @@
 <% if @user %>
   <div class="note">
-  <% if @can_edit %>
-    <%= link_to(_('%d registered attendees') % @conference.people.size,
-	        :controller => 'conferences_adm', 
-                :action => 'people_list', :id => @conference) %>
-    |
-    <%= link_to(_('Edit conference'), :controller => 'conferences_adm',
-                 :action => :show, :id => @conference) %> |
-    <%= link_to(_('Edit timeslots'),
-	        :controller => 'conferences_adm',
-                :action => 'timeslots', 
-                :id => @conference) %>
-  <br/>
-  <% end %>
-
-  <%= sign_up_person_for_conf_link(@user, @conference) %>
+    <%= conf_edit_links(@conference) %>
+    <%= sign_up_person_for_conf_link(@user, @conference) %>
   </div>
 <% else %>
   <%= link_to_login_or_new %>
 <% end %>
 <h1><%= @conference.name %></h1>
+
+<%= display_logo(@conference) %>
 
 <% if (props=@conference.proposals.size) > 0 %>
   <p><%= link_to(_('%d proposals registered for this conference') %

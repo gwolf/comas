@@ -1,6 +1,11 @@
 <% comas_form_for(:conference, @conference,
-                  :url => {:action => action, :id => @conference}) do |f| %>
-  <% %w(name short_name descr homepage begins finishes reg_open_date
+                  :url => {:action => action, :id => @conference},
+		  :html => { :multipart => true }) do |f| %>
+  <%= %w(name short_name).map { |attr| f.auto_field(attr) } %>
+  <%= form_row(_('Conference|Logo'),
+	       file_field_tag(:data),
+	       logo_thumb_for(@conference)) %>
+  <% %w(descr homepage begins finishes reg_open_date
         reg_close_date cfp_open_date cfp_close_date).each do |attr| %>
     <%= f.auto_field attr %>
   <% end %>

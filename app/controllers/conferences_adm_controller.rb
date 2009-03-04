@@ -1,6 +1,7 @@
 class ConferencesAdmController < Admin
   before_filter :get_conference, :except => [:index, :list, :new, :create, 
                                              :mail_attendees]
+  helper :conferences
   Menu = [[_('Registered conferences'), :list],
           [_('Register a new conference'), :new],
           [_('Mail attendees'), :mail_attendees]]
@@ -35,11 +36,23 @@ class ConferencesAdmController < Admin
   end
 
   def show
-    if request.post? and @conference.update_attributes(params[:conference])
-      flash[:warning] << _('Conference data successfully updated')
-      redirect_to( :controller => 'conferences',
-                   :action => 'show', 
-                   :id => @conference )
+    @conference.transaction do 
+      if request.post? and @conference.update_attributes(params[:conference])
+        if upload = params[:data] and !upload.is_a? String
+          begin
+            img = upload.read
+            logo = Logo.from_blob(img, @conference)
+          rescue Magick::ImageMagickError => err
+            flash[:error] << _('The uploaded file could not be processed ' +
+                               'as an image: %s') % err.message
+            raise ActiveRecord::Rollback
+          end
+        end
+        flash[:warning] << _('Conference data successfully updated')
+        redirect_to( :controller => 'conferences',
+                     :action => 'show', 
+                     :id => @conference )
+      end
     end
   end
 

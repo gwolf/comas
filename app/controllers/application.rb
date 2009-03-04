@@ -34,7 +34,8 @@ class ApplicationController < ActionController::Base
     public = {:people => [:login, :logout, :validate, :new, :register, 
                           :request_passwd, :recover, :profile],
       :conferences => [:index, :list, :show, :proposals, :rss],
-      :proposals => [:index, :list, :show, :by_author, :get_document]}
+      :proposals => [:index, :list, :show, :by_author, :get_document],
+      :logos => [:data, :thumb, :medium]}
 
     ctrl = request.path_parameters['controller'].to_sym
     act = request.path_parameters['action'].to_sym

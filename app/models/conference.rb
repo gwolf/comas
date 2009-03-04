@@ -1,7 +1,7 @@
 class Conference < ActiveRecord::Base
   has_many :timeslots, :dependent => :destroy
   has_many :proposals
-  has_one :conference_logo, :dependent => :destroy
+  has_one :logo, :dependent => :destroy
   has_and_belongs_to_many(:people, 
                           :before_add => :ck_accepts_registrations,
                           :before_remove => :dont_unregiser_if_has_proposals)
@@ -154,6 +154,10 @@ class Conference < ActiveRecord::Base
   # accepted the "ok_conf_mails" boolean
   def people_for_mailing
     self.people.select {|p| p.ok_conf_mails?}
+  end
+
+  def has_logo?
+    Logo.count(:conditions => ['conference_id = ?', self.id]) > 0
   end
 
   private
