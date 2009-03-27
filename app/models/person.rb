@@ -60,12 +60,17 @@ class Person < ActiveRecord::Base
   # searched in firstname, famname and login. Any additional
   # parameters for the search can be specified in the second parameter
   # (as a hash).
-  def self.pag_search(name=nil, params={})
+  def self.search(name=nil, params={})
+    paginated = params.delete :paginate
     params.merge!(:conditions=>['firstname ~* ? or famname ~* ? or login ~* ?',
                                 name, name, name]) unless name.nil?
     params[:order] = 'id' if params[:order].nil?
-    params[:page] = 1 if params[:page].nil?
-    self.paginate(params)
+    if paginated
+      params[:page] = 1 if params[:page].nil?
+      self.paginate(params)
+    else
+      self.find(:all, params)
+    end
   end
 
   # Sets the encrypted password - Regenerates the random salt and

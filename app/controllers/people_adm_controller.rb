@@ -15,9 +15,10 @@ class PeopleAdmController < Admin
     order = sort_for_fields(['id', 'login', 'firstname', 'famname',
                              'last_login_at'])
     @filter_by = params[:filter_by]
-    @people = Person.pag_search(@filter_by, 
-                                :order => "people.#{order}",
-                                :page => params[:page])
+    @people = Person.search(@filter_by, 
+                            :order => "people.#{order}",
+                            :page => params[:page], 
+                            :paginate => true)
   end
 
   def new
