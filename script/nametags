@@ -1,0 +1,170 @@
+#!/usr/bin/env ./script/runner
+# Hey, emacs, this is a -*- Ruby -*- file!
+require 'libglade2'
+require 'singleton'
+
+GLADE_PROJECTS = {
+  :nametags => 
+  { :path => 'lib/nametags/nametags.glade',
+    :name => 'Nametags' },
+  :user_print_dialog =>
+  { :path => 'lib/nametags/user_print_dialog.glade',
+    :name => 'Print user data' }
+}
+
+class NametagApp
+  def initialize
+    app = NametagsGlade.new(GLADE_PROJECTS[:nametags][:path], nil, 
+                            GLADE_PROJECTS[:nametags][:name])
+    app.show
+
+    Gtk.main
+  end
+
+  def init_db
+    status = StatusArea.instance
+    if Person.connection
+      status.set(:ok, 'Todo bien - '+Person.find(:all).rand.name)
+    else
+      status.set(:error, 'Error conectando con la base de datos')
+    end
+  end
+end
+
+class NametagsGlade
+  include GetText
+  attr :glade
+  def initialize(path_or_data, root = nil, domain = nil, 
+                 localedir = nil, flag = GladeXML::FILE)
+    bindtextdomain(domain, localedir, nil, "UTF-8")
+    @glade = GladeXML.new(path_or_data, root, domain, 
+                          localedir, flag) {|handler| method(handler)}
+
+    setup_conferences_list(@glade["conference_combobox"])
+    setup_people_list(@glade["peoplelist_treeview"])
+  end
+
+  def search_for_entry(name)
+    people = Person.search(name)
+  end
+
+  def show
+    @window = @glade['window1']
+    @window.show_all
+    @window.signal_connect("destroy") { Gtk.main_quit }
+  end
+
+  ############################################################
+  # Callbacks
+  def on_name_entry_activate(entry)
+    search_for_entry(entry.text)
+  end
+
+  def on_conference_combobox_changed(combo)
+    # Text: combo.active_iter[0]
+    # ID: combo.active_iter[1]
+    populate_people(@glade['peoplelist_treeview'].model, combo.active_iter[1])    
+  end
+
+  def on_quit_button_clicked(button)
+    Gtk.main_quit
+  end
+
+  def on_refresh_button_clicked(button)
+    populate_people(@glade["peoplelist_treeview"].model,
+                    @glade["conference_combobox"].active_iter[1])
+  end
+
+  private
+  def setup_people_list(treeview)
+    model = Gtk::ListStore.new(Integer, String, String, String)
+    treeview.model = model
+
+    { 0 => 'ID', 1 => 'First name', 
+      2 => 'Family name', 3 => 'Login' }.each do |num, title|
+      col = Gtk::TreeViewColumn.new(title,
+                                    Gtk::CellRendererText.new,
+                                    'text' => num)
+      col.clickable = true
+      col.resizable = true
+      col.sort_column_id = num
+      treeview.append_column(col)
+    end
+
+    populate_people(model)
+  end
+
+  def populate_people(model, conf_id = 0)
+    model.clear
+    status = @glade['statusbar']
+    if conf_id > 0
+      begin
+        conf = Conference.find(conf_id, :include => 'people')
+        @people = conf.people
+      rescue
+        # Any problems? Update the conferences (maybe a conference was
+        # deleted since we were invoked?) listing and return the full people
+        # list.
+        populate_conferences_list(@glade["conference_combobox"].model)
+        populate_people(model)
+        return true
+      end
+    else
+      @people = Person.find(:all)
+    end
+
+    @people.each do |pers|
+      iter = model.append
+      iter[0] = pers.id
+      iter[1] = pers.firstname
+      iter[2] = pers.famname
+      iter[3] = pers.login
+    end
+    status.push(status.get_context_id('populate_people'),
+                "Displaying #{@people.size} people")
+  end
+
+  def setup_conferences_list(combo)
+    model = Gtk::ListStore.new(String, Integer)
+    cell = Gtk::CellRendererText.new()
+    combo.pack_start(cell, true)
+    combo.add_attribute(cell, 'text', 0)
+    combo.set_model(model)
+    populate_conferences_list(model)
+  end
+
+  def populate_conferences_list(model)
+    model.clear # Just in case we are being refreshed
+    model.append # Add and activate an empty line to begin with
+    Conference.find(:all, :order => :name).each do |conf|
+      iter = model.append
+      iter[0] = conf.name
+      iter[1] = conf.id
+    end
+  end
+end
+
+class UserPrintDialogGlade
+  include GetText
+  attr :glade
+  def initialize(path_or_data, root = nil, domain = nil, localedir = nil, flag = GladeXML::FILE)
+    bindtextdomain(domain, localedir, nil, "UTF-8")
+    @glade = GladeXML.new(path_or_data, root, domain, localedir, flag) {|handler| method(handler)}
+  end
+end
+
+class ZebraLabel
+  def initialize
+  end
+
+  def print
+  end
+end
+
+class ZebraPrinter
+  include Singleton
+  def initialize
+  end
+end
+
+NametagApp.new
