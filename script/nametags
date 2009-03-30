@@ -34,6 +34,7 @@ end
 class NametagsGlade
   include GetText
   attr :glade
+
   def initialize(path_or_data, root = nil, domain = nil, 
                  localedir = nil, flag = GladeXML::FILE)
     bindtextdomain(domain, localedir, nil, "UTF-8")
@@ -56,9 +57,6 @@ class NametagsGlade
 
   ############################################################
   # Callbacks
-  def on_name_entry_activate(entry)
-    search_for_entry(entry.text)
-  end
 
   def on_conference_combobox_changed(combo)
     # Text: combo.active_iter[0]
@@ -70,6 +68,16 @@ class NametagsGlade
     Gtk.main_quit
   end
 
+  def on_peoplelist_treeview_row_activated(view, path, column)
+    return unless iter = view.model.get_iter(path)
+    print_label_for(@people[iter[0]])
+  end
+
+  def on_print_button_clicked(button)
+    return unless iter = @glade["peoplelist_treeview"].selection.selected
+    print_label_for(@people[iter[0]])
+  end
+
   def on_refresh_button_clicked(button)
     populate_people(@glade["peoplelist_treeview"].model,
                     @glade["conference_combobox"].active_iter[1])
@@ -77,18 +85,19 @@ class NametagsGlade
 
   private
   def setup_people_list(treeview)
-    model = Gtk::ListStore.new(Integer, String, String, String)
+    model = Gtk::ListStore.new(Integer, String, String, String, Person)
     treeview.model = model
 
-    { 0 => 'ID', 1 => 'First name', 
-      2 => 'Family name', 3 => 'Login' }.each do |num, title|
-      col = Gtk::TreeViewColumn.new(title,
+    colnum = 0
+    ['ID', 'First name', 'Family name', 'Login'].each do |title|
+      col = Gtk::TreeViewColumn.new(title, 
                                     Gtk::CellRendererText.new,
-                                    'text' => num)
+                                    'text' => colnum)
       col.clickable = true
       col.resizable = true
-      col.sort_column_id = num
+      col.sort_column_id = colnum
       treeview.append_column(col)
+      colnum += 1
     end
 
     populate_people(model)
@@ -100,7 +109,7 @@ class NametagsGlade
     if conf_id > 0
       begin
         conf = Conference.find(conf_id, :include => 'people')
-        @people = conf.people
+        people_list_from conf.people
       rescue
         # Any problems? Update the conferences (maybe a conference was
         # deleted since we were invoked?) listing and return the full people
@@ -110,10 +119,10 @@ class NametagsGlade
         return true
       end
     else
-      @people = Person.find(:all)
+      people_list_from Person.find(:all)
     end
 
-    @people.each do |pers|
+    @people.values.each do |pers|
       iter = model.append
       iter[0] = pers.id
       iter[1] = pers.firstname
@@ -122,6 +131,11 @@ class NametagsGlade
     end
     status.push(status.get_context_id('populate_people'),
                 "Displaying #{@people.size} people")
+  end
+
+  def people_list_from(collection)
+    @people = {}
+    collection.each {|pers| @people[pers.id] = pers}
   end
 
   def setup_conferences_list(combo)
@@ -142,28 +156,60 @@ class NametagsGlade
       iter[1] = conf.id
     end
   end
-end
 
-class UserPrintDialogGlade
-  include GetText
-  attr :glade
-  def initialize(path_or_data, root = nil, domain = nil, localedir = nil, flag = GladeXML::FILE)
-    bindtextdomain(domain, localedir, nil, "UTF-8")
-    @glade = GladeXML.new(path_or_data, root, domain, localedir, flag) {|handler| method(handler)}
+  def print_label_for(person)
+    ZebraLabel.new(person).print
   end
 end
 
 class ZebraLabel
-  def initialize
+  LabelDimensions = {:width => 528, :gap => 5, :height => 263,
+    :cutoff_chars => 12}
+
+  def initialize(person)
+    @label = {:id => '%05d' % person.id,
+      :firstname => person.firstname,
+      :famname => person.famname,
+      :email => person.email
+    }
+    @label[:first_width] = font_width_for @label[:firstname]
+    @label[:fam_width] = font_width_for @label[:famname]
+    # PENDING: Adding extra fields to nametag
   end
 
   def print
+    ZebraPrinter.instance.print(build_label)
+  end
+
+  private
+  def build_label
+    l = @label
+    [ 'Q%d,%d' % [ LabelDimensions[:height], 
+                   LabelDimensions[:gap] ],
+      'q%d' % LabelDimensions[:width],
+      'N',
+      'A30,5,0,4,%d,2,N,"%s"' % [ l[:first_width], l[:firstname] ],
+      'A30,55,0,4,%d,2,N,"%s"' % [ l[:fam_width], l[:famname] ],
+      'A30,120,0,3,1,1,N,"%s"' % l[:email],
+      # 'A30,145,0,3,1,1,N,"$person->{org}"',
+      'B480,5,1,1,3,5,70,B,$id',
+      # 'A30,170,0,5,1,1,R,"$person->{pers_type}"',
+      'P',
+      '' # To force a final newline
+    ].join("\n")
+  end
+
+  def font_width_for(label)
+    label.size > LabelDimensions[:cutoff_chars] ? 1 : 2
   end
 end
 
 class ZebraPrinter
   include Singleton
-  def initialize
+  PrinterPort = '/dev/lp0' # Should be customizable...
+
+  def print(data)
+    File.open(PrinterPort, 'w') { |out| out.print(data) }
   end
 end
 
