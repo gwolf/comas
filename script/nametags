@@ -2,32 +2,16 @@
 # Hey, emacs, this is a -*- Ruby -*- file!
 require 'libglade2'
 require 'singleton'
-
-GLADE_PROJECTS = {
-  :nametags => 
-  { :path => 'lib/nametags/nametags.glade',
-    :name => 'Nametags' },
-  :user_print_dialog =>
-  { :path => 'lib/nametags/user_print_dialog.glade',
-    :name => 'Print user data' }
-}
+require 'gettext'
 
 class NametagApp
+  include GetText
   def initialize
-    app = NametagsGlade.new(GLADE_PROJECTS[:nametags][:path], nil, 
-                            GLADE_PROJECTS[:nametags][:name])
+    app = NametagsGlade.new('lib/nametags/nametags.glade', nil, 
+                            _('Comas - Nametags printing'))
     app.show
 
     Gtk.main
-  end
-
-  def init_db
-    status = StatusArea.instance
-    if Person.connection
-      status.set(:ok, 'Todo bien - '+Person.find(:all).rand.name)
-    else
-      status.set(:error, 'Error conectando con la base de datos')
-    end
   end
 end
 
@@ -89,7 +73,7 @@ class NametagsGlade
     treeview.model = model
 
     colnum = 0
-    ['ID', 'First name', 'Family name', 'Login'].each do |title|
+    [_('ID'), _('First name'), _('Family name'), _('Login')].each do |title|
       col = Gtk::TreeViewColumn.new(title, 
                                     Gtk::CellRendererText.new,
                                     'text' => colnum)
@@ -130,7 +114,7 @@ class NametagsGlade
       iter[3] = pers.login
     end
     status.push(status.get_context_id('populate_people'),
-                "Displaying #{@people.size} people")
+                _("Displaying %d people") % @people.size)
   end
 
   def people_list_from(collection)
