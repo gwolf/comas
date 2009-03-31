@@ -23,8 +23,12 @@ begin
     system('script/query_catalogs_for_gettext.rb')
     MY_APP_TEXT_DOMAIN = "comas" 
     MY_APP_VERSION     = "comas 1.0" 
+
+    string_sources = Dir.glob("{app,lib}/**/*.{rb,erb,rhtml,glade}") 
+    string_sources << 'script/nametags' << 'script/create_user' 
+
     GetText.update_pofiles(MY_APP_TEXT_DOMAIN,
-                           Dir.glob("{app,lib}/**/*.{rb,erb,rhtml}"),
+                           string_sources,
                            MY_APP_VERSION)
   end
 rescue LoadError => err

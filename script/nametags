@@ -1,14 +1,14 @@
-#!/usr/bin/env ./script/runner
-# Hey, emacs, this is a -*- Ruby -*- file!
+#!/usr/bin/ruby 
+require File.dirname(__FILE__) + '/../config/boot'
+require 'environment'
+
+require 'gettext'
 require 'libglade2'
 require 'singleton'
-require 'gettext'
 
 class NametagApp
-  include GetText
   def initialize
-    app = NametagsGlade.new('lib/nametags/nametags.glade', nil, 
-                            _('Comas - Nametags printing'))
+    app = NametagsGlade.new('lib/nametags/nametags.glade')
     app.show
 
     Gtk.main
@@ -17,20 +17,18 @@ end
 
 class NametagsGlade
   include GetText
+  bindtextdomain("comas", 'locale')
   attr :glade
 
-  def initialize(path_or_data, root = nil, domain = nil, 
-                 localedir = nil, flag = GladeXML::FILE)
+  def initialize(path_or_data, root = nil, domain = 'comas', 
+                 localedir = 'locale', flag = GladeXML::FILE)
     bindtextdomain(domain, localedir, nil, "UTF-8")
+
     @glade = GladeXML.new(path_or_data, root, domain, 
                           localedir, flag) {|handler| method(handler)}
 
     setup_conferences_list(@glade["conference_combobox"])
     setup_people_list(@glade["peoplelist_treeview"])
-  end
-
-  def search_for_entry(name)
-    people = Person.search(name)
   end
 
   def show
@@ -197,4 +195,6 @@ class ZebraPrinter
   end
 end
 
+ENV['GETTEXT_PATH'] ||= File.join(File.dirname(__FILE__), 'locale')
+Locale.set(ENV['LANG']) if ENV['LANG']
 NametagApp.new

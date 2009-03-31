@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2009-03-03 20:03-0600\n"
+"POT-Creation-Date: 2009-03-30 19:22-0600\n"
 "PO-Revision-Date: 2008-05-07 18:30-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -68,6 +68,63 @@ msgid "%d bytes"
 msgstr ""
 
 #: app/models/person.rb:-
+msgid "person"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Person|Login"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Person|Password"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Person|First name"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Person|Family name"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Person|Email"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Person|Pw salt"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Person|Created at"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Person|Last login at"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Person|Ok conf mails"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Person|OK to receive conference-specific mails?"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "admin task"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "AdminTask|Name"
+msgstr ""
+
+#: app/models/person.rb:-
+#, fuzzy
+msgid "AdminTask|System name"
+msgstr "System configuration"
+
+#: app/models/person.rb:-
 msgid "conference"
 msgstr ""
 
@@ -100,87 +157,30 @@ msgid "Conference|Call for papers closing date"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Beginning date"
+msgid "Conference|Begins"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Finishing date"
+msgid "Conference|Finishes"
 msgstr ""
 
 #: app/models/person.rb:-
 msgid "Conference|Short name"
 msgstr ""
 
-#: app/models/person.rb:-
-msgid "admin task"
-msgstr ""
-
-#: app/models/person.rb:-
-msgid "AdminTask|Name"
-msgstr ""
-
-#: app/models/person.rb:-
-#, fuzzy
-msgid "AdminTask|System name"
-msgstr "System configuration"
-
-#: app/models/person.rb:-
-msgid "person"
-msgstr ""
-
-#: app/models/person.rb:-
-msgid "Person|Login"
-msgstr ""
-
-#: app/models/person.rb:-
-msgid "Person|Password"
-msgstr ""
-
-#: app/models/person.rb:-
-msgid "Person|First name"
-msgstr ""
-
-#: app/models/person.rb:-
-msgid "Person|Family name"
-msgstr ""
-
-#: app/models/person.rb:-
-msgid "Person|Email"
-msgstr ""
-
-#: app/models/person.rb:-
-msgid "Person|Random password salt"
-msgstr ""
-
-#: app/models/person.rb:-
-msgid "Person|Created at"
-msgstr ""
-
-#: app/models/person.rb:-
-msgid "Person|Last login at"
-msgstr ""
-
-#: app/models/person.rb:-
-msgid "Person|OK to receive conference-specific mails?"
-msgstr ""
-
-#: app/models/person.rb:-
-msgid "Person|OK to receive general information amils?"
-msgstr ""
-
 #: app/models/person.rb:20
 msgid "A valid e-mail address is required"
 msgstr ""
 
-#: app/models/person.rb:122
+#: app/models/person.rb:127
 msgid "Registrations for this conference are closed"
 msgstr ""
 
-#: app/models/person.rb:140
+#: app/models/person.rb:145
 msgid "Conference %s does not currently accept registrations"
 msgstr ""
 
-#: app/models/person.rb:147
+#: app/models/person.rb:152
 msgid "Cannot leave %s - This user still has proposals on this conference"
 msgstr ""
 
@@ -279,11 +279,11 @@ msgid "timeslot"
 msgstr ""
 
 #: app/models/timeslot.rb:-
-msgid "Timeslot|Tolerance (before session starts)"
+msgid "Timeslot|Tolerance pre"
 msgstr ""
 
 #: app/models/timeslot.rb:-
-msgid "Timeslot|Tolerance (after session starts)"
+msgid "Timeslot|Tolerance post"
 msgstr ""
 
 #: app/models/timeslot.rb:-
@@ -343,14 +343,6 @@ msgid "Room|Name"
 msgstr ""
 
 #: app/models/proposal.rb:-
-msgid "prop status"
-msgstr ""
-
-#: app/models/proposal.rb:-
-msgid "PropStatus|Name"
-msgstr ""
-
-#: app/models/proposal.rb:-
 msgid "proposal"
 msgstr ""
 
@@ -384,6 +376,14 @@ msgstr ""
 
 #: app/models/proposal.rb:-
 msgid "Proposal|Conference"
+msgstr ""
+
+#: app/models/proposal.rb:-
+msgid "prop status"
+msgstr ""
+
+#: app/models/proposal.rb:-
+msgid "PropStatus|Name"
 msgstr ""
 
 #: app/models/proposal.rb:36
@@ -424,7 +424,7 @@ msgid "Logo|Data"
 msgstr ""
 
 #: app/models/logo.rb:-
-msgid "Logo|Thumb"
+msgid "Logo|Thumbnail"
 msgstr ""
 
 #: app/models/logo.rb:-
@@ -533,7 +533,7 @@ msgid "Error removing requested conference: "
 msgstr ""
 
 #: app/controllers/conferences_adm_controller.rb:70
-#: app/controllers/admin.rb:12 app/controllers/people_adm_controller.rb:97
+#: app/controllers/admin.rb:12 app/controllers/people_adm_controller.rb:98
 msgid "Invocation error"
 msgstr ""
 
@@ -556,7 +556,7 @@ msgid ""
 msgstr ""
 
 #: app/controllers/conferences_adm_controller.rb:128
-#: app/controllers/people_adm_controller.rb:116
+#: app/controllers/people_adm_controller.rb:117
 msgid "You must specify both email title and body"
 msgstr ""
 
@@ -565,7 +565,7 @@ msgid "Invalid conference specified"
 msgstr ""
 
 #: app/controllers/conferences_adm_controller.rb:143
-#: app/controllers/people_adm_controller.rb:125
+#: app/controllers/people_adm_controller.rb:126
 msgid ""
 "User %s (ID: %s) is registered with an invalid email address (%s). "
 "Skipping..."
@@ -835,37 +835,37 @@ msgstr ""
 msgid "Massive mailing"
 msgstr ""
 
-#: app/controllers/people_adm_controller.rb:30
+#: app/controllers/people_adm_controller.rb:31
 msgid "New attendee successfully registered"
 msgstr ""
 
-#: app/controllers/people_adm_controller.rb:33
+#: app/controllers/people_adm_controller.rb:34
 msgid "Error registering requested attendee: "
 msgstr ""
 
-#: app/controllers/people_adm_controller.rb:76
+#: app/controllers/people_adm_controller.rb:77
 msgid ""
 "Removing this administrative task from your own account is not allowed - "
 "Restoring."
 msgstr ""
 
-#: app/controllers/people_adm_controller.rb:81
+#: app/controllers/people_adm_controller.rb:82
 msgid "Person data successfully updated"
 msgstr ""
 
-#: app/controllers/people_adm_controller.rb:84
+#: app/controllers/people_adm_controller.rb:85
 msgid "Error recording requested data: %s"
 msgstr ""
 
-#: app/controllers/people_adm_controller.rb:91
+#: app/controllers/people_adm_controller.rb:92
 msgid "Successfully removed requested attendee"
 msgstr ""
 
-#: app/controllers/people_adm_controller.rb:93
+#: app/controllers/people_adm_controller.rb:94
 msgid "Error removing requested attendee: "
 msgstr ""
 
-#: app/controllers/people_adm_controller.rb:131
+#: app/controllers/people_adm_controller.rb:132
 msgid "The %d requested mails have been sent."
 msgstr ""
 
@@ -1219,24 +1219,24 @@ msgstr ""
 #: app/views/people_adm/_people_for_task.html.erb:3
 #: app/views/conferences_adm/people_list.html.erb:6
 #: app/views/conferences_adm/list.html.erb:7
-#: app/views/sys_conf_adm/show_catalog.html.erb:7
+#: app/views/sys_conf_adm/show_catalog.html.erb:7 script/nametags:74
 msgid "ID"
 msgstr ""
 
 #: app/helpers/people_adm_helper.rb:5
-#: app/views/people_adm/_people_for_task.html.erb:4
+#: app/views/people_adm/_people_for_task.html.erb:4 script/nametags:74
 msgid "Login"
 msgstr ""
 
 #: app/helpers/people_adm_helper.rb:6
 #: app/views/people_adm/_people_for_task.html.erb:5
-#: app/views/conferences_adm/people_list.html.erb:7
+#: app/views/conferences_adm/people_list.html.erb:7 script/nametags:74
 msgid "First name"
 msgstr ""
 
 #: app/helpers/people_adm_helper.rb:7
 #: app/views/people_adm/_people_for_task.html.erb:6
-#: app/views/conferences_adm/people_list.html.erb:8
+#: app/views/conferences_adm/people_list.html.erb:8 script/nametags:74
 msgid "Family name"
 msgstr ""
 
@@ -2293,6 +2293,30 @@ msgstr "System configuration"
 
 #: lib/menu_tree.rb:16
 msgid "Unexpected arguments received: "
+msgstr ""
+
+#: lib/nametags/nametags.glade:6
+msgid "Nametags"
+msgstr ""
+
+#: lib/nametags/nametags.glade:18
+msgid "Filter by conference:"
+msgstr ""
+
+#: lib/nametags/nametags.glade:73
+msgid "gtk-refresh"
+msgstr ""
+
+#: lib/nametags/nametags.glade:84
+msgid "gtk-print"
+msgstr ""
+
+#: lib/nametags/nametags.glade:98
+msgid "gtk-quit"
+msgstr ""
+
+#: script/nametags:115
+msgid "Displaying %d people"
 msgstr ""
 
 #~ msgid "AdminTask|Attendance tracking"
