@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2009-03-30 19:22-0600\n"
-"PO-Revision-Date: 2009-03-30 19:25-0600\n"
+"POT-Creation-Date: 2009-03-30 19:55-0600\n"
+"PO-Revision-Date: 2009-03-30 20:01-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: Gunnar Wolf <gwolf@gwolf.org>\n"
 "MIME-Version: 1.0\n"
@@ -2323,6 +2323,78 @@ msgstr "gtk-quit"
 #: script/nametags:115
 msgid "Displaying %d people"
 msgstr "Mostrando %d personas"
+
+#: script/create_user:18
+msgid "No fields should be left blank - Stopping."
+msgstr "Ningún campo debe ser dejado en blanco - Interrumpiendo."
+
+#: script/create_user:24
+msgid ""
+"This script will create a new user for your Comas system.\n"
+"In order to abort, just answer with a blank line.\n"
+"\n"
+"Note we are running under the -={%s}=- environment"
+msgstr ""
+"Este programa creará un nuevo usuario en su sistema Comas.\n"
+"Para abortar la ejecución, responda con una línea en blanco.\n"
+"\n"
+"Tome en cuenta que la ejecución se está realizando bajo el ambiente -={%s}=-"
+
+#: script/create_user:29
+msgid "Login: "
+msgstr "Nombre de usuario: "
+
+#: script/create_user:30
+msgid "First name: "
+msgstr "Nombre propio: "
+
+#: script/create_user:31
+msgid "Family name: "
+msgstr "Apellidos: "
+
+#: script/create_user:32
+msgid "E-mail: "
+msgstr "Correo electrónico: "
+
+#: script/create_user:33
+msgid "Password (WILL be displayed): "
+msgstr "Contraseña: (SERÁ desplegada) "
+
+#: script/create_user:43
+msgid ""
+"Cannot create requested person:\n"
+"%s"
+msgstr ""
+"No fue posible crear a la persona especificada:\n"
+"%s"
+
+#: script/create_user:48
+msgid "Please select any administrative tasks this person should have."
+msgstr "Por favor seleccione las tareas administrativas que esteusuario deba tener."
+
+#: script/create_user:49
+msgid "Enter just the task IDs (just the numbers), separated by commas."
+msgstr "Introduzca los IDs de tarea (únicamente los números), separados por comas."
+
+#: script/create_user:53
+msgid "Desired tasks for %s: "
+msgstr "Tareas solicitadas para %s: "
+
+#: script/create_user:57
+msgid "Invalid task ID: %s"
+msgstr "Especificó una tarea inválida: %s"
+
+#: script/create_user:62
+msgid "The person was created successfully!"
+msgstr "¡La persona fue creada exitosamente!"
+
+#: script/create_user:72
+msgid "*** No person was added: "
+msgstr "*** No se agregó ninguna persona: "
+
+#: script/create_user:76
+msgid "No work done, no harm done. Goodbye!"
+msgstr "No hicimos nada, ni bueno ni malo. ¡Adios!"
 
 #~ msgid "Person|Random password salt"
 #~ msgstr "Salt aleatorio de la contraseña"

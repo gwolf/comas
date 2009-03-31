@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2009-03-30 19:22-0600\n"
+"POT-Creation-Date: 2009-03-30 19:55-0600\n"
 "PO-Revision-Date: 2008-05-07 18:30-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2317,6 +2317,72 @@ msgstr ""
 
 #: script/nametags:115
 msgid "Displaying %d people"
+msgstr ""
+
+#: script/create_user:18
+msgid "No fields should be left blank - Stopping."
+msgstr ""
+
+#: script/create_user:24
+msgid ""
+"This script will create a new user for your Comas system.\n"
+"In order to abort, just answer with a blank line.\n"
+"\n"
+"Note we are running under the -={%s}=- environment"
+msgstr ""
+
+#: script/create_user:29
+msgid "Login: "
+msgstr ""
+
+#: script/create_user:30
+msgid "First name: "
+msgstr ""
+
+#: script/create_user:31
+msgid "Family name: "
+msgstr ""
+
+#: script/create_user:32
+msgid "E-mail: "
+msgstr ""
+
+#: script/create_user:33
+msgid "Password (WILL be displayed): "
+msgstr ""
+
+#: script/create_user:43
+msgid ""
+"Cannot create requested person:\n"
+"%s"
+msgstr ""
+
+#: script/create_user:48
+msgid "Please select any administrative tasks this person should have."
+msgstr ""
+
+#: script/create_user:49
+msgid "Enter just the task IDs (just the numbers), separated by commas."
+msgstr ""
+
+#: script/create_user:53
+msgid "Desired tasks for %s: "
+msgstr ""
+
+#: script/create_user:57
+msgid "Invalid task ID: %s"
+msgstr ""
+
+#: script/create_user:62
+msgid "The person was created successfully!"
+msgstr ""
+
+#: script/create_user:72
+msgid "*** No person was added: "
+msgstr ""
+
+#: script/create_user:76
+msgid "No work done, no harm done. Goodbye!"
 msgstr ""
 
 #~ msgid "AdminTask|Attendance tracking"
