@@ -16,17 +16,27 @@ class PeopleAdmController < Admin
                                          'famname', 'last_login_at'])
     @filter_by = params[:filter_by]
 
-    if params[:csv_output]
+    if params[:xls_output]
       columns = Person.flattributes_for_list - %w(pw_salt passwd)
-      res = StringIO.new
-      CSV::Writer.generate(res, ',') do |csv|
-        csv << columns
-        Person.search(@filter_by, :order => order).each do |pers|
-          csv << columns.map {|col| pers.send(col) }
-        end
+
+      xls = Spreadsheet::Workbook.new
+      page = xls.create_worksheet
+      page.row(0).concat columns
+      page.row(0).default_format = Spreadsheet::Format.new(:weight => :bold,
+                                                           :color => :blue)
+
+      row = 1
+      Person.search(@filter_by, :order => order).each do |pers|
+        page.row(row).concat( columns.map {|col| pers.send(col) } )
+        row += 1
       end
+
+      res = StringIO.new
+      xls.write(res)
       res.rewind
-      send_data(res.read, :type => 'text/csv', :filename => 'list.csv')
+
+      send_data(res.read, :type => 'application/vnd.ms-excel', 
+                :filename => 'list.xls')
     else
       @people = Person.search(@filter_by, 
                               :order => order,

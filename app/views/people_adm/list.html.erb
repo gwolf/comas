@@ -6,9 +6,9 @@
     <%= submit_tag _'Filter' %>
   <% end %>
 </div>
-<p><%= link_to(_('Download CSV report for this listing'), 
+<p><%= link_to(_('Download this listing'), 
                :sort_by => params[:sort_by], :filter_by => @filter_by,
-               :csv_output => true) %></p>
+               :xls_output => true) %></p>
 <%= pagination_header(@people) %>
 <%= will_paginate @people %>
 <%= start_table %>

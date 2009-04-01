@@ -81,10 +81,10 @@ end
 
 # Include your application configuration below
 require 'classinherit'
-require 'csv'
 require 'pseudo_gettext'
 require 'pdf/writer'
 require 'redcloth'
 require 'RMagick'
+require 'spreadsheet'
 require 'strings_with_random'
 require 'will_paginate'
