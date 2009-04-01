@@ -18,24 +18,14 @@ class PeopleAdmController < Admin
 
     if params[:xls_output]
       columns = Person.flattributes_for_list - %w(pw_salt passwd)
+      xls = SimpleXLS.new
+      xls.add_header(columns)
 
-      xls = Spreadsheet::Workbook.new
-      page = xls.create_worksheet
-      page.row(0).concat columns
-      page.row(0).default_format = Spreadsheet::Format.new(:weight => :bold,
-                                                           :color => :blue)
-
-      row = 1
       Person.search(@filter_by, :order => order).each do |pers|
-        page.row(row).concat( columns.map {|col| pers.send(col) } )
-        row += 1
+        xls.add_row( columns.map {|col| pers.send(col) } )
       end
 
-      res = StringIO.new
-      xls.write(res)
-      res.rewind
-
-      send_data(res.read, :type => 'application/vnd.ms-excel', 
+      send_data(xls.to_s, :type => 'application/vnd.ms-excel', 
                 :filename => 'list.xls')
     else
       @people = Person.search(@filter_by, 
