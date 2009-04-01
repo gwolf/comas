@@ -81,6 +81,7 @@ end
 
 # Include your application configuration below
 require 'classinherit'
+require 'csv'
 require 'pseudo_gettext'
 require 'pdf/writer'
 require 'redcloth'

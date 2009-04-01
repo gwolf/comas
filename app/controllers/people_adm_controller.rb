@@ -12,13 +12,27 @@ class PeopleAdmController < Admin
   end
 
   def list
-    order = sort_for_fields(['id', 'login', 'firstname', 'famname',
-                             'last_login_at'])
+    order = 'people.' + sort_for_fields(['id', 'login', 'firstname', 
+                                         'famname', 'last_login_at'])
     @filter_by = params[:filter_by]
-    @people = Person.search(@filter_by, 
-                            :order => "people.#{order}",
-                            :page => params[:page], 
-                            :paginate => true)
+
+    if params[:csv_output]
+      columns = Person.flattributes_for_list - %w(pw_salt passwd)
+      res = StringIO.new
+      CSV::Writer.generate(res, ',') do |csv|
+        csv << columns
+        Person.search(@filter_by, :order => order).each do |pers|
+          csv << columns.map {|col| pers.send(col) }
+        end
+      end
+      res.rewind
+      send_data(res.read, :type => 'text/csv', :filename => 'list.csv')
+    else
+      @people = Person.search(@filter_by, 
+                              :order => order,
+                              :page => params[:page],
+                              :paginate => true)
+    end
   end
 
   def new
