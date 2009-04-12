@@ -1,0 +1,65 @@
+<h1><%= _('Editing certificate format <em>%s</em>') % @format.name %></h1>
+
+<h3><%= _('General format information') %></h3>
+
+<%= render :partial => 'certif_format_data', 
+           :locals => {:format => @format, :label => 'Modify format'} %>
+
+<%= start_table %>
+  <%= table_head_row %>
+    <th><%= _('Horiz') %></th>
+    <th><%= _('Vert') %></th>
+    <th><%= _('Max width') %></th>
+    <th><%= _('Content source') %></th>
+    <th><%= _('Content') %></th>
+    <th><%= _('Font size') %></th>
+    <th><%= _('Align') %></th>
+    <th></th>
+  <%= end_table_row %>
+  <% @format.certif_format_lines.each do |line| %>
+    <%= table_row %>
+      <td><%= line.y_pos %></td>
+      <td><%= line.x_pos %></td>
+      <td><%= line.max_width %></td>
+      <td><%= CertifFormatLine::ContentSources[line.content_source] %></td>
+      <td><%= line.content %></td>
+      <td><%= line.font_size %></td>
+      <td><%= line.justification %></td>
+      <td><%= link_to(_('Delete'), 
+                      {:action => 'delete_certif_format_line', 
+			:id => @format, :line_id => line},
+		      {:confirm => _('Are you sure you want to delete ' +
+                      'this line?'),
+		      :method => :post})%></td>
+    <%= end_table_row %>
+  <% end %>
+  <%= table_row %>
+    <% form_for :certif_format_line, @new_line, 
+                :url => {:action => 'add_certif_format_line', 
+                         :id => @format} do |f| %>
+      <td><%= f.text_field :y_pos, :size => 3%></td>
+      <td><%= f.text_field :x_pos, :size => 3 %></td>
+      <td><%= f.text_field :max_width, :size => 3 %></td>
+      <td><%= f.select :content_source, 
+                 CertifFormatLine::ContentSources.map {|k,v| [v,k]} %></td>
+      <td><%= f.text_field :content, :size => 20 %></td>
+      <td><%= f.text_field :font_size, :size => 2 %></td>
+      <td><%= f.select :justification, CertifFormatLine::Justifications %></td>
+      <td><%= f.submit _('Add line') %></td>
+      
+    <% end %>
+  <%= end_table_row %>
+<%= end_table %>
+
+<h3><%= _('Test format') %></h3>
+<p><%= _('A sample of this format will be generated for your user, on' +
+	  'the conference you choose.') %></p>
+<% form_for(:format_line, @format, 
+            :url => {:action => 'gen_sample_certif',
+	             :format_id => @format.id}) do |f| %>
+  <%= select_tag :conference_id, 
+                 options_for_select(@conferences.map {|c| [c.name,
+c.id]}) %>
+  <%= f.submit _'Generate test certificate' %>
+<% end %>
+

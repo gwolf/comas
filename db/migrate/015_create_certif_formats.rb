@@ -5,7 +5,7 @@ class CreateCertifFormats < ActiveRecord::Migration
       # specified (hard-coded) in model
       t.column :name, :string, :null => false
       t.column :paper_size, :string, :null => false
-      t.column :orientation, :boolean, :default => false
+      t.column :orientation, :string, :null => false
     end
 
     create_table :certif_format_lines do |t|
@@ -16,13 +16,17 @@ class CreateCertifFormats < ActiveRecord::Migration
       t.column :x_pos, :integer, :null => false
       t.column :y_pos, :integer, :null => false
       t.column :max_width, :integer, :null => false
-      t.column :font_size, :integer, :null => false
+      t.column :font_size, :integer
       t.column :justification, :string, :null => false
     end
     add_reference(:certif_format_lines, :certif_formats, :null => false)
+
+    AdminTask.new(:name => 'Certificates generation',
+                  :sys_name => 'certif_gen').save!
   end
 
   def self.down
+    AdminTask.find_by_sys_name('certif_gen').destroy
     drop_table :certif_format_lines
     drop_table :certif_formats
   end

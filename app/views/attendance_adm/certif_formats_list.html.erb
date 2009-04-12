@@ -1,0 +1,22 @@
+<h1><%= _('Available certificate formats') %></h1>
+
+<%= pagination_header @formats %>
+<%= will_paginate @formats %>
+<%= start_table %>
+  <%= table_head_row %>
+    <th><%= _('ID') %></th>
+    <th><%= _('Name') %></th>
+    <th><%= _('Paper size') %></th>
+    <th><%= _('Format lines') %></th>
+  <%= end_table_row %>
+  <% @formats.each do |format| %>
+    <%= table_row %>
+      <td><%= link_to format.id, :action => 'certif_format', 
+                      :id => format.id %></td>
+      <td><%= link_to format.name, :action => 'certif_format',
+                      :id => format.id %></td>
+      <td><%= format.paper_size %> <%= format.orientation %></td>
+      <td><%= format.certif_format_lines.size %></td>
+    <%= end_table_row %>
+  <% end %>
+<%= end_table %>

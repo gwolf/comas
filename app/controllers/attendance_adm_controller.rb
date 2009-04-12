@@ -1,14 +1,21 @@
 class AttendanceAdmController < Admin
+  class NotForUs < Exception; end
   Menu = [[_('Choose a timeslot'), :choose_session],
           [_('Take attendance'), :take],
-          [_('Attendance lists'), :list]]
+          [_('Attendance lists'), :list],
+          [_('Certificate formats'), :certif_formats_list]]
 
   before_filter :get_person, :only => [:take, :for_person, 
                                        :certificate_for_person]
   before_filter :get_conference, :only => [:list, :for_person,
                                            :certificates_by_attendances,
                                            :certificate_for_person,
-                                           :att_by_tslot ]
+                                           :att_by_tslot,
+                                           :gen_sample_certif ]
+  before_filter :get_format, :only => [:certif_format,
+                                       :add_certif_format_line,
+                                       :delete_certif_format_line,
+                                       :gen_sample_certif]
 
   def choose_session
     options = {:per_page => 10,
@@ -87,34 +94,82 @@ class AttendanceAdmController < Admin
     people = totals.keys.map {|num| next if num < min; totals[num]}.
       select {|p| p}.flatten
 
-    send_data(certificate_pdf_for(people),
+    send_data(certificate_pdf_for(people, CertifFormat.find(1)),
               :filename => 'certificate.pdf', 
               :type => 'application/pdf')
   end
 
   def certificate_for_person
-    send_data(certificate_pdf_for([@person]), 
+    send_data(certificate_pdf_for([@person], CertifFormat.find(1)), 
               :filename => 'certificate.pdf', 
               :type => 'application/pdf')
   end
 
-  protected
-  def certificate_pdf_for(people)
-    # This method should later on be made configurable - As it is now,
-    # it will only print the attendees' names on an arbitrarily
-    # decided point of the page, at an arbitrarily decided
-    # size. Clearly, that's not good.
-    pdf = PDF::Writer.new(:orientation => :landscape, :paper => 'letter')
+  def certif_formats_list
+    @formats = CertifFormat.paginate(:all, :order => :id, 
+                                     :include => :certif_format_lines,
+                                     :page => params[:page])
+  end
 
-    people.sort_by {|p| p.famname.downcase}.each do |person|
-      pdf.stroke_color(Color::RGB.new(0,0,0))
-      pdf.move_pointer(200.0)
-      ### PDF::Writer does not currently (as of version 1.1.7) support
-      ### UTF8... Sorry, we will lose on some charsets :-/ At least,
-      ### Iconv is in the standard Ruby library
-      pdf.text(Iconv.conv('ISO-8859-15', 'UTF-8', person.name),
-               :justification => :center, :font_size => 20)
-      pdf.start_new_page
+  def certif_format
+    @new_line = CertifFormatLine.new
+    @conferences = Conference.find(:all)
+    if request.post?
+      @format.update_attributes(params[:certif_format])
+    end
+  end
+
+  def new_certif_format
+    @format = CertifFormat.new
+  end
+
+  def add_certif_format_line
+    begin
+      raise NotForUs unless request.post?
+      line = CertifFormatLine.new(params[:certif_format_line])
+      line.certif_format = @format
+      line.save!
+    rescue NotForUs, ActiveRecord::RecordNotFound, NoMethodError => err
+    end
+
+    redirect_to :action => 'certif_format', :id => @format
+  end
+
+  def delete_certif_format_line
+    begin
+      raise NotForUs unless request.post?
+      line = CertifFormatLine.find(params[:line_id])
+      raise NotForUs unless line.certif_format = @format
+      line.destroy
+    rescue NotForUs, ActiveRecord::RecordNotFound, NoMethodError
+    end
+
+    redirect_to :action => 'certif_format', :format_id => @format
+  end
+
+  def gen_sample_certif
+    send_data(certificate_pdf_for([@user], CertifFormat.find(1)),
+              :filename => 'test_certificate.pdf',
+              :type => 'application/pdf')
+  end
+
+  protected
+  def certificate_pdf_for(people, fmt)
+    pdf = PDF::Writer.new(:orientation => fmt.orientation,
+                          :paper => fmt.paper_size)
+    pdf.stroke_color(Color::RGB.new(0,0,0)) # Just paint it all black
+    
+    people.each do |person|
+      fmt.certif_format_lines.each do |line|
+        ### PDF::Writer does not currently (as of version 1.1.7) support
+        ### UTF8... Sorry, we will lose on some charsets :-/ At least,
+        ### Iconv is in the standard Ruby library
+        pdf.add_text_wrap(line.x_pos, line.y_pos, line.max_width,
+                          Iconv.conv('ISO-8859-15', 'UTF-8',
+                                     line.text_for(person, @conference)), 
+                          line.font_size, line.justification.to_sym)
+      end
+      pdf.start_new_page unless person == people.last
     end
 
     return pdf.render
@@ -168,4 +223,12 @@ class AttendanceAdmController < Admin
     @person = Person.find_by_id(pers_id)
     flash[:error] << _('Invalid person specified') if @person.nil?
   end
+
+  def get_format
+    @format = CertifFormat.find_by_id(params[:format_id], 
+                                      :include => :certif_format_lines)
+    return true if @format
+    flash[:error] << _('Invalid format specified')
+    false
+  end  
 end
