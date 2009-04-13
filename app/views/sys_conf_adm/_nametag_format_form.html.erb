@@ -1,0 +1,51 @@
+<p><%= _('Provide all the requested dimensions in <em>points</em>. ' +
+         'EPL2 printers work at 203 dots per inch (80 dots per ' +
+         'centimeter).') %></p>
+<% comas_form_for :nametag_format, @format do |f| %>
+  <%= f.text_field :name, 
+                   :title => _('Format name'),
+                   :size => 20 %>
+  <%= f.text_field :h_size,  
+                   :title => _('Horizontal label size'),
+                   :size => 5 %> 
+  <%= f.text_field :v_size,  
+                   :title => _('Vertical label size'),
+                   :size => 5 %> 
+  <%= f.text_field :v_gap ,  
+                   :title => _('Vertical gap between labels'),
+                   :size => 5 %> 
+  <%= f.text_field :name_width ,  
+                   :title => _('Name width for wide characters'),
+                   :note => _('First and family names up to the ' +
+                              'specified width will be printed in a ' +
+                              'double-width font, increasing their ' +
+                              'readability'),
+                   :size => 5 %>  
+  <%= f.text_field :h_start,  
+                   :title => _('Horizontal starting position'),
+                   :note => _('For the personal data text'),
+                   :size => 5 %> 
+  <%= f.text_field :id_bar_hpos,  
+                   :title => _('Horizontal position for barcode start'),
+                   :size => 5 %> 
+  <%= f.text_field :id_bar_vpos,  
+                   :title => _('Vertical position for barcode start'),
+                   :size => 5 %> 
+  <%= f.select :id_bar_orient, 
+               NametagFormat::Orientations.map {|k,v| [v,k]},
+               :title => _('Barcode orientation') %> 
+  <%= f.text_field :id_bar_narrow,  
+                   :title => _('Barcode narrow bars width'),
+                   :note => _('Between 1 and 10, and less than the ' +
+                              'wide bars width'),
+                   :size => 5 %> 
+  <%= f.text_field :id_bar_wide,  
+                   :title => _('Barcode wide bars width'),
+                   :note => _('Between 2 and 30, and more than the ' +
+                              'narrow bars width'),
+                   :size => 5 %> 
+  <%= f.text_field :id_bar_height,  
+                   :title => _('Barcode height'),
+                   :size => 5 %>
+  <%= f.submit label %>
+<% end %>

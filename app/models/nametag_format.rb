@@ -1,15 +1,4 @@
 class NametagFormat < ActiveRecord::Base
-  %w(name h_size v_size v_gap name_width h_start v_start id_bar_hpos 
-     id_bar_vpos id_bar_orient id_bar_narrow id_bar_wide 
-     id_bar_height).each do |attr|
-    validates_numericality_of attr
-    validates_presence_of attr
-  end
-
-  validates_inclusion_of :id_bar_orient, :in => 0..3
-  validates_inclusion_of :id_bar_narrow, :in => 1..10
-  validates_inclusion_of :id_bar_wide, :in => 2..30
-
   Defaults = {:name_width => 12, 
     :h_start => 30,
     :v_start => 5,
@@ -20,6 +9,30 @@ class NametagFormat < ActiveRecord::Base
     :id_bar_wide => 4,
     :id_bar_height => 70
   }
+  Orientations = {0 => _('Horizontal'), 1 => _('Vertical'), 
+                  2 => _('Upside down'), 3 => _('Vertical inverted')}
+
+  acts_as_list
+
+  %w(h_size v_size v_gap name_width h_start v_start id_bar_hpos 
+     id_bar_vpos id_bar_orient id_bar_narrow id_bar_wide 
+     id_bar_height).each do |attr|
+    validates_numericality_of attr
+    validates_presence_of attr
+  end
+  validates_presence_of :name
+  validates_numericality_of :position, :allow_nil => true
+
+  validates_inclusion_of :id_bar_orient, :in => Orientations.keys
+  validates_inclusion_of :id_bar_narrow, :in => 1..10, 
+                         :message => _('Not in valid range (1-10)')
+  validates_inclusion_of :id_bar_wide, :in => 2..30, 
+                         :message => _('Not in valid range (2-30)')
+  validate do |fmt|
+    if fmt.id_bar_narrow >= fmt.id_bar_wide
+      fmt.errors.add_to_base(_'Narrow bar must be narrower than wide bar')
+    end
+  end
 
   def initialize (params={})
     super
@@ -27,6 +40,8 @@ class NametagFormat < ActiveRecord::Base
     params.keys.each {|k| self[k] = params[k]}
   end
 
+  # Generates the EPL2 commands for printing a specific person's
+  # nametag with this format
   def generate_for(person)
     ['Q%d,%d' % [v_size, v_gap],
      'q%d' % h_size,
@@ -38,6 +53,16 @@ class NametagFormat < ActiveRecord::Base
      'P',
      ''
     ].join("\n")
+  end
+
+  # Textual representation of label size in points (printers work at
+  # 203dpi)
+  def size(unit=:pt)
+    divisors = {:pt => 1.0, :in => 203.0, :cm => 80.0}
+    div = divisors[unit] or 
+      raise TypeError, _('Unknown unit specified: %s') % unit
+
+    '%.2fx%.2f' % [h_size / div, v_size / div]
   end
 
   private
@@ -52,13 +77,13 @@ class NametagFormat < ActiveRecord::Base
   end
 
   def text_line(text, hpos, vpos, fontsize=4, dblheight=true, reverse=false)
-    # fontsize: 1 -> 4pt, 2 -> 6pt, 3 => 8pt, 4 => 10pt, 5 => 21pt
+    # EPL2 fontsizes: 1 -> 4pt, 2 -> 6pt, 3 => 8pt, 4 => 10pt, 5 => 21pt
     rotation = 0
     wide = text.size <= name_width ? 2 : 1
     tall = dblheight ? 2 : 1
     reverse = reverse ? 'R' : 'N'
     'A%d,%d,%d,%d,%d,%d,%s,%s,"%s"' % [hpos, vpos, rotation, fontsize, 
-                                    wide, tall, id_bar_height, reverse, 
+                                       wide, tall, id_bar_height, reverse, 
                                        text]
   end
 end

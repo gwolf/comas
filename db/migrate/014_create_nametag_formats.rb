@@ -2,6 +2,7 @@ class CreateNametagFormats < ActiveRecord::Migration
   def self.up
     create_table :nametag_formats do |t|
       t.column :name, :string
+      t.column :position, :integer, :null => false
       t.column :h_size, :integer, :null => false
       t.column :v_size, :integer, :null => false
       t.column :v_gap, :integer, :null => false
