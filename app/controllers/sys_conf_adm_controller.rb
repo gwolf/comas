@@ -4,12 +4,17 @@ class SysConfAdmController < Admin
                                       :create_table_field, :edit_table_field]
   before_filter :get_catalog, :only => [:show_catalog, :delete_catalog_row,
                                         :add_catalog_row]
+  before_filter :get_nametag_format, :only => [:nametag_format_edit, 
+                                               :nametag_format_delete,
+                                               :nametag_format_up,
+                                               :nametag_format_down]
   before_filter :field_types, :only => [:list_table_fields, :create_table_field,
                                         :edit_table_field]
 
   Menu = [[_('Show configuration'), :list],
           [_('Manage fields for people'), :list_people_fields],
-          [_('Catalogs management'), :list_catalogs]]
+          [_('Catalogs management'), :list_catalogs],
+          [_('Nametag printing formats'), :nametag_format_list]]
 
   ############################################################
   # SysConf entries management
@@ -230,6 +235,51 @@ class SysConfAdmController < Admin
   end
 
   ############################################################
+  # Nametag printing formats
+  def nametag_format_list
+    @formats = NametagFormat.find(:all, :order => :position)
+  end
+
+  def nametag_format_new
+    @format = NametagFormat.new
+    return unless request.post?
+    if @format.update_attributes(params[:nametag_format])
+      flash[:notice] << _('The requested format was successfully created')
+      redirect_to :action => 'nametag_format_list'
+    else
+      flash[:error] << _('Error creating requested format: ') +
+        @format.errors.full_messages.join("<br/>")
+    end
+  end
+
+  def nametag_format_edit
+    return unless request.post?
+    if @format.update_attributes(params[:nametag_format])
+      flash[:notice] << _('The requested format was successfully updated')
+      redirect_to :action => 'nametag_format_list'
+    else
+      flash[:error] << _('Error updating requested format: ') +
+        @format.errors.full_messages.join("<br/>")
+    end
+  end
+
+  def nametag_format_delete
+    @format.destroy      
+    flash[:notice] << _('The requested format was successfully deleted')
+    redirect_to :action => 'nametag_format_list'
+  end
+
+  def nametag_format_up
+    @format.move_higher
+    redirect_to :action => 'nametag_format_list'
+  end
+
+  def nametag_format_down
+    @format.move_lower
+    redirect_to :action => 'nametag_format_list'
+  end
+
+  ############################################################
   protected
   def get_sysconf
     begin
@@ -254,6 +304,16 @@ class SysConfAdmController < Admin
       redirect_to '/'
       return false
    end
+  end
+
+  def get_nametag_format
+    begin
+      @format = NametagFormat.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      flash[:error] << _('Invalid nametag format %d specified') % params[:id]
+      redirect_to :action => 'nametag_format_list'
+      return false
+    end
   end
 
   def get_catalog
