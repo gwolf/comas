@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2009-03-30 19:55-0600\n"
+"POT-Creation-Date: 2009-04-13 18:15-0500\n"
 "PO-Revision-Date: 2008-05-07 18:30-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,7 +24,7 @@ msgid "Document|Filename"
 msgstr ""
 
 #: app/models/document.rb:-
-msgid "Document|Description"
+msgid "Document|Descr"
 msgstr ""
 
 #: app/models/document.rb:-
@@ -76,15 +76,15 @@ msgid "Person|Login"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|Password"
+msgid "Person|Passwd"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|First name"
+msgid "Person|Firstname"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|Family name"
+msgid "Person|Famname"
 msgstr ""
 
 #: app/models/person.rb:-
@@ -92,7 +92,7 @@ msgid "Person|Email"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|Pw salt"
+msgid "Person|Random password \"salt\""
 msgstr ""
 
 #: app/models/person.rb:-
@@ -104,11 +104,11 @@ msgid "Person|Last login at"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|Ok conf mails"
+msgid "Person|OK to receive conference-specific mails?"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|OK to receive conference-specific mails?"
+msgid "Person|Ok general mails"
 msgstr ""
 
 #: app/models/person.rb:-
@@ -121,7 +121,7 @@ msgstr ""
 
 #: app/models/person.rb:-
 #, fuzzy
-msgid "AdminTask|System name"
+msgid "AdminTask|Sys name"
 msgstr "System configuration"
 
 #: app/models/person.rb:-
@@ -133,7 +133,7 @@ msgid "Conference|Name"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Description"
+msgid "Conference|Descr"
 msgstr ""
 
 #: app/models/person.rb:-
@@ -141,27 +141,27 @@ msgid "Conference|Homepage"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Registration opening date"
+msgid "Conference|Reg open date"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Registration closing date"
+msgid "Conference|Reg close date"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Call for Papers opening date"
+msgid "Conference|Cfp open date"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Call for papers closing date"
+msgid "Conference|Cfp close date"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Begins"
+msgid "Conference|Conference beginning date"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Finishes"
+msgid "Conference|Conference finishing date"
 msgstr ""
 
 #: app/models/person.rb:-
@@ -231,7 +231,7 @@ msgid "SysConf|Key"
 msgstr ""
 
 #: app/models/sys_conf.rb:-
-msgid "SysConf|Description"
+msgid "SysConf|Descr"
 msgstr ""
 
 #: app/models/sys_conf.rb:-
@@ -279,11 +279,11 @@ msgid "timeslot"
 msgstr ""
 
 #: app/models/timeslot.rb:-
-msgid "Timeslot|Tolerance pre"
+msgid "Timeslot|Tolerance (pre)"
 msgstr ""
 
 #: app/models/timeslot.rb:-
-msgid "Timeslot|Tolerance post"
+msgid "Timeslot|Tolerance (post)"
 msgstr ""
 
 #: app/models/timeslot.rb:-
@@ -363,11 +363,11 @@ msgid "Proposal|Updated at"
 msgstr ""
 
 #: app/models/proposal.rb:-
-msgid "Proposal|Proposal type"
+msgid "Proposal|Prop type"
 msgstr ""
 
 #: app/models/proposal.rb:-
-msgid "Proposal|Proposal status"
+msgid "Proposal|Prop status"
 msgstr ""
 
 #: app/models/proposal.rb:-
@@ -393,6 +393,98 @@ msgstr ""
 #: app/models/proposal.rb:46
 msgid ""
 "An already submitted proposal can not be moved to a different conference"
+msgstr ""
+
+#: app/models/nametag_format.rb:-
+msgid "nametag format"
+msgstr ""
+
+#: app/models/nametag_format.rb:-
+msgid "NametagFormat|Name"
+msgstr ""
+
+#: app/models/nametag_format.rb:-
+msgid "NametagFormat|H size"
+msgstr ""
+
+#: app/models/nametag_format.rb:-
+msgid "NametagFormat|V size"
+msgstr ""
+
+#: app/models/nametag_format.rb:-
+msgid "NametagFormat|V gap"
+msgstr ""
+
+#: app/models/nametag_format.rb:-
+msgid "NametagFormat|Name width"
+msgstr ""
+
+#: app/models/nametag_format.rb:-
+msgid "NametagFormat|H start"
+msgstr ""
+
+#: app/models/nametag_format.rb:-
+msgid "NametagFormat|V start"
+msgstr ""
+
+#: app/models/nametag_format.rb:-
+msgid "NametagFormat|Id bar hpos"
+msgstr ""
+
+#: app/models/nametag_format.rb:-
+msgid "NametagFormat|Id bar vpos"
+msgstr ""
+
+#: app/models/nametag_format.rb:-
+msgid "NametagFormat|Id bar orient"
+msgstr ""
+
+#: app/models/nametag_format.rb:-
+msgid "NametagFormat|Id bar narrow"
+msgstr ""
+
+#: app/models/nametag_format.rb:-
+msgid "NametagFormat|Id bar wide"
+msgstr ""
+
+#: app/models/nametag_format.rb:-
+msgid "NametagFormat|Id bar height"
+msgstr ""
+
+#: app/models/nametag_format.rb:-
+msgid "NametagFormat|Position"
+msgstr ""
+
+#: app/models/nametag_format.rb:12
+msgid "Horizontal"
+msgstr ""
+
+#: app/models/nametag_format.rb:12
+msgid "Vertical"
+msgstr ""
+
+#: app/models/nametag_format.rb:13
+msgid "Upside down"
+msgstr ""
+
+#: app/models/nametag_format.rb:13
+msgid "Vertical inverted"
+msgstr ""
+
+#: app/models/nametag_format.rb:28
+msgid "Not in valid range (1-10)"
+msgstr ""
+
+#: app/models/nametag_format.rb:30
+msgid "Not in valid range (2-30)"
+msgstr ""
+
+#: app/models/nametag_format.rb:33
+msgid "Narrow bar must be narrower than wide bar"
+msgstr ""
+
+#: app/models/nametag_format.rb:63
+msgid "Unknown unit specified: %s"
 msgstr ""
 
 #: app/models/rescue_session.rb:-
@@ -424,7 +516,7 @@ msgid "Logo|Data"
 msgstr ""
 
 #: app/models/logo.rb:-
-msgid "Logo|Thumbnail"
+msgid "Logo|Thumb"
 msgstr ""
 
 #: app/models/logo.rb:-
@@ -869,161 +961,190 @@ msgstr ""
 msgid "The %d requested mails have been sent."
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:10
+#: app/controllers/sys_conf_adm_controller.rb:14
 #, fuzzy
 msgid "Show configuration"
 msgstr "System configuration"
 
-#: app/controllers/sys_conf_adm_controller.rb:11
+#: app/controllers/sys_conf_adm_controller.rb:15
 msgid "Manage fields for people"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:12
+#: app/controllers/sys_conf_adm_controller.rb:16
 #: app/views/sys_conf_adm/list_catalogs.html.erb:1
 msgid "Catalogs management"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:25
+#: app/controllers/sys_conf_adm_controller.rb:17
+#: app/views/sys_conf_adm/nametag_format_list.html.erb:1
+msgid "Nametag printing formats"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:30
 msgid "Error destroying requested entry: "
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:33
+#: app/controllers/sys_conf_adm_controller.rb:38
 msgid "Error creating requested entry: "
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:45
+#: app/controllers/sys_conf_adm_controller.rb:50
 msgid "The configuration entry was successfully updated"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:47
+#: app/controllers/sys_conf_adm_controller.rb:52
 msgid "Error updating requested configuration entry: "
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:73
+#: app/controllers/sys_conf_adm_controller.rb:78
 msgid "Invalid column name"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:74
+#: app/controllers/sys_conf_adm_controller.rb:79
 msgid "A field by that name is already defined"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:76
+#: app/controllers/sys_conf_adm_controller.rb:81
 msgid "Invalid data type specified"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:90
+#: app/controllers/sys_conf_adm_controller.rb:95
 msgid "Successfully created %s field in %s"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:94
+#: app/controllers/sys_conf_adm_controller.rb:99
 msgid "Unable to create requested column: %s"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:105
+#: app/controllers/sys_conf_adm_controller.rb:110
 msgid "Attempting to remove invalid field: %s"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:111
+#: app/controllers/sys_conf_adm_controller.rb:116
 msgid "Successfully removed field %s"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:113
+#: app/controllers/sys_conf_adm_controller.rb:118
 msgid "Error removing specified field: %s"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:118
+#: app/controllers/sys_conf_adm_controller.rb:123
 msgid ""
 "Please note we have _not_ dropped the corresponding catalog for this column, "
 "<em>%s</em>, to avoid data loss. You can manually remove it."
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:132
+#: app/controllers/sys_conf_adm_controller.rb:137
 msgid "Invalid field specified"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:149
+#: app/controllers/sys_conf_adm_controller.rb:154
 msgid "Error setting the requested default value: %s"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:171
+#: app/controllers/sys_conf_adm_controller.rb:176
 msgid "Error setting the field as not null: %s"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:176
+#: app/controllers/sys_conf_adm_controller.rb:181
 msgid "Cannot set field %s to reject null values: No default value "
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:182
+#: app/controllers/sys_conf_adm_controller.rb:187
 msgid "The field's values were correctly updated"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:207
+#: app/controllers/sys_conf_adm_controller.rb:212
 msgid "The requested record was successfully deleted"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:209
+#: app/controllers/sys_conf_adm_controller.rb:214
 msgid "Requested record not found - Maybe it had already been deleted?"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:212
+#: app/controllers/sys_conf_adm_controller.rb:217
 msgid ""
 "Error deleting the requested record - A catalog entry will not be deleted if "
 "it is still referenced."
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:225
+#: app/controllers/sys_conf_adm_controller.rb:230
 msgid "The new %s was successfully registered"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:227
+#: app/controllers/sys_conf_adm_controller.rb:232
 msgid "Could not create new %s: %s"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:238
-msgid "Invalid configuration entry %d requested"
+#: app/controllers/sys_conf_adm_controller.rb:247
+msgid "The requested format was successfully created"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:253
-msgid "Invalid table requested"
+#: app/controllers/sys_conf_adm_controller.rb:250
+msgid "Error creating requested format: "
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:264
-msgid "Invalid catalog requested: %s"
+#: app/controllers/sys_conf_adm_controller.rb:258
+msgid "The requested format was successfully updated"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:280
-msgid "Boolean"
+#: app/controllers/sys_conf_adm_controller.rb:261
+msgid "Error updating requested format: "
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:281
-msgid "Date"
-msgstr ""
-
-#: app/controllers/sys_conf_adm_controller.rb:282
-msgid "Timestamp"
-msgstr ""
-
-#: app/controllers/sys_conf_adm_controller.rb:283
-msgid "String"
-msgstr ""
-
-#: app/controllers/sys_conf_adm_controller.rb:284
-msgid "Text"
-msgstr ""
-
-#: app/controllers/sys_conf_adm_controller.rb:285
-msgid "Integer"
-msgstr ""
-
-#: app/controllers/sys_conf_adm_controller.rb:286
-msgid "Decimal"
-msgstr ""
-
-#: app/controllers/sys_conf_adm_controller.rb:287
-msgid "Float"
+#: app/controllers/sys_conf_adm_controller.rb:268
+msgid "The requested format was successfully deleted"
 msgstr ""
 
 #: app/controllers/sys_conf_adm_controller.rb:288
+msgid "Invalid configuration entry %d requested"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:303
+msgid "Invalid table requested"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:313
+msgid "Invalid nametag format %d specified"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:324
+msgid "Invalid catalog requested: %s"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:340
+msgid "Boolean"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:341
+msgid "Date"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:342
+msgid "Timestamp"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:343
+msgid "String"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:344
+msgid "Text"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:345
+msgid "Integer"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:346
+msgid "Decimal"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:347
+msgid "Float"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:348
 msgid "Catalog"
 msgstr ""
 
@@ -1285,6 +1406,7 @@ msgstr ""
 
 #: app/helpers/sys_conf_adm_helper.rb:31
 #: app/views/people/proposals.html.erb:27 app/views/proposals/show.html.erb:4
+#: app/views/sys_conf_adm/nametag_format_list.html.erb:37
 #: app/views/sys_conf_adm/list.html.erb:13
 msgid "Edit"
 msgstr ""
@@ -1331,6 +1453,7 @@ msgstr ""
 #: app/helpers/proposals_helper.rb:18
 #: app/views/attendance_adm/_list_by_attendances.html.erb:14
 #: app/views/conferences_adm/list.html.erb:8
+#: app/views/sys_conf_adm/nametag_format_list.html.erb:14
 #: app/views/sys_conf_adm/show_catalog.html.erb:8
 #: app/views/sys_conf_adm/show_catalog.html.erb:27
 #: app/views/sys_conf_adm/list_catalogs.html.erb:7
@@ -1522,6 +1645,7 @@ msgstr ""
 #: app/views/people_adm/show.html.erb:3
 #: app/views/conferences_adm/show.html.erb:3
 #: app/views/people/personal.html.erb:6 app/views/proposals/edit.html.erb:7
+#: app/views/sys_conf_adm/nametag_format_edit.html.erb:4
 #: app/views/sys_conf_adm/edit.html.erb:9
 msgid "Save changes"
 msgstr ""
@@ -1541,6 +1665,7 @@ msgstr ""
 #: app/views/people_adm/new.html.erb:3
 #: app/views/conferences_adm/new.html.erb:3
 #: app/views/sys_conf_adm/list_table_fields.html.erb:35
+#: app/views/sys_conf_adm/nametag_format_new.html.erb:4
 #: app/views/sys_conf_adm/show_catalog.html.erb:28
 #: app/views/sys_conf_adm/list.html.erb:26
 msgid "Create"
@@ -2132,6 +2257,115 @@ msgstr ""
 msgid "Add a new attribute"
 msgstr ""
 
+#: app/views/sys_conf_adm/nametag_format_list.html.erb:3
+msgid ""
+"The following formats are used by the nametag printing helper program (<tt>./"
+"script/nametags</tt>). This script can be used with any label printer which "
+"implements the %s language"
+msgstr ""
+
+#: app/views/sys_conf_adm/nametag_format_list.html.erb:6
+msgid "Zebra EPL2"
+msgstr ""
+
+#: app/views/sys_conf_adm/nametag_format_list.html.erb:9
+msgid ""
+"Disregard this section if your conferences do not require printing nametags, "
+"or if you don't own a suitable printer."
+msgstr ""
+
+#: app/views/sys_conf_adm/nametag_format_list.html.erb:15
+msgid "Size (pt)"
+msgstr ""
+
+#: app/views/sys_conf_adm/nametag_format_list.html.erb:16
+msgid "Size (cm)"
+msgstr ""
+
+#: app/views/sys_conf_adm/nametag_format_list.html.erb:17
+msgid "Size (in)"
+msgstr ""
+
+#: app/views/sys_conf_adm/nametag_format_list.html.erb:42
+msgid "Are you sure you want to delete this format?"
+msgstr ""
+
+#: app/views/sys_conf_adm/nametag_format_list.html.erb:49
+msgid "Create a new format"
+msgstr ""
+
+#: app/views/sys_conf_adm/_nametag_format_form.html.erb:1
+msgid ""
+"Provide all the requested dimensions in <em>points</em>. EPL2 printers work "
+"at 203 dots per inch (80 dots per centimeter)."
+msgstr ""
+
+#: app/views/sys_conf_adm/_nametag_format_form.html.erb:6
+msgid "Format name"
+msgstr ""
+
+#: app/views/sys_conf_adm/_nametag_format_form.html.erb:9
+msgid "Horizontal label size"
+msgstr ""
+
+#: app/views/sys_conf_adm/_nametag_format_form.html.erb:12
+msgid "Vertical label size"
+msgstr ""
+
+#: app/views/sys_conf_adm/_nametag_format_form.html.erb:15
+msgid "Vertical gap between labels"
+msgstr ""
+
+#: app/views/sys_conf_adm/_nametag_format_form.html.erb:18
+msgid "Name width for wide characters"
+msgstr ""
+
+#: app/views/sys_conf_adm/_nametag_format_form.html.erb:19
+msgid ""
+"First and family names up to the specified width will be printed in a double-"
+"width font, increasing their readability"
+msgstr ""
+
+#: app/views/sys_conf_adm/_nametag_format_form.html.erb:25
+msgid "Horizontal starting position"
+msgstr ""
+
+#: app/views/sys_conf_adm/_nametag_format_form.html.erb:26
+msgid "For the personal data text"
+msgstr ""
+
+#: app/views/sys_conf_adm/_nametag_format_form.html.erb:29
+msgid "Horizontal position for barcode start"
+msgstr ""
+
+#: app/views/sys_conf_adm/_nametag_format_form.html.erb:32
+msgid "Vertical position for barcode start"
+msgstr ""
+
+#: app/views/sys_conf_adm/_nametag_format_form.html.erb:36
+msgid "Barcode orientation"
+msgstr ""
+
+#: app/views/sys_conf_adm/_nametag_format_form.html.erb:38
+msgid "Barcode narrow bars width"
+msgstr ""
+
+#: app/views/sys_conf_adm/_nametag_format_form.html.erb:39
+msgid "Between 1 and 10, and less than the wide bars width"
+msgstr ""
+
+#: app/views/sys_conf_adm/_nametag_format_form.html.erb:43
+msgid "Barcode wide bars width"
+msgstr ""
+
+#: app/views/sys_conf_adm/_nametag_format_form.html.erb:44
+msgid "Between 2 and 30, and more than the narrow bars width"
+msgstr ""
+
+#: app/views/sys_conf_adm/_nametag_format_form.html.erb:48
+msgid "Barcode height"
+msgstr ""
+
 #: app/views/sys_conf_adm/edit_table_field.html.erb:1
 msgid "Edit field %s on %s"
 msgstr ""
@@ -2172,6 +2406,10 @@ msgstr ""
 msgid "Modify"
 msgstr ""
 
+#: app/views/sys_conf_adm/nametag_format_edit.html.erb:1
+msgid "Edit nametag format"
+msgstr ""
+
 #: app/views/sys_conf_adm/edit.html.erb:1
 msgid "Editing configuration entry <em>%s</em>"
 msgstr ""
@@ -2181,6 +2419,10 @@ msgid ""
 "<b>Caution</b>: Modifying this configuration entry might render your system "
 "inoperable. Proceed at your own risk, and only if you know what you are "
 "doing."
+msgstr ""
+
+#: app/views/sys_conf_adm/nametag_format_new.html.erb:1
+msgid "Create a new nametag format"
 msgstr ""
 
 #: app/views/sys_conf_adm/show_catalog.html.erb:1
