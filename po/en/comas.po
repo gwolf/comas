@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2009-04-13 18:15-0500\n"
-"PO-Revision-Date: 2009-04-13 18:30-0600\n"
+"POT-Creation-Date: 2009-04-14 13:10-0500\n"
+"PO-Revision-Date: 2009-04-14 13:13-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgid "Document|Filename"
 msgstr "Filename"
 
 #: app/models/document.rb:-
-msgid "Document|Descr"
+msgid "Document|Description"
 msgstr "Description"
 
 #: app/models/document.rb:-
@@ -71,15 +71,15 @@ msgid "Person|Login"
 msgstr "Login"
 
 #: app/models/person.rb:-
-msgid "Person|Passwd"
+msgid "Person|Password"
 msgstr "Password"
 
 #: app/models/person.rb:-
-msgid "Person|Firstname"
+msgid "Person|First name"
 msgstr "First name"
 
 #: app/models/person.rb:-
-msgid "Person|Famname"
+msgid "Person|Family name"
 msgstr "Family name"
 
 #: app/models/person.rb:-
@@ -87,7 +87,7 @@ msgid "Person|Email"
 msgstr "Email"
 
 #: app/models/person.rb:-
-msgid "Person|Random password \"salt\""
+msgid "Person|Pw salt"
 msgstr "Random password salt"
 
 #: app/models/person.rb:-
@@ -99,11 +99,11 @@ msgid "Person|Last login at"
 msgstr "Last login at"
 
 #: app/models/person.rb:-
-msgid "Person|OK to receive conference-specific mails?"
-msgstr "OK to receive conference-specific mails?"
+msgid "Person|Ok conf mails"
+msgstr "OK to receive mails for the activities you have signed up for?"
 
 #: app/models/person.rb:-
-msgid "Person|Ok general mails"
+msgid "Person|OK to receive general mails?"
 msgstr "OK to receive general mails?"
 
 #: app/models/person.rb:-
@@ -115,7 +115,7 @@ msgid "AdminTask|Name"
 msgstr "Name"
 
 #: app/models/person.rb:-
-msgid "AdminTask|Sys name"
+msgid "AdminTask|System name"
 msgstr "System name"
 
 #: app/models/person.rb:-
@@ -127,7 +127,7 @@ msgid "Conference|Name"
 msgstr "Name"
 
 #: app/models/person.rb:-
-msgid "Conference|Descr"
+msgid "Conference|Description"
 msgstr "Description"
 
 #: app/models/person.rb:-
@@ -135,28 +135,28 @@ msgid "Conference|Homepage"
 msgstr "Homepage"
 
 #: app/models/person.rb:-
-msgid "Conference|Reg open date"
+msgid "Conference|Registration opening date"
 msgstr "Registration opening date"
 
 #: app/models/person.rb:-
-msgid "Conference|Reg close date"
+msgid "Conference|Registration closing date"
 msgstr "Registration closing date"
 
 #: app/models/person.rb:-
-msgid "Conference|Cfp open date"
+msgid "Conference|Call for Papers opening date"
 msgstr "Call for Papers opening date"
 
 #: app/models/person.rb:-
-msgid "Conference|Cfp close date"
+msgid "Conference|Call for papers closing date"
 msgstr "Call for papers closing date"
 
 #: app/models/person.rb:-
-msgid "Conference|Conference beginning date"
-msgstr "Conference beginning date"
+msgid "Conference|Begins"
+msgstr "Begins"
 
 #: app/models/person.rb:-
-msgid "Conference|Conference finishing date"
-msgstr "Conference beginning date"
+msgid "Conference|Finishes"
+msgstr "Finishes"
 
 #: app/models/person.rb:-
 msgid "Conference|Short name"
@@ -178,40 +178,40 @@ msgstr ""
 msgid "Cannot leave %s - This user still has proposals on this conference"
 msgstr ""
 
-#: app/models/conference.rb:199
-#: app/models/conference.rb:200
+#: app/models/conference.rb:213
+#: app/models/conference.rb:214
 msgid "%{fn} can't be blank"
 msgstr ""
 
-#: app/models/conference.rb:203
+#: app/models/conference.rb:217
 msgid "Conference must end after its start date"
 msgstr ""
 
-#: app/models/conference.rb:206
+#: app/models/conference.rb:220
 msgid "Call for papers must end after its start date"
 msgstr ""
 
-#: app/models/conference.rb:209
+#: app/models/conference.rb:223
 msgid "Call for papers must finish before the conference begins"
 msgstr ""
 
-#: app/models/conference.rb:213
+#: app/models/conference.rb:227
 msgid "Registration must end after its start date"
 msgstr ""
 
-#: app/models/conference.rb:216
+#: app/models/conference.rb:230
 msgid "Registration must finish before the conference ends"
 msgstr ""
 
-#: app/models/conference.rb:227
+#: app/models/conference.rb:241
 msgid "There are %d timeslots for this conference outside its time span: %s"
 msgstr ""
 
-#: app/models/conference.rb:244
+#: app/models/conference.rb:258
 msgid "This conference does not currently accept registrations"
 msgstr ""
 
-#: app/models/conference.rb:250
+#: app/models/conference.rb:264
 msgid "Cannot remove %s from this conference - Remove or reassign his proposals first"
 msgstr ""
 
@@ -224,7 +224,7 @@ msgid "SysConf|Key"
 msgstr "Key"
 
 #: app/models/sys_conf.rb:-
-msgid "SysConf|Descr"
+msgid "SysConf|Description"
 msgstr "Description"
 
 #: app/models/sys_conf.rb:-
@@ -272,11 +272,11 @@ msgid "timeslot"
 msgstr ""
 
 #: app/models/timeslot.rb:-
-msgid "Timeslot|Tolerance (pre)"
+msgid "Timeslot|Tolerance pre"
 msgstr "Tolerance (pre)"
 
 #: app/models/timeslot.rb:-
-msgid "Timeslot|Tolerance (post)"
+msgid "Timeslot|Tolerance post"
 msgstr "Tolerance (post)"
 
 #: app/models/timeslot.rb:-
@@ -356,11 +356,11 @@ msgid "Proposal|Updated at"
 msgstr "Updated at"
 
 #: app/models/proposal.rb:-
-msgid "Proposal|Prop type"
+msgid "Proposal|Proposal type"
 msgstr "Proposal type"
 
 #: app/models/proposal.rb:-
-msgid "Proposal|Prop status"
+msgid "Proposal|Proposal status"
 msgstr "Proposal status"
 
 #: app/models/proposal.rb:-
@@ -475,7 +475,7 @@ msgstr ""
 msgid "Narrow bar must be narrower than wide bar"
 msgstr ""
 
-#: app/models/nametag_format.rb:63
+#: app/models/nametag_format.rb:67
 msgid "Unknown unit specified: %s"
 msgstr ""
 
@@ -508,7 +508,7 @@ msgid "Logo|Data"
 msgstr "Data"
 
 #: app/models/logo.rb:-
-msgid "Logo|Thumb"
+msgid "Logo|Thumbnail"
 msgstr "Thumbnail"
 
 #: app/models/logo.rb:-
@@ -1310,27 +1310,27 @@ msgstr ""
 #: app/views/conferences_adm/people_list.html.erb:6
 #: app/views/conferences_adm/list.html.erb:7
 #: app/views/sys_conf_adm/show_catalog.html.erb:7
-#: script/nametags:74
+#: script/nametags:101
 msgid "ID"
 msgstr ""
 
 #: app/helpers/people_adm_helper.rb:5
 #: app/views/people_adm/_people_for_task.html.erb:4
-#: script/nametags:74
+#: script/nametags:101
 msgid "Login"
 msgstr ""
 
 #: app/helpers/people_adm_helper.rb:6
 #: app/views/people_adm/_people_for_task.html.erb:5
 #: app/views/conferences_adm/people_list.html.erb:7
-#: script/nametags:74
+#: script/nametags:101
 msgid "First name"
 msgstr ""
 
 #: app/helpers/people_adm_helper.rb:7
 #: app/views/people_adm/_people_for_task.html.erb:6
 #: app/views/conferences_adm/people_list.html.erb:8
-#: script/nametags:74
+#: script/nametags:101
 msgid "Family name"
 msgstr ""
 
@@ -2448,24 +2448,40 @@ msgstr ""
 msgid "Nametags"
 msgstr ""
 
-#: lib/nametags/nametags.glade:18
+#: lib/nametags/nametags.glade:32
+msgid "Print using format:"
+msgstr ""
+
+#: lib/nametags/nametags.glade:58
 msgid "Filter by conference:"
 msgstr ""
 
-#: lib/nametags/nametags.glade:73
+#: lib/nametags/nametags.glade:103
 msgid "gtk-refresh"
 msgstr ""
 
-#: lib/nametags/nametags.glade:84
+#: lib/nametags/nametags.glade:114
 msgid "gtk-print"
 msgstr ""
 
-#: lib/nametags/nametags.glade:98
+#: lib/nametags/nametags.glade:128
 msgid "gtk-quit"
 msgstr ""
 
-#: script/nametags:115
+#: script/nametags:146
 msgid "Displaying %d people"
+msgstr ""
+
+#: script/nametags:168
+msgid "%s attendees\t%s (%s days)\t%s"
+msgstr ""
+
+#: script/nametags:189
+msgid "%s cm\t%s"
+msgstr ""
+
+#: script/nametags:220
+msgid "Error printing label: %s"
 msgstr ""
 
 #: script/create_user:18
@@ -2533,3 +2549,13 @@ msgstr ""
 #: script/create_user:76
 msgid "No work done, no harm done. Goodbye!"
 msgstr ""
+
+#~ msgid "Person|Random password \"salt\""
+#~ msgstr "Random password salt"
+#~ msgid "Person|OK to receive conference-specific mails?"
+#~ msgstr "OK to receive conference-specific mails?"
+#~ msgid "Conference|Conference beginning date"
+#~ msgstr "Conference beginning date"
+#~ msgid "Conference|Conference finishing date"
+#~ msgstr "Conference beginning date"
+

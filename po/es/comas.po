@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2009-04-13 18:15-0500\n"
-"PO-Revision-Date: 2009-04-13 18:29-0600\n"
+"POT-Creation-Date: 2009-04-14 13:10-0500\n"
+"PO-Revision-Date: 2009-04-14 13:12-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: Gunnar Wolf <gwolf@gwolf.org>\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgid "Document|Filename"
 msgstr "Nombre de archivo"
 
 #: app/models/document.rb:-
-msgid "Document|Descr"
+msgid "Document|Description"
 msgstr "Descripción"
 
 #: app/models/document.rb:-
@@ -73,15 +73,15 @@ msgid "Person|Login"
 msgstr "Nombre de usuario"
 
 #: app/models/person.rb:-
-msgid "Person|Passwd"
+msgid "Person|Password"
 msgstr "Contraseña"
 
 #: app/models/person.rb:-
-msgid "Person|Firstname"
+msgid "Person|First name"
 msgstr "Nombre propio"
 
 #: app/models/person.rb:-
-msgid "Person|Famname"
+msgid "Person|Family name"
 msgstr "Apellido"
 
 #: app/models/person.rb:-
@@ -89,8 +89,8 @@ msgid "Person|Email"
 msgstr "Correo electrónico"
 
 #: app/models/person.rb:-
-msgid "Person|Random password \"salt\""
-msgstr "Salt aleatorio de la contraseña"
+msgid "Person|Pw salt"
+msgstr "Salt aleatorio para la contraseña"
 
 #: app/models/person.rb:-
 msgid "Person|Created at"
@@ -101,11 +101,11 @@ msgid "Person|Last login at"
 msgstr "Última entrada"
 
 #: app/models/person.rb:-
-msgid "Person|OK to receive conference-specific mails?"
-msgstr "¿Recibir correos específicos a nuestras actividades?"
+msgid "Person|Ok conf mails"
+msgstr "¿Recibir correos específicos a las actividades para las que se registró?"
 
 #: app/models/person.rb:-
-msgid "Person|Ok general mails"
+msgid "Person|OK to receive general mails?"
 msgstr "¿Recibir correos generales?"
 
 #: app/models/person.rb:-
@@ -117,7 +117,7 @@ msgid "AdminTask|Name"
 msgstr "Nombre"
 
 #: app/models/person.rb:-
-msgid "AdminTask|Sys name"
+msgid "AdminTask|System name"
 msgstr "Nombre de sistema"
 
 #: app/models/person.rb:-
@@ -129,7 +129,7 @@ msgid "Conference|Name"
 msgstr "Nombre"
 
 #: app/models/person.rb:-
-msgid "Conference|Descr"
+msgid "Conference|Description"
 msgstr "Descripción"
 
 #: app/models/person.rb:-
@@ -137,28 +137,28 @@ msgid "Conference|Homepage"
 msgstr "Página de inicio"
 
 #: app/models/person.rb:-
-msgid "Conference|Reg open date"
+msgid "Conference|Registration opening date"
 msgstr "Fecha de inicio del registro"
 
 #: app/models/person.rb:-
-msgid "Conference|Reg close date"
+msgid "Conference|Registration closing date"
 msgstr "Fecha de cierre de registro"
 
 #: app/models/person.rb:-
-msgid "Conference|Cfp open date"
+msgid "Conference|Call for Papers opening date"
 msgstr "Fecha de inicio de la convocatoria de propuestas"
 
 #: app/models/person.rb:-
-msgid "Conference|Cfp close date"
+msgid "Conference|Call for papers closing date"
 msgstr "Fecha de cierre de convocatoria de propuestas"
 
 #: app/models/person.rb:-
-msgid "Conference|Conference beginning date"
-msgstr "Fecha de inicio de la actividad"
+msgid "Conference|Begins"
+msgstr "Inicio"
 
 #: app/models/person.rb:-
-msgid "Conference|Conference finishing date"
-msgstr "Fecha de término de la actividad"
+msgid "Conference|Finishes"
+msgstr "Finalización"
 
 #: app/models/person.rb:-
 msgid "Conference|Short name"
@@ -180,40 +180,40 @@ msgstr "La actividad %s actualmente no acepta registros"
 msgid "Cannot leave %s - This user still has proposals on this conference"
 msgstr "No puede abandonar %s - El usuario tiene aún propuestas para esta actividad"
 
-#: app/models/conference.rb:199
-#: app/models/conference.rb:200
+#: app/models/conference.rb:213
+#: app/models/conference.rb:214
 msgid "%{fn} can't be blank"
 msgstr "%{fn} requiere ser llenado"
 
-#: app/models/conference.rb:203
+#: app/models/conference.rb:217
 msgid "Conference must end after its start date"
 msgstr "La actividad debe terminar después de su fecha de inicio"
 
-#: app/models/conference.rb:206
+#: app/models/conference.rb:220
 msgid "Call for papers must end after its start date"
 msgstr "La convocatoria de participación debe concluir después de su fecha de inicio"
 
-#: app/models/conference.rb:209
+#: app/models/conference.rb:223
 msgid "Call for papers must finish before the conference begins"
 msgstr "La convocatoria de participación debe concluir antes de que inicie la actividad"
 
-#: app/models/conference.rb:213
+#: app/models/conference.rb:227
 msgid "Registration must end after its start date"
 msgstr "El registro debe concluir después de su fecha de inicio"
 
-#: app/models/conference.rb:216
+#: app/models/conference.rb:230
 msgid "Registration must finish before the conference ends"
 msgstr "El registro debe finalizar antes de que la actividad concluya"
 
-#: app/models/conference.rb:227
+#: app/models/conference.rb:241
 msgid "There are %d timeslots for this conference outside its time span: %s"
 msgstr "Hay %d espacios para esta actividad fuera de sus días: %s"
 
-#: app/models/conference.rb:244
+#: app/models/conference.rb:258
 msgid "This conference does not currently accept registrations"
 msgstr "Esta actividad actualmente no acepta registros"
 
-#: app/models/conference.rb:250
+#: app/models/conference.rb:264
 msgid "Cannot remove %s from this conference - Remove or reassign his proposals first"
 msgstr "No es posible eliminar a %s de esta actividad - Elimine o reasigne sus propuestas primero"
 
@@ -226,7 +226,7 @@ msgid "SysConf|Key"
 msgstr "Llave"
 
 #: app/models/sys_conf.rb:-
-msgid "SysConf|Descr"
+msgid "SysConf|Description"
 msgstr "Descripción"
 
 #: app/models/sys_conf.rb:-
@@ -274,11 +274,11 @@ msgid "timeslot"
 msgstr "horario"
 
 #: app/models/timeslot.rb:-
-msgid "Timeslot|Tolerance (pre)"
+msgid "Timeslot|Tolerance pre"
 msgstr "Tolerancia (pre)"
 
 #: app/models/timeslot.rb:-
-msgid "Timeslot|Tolerance (post)"
+msgid "Timeslot|Tolerance post"
 msgstr "Tolerancia (post)"
 
 #: app/models/timeslot.rb:-
@@ -358,11 +358,11 @@ msgid "Proposal|Updated at"
 msgstr "Última actualización"
 
 #: app/models/proposal.rb:-
-msgid "Proposal|Prop type"
+msgid "Proposal|Proposal type"
 msgstr "Tipo de la propuesta"
 
 #: app/models/proposal.rb:-
-msgid "Proposal|Prop status"
+msgid "Proposal|Proposal status"
 msgstr "Estado de la propuesta"
 
 #: app/models/proposal.rb:-
@@ -477,7 +477,7 @@ msgstr "No está dentro del rango permitido (2-30)"
 msgid "Narrow bar must be narrower than wide bar"
 msgstr "Las barras delgadas deben ser más delgadas que las barras gruesas"
 
-#: app/models/nametag_format.rb:63
+#: app/models/nametag_format.rb:67
 msgid "Unknown unit specified: %s"
 msgstr "Especificó una unidad desconocida: %s"
 
@@ -510,7 +510,7 @@ msgid "Logo|Data"
 msgstr "Datos"
 
 #: app/models/logo.rb:-
-msgid "Logo|Thumb"
+msgid "Logo|Thumbnail"
 msgstr "Reducido"
 
 #: app/models/logo.rb:-
@@ -1312,27 +1312,27 @@ msgstr "¿Está seguro que desea eliminar permanentemente esta sesión? Eso elim
 #: app/views/conferences_adm/people_list.html.erb:6
 #: app/views/conferences_adm/list.html.erb:7
 #: app/views/sys_conf_adm/show_catalog.html.erb:7
-#: script/nametags:74
+#: script/nametags:101
 msgid "ID"
 msgstr "ID"
 
 #: app/helpers/people_adm_helper.rb:5
 #: app/views/people_adm/_people_for_task.html.erb:4
-#: script/nametags:74
+#: script/nametags:101
 msgid "Login"
 msgstr "Nombre de usuario"
 
 #: app/helpers/people_adm_helper.rb:6
 #: app/views/people_adm/_people_for_task.html.erb:5
 #: app/views/conferences_adm/people_list.html.erb:7
-#: script/nametags:74
+#: script/nametags:101
 msgid "First name"
 msgstr "Nombre propio"
 
 #: app/helpers/people_adm_helper.rb:7
 #: app/views/people_adm/_people_for_task.html.erb:6
 #: app/views/conferences_adm/people_list.html.erb:8
-#: script/nametags:74
+#: script/nametags:101
 msgid "Family name"
 msgstr "Apellidos"
 
@@ -2537,25 +2537,41 @@ msgstr "Argumentos inesperados recibidos:"
 msgid "Nametags"
 msgstr "Personalizadores"
 
-#: lib/nametags/nametags.glade:18
+#: lib/nametags/nametags.glade:32
+msgid "Print using format:"
+msgstr "Imprimir utilizando el formato:"
+
+#: lib/nametags/nametags.glade:58
 msgid "Filter by conference:"
 msgstr "Filtrar por actividad"
 
-#: lib/nametags/nametags.glade:73
+#: lib/nametags/nametags.glade:103
 msgid "gtk-refresh"
 msgstr "gtk-refresh"
 
-#: lib/nametags/nametags.glade:84
+#: lib/nametags/nametags.glade:114
 msgid "gtk-print"
 msgstr "gtk-print"
 
-#: lib/nametags/nametags.glade:98
+#: lib/nametags/nametags.glade:128
 msgid "gtk-quit"
 msgstr "gtk-quit"
 
-#: script/nametags:115
+#: script/nametags:146
 msgid "Displaying %d people"
 msgstr "Mostrando %d personas"
+
+#: script/nametags:168
+msgid "%s attendees\t%s (%s days)\t%s"
+msgstr "%s asistentes\t%s (%s días)\t%s"
+
+#: script/nametags:189
+msgid "%s cm\t%s"
+msgstr "%s cm\t%s"
+
+#: script/nametags:220
+msgid "Error printing label: %s"
+msgstr "Error imprimiendo la etiqueta: %s"
 
 #: script/create_user:18
 msgid "No fields should be left blank - Stopping."
@@ -2628,3 +2644,13 @@ msgstr "*** No se agregó ninguna persona: "
 #: script/create_user:76
 msgid "No work done, no harm done. Goodbye!"
 msgstr "No hicimos nada, ni bueno ni malo. ¡Adios!"
+
+#~ msgid "Person|Random password \"salt\""
+#~ msgstr "Salt aleatorio de la contraseña"
+#~ msgid "Person|OK to receive conference-specific mails?"
+#~ msgstr "¿Recibir correos específicos a nuestras actividades?"
+#~ msgid "Conference|Conference beginning date"
+#~ msgstr "Fecha de inicio de la actividad"
+#~ msgid "Conference|Conference finishing date"
+#~ msgstr "Fecha de término de la actividad"
+
