@@ -34,6 +34,9 @@ class NametagFormat < ActiveRecord::Base
     end
   end
 
+  # The constructor will assign the default values (specified in the
+  # Default constant) if they are not specified. They can, of course,
+  # be later replaced.
   def initialize (params={})
     super
     Defaults.keys.each {|k| params[k] ||= Defaults[k]}
@@ -43,7 +46,8 @@ class NametagFormat < ActiveRecord::Base
   # Generates the EPL2 commands for printing a specific person's
   # nametag with this format
   def generate_for(person)
-    ['Q%d,%d' % [v_size, v_gap],
+    ['',
+     'Q%d,%d' % [v_size, v_gap],
      'q%d' % h_size,
      'N',
      text_line(person.firstname, h_start, v_start),
@@ -69,11 +73,11 @@ class NametagFormat < ActiveRecord::Base
   def barcode_line(person)
     id_bar_type = 1
     print_numbers = 'B'
-    'B%d,%d,%d,%d,%d,%d,%d,%s,%s' % [id_bar_hpos, id_bar_vpos, 
+    'B%d,%d,%d,%d,%d,%d,%d,%s,"%s"' % [id_bar_hpos, id_bar_vpos, 
                                        id_bar_orient, id_bar_type,
                                        id_bar_narrow, id_bar_wide,
                                        id_bar_height, print_numbers,
-                                       person.id]
+                                       '%05d' %person.id]
   end
 
   def text_line(text, hpos, vpos, fontsize=4, dblheight=true, reverse=false)
@@ -82,8 +86,7 @@ class NametagFormat < ActiveRecord::Base
     wide = text.size <= name_width ? 2 : 1
     tall = dblheight ? 2 : 1
     reverse = reverse ? 'R' : 'N'
-    'A%d,%d,%d,%d,%d,%d,%s,%s,"%s"' % [hpos, vpos, rotation, fontsize, 
-                                       wide, tall, id_bar_height, reverse, 
-                                       text]
+    'A%d,%d,%d,%d,%d,%d,%s,"%s"' % [hpos, vpos, rotation, fontsize, 
+                                       wide, tall, reverse, text]
   end
 end

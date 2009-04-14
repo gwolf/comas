@@ -87,6 +87,20 @@ class Conference < ActiveRecord::Base
     person.conferences.order_by {|c| c.begins}.select {|c| c.past?}
   end
 
+  # How many days is this conference's beginning date from today? The
+  # returned value is an integer - positive for upcoming conferences,
+  # negative for past conferences.
+  def days_to_begins
+    ((begins.to_time - Date.today.to_time) / 3600 / 24).to_i
+  end
+
+  # How many days are we from this conference's beginning date?
+  # Returns a positive integer number (or zero, if the conference
+  # starts today), representing the absolute distance.
+  def distance_to_begins
+    days_to_begins.abs
+  end
+
   # Returns whether this conference's beginning time is still in the
   # future
   def upcoming?
