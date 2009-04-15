@@ -8,7 +8,7 @@ class SizedConfLogos < ActiveRecord::Migration
     add_column :logos, :medium, :binary
     add_column :logos, :width, :integer
     add_column :logos, :height, :integer
-    add_column :logos, :updated_at, :timestamps
+    add_column :logos, :updated_at, :timestamp
     remove_column :logos, :filename
 
     SysConf.new(:key => 'logo_thumb_height', 

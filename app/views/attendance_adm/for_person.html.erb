@@ -19,6 +19,20 @@
   <% end %>
 <%= end_table %>
 
-<p><%= link_to(_('Create certificate'), 
+<h3><%= _('Create certificate') %></h3>
+<% if @formats.empty? %>
+  <p><%= _('No certificate formats are yet defined. Please %s') %
+         link_to(_('define one first'),
+                 :action => 'certif_formats_list') %></p>
+<% else %>
+  <p><%= _('Select which format to generate the certificate with') %></p>
+  <ul>
+    <% @formats.each do |fmt| %>
+      <li><%= link_to(fmt.name,
                :action => 'certificate_for_person', 
-               :person_id => @person, :conference_id => @conference) %></p>
+               :person_id => @person, :conference_id => @conference,
+               :format_id => fmt) %>
+        <%= human_paper_size(fmt.paper_size)%></li>
+    <% end %>
+  </ul>
+<% end %>
