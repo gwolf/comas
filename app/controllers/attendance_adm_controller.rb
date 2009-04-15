@@ -13,10 +13,16 @@ class AttendanceAdmController < Admin
                                            :att_by_tslot,
                                            :gen_sample_certif ]
   before_filter :get_format, :only => [:certif_format,
+                                       :delete_certif_format,
                                        :add_certif_format_line,
                                        :delete_certif_format_line,
-                                       :gen_sample_certif]
+                                       :gen_sample_certif,
+                                       :certificate_for_person]
 
+  # Prompts the user which session to use for taking attendance. By
+  # default, shows only active sessions (those for which we are in the
+  # tolerance period); all sessions will be shown if params[:show_all]
+  # is true.
   def choose_session
     options = {:per_page => 10,
       :include => [:room, :conference], 
@@ -30,6 +36,7 @@ class AttendanceAdmController < Admin
     end
   end
 
+  # Registers the attendance for a given person / timeslot
   def take
     # Do we have a timeslot we are working on? Or is there one (and
     # only one) currently active timeslot? If not, redirect the user
@@ -53,6 +60,9 @@ class AttendanceAdmController < Admin
     @attendance = Attendance.new
   end
 
+  # Presents the number of attendances per timeslot for a given
+  # conference, and allows for listing all other past conferences
+  # which have timeslots registered
   def list
     if @conference.nil?
       redirect_to '/'
@@ -63,6 +73,7 @@ class AttendanceAdmController < Admin
     @totals = Attendance.totalized_for_conference(@conference)
   end
 
+  # Produces the attendance detail for a given timeslot 
   def att_by_tslot
     begin
       @tslot = Timeslot.find_by_id(params[:timeslot_id])
@@ -77,12 +88,18 @@ class AttendanceAdmController < Admin
     @attendances = @tslot.attendances.sort_by {|a| a.created_at}
   end
 
+  # Gives the attendances detail for the specified person on the
+  # specified conference
   def for_person
     @attendances = @person.attendances.select {|att|
       att.conference_id == @conference.id
     }
+    @formats = CertifFormat.find(:all, :order => :id)
   end
 
+  # Produces the list of certificates to be generated for the
+  # specified conference according to the minimum required attendance
+  # levels
   def certificates_by_attendances
     min = params[:min_attend].to_i
     if min <= 0
@@ -99,16 +116,20 @@ class AttendanceAdmController < Admin
               :type => 'application/pdf')
   end
 
+  # Generates a certificate for the specified person / conference /
+  # format
   def certificate_for_person
-    send_data(certificate_pdf_for([@person], CertifFormat.find(1)), 
+    send_data(certificate_pdf_for([@person], @format),
               :filename => 'certificate.pdf', 
               :type => 'application/pdf')
   end
 
+  # Lists the registered certificate formats
   def certif_formats_list
     @formats = CertifFormat.paginate(:all, :order => :id, 
                                      :include => :certif_format_lines,
                                      :page => params[:page])
+    @new_fmt = CertifFormat.new
   end
 
   def certif_format
@@ -120,7 +141,21 @@ class AttendanceAdmController < Admin
   end
 
   def new_certif_format
-    @format = CertifFormat.new
+    begin
+      raise NotForUs unless request.post?
+      @format = CertifFormat.new
+      @format.update_attributes(params[:certif_format])
+      @format.save!
+      redirect_to :action => 'certif_format', :format_id => @format
+    rescue NotForUs, ActiveRecord::RecordInvalid  => err
+      flash[:error] << err.to_s
+      redirect_to :action => 'certif_formats_list'
+    end
+  end
+
+  def delete_certif_format
+    @format.destroy
+    redirect_to :action => 'certif_formats_list'
   end
 
   def add_certif_format_line
@@ -132,7 +167,7 @@ class AttendanceAdmController < Admin
     rescue NotForUs, ActiveRecord::RecordNotFound, NoMethodError => err
     end
 
-    redirect_to :action => 'certif_format', :id => @format
+    redirect_to :action => 'certif_format', :format_id => @format
   end
 
   def delete_certif_format_line
@@ -147,23 +182,30 @@ class AttendanceAdmController < Admin
     redirect_to :action => 'certif_format', :format_id => @format
   end
 
+  # Generate a sample certificate for the currently logged on user
   def gen_sample_certif
-    send_data(certificate_pdf_for([@user], CertifFormat.find(1)),
+    draw_boxes = params[:pdf_draw_boxes].to_i == 1
+    send_data(certificate_pdf_for([@user], @format, draw_boxes),
               :filename => 'test_certificate.pdf',
               :type => 'application/pdf')
   end
 
   protected
-  def certificate_pdf_for(people, fmt)
-    pdf = PDF::Writer.new(:orientation => fmt.orientation,
+  # Genereates the PDF with the certificates for the people specified
+  # as the first parameter, using the format specified as the second
+  # parameter.
+  def certificate_pdf_for(people, fmt, with_boxes=false)
+    pdf = PDF::Writer.new(:orientation => fmt.orientation.to_sym,
                           :paper => fmt.paper_size)
-    pdf.stroke_color(Color::RGB.new(0,0,0)) # Just paint it all black
+    pdf.stroke_color(Color::RGB::Black) 
     
     people.each do |person|
       fmt.certif_format_lines.each do |line|
         ### PDF::Writer does not currently (as of version 1.1.7) support
         ### UTF8... Sorry, we will lose on some charsets :-/ At least,
         ### Iconv is in the standard Ruby library
+        pdf_draw_field_box(pdf, line) if with_boxes
+
         pdf.add_text_wrap(line.x_pos, line.y_pos, line.max_width,
                           Iconv.conv('ISO-8859-15', 'UTF-8',
                                      line.text_for(person, @conference)), 
@@ -173,6 +215,29 @@ class AttendanceAdmController < Admin
     end
 
     return pdf.render
+  end
+
+  # Draws a box in the PDF for the specified field
+  # (CertifFormatLine). This method is basically meant to be called
+  # from within certificate_pdf_for.
+  def pdf_draw_field_box(pdf, line)
+    pdf.save_state
+
+    pdf.stroke_color Color::RGB::Grey80
+    stroke = PDF::Writer::StrokeStyle.new(1)
+    stroke.dash = {:pattern => [3,3]}
+    pdf.stroke_style stroke
+
+    x1 = line.x_pos
+    x2 = line.x_pos + line.max_width
+    y1 = line.y_pos
+    y2 = line.y_pos + line.font_size
+
+    pdf.move_to(x1, y1).line_to(x1, y2).line_to(x2, y2).
+      line_to(x2, y1).line_to(x1, y1).line_to(x2, y2).
+      line_to(x1, y2).line_to(x2, y1).close_stroke
+
+    pdf.restore_state
   end
 
   def register_attendance(person, tslot)

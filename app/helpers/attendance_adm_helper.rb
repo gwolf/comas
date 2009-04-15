@@ -35,4 +35,17 @@ module AttendanceAdmHelper
 
     ret
   end
+
+  def human_paper_size(paper)
+    '%s (%s)' % [paper, CertifFormat.paper_dimensions(paper)]
+  end
+
+  def paper_size_select(form, field)
+    form.select(field, CertifFormat::PaperSizes.sort.map { |p| 
+                  [human_paper_size(p), p] } )
+  end
+
+  def orientation_select(form,field)
+    form.select field, CertifFormat::Orientations.map {|k, v| [v, k]}
+  end
 end

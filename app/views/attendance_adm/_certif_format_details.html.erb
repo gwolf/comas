@@ -1,0 +1,30 @@
+<%= start_table %>
+  <%= table_head_row %>
+    <th><%= _('ID') %></th>
+    <th><%= _('Name') %></th>
+    <th><%= _('Paper size') %></th>
+    <th><%= _('Orientation') %></th>
+    <th></th>
+  <%= end_table_row %>
+  <% formats.each do |format| %>
+    <%= table_row %>
+      <td><%= link_to format.id, :action => 'certif_format', 
+                      :format_id => format.id %></td>
+      <td><%= link_to format.name, :action => 'certif_format',
+                      :format_id => format.id %></td>
+      <td><%= human_paper_size(format.paper_size) %></td>
+      <td><%= format.orientation %></td>
+      <td><%= link_to icon_trash, :action => 'delete_certif_format',
+                      :format_id => format.id %></td>
+    <%= end_table_row %>
+  <% end %>
+  <% form_for :certif_format, edit_fmt, :url => {:action => 'new_certif_format'} do |f| %>
+    <%= table_row %>
+      <td><%= edit_fmt.id %></td>
+      <td><%= f.text_field :name, :size => 15 %></td>
+      <td><%= paper_size_select f, :paper_size %></td>
+      <td><%= orientation_select f, :orientation %></td>
+      <td><%= f.submit label %></td>
+    <%= end_table_row %>
+  <% end %>
+<%= end_table %>

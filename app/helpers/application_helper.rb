@@ -288,6 +288,12 @@ module ApplicationHelper
       with_format(title, info_elem(@object.send(field)), note)
     end
 
+    def manual_in_row(content, options={})
+      title = options[:title]
+      note = options[:note]
+      with_format(title, content, note)
+    end
+
     private
     def with_format(title, body, note=nil)
       # Ugh... Straight copied from form_row above. How to call

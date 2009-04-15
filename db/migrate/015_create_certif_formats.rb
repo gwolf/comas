@@ -1,3 +1,5 @@
+class AdminTask < ActiveRecord::Base;end
+class SysConf < ActiveRecord::Base;end
 class CreateCertifFormats < ActiveRecord::Migration
   def self.up
     create_table :certif_formats do |t|
@@ -21,12 +23,17 @@ class CreateCertifFormats < ActiveRecord::Migration
     end
     add_reference(:certif_format_lines, :certif_formats, :null => false)
 
+    SysConf.new(:key => 'page_units',
+                :descr => 'Preferred units in which you measure page sizes ' +
+                '(cm, in, pt)',
+                :value => 'cm').save!
     AdminTask.new(:name => 'Certificates generation',
                   :sys_name => 'certif_gen').save!
   end
 
   def self.down
     AdminTask.find_by_sys_name('certif_gen').destroy
+    SysConf.find_by_key('page_units').destroy
     drop_table :certif_format_lines
     drop_table :certif_formats
   end

@@ -1,9 +1,0 @@
-<% comas_form_for :certif_format, format,
-                  :url => {:action => 'certif_format', 
-                           :format_id => format} do |f| %>
-  <%= f.auto_field(:name) %>
-  <%= f.select :paper_size, CertifFormat::PaperSizes.sort  %>
-  <%= f.select :orientation, 
-               CertifFormat::Orientations.map {|k,v| [v,k]} %>
-  <%= f.submit label %>
-<% end %>

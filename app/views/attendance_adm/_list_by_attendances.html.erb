@@ -15,7 +15,7 @@
     <%= end_table_row %>
     <% list.sort_by {|p| p.name.downcase}.each do |person| %>
       <%= table_row %>
-        <td><%= link_to(h(person.name), :action => 'show_for_person',
+        <td><%= link_to(h(person.name), :action => 'for_person',
                         :person_id => person, :conference_id => @conference) %></td>
       <%= end_table_row %>
     <% end %>
