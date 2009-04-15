@@ -14,11 +14,15 @@
                       :format_id => format.id %></td>
       <td><%= human_paper_size(format.paper_size) %></td>
       <td><%= format.orientation %></td>
-      <td><%= link_to icon_trash, :action => 'delete_certif_format',
-                      :format_id => format.id %></td>
+      <td><%= link_to icon_trash, 
+                      { :action => 'delete_certif_format', 
+                        :format_id => format.id},
+                      { :confirm => _('Are you sure you want to delete ' +
+				      'this format?')} %></td>
     <%= end_table_row %>
   <% end %>
-  <% form_for :certif_format, edit_fmt, :url => {:action => 'new_certif_format'} do |f| %>
+  <% form_for :certif_format, edit_fmt, 
+              :url => {:action => action, :format_id => edit_fmt } do |f| %>
     <%= table_row %>
       <td><%= edit_fmt.id %></td>
       <td><%= f.text_field :name, :size => 15 %></td>

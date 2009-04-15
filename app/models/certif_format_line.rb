@@ -1,4 +1,5 @@
 class CertifFormatLine < ActiveRecord::Base
+  include PdfDimensions
   Justifications = %w(left center right full)
   ContentSources = {0 => _('Static'),
     1 => _('Person'),
@@ -34,5 +35,28 @@ class CertifFormatLine < ActiveRecord::Base
     raise NoMethodError, _('Undefined attribute %s for %s in format ' <<
                            'line %d (%d)') % [content, obj.class, 
                                               id, certif_format_id]
+  end
+
+  def human_x_pos
+    '%.2f' % points_to_human(x_pos) unless x_pos.nil?
+  end
+
+  def human_x_pos=(new)
+    self.x_pos = human_to_points(new)
+  end
+
+  def human_y_pos
+    '%.2f' % points_to_human(y_pos) unless y_pos.nil?
+  end
+  def human_y_pos=(new)
+    self.y_pos = human_to_points(new)
+  end
+
+  def human_max_width
+    '%.2f' % points_to_human(max_width) unless max_width.nil?
+  end
+
+  def human_max_width=(new)
+    self.max_width = human_to_points(new)
   end
 end

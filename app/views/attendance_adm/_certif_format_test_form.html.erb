@@ -1,0 +1,20 @@
+<h3><%= _('Test format') %></h3>
+<p><%= _('You can generate a sample of this format for your user.') %></p>
+<% comas_form_for(:format_line, format, 
+                  :url => {:action => 'gen_sample_certif',
+	                   :format_id => format}) do |f| %>
+  
+  <%= f.manual_in_row(select_tag(:conference_id, 
+                                 options_for_select(@conferences.map {|c| 
+                                                    [c.name, c.id]})),
+                      :title => _('Conference to generate the sample ' +
+                                  'certificate for')) %>
+
+  <%= f.manual_in_row([radio_button_tag(:pdf_draw_boxes, 1, true), _('Yes'),
+                       radio_button_tag(:pdf_draw_boxes, 0), _('No')
+                      ].join(' '),
+                      :title => _('Draw boxes specifying field sizes?')) %>
+
+  <%= f.submit _'Generate test certificate' %>
+<% end %>
+
