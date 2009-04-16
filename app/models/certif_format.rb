@@ -20,10 +20,10 @@ class CertifFormat < ActiveRecord::Base
   end
 
   def self.paper_dimensions(paper)
-    unit = human_units
+    unit = abbr_units
     '%.02f x %.02f %s' % [self.height_of(paper, unit),
                           self.width_of(paper, unit), 
-                          unit]
+                          _(unit)]
   end
 
   def height(unit=:pt)

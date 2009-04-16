@@ -135,7 +135,7 @@ class AttendanceAdmController < Admin
   def certif_format
     @new_line = CertifFormatLine.new
     @conferences = Conference.find(:all)
-    @units = CertifFormat.human_units
+    @units = CertifFormat.full_units
     if request.post?
       @format.update_attributes(params[:certif_format])
       flash[:notice] << _('Format updated successfully')

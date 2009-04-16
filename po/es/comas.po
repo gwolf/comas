@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2009-04-14 13:10-0500\n"
-"PO-Revision-Date: 2009-04-14 13:12-0600\n"
+"POT-Creation-Date: 2009-04-16 12:14-0500\n"
+"PO-Revision-Date: 2009-04-16 12:17-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: Gunnar Wolf <gwolf@gwolf.org>\n"
 "MIME-Version: 1.0\n"
@@ -64,6 +64,22 @@ msgstr "%.2f KB"
 msgid "%d bytes"
 msgstr "%d bytes"
 
+#: app/models/certif_format.rb:-
+msgid "certif format"
+msgstr "formato de certificado"
+
+#: app/models/certif_format.rb:-
+msgid "CertifFormat|Format name"
+msgstr "Nombre del formato"
+
+#: app/models/certif_format.rb:-
+msgid "CertifFormat|Paper size"
+msgstr "Tamaño del papel"
+
+#: app/models/certif_format.rb:-
+msgid "CertifFormat|Orientation"
+msgstr "Orientación"
+
 #: app/models/person.rb:-
 msgid "person"
 msgstr "persona"
@@ -90,7 +106,7 @@ msgstr "Correo electrónico"
 
 #: app/models/person.rb:-
 msgid "Person|Pw salt"
-msgstr "Salt aleatorio para la contraseña"
+msgstr "Contraseña"
 
 #: app/models/person.rb:-
 msgid "Person|Created at"
@@ -101,8 +117,8 @@ msgid "Person|Last login at"
 msgstr "Última entrada"
 
 #: app/models/person.rb:-
-msgid "Person|Ok conf mails"
-msgstr "¿Recibir correos específicos a las actividades para las que se registró?"
+msgid "Person|OK to receive mails for the activities you have signed up for?"
+msgstr "¿Recibir correos de las actividades a las que está registrado?"
 
 #: app/models/person.rb:-
 msgid "Person|OK to receive general mails?"
@@ -274,11 +290,11 @@ msgid "timeslot"
 msgstr "horario"
 
 #: app/models/timeslot.rb:-
-msgid "Timeslot|Tolerance pre"
+msgid "Timeslot|Tolerance (pre)"
 msgstr "Tolerancia (pre)"
 
 #: app/models/timeslot.rb:-
-msgid "Timeslot|Tolerance post"
+msgid "Timeslot|Tolerance (post)"
 msgstr "Tolerancia (post)"
 
 #: app/models/timeslot.rb:-
@@ -394,19 +410,19 @@ msgid "nametag format"
 msgstr "formato de personalizador"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Name"
-msgstr "Nombre"
+msgid "NametagFormat|Format name"
+msgstr "Nombre de formato"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|H size"
-msgstr "Ancho"
+msgid "NametagFormat|Horizontal size"
+msgstr "Tamaño horizontal"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|V size"
-msgstr "Altura"
+msgid "NametagFormat|Vertical size"
+msgstr "Tamaño vertical"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|V gap"
+msgid "NametagFormat|Vertical gap"
 msgstr "Separación vertical"
 
 #: app/models/nametag_format.rb:-
@@ -414,35 +430,35 @@ msgid "NametagFormat|Name width"
 msgstr "Ancho del nombre"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|H start"
-msgstr "Punto de inicio horizontal"
+msgid "NametagFormat|Horizontal start"
+msgstr "Inicio horizontal"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|V start"
-msgstr "Punto de inicio vertical"
+msgid "NametagFormat|Vertical start"
+msgstr "Inicio vertical"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Id bar hpos"
-msgstr "Posición horizontal del código de barras"
+msgid "NametagFormat|Horizontal position for barcode"
+msgstr "Posición horizontal para el inicio del código de barras"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Id bar vpos"
-msgstr "Posición vertical del código de barras"
+msgid "NametagFormat|Vertical position for barcode"
+msgstr "Posición vertical para el inicio del código de barras"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Id bar orient"
+msgid "NametagFormat|Barcode orientation"
 msgstr "Orientación del código de barras"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Id bar narrow"
-msgstr "Ancho de la barra delgada del código de barras"
+msgid "NametagFormat|Barcode narrow bars width"
+msgstr "Ancho de las barras delgadas"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Id bar wide"
-msgstr "Ancho de la barra gruesa del código de barras"
+msgid "NametagFormat|Barcode wide bars width"
+msgstr "Ancho de las barras gruesas"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Id bar height"
+msgid "NametagFormat|Barcode height"
 msgstr "Altura del código de barras"
 
 #: app/models/nametag_format.rb:-
@@ -480,6 +496,68 @@ msgstr "Las barras delgadas deben ser más delgadas que las barras gruesas"
 #: app/models/nametag_format.rb:67
 msgid "Unknown unit specified: %s"
 msgstr "Especificó una unidad desconocida: %s"
+
+#: app/models/certif_format_line.rb:-
+msgid "certif format line"
+msgstr "línea de formato de certificado"
+
+#: app/models/certif_format_line.rb:-
+msgid "CertifFormatLine|Content source"
+msgstr "Fuente del contenido"
+
+#: app/models/certif_format_line.rb:-
+msgid "CertifFormatLine|Content"
+msgstr "Contenido"
+
+#: app/models/certif_format_line.rb:-
+msgid "CertifFormatLine|Horizontal position"
+msgstr "Posición horizontal"
+
+#: app/models/certif_format_line.rb:-
+msgid "CertifFormatLine|Vertical position"
+msgstr "Posición vertical"
+
+#: app/models/certif_format_line.rb:-
+msgid "CertifFormatLine|Maximum width"
+msgstr "Ancho máximo"
+
+#: app/models/certif_format_line.rb:-
+msgid "CertifFormatLine|Font size"
+msgstr "Tamaño del font"
+
+#: app/models/certif_format_line.rb:-
+msgid "CertifFormatLine|Justification"
+msgstr "Justificación"
+
+#: app/models/certif_format_line.rb:-
+msgid "CertifFormatLine|Certificate format"
+msgstr "Formato de certificado"
+
+#: app/models/certif_format_line.rb:4
+msgid "Static"
+msgstr "Estática"
+
+#: app/models/certif_format_line.rb:5
+msgid "Person"
+msgstr "Persona"
+
+#: app/models/certif_format_line.rb:6
+#: app/helpers/conferences_helper.rb:18
+#: app/helpers/attendance_adm_helper.rb:18
+#: app/views/people/proposals.html.erb:15
+#: app/views/people/profile.html.erb:9
+#: app/views/proposals/by_author.html.erb:11
+#: app/views/proposals/_form.html.erb:12
+msgid "Conference"
+msgstr "Actividad"
+
+#: app/models/certif_format_line.rb:29
+msgid "Undefined content source %d for %d (%d)"
+msgstr "Fuente de contenido no definida %d para %d (%d)"
+
+#: app/models/certif_format_line.rb:35
+msgid "Undefined attribute %s for %s in format "
+msgstr "Atributo %s no definido para %s en el formato"
 
 #: app/models/rescue_session.rb:-
 msgid "rescue session"
@@ -835,54 +913,66 @@ msgstr "Debe especificar un cuerpo para el correo"
 msgid "The specified e-mail address (%s) is not valid"
 msgstr "La dirección de correo especificada (%s) no es válida"
 
-#: app/controllers/attendance_adm_controller.rb:2
+#: app/controllers/attendance_adm_controller.rb:3
 msgid "Choose a timeslot"
 msgstr "Elegir sesión"
 
-#: app/controllers/attendance_adm_controller.rb:3
+#: app/controllers/attendance_adm_controller.rb:4
 #: app/views/attendance_adm/take.html.erb:1
 msgid "Take attendance"
 msgstr "Tomar asistencia"
 
-#: app/controllers/attendance_adm_controller.rb:4
+#: app/controllers/attendance_adm_controller.rb:5
 msgid "Attendance lists"
 msgstr "Listas de asistencia"
 
-#: app/controllers/attendance_adm_controller.rb:31
+#: app/controllers/attendance_adm_controller.rb:6
+msgid "Certificate formats"
+msgstr "Formatos de certificado"
+
+#: app/controllers/attendance_adm_controller.rb:45
 msgid "Please select a timeslot to take attendance for"
 msgstr "Seleccione una sesión para la cual tomar asistencia"
 
-#: app/controllers/attendance_adm_controller.rb:52
+#: app/controllers/attendance_adm_controller.rb:69
 msgid "Could not find which conference to report"
 msgstr "Imposible identificar qué actividad reportar"
 
-#: app/controllers/attendance_adm_controller.rb:65
+#: app/controllers/attendance_adm_controller.rb:83
 msgid "Invalid timeslot requested"
 msgstr "Especificó una sesión inválida"
 
-#: app/controllers/attendance_adm_controller.rb:126
+#: app/controllers/attendance_adm_controller.rb:141
+msgid "Format updated successfully"
+msgstr "El formato ha sido actualizado exitosamente"
+
+#: app/controllers/attendance_adm_controller.rb:248
 msgid "This person has already been registered for this timeslot. No action taken."
 msgstr "La persona especificada ya había sido registrada para esta sesión. No se llevó a cabo ninguna acción."
 
-#: app/controllers/attendance_adm_controller.rb:137
+#: app/controllers/attendance_adm_controller.rb:259
 msgid "<em>%s</em> is not registered for <em>%s</em>, and registrations are closed."
 msgstr "La persona <em>%s</em> no estaba aún registrada para esta actividad, y el registro está cerrado"
 
-#: app/controllers/attendance_adm_controller.rb:143
+#: app/controllers/attendance_adm_controller.rb:265
 msgid "Person <em>%s</em> was not yet registered for this conference - Registering."
 msgstr "La persona <em>%s</em> no estaba aún registrada para esta actividad - Registrando."
 
-#: app/controllers/attendance_adm_controller.rb:149
+#: app/controllers/attendance_adm_controller.rb:271
 msgid "Attendance successfully registered"
 msgstr "La asistencia fue registrada exitosamente"
 
-#: app/controllers/attendance_adm_controller.rb:151
+#: app/controllers/attendance_adm_controller.rb:273
 msgid "Could not register person <em>%s</em> for this timeslot: %s"
 msgstr "No fue posible registrar a la persona <em>%s</em> para esta sesión: %s"
 
-#: app/controllers/attendance_adm_controller.rb:169
+#: app/controllers/attendance_adm_controller.rb:291
 msgid "Invalid person specified"
 msgstr "Especificó a una persona inexistente"
+
+#: app/controllers/attendance_adm_controller.rb:298
+msgid "Invalid format specified"
+msgstr "Especificó un formato inexistente"
 
 #: app/controllers/admin.rb:10
 msgid "Access denied"
@@ -1201,24 +1291,17 @@ msgstr "El campo %s no está definido para %s"
 
 #: app/helpers/application_helper.rb:222
 #: app/helpers/sys_conf_adm_helper.rb:19
+#: app/views/attendance_adm/_certif_format_test_form.html.erb:13
 #: app/views/sys_conf_adm/edit_table_field.html.erb:41
 msgid "Yes"
 msgstr "Sí"
 
 #: app/helpers/application_helper.rb:222
 #: app/helpers/sys_conf_adm_helper.rb:19
+#: app/views/attendance_adm/_certif_format_test_form.html.erb:14
 #: app/views/sys_conf_adm/edit_table_field.html.erb:42
 msgid "No"
 msgstr "No"
-
-#: app/helpers/conferences_helper.rb:18
-#: app/helpers/attendance_adm_helper.rb:18
-#: app/views/people/proposals.html.erb:15
-#: app/views/people/profile.html.erb:9
-#: app/views/proposals/by_author.html.erb:11
-#: app/views/proposals/_form.html.erb:12
-msgid "Conference"
-msgstr "Actividad"
 
 #: app/helpers/conferences_helper.rb:18
 msgid "Dates"
@@ -1297,6 +1380,7 @@ msgstr "Especificó un tamaño de logotipo inválido: %s"
 #: app/helpers/conferences_adm_helper.rb:21
 #: app/helpers/people_adm_helper.rb:24
 #: app/helpers/sys_conf_adm_helper.rb:21
+#: app/helpers/attendance_adm_helper.rb:70
 #: app/views/conferences_adm/list.html.erb:34
 #: app/views/sys_conf_adm/show_catalog.html.erb:15
 #: app/views/sys_conf_adm/list.html.erb:14
@@ -1308,6 +1392,7 @@ msgid "Are you sure you want to permanently delete this timeslot? This will also
 msgstr "¿Está seguro que desea eliminar permanentemente esta sesión? Eso eliminará también todas las asistencias que ha registrado en ella"
 
 #: app/helpers/people_adm_helper.rb:4
+#: app/views/attendance_adm/_certif_format_details.html.erb:3
 #: app/views/people_adm/_people_for_task.html.erb:3
 #: app/views/conferences_adm/people_list.html.erb:6
 #: app/views/conferences_adm/list.html.erb:7
@@ -1420,6 +1505,38 @@ msgstr "Tolerancia (post)"
 msgid "Choose"
 msgstr "Elegir"
 
+#: app/helpers/attendance_adm_helper.rb:59
+msgid "Vert"
+msgstr "Vert"
+
+#: app/helpers/attendance_adm_helper.rb:59
+msgid "Horiz"
+msgstr "Horiz"
+
+#: app/helpers/attendance_adm_helper.rb:59
+msgid "Max width"
+msgstr "Ancho máximo"
+
+#: app/helpers/attendance_adm_helper.rb:59
+msgid "Content source"
+msgstr "Fuente del contenido"
+
+#: app/helpers/attendance_adm_helper.rb:60
+msgid "Content"
+msgstr "Contenido"
+
+#: app/helpers/attendance_adm_helper.rb:60
+msgid "Font size"
+msgstr "Tamaño del font"
+
+#: app/helpers/attendance_adm_helper.rb:60
+msgid "Align"
+msgstr "Alineación"
+
+#: app/helpers/attendance_adm_helper.rb:73
+msgid "Are you sure you want to delete this line?"
+msgstr "¿Está seguro de que desea eliminar esta línea?"
+
 #: app/helpers/proposals_helper.rb:9
 msgid "%d registered proposals"
 msgstr "%d propuestas registradas"
@@ -1430,6 +1547,7 @@ msgstr "Posición"
 
 #: app/helpers/proposals_helper.rb:18
 #: app/views/attendance_adm/_list_by_attendances.html.erb:14
+#: app/views/attendance_adm/_certif_format_details.html.erb:4
 #: app/views/conferences_adm/list.html.erb:8
 #: app/views/sys_conf_adm/nametag_format_list.html.erb:14
 #: app/views/sys_conf_adm/show_catalog.html.erb:8
@@ -1466,6 +1584,26 @@ msgstr "Registrar la asistencia"
 msgid "Last attendances registered for this timeslot"
 msgstr "Últimas asistencias registradas para esta sesión"
 
+#: app/views/attendance_adm/_certif_format_test_form.html.erb:1
+msgid "Test format"
+msgstr "Formato de prueba"
+
+#: app/views/attendance_adm/_certif_format_test_form.html.erb:2
+msgid "You can generate a sample of this format for your user."
+msgstr "Usted puede generar una prueba utilizando este formato para su usuario."
+
+#: app/views/attendance_adm/_certif_format_test_form.html.erb:10
+msgid "Conference to generate the sample certificate for"
+msgstr "Actividad para la cual generar el certificado de prueba"
+
+#: app/views/attendance_adm/_certif_format_test_form.html.erb:16
+msgid "Draw boxes specifying field sizes?"
+msgstr "¿Dibujar cajas indicando el tamaño de los campos?"
+
+#: app/views/attendance_adm/_certif_format_test_form.html.erb:18
+msgid "Generate test certificate"
+msgstr "Generar certificado de prueba"
+
 #: app/views/attendance_adm/choose_session.html.erb:1
 msgid "Choose a session to take attendance for"
 msgstr "Elija una sesión para tomar asistencia"
@@ -1485,6 +1623,43 @@ msgstr "%d sesiones activas"
 #: app/views/attendance_adm/choose_session.html.erb:9
 msgid "Show all registered timeslots"
 msgstr "Mostrar todas las sesiones registradas"
+
+#: app/views/attendance_adm/certif_format.html.erb:1
+msgid "Editing certificate format <em>%s</em>"
+msgstr "Editando el formato de certificado <em>%s</em>"
+
+#: app/views/attendance_adm/certif_format.html.erb:3
+msgid "General format information"
+msgstr "Información general de contacto"
+
+#: app/views/attendance_adm/certif_format.html.erb:5
+msgid "Help"
+msgstr "Ayuda"
+
+#: app/views/attendance_adm/certif_format.html.erb:9
+msgid "All measurments except for font size are expressed in <em>%s</em>. You will notice the values you enter are approximated (i.e. 10.99 instead of 11), as they are stored internally in %s and converted only to be shown here."
+msgstr "Todas las medidas a excepción del tamaño del font están expresadas en <em>%s</em>. Notará que los valores que proporcione quedarán aproximados (p.ej. 10.99 en vez de 11), dado que internamente son guardados en %s, y se convierten únicamente para su presentación en esta interfaz."
+
+#: app/views/attendance_adm/certif_format.html.erb:19
+msgid "This format's lines are sorted according to their vertical position, to better match what you will see on the paper. Measurement (0, 0) starts at the lower-left corner, and the indicated point marks the lower-left corner of the designated text area."
+msgstr "Las líneas de este formato están ordenadas acorde a su posición vertical, reflejando la posición que tendrán en el papel. La coordenada (0, 0) está ubicada en la esquina inferior izquierda, y el punto que usted especifique se refiere a la esquina inferior izquierda del área de texto designada."
+
+#: app/views/attendance_adm/certif_format.html.erb:27
+msgid "This means, if you want to provide a <em>centered</em> 15cm field in <em>Landscape Letter</em> (27.94cm wide) paper, you should set the <em>horizontal</em> position to 6.47 (which is (27.94 - 15) / 2) and the <em>maximum width</em> to 15."
+msgstr "Esto significa que, si desea proveer un campo <em>centrado</em> de 15 centímetros en una hoja <em>tamaño carta horizontal</em> (con un ancho de 27.94cm), deberá especificar la posición <em>horizontal</em> a 6.47 (resultado de (27.94 - 15) / 2), y el <em>ancho máximo</em> a 15."
+
+#: app/views/attendance_adm/certif_format.html.erb:35
+msgid "Regarding <em>content source</em> and <em>content</em>: When  the content source is set to <em>Static</em>, the text provided as content will be present verbatim in the certificate; when <em>Person</em> or <em>Conference</em> are selected, they will accept a suitable <em>attribute name</em>. If when generating certificates you get a system error (<tt>Undefined attribute</tt>), you should check for the validity of your <em>content</em> columns."
+msgstr "Respecto a la <em>fuente del contenido</em> y el <em>contenido</em>: Cuando la fuente del contenido es <em>Estática</em>, el texto que usted provea como contenido aparecerá literalmente en el certificado; si selecciona <em>Persona</em> o <em>Actividad</em>, éstos aceptarán un <em>nombre de atributo</em> correspondiente. Si al generar certificados recibe un error de sistema (<tt>Undefined attribute</tt> - Atributo no definido), deberá verificar que las columnas indicadas por el <em>contenido</em> sean correctas."
+
+#: app/views/attendance_adm/certif_format.html.erb:50
+#: app/views/sys_conf_adm/edit_table_field.html.erb:47
+msgid "Modify"
+msgstr "Modificar"
+
+#: app/views/attendance_adm/certif_format.html.erb:68
+msgid "Add line"
+msgstr "Agregar línea"
 
 #: app/views/attendance_adm/for_person.html.erb:1
 msgid "Attendances for <em>%s</em> on <em>%s</em>"
@@ -1506,6 +1681,32 @@ msgstr "Propuesta"
 #: app/views/attendance_adm/for_person.html.erb:22
 msgid "Create certificate"
 msgstr "Crear certificado"
+
+#: app/views/attendance_adm/for_person.html.erb:24
+msgid "No certificate formats are yet defined. Please %s"
+msgstr "No hay ningún formato definido. Por favor, %s"
+
+#: app/views/attendance_adm/for_person.html.erb:25
+msgid "define one first"
+msgstr "defina uno primero"
+
+#: app/views/attendance_adm/for_person.html.erb:28
+msgid "Select which format to generate the certificate with"
+msgstr "Seleccione con qué formato generar el certificado"
+
+#: app/views/attendance_adm/certif_formats_list.html.erb:1
+msgid "Available certificate formats"
+msgstr "Formatos de certificado disponibles"
+
+#: app/views/attendance_adm/certif_formats_list.html.erb:9
+#: app/views/people_adm/new.html.erb:3
+#: app/views/conferences_adm/new.html.erb:3
+#: app/views/sys_conf_adm/list_table_fields.html.erb:35
+#: app/views/sys_conf_adm/nametag_format_new.html.erb:4
+#: app/views/sys_conf_adm/show_catalog.html.erb:28
+#: app/views/sys_conf_adm/list.html.erb:26
+msgid "Create"
+msgstr "Crear"
 
 #: app/views/attendance_adm/_list_by_attendances.html.erb:1
 msgid "%d attendances: %d people (exact), %d people (including higher)"
@@ -1530,6 +1731,19 @@ msgstr "Inicio de sesión"
 #: app/views/attendance_adm/_by_session.html.erb:8
 msgid "Attendees"
 msgstr "Asistentes"
+
+#: app/views/attendance_adm/_certif_format_details.html.erb:5
+msgid "Paper size"
+msgstr "Tamaño del papel"
+
+#: app/views/attendance_adm/_certif_format_details.html.erb:6
+msgid "Orientation"
+msgstr "Orientación"
+
+#: app/views/attendance_adm/_certif_format_details.html.erb:20
+#: app/views/sys_conf_adm/nametag_format_list.html.erb:42
+msgid "Are you sure you want to delete this format?"
+msgstr "¿Está seguro de que desea eliminar este formato?"
 
 #: app/views/attendance_adm/list.html.erb:1
 msgid "Attendance list for <em>%s</em>"
@@ -1628,15 +1842,6 @@ msgstr "No hay gente autorizada para esta tarea"
 #: app/views/people_adm/new.html.erb:1
 msgid "Register a new attendee"
 msgstr "Registrar a un nuevo asistente"
-
-#: app/views/people_adm/new.html.erb:3
-#: app/views/conferences_adm/new.html.erb:3
-#: app/views/sys_conf_adm/list_table_fields.html.erb:35
-#: app/views/sys_conf_adm/nametag_format_new.html.erb:4
-#: app/views/sys_conf_adm/show_catalog.html.erb:28
-#: app/views/sys_conf_adm/list.html.erb:26
-msgid "Create"
-msgstr "Crear"
 
 #: app/views/people_adm/list.html.erb:1
 msgid "Attendee administration"
@@ -2305,10 +2510,6 @@ msgstr "Tamaño (cm)"
 msgid "Size (in)"
 msgstr "Tamaño (pulg)"
 
-#: app/views/sys_conf_adm/nametag_format_list.html.erb:42
-msgid "Are you sure you want to delete this format?"
-msgstr "¿Está seguro de que desea eliminar este formato?"
-
 #: app/views/sys_conf_adm/nametag_format_list.html.erb:49
 msgid "Create a new format"
 msgstr "Registrar un nuevo formato"
@@ -2405,10 +2606,6 @@ msgstr "Si especifica un valor por omisión, debe ser válido para su tipo de da
 msgid "Keep in mind that, in order for the database to allow you to require no null values to be entered in a given field, they should all have a value set (this means, older records are not allowed to break the rules).<br/>If you set a nonempty default value, we will set all the NULL values to it, and you will be able to set it to NOT NULL."
 msgstr "Recuerde que, para que la base de datos le permita requerir el que en un campo determinado no sean permitidos los valores nulos, todos los registros existentes deben tener un valor (esto significa, los registros viejos no pueden romper las reglas).<br/>Si usted configura un valor por omisión, modificaremos todos los registros especificando este valor, y usted podrá especificar que no sean permitidos los nulos."
 
-#: app/views/sys_conf_adm/edit_table_field.html.erb:47
-msgid "Modify"
-msgstr "Modificar"
-
 #: app/views/sys_conf_adm/nametag_format_edit.html.erb:1
 msgid "Edit nametag format"
 msgstr "Editar formato de personalizador"
@@ -2465,69 +2662,313 @@ msgstr "Valor"
 msgid "Are you sure you want to delete this configuration entry?"
 msgstr "¿Está seguro de que desea eliminar esta llave de configuración?"
 
+#: lib/pdf_dimensions.rb:3
+msgid "Portrait"
+msgstr "Vertical"
+
+#: lib/pdf_dimensions.rb:3
+msgid "Landscape"
+msgstr "Horizontal"
+
+#: lib/pdf_dimensions.rb:10
+msgid "points"
+msgstr "puntos"
+
+#: lib/pdf_dimensions.rb:11
+msgid "pt"
+msgstr "pt"
+
+#: lib/pdf_dimensions.rb:14
+msgid "centimeters"
+msgstr "centímetros"
+
+#: lib/pdf_dimensions.rb:15
+msgid "cm"
+msgstr "cm"
+
+#: lib/pdf_dimensions.rb:18
+msgid "inches"
+msgstr "pulgadas"
+
+#: lib/pdf_dimensions.rb:19
+msgid "in"
+msgstr "pulg"
+
+#: lib/pdf_dimensions.rb:25
+msgid "Unknown source unit specified: %s"
+msgstr "Especificó una unidad fuente desconocida: %s"
+
+#: lib/pdf_dimensions.rb:27
+msgid "Unknown target unit specified: %s"
+msgstr "Especificó una unidad destino desconocida: %s"
+
+#: lib/pdf_dimensions.rb:42
+msgid "Unknown page units %s in system configuration"
+msgstr "Unidades de página desconocidas en la configuración del sistema: %s"
+
 #: lib/strings_in_db.rb:26
-msgid "PropStatus|New"
-msgstr "Nueva"
-
-#: lib/strings_in_db.rb:27
-msgid "PropStatus|Cancelled"
-msgstr "Cancelado"
-
-#: lib/strings_in_db.rb:28
-msgid "PropStatus|Further details required"
-msgstr "Más datos requeridos"
-
-#: lib/strings_in_db.rb:29
-msgid "PropStatus|Withdrawn"
-msgstr "Retirado"
-
-#: lib/strings_in_db.rb:30
-msgid "PropStatus|Rejected"
-msgstr "Rechazado"
-
-#: lib/strings_in_db.rb:31
-msgid "PropStatus|Accepted"
-msgstr "Aceptado"
-
-#: lib/strings_in_db.rb:34
-msgid "PropType|Round table"
-msgstr "Mesa redonda"
-
-#: lib/strings_in_db.rb:35
-msgid "PropType|Tutorial"
-msgstr "Tutorial"
-
-#: lib/strings_in_db.rb:36
-msgid "PropType|Talk"
-msgstr "Conferencia"
-
-#: lib/strings_in_db.rb:37
-msgid "PropType|Workshop"
-msgstr "Taller"
-
-#: lib/strings_in_db.rb:40
-msgid "Room|Auditorium"
-msgstr "Auditorio"
-
-#: lib/strings_in_db.rb:43
-msgid "AdminTask|Attendee administration"
-msgstr "Administración de asistentes"
-
-#: lib/strings_in_db.rb:44
-msgid "AdminTask|Conferences administration"
-msgstr "Administración de actividades"
-
-#: lib/strings_in_db.rb:45
 msgid "AdminTask|Academic committee"
 msgstr "Comité Académico"
 
-#: lib/strings_in_db.rb:46
+#: lib/strings_in_db.rb:27
 msgid "AdminTask|Attendance management"
 msgstr "Administración de asistencias"
 
-#: lib/strings_in_db.rb:47
+#: lib/strings_in_db.rb:28
+msgid "AdminTask|Attendee administration"
+msgstr "Administración de asistentes"
+
+#: lib/strings_in_db.rb:29
+msgid "AdminTask|Certificates generation"
+msgstr "Generación de certificados"
+
+#: lib/strings_in_db.rb:30
+msgid "AdminTask|Conferences administration"
+msgstr "Administración de actividades"
+
+#: lib/strings_in_db.rb:31
 msgid "AdminTask|System configuration"
 msgstr "Configuración del sistema"
+
+#: lib/strings_in_db.rb:34
+msgid "PropStatus|Accepted"
+msgstr "Aceptado"
+
+#: lib/strings_in_db.rb:35
+msgid "PropStatus|Cancelled"
+msgstr "Cancelado"
+
+#: lib/strings_in_db.rb:36
+msgid "PropStatus|Further details required"
+msgstr "Más datos requeridos"
+
+#: lib/strings_in_db.rb:37
+msgid "PropStatus|New"
+msgstr "Nueva"
+
+#: lib/strings_in_db.rb:38
+msgid "PropStatus|Rejected"
+msgstr "Rechazado"
+
+#: lib/strings_in_db.rb:39
+msgid "PropStatus|Withdrawn"
+msgstr "Retirado"
+
+#: lib/strings_in_db.rb:42
+msgid "PropType|Round table"
+msgstr "Mesa redonda"
+
+#: lib/strings_in_db.rb:43
+msgid "PropType|Talk"
+msgstr "Conferencia"
+
+#: lib/strings_in_db.rb:44
+msgid "PropType|Tutorial"
+msgstr "Tutorial"
+
+#: lib/strings_in_db.rb:45
+msgid "PropType|Workshop"
+msgstr "Taller"
+
+#: lib/strings_in_db.rb:48
+msgid "Room|Auditorium"
+msgstr "Auditorio"
+
+#: lib/strings_in_db.rb:50
+msgid "2A0"
+msgstr "2A0"
+
+#: lib/strings_in_db.rb:51
+msgid "4A0"
+msgstr "4A0"
+
+#: lib/strings_in_db.rb:52
+msgid "A0"
+msgstr "A0"
+
+#: lib/strings_in_db.rb:53
+msgid "A1"
+msgstr "A1"
+
+#: lib/strings_in_db.rb:54
+msgid "A10"
+msgstr "A10"
+
+#: lib/strings_in_db.rb:55
+msgid "A2"
+msgstr "A2"
+
+#: lib/strings_in_db.rb:56
+msgid "A3"
+msgstr "A3"
+
+#: lib/strings_in_db.rb:57
+msgid "A4"
+msgstr "A4"
+
+#: lib/strings_in_db.rb:58
+msgid "A5"
+msgstr "A5"
+
+#: lib/strings_in_db.rb:59
+msgid "A6"
+msgstr "A6"
+
+#: lib/strings_in_db.rb:60
+msgid "A7"
+msgstr "A7"
+
+#: lib/strings_in_db.rb:61
+msgid "A8"
+msgstr "A8"
+
+#: lib/strings_in_db.rb:62
+msgid "A9"
+msgstr "A9"
+
+#: lib/strings_in_db.rb:63
+msgid "B0"
+msgstr "B0"
+
+#: lib/strings_in_db.rb:64
+msgid "B1"
+msgstr "B1"
+
+#: lib/strings_in_db.rb:65
+msgid "B10"
+msgstr "B10"
+
+#: lib/strings_in_db.rb:66
+msgid "B2"
+msgstr "B2"
+
+#: lib/strings_in_db.rb:67
+msgid "B3"
+msgstr "B3"
+
+#: lib/strings_in_db.rb:68
+msgid "B4"
+msgstr "B4"
+
+#: lib/strings_in_db.rb:69
+msgid "B5"
+msgstr "B5"
+
+#: lib/strings_in_db.rb:70
+msgid "B6"
+msgstr "B6"
+
+#: lib/strings_in_db.rb:71
+msgid "B7"
+msgstr "B7"
+
+#: lib/strings_in_db.rb:72
+msgid "B8"
+msgstr "B8"
+
+#: lib/strings_in_db.rb:73
+msgid "B9"
+msgstr "B9"
+
+#: lib/strings_in_db.rb:74
+msgid "C0"
+msgstr "C0"
+
+#: lib/strings_in_db.rb:75
+msgid "C1"
+msgstr "C1"
+
+#: lib/strings_in_db.rb:76
+msgid "C10"
+msgstr "C10"
+
+#: lib/strings_in_db.rb:77
+msgid "C2"
+msgstr "C2"
+
+#: lib/strings_in_db.rb:78
+msgid "C3"
+msgstr "C3"
+
+#: lib/strings_in_db.rb:79
+msgid "C4"
+msgstr "C4"
+
+#: lib/strings_in_db.rb:80
+msgid "C5"
+msgstr "C5"
+
+#: lib/strings_in_db.rb:81
+msgid "C6"
+msgstr "C6"
+
+#: lib/strings_in_db.rb:82
+msgid "C7"
+msgstr "C7"
+
+#: lib/strings_in_db.rb:83
+msgid "C8"
+msgstr "C8"
+
+#: lib/strings_in_db.rb:84
+msgid "C9"
+msgstr "C9"
+
+#: lib/strings_in_db.rb:85
+msgid "EXECUTIVE"
+msgstr "EJECUTIVO"
+
+#: lib/strings_in_db.rb:86
+msgid "FOLIO"
+msgstr "FOLIO"
+
+#: lib/strings_in_db.rb:87
+msgid "LEGAL"
+msgstr "OFICIO"
+
+#: lib/strings_in_db.rb:88
+msgid "LETTER"
+msgstr "CARTA"
+
+#: lib/strings_in_db.rb:89
+msgid "RA0"
+msgstr "RA0"
+
+#: lib/strings_in_db.rb:90
+msgid "RA1"
+msgstr "RA1"
+
+#: lib/strings_in_db.rb:91
+msgid "RA2"
+msgstr "RA2"
+
+#: lib/strings_in_db.rb:92
+msgid "RA3"
+msgstr "RA3"
+
+#: lib/strings_in_db.rb:93
+msgid "RA4"
+msgstr "RA4"
+
+#: lib/strings_in_db.rb:94
+msgid "SRA0"
+msgstr "SRA0"
+
+#: lib/strings_in_db.rb:95
+msgid "SRA1"
+msgstr "SRA1"
+
+#: lib/strings_in_db.rb:96
+msgid "SRA2"
+msgstr "SRA2"
+
+#: lib/strings_in_db.rb:97
+msgid "SRA3"
+msgstr "SRA3"
+
+#: lib/strings_in_db.rb:98
+msgid "SRA4"
+msgstr "SRA4"
 
 #: lib/menu_tree.rb:16
 msgid "Unexpected arguments received: "
@@ -2644,13 +3085,3 @@ msgstr "*** No se agregó ninguna persona: "
 #: script/create_user:76
 msgid "No work done, no harm done. Goodbye!"
 msgstr "No hicimos nada, ni bueno ni malo. ¡Adios!"
-
-#~ msgid "Person|Random password \"salt\""
-#~ msgstr "Salt aleatorio de la contraseña"
-#~ msgid "Person|OK to receive conference-specific mails?"
-#~ msgstr "¿Recibir correos específicos a nuestras actividades?"
-#~ msgid "Conference|Conference beginning date"
-#~ msgstr "Fecha de inicio de la actividad"
-#~ msgid "Conference|Conference finishing date"
-#~ msgstr "Fecha de término de la actividad"
-

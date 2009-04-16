@@ -9,8 +9,9 @@
    <%= _("All measurments except for font size are expressed in " +
          "<em>%s</em>. You will notice the values you enter are " +
          "approximated (i.e. 10.99 instead of 11), as they are " +
-         "stored internally in points and converted only to be shown " +
-         "here.") % @units 
+         "stored internally in %s and converted only to be shown " +
+         "here.") % [_(@units), 
+                     _(PdfDimensions::ValidUnits[:pt][:full]) ] 
         %>
   </p>
 

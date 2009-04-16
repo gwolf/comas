@@ -43,11 +43,17 @@ File.open('lib/strings_in_db.rb', 'w') do |dest|
 # - Update the binary .mo files:
 #   rake makemo
 EOF
-  catalogs.uniq.each do |cat| 
+  catalogs.uniq.sort_by {|c| c.to_s}.each do |cat| 
     dest.puts ''
     dest.puts '# %s' % cat.to_s
-    cat.find(:all, :order => 'id').each do |elem| 
+    cat.find(:all, :order => 'name').each do |elem| 
       dest.puts "_('%s|%s')" % [cat.to_s, elem.name]
     end
+  end
+
+  # Add also the paper sizes defined by PDF::Writer
+  dest.puts '# PDF::Writer PAGE_SIZES'
+  PDF::Writer::PAGE_SIZES.keys.sort.each do |elem|
+    dest.puts "_('%s')" % elem
   end
 end

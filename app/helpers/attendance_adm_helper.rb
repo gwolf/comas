@@ -39,7 +39,7 @@ module AttendanceAdmHelper
   # Generates a human representation of the paper size (i.e. the name
   # followed by the dimensions in the user's prefered measuring unit)
   def human_paper_size(paper)
-    '%s (%s)' % [paper, CertifFormat.paper_dimensions(paper)]
+    '%s (%s)' % [_(paper), CertifFormat.paper_dimensions(paper)]
   end
 
   # Select field for paper size. Receives a FormBuilder object and the
@@ -52,7 +52,7 @@ module AttendanceAdmHelper
   # Select field for paper orientation. Receives a FormBuilder object
   # and the field name.
   def orientation_select(form,field)
-    form.select field, CertifFormat::Orientations.map {|k, v| [v, k]}
+    form.select field, CertifFormat::Orientations.map {|k, v| [_(v), k]}
   end
 
   def certif_format_line_header
