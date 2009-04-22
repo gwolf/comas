@@ -2541,6 +2541,10 @@ msgstr ""
 msgid "Showing records for the <em>%s</em> catalog"
 msgstr ""
 
+#: app/views/sys_conf_adm/show_catalog.html.erb:24
+msgid "Add a new record"
+msgstr ""
+
 #: app/views/sys_conf_adm/show_catalog.html.erb:30
 msgid "Go back to the catalogs listing"
 msgstr ""

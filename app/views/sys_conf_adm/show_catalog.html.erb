@@ -21,7 +21,7 @@
   <% end %>
 <%= end_table %>
 
-<h3><%= 'Add a new record' %></h3>
+<h3><%= _('Add a new record') %></h3>
 <% form_for @blank, :url => {:action => 'add_catalog_row',
                              :catalog => @cat_name} do |f| %>
   <%= _'Name' %>: <%= f.text_field :name %><br/>

@@ -2630,6 +2630,10 @@ msgstr "Registrar un nuevo formato de personalizador"
 msgid "Showing records for the <em>%s</em> catalog"
 msgstr "Mostrando los registros para el catálogo <em>%s</em>"
 
+#: app/views/sys_conf_adm/show_catalog.html.erb:24
+msgid "Add a new record"
+msgstr "Agregar un nuevo registro"
+
 #: app/views/sys_conf_adm/show_catalog.html.erb:30
 msgid "Go back to the catalogs listing"
 msgstr "Volver al listado de catálogos"
