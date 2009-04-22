@@ -255,7 +255,7 @@ module ApplicationHelper
       title = options.delete(:title) || label_for_field(@object, field)
       note = options.delete(:note)
       with_format(title, choices.map { |item|
-                    radio_button(field, item[1]) << ' ' << item[0] },
+                    radio_button(field, item[1]) << ' ' << item[0] }.to_s,
                   note)
     end
 
@@ -277,7 +277,7 @@ module ApplicationHelper
                     res << "id=\"#{fieldname}\" name=\"#{fieldname}\" "
                     res << "value=\"#{item.id}\"> #{_ item.name}</span><br/>"
                     
-                    res.join(' ') },
+                    res.join(' ') }.to_s,
                   note)
     end
 
