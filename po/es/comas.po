@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2009-04-16 12:14-0500\n"
-"PO-Revision-Date: 2009-04-16 12:17-0600\n"
+"POT-Creation-Date: 2009-04-16 12:45-0500\n"
+"PO-Revision-Date: 2009-04-16 12:54-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: Gunnar Wolf <gwolf@gwolf.org>\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgid "Document|Filename"
 msgstr "Nombre de archivo"
 
 #: app/models/document.rb:-
-msgid "Document|Description"
+msgid "Document|Descr"
 msgstr "Descripción"
 
 #: app/models/document.rb:-
@@ -69,7 +69,7 @@ msgid "certif format"
 msgstr "formato de certificado"
 
 #: app/models/certif_format.rb:-
-msgid "CertifFormat|Format name"
+msgid "CertifFormat|Name"
 msgstr "Nombre del formato"
 
 #: app/models/certif_format.rb:-
@@ -89,15 +89,15 @@ msgid "Person|Login"
 msgstr "Nombre de usuario"
 
 #: app/models/person.rb:-
-msgid "Person|Password"
+msgid "Person|Passwd"
 msgstr "Contraseña"
 
 #: app/models/person.rb:-
-msgid "Person|First name"
+msgid "Person|Firstname"
 msgstr "Nombre propio"
 
 #: app/models/person.rb:-
-msgid "Person|Family name"
+msgid "Person|Famname"
 msgstr "Apellido"
 
 #: app/models/person.rb:-
@@ -106,7 +106,7 @@ msgstr "Correo electrónico"
 
 #: app/models/person.rb:-
 msgid "Person|Pw salt"
-msgstr "Contraseña"
+msgstr "Salt aleatorio de la contraseña"
 
 #: app/models/person.rb:-
 msgid "Person|Created at"
@@ -117,11 +117,11 @@ msgid "Person|Last login at"
 msgstr "Última entrada"
 
 #: app/models/person.rb:-
-msgid "Person|OK to receive mails for the activities you have signed up for?"
-msgstr "¿Recibir correos de las actividades a las que está registrado?"
+msgid "Person|Ok conf mails"
+msgstr "¿Recibir correos específicos a las actividades a las que se registró?"
 
 #: app/models/person.rb:-
-msgid "Person|OK to receive general mails?"
+msgid "Person|Ok general mails"
 msgstr "¿Recibir correos generales?"
 
 #: app/models/person.rb:-
@@ -133,7 +133,7 @@ msgid "AdminTask|Name"
 msgstr "Nombre"
 
 #: app/models/person.rb:-
-msgid "AdminTask|System name"
+msgid "AdminTask|Sys name"
 msgstr "Nombre de sistema"
 
 #: app/models/person.rb:-
@@ -145,7 +145,7 @@ msgid "Conference|Name"
 msgstr "Nombre"
 
 #: app/models/person.rb:-
-msgid "Conference|Description"
+msgid "Conference|Descr"
 msgstr "Descripción"
 
 #: app/models/person.rb:-
@@ -153,19 +153,19 @@ msgid "Conference|Homepage"
 msgstr "Página de inicio"
 
 #: app/models/person.rb:-
-msgid "Conference|Registration opening date"
+msgid "Conference|Reg open date"
 msgstr "Fecha de inicio del registro"
 
 #: app/models/person.rb:-
-msgid "Conference|Registration closing date"
+msgid "Conference|Reg close date"
 msgstr "Fecha de cierre de registro"
 
 #: app/models/person.rb:-
-msgid "Conference|Call for Papers opening date"
+msgid "Conference|Cfp open date"
 msgstr "Fecha de inicio de la convocatoria de propuestas"
 
 #: app/models/person.rb:-
-msgid "Conference|Call for papers closing date"
+msgid "Conference|Cfp close date"
 msgstr "Fecha de cierre de convocatoria de propuestas"
 
 #: app/models/person.rb:-
@@ -184,15 +184,15 @@ msgstr "Nombre corto"
 msgid "A valid e-mail address is required"
 msgstr "Una dirección de correo válida es requerida"
 
-#: app/models/person.rb:127
+#: app/models/person.rb:145
 msgid "Registrations for this conference are closed"
 msgstr "El registro para esta actividad está cerrado"
 
-#: app/models/person.rb:145
+#: app/models/person.rb:163
 msgid "Conference %s does not currently accept registrations"
 msgstr "La actividad %s actualmente no acepta registros"
 
-#: app/models/person.rb:152
+#: app/models/person.rb:170
 msgid "Cannot leave %s - This user still has proposals on this conference"
 msgstr "No puede abandonar %s - El usuario tiene aún propuestas para esta actividad"
 
@@ -242,7 +242,7 @@ msgid "SysConf|Key"
 msgstr "Llave"
 
 #: app/models/sys_conf.rb:-
-msgid "SysConf|Description"
+msgid "SysConf|Descr"
 msgstr "Descripción"
 
 #: app/models/sys_conf.rb:-
@@ -290,11 +290,11 @@ msgid "timeslot"
 msgstr "horario"
 
 #: app/models/timeslot.rb:-
-msgid "Timeslot|Tolerance (pre)"
+msgid "Timeslot|Tolerance pre"
 msgstr "Tolerancia (pre)"
 
 #: app/models/timeslot.rb:-
-msgid "Timeslot|Tolerance (post)"
+msgid "Timeslot|Tolerance post"
 msgstr "Tolerancia (post)"
 
 #: app/models/timeslot.rb:-
@@ -354,6 +354,14 @@ msgid "Room|Name"
 msgstr "Nombre"
 
 #: app/models/proposal.rb:-
+msgid "prop status"
+msgstr "estado de la propuesta"
+
+#: app/models/proposal.rb:-
+msgid "PropStatus|Name"
+msgstr "Nombre"
+
+#: app/models/proposal.rb:-
 msgid "proposal"
 msgstr "propuesta"
 
@@ -374,11 +382,11 @@ msgid "Proposal|Updated at"
 msgstr "Última actualización"
 
 #: app/models/proposal.rb:-
-msgid "Proposal|Proposal type"
+msgid "Proposal|Prop type"
 msgstr "Tipo de la propuesta"
 
 #: app/models/proposal.rb:-
-msgid "Proposal|Proposal status"
+msgid "Proposal|Prop status"
 msgstr "Estado de la propuesta"
 
 #: app/models/proposal.rb:-
@@ -388,14 +396,6 @@ msgstr "Horario"
 #: app/models/proposal.rb:-
 msgid "Proposal|Conference"
 msgstr "Actividad"
-
-#: app/models/proposal.rb:-
-msgid "prop status"
-msgstr "estado de la propuesta"
-
-#: app/models/proposal.rb:-
-msgid "PropStatus|Name"
-msgstr "Nombre"
 
 #: app/models/proposal.rb:36
 msgid "Call for papers period for this conference is not current"
@@ -410,19 +410,19 @@ msgid "nametag format"
 msgstr "formato de personalizador"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Format name"
-msgstr "Nombre de formato"
+msgid "NametagFormat|Name"
+msgstr "Nombre del formato"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Horizontal size"
+msgid "NametagFormat|H size"
 msgstr "Tamaño horizontal"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Vertical size"
+msgid "NametagFormat|V size"
 msgstr "Tamaño vertical"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Vertical gap"
+msgid "NametagFormat|V gap"
 msgstr "Separación vertical"
 
 #: app/models/nametag_format.rb:-
@@ -430,35 +430,35 @@ msgid "NametagFormat|Name width"
 msgstr "Ancho del nombre"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Horizontal start"
+msgid "NametagFormat|H start"
 msgstr "Inicio horizontal"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Vertical start"
+msgid "NametagFormat|V start"
 msgstr "Inicio vertical"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Horizontal position for barcode"
-msgstr "Posición horizontal para el inicio del código de barras"
+msgid "NametagFormat|Id bar hpos"
+msgstr "Posición horizontal del código de barras"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Vertical position for barcode"
-msgstr "Posición vertical para el inicio del código de barras"
+msgid "NametagFormat|Id bar vpos"
+msgstr "Posición vertical del código de barras"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Barcode orientation"
+msgid "NametagFormat|Id bar orient"
 msgstr "Orientación del código de barras"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Barcode narrow bars width"
+msgid "NametagFormat|Id bar narrow"
 msgstr "Ancho de las barras delgadas"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Barcode wide bars width"
+msgid "NametagFormat|Id bar wide"
 msgstr "Ancho de las barras gruesas"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Barcode height"
+msgid "NametagFormat|Id bar height"
 msgstr "Altura del código de barras"
 
 #: app/models/nametag_format.rb:-
@@ -510,15 +510,15 @@ msgid "CertifFormatLine|Content"
 msgstr "Contenido"
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Horizontal position"
+msgid "CertifFormatLine|X pos"
 msgstr "Posición horizontal"
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Vertical position"
+msgid "CertifFormatLine|Y pos"
 msgstr "Posición vertical"
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Maximum width"
+msgid "CertifFormatLine|Max width"
 msgstr "Ancho máximo"
 
 #: app/models/certif_format_line.rb:-
@@ -530,7 +530,7 @@ msgid "CertifFormatLine|Justification"
 msgstr "Justificación"
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Certificate format"
+msgid "CertifFormatLine|Certif format"
 msgstr "Formato de certificado"
 
 #: app/models/certif_format_line.rb:4
@@ -588,7 +588,7 @@ msgid "Logo|Data"
 msgstr "Datos"
 
 #: app/models/logo.rb:-
-msgid "Logo|Thumbnail"
+msgid "Logo|Thumb"
 msgstr "Reducido"
 
 #: app/models/logo.rb:-
@@ -703,7 +703,7 @@ msgstr "Error eliminando la actividad solicitada:"
 
 #: app/controllers/conferences_adm_controller.rb:70
 #: app/controllers/admin.rb:12
-#: app/controllers/people_adm_controller.rb:98
+#: app/controllers/people_adm_controller.rb:112
 msgid "Invocation error"
 msgstr "Error de invocación"
 
@@ -724,7 +724,7 @@ msgid "Could not find requested timeslot (%d) for deletion - Maybe it was alread
 msgstr "No fue posible encontrar la sesión especificada (%d) para eliminarla - Posiblemente ya la había eliminado"
 
 #: app/controllers/conferences_adm_controller.rb:128
-#: app/controllers/people_adm_controller.rb:117
+#: app/controllers/people_adm_controller.rb:131
 msgid "You must specify both email title and body"
 msgstr "Debe especificar tanto el título como el cuerpo del correo."
 
@@ -733,7 +733,7 @@ msgid "Invalid conference specified"
 msgstr "Especificó una actividad inexistente"
 
 #: app/controllers/conferences_adm_controller.rb:143
-#: app/controllers/people_adm_controller.rb:126
+#: app/controllers/people_adm_controller.rb:140
 msgid "User %s (ID: %s) is registered with an invalid email address (%s). Skipping..."
 msgstr "El usuario %s (ID: %s) está registrado con una dirección de correo inválida (%s). Omitiéndolo."
 
@@ -992,35 +992,35 @@ msgstr "Tareas administrativas"
 msgid "Massive mailing"
 msgstr "Correo masivo"
 
-#: app/controllers/people_adm_controller.rb:31
+#: app/controllers/people_adm_controller.rb:45
 msgid "New attendee successfully registered"
 msgstr "El nuevo asistente fue registrado exitosamente"
 
-#: app/controllers/people_adm_controller.rb:34
+#: app/controllers/people_adm_controller.rb:48
 msgid "Error registering requested attendee: "
 msgstr "Error registrando al asistente indicado:"
 
-#: app/controllers/people_adm_controller.rb:77
+#: app/controllers/people_adm_controller.rb:91
 msgid "Removing this administrative task from your own account is not allowed - Restoring."
 msgstr "No está permitido eliminar esta tarea administrativa de su propia cuenta - Reestableciendo."
 
-#: app/controllers/people_adm_controller.rb:82
+#: app/controllers/people_adm_controller.rb:96
 msgid "Person data successfully updated"
 msgstr "Los datos de la persona fueron actualizados exitosamente"
 
-#: app/controllers/people_adm_controller.rb:85
+#: app/controllers/people_adm_controller.rb:99
 msgid "Error recording requested data: %s"
 msgstr "Error registrando los datos especificados: %s"
 
-#: app/controllers/people_adm_controller.rb:92
+#: app/controllers/people_adm_controller.rb:106
 msgid "Successfully removed requested attendee"
 msgstr "El asistente especificado fue eliminado exitosamente"
 
-#: app/controllers/people_adm_controller.rb:94
+#: app/controllers/people_adm_controller.rb:108
 msgid "Error removing requested attendee: "
 msgstr "Error eliminando al asistente solicitado:"
 
-#: app/controllers/people_adm_controller.rb:132
+#: app/controllers/people_adm_controller.rb:146
 msgid "The %d requested mails have been sent."
 msgstr "Los %d correos electrónicos fueron enviados exitosamente"
 
@@ -1855,7 +1855,11 @@ msgstr "Filtrar por: (sobre los campos de nombre de usuario, nombre propio o ape
 msgid "Filter"
 msgstr "Filtrar"
 
-#: app/views/people_adm/list.html.erb:21
+#: app/views/people_adm/list.html.erb:9
+msgid "Download this listing"
+msgstr "Bajar este listado"
+
+#: app/views/people_adm/list.html.erb:24
 msgid "Register new"
 msgstr "Registrar nuevo"
 
@@ -2625,6 +2629,10 @@ msgstr "Registrar un nuevo formato de personalizador"
 #: app/views/sys_conf_adm/show_catalog.html.erb:1
 msgid "Showing records for the <em>%s</em> catalog"
 msgstr "Mostrando los registros para el catálogo <em>%s</em>"
+
+#: app/views/sys_conf_adm/show_catalog.html.erb:24
+msgid "Add a new record"
+msgstr "Agregar un nuevo registro"
 
 #: app/views/sys_conf_adm/show_catalog.html.erb:30
 msgid "Go back to the catalogs listing"

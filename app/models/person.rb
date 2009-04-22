@@ -49,17 +49,35 @@ class Person < ActiveRecord::Base
     extra_listable_attributes.select {|a| a.name =~ /^pub_/}
   end
 
+  # Returns a flattened list of attributes, good to be used in a
+  # generic listing. This means, the attributes are by themselves both
+  # good enough as a column header and valid methods that can be sent
+  # to the person instance.
+  def self.flattributes_for_list
+    self.columns.map do |col| 
+      name = col.name
+      if name =~ /^(.*)_id$/
+        attr_for_name = "#{$1}_name"
+        name = attr_for_name if self.instance_methods.include? attr_for_name
+      end
+      name
+    end
+  end
+
   # List of users which accepted to receive general information mails
   def self.mailable
     self.find(:all, :conditions => 'ok_general_mails')
   end
 
-  # Performs a (paginated) search. If no parameters are specified, it
-  # just returns the first page of a paginated full listing, ordered
-  # by ID. A string can be specified as a firstname - it will be
-  # searched in firstname, famname and login. Any additional
-  # parameters for the search can be specified in the second parameter
-  # (as a hash).
+  # Performs a (optionally paginated) search for the specified string
+  # in any of the firstname, famname or login fields. 
+  #
+  # If no parameters are specified, it just returns a full listing,
+  # ordered by ID. Any additional parameters for the search can be
+  # specified in the second parameter (as a hash).
+  #
+  # The resulting list will be paginated if the :paginate attribute is
+  # true.
   def self.search(name=nil, params={})
     paginated = params.delete :paginate
     params.merge!(:conditions=>['firstname ~* ? or famname ~* ? or login ~* ?',

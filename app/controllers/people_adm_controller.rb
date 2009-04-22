@@ -12,13 +12,27 @@ class PeopleAdmController < Admin
   end
 
   def list
-    order = sort_for_fields(['id', 'login', 'firstname', 'famname',
-                             'last_login_at'])
+    order = 'people.' + sort_for_fields(['id', 'login', 'firstname', 
+                                         'famname', 'last_login_at'])
     @filter_by = params[:filter_by]
-    @people = Person.search(@filter_by, 
-                            :order => "people.#{order}",
-                            :page => params[:page], 
-                            :paginate => true)
+
+    if params[:xls_output]
+      columns = Person.flattributes_for_list - %w(pw_salt passwd)
+      xls = SimpleXLS.new
+      xls.add_header(columns)
+
+      Person.search(@filter_by, :order => order).each do |pers|
+        xls.add_row( columns.map {|col| pers.send(col) } )
+      end
+
+      send_data(xls.to_s, :type => 'application/vnd.ms-excel', 
+                :filename => 'list.xls')
+    else
+      @people = Person.search(@filter_by, 
+                              :order => order,
+                              :page => params[:page],
+                              :paginate => true)
+    end
   end
 
   def new
