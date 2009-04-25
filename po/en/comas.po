@@ -1,665 +1,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2009-04-16 12:45-0500\n"
-"PO-Revision-Date: 2009-04-16 12:54-0600\n"
+"POT-Creation-Date: 2009-04-25 12:54-0500\n"
+"PO-Revision-Date: 2009-04-25 12:31-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: English\n"
-
-#: app/models/document.rb:-
-msgid "document"
-msgstr ""
-
-#: app/models/document.rb:-
-msgid "Document|Filename"
-msgstr "Filename"
-
-#: app/models/document.rb:-
-msgid "Document|Descr"
-msgstr "Description"
-
-#: app/models/document.rb:-
-msgid "Document|Content type"
-msgstr "Content type"
-
-#: app/models/document.rb:-
-msgid "Document|Data"
-msgstr "Data"
-
-#: app/models/document.rb:-
-msgid "Document|Created at"
-msgstr "Created at"
-
-#: app/models/document.rb:-
-msgid "Document|Updated at"
-msgstr "Updated at"
-
-#: app/models/document.rb:-
-msgid "Document|Proposal"
-msgstr "Proposal"
-
-#: app/models/document.rb:9
-msgid "A file with this name has already been uploaded to this proposal"
-msgstr ""
-
-#: app/models/document.rb:42
-msgid "%.2f GB"
-msgstr ""
-
-#: app/models/document.rb:43
-msgid "%.2f MB"
-msgstr ""
-
-#: app/models/document.rb:44
-msgid "%.2f KB"
-msgstr ""
-
-#: app/models/document.rb:45
-msgid "%d bytes"
-msgstr ""
-
-#: app/models/certif_format.rb:-
-msgid "certif format"
-msgstr ""
-
-#: app/models/certif_format.rb:-
-msgid "CertifFormat|Name"
-msgstr "Format name"
-
-#: app/models/certif_format.rb:-
-msgid "CertifFormat|Paper size"
-msgstr "Paper size"
-
-#: app/models/certif_format.rb:-
-msgid "CertifFormat|Orientation"
-msgstr "Orientation"
-
-#: app/models/person.rb:-
-msgid "person"
-msgstr ""
-
-#: app/models/person.rb:-
-msgid "Person|Login"
-msgstr "Login"
-
-#: app/models/person.rb:-
-msgid "Person|Passwd"
-msgstr "Password"
-
-#: app/models/person.rb:-
-msgid "Person|Firstname"
-msgstr "First name"
-
-#: app/models/person.rb:-
-msgid "Person|Famname"
-msgstr "Family name"
-
-#: app/models/person.rb:-
-msgid "Person|Email"
-msgstr "Email"
-
-#: app/models/person.rb:-
-msgid "Person|Password random salt"
-msgstr "Password random salt"
-
-#: app/models/person.rb:-
-msgid "Person|Created at"
-msgstr "Created at"
-
-#: app/models/person.rb:-
-msgid "Person|Last login at"
-msgstr "Last login at"
-
-#: app/models/person.rb:-
-msgid "Person|Ok conf mails"
-msgstr "Ok to receive conference-specific mails?"
-
-#: app/models/person.rb:-
-msgid "Person|Ok general mails"
-msgstr "OK to receive general mails?"
-
-#: app/models/person.rb:-
-msgid "admin task"
-msgstr ""
-
-#: app/models/person.rb:-
-msgid "AdminTask|Name"
-msgstr "Name"
-
-#: app/models/person.rb:-
-msgid "AdminTask|Sys name"
-msgstr "System name"
-
-#: app/models/person.rb:-
-msgid "conference"
-msgstr ""
-
-#: app/models/person.rb:-
-msgid "Conference|Name"
-msgstr "Name"
-
-#: app/models/person.rb:-
-msgid "Conference|Descr"
-msgstr "Description"
-
-#: app/models/person.rb:-
-msgid "Conference|Homepage"
-msgstr "Homepage"
-
-#: app/models/person.rb:-
-msgid "Conference|Reg open date"
-msgstr "Registration opening date"
-
-#: app/models/person.rb:-
-msgid "Conference|Reg close date"
-msgstr "Registration closing date"
-
-#: app/models/person.rb:-
-msgid "Conference|Cfp open date"
-msgstr "Call for Papers opening date"
-
-#: app/models/person.rb:-
-msgid "Conference|Cfp close date"
-msgstr "Call for papers closing date"
-
-#: app/models/person.rb:-
-msgid "Conference|Begins"
-msgstr "Begins"
-
-#: app/models/person.rb:-
-msgid "Conference|Finishes"
-msgstr "Finishes"
-
-#: app/models/person.rb:-
-msgid "Conference|Short name"
-msgstr "Short name"
-
-#: app/models/person.rb:20
-msgid "A valid e-mail address is required"
-msgstr ""
-
-#: app/models/person.rb:145
-msgid "Registrations for this conference are closed"
-msgstr ""
-
-#: app/models/person.rb:163
-msgid "Conference %s does not currently accept registrations"
-msgstr ""
-
-#: app/models/person.rb:170
-msgid "Cannot leave %s - This user still has proposals on this conference"
-msgstr ""
-
-#: app/models/conference.rb:213
-#: app/models/conference.rb:214
-msgid "%{fn} can't be blank"
-msgstr ""
-
-#: app/models/conference.rb:217
-msgid "Conference must end after its start date"
-msgstr ""
-
-#: app/models/conference.rb:220
-msgid "Call for papers must end after its start date"
-msgstr ""
-
-#: app/models/conference.rb:223
-msgid "Call for papers must finish before the conference begins"
-msgstr ""
-
-#: app/models/conference.rb:227
-msgid "Registration must end after its start date"
-msgstr ""
-
-#: app/models/conference.rb:230
-msgid "Registration must finish before the conference ends"
-msgstr ""
-
-#: app/models/conference.rb:241
-msgid "There are %d timeslots for this conference outside its time span: %s"
-msgstr ""
-
-#: app/models/conference.rb:258
-msgid "This conference does not currently accept registrations"
-msgstr ""
-
-#: app/models/conference.rb:264
-msgid "Cannot remove %s from this conference - Remove or reassign his proposals first"
-msgstr ""
-
-#: app/models/sys_conf.rb:-
-msgid "sys conf"
-msgstr ""
-
-#: app/models/sys_conf.rb:-
-msgid "SysConf|Key"
-msgstr "Key"
-
-#: app/models/sys_conf.rb:-
-msgid "SysConf|Descr"
-msgstr "Description"
-
-#: app/models/sys_conf.rb:-
-msgid "SysConf|Value"
-msgstr "Value"
-
-#: app/models/notification.rb:10
-msgid "Welcome! You have successfully registered at %s"
-msgstr ""
-
-#: app/models/notification.rb:25
-msgid "New password request for %s"
-msgstr ""
-
-#: app/models/notification.rb:41
-msgid "You have been added as a coauthor"
-msgstr ""
-
-#: app/models/notification.rb:59
-msgid "Invitation to %s, sent by %s"
-msgstr ""
-
-#: app/models/attendance.rb:-
-msgid "attendance"
-msgstr ""
-
-#: app/models/attendance.rb:-
-msgid "Attendance|Created at"
-msgstr "Created at"
-
-#: app/models/attendance.rb:-
-msgid "Attendance|Person"
-msgstr "Person"
-
-#: app/models/attendance.rb:-
-msgid "Attendance|Timeslot"
-msgstr "Timeslot"
-
-#: app/models/attendance.rb:11
-msgid "Requested person already registered for this timeslot"
-msgstr ""
-
-#: app/models/timeslot.rb:-
-msgid "timeslot"
-msgstr ""
-
-#: app/models/timeslot.rb:-
-msgid "Timeslot|Tolerance pre"
-msgstr "Tolerance (pre)"
-
-#: app/models/timeslot.rb:-
-msgid "Timeslot|Tolerance post"
-msgstr "Tolerance (post)"
-
-#: app/models/timeslot.rb:-
-msgid "Timeslot|Room"
-msgstr "Room"
-
-#: app/models/timeslot.rb:-
-msgid "Timeslot|Conference"
-msgstr "Conference"
-
-#: app/models/timeslot.rb:-
-msgid "Timeslot|Start time"
-msgstr "Start time"
-
-#: app/models/timeslot.rb:176
-msgid "Must start within the conference dates (%s - %s)"
-msgstr ""
-
-#: app/models/timeslot.rb:188
-msgid "Wrong format (should be hh:mm or hh:mm:ss)"
-msgstr ""
-
-#: app/models/timeslot.rb:220
-msgid "Timeslot is overlapping on room %s with %s"
-msgstr ""
-
-#: app/models/authorship.rb:-
-msgid "authorship"
-msgstr ""
-
-#: app/models/authorship.rb:-
-msgid "Authorship|Position"
-msgstr "Position"
-
-#: app/models/authorship.rb:-
-msgid "Authorship|Person"
-msgstr "Person"
-
-#: app/models/authorship.rb:-
-msgid "Authorship|Proposal"
-msgstr "Proposal"
-
-#: app/models/prop_type.rb:-
-msgid "prop type"
-msgstr ""
-
-#: app/models/prop_type.rb:-
-msgid "PropType|Name"
-msgstr "Name"
-
-#: app/models/room.rb:-
-msgid "room"
-msgstr ""
-
-#: app/models/room.rb:-
-msgid "Room|Name"
-msgstr "Name"
-
-#: app/models/proposal.rb:-
-msgid "prop status"
-msgstr ""
-
-#: app/models/proposal.rb:-
-msgid "PropStatus|Name"
-msgstr "Name"
-
-#: app/models/proposal.rb:-
-msgid "proposal"
-msgstr ""
-
-#: app/models/proposal.rb:-
-msgid "Proposal|Title"
-msgstr "Title"
-
-#: app/models/proposal.rb:-
-msgid "Proposal|Abstract"
-msgstr "Abstract"
-
-#: app/models/proposal.rb:-
-msgid "Proposal|Created at"
-msgstr "Created at"
-
-#: app/models/proposal.rb:-
-msgid "Proposal|Updated at"
-msgstr "Updated at"
-
-#: app/models/proposal.rb:-
-msgid "Proposal|Prop type"
-msgstr "Proposal type"
-
-#: app/models/proposal.rb:-
-msgid "Proposal|Prop status"
-msgstr "Proposal status"
-
-#: app/models/proposal.rb:-
-msgid "Proposal|Timeslot"
-msgstr "Timeslot"
-
-#: app/models/proposal.rb:-
-msgid "Proposal|Conference"
-msgstr "Conference"
-
-#: app/models/proposal.rb:36
-msgid "Call for papers period for this conference is not current"
-msgstr ""
-
-#: app/models/proposal.rb:46
-msgid "An already submitted proposal can not be moved to a different conference"
-msgstr ""
-
-#: app/models/nametag_format.rb:-
-msgid "nametag format"
-msgstr ""
-
-#: app/models/nametag_format.rb:-
-msgid "NametagFormat|Name"
-msgstr "Format name"
-
-#: app/models/nametag_format.rb:-
-msgid "NametagFormat|H size"
-msgstr "Horizontal size"
-
-#: app/models/nametag_format.rb:-
-msgid "NametagFormat|V size"
-msgstr "Vertical size"
-
-#: app/models/nametag_format.rb:-
-msgid "NametagFormat|V gap"
-msgstr "Vertical gap"
-
-#: app/models/nametag_format.rb:-
-msgid "NametagFormat|Name width"
-msgstr "Name width"
-
-#: app/models/nametag_format.rb:-
-msgid "NametagFormat|H start"
-msgstr "Horizontal start"
-
-#: app/models/nametag_format.rb:-
-msgid "NametagFormat|V start"
-msgstr "Vertical start"
-
-#: app/models/nametag_format.rb:-
-msgid "NametagFormat|Id bar hpos"
-msgstr "Barcode horizontal position"
-
-#: app/models/nametag_format.rb:-
-msgid "NametagFormat|Id bar vpos"
-msgstr "Barcode vertical position"
-
-#: app/models/nametag_format.rb:-
-msgid "NametagFormat|Id bar orient"
-msgstr "Barcode orientation"
-
-#: app/models/nametag_format.rb:-
-msgid "NametagFormat|Id bar narrow"
-msgstr "Barcode narrow bars width"
-
-#: app/models/nametag_format.rb:-
-msgid "NametagFormat|Id bar wide"
-msgstr "Barcode wide bars width"
-
-#: app/models/nametag_format.rb:-
-msgid "NametagFormat|Id bar height"
-msgstr "Barcode height"
-
-#: app/models/nametag_format.rb:-
-msgid "NametagFormat|Position"
-msgstr "Position"
-
-#: app/models/nametag_format.rb:12
-msgid "Horizontal"
-msgstr ""
-
-#: app/models/nametag_format.rb:12
-msgid "Vertical"
-msgstr ""
-
-#: app/models/nametag_format.rb:13
-msgid "Upside down"
-msgstr ""
-
-#: app/models/nametag_format.rb:13
-msgid "Vertical inverted"
-msgstr ""
-
-#: app/models/nametag_format.rb:28
-msgid "Not in valid range (1-10)"
-msgstr ""
-
-#: app/models/nametag_format.rb:30
-msgid "Not in valid range (2-30)"
-msgstr ""
-
-#: app/models/nametag_format.rb:33
-msgid "Narrow bar must be narrower than wide bar"
-msgstr ""
-
-#: app/models/nametag_format.rb:67
-msgid "Unknown unit specified: %s"
-msgstr ""
-
-#: app/models/certif_format_line.rb:-
-msgid "certif format line"
-msgstr ""
-
-#: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Content source"
-msgstr "Content source"
-
-#: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Content"
-msgstr "Content"
-
-#: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|X pos"
-msgstr "Horizontal position"
-
-#: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Y pos"
-msgstr "Vertical position"
-
-#: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Max width"
-msgstr "Maximum width"
-
-#: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Font size"
-msgstr "Font size"
-
-#: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Justification"
-msgstr "Justification"
-
-#: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Certif format"
-msgstr "Certificate format"
-
-#: app/models/certif_format_line.rb:4
-msgid "Static"
-msgstr ""
-
-#: app/models/certif_format_line.rb:5
-msgid "Person"
-msgstr "Person"
-
-#: app/models/certif_format_line.rb:6
-#: app/helpers/conferences_helper.rb:18
-#: app/helpers/attendance_adm_helper.rb:18
-#: app/views/people/proposals.html.erb:15
-#: app/views/people/profile.html.erb:9
-#: app/views/proposals/by_author.html.erb:11
-#: app/views/proposals/_form.html.erb:12
-msgid "Conference"
-msgstr ""
-
-#: app/models/certif_format_line.rb:29
-msgid "Undefined content source %d for %d (%d)"
-msgstr ""
-
-#: app/models/certif_format_line.rb:35
-msgid "Undefined attribute %s for %s in format "
-msgstr ""
-
-#: app/models/rescue_session.rb:-
-msgid "rescue session"
-msgstr ""
-
-#: app/models/rescue_session.rb:-
-msgid "RescueSession|Link"
-msgstr "Link"
-
-#: app/models/rescue_session.rb:-
-msgid "RescueSession|Created at"
-msgstr "Created at"
-
-#: app/models/rescue_session.rb:-
-msgid "RescueSession|Person"
-msgstr "Person"
-
-#: app/models/logo.rb:-
-msgid "logo"
-msgstr ""
-
-#: app/models/logo.rb:-
-msgid "Logo|Conference"
-msgstr "Conference"
-
-#: app/models/logo.rb:-
-msgid "Logo|Data"
-msgstr "Data"
-
-#: app/models/logo.rb:-
-msgid "Logo|Thumb"
-msgstr "Thumbnail"
-
-#: app/models/logo.rb:-
-msgid "Logo|Medium"
-msgstr "Medium"
-
-#: app/models/logo.rb:-
-msgid "Logo|Width"
-msgstr "Width"
-
-#: app/models/logo.rb:-
-msgid "Logo|Height"
-msgstr "Height"
-
-#: app/models/logo.rb:-
-msgid "Logo|Updated at"
-msgstr "Updated at"
-
-#: app/controllers/application.rb:50
-msgid "Controller %s must implement check_auth"
-msgstr ""
-
-#: app/controllers/application.rb:67
-msgid "Conference listing"
-msgstr ""
-
-#: app/controllers/application.rb:71
-#: app/views/people/login.html.erb:6
-msgid "Log in"
-msgstr ""
-
-#: app/controllers/application.rb:73
-#: app/views/notification/conference_invitation.text.plain.erb:22
-#: app/views/people/new.html.erb:1
-msgid "New account"
-msgstr ""
-
-#: app/controllers/application.rb:77
-#: app/views/people/personal.html.erb:1
-msgid "Personal information"
-msgstr ""
-
-#: app/controllers/application.rb:79
-#: app/views/people/password.html.erb:24
-msgid "Change password"
-msgstr ""
-
-#: app/controllers/application.rb:82
-#: app/views/people/proposals.html.erb:1
-msgid "My proposals"
-msgstr ""
-
-#: app/controllers/application.rb:85
-#: app/views/people/invite.html.erb:1
-msgid "Invite a friend"
-msgstr ""
-
-#: app/controllers/application.rb:88
-#: app/views/notification/welcome.text.plain.erb:20
-msgid "My account"
-msgstr ""
-
-#: app/controllers/application.rb:102
-msgid "-*- Unimplemented"
-msgstr ""
-
-#: app/controllers/application.rb:116
-msgid "&laquo; Previous"
-msgstr ""
-
-#: app/controllers/application.rb:117
-msgid "Next &raquo;"
-msgstr ""
 
 #: app/controllers/conferences_adm_controller.rb:5
 #: app/views/conferences/list.html.erb:3
@@ -700,8 +49,7 @@ msgid "Error removing requested conference: "
 msgstr ""
 
 #: app/controllers/conferences_adm_controller.rb:70
-#: app/controllers/admin.rb:12
-#: app/controllers/people_adm_controller.rb:112
+#: app/controllers/admin.rb:12 app/controllers/people_adm_controller.rb:112
 msgid "Invocation error"
 msgstr ""
 
@@ -718,7 +66,9 @@ msgid "The requested timeslot was successfully deleted"
 msgstr ""
 
 #: app/controllers/conferences_adm_controller.rb:114
-msgid "Could not find requested timeslot (%d) for deletion - Maybe it was already deleted?"
+msgid ""
+"Could not find requested timeslot (%d) for deletion - Maybe it was already "
+"deleted?"
 msgstr ""
 
 #: app/controllers/conferences_adm_controller.rb:128
@@ -732,11 +82,14 @@ msgstr ""
 
 #: app/controllers/conferences_adm_controller.rb:143
 #: app/controllers/people_adm_controller.rb:140
-msgid "User %s (ID: %s) is registered with an invalid email address (%s). Skipping..."
+msgid ""
+"User %s (ID: %s) is registered with an invalid email address (%s). "
+"Skipping..."
 msgstr ""
 
 #: app/controllers/conferences_adm_controller.rb:150
-msgid "No registered attendees for %s have chosen to receive mails - Not sending."
+msgid ""
+"No registered attendees for %s have chosen to receive mails - Not sending."
 msgstr ""
 
 #: app/controllers/conferences_adm_controller.rb:153
@@ -744,7 +97,9 @@ msgid "The %d requested mails for \"%s\" attendees have been sent."
 msgstr ""
 
 #: app/controllers/proposals_controller.rb:15
-msgid "There are currently no conferences for which you can submit proposals. Please register first."
+msgid ""
+"There are currently no conferences for which you can submit proposals. "
+"Please register first."
 msgstr ""
 
 #: app/controllers/proposals_controller.rb:38
@@ -764,7 +119,9 @@ msgid "Error updating the proposal: "
 msgstr ""
 
 #: app/controllers/proposals_controller.rb:94
-msgid "Requested author does not exist or is not listed in this proposal. Maybe you already deleted him?"
+msgid ""
+"Requested author does not exist or is not listed in this proposal. Maybe you "
+"already deleted him?"
 msgstr ""
 
 #: app/controllers/proposals_controller.rb:100
@@ -772,12 +129,16 @@ msgid "Requested author (%s) was successfully removed from this proposal"
 msgstr ""
 
 #: app/controllers/proposals_controller.rb:103
-msgid "Unexpected error removing requested author. Please try again, or contact system administrator"
+msgid ""
+"Unexpected error removing requested author. Please try again, or contact "
+"system administrator"
 msgstr ""
 
 #: app/controllers/proposals_controller.rb:115
 #: app/controllers/proposals_controller.rb:128
-msgid "The requested author (%s) was already registered as an author for this proposal"
+msgid ""
+"The requested author (%s) was already registered as an author for this "
+"proposal"
 msgstr ""
 
 #: app/controllers/proposals_controller.rb:136
@@ -805,7 +166,9 @@ msgid "The document was successfully deleted"
 msgstr ""
 
 #: app/controllers/proposals_controller.rb:196
-msgid "Error removing requested document. Please try again later, or contact the system administrator."
+msgid ""
+"Error removing requested document. Please try again later, or contact the "
+"system administrator."
 msgstr ""
 
 #: app/controllers/proposals_controller.rb:210
@@ -833,15 +196,20 @@ msgid "Incorrect user/password"
 msgstr ""
 
 #: app/controllers/people_controller.rb:38
-msgid "An email has been sent to you, with instructions on how to enter the system and change your password."
+msgid ""
+"An email has been sent to you, with instructions on how to enter the system "
+"and change your password."
 msgstr ""
 
 #: app/controllers/people_controller.rb:44
-msgid "Nobody was found with the specified login or E-mail address. Please make sure it was correctly specified. Keep in mind this system is case-sensitive."
+msgid ""
+"Nobody was found with the specified login or E-mail address. Please make "
+"sure it was correctly specified. Keep in mind this system is case-sensitive."
 msgstr ""
 
 #: app/controllers/people_controller.rb:56
-msgid "Incorrect session specified - Remember session URLs can be used only once"
+msgid ""
+"Incorrect session specified - Remember session URLs can be used only once"
 msgstr ""
 
 #: app/controllers/people_controller.rb:65
@@ -849,7 +217,9 @@ msgid "Invalid attempt to change password"
 msgstr ""
 
 #: app/controllers/people_controller.rb:71
-msgid "Timeout waiting for your new password - You can request for a new password recovery if needed."
+msgid ""
+"Timeout waiting for your new password - You can request for a new password "
+"recovery if needed."
 msgstr ""
 
 #: app/controllers/people_controller.rb:78
@@ -945,15 +315,18 @@ msgid "Format updated successfully"
 msgstr ""
 
 #: app/controllers/attendance_adm_controller.rb:248
-msgid "This person has already been registered for this timeslot. No action taken."
+msgid ""
+"This person has already been registered for this timeslot. No action taken."
 msgstr ""
 
 #: app/controllers/attendance_adm_controller.rb:259
-msgid "<em>%s</em> is not registered for <em>%s</em>, and registrations are closed."
+msgid ""
+"<em>%s</em> is not registered for <em>%s</em>, and registrations are closed."
 msgstr ""
 
 #: app/controllers/attendance_adm_controller.rb:265
-msgid "Person <em>%s</em> was not yet registered for this conference - Registering."
+msgid ""
+"Person <em>%s</em> was not yet registered for this conference - Registering."
 msgstr ""
 
 #: app/controllers/attendance_adm_controller.rb:271
@@ -970,56 +343,6 @@ msgstr ""
 
 #: app/controllers/attendance_adm_controller.rb:298
 msgid "Invalid format specified"
-msgstr ""
-
-#: app/controllers/admin.rb:10
-msgid "Access denied"
-msgstr ""
-
-#: app/controllers/people_adm_controller.rb:4
-msgid "Registered people list"
-msgstr ""
-
-#: app/controllers/people_adm_controller.rb:5
-#: app/views/people_adm/by_task.html.erb:1
-msgid "Administrative tasks"
-msgstr ""
-
-#: app/controllers/people_adm_controller.rb:6
-#: app/views/people_adm/mass_mail.html.erb:1
-msgid "Massive mailing"
-msgstr ""
-
-#: app/controllers/people_adm_controller.rb:45
-msgid "New attendee successfully registered"
-msgstr ""
-
-#: app/controllers/people_adm_controller.rb:48
-msgid "Error registering requested attendee: "
-msgstr ""
-
-#: app/controllers/people_adm_controller.rb:91
-msgid "Removing this administrative task from your own account is not allowed - Restoring."
-msgstr ""
-
-#: app/controllers/people_adm_controller.rb:96
-msgid "Person data successfully updated"
-msgstr ""
-
-#: app/controllers/people_adm_controller.rb:99
-msgid "Error recording requested data: %s"
-msgstr ""
-
-#: app/controllers/people_adm_controller.rb:106
-msgid "Successfully removed requested attendee"
-msgstr ""
-
-#: app/controllers/people_adm_controller.rb:108
-msgid "Error removing requested attendee: "
-msgstr ""
-
-#: app/controllers/people_adm_controller.rb:146
-msgid "The %d requested mails have been sent."
 msgstr ""
 
 #: app/controllers/sys_conf_adm_controller.rb:14
@@ -1089,7 +412,9 @@ msgid "Error removing specified field: %s"
 msgstr ""
 
 #: app/controllers/sys_conf_adm_controller.rb:123
-msgid "Please note we have _not_ dropped the corresponding catalog for this column, <em>%s</em>, to avoid data loss. You can manually remove it."
+msgid ""
+"Please note we have _not_ dropped the corresponding catalog for this column, "
+"<em>%s</em>, to avoid data loss. You can manually remove it."
 msgstr ""
 
 #: app/controllers/sys_conf_adm_controller.rb:137
@@ -1121,7 +446,9 @@ msgid "Requested record not found - Maybe it had already been deleted?"
 msgstr ""
 
 #: app/controllers/sys_conf_adm_controller.rb:217
-msgid "Error deleting the requested record - A catalog entry will not be deleted if it is still referenced."
+msgid ""
+"Error deleting the requested record - A catalog entry will not be deleted if "
+"it is still referenced."
 msgstr ""
 
 #: app/controllers/sys_conf_adm_controller.rb:230
@@ -1204,13 +531,16 @@ msgstr ""
 msgid "Catalog"
 msgstr ""
 
+#: app/controllers/admin.rb:10
+msgid "Access denied"
+msgstr ""
+
 #: app/controllers/conferences_controller.rb:5
 msgid "Latest registered conferences"
 msgstr ""
 
 #: app/controllers/conferences_controller.rb:6
-#: app/views/people/account.html.erb:9
-#: app/views/conferences/list.html.erb:6
+#: app/views/conferences/list.html.erb:6 app/views/people/account.html.erb:9
 msgid "Upcoming conferences"
 msgstr "Upcoming conferences"
 
@@ -1235,7 +565,9 @@ msgid "Could not register you for conference %s: %s"
 msgstr ""
 
 #: app/controllers/conferences_controller.rb:91
-msgid "You have %d proposals registered for this conference. Please withdraw them before unregistering."
+msgid ""
+"You have %d proposals registered for this conference. Please withdraw them "
+"before unregistering."
 msgstr ""
 
 #: app/controllers/conferences_controller.rb:98
@@ -1247,185 +579,699 @@ msgid "Could not unregister you from conference %s: %s"
 msgstr ""
 
 #: app/controllers/conferences_controller.rb:113
-msgid "This conference does not currently accept changing your registration status - please visit its information page for more details"
+msgid ""
+"This conference does not currently accept changing your registration status "
+"- please visit its information page for more details"
 msgstr ""
 
-#: app/helpers/application_helper.rb:18
-msgid "Log out"
+#: app/controllers/people_adm_controller.rb:4
+msgid "Registered people list"
 msgstr ""
 
-#: app/helpers/application_helper.rb:34
-msgid "Up"
+#: app/controllers/people_adm_controller.rb:5
+#: app/views/people_adm/by_task.html.erb:1
+msgid "Administrative tasks"
 msgstr ""
 
-#: app/helpers/application_helper.rb:38
-msgid "Down"
+#: app/controllers/people_adm_controller.rb:6
+#: app/views/people_adm/mass_mail.html.erb:1
+msgid "Massive mailing"
 msgstr ""
 
-#: app/helpers/application_helper.rb:42
-#: app/helpers/application_helper.rb:46
-msgid "-"
+#: app/controllers/people_adm_controller.rb:45
+msgid "New attendee successfully registered"
 msgstr ""
 
-#: app/helpers/application_helper.rb:136
-msgid "No items found"
+#: app/controllers/people_adm_controller.rb:48
+msgid "Error registering requested attendee: "
 msgstr ""
 
-#: app/helpers/application_helper.rb:137
-msgid "Displaying <b>1</b> item"
+#: app/controllers/people_adm_controller.rb:91
+msgid ""
+"Removing this administrative task from your own account is not allowed - "
+"Restoring."
 msgstr ""
 
-#: app/helpers/application_helper.rb:138
-msgid "Displaying <b>all %d</b> items"
+#: app/controllers/people_adm_controller.rb:96
+msgid "Person data successfully updated"
 msgstr ""
 
-#: app/helpers/application_helper.rb:141
-msgid "Displaying items <b>%d&nbsp;-&nbsp;%d</b> of <b>%d</b> in total"
+#: app/controllers/people_adm_controller.rb:99
+msgid "Error recording requested data: %s"
 msgstr ""
 
-#: app/helpers/application_helper.rb:187
-msgid "Field %s not defined for %s"
+#: app/controllers/people_adm_controller.rb:106
+msgid "Successfully removed requested attendee"
 msgstr ""
 
-#: app/helpers/application_helper.rb:222
-#: app/helpers/sys_conf_adm_helper.rb:19
-#: app/views/attendance_adm/_certif_format_test_form.html.erb:13
-#: app/views/sys_conf_adm/edit_table_field.html.erb:41
-msgid "Yes"
+#: app/controllers/people_adm_controller.rb:108
+msgid "Error removing requested attendee: "
 msgstr ""
 
-#: app/helpers/application_helper.rb:222
-#: app/helpers/sys_conf_adm_helper.rb:19
-#: app/views/attendance_adm/_certif_format_test_form.html.erb:14
-#: app/views/sys_conf_adm/edit_table_field.html.erb:42
-msgid "No"
+#: app/controllers/people_adm_controller.rb:146
+msgid "The %d requested mails have been sent."
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:18
-msgid "Dates"
+#: app/controllers/application.rb:50
+msgid "Controller %s must implement check_auth"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:38
-msgid "Registered"
+#: app/controllers/application.rb:67
+msgid "Conference listing"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:39
-msgid "Registration closed"
+#: app/controllers/application.rb:71 app/views/people/login.html.erb:6
+msgid "Log in"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:43
-msgid "Unregister"
+#: app/controllers/application.rb:73
+#: app/views/notification/conference_invitation.text.plain.erb:22
+#: app/views/people/new.html.erb:1
+msgid "New account"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:48
-msgid "Confirm: Do you want to unregister from \"%s\"? "
+#: app/controllers/application.rb:77 app/views/people/personal.html.erb:1
+msgid "Personal information"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:51
+#: app/controllers/application.rb:79 app/views/people/password.html.erb:24
+msgid "Change password"
+msgstr ""
+
+#: app/controllers/application.rb:82 app/views/people/proposals.html.erb:1
+msgid "My proposals"
+msgstr ""
+
+#: app/controllers/application.rb:85 app/views/people/invite.html.erb:1
+msgid "Invite a friend"
+msgstr ""
+
+#: app/controllers/application.rb:88
 #: app/views/notification/welcome.text.plain.erb:20
-msgid "Sign up"
+msgid "My account"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:61
-msgid "Conference dates"
+#: app/controllers/application.rb:102
+msgid "-*- Unimplemented"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:63
-#: app/helpers/conferences_helper.rb:67
-#: app/helpers/conferences_helper.rb:73
-msgid "Begins"
+#: app/controllers/application.rb:116
+msgid "&laquo; Previous"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:63
-#: app/helpers/conferences_helper.rb:68
-#: app/helpers/conferences_helper.rb:74
-msgid "Finishes"
+#: app/controllers/application.rb:117
+msgid "Next &raquo;"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:65
-msgid "Registration period"
+#: app/models/rescue_session.rb:-
+msgid "rescue session"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:67
-#: app/helpers/conferences_helper.rb:73
-msgid "Open"
+#: app/models/rescue_session.rb:-
+msgid "RescueSession|Link"
+msgstr "Link"
+
+#: app/models/rescue_session.rb:-
+msgid "RescueSession|Created at"
+msgstr "Created at"
+
+#: app/models/rescue_session.rb:-
+msgid "RescueSession|Person"
+msgstr "Person"
+
+#: app/models/prop_status.rb:-
+msgid "prop status"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:70
-msgid "Call for papers period"
+#: app/models/prop_status.rb:-
+msgid "PropStatus|Name"
+msgstr "Name"
+
+#: app/models/attendance.rb:-
+msgid "attendance"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:76
-msgid "No public call for papers"
+#: app/models/attendance.rb:-
+msgid "Attendance|Created at"
+msgstr "Created at"
+
+#: app/models/attendance.rb:-
+msgid "Attendance|Person"
+msgstr "Person"
+
+#: app/models/attendance.rb:-
+msgid "Attendance|Timeslot"
+msgstr "Timeslot"
+
+#: app/models/attendance.rb:11
+msgid "Requested person already registered for this timeslot"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:84
-msgid "%d registered attendees"
+#: app/models/prop_type.rb:-
+msgid "prop type"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:87
-msgid "Edit conference"
+#: app/models/prop_type.rb:-
+msgid "PropType|Name"
+msgstr "Name"
+
+#: app/models/room.rb:-
+msgid "room"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:89
-msgid "Edit timeslots"
+#: app/models/room.rb:-
+msgid "Room|Name"
+msgstr "Name"
+
+#: app/models/admin_task.rb:-
+msgid "admin task"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:111
-msgid "Invalid logo size specified: %s"
+#: app/models/admin_task.rb:-
+msgid "AdminTask|Name"
+msgstr "Name"
+
+#: app/models/admin_task.rb:-
+msgid "AdminTask|System name"
+msgstr "System name"
+
+#: app/models/logo.rb:-
+msgid "logo"
 msgstr ""
 
-#: app/helpers/conferences_adm_helper.rb:21
-#: app/helpers/people_adm_helper.rb:24
-#: app/helpers/sys_conf_adm_helper.rb:21
-#: app/helpers/attendance_adm_helper.rb:70
-#: app/views/conferences_adm/list.html.erb:34
-#: app/views/sys_conf_adm/show_catalog.html.erb:15
-#: app/views/sys_conf_adm/list.html.erb:14
-msgid "Delete"
+#: app/models/logo.rb:-
+msgid "Logo|Data"
+msgstr "Data"
+
+#: app/models/logo.rb:-
+msgid "Logo|Conference"
+msgstr "Conference"
+
+#: app/models/logo.rb:-
+msgid "Logo|Thumbnail"
+msgstr "Thumbnail"
+
+#: app/models/logo.rb:-
+msgid "Logo|Medium"
+msgstr "Medium"
+
+#: app/models/logo.rb:-
+msgid "Logo|Width"
+msgstr "Width"
+
+#: app/models/logo.rb:-
+msgid "Logo|Height"
+msgstr "Height"
+
+#: app/models/logo.rb:-
+msgid "Logo|Updated at"
+msgstr "Updated at"
+
+#: app/models/conference.rb:-
+msgid "conference"
 msgstr ""
 
-#: app/helpers/conferences_adm_helper.rb:24
-msgid "Are you sure you want to permanently delete this timeslot? This will also destroy any attendances it has recorded"
+#: app/models/conference.rb:-
+msgid "Conference|Name"
+msgstr "Name"
+
+#: app/models/conference.rb:-
+msgid "Conference|Description"
+msgstr "Description"
+
+#: app/models/conference.rb:-
+msgid "Conference|Homepage"
+msgstr "Homepage"
+
+#: app/models/conference.rb:-
+msgid "Conference|Registration opening date"
+msgstr "Registration opening date"
+
+#: app/models/conference.rb:-
+msgid "Conference|Registration closing date"
+msgstr "Registration closing date"
+
+#: app/models/conference.rb:-
+msgid "Conference|Call for Papers opening date"
+msgstr "Call for Papers opening date"
+
+#: app/models/conference.rb:-
+msgid "Conference|Call for papers closing date"
+msgstr "Call for papers closing date"
+
+#: app/models/conference.rb:-
+msgid "Conference|Begins"
+msgstr "Begins"
+
+#: app/models/conference.rb:-
+msgid "Conference|Finishes"
+msgstr "Finishes"
+
+#: app/models/conference.rb:-
+msgid "Conference|Short name"
+msgstr "Short name"
+
+#: app/models/conference.rb:213 app/models/conference.rb:214
+msgid "%{fn} can't be blank"
 msgstr ""
 
-#: app/helpers/people_adm_helper.rb:4
-#: app/views/attendance_adm/_certif_format_details.html.erb:3
-#: app/views/people_adm/_people_for_task.html.erb:3
-#: app/views/conferences_adm/people_list.html.erb:6
-#: app/views/conferences_adm/list.html.erb:7
-#: app/views/sys_conf_adm/show_catalog.html.erb:7
-#: script/nametags:101
-msgid "ID"
+#: app/models/conference.rb:217
+msgid "Conference must end after its start date"
 msgstr ""
 
-#: app/helpers/people_adm_helper.rb:5
-#: app/views/people_adm/_people_for_task.html.erb:4
-#: script/nametags:101
-msgid "Login"
+#: app/models/conference.rb:220
+msgid "Call for papers must end after its start date"
 msgstr ""
 
-#: app/helpers/people_adm_helper.rb:6
-#: app/views/people_adm/_people_for_task.html.erb:5
-#: app/views/conferences_adm/people_list.html.erb:7
-#: script/nametags:101
-msgid "First name"
+#: app/models/conference.rb:223
+msgid "Call for papers must finish before the conference begins"
 msgstr ""
 
-#: app/helpers/people_adm_helper.rb:7
-#: app/views/people_adm/_people_for_task.html.erb:6
-#: app/views/conferences_adm/people_list.html.erb:8
-#: script/nametags:101
-msgid "Family name"
+#: app/models/conference.rb:227
+msgid "Registration must end after its start date"
 msgstr ""
 
-#: app/helpers/people_adm_helper.rb:8
-msgid "Last login at"
+#: app/models/conference.rb:230
+msgid "Registration must finish before the conference ends"
 msgstr ""
 
-#: app/helpers/people_adm_helper.rb:26
-#: app/views/conferences_adm/list.html.erb:35
-msgid "Are you sure you want to permanently delete %s?"
+#: app/models/conference.rb:241
+msgid "There are %d timeslots for this conference outside its time span: %s"
+msgstr ""
+
+#: app/models/conference.rb:258
+msgid "This conference does not currently accept registrations"
+msgstr ""
+
+#: app/models/conference.rb:264
+msgid ""
+"Cannot remove %s from this conference - Remove or reassign his proposals "
+"first"
+msgstr ""
+
+#: app/models/nametag_format.rb:-
+msgid "nametag format"
+msgstr ""
+
+#: app/models/nametag_format.rb:-
+msgid "NametagFormat|Format name"
+msgstr "Format name"
+
+#: app/models/nametag_format.rb:-
+msgid "NametagFormat|Horizontal size"
+msgstr "Horizontal size"
+
+#: app/models/nametag_format.rb:-
+msgid "NametagFormat|Vertical size"
+msgstr "Vertical size"
+
+#: app/models/nametag_format.rb:-
+msgid "NametagFormat|Vertical gap"
+msgstr "Vertical gap"
+
+#: app/models/nametag_format.rb:-
+msgid "NametagFormat|Name width"
+msgstr "Name width"
+
+#: app/models/nametag_format.rb:-
+msgid "NametagFormat|Horizontal start"
+msgstr "Horizontal start"
+
+#: app/models/nametag_format.rb:-
+msgid "NametagFormat|Vertical start"
+msgstr "Vertical start"
+
+#: app/models/nametag_format.rb:-
+msgid "NametagFormat|Barcode horizontal position"
+msgstr "Barcode horizontal position"
+
+#: app/models/nametag_format.rb:-
+msgid "NametagFormat|Barcode vertical position"
+msgstr "Barcode vertical position"
+
+#: app/models/nametag_format.rb:-
+msgid "NametagFormat|Barcode orientation"
+msgstr "Barcode orientation"
+
+#: app/models/nametag_format.rb:-
+msgid "NametagFormat|Barcode narrow bars width"
+msgstr "Barcode narrow bars width"
+
+#: app/models/nametag_format.rb:-
+msgid "NametagFormat|Barcode wide bars width"
+msgstr "Barcode wide bars width"
+
+#: app/models/nametag_format.rb:-
+msgid "NametagFormat|Barcode height"
+msgstr "Barcode height"
+
+#: app/models/nametag_format.rb:12
+msgid "Horizontal"
+msgstr ""
+
+#: app/models/nametag_format.rb:12
+msgid "Vertical"
+msgstr ""
+
+#: app/models/nametag_format.rb:13
+msgid "Upside down"
+msgstr ""
+
+#: app/models/nametag_format.rb:13
+msgid "Vertical inverted"
+msgstr ""
+
+#: app/models/nametag_format.rb:28
+msgid "Not in valid range (1-10)"
+msgstr ""
+
+#: app/models/nametag_format.rb:30
+msgid "Not in valid range (2-30)"
+msgstr ""
+
+#: app/models/nametag_format.rb:33
+msgid "Narrow bar must be narrower than wide bar"
+msgstr ""
+
+#: app/models/nametag_format.rb:67
+msgid "Unknown unit specified: %s"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "person"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Person|Login"
+msgstr "Login"
+
+#: app/models/person.rb:-
+msgid "Person|Password"
+msgstr "Password"
+
+#: app/models/person.rb:-
+msgid "Person|First name"
+msgstr "First name"
+
+#: app/models/person.rb:-
+msgid "Person|Family name"
+msgstr "Family name"
+
+#: app/models/person.rb:-
+msgid "Person|Email"
+msgstr "Email"
+
+#: app/models/person.rb:-
+msgid "Person|Password random salt"
+msgstr "Password random salt"
+
+#: app/models/person.rb:-
+msgid "Person|Created at"
+msgstr "Created at"
+
+#: app/models/person.rb:-
+msgid "Person|Last login at"
+msgstr "Last login at"
+
+#: app/models/person.rb:-
+msgid "Person|Ok to receive conference-specific mails?"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Person|OK to receive general mails?"
+msgstr "OK to receive general mails?"
+
+#: app/models/person.rb:20
+msgid "A valid e-mail address is required"
+msgstr ""
+
+#: app/models/person.rb:145
+msgid "Registrations for this conference are closed"
+msgstr ""
+
+#: app/models/person.rb:163
+msgid "Conference %s does not currently accept registrations"
+msgstr ""
+
+#: app/models/person.rb:170
+msgid "Cannot leave %s - This user still has proposals on this conference"
+msgstr ""
+
+#: app/models/certif_format.rb:-
+msgid "certif format"
+msgstr ""
+
+#: app/models/certif_format.rb:-
+msgid "CertifFormat|Format name"
+msgstr "Format name"
+
+#: app/models/certif_format.rb:-
+msgid "CertifFormat|Paper size"
+msgstr "Paper size"
+
+#: app/models/certif_format.rb:-
+msgid "CertifFormat|Orientation"
+msgstr "Orientation"
+
+#: app/models/authorship.rb:-
+msgid "authorship"
+msgstr ""
+
+#: app/models/authorship.rb:-
+msgid "Authorship|Position"
+msgstr "Position"
+
+#: app/models/authorship.rb:-
+msgid "Authorship|Person"
+msgstr "Person"
+
+#: app/models/authorship.rb:-
+msgid "Authorship|Proposal"
+msgstr "Proposal"
+
+#: app/models/proposal.rb:-
+msgid "timeslot"
+msgstr ""
+
+#: app/models/proposal.rb:-
+msgid "Timeslot|Start time"
+msgstr "Start time"
+
+#: app/models/proposal.rb:-
+msgid "Timeslot|Tolerance (pre)"
+msgstr "Tolerance (pre)"
+
+#: app/models/proposal.rb:-
+msgid "Timeslot|Tolerance (post)"
+msgstr "Tolerance (post)"
+
+#: app/models/proposal.rb:-
+msgid "Timeslot|Room"
+msgstr "Room"
+
+#: app/models/proposal.rb:-
+msgid "Timeslot|Conference"
+msgstr "Conference"
+
+#: app/models/proposal.rb:-
+msgid "proposal"
+msgstr ""
+
+#: app/models/proposal.rb:-
+msgid "Proposal|Title"
+msgstr "Title"
+
+#: app/models/proposal.rb:-
+msgid "Proposal|Abstract"
+msgstr "Abstract"
+
+#: app/models/proposal.rb:-
+msgid "Proposal|Created at"
+msgstr "Created at"
+
+#: app/models/proposal.rb:-
+msgid "Proposal|Updated at"
+msgstr "Updated at"
+
+#: app/models/proposal.rb:-
+msgid "Proposal|Proposal type"
+msgstr "Proposal type"
+
+#: app/models/proposal.rb:-
+msgid "Proposal|Proposal status"
+msgstr "Proposal status"
+
+#: app/models/proposal.rb:-
+msgid "Proposal|Timeslot"
+msgstr "Timeslot"
+
+#: app/models/proposal.rb:-
+msgid "Proposal|Conference"
+msgstr "Conference"
+
+#: app/models/proposal.rb:36
+msgid "Call for papers period for this conference is not current"
+msgstr ""
+
+#: app/models/proposal.rb:46
+msgid ""
+"An already submitted proposal can not be moved to a different conference"
+msgstr ""
+
+#: app/models/certif_format_line.rb:-
+msgid "certif format line"
+msgstr ""
+
+#: app/models/certif_format_line.rb:-
+msgid "CertifFormatLine|Content source"
+msgstr "Content source"
+
+#: app/models/certif_format_line.rb:-
+msgid "CertifFormatLine|Content"
+msgstr "Content"
+
+#: app/models/certif_format_line.rb:-
+msgid "CertifFormatLine|Horizontal position"
+msgstr "Horizontal position"
+
+#: app/models/certif_format_line.rb:-
+msgid "CertifFormatLine|Vertical position"
+msgstr "Vertical position"
+
+#: app/models/certif_format_line.rb:-
+msgid "CertifFormatLine|Maximum width"
+msgstr "Maximum width"
+
+#: app/models/certif_format_line.rb:-
+msgid "CertifFormatLine|Font size"
+msgstr "Font size"
+
+#: app/models/certif_format_line.rb:-
+msgid "CertifFormatLine|Justification"
+msgstr "Justification"
+
+#: app/models/certif_format_line.rb:-
+msgid "CertifFormatLine|Certificate format"
+msgstr "Certificate format"
+
+#: app/models/certif_format_line.rb:4
+msgid "Static"
+msgstr ""
+
+#: app/models/certif_format_line.rb:5
+msgid "Person"
+msgstr "Person"
+
+#: app/models/certif_format_line.rb:6 app/helpers/attendance_adm_helper.rb:18
+#: app/helpers/conferences_helper.rb:18 app/views/people/profile.html.erb:9
+#: app/views/people/proposals.html.erb:15
+#: app/views/proposals/by_author.html.erb:11
+#: app/views/proposals/_form.html.erb:13
+msgid "Conference"
+msgstr ""
+
+#: app/models/certif_format_line.rb:29
+msgid "Undefined content source %d for %d (%d)"
+msgstr ""
+
+#: app/models/certif_format_line.rb:35
+msgid "Undefined attribute %s for %s in format "
+msgstr ""
+
+#: app/models/notification.rb:10
+msgid "Welcome! You have successfully registered at %s"
+msgstr ""
+
+#: app/models/notification.rb:25
+msgid "New password request for %s"
+msgstr ""
+
+#: app/models/notification.rb:41
+msgid "You have been added as a coauthor"
+msgstr ""
+
+#: app/models/notification.rb:59
+msgid "Invitation to %s, sent by %s"
+msgstr ""
+
+#: app/models/document.rb:-
+msgid "document"
+msgstr ""
+
+#: app/models/document.rb:-
+msgid "Document|Filename"
+msgstr "Filename"
+
+#: app/models/document.rb:-
+msgid "Document|Description"
+msgstr "Description"
+
+#: app/models/document.rb:-
+msgid "Document|Content type"
+msgstr "Content type"
+
+#: app/models/document.rb:-
+msgid "Document|Data"
+msgstr "Data"
+
+#: app/models/document.rb:-
+msgid "Document|Created at"
+msgstr "Created at"
+
+#: app/models/document.rb:-
+msgid "Document|Updated at"
+msgstr "Updated at"
+
+#: app/models/document.rb:-
+msgid "Document|Proposal"
+msgstr "Proposal"
+
+#: app/models/document.rb:9
+msgid "A file with this name has already been uploaded to this proposal"
+msgstr ""
+
+#: app/models/document.rb:42
+msgid "%.2f GB"
+msgstr ""
+
+#: app/models/document.rb:43
+msgid "%.2f MB"
+msgstr ""
+
+#: app/models/document.rb:44
+msgid "%.2f KB"
+msgstr ""
+
+#: app/models/document.rb:45
+msgid "%d bytes"
+msgstr ""
+
+#: app/models/sys_conf.rb:-
+msgid "sys conf"
+msgstr ""
+
+#: app/models/sys_conf.rb:-
+msgid "SysConf|Key"
+msgstr "Key"
+
+#: app/models/sys_conf.rb:-
+msgid "SysConf|Description"
+msgstr "Description"
+
+#: app/models/sys_conf.rb:-
+msgid "SysConf|Value"
+msgstr "Value"
+
+#: app/models/timeslot.rb:176
+msgid "Must start within the conference dates (%s - %s)"
+msgstr ""
+
+#: app/models/timeslot.rb:188
+msgid "Wrong format (should be hh:mm or hh:mm:ss)"
+msgstr ""
+
+#: app/models/timeslot.rb:220
+msgid "Timeslot is overlapping on room %s with %s"
 msgstr ""
 
 #: app/helpers/sys_conf_adm_helper.rb:10
@@ -1444,8 +1290,8 @@ msgid "Null OK"
 msgstr ""
 
 #: app/helpers/sys_conf_adm_helper.rb:11
-#: app/views/sys_conf_adm/list_table_fields.html.erb:28
 #: app/views/sys_conf_adm/edit_table_field.html.erb:17
+#: app/views/sys_conf_adm/list_table_fields.html.erb:28
 msgid "Default"
 msgstr ""
 
@@ -1454,22 +1300,123 @@ msgstr ""
 msgid "Action"
 msgstr ""
 
+#: app/helpers/sys_conf_adm_helper.rb:19 app/helpers/application_helper.rb:244
+#: app/views/attendance_adm/_certif_format_test_form.html.erb:13
+#: app/views/sys_conf_adm/edit_table_field.html.erb:41
+msgid "Yes"
+msgstr ""
+
+#: app/helpers/sys_conf_adm_helper.rb:19 app/helpers/application_helper.rb:244
+#: app/views/attendance_adm/_certif_format_test_form.html.erb:14
+#: app/views/sys_conf_adm/edit_table_field.html.erb:42
+msgid "No"
+msgstr ""
+
+#: app/helpers/sys_conf_adm_helper.rb:21
+#: app/helpers/conferences_adm_helper.rb:21
+#: app/helpers/people_adm_helper.rb:24 app/helpers/attendance_adm_helper.rb:70
+#: app/views/conferences_adm/list.html.erb:34
+#: app/views/sys_conf_adm/show_catalog.html.erb:15
+#: app/views/sys_conf_adm/list.html.erb:14
+msgid "Delete"
+msgstr ""
+
 #: app/helpers/sys_conf_adm_helper.rb:25
 msgid ""
-"Removing this field from the table definition will cause ALL OF ITS DATA to be destroyed. \n"
+"Removing this field from the table definition will cause ALL OF ITS DATA to "
+"be destroyed. \n"
 "This is an irreversible action.\n"
 "Are you sure?"
 msgstr ""
 
 #: app/helpers/sys_conf_adm_helper.rb:31
-#: app/views/people/proposals.html.erb:27
-#: app/views/proposals/show.html.erb:4
 #: app/views/sys_conf_adm/nametag_format_list.html.erb:37
 #: app/views/sys_conf_adm/list.html.erb:13
+#: app/views/people/proposals.html.erb:27 app/views/proposals/show.html.erb:4
 msgid "Edit"
 msgstr ""
 
+#: app/helpers/conferences_adm_helper.rb:24
+msgid ""
+"Are you sure you want to permanently delete this timeslot? This will also "
+"destroy any attendances it has recorded"
+msgstr ""
+
+#: app/helpers/proposals_helper.rb:9
+msgid "%d registered proposals"
+msgstr ""
+
+#: app/helpers/proposals_helper.rb:18
+msgid "Position"
+msgstr ""
+
+#: app/helpers/proposals_helper.rb:18
+#: app/views/attendance_adm/_certif_format_details.html.erb:4
+#: app/views/attendance_adm/_list_by_attendances.html.erb:14
+#: app/views/conferences_adm/list.html.erb:8
+#: app/views/sys_conf_adm/show_catalog.html.erb:8
+#: app/views/sys_conf_adm/show_catalog.html.erb:27
+#: app/views/sys_conf_adm/nametag_format_list.html.erb:14
+#: app/views/sys_conf_adm/list_catalogs.html.erb:7
+msgid "Name"
+msgstr ""
+
+#: app/helpers/proposals_helper.rb:35
+msgid "Are you sure you want to delete author\"%s\" from proposal \"%s\"? "
+msgstr ""
+
+#: app/helpers/proposals_helper.rb:39
+msgid ""
+"Removing the only registered author for this proposal will also remove the "
+"proposal from the system. This action cannot be undone. Are you sure you "
+"want to continue?"
+msgstr ""
+
+#: app/helpers/proposals_helper.rb:76
+msgid "Are you sure you want to delete this document?"
+msgstr ""
+
+#: app/helpers/proposals_helper.rb:79
+msgid "%s %s: %s (%s)"
+msgstr ""
+
+#: app/helpers/people_adm_helper.rb:4
+#: app/views/attendance_adm/_certif_format_details.html.erb:3
+#: app/views/people_adm/_people_for_task.html.erb:3
+#: app/views/conferences_adm/people_list.html.erb:6
+#: app/views/conferences_adm/list.html.erb:7
+#: app/views/sys_conf_adm/show_catalog.html.erb:7 script/nametags:101
+msgid "ID"
+msgstr ""
+
+#: app/helpers/people_adm_helper.rb:5
+#: app/views/people_adm/_people_for_task.html.erb:4 script/nametags:101
+msgid "Login"
+msgstr ""
+
+#: app/helpers/people_adm_helper.rb:6
+#: app/views/people_adm/_people_for_task.html.erb:5
+#: app/views/conferences_adm/people_list.html.erb:7 script/nametags:101
+msgid "First name"
+msgstr ""
+
+#: app/helpers/people_adm_helper.rb:7
+#: app/views/people_adm/_people_for_task.html.erb:6
+#: app/views/conferences_adm/people_list.html.erb:8 script/nametags:101
+msgid "Family name"
+msgstr ""
+
+#: app/helpers/people_adm_helper.rb:8
+msgid "Last login at"
+msgstr ""
+
+#: app/helpers/people_adm_helper.rb:26
+#: app/views/conferences_adm/list.html.erb:35
+msgid "Are you sure you want to permanently delete %s?"
+msgstr ""
+
 #: app/helpers/attendance_adm_helper.rb:18
+#: app/views/inc/_redcloth_help.html.erb:113
 #: app/views/attendance_adm/_by_session.html.erb:7
 #: app/views/conferences_adm/timeslots.html.erb:14
 #: app/views/proposals/show.html.erb:11
@@ -1532,39 +1479,327 @@ msgstr ""
 msgid "Are you sure you want to delete this line?"
 msgstr ""
 
-#: app/helpers/proposals_helper.rb:9
-msgid "%d registered proposals"
+#: app/helpers/conferences_helper.rb:18
+msgid "Dates"
 msgstr ""
 
-#: app/helpers/proposals_helper.rb:18
-msgid "Position"
+#: app/helpers/conferences_helper.rb:38
+msgid "Registered"
 msgstr ""
 
-#: app/helpers/proposals_helper.rb:18
-#: app/views/attendance_adm/_list_by_attendances.html.erb:14
-#: app/views/attendance_adm/_certif_format_details.html.erb:4
-#: app/views/conferences_adm/list.html.erb:8
-#: app/views/sys_conf_adm/nametag_format_list.html.erb:14
-#: app/views/sys_conf_adm/show_catalog.html.erb:8
-#: app/views/sys_conf_adm/show_catalog.html.erb:27
-#: app/views/sys_conf_adm/list_catalogs.html.erb:7
-msgid "Name"
+#: app/helpers/conferences_helper.rb:39
+msgid "Registration closed"
 msgstr ""
 
-#: app/helpers/proposals_helper.rb:35
-msgid "Are you sure you want to delete author\"%s\" from proposal \"%s\"? "
+#: app/helpers/conferences_helper.rb:43
+msgid "Unregister"
 msgstr ""
 
-#: app/helpers/proposals_helper.rb:39
-msgid "Removing the only registered author for this proposal will also remove the proposal from the system. This action cannot be undone. Are you sure you want to continue?"
+#: app/helpers/conferences_helper.rb:48
+msgid "Confirm: Do you want to unregister from \"%s\"? "
 msgstr ""
 
-#: app/helpers/proposals_helper.rb:76
-msgid "Are you sure you want to delete this document?"
+#: app/helpers/conferences_helper.rb:51
+#: app/views/notification/welcome.text.plain.erb:20
+msgid "Sign up"
 msgstr ""
 
-#: app/helpers/proposals_helper.rb:79
-msgid "%s %s: %s (%s)"
+#: app/helpers/conferences_helper.rb:61
+msgid "Conference dates"
+msgstr ""
+
+#: app/helpers/conferences_helper.rb:63 app/helpers/conferences_helper.rb:67
+#: app/helpers/conferences_helper.rb:73
+msgid "Begins"
+msgstr ""
+
+#: app/helpers/conferences_helper.rb:63 app/helpers/conferences_helper.rb:68
+#: app/helpers/conferences_helper.rb:74
+msgid "Finishes"
+msgstr ""
+
+#: app/helpers/conferences_helper.rb:65
+msgid "Registration period"
+msgstr ""
+
+#: app/helpers/conferences_helper.rb:67 app/helpers/conferences_helper.rb:73
+msgid "Open"
+msgstr ""
+
+#: app/helpers/conferences_helper.rb:70
+msgid "Call for papers period"
+msgstr ""
+
+#: app/helpers/conferences_helper.rb:76
+msgid "No public call for papers"
+msgstr ""
+
+#: app/helpers/conferences_helper.rb:84
+msgid "%d registered attendees"
+msgstr ""
+
+#: app/helpers/conferences_helper.rb:87
+msgid "Edit conference"
+msgstr ""
+
+#: app/helpers/conferences_helper.rb:89
+msgid "Edit timeslots"
+msgstr ""
+
+#: app/helpers/conferences_helper.rb:111
+msgid "Invalid logo size specified: %s"
+msgstr ""
+
+#: app/helpers/application_helper.rb:18
+msgid "Log out"
+msgstr ""
+
+#: app/helpers/application_helper.rb:34
+msgid "Up"
+msgstr ""
+
+#: app/helpers/application_helper.rb:38
+msgid "Down"
+msgstr ""
+
+#: app/helpers/application_helper.rb:42 app/helpers/application_helper.rb:46
+msgid "-"
+msgstr ""
+
+#: app/helpers/application_helper.rb:86
+#: app/views/attendance_adm/_list_by_attendances.html.erb:3
+msgid "Show"
+msgstr ""
+
+#: app/helpers/application_helper.rb:158
+msgid "No items found"
+msgstr ""
+
+#: app/helpers/application_helper.rb:159
+msgid "Displaying <b>1</b> item"
+msgstr ""
+
+#: app/helpers/application_helper.rb:160
+msgid "Displaying <b>all %d</b> items"
+msgstr ""
+
+#: app/helpers/application_helper.rb:163
+msgid "Displaying items <b>%d&nbsp;-&nbsp;%d</b> of <b>%d</b> in total"
+msgstr ""
+
+#: app/helpers/application_helper.rb:209
+msgid "Field %s not defined for %s"
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:1
+msgid "Formatting instructions"
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:2
+msgid "About Textile/RedCloth"
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:4
+msgid ""
+"The content you submit via this system is formatted using the <em>%s</em> "
+"(also known as <em>RedCloth</em>) formatting mechanism."
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:6
+#: app/views/inc/_redcloth_help.html.erb:134
+msgid "Textile"
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:11
+msgid ""
+"<em>Textile</em> is a markup language designed to be natural to write, and "
+"easy to read. Here we cover only the most usual tags - for a more complete "
+"reference, we suggest you to read the %s or the much more complete %s."
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:15
+#: app/views/inc/_redcloth_help.html.erb:136
+msgid "Textile Quick Reference"
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:21
+msgid "General flow of your text"
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:23
+msgid ""
+"The general writing is straightforward: Just type a regular paragraph, and "
+"it will be displayed as you intended. "
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:28
+msgid ""
+"To finish a paragraph and start a new one, separate them with an empty line. "
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:33
+msgid "Emphasis and other text transformations"
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:35
+msgid ""
+"To mark part of a sentence to be <strong>bold</strong>, surround it by "
+"asterisks: *bold*"
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:37
+msgid "To produce <em>italic text</em>, surround it by underscores: _italic_"
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:39
+msgid ""
+"You can combine them to get <strong><em>bold italics</em></strong> by "
+"nesting them: _*bold italics*_"
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:45
+#: app/views/inc/_redcloth_help.html.erb:54
+msgid "Headers"
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:47
+msgid ""
+"A header can be declared by starting a paragraph with a prefix between "
+"<em>h1.</em> and <em>h6.</em> We suggest not using headers higher than "
+"<em>h3.</em> for consistency with other system elements. As an example, the "
+"header for this paragraph can be specified as:"
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:57
+msgid "Linking to other documents"
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:59
+msgid ""
+"To create a link to an external website, \"quote\" the link text, put a "
+"colon <em>just next</em> to the closing quote, and the full destination page "
+"address. For example, in order to create a link to the <a href=\"http://www."
+"comas-code.org/\">Main Comas site</a> you should write: <em>\"Main Comas site"
+"\":http://www.comas-code.org/"
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:68
+msgid "Lists"
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:70
+msgid ""
+"Unnumbered, numbered and nested lists are very easy to create: Prefix each "
+"bullet point with an asterisk, and it will create an unnumbered list. Prefix "
+"it with a hash, and you will get a numbered list. To nest them, prefix your "
+"textwith two elements: "
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:89
+msgid "Unnumbered list"
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:89
+msgid "Second element"
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:89
+#: app/views/inc/_redcloth_help.html.erb:93
+msgid "Nested sub-list"
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:90
+#: app/views/inc/_redcloth_help.html.erb:94
+msgid "Second element of nested list"
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:90
+#: app/views/inc/_redcloth_help.html.erb:94
+msgid "Original list"
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:91
+msgid "Numbered list"
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:91
+msgid "Nesting sub-lists"
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:92
+msgid "Second element of nested numbered list"
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:93
+msgid "Mixed list"
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:97
+msgid "The above lists were created with:"
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:102
+msgid "Tables"
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:104
+msgid ""
+"You can use the vertical bars to mark each cell element. Include the left "
+"and right borders of the table:"
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:113
+msgid "Hour"
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:113
+msgid "Activity"
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:114
+msgid "10:00"
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:114
+msgid "Main hall"
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:114
+msgid "Welcoming session"
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:115
+msgid "11:00"
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:115
+msgid "Small auditorium"
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:115
+msgid "Designing conferences"
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:118
+msgid "The above table was created with: "
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:123
+msgid "Beyond this..."
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:126
+msgid ""
+"This should cover most of your needs to publish your material. Should you "
+"need more advanced formatting, %s offers <em>much</em> more than what we can "
+"explain in this short space, you can refer to the %s or the much more "
+"complete %s, as we said above. You can also include regular HTML tags as "
+"part of your text -- We recommend you, however, to stick to the Textile "
+"format, to ensure a consistent format throughout the site."
+msgstr ""
+
+#: app/views/inc/_redcloth_help.html.erb:138
+msgid "Textile Reference"
 msgstr ""
 
 #: app/views/attendance_adm/take.html.erb:3
@@ -1579,81 +1814,17 @@ msgstr ""
 msgid "Last attendances registered for this timeslot"
 msgstr ""
 
-#: app/views/attendance_adm/_certif_format_test_form.html.erb:1
-msgid "Test format"
+#: app/views/attendance_adm/_certif_format_details.html.erb:5
+msgid "Paper size"
 msgstr ""
 
-#: app/views/attendance_adm/_certif_format_test_form.html.erb:2
-msgid "You can generate a sample of this format for your user."
+#: app/views/attendance_adm/_certif_format_details.html.erb:6
+msgid "Orientation"
 msgstr ""
 
-#: app/views/attendance_adm/_certif_format_test_form.html.erb:10
-msgid "Conference to generate the sample certificate for"
-msgstr ""
-
-#: app/views/attendance_adm/_certif_format_test_form.html.erb:16
-msgid "Draw boxes specifying field sizes?"
-msgstr ""
-
-#: app/views/attendance_adm/_certif_format_test_form.html.erb:18
-msgid "Generate test certificate"
-msgstr ""
-
-#: app/views/attendance_adm/choose_session.html.erb:1
-msgid "Choose a session to take attendance for"
-msgstr ""
-
-#: app/views/attendance_adm/choose_session.html.erb:4
-msgid "%d total registered timeslots"
-msgstr ""
-
-#: app/views/attendance_adm/choose_session.html.erb:5
-msgid "Show only current timeslots"
-msgstr ""
-
-#: app/views/attendance_adm/choose_session.html.erb:8
-msgid "%d currently active timeslots"
-msgstr ""
-
-#: app/views/attendance_adm/choose_session.html.erb:9
-msgid "Show all registered timeslots"
-msgstr ""
-
-#: app/views/attendance_adm/certif_format.html.erb:1
-msgid "Editing certificate format <em>%s</em>"
-msgstr ""
-
-#: app/views/attendance_adm/certif_format.html.erb:3
-msgid "General format information"
-msgstr ""
-
-#: app/views/attendance_adm/certif_format.html.erb:5
-msgid "Help"
-msgstr ""
-
-#: app/views/attendance_adm/certif_format.html.erb:9
-msgid "All measurments except for font size are expressed in <em>%s</em>. You will notice the values you enter are approximated (i.e. 10.99 instead of 11), as they are stored internally in %s and converted only to be shown here."
-msgstr ""
-
-#: app/views/attendance_adm/certif_format.html.erb:19
-msgid "This format's lines are sorted according to their vertical position, to better match what you will see on the paper. Measurement (0, 0) starts at the lower-left corner, and the indicated point marks the lower-left corner of the designated text area."
-msgstr ""
-
-#: app/views/attendance_adm/certif_format.html.erb:27
-msgid "This means, if you want to provide a <em>centered</em> 15cm field in <em>Landscape Letter</em> (27.94cm wide) paper, you should set the <em>horizontal</em> position to 6.47 (which is (27.94 - 15) / 2) and the <em>maximum width</em> to 15."
-msgstr ""
-
-#: app/views/attendance_adm/certif_format.html.erb:35
-msgid "Regarding <em>content source</em> and <em>content</em>: When  the content source is set to <em>Static</em>, the text provided as content will be present verbatim in the certificate; when <em>Person</em> or <em>Conference</em> are selected, they will accept a suitable <em>attribute name</em>. If when generating certificates you get a system error (<tt>Undefined attribute</tt>), you should check for the validity of your <em>content</em> columns."
-msgstr ""
-
-#: app/views/attendance_adm/certif_format.html.erb:50
-#: app/views/sys_conf_adm/edit_table_field.html.erb:47
-msgid "Modify"
-msgstr ""
-
-#: app/views/attendance_adm/certif_format.html.erb:68
-msgid "Add line"
+#: app/views/attendance_adm/_certif_format_details.html.erb:20
+#: app/views/sys_conf_adm/nametag_format_list.html.erb:42
+msgid "Are you sure you want to delete this format?"
 msgstr ""
 
 #: app/views/attendance_adm/for_person.html.erb:1
@@ -1689,55 +1860,67 @@ msgstr ""
 msgid "Select which format to generate the certificate with"
 msgstr ""
 
-#: app/views/attendance_adm/certif_formats_list.html.erb:1
-msgid "Available certificate formats"
+#: app/views/attendance_adm/certif_format.html.erb:1
+msgid "Editing certificate format <em>%s</em>"
 msgstr ""
 
-#: app/views/attendance_adm/certif_formats_list.html.erb:9
-#: app/views/people_adm/new.html.erb:3
-#: app/views/conferences_adm/new.html.erb:3
-#: app/views/sys_conf_adm/list_table_fields.html.erb:35
-#: app/views/sys_conf_adm/nametag_format_new.html.erb:4
-#: app/views/sys_conf_adm/show_catalog.html.erb:28
-#: app/views/sys_conf_adm/list.html.erb:26
-msgid "Create"
+#: app/views/attendance_adm/certif_format.html.erb:3
+msgid "General format information"
+msgstr ""
+
+#: app/views/attendance_adm/certif_format.html.erb:5
+msgid "Help"
+msgstr ""
+
+#: app/views/attendance_adm/certif_format.html.erb:9
+msgid ""
+"All measurments except for font size are expressed in <em>%s</em>. You will "
+"notice the values you enter are approximated (i.e. 10.99 instead of 11), as "
+"they are stored internally in %s and converted only to be shown here."
+msgstr ""
+
+#: app/views/attendance_adm/certif_format.html.erb:19
+msgid ""
+"This format's lines are sorted according to their vertical position, to "
+"better match what you will see on the paper. Measurement (0, 0) starts at "
+"the lower-left corner, and the indicated point marks the lower-left corner "
+"of the designated text area."
+msgstr ""
+
+#: app/views/attendance_adm/certif_format.html.erb:27
+msgid ""
+"This means, if you want to provide a <em>centered</em> 15cm field in "
+"<em>Landscape Letter</em> (27.94cm wide) paper, you should set the "
+"<em>horizontal</em> position to 6.47 (which is (27.94 - 15) / 2) and the "
+"<em>maximum width</em> to 15."
+msgstr ""
+
+#: app/views/attendance_adm/certif_format.html.erb:35
+msgid ""
+"Regarding <em>content source</em> and <em>content</em>: When  the content "
+"source is set to <em>Static</em>, the text provided as content will be "
+"present verbatim in the certificate; when <em>Person</em> or <em>Conference</"
+"em> are selected, they will accept a suitable <em>attribute name</em>. If "
+"when generating certificates you get a system error (<tt>Undefined "
+"attribute</tt>), you should check for the validity of your <em>content</em> "
+"columns."
+msgstr ""
+
+#: app/views/attendance_adm/certif_format.html.erb:50
+#: app/views/sys_conf_adm/edit_table_field.html.erb:47
+msgid "Modify"
+msgstr ""
+
+#: app/views/attendance_adm/certif_format.html.erb:68
+msgid "Add line"
 msgstr ""
 
 #: app/views/attendance_adm/_list_by_attendances.html.erb:1
 msgid "%d attendances: %d people (exact), %d people (including higher)"
 msgstr ""
 
-#: app/views/attendance_adm/_list_by_attendances.html.erb:3
-msgid "Show"
-msgstr ""
-
 #: app/views/attendance_adm/_list_by_attendances.html.erb:5
 msgid "Generate certificates"
-msgstr ""
-
-#: app/views/attendance_adm/_by_session.html.erb:3
-msgid "By session"
-msgstr ""
-
-#: app/views/attendance_adm/_by_session.html.erb:6
-msgid "Session starting at"
-msgstr ""
-
-#: app/views/attendance_adm/_by_session.html.erb:8
-msgid "Attendees"
-msgstr ""
-
-#: app/views/attendance_adm/_certif_format_details.html.erb:5
-msgid "Paper size"
-msgstr ""
-
-#: app/views/attendance_adm/_certif_format_details.html.erb:6
-msgid "Orientation"
-msgstr ""
-
-#: app/views/attendance_adm/_certif_format_details.html.erb:20
-#: app/views/sys_conf_adm/nametag_format_list.html.erb:42
-msgid "Are you sure you want to delete this format?"
 msgstr ""
 
 #: app/views/attendance_adm/list.html.erb:1
@@ -1760,12 +1943,48 @@ msgstr ""
 msgid "Full listing, ordered by number of attendances"
 msgstr ""
 
+#: app/views/attendance_adm/certif_formats_list.html.erb:1
+msgid "Available certificate formats"
+msgstr ""
+
+#: app/views/attendance_adm/certif_formats_list.html.erb:9
+#: app/views/people_adm/new.html.erb:3
+#: app/views/conferences_adm/new.html.erb:3
+#: app/views/sys_conf_adm/show_catalog.html.erb:28
+#: app/views/sys_conf_adm/list.html.erb:26
+#: app/views/sys_conf_adm/nametag_format_new.html.erb:4
+#: app/views/sys_conf_adm/list_table_fields.html.erb:35
+msgid "Create"
+msgstr ""
+
+#: app/views/attendance_adm/choose_session.html.erb:1
+msgid "Choose a session to take attendance for"
+msgstr ""
+
+#: app/views/attendance_adm/choose_session.html.erb:4
+msgid "%d total registered timeslots"
+msgstr ""
+
+#: app/views/attendance_adm/choose_session.html.erb:5
+msgid "Show only current timeslots"
+msgstr ""
+
+#: app/views/attendance_adm/choose_session.html.erb:8
+msgid "%d currently active timeslots"
+msgstr ""
+
+#: app/views/attendance_adm/choose_session.html.erb:9
+msgid "Show all registered timeslots"
+msgstr ""
+
 #: app/views/attendance_adm/att_by_tslot.html.erb:1
 msgid "Attendance listing by timeslot"
 msgstr ""
 
 #: app/views/attendance_adm/att_by_tslot.html.erb:3
-msgid "Showing the %d registered attendances for the session started at <em>%s</em>, room <em>%s</em> (%s)"
+msgid ""
+"Showing the %d registered attendances for the session started at <em>%s</"
+"em>, room <em>%s</em> (%s)"
 msgstr ""
 
 #: app/views/attendance_adm/att_by_tslot.html.erb:7
@@ -1780,82 +1999,36 @@ msgstr ""
 msgid "Registration time"
 msgstr ""
 
-#: app/views/people_adm/mass_mail.html.erb:3
-#: app/views/conferences_adm/mail_attendees.html.erb:3
-msgid "Be aware that massive mailings can be <b>very</b> unpolite for your audience! <b>Use this feature sparingly</b>."
+#: app/views/attendance_adm/_by_session.html.erb:3
+msgid "By session"
 msgstr ""
 
-#: app/views/people_adm/mass_mail.html.erb:6
-msgid "There are %d people who have accepted to receive general mails about our conferences. "
+#: app/views/attendance_adm/_by_session.html.erb:6
+msgid "Session starting at"
 msgstr ""
 
-#: app/views/people_adm/mass_mail.html.erb:10
-#: app/views/conferences_adm/mail_attendees.html.erb:12
-#: app/views/people/proposals.html.erb:14
-#: app/views/people/profile.html.erb:10
-#: app/views/proposals/by_author.html.erb:10
-#: app/views/conferences/proposals.html.erb:8
-msgid "Title"
+#: app/views/attendance_adm/_by_session.html.erb:8
+msgid "Attendees"
 msgstr ""
 
-#: app/views/people_adm/mass_mail.html.erb:11
-#: app/views/conferences_adm/mail_attendees.html.erb:13
-msgid "Mail body"
+#: app/views/attendance_adm/_certif_format_test_form.html.erb:1
+msgid "Test format"
 msgstr ""
 
-#: app/views/people_adm/mass_mail.html.erb:13
-#: app/views/conferences_adm/mail_attendees.html.erb:15
-msgid "Please enter the body for the mass-mailing you will send. General information regarding this site will be automatically added."
+#: app/views/attendance_adm/_certif_format_test_form.html.erb:2
+msgid "You can generate a sample of this format for your user."
 msgstr ""
 
-#: app/views/people_adm/mass_mail.html.erb:16
-#: app/views/conferences_adm/mail_attendees.html.erb:18
-msgid "Send mail"
+#: app/views/attendance_adm/_certif_format_test_form.html.erb:10
+msgid "Conference to generate the sample certificate for"
 msgstr ""
 
-#: app/views/people_adm/show.html.erb:1
-msgid "Attendee %d's personal data"
+#: app/views/attendance_adm/_certif_format_test_form.html.erb:16
+msgid "Draw boxes specifying field sizes?"
 msgstr ""
 
-#: app/views/people_adm/show.html.erb:3
-#: app/views/conferences_adm/show.html.erb:3
-#: app/views/people/personal.html.erb:6
-#: app/views/proposals/edit.html.erb:7
-#: app/views/sys_conf_adm/nametag_format_edit.html.erb:4
-#: app/views/sys_conf_adm/edit.html.erb:9
-msgid "Save changes"
-msgstr ""
-
-#: app/views/people_adm/by_task.html.erb:6
-msgid "%d people"
-msgstr ""
-
-#: app/views/people_adm/by_task.html.erb:10
-msgid "No people authorized for this task"
-msgstr ""
-
-#: app/views/people_adm/new.html.erb:1
-msgid "Register a new attendee"
-msgstr ""
-
-#: app/views/people_adm/list.html.erb:1
-msgid "Attendee administration"
-msgstr ""
-
-#: app/views/people_adm/list.html.erb:4
-msgid "Filter by: (on login, firstname or family name)"
-msgstr ""
-
-#: app/views/people_adm/list.html.erb:6
-msgid "Filter"
-msgstr ""
-
-#: app/views/people_adm/list.html.erb:9
-msgid "Download this listing"
-msgstr ""
-
-#: app/views/people_adm/list.html.erb:24
-msgid "Register new"
+#: app/views/attendance_adm/_certif_format_test_form.html.erb:18
+msgid "Generate test certificate"
 msgstr ""
 
 #: app/views/notification/request_passwd.text.plain.erb:1
@@ -1877,83 +2050,6 @@ msgid ""
 "If you did not request this mail, please disregard it - This\n"
 "information is sent exclusively to you. For your information, the\n"
 "request was received from IP address %s.\n"
-"\n"
-msgstr ""
-
-#: app/views/notification/welcome.text.plain.erb:1
-msgid ""
-"Hi, %s\n"
-"\n"
-"This is an auto-generated mail, sent by the conference administration\n"
-"system for %s.\n"
-"\n"
-"Your chosen system login is \"%s\".\n"
-"\n"
-"You have successfully registered in our system - The next step is to\n"
-"select the one or more conferences you are interested in. The easiest\n"
-"way to do so is to log in to our system, at:\n"
-"\n"
-"%s\n"
-"\n"
-"Upon your login, you will be presented with the \"%s\" page, where you\n"
-"will find a listing with the upcoming conferences. Click on their\n"
-"names to get further information on each of them, or click \"%s\" \n"
-"to register for it.\n"
-"\n"
-msgstr ""
-
-#: app/views/notification/admin_mail.text.plain.erb:1
-msgid ""
-"Hi, \n"
-"\n"
-"This is an auto-generated mail, sent by the conference administration\n"
-"system for the Conference Management System at %s."
-msgstr ""
-
-#: app/views/notification/admin_mail.text.plain.erb:6
-#: app/views/notification/conf_attendees_mail.text.plain.erb:6
-msgid ""
-"You are getting this mail because you stated in your personal\n"
-"profile you agreed to receive general information - You can select not\n"
-"to receive any more mails by logging in at the following URL, and\n"
-"clicking on the \"%s\" link:"
-msgstr ""
-
-#: app/views/notification/admin_mail.text.plain.erb:13
-msgid ""
-"%s, administrator for the Conference Management System,\n"
-"requested the following message to be delivered to registered people\n"
-"who chose to receive informative mails:"
-msgstr ""
-
-#: app/views/notification/admin_mail.text.plain.erb:23
-#: app/views/notification/conference_invitation.text.plain.erb:24
-#: app/views/notification/conf_attendees_mail.text.plain.erb:23
-msgid ""
-"If you want to directly contact %s, the registered mail address\n"
-"is %s."
-msgstr ""
-
-#: app/views/notification/added_as_coauthor.text.plain.erb:1
-msgid ""
-"Hi, %s\n"
-"\n"
-"This is an auto-generated mail, sent by the conference administration\n"
-"system for %s.\n"
-"\n"
-"The reason you are getting this mail is because you have been\n"
-"registered by %s as a coauthor for:\n"
-"\n"
-"%s\n"
-"\n"
-"For further details on the proposal, enter:\n"
-"\n"
-"%s\n"
-"\n"
-"In case you think this is a mistake, please click on the \"My\n"
-"proposals\" link after logging in at:\n"
-"\n"
-"%s\n"
 "\n"
 msgstr ""
 
@@ -1989,6 +2085,23 @@ msgid ""
 "account, by clicking on the \"%s\" link."
 msgstr ""
 
+#: app/views/notification/conference_invitation.text.plain.erb:24
+#: app/views/notification/conf_attendees_mail.text.plain.erb:23
+#: app/views/notification/admin_mail.text.plain.erb:23
+msgid ""
+"If you want to directly contact %s, the registered mail address\n"
+"is %s."
+msgstr ""
+
+#: app/views/notification/conf_attendees_mail.text.plain.erb:6
+#: app/views/notification/admin_mail.text.plain.erb:6
+msgid ""
+"You are getting this mail because you stated in your personal\n"
+"profile you agreed to receive general information - You can select not\n"
+"to receive any more mails by logging in at the following URL, and\n"
+"clicking on the \"%s\" link:"
+msgstr ""
+
 #: app/views/notification/conf_attendees_mail.text.plain.erb:13
 msgid ""
 "%s, administrator for the Conference Management System,\n"
@@ -1996,45 +2109,203 @@ msgid ""
 "who chose to receive conference-specific mails:"
 msgstr ""
 
-#: app/views/conferences_adm/mail_attendees.html.erb:1
-msgid "Mail a conference's registered attendees"
+#: app/views/notification/added_as_coauthor.text.plain.erb:1
+msgid ""
+"Hi, %s\n"
+"\n"
+"This is an auto-generated mail, sent by the conference administration\n"
+"system for %s.\n"
+"\n"
+"The reason you are getting this mail is because you have been\n"
+"registered by %s as a coauthor for:\n"
+"\n"
+"%s\n"
+"\n"
+"For further details on the proposal, enter:\n"
+"\n"
+"%s\n"
+"\n"
+"In case you think this is a mistake, please click on the \"My\n"
+"proposals\" link after logging in at:\n"
+"\n"
+"%s\n"
+"\n"
 msgstr ""
 
-#: app/views/conferences_adm/mail_attendees.html.erb:7
-msgid "Choose which conference's attendees to mail"
+#: app/views/notification/welcome.text.plain.erb:1
+msgid ""
+"Hi, %s\n"
+"\n"
+"This is an auto-generated mail, sent by the conference administration\n"
+"system for %s.\n"
+"\n"
+"Your chosen system login is \"%s\".\n"
+"\n"
+"You have successfully registered in our system - The next step is to\n"
+"select the one or more conferences you are interested in. The easiest\n"
+"way to do so is to log in to our system, at:\n"
+"\n"
+"%s\n"
+"\n"
+"Upon your login, you will be presented with the \"%s\" page, where you\n"
+"will find a listing with the upcoming conferences. Click on their\n"
+"names to get further information on each of them, or click \"%s\" \n"
+"to register for it.\n"
+"\n"
+msgstr ""
+
+#: app/views/notification/admin_mail.text.plain.erb:1
+msgid ""
+"Hi, \n"
+"\n"
+"This is an auto-generated mail, sent by the conference administration\n"
+"system for the Conference Management System at %s."
+msgstr ""
+
+#: app/views/notification/admin_mail.text.plain.erb:13
+msgid ""
+"%s, administrator for the Conference Management System,\n"
+"requested the following message to be delivered to registered people\n"
+"who chose to receive informative mails:"
+msgstr ""
+
+#: app/views/people_adm/show.html.erb:1
+msgid "Attendee %d's personal data"
+msgstr ""
+
+#: app/views/people_adm/show.html.erb:3
+#: app/views/conferences_adm/show.html.erb:3
+#: app/views/sys_conf_adm/nametag_format_edit.html.erb:4
+#: app/views/sys_conf_adm/edit.html.erb:9 app/views/people/personal.html.erb:6
+#: app/views/proposals/edit.html.erb:7
+msgid "Save changes"
+msgstr ""
+
+#: app/views/people_adm/mass_mail.html.erb:3
+#: app/views/conferences_adm/mail_attendees.html.erb:3
+msgid ""
+"Be aware that massive mailings can be <b>very</b> unpolite for your "
+"audience! <b>Use this feature sparingly</b>."
+msgstr ""
+
+#: app/views/people_adm/mass_mail.html.erb:6
+msgid ""
+"There are %d people who have accepted to receive general mails about our "
+"conferences. "
+msgstr ""
+
+#: app/views/people_adm/mass_mail.html.erb:10
+#: app/views/conferences/proposals.html.erb:8
+#: app/views/conferences_adm/mail_attendees.html.erb:12
+#: app/views/people/profile.html.erb:10 app/views/people/proposals.html.erb:14
+#: app/views/proposals/by_author.html.erb:10
+msgid "Title"
+msgstr ""
+
+#: app/views/people_adm/mass_mail.html.erb:11
+#: app/views/conferences_adm/mail_attendees.html.erb:13
+msgid "Mail body"
+msgstr ""
+
+#: app/views/people_adm/mass_mail.html.erb:13
+#: app/views/conferences_adm/mail_attendees.html.erb:15
+msgid ""
+"Please enter the body for the mass-mailing you will send. General "
+"information regarding this site will be automatically added."
+msgstr ""
+
+#: app/views/people_adm/mass_mail.html.erb:16
+#: app/views/conferences_adm/mail_attendees.html.erb:18
+msgid "Send mail"
+msgstr ""
+
+#: app/views/people_adm/new.html.erb:1
+msgid "Register a new attendee"
+msgstr ""
+
+#: app/views/people_adm/by_task.html.erb:3
+msgid "%s (%d people)"
+msgstr ""
+
+#: app/views/people_adm/by_task.html.erb:6
+msgid "No people authorized for this task"
+msgstr ""
+
+#: app/views/people_adm/list.html.erb:1
+msgid "Attendee administration"
+msgstr ""
+
+#: app/views/people_adm/list.html.erb:4
+msgid "Filter by: (on login, firstname or family name)"
+msgstr ""
+
+#: app/views/people_adm/list.html.erb:6
+msgid "Filter"
+msgstr ""
+
+#: app/views/people_adm/list.html.erb:9
+msgid "Download this listing"
+msgstr ""
+
+#: app/views/people_adm/list.html.erb:24
+msgid "Register new"
+msgstr ""
+
+#: app/views/conferences/show.html.erb:14
+msgid "%d proposals registered for this conference"
+msgstr ""
+
+#: app/views/conferences/show.html.erb:24
+msgid "Submit a proposal for this conference"
+msgstr ""
+
+#: app/views/conferences/show.html.erb:31
+msgid "Web site"
+msgstr ""
+
+#: app/views/conferences/proposals.html.erb:2
+msgid "Proposals for %s"
+msgstr ""
+
+#: app/views/conferences/proposals.html.erb:9
+#: app/views/proposals/show.html.erb:15
+msgid "Authors"
+msgstr ""
+
+#: app/views/conferences/proposals.html.erb:10
+#: app/views/people/proposals.html.erb:16 app/views/proposals/show.html.erb:8
+#: app/views/proposals/by_author.html.erb:12
+msgid "Proposal type"
+msgstr ""
+
+#: app/views/conferences/proposals.html.erb:11
+#: app/views/proposals/by_author.html.erb:13
+msgid "Proposal status"
+msgstr ""
+
+#: app/views/conferences/list.html.erb:3
+msgid "Hide past conferences"
+msgstr ""
+
+#: app/views/conferences/list.html.erb:6
+msgid "Show also past conferences"
+msgstr ""
+
+#: app/views/conferences/list.html.erb:11
+msgid "To register for any of the conferences shown, please %s or %s"
+msgstr ""
+
+#: app/views/conferences/list.html.erb:12
+msgid "create a new account"
+msgstr ""
+
+#: app/views/conferences/list.html.erb:14
+msgid "log in to your account"
 msgstr ""
 
 #: app/views/conferences_adm/people_list.html.erb:1
 msgid "People registered for <em>%s</em>"
 msgstr ""
-
-#: app/views/conferences_adm/timeslots.html.erb:1
-msgid "Defined timeslots for %s"
-msgstr ""
-
-#: app/views/conferences_adm/timeslots.html.erb:4
-msgid "No timeslots have yet been defined"
-msgstr ""
-
-#: app/views/conferences_adm/timeslots.html.erb:13
-msgid "Attendances"
-msgstr ""
-
-#: app/views/conferences_adm/timeslots.html.erb:23
-msgid "Create a new timeslot for this conference"
-msgstr ""
-
-#: app/views/conferences_adm/timeslots.html.erb:24
-msgid "Enter the tolerance in <em>hh:mm:ss</em> format. If not specified, it will use the system-wide default (%s)"
-msgstr ""
-
-#: app/views/conferences_adm/timeslots.html.erb:35
-msgid "Create timeslot"
-msgstr ""
-
-#: app/views/conferences_adm/_form.html.erb:5
-msgid "Conference|Logo"
-msgstr "Logo"
 
 #: app/views/conferences_adm/show.html.erb:1
 msgid "Edit conference data"
@@ -2092,345 +2363,75 @@ msgstr ""
 msgid "Not defined"
 msgstr ""
 
-#: app/views/people/login.html.erb:3
-msgid "User name"
+#: app/views/conferences_adm/mail_attendees.html.erb:1
+msgid "Mail a conference's registered attendees"
 msgstr ""
 
-#: app/views/people/login.html.erb:5
-msgid "Password"
+#: app/views/conferences_adm/mail_attendees.html.erb:7
+msgid "Choose which conference's attendees to mail"
 msgstr ""
 
-#: app/views/people/login.html.erb:12
-msgid "Cannot log in?"
-msgstr ""
-
-#: app/views/people/login.html.erb:13
-msgid "Request a new password"
-msgstr ""
-
-#: app/views/people/invite.html.erb:3
-msgid "If you know somebody who might be interested in joining any of the conferences you have signed up for, you can use this form to invite him. <br/>Please note that abusing this feature can lead to disablingyour account."
-msgstr ""
-
-#: app/views/people/invite.html.erb:10
-msgid "Destination E-mail address"
-msgstr ""
-
-#: app/views/people/invite.html.erb:12
-msgid "Conference to invite the destinatary to"
-msgstr ""
-
-#: app/views/people/invite.html.erb:16
-msgid "Select one of the conferences presented below. Note thatyou can only send invitations to conferences you are currently registered for."
-msgstr ""
-
-#: app/views/people/invite.html.erb:19
-msgid "Text of your message"
-msgstr ""
-
-#: app/views/people/invite.html.erb:21
-msgid "Please note an auto-generated portion with the relevant URL (and including your contact information) will be added."
-msgstr ""
-
-#: app/views/people/invite.html.erb:24
-msgid "Send invitation"
-msgstr ""
-
-#: app/views/people/proposals.html.erb:4
-#: app/views/proposals/new.html.erb:1
-msgid "Submit a new proposal"
-msgstr ""
-
-#: app/views/people/proposals.html.erb:9
-msgid "You have not sent any proposals yet. "
-msgstr ""
-
-#: app/views/people/proposals.html.erb:11
-msgid "Showing the %d proposals you have submitted"
-msgstr ""
-
-#: app/views/people/proposals.html.erb:16
-#: app/views/proposals/by_author.html.erb:12
-#: app/views/proposals/show.html.erb:8
-#: app/views/conferences/proposals.html.erb:10
-msgid "Proposal type"
-msgstr ""
-
-#: app/views/people/proposals.html.erb:29
-#: app/views/proposals/show.html.erb:17
-msgid "Manage authors"
-msgstr ""
-
-#: app/views/people/proposals.html.erb:31
-msgid "Files"
-msgstr ""
-
-#: app/views/people/password.html.erb:1
-msgid "Change your password"
-msgstr ""
-
-#: app/views/people/password.html.erb:5
-msgid "Current password"
-msgstr ""
-
-#: app/views/people/password.html.erb:11
-#: app/views/people/recover.html.erb:11
-msgid "New password"
-msgstr ""
-
-#: app/views/people/password.html.erb:17
-#: app/views/people/recover.html.erb:17
-msgid "Confirm new password"
-msgstr ""
-
-#: app/views/people/account.html.erb:1
-msgid "Welcome, %s"
-msgstr ""
-
-#: app/views/people/account.html.erb:4
-msgid "Next conferences you are signed up for"
-msgstr ""
-
-#: app/views/people/new.html.erb:2
-msgid "Please fill in the following required details for your account creation"
-msgstr ""
-
-#: app/views/people/new.html.erb:9
-msgid "Create account"
-msgstr ""
-
-#: app/views/people/request_passwd.html.erb:6
-msgid "You lost or forgot your password? Don't worry, it can happen to anybody! Please enter the login or E-mail address with which you registered, and we will send you a mail  with all the needed information."
-msgstr ""
-
-#: app/views/people/request_passwd.html.erb:17
-msgid "Request password"
-msgstr ""
-
-#: app/views/people/profile.html.erb:1
-msgid "Public information for %s"
-msgstr ""
-
-#: app/views/people/profile.html.erb:6
-msgid "Proposals submitted"
-msgstr ""
-
-#: app/views/people/recover.html.erb:1
-msgid "Specify a new password"
-msgstr ""
-
-#: app/views/people/recover.html.erb:2
-msgid "You have just logged in using a one-time only URL. Please, set a new password for your account."
-msgstr ""
-
-#: app/views/people/recover.html.erb:4
-msgid "Please note you have only ten minutes to fill this form - If you do not fill it in this time, you will have to %s."
-msgstr ""
-
-#: app/views/people/recover.html.erb:6
-msgid "request a new session to be sent to you"
-msgstr ""
-
-#: app/views/people/recover.html.erb:24
-msgid "Set password"
-msgstr ""
-
-#: app/views/proposals/authors.html.erb:1
-msgid "Manage the coauthors for your proposal"
-msgstr ""
-
-#: app/views/proposals/authors.html.erb:3
-msgid "Current list of authors for <em>%s</em>"
-msgstr ""
-
-#: app/views/proposals/authors.html.erb:8
-msgid "Add an author to this proposal"
-msgstr ""
-
-#: app/views/proposals/authors.html.erb:9
-msgid "Please enter the new author's <em>login</em>. The login must be an exact match (i.e., performing searches on similar logins will not work). A mail will be sent to the new author notifying him of this operation."
-msgstr ""
-
-#: app/views/proposals/authors.html.erb:17
-msgid "Add author"
-msgstr ""
-
-#: app/views/proposals/by_author.html.erb:1
-msgid "Proposals submitted by author"
-msgstr ""
-
-#: app/views/proposals/by_author.html.erb:3
-msgid "%d proposals have been submitted by %s"
-msgstr ""
-
-#: app/views/proposals/by_author.html.erb:13
-#: app/views/conferences/proposals.html.erb:11
-msgid "Proposal status"
-msgstr ""
-
-#: app/views/proposals/_form.html.erb:5
-msgid "In order to submit a proposal for a conference not listed below, please %s. <br/>Take into account that not all conferences will accept proposals submission."
-msgstr ""
-
-#: app/views/proposals/_form.html.erb:9
-msgid "register as an attendee"
-msgstr ""
-
-#: app/views/proposals/show.html.erb:7
-msgid "Submitted for"
-msgstr ""
-
-#: app/views/proposals/show.html.erb:9
-msgid "Abstract"
-msgstr ""
-
-#: app/views/proposals/show.html.erb:15
-#: app/views/conferences/proposals.html.erb:9
-msgid "Authors"
-msgstr ""
-
-#: app/views/proposals/show.html.erb:26
-msgid "Documents"
-msgstr ""
-
-#: app/views/proposals/show.html.erb:29
-msgid "There are no files for this proposal"
-msgstr ""
-
-#: app/views/proposals/show.html.erb:39
-msgid "Upload a new document"
-msgstr ""
-
-#: app/views/proposals/show.html.erb:43
-msgid "Choose the file to upload"
-msgstr ""
-
-#: app/views/proposals/show.html.erb:47
-msgid "File description"
-msgstr ""
-
-#: app/views/proposals/show.html.erb:53
-msgid "Upload"
-msgstr ""
-
-#: app/views/proposals/new.html.erb:8
-msgid "Register proposal"
-msgstr ""
-
-#: app/views/proposals/edit.html.erb:1
-msgid "Edit your proposal"
-msgstr ""
-
-#: app/views/proposals/author_add_confirm.html.erb:1
-msgid "New author confirmation"
-msgstr ""
-
-#: app/views/proposals/author_add_confirm.html.erb:3
-msgid "You have requested adding <em>%s</em> (specified login: <em>%s</em>) as a coauthor for your proposal titled <em>%s</em>. <br/>"
-msgstr ""
-
-#: app/views/proposals/author_add_confirm.html.erb:8
-msgid "Confirm as a coauthor"
-msgstr ""
-
-#: app/views/proposals/author_add_confirm.html.erb:11
-msgid "go back to your proposal"
-msgstr ""
-
-#: app/views/conferences/proposals.html.erb:2
-msgid "Proposals for %s"
-msgstr ""
-
-#: app/views/conferences/show.html.erb:14
-msgid "%d proposals registered for this conference"
-msgstr ""
-
-#: app/views/conferences/show.html.erb:24
-msgid "Submit a proposal for this conference"
-msgstr ""
-
-#: app/views/conferences/show.html.erb:31
-msgid "Web site"
-msgstr ""
-
-#: app/views/conferences/list.html.erb:3
-msgid "Hide past conferences"
-msgstr ""
-
-#: app/views/conferences/list.html.erb:6
-msgid "Show also past conferences"
-msgstr ""
-
-#: app/views/conferences/list.html.erb:11
-msgid "To register for any of the conferences shown, please %s or %s"
-msgstr ""
-
-#: app/views/conferences/list.html.erb:12
-msgid "create a new account"
-msgstr ""
-
-#: app/views/conferences/list.html.erb:14
-msgid "log in to your account"
-msgstr ""
-
-#: app/views/sys_conf_adm/list_table_fields.html.erb:1
-msgid "Manage fields for table <em>%s</em>"
-msgstr ""
-
-#: app/views/sys_conf_adm/list_table_fields.html.erb:3
-msgid "This interface is provided as a general facility - However, redefining your tables' configuration, handling DBMS-based validations and default values will often require doing so directly interacting directly with your database system."
-msgstr ""
+#: app/views/conferences_adm/_form.html.erb:6
+msgid "Conference|Logo"
+msgstr "Logo"
 
-#: app/views/sys_conf_adm/list_table_fields.html.erb:9
-msgid "Core attributes"
+#: app/views/conferences_adm/timeslots.html.erb:1
+msgid "Defined timeslots for %s"
 msgstr ""
 
-#: app/views/sys_conf_adm/list_table_fields.html.erb:10
-msgid "The following fields are <em>core</em> - That means, they will always be part of a person's definition:"
+#: app/views/conferences_adm/timeslots.html.erb:4
+msgid "No timeslots have yet been defined"
 msgstr ""
 
-#: app/views/sys_conf_adm/list_table_fields.html.erb:14
-msgid "Extra attributes"
+#: app/views/conferences_adm/timeslots.html.erb:13
+msgid "Attendances"
 msgstr ""
 
-#: app/views/sys_conf_adm/list_table_fields.html.erb:16
-msgid "No extra fields are currently defined"
+#: app/views/conferences_adm/timeslots.html.erb:23
+msgid "Create a new timeslot for this conference"
 msgstr ""
 
-#: app/views/sys_conf_adm/list_table_fields.html.erb:21
-msgid "Add a new attribute"
+#: app/views/conferences_adm/timeslots.html.erb:24
+msgid ""
+"Enter the tolerance in <em>hh:mm:ss</em> format. If not specified, it will "
+"use the system-wide default (%s)"
 msgstr ""
 
-#: app/views/sys_conf_adm/nametag_format_list.html.erb:3
-msgid "The following formats are used by the nametag printing helper program (<tt>./script/nametags</tt>). This script can be used with any label printer which implements the %s language"
+#: app/views/conferences_adm/timeslots.html.erb:35
+msgid "Create timeslot"
 msgstr ""
 
-#: app/views/sys_conf_adm/nametag_format_list.html.erb:6
-msgid "Zebra EPL2"
+#: app/views/sys_conf_adm/nametag_format_edit.html.erb:1
+msgid "Edit nametag format"
 msgstr ""
 
-#: app/views/sys_conf_adm/nametag_format_list.html.erb:9
-msgid "Disregard this section if your conferences do not require printing nametags, or if you don't own a suitable printer."
+#: app/views/sys_conf_adm/show_catalog.html.erb:1
+msgid "Showing records for the <em>%s</em> catalog"
 msgstr ""
 
-#: app/views/sys_conf_adm/nametag_format_list.html.erb:15
-msgid "Size (pt)"
+#: app/views/sys_conf_adm/show_catalog.html.erb:24
+msgid "Add a new record"
 msgstr ""
 
-#: app/views/sys_conf_adm/nametag_format_list.html.erb:16
-msgid "Size (cm)"
+#: app/views/sys_conf_adm/show_catalog.html.erb:30
+msgid "Go back to the catalogs listing"
 msgstr ""
 
-#: app/views/sys_conf_adm/nametag_format_list.html.erb:17
-msgid "Size (in)"
+#: app/views/sys_conf_adm/edit.html.erb:1
+msgid "Editing configuration entry <em>%s</em>"
 msgstr ""
 
-#: app/views/sys_conf_adm/nametag_format_list.html.erb:49
-msgid "Create a new format"
+#: app/views/sys_conf_adm/edit.html.erb:2
+msgid ""
+"<b>Caution</b>: Modifying this configuration entry might render your system "
+"inoperable. Proceed at your own risk, and only if you know what you are "
+"doing."
 msgstr ""
 
 #: app/views/sys_conf_adm/_nametag_format_form.html.erb:1
-msgid "Provide all the requested dimensions in <em>points</em>. EPL2 printers work at 203 dots per inch (80 dots per centimeter)."
+msgid ""
+"Provide all the requested dimensions in <em>points</em>. EPL2 printers work "
+"at 203 dots per inch (80 dots per centimeter)."
 msgstr ""
 
 #: app/views/sys_conf_adm/_nametag_format_form.html.erb:6
@@ -2454,7 +2455,9 @@ msgid "Name width for wide characters"
 msgstr ""
 
 #: app/views/sys_conf_adm/_nametag_format_form.html.erb:19
-msgid "First and family names up to the specified width will be printed in a double-width font, increasing their readability"
+msgid ""
+"First and family names up to the specified width will be printed in a double-"
+"width font, increasing their readability"
 msgstr ""
 
 #: app/views/sys_conf_adm/_nametag_format_form.html.erb:25
@@ -2497,64 +2500,37 @@ msgstr ""
 msgid "Barcode height"
 msgstr ""
 
-#: app/views/sys_conf_adm/edit_table_field.html.erb:1
-msgid "Edit field %s on %s"
+#: app/views/sys_conf_adm/nametag_format_list.html.erb:3
+msgid ""
+"The following formats are used by the nametag printing helper program (<tt>./"
+"script/nametags</tt>). This script can be used with any label printer which "
+"implements the %s language"
 msgstr ""
 
-#: app/views/sys_conf_adm/edit_table_field.html.erb:3
-msgid "The values set in this screen are very database-dependent. We strongly suggest working with a PostgreSQL RDBMS - Any other system is not guaranteed to work with the values selected here."
+#: app/views/sys_conf_adm/nametag_format_list.html.erb:6
+msgid "Zebra EPL2"
 msgstr ""
 
-#: app/views/sys_conf_adm/edit_table_field.html.erb:7
-msgid "Go back to the table definition"
+#: app/views/sys_conf_adm/nametag_format_list.html.erb:9
+msgid ""
+"Disregard this section if your conferences do not require printing nametags, "
+"or if you don't own a suitable printer."
 msgstr ""
 
-#: app/views/sys_conf_adm/edit_table_field.html.erb:13
-msgid "Data type"
+#: app/views/sys_conf_adm/nametag_format_list.html.erb:15
+msgid "Size (pt)"
 msgstr ""
 
-#: app/views/sys_conf_adm/edit_table_field.html.erb:19
-msgid "If you specify a default value, it should be valid for its data type. Note that the default value you specify here is trusted to be sane - you can, of course, give illegal or dangerous values here. After all, you _are_ an administrator! With great power comes great responsability."
+#: app/views/sys_conf_adm/nametag_format_list.html.erb:16
+msgid "Size (cm)"
 msgstr ""
 
-#: app/views/sys_conf_adm/edit_table_field.html.erb:32
-msgid "Keep in mind that, in order for the database to allow you to require no null values to be entered in a given field, they should all have a value set (this means, older records are not allowed to break the rules).<br/>If you set a nonempty default value, we will set all the NULL values to it, and you will be able to set it to NOT NULL."
+#: app/views/sys_conf_adm/nametag_format_list.html.erb:17
+msgid "Size (in)"
 msgstr ""
 
-#: app/views/sys_conf_adm/nametag_format_edit.html.erb:1
-msgid "Edit nametag format"
-msgstr ""
-
-#: app/views/sys_conf_adm/edit.html.erb:1
-msgid "Editing configuration entry <em>%s</em>"
-msgstr ""
-
-#: app/views/sys_conf_adm/edit.html.erb:2
-msgid "<b>Caution</b>: Modifying this configuration entry might render your system inoperable. Proceed at your own risk, and only if you know what you are doing."
-msgstr ""
-
-#: app/views/sys_conf_adm/nametag_format_new.html.erb:1
-msgid "Create a new nametag format"
-msgstr ""
-
-#: app/views/sys_conf_adm/show_catalog.html.erb:1
-msgid "Showing records for the <em>%s</em> catalog"
-msgstr ""
-
-#: app/views/sys_conf_adm/show_catalog.html.erb:24
-msgid "Add a new record"
-msgstr ""
-
-#: app/views/sys_conf_adm/show_catalog.html.erb:30
-msgid "Go back to the catalogs listing"
-msgstr ""
-
-#: app/views/sys_conf_adm/list_catalogs.html.erb:3
-msgid "The following catalogs are defined in your system"
-msgstr ""
-
-#: app/views/sys_conf_adm/list_catalogs.html.erb:8
-msgid "Records"
+#: app/views/sys_conf_adm/nametag_format_list.html.erb:49
+msgid "Create a new format"
 msgstr ""
 
 #: app/views/sys_conf_adm/list.html.erb:1
@@ -2562,7 +2538,10 @@ msgid "Configuration entries"
 msgstr ""
 
 #: app/views/sys_conf_adm/list.html.erb:2
-msgid "<b>Caution</b>: Modifying the configuration entries shown here might render your system inoperable. Proceed at your own risk, and only if you know what you are doing."
+msgid ""
+"<b>Caution</b>: Modifying the configuration entries shown here might render "
+"your system inoperable. Proceed at your own risk, and only if you know what "
+"you are doing."
 msgstr ""
 
 #: app/views/sys_conf_adm/list.html.erb:7
@@ -2579,6 +2558,558 @@ msgstr ""
 
 #: app/views/sys_conf_adm/list.html.erb:16
 msgid "Are you sure you want to delete this configuration entry?"
+msgstr ""
+
+#: app/views/sys_conf_adm/list_catalogs.html.erb:3
+msgid "The following catalogs are defined in your system"
+msgstr ""
+
+#: app/views/sys_conf_adm/list_catalogs.html.erb:8
+msgid "Records"
+msgstr ""
+
+#: app/views/sys_conf_adm/nametag_format_new.html.erb:1
+msgid "Create a new nametag format"
+msgstr ""
+
+#: app/views/sys_conf_adm/edit_table_field.html.erb:1
+msgid "Edit field %s on %s"
+msgstr ""
+
+#: app/views/sys_conf_adm/edit_table_field.html.erb:3
+msgid ""
+"The values set in this screen are very database-dependent. We strongly "
+"suggest working with a PostgreSQL RDBMS - Any other system is not guaranteed "
+"to work with the values selected here."
+msgstr ""
+
+#: app/views/sys_conf_adm/edit_table_field.html.erb:7
+msgid "Go back to the table definition"
+msgstr ""
+
+#: app/views/sys_conf_adm/edit_table_field.html.erb:13
+msgid "Data type"
+msgstr ""
+
+#: app/views/sys_conf_adm/edit_table_field.html.erb:19
+msgid ""
+"If you specify a default value, it should be valid for its data type. Note "
+"that the default value you specify here is trusted to be sane - you can, of "
+"course, give illegal or dangerous values here. After all, you _are_ an "
+"administrator! With great power comes great responsability."
+msgstr ""
+
+#: app/views/sys_conf_adm/edit_table_field.html.erb:32
+msgid ""
+"Keep in mind that, in order for the database to allow you to require no null "
+"values to be entered in a given field, they should all have a value set "
+"(this means, older records are not allowed to break the rules).<br/>If you "
+"set a nonempty default value, we will set all the NULL values to it, and you "
+"will be able to set it to NOT NULL."
+msgstr ""
+
+#: app/views/sys_conf_adm/list_table_fields.html.erb:1
+msgid "Manage fields for table <em>%s</em>"
+msgstr ""
+
+#: app/views/sys_conf_adm/list_table_fields.html.erb:3
+msgid ""
+"This interface is provided as a general facility - However, redefining your "
+"tables' configuration, handling DBMS-based validations and default values "
+"will often require doing so directly interacting directly with your database "
+"system."
+msgstr ""
+
+#: app/views/sys_conf_adm/list_table_fields.html.erb:9
+msgid "Core attributes"
+msgstr ""
+
+#: app/views/sys_conf_adm/list_table_fields.html.erb:10
+msgid ""
+"The following fields are <em>core</em> - That means, they will always be "
+"part of a person's definition:"
+msgstr ""
+
+#: app/views/sys_conf_adm/list_table_fields.html.erb:14
+msgid "Extra attributes"
+msgstr ""
+
+#: app/views/sys_conf_adm/list_table_fields.html.erb:16
+msgid "No extra fields are currently defined"
+msgstr ""
+
+#: app/views/sys_conf_adm/list_table_fields.html.erb:21
+msgid "Add a new attribute"
+msgstr ""
+
+#: app/views/people/profile.html.erb:1
+msgid "Public information for %s"
+msgstr ""
+
+#: app/views/people/profile.html.erb:6
+msgid "Proposals submitted"
+msgstr ""
+
+#: app/views/people/recover.html.erb:1
+msgid "Specify a new password"
+msgstr ""
+
+#: app/views/people/recover.html.erb:2
+msgid ""
+"You have just logged in using a one-time only URL. Please, set a new "
+"password for your account."
+msgstr ""
+
+#: app/views/people/recover.html.erb:4
+msgid ""
+"Please note you have only ten minutes to fill this form - If you do not fill "
+"it in this time, you will have to %s."
+msgstr ""
+
+#: app/views/people/recover.html.erb:6
+msgid "request a new session to be sent to you"
+msgstr ""
+
+#: app/views/people/recover.html.erb:11 app/views/people/password.html.erb:11
+msgid "New password"
+msgstr ""
+
+#: app/views/people/recover.html.erb:17 app/views/people/password.html.erb:17
+msgid "Confirm new password"
+msgstr ""
+
+#: app/views/people/recover.html.erb:24
+msgid "Set password"
+msgstr ""
+
+#: app/views/people/request_passwd.html.erb:6
+msgid ""
+"You lost or forgot your password? Don't worry, it can happen to anybody! "
+"Please enter the login or E-mail address with which you registered, and we "
+"will send you a mail  with all the needed information."
+msgstr ""
+
+#: app/views/people/request_passwd.html.erb:17
+msgid "Request password"
+msgstr ""
+
+#: app/views/people/login.html.erb:3
+msgid "User name"
+msgstr ""
+
+#: app/views/people/login.html.erb:5
+msgid "Password"
+msgstr ""
+
+#: app/views/people/login.html.erb:12
+msgid "Cannot log in?"
+msgstr ""
+
+#: app/views/people/login.html.erb:13
+msgid "Request a new password"
+msgstr ""
+
+#: app/views/people/new.html.erb:2
+msgid "Please fill in the following required details for your account creation"
+msgstr ""
+
+#: app/views/people/new.html.erb:9
+msgid "Create account"
+msgstr ""
+
+#: app/views/people/password.html.erb:1
+msgid "Change your password"
+msgstr ""
+
+#: app/views/people/password.html.erb:5
+msgid "Current password"
+msgstr ""
+
+#: app/views/people/proposals.html.erb:4 app/views/proposals/new.html.erb:1
+msgid "Submit a new proposal"
+msgstr ""
+
+#: app/views/people/proposals.html.erb:9
+msgid "You have not sent any proposals yet. "
+msgstr ""
+
+#: app/views/people/proposals.html.erb:11
+msgid "Showing the %d proposals you have submitted"
+msgstr ""
+
+#: app/views/people/proposals.html.erb:29 app/views/proposals/show.html.erb:17
+msgid "Manage authors"
+msgstr ""
+
+#: app/views/people/proposals.html.erb:31
+msgid "Files"
+msgstr ""
+
+#: app/views/people/invite.html.erb:3
+msgid ""
+"If you know somebody who might be interested in joining any of the "
+"conferences you have signed up for, you can use this form to invite him. <br/"
+">Please note that abusing this feature can lead to disablingyour account."
+msgstr ""
+
+#: app/views/people/invite.html.erb:10
+msgid "Destination E-mail address"
+msgstr ""
+
+#: app/views/people/invite.html.erb:12
+msgid "Conference to invite the destinatary to"
+msgstr ""
+
+#: app/views/people/invite.html.erb:16
+msgid ""
+"Select one of the conferences presented below. Note thatyou can only send "
+"invitations to conferences you are currently registered for."
+msgstr ""
+
+#: app/views/people/invite.html.erb:19
+msgid "Text of your message"
+msgstr ""
+
+#: app/views/people/invite.html.erb:21
+msgid ""
+"Please note an auto-generated portion with the relevant URL (and including "
+"your contact information) will be added."
+msgstr ""
+
+#: app/views/people/invite.html.erb:24
+msgid "Send invitation"
+msgstr ""
+
+#: app/views/people/account.html.erb:1
+msgid "Welcome, %s"
+msgstr ""
+
+#: app/views/people/account.html.erb:4
+msgid "Next conferences you are signed up for"
+msgstr ""
+
+#: app/views/proposals/edit.html.erb:1
+msgid "Edit your proposal"
+msgstr ""
+
+#: app/views/proposals/show.html.erb:7
+msgid "Submitted for"
+msgstr ""
+
+#: app/views/proposals/show.html.erb:9
+msgid "Abstract"
+msgstr ""
+
+#: app/views/proposals/show.html.erb:26
+msgid "Documents"
+msgstr ""
+
+#: app/views/proposals/show.html.erb:29
+msgid "There are no files for this proposal"
+msgstr ""
+
+#: app/views/proposals/show.html.erb:39
+msgid "Upload a new document"
+msgstr ""
+
+#: app/views/proposals/show.html.erb:43
+msgid "Choose the file to upload"
+msgstr ""
+
+#: app/views/proposals/show.html.erb:47
+msgid "File description"
+msgstr ""
+
+#: app/views/proposals/show.html.erb:53
+msgid "Upload"
+msgstr ""
+
+#: app/views/proposals/by_author.html.erb:1
+msgid "Proposals submitted by author"
+msgstr ""
+
+#: app/views/proposals/by_author.html.erb:3
+msgid "%d proposals have been submitted by %s"
+msgstr ""
+
+#: app/views/proposals/authors.html.erb:1
+msgid "Manage the coauthors for your proposal"
+msgstr ""
+
+#: app/views/proposals/authors.html.erb:3
+msgid "Current list of authors for <em>%s</em>"
+msgstr ""
+
+#: app/views/proposals/authors.html.erb:8
+msgid "Add an author to this proposal"
+msgstr ""
+
+#: app/views/proposals/authors.html.erb:9
+msgid ""
+"Please enter the new author's <em>login</em>. The login must be an exact "
+"match (i.e., performing searches on similar logins will not work). A mail "
+"will be sent to the new author notifying him of this operation."
+msgstr ""
+
+#: app/views/proposals/authors.html.erb:17
+msgid "Add author"
+msgstr ""
+
+#: app/views/proposals/new.html.erb:8
+msgid "Register proposal"
+msgstr ""
+
+#: app/views/proposals/_form.html.erb:6
+msgid ""
+"In order to submit a proposal for a conference not listed below, please %s. "
+"<br/>Take into account that not all conferences will accept proposals "
+"submission."
+msgstr ""
+
+#: app/views/proposals/_form.html.erb:10
+msgid "register as an attendee"
+msgstr ""
+
+#: app/views/proposals/author_add_confirm.html.erb:1
+msgid "New author confirmation"
+msgstr ""
+
+#: app/views/proposals/author_add_confirm.html.erb:3
+msgid ""
+"You have requested adding <em>%s</em> (specified login: <em>%s</em>) as a "
+"coauthor for your proposal titled <em>%s</em>. <br/>"
+msgstr ""
+
+#: app/views/proposals/author_add_confirm.html.erb:8
+msgid "Confirm as a coauthor"
+msgstr ""
+
+#: app/views/proposals/author_add_confirm.html.erb:11
+msgid "go back to your proposal"
+msgstr ""
+
+#: lib/menu_tree.rb:16
+msgid "Unexpected arguments received: "
+msgstr ""
+
+#: lib/strings_in_db.rb:26
+msgid "AdminTask|Academic committee"
+msgstr "Academic committee"
+
+#: lib/strings_in_db.rb:27
+msgid "AdminTask|Attendance management"
+msgstr "Attendance management"
+
+#: lib/strings_in_db.rb:28
+msgid "AdminTask|Attendee administration"
+msgstr "Attendee administration"
+
+#: lib/strings_in_db.rb:29
+msgid "AdminTask|Certificates generation"
+msgstr "Certificates generation"
+
+#: lib/strings_in_db.rb:30
+msgid "AdminTask|Conferences administration"
+msgstr "Conferences administration"
+
+#: lib/strings_in_db.rb:31
+msgid "AdminTask|System configuration"
+msgstr "System configuration"
+
+#: lib/strings_in_db.rb:42
+msgid "2A0"
+msgstr ""
+
+#: lib/strings_in_db.rb:43
+msgid "4A0"
+msgstr ""
+
+#: lib/strings_in_db.rb:44
+msgid "A0"
+msgstr ""
+
+#: lib/strings_in_db.rb:45
+msgid "A1"
+msgstr ""
+
+#: lib/strings_in_db.rb:46
+msgid "A10"
+msgstr ""
+
+#: lib/strings_in_db.rb:47
+msgid "A2"
+msgstr ""
+
+#: lib/strings_in_db.rb:48
+msgid "A3"
+msgstr ""
+
+#: lib/strings_in_db.rb:49
+msgid "A4"
+msgstr ""
+
+#: lib/strings_in_db.rb:50
+msgid "A5"
+msgstr ""
+
+#: lib/strings_in_db.rb:51
+msgid "A6"
+msgstr ""
+
+#: lib/strings_in_db.rb:52
+msgid "A7"
+msgstr ""
+
+#: lib/strings_in_db.rb:53
+msgid "A8"
+msgstr ""
+
+#: lib/strings_in_db.rb:54
+msgid "A9"
+msgstr ""
+
+#: lib/strings_in_db.rb:55
+msgid "B0"
+msgstr ""
+
+#: lib/strings_in_db.rb:56
+msgid "B1"
+msgstr ""
+
+#: lib/strings_in_db.rb:57
+msgid "B10"
+msgstr ""
+
+#: lib/strings_in_db.rb:58
+msgid "B2"
+msgstr ""
+
+#: lib/strings_in_db.rb:59
+msgid "B3"
+msgstr ""
+
+#: lib/strings_in_db.rb:60
+msgid "B4"
+msgstr ""
+
+#: lib/strings_in_db.rb:61
+msgid "B5"
+msgstr ""
+
+#: lib/strings_in_db.rb:62
+msgid "B6"
+msgstr ""
+
+#: lib/strings_in_db.rb:63
+msgid "B7"
+msgstr ""
+
+#: lib/strings_in_db.rb:64
+msgid "B8"
+msgstr ""
+
+#: lib/strings_in_db.rb:65
+msgid "B9"
+msgstr ""
+
+#: lib/strings_in_db.rb:66
+msgid "C0"
+msgstr ""
+
+#: lib/strings_in_db.rb:67
+msgid "C1"
+msgstr ""
+
+#: lib/strings_in_db.rb:68
+msgid "C10"
+msgstr ""
+
+#: lib/strings_in_db.rb:69
+msgid "C2"
+msgstr ""
+
+#: lib/strings_in_db.rb:70
+msgid "C3"
+msgstr ""
+
+#: lib/strings_in_db.rb:71
+msgid "C4"
+msgstr ""
+
+#: lib/strings_in_db.rb:72
+msgid "C5"
+msgstr ""
+
+#: lib/strings_in_db.rb:73
+msgid "C6"
+msgstr ""
+
+#: lib/strings_in_db.rb:74
+msgid "C7"
+msgstr ""
+
+#: lib/strings_in_db.rb:75
+msgid "C8"
+msgstr ""
+
+#: lib/strings_in_db.rb:76
+msgid "C9"
+msgstr ""
+
+#: lib/strings_in_db.rb:77
+msgid "EXECUTIVE"
+msgstr ""
+
+#: lib/strings_in_db.rb:78
+msgid "FOLIO"
+msgstr ""
+
+#: lib/strings_in_db.rb:79
+msgid "LEGAL"
+msgstr ""
+
+#: lib/strings_in_db.rb:80
+msgid "LETTER"
+msgstr ""
+
+#: lib/strings_in_db.rb:81
+msgid "RA0"
+msgstr ""
+
+#: lib/strings_in_db.rb:82
+msgid "RA1"
+msgstr ""
+
+#: lib/strings_in_db.rb:83
+msgid "RA2"
+msgstr ""
+
+#: lib/strings_in_db.rb:84
+msgid "RA3"
+msgstr ""
+
+#: lib/strings_in_db.rb:85
+msgid "RA4"
+msgstr ""
+
+#: lib/strings_in_db.rb:86
+msgid "SRA0"
+msgstr ""
+
+#: lib/strings_in_db.rb:87
+msgid "SRA1"
+msgstr ""
+
+#: lib/strings_in_db.rb:88
+msgid "SRA2"
+msgstr ""
+
+#: lib/strings_in_db.rb:89
+msgid "SRA3"
+msgstr ""
+
+#: lib/strings_in_db.rb:90
+msgid "SRA4"
 msgstr ""
 
 #: lib/pdf_dimensions.rb:3
@@ -2623,274 +3154,6 @@ msgstr ""
 
 #: lib/pdf_dimensions.rb:42
 msgid "Unknown page units %s in system configuration"
-msgstr ""
-
-#: lib/strings_in_db.rb:26
-msgid "AdminTask|Academic committee"
-msgstr "Academic committee"
-
-#: lib/strings_in_db.rb:27
-msgid "AdminTask|Attendance management"
-msgstr "Attendance management"
-
-#: lib/strings_in_db.rb:28
-msgid "AdminTask|Attendee administration"
-msgstr "Attendee administration"
-
-#: lib/strings_in_db.rb:29
-msgid "AdminTask|Certificates generation"
-msgstr "Certificates generation"
-
-#: lib/strings_in_db.rb:30
-msgid "AdminTask|Conferences administration"
-msgstr "Conferences administration"
-
-#: lib/strings_in_db.rb:31
-msgid "AdminTask|System configuration"
-msgstr "System configuration"
-
-#: lib/strings_in_db.rb:34
-msgid "PropStatus|Accepted"
-msgstr "Accepted"
-
-#: lib/strings_in_db.rb:35
-msgid "PropStatus|Cancelled"
-msgstr "Cancelled"
-
-#: lib/strings_in_db.rb:36
-msgid "PropStatus|Further details required"
-msgstr "Further details required"
-
-#: lib/strings_in_db.rb:37
-msgid "PropStatus|New"
-msgstr "New"
-
-#: lib/strings_in_db.rb:38
-msgid "PropStatus|Rejected"
-msgstr "Rejected"
-
-#: lib/strings_in_db.rb:39
-msgid "PropStatus|Withdrawn"
-msgstr "Withdrawn"
-
-#: lib/strings_in_db.rb:42
-msgid "PropType|Round table"
-msgstr "Round table"
-
-#: lib/strings_in_db.rb:43
-msgid "PropType|Talk"
-msgstr "Talk"
-
-#: lib/strings_in_db.rb:44
-msgid "PropType|Tutorial"
-msgstr "Tutorial"
-
-#: lib/strings_in_db.rb:45
-msgid "PropType|Workshop"
-msgstr "Workshop"
-
-#: lib/strings_in_db.rb:48
-msgid "Room|Auditorium"
-msgstr ""
-
-#: lib/strings_in_db.rb:50
-msgid "2A0"
-msgstr ""
-
-#: lib/strings_in_db.rb:51
-msgid "4A0"
-msgstr ""
-
-#: lib/strings_in_db.rb:52
-msgid "A0"
-msgstr ""
-
-#: lib/strings_in_db.rb:53
-msgid "A1"
-msgstr ""
-
-#: lib/strings_in_db.rb:54
-msgid "A10"
-msgstr ""
-
-#: lib/strings_in_db.rb:55
-msgid "A2"
-msgstr ""
-
-#: lib/strings_in_db.rb:56
-msgid "A3"
-msgstr ""
-
-#: lib/strings_in_db.rb:57
-msgid "A4"
-msgstr ""
-
-#: lib/strings_in_db.rb:58
-msgid "A5"
-msgstr ""
-
-#: lib/strings_in_db.rb:59
-msgid "A6"
-msgstr ""
-
-#: lib/strings_in_db.rb:60
-msgid "A7"
-msgstr ""
-
-#: lib/strings_in_db.rb:61
-msgid "A8"
-msgstr ""
-
-#: lib/strings_in_db.rb:62
-msgid "A9"
-msgstr ""
-
-#: lib/strings_in_db.rb:63
-msgid "B0"
-msgstr ""
-
-#: lib/strings_in_db.rb:64
-msgid "B1"
-msgstr ""
-
-#: lib/strings_in_db.rb:65
-msgid "B10"
-msgstr ""
-
-#: lib/strings_in_db.rb:66
-msgid "B2"
-msgstr ""
-
-#: lib/strings_in_db.rb:67
-msgid "B3"
-msgstr ""
-
-#: lib/strings_in_db.rb:68
-msgid "B4"
-msgstr ""
-
-#: lib/strings_in_db.rb:69
-msgid "B5"
-msgstr ""
-
-#: lib/strings_in_db.rb:70
-msgid "B6"
-msgstr ""
-
-#: lib/strings_in_db.rb:71
-msgid "B7"
-msgstr ""
-
-#: lib/strings_in_db.rb:72
-msgid "B8"
-msgstr ""
-
-#: lib/strings_in_db.rb:73
-msgid "B9"
-msgstr ""
-
-#: lib/strings_in_db.rb:74
-msgid "C0"
-msgstr ""
-
-#: lib/strings_in_db.rb:75
-msgid "C1"
-msgstr ""
-
-#: lib/strings_in_db.rb:76
-msgid "C10"
-msgstr ""
-
-#: lib/strings_in_db.rb:77
-msgid "C2"
-msgstr ""
-
-#: lib/strings_in_db.rb:78
-msgid "C3"
-msgstr ""
-
-#: lib/strings_in_db.rb:79
-msgid "C4"
-msgstr ""
-
-#: lib/strings_in_db.rb:80
-msgid "C5"
-msgstr ""
-
-#: lib/strings_in_db.rb:81
-msgid "C6"
-msgstr ""
-
-#: lib/strings_in_db.rb:82
-msgid "C7"
-msgstr ""
-
-#: lib/strings_in_db.rb:83
-msgid "C8"
-msgstr ""
-
-#: lib/strings_in_db.rb:84
-msgid "C9"
-msgstr ""
-
-#: lib/strings_in_db.rb:85
-msgid "EXECUTIVE"
-msgstr ""
-
-#: lib/strings_in_db.rb:86
-msgid "FOLIO"
-msgstr ""
-
-#: lib/strings_in_db.rb:87
-msgid "LEGAL"
-msgstr ""
-
-#: lib/strings_in_db.rb:88
-msgid "LETTER"
-msgstr ""
-
-#: lib/strings_in_db.rb:89
-msgid "RA0"
-msgstr ""
-
-#: lib/strings_in_db.rb:90
-msgid "RA1"
-msgstr ""
-
-#: lib/strings_in_db.rb:91
-msgid "RA2"
-msgstr ""
-
-#: lib/strings_in_db.rb:92
-msgid "RA3"
-msgstr ""
-
-#: lib/strings_in_db.rb:93
-msgid "RA4"
-msgstr ""
-
-#: lib/strings_in_db.rb:94
-msgid "SRA0"
-msgstr ""
-
-#: lib/strings_in_db.rb:95
-msgid "SRA1"
-msgstr ""
-
-#: lib/strings_in_db.rb:96
-msgid "SRA2"
-msgstr ""
-
-#: lib/strings_in_db.rb:97
-msgid "SRA3"
-msgstr ""
-
-#: lib/strings_in_db.rb:98
-msgid "SRA4"
-msgstr ""
-
-#: lib/menu_tree.rb:16
-msgid "Unexpected arguments received: "
 msgstr ""
 
 #: lib/nametags/nametags.glade:6
@@ -2998,7 +3261,3 @@ msgstr ""
 #: script/create_user:76
 msgid "No work done, no harm done. Goodbye!"
 msgstr ""
-
-#: app/models/person.rb:-
-msgid "Person|Pw salt"
-msgstr "Password random salt"

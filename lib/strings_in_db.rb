@@ -31,21 +31,13 @@ _('AdminTask|Conferences administration')
 _('AdminTask|System configuration')
 
 # PropStatus
-_('PropStatus|Accepted')
-_('PropStatus|Cancelled')
-_('PropStatus|Further details required')
-_('PropStatus|New')
-_('PropStatus|Rejected')
-_('PropStatus|Withdrawn')
+_('PropStatus|Nueva')
 
 # PropType
-_('PropType|Round table')
-_('PropType|Talk')
-_('PropType|Tutorial')
-_('PropType|Workshop')
+_('PropType|Conferencia')
 
 # Room
-_('Room|Auditorium')
+_('Room|Auditorio')
 # PDF::Writer PAGE_SIZES
 _('2A0')
 _('4A0')
