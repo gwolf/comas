@@ -297,9 +297,14 @@ td, th {
     display: block;
 }
 
-.comas-checkbox {  
+.comas-checkbox {
     border: solid 1px #fff;
     background: #eee;
     padding-left: 0.3em;
     padding-right: 0.3em;
+}
+
+.comas-collapsed {
+    border: solid #face78 1px;
+    padding-left: 1em;
 }

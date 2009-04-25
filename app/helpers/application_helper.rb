@@ -65,9 +65,31 @@ module ApplicationHelper
      'conference</div>') %  [ link_to('Please register',
                                       :controller => '/people', 
                                       :action => 'new'),
-                              link_to('log in', 
-                                      :controller => '/people', 
+                              link_to('log in',
+                                      :controller => '/people',
                                       :action => 'login') ]
+  end
+
+  ######################################################################
+  # RedCloth formatting help
+  def redcloth_help
+    render :partial => 'inc/redcloth_help'
+  end
+
+  ######################################################################
+  # Collapsible areas with a title header
+  def collapsed_header(title, &block)
+    # Not collision-proof, right. However, odds are quite low!
+    div_name = 'comas-collapsed-%d' % (rand * 10000)
+
+    concat('<h3>%s - <span class="note">%s</span></h3>' %
+           [title, link_to_function(_('Show'),
+                                    visual_effect(:toggle_blind, div_name))],
+           block.binding)
+    concat('<div id="%s" class="comas-collapsed" style="display: none">' % div_name,
+           block.binding)
+    yield
+    concat '</div>', block.binding
   end
 
   ######################################################################
