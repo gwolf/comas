@@ -102,7 +102,8 @@ class ApplicationController < ActionController::Base
           menu = MenuItem.new(_'-*- Unimplemented')
         end
 
-        @menu.add(_(task.qualified_name), nil, MenuTree.new(menu))
+        @menu.add(Translation.for(task.qualified_name),
+                  nil, MenuTree.new(menu))
       end
     end
   end

@@ -223,7 +223,7 @@ module ApplicationHelper
         # field_id and there is a corresponding table? Present the catalog.
         choices = model.qualified_collection_by_id
         return select(field, 
-                      choices.map {|it| [_(it[0]), it[1]]},
+                      choices.map {|it| [Translation.for(it[0]), it[1]]},
                       {:include_blank => true})
       end
 
@@ -334,7 +334,7 @@ module ApplicationHelper
     end
 
     def label_for_field(model, field)
-      [model.class.to_s, field.to_s.humanize].join('|')
+      Translation.for([model.class.to_s, field.to_s.humanize].join('|'))
     end
 
     def table_from_field(field)

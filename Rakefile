@@ -20,7 +20,6 @@ begin
 
   desc "Update pot/po files to match new version." 
   task :updatepo do
-    system('script/query_catalogs_for_gettext.rb')
     MY_APP_TEXT_DOMAIN = "comas" 
     MY_APP_VERSION     = "comas 1.0" 
 
