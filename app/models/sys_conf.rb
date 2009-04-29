@@ -20,8 +20,8 @@ class SysConf < ActiveRecord::Base
     return @@cache[k][1] if @@cache[k] and @@cache[k].is_a?(Array) and
       @@cache[k][0] > now - 2.seconds
 
-    item = self.find_by_key(key.to_s)
-    @@cache[k] = [now, item.value] if item
+    item = self.find_by_key(key.to_s) or return nil
+    @@cache[k] = [now, item.value]
     @@cache[k][1]
   end
 end

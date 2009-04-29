@@ -38,7 +38,12 @@ module PdfDimensions
     end
 
     def sys_units
-      unit = SysConf.value_for(:page_units).to_sym
+      begin
+        unit = SysConf.value_for(:page_units).to_sym
+      rescue NoMethodError
+        raise TypeError, _('Systemwide page units (SysConf key page_units) ' +
+                           'has not yet been defined')
+      end
       raise TypeError, _('Unknown page units %s in system configuration') % 
         unit unless ValidUnits.has_key?(unit)
       unit
