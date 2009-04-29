@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2009-04-25 12:54-0500\n"
-"PO-Revision-Date: 2009-04-25 12:56-0600\n"
+"POT-Creation-Date: 2009-04-29 18:22-0500\n"
+"PO-Revision-Date: 2009-04-29 18:26-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: Gunnar Wolf <gwolf@gwolf.org>\n"
 "MIME-Version: 1.0\n"
@@ -649,11 +649,11 @@ msgstr "Mi cuenta"
 msgid "-*- Unimplemented"
 msgstr "-*- No implementado"
 
-#: app/controllers/application.rb:116
+#: app/controllers/application.rb:117
 msgid "&laquo; Previous"
 msgstr "&laquo; Anterior"
 
-#: app/controllers/application.rb:117
+#: app/controllers/application.rb:118
 msgid "Next &raquo;"
 msgstr "Siguiente &raquo;"
 
@@ -717,6 +717,30 @@ msgstr "salón"
 msgid "Room|Name"
 msgstr "Nombre"
 
+#: app/models/translation.rb:-
+msgid "translation"
+msgstr "traducción"
+
+#: app/models/translation.rb:-
+msgid "Translation|Base"
+msgstr "Base"
+
+#: app/models/translation.rb:-
+msgid "Translation|Lang"
+msgstr "Idioma"
+
+#: app/models/translation.rb:-
+msgid "Translation|Translated"
+msgstr "Traducido"
+
+#: app/models/translation.rb:-
+msgid "Translation|Created at"
+msgstr "Fecha de creación"
+
+#: app/models/translation.rb:-
+msgid "Translation|Updated at"
+msgstr "Última actualización"
+
 #: app/models/admin_task.rb:-
 msgid "admin task"
 msgstr "rol administrativo"
@@ -726,7 +750,7 @@ msgid "AdminTask|Name"
 msgstr "Nombre"
 
 #: app/models/admin_task.rb:-
-msgid "AdminTask|System name"
+msgid "AdminTask|Sys name"
 msgstr "Nombre de sistema"
 
 #: app/models/logo.rb:-
@@ -742,7 +766,7 @@ msgid "Logo|Conference"
 msgstr "Actividad"
 
 #: app/models/logo.rb:-
-msgid "Logo|Thumbnail"
+msgid "Logo|Thumb"
 msgstr "Reducido"
 
 #: app/models/logo.rb:-
@@ -770,7 +794,7 @@ msgid "Conference|Name"
 msgstr "Nombre"
 
 #: app/models/conference.rb:-
-msgid "Conference|Description"
+msgid "Conference|Descr"
 msgstr "Descripción"
 
 #: app/models/conference.rb:-
@@ -778,19 +802,19 @@ msgid "Conference|Homepage"
 msgstr "Página de inicio"
 
 #: app/models/conference.rb:-
-msgid "Conference|Registration opening date"
+msgid "Conference|Reg open date"
 msgstr "Fecha de inicio del registro"
 
 #: app/models/conference.rb:-
-msgid "Conference|Registration closing date"
+msgid "Conference|Reg close date"
 msgstr "Fecha de cierre de registro"
 
 #: app/models/conference.rb:-
-msgid "Conference|Call for Papers opening date"
+msgid "Conference|Cfp open date"
 msgstr "Fecha de inicio de la convocatoria de propuestas"
 
 #: app/models/conference.rb:-
-msgid "Conference|Call for papers closing date"
+msgid "Conference|Cfp close date"
 msgstr "Fecha de cierre de convocatoria de propuestas"
 
 #: app/models/conference.rb:-
@@ -847,19 +871,19 @@ msgid "nametag format"
 msgstr "formato de personalizador"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Format name"
-msgstr "Nombre del formato"
+msgid "NametagFormat|Name"
+msgstr "Ancho del nombre"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Horizontal size"
+msgid "NametagFormat|H size"
 msgstr "Tamaño horizontal"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Vertical size"
+msgid "NametagFormat|V size"
 msgstr "Tamaño vertical"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Vertical gap"
+msgid "NametagFormat|V gap"
 msgstr "Separación vertical"
 
 #: app/models/nametag_format.rb:-
@@ -867,35 +891,35 @@ msgid "NametagFormat|Name width"
 msgstr "Ancho del nombre"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Horizontal start"
+msgid "NametagFormat|H start"
 msgstr "Inicio horizontal"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Vertical start"
+msgid "NametagFormat|V start"
 msgstr "Inicio vertical"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Barcode horizontal position"
+msgid "NametagFormat|Id bar hpos"
 msgstr "Posición horizontal del código de barras"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Barcode vertical position"
+msgid "NametagFormat|Id bar vpos"
 msgstr "Posición vertical del código de barras"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Barcode orientation"
+msgid "NametagFormat|Id bar orient"
 msgstr "Orientación del código de barras"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Barcode narrow bars width"
+msgid "NametagFormat|Id bar narrow"
 msgstr "Ancho de las barras delgadas"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Barcode wide bars width"
+msgid "NametagFormat|Id bar wide"
 msgstr "Ancho de las barras gruesas"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Barcode height"
+msgid "NametagFormat|Id bar height"
 msgstr "Altura del código de barras"
 
 #: app/models/nametag_format.rb:12
@@ -939,15 +963,15 @@ msgid "Person|Login"
 msgstr "Nombre de usuario"
 
 #: app/models/person.rb:-
-msgid "Person|Password"
+msgid "Person|Passwd"
 msgstr "Contraseña"
 
 #: app/models/person.rb:-
-msgid "Person|First name"
+msgid "Person|Firstname"
 msgstr "Nombre propio"
 
 #: app/models/person.rb:-
-msgid "Person|Family name"
+msgid "Person|Famname"
 msgstr "Apellido"
 
 #: app/models/person.rb:-
@@ -955,7 +979,7 @@ msgid "Person|Email"
 msgstr "Correo electrónico"
 
 #: app/models/person.rb:-
-msgid "Person|Password random salt"
+msgid "Person|Pw salt"
 msgstr "Salt aleatorio de la contraseña"
 
 #: app/models/person.rb:-
@@ -967,11 +991,11 @@ msgid "Person|Last login at"
 msgstr "Última entrada"
 
 #: app/models/person.rb:-
-msgid "Person|Ok to receive conference-specific mails?"
-msgstr "¿Recibir correos específicos a sus actividades?"
+msgid "Person|Ok conf mails"
+msgstr "¿Recibir correos específicos a las actividades a las que se registró?"
 
 #: app/models/person.rb:-
-msgid "Person|OK to receive general mails?"
+msgid "Person|Ok general mails"
 msgstr "¿Recibir correos generales?"
 
 #: app/models/person.rb:20
@@ -995,7 +1019,7 @@ msgid "certif format"
 msgstr "formato de certificado"
 
 #: app/models/certif_format.rb:-
-msgid "CertifFormat|Format name"
+msgid "CertifFormat|Name"
 msgstr "Nombre del formato"
 
 #: app/models/certif_format.rb:-
@@ -1031,11 +1055,11 @@ msgid "Timeslot|Start time"
 msgstr "Hora de inicio"
 
 #: app/models/proposal.rb:-
-msgid "Timeslot|Tolerance (pre)"
+msgid "Timeslot|Tolerance pre"
 msgstr "Tolerancia (pre)"
 
 #: app/models/proposal.rb:-
-msgid "Timeslot|Tolerance (post)"
+msgid "Timeslot|Tolerance post"
 msgstr "Tolerancia (post)"
 
 #: app/models/proposal.rb:-
@@ -1067,11 +1091,11 @@ msgid "Proposal|Updated at"
 msgstr "Última actualización"
 
 #: app/models/proposal.rb:-
-msgid "Proposal|Proposal type"
+msgid "Proposal|Prop type"
 msgstr "Tipo de la propuesta"
 
 #: app/models/proposal.rb:-
-msgid "Proposal|Proposal status"
+msgid "Proposal|Prop status"
 msgstr "Estado de la propuesta"
 
 #: app/models/proposal.rb:-
@@ -1103,15 +1127,15 @@ msgid "CertifFormatLine|Content"
 msgstr "Contenido"
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Horizontal position"
+msgid "CertifFormatLine|X pos"
 msgstr "Posición horizontal"
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Vertical position"
+msgid "CertifFormatLine|Y pos"
 msgstr "Posición vertical"
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Maximum width"
+msgid "CertifFormatLine|Max width"
 msgstr "Ancho máximo"
 
 #: app/models/certif_format_line.rb:-
@@ -1123,7 +1147,7 @@ msgid "CertifFormatLine|Justification"
 msgstr "Justificación"
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Certificate format"
+msgid "CertifFormatLine|Certif format"
 msgstr "Formato de certificado"
 
 #: app/models/certif_format_line.rb:4
@@ -1177,7 +1201,7 @@ msgid "Document|Filename"
 msgstr "Nombre de archivo"
 
 #: app/models/document.rb:-
-msgid "Document|Description"
+msgid "Document|Descr"
 msgstr "Descripción"
 
 #: app/models/document.rb:-
@@ -1229,7 +1253,7 @@ msgid "SysConf|Key"
 msgstr "Llave"
 
 #: app/models/sys_conf.rb:-
-msgid "SysConf|Description"
+msgid "SysConf|Descr"
 msgstr "Descripción"
 
 #: app/models/sys_conf.rb:-
@@ -2850,226 +2874,6 @@ msgstr "volver a la propuesta"
 msgid "Unexpected arguments received: "
 msgstr "Argumentos inesperados recibidos:"
 
-#: lib/strings_in_db.rb:26
-msgid "AdminTask|Academic committee"
-msgstr "Comité Académico"
-
-#: lib/strings_in_db.rb:27
-msgid "AdminTask|Attendance management"
-msgstr "Administración de asistencias"
-
-#: lib/strings_in_db.rb:28
-msgid "AdminTask|Attendee administration"
-msgstr "Administración de asistentes"
-
-#: lib/strings_in_db.rb:29
-msgid "AdminTask|Certificates generation"
-msgstr "Generación de certificados"
-
-#: lib/strings_in_db.rb:30
-msgid "AdminTask|Conferences administration"
-msgstr "Administración de actividades"
-
-#: lib/strings_in_db.rb:31
-msgid "AdminTask|System configuration"
-msgstr "Configuración del sistema"
-
-#: lib/strings_in_db.rb:42
-msgid "2A0"
-msgstr "2A0"
-
-#: lib/strings_in_db.rb:43
-msgid "4A0"
-msgstr "4A0"
-
-#: lib/strings_in_db.rb:44
-msgid "A0"
-msgstr "A0"
-
-#: lib/strings_in_db.rb:45
-msgid "A1"
-msgstr "A1"
-
-#: lib/strings_in_db.rb:46
-msgid "A10"
-msgstr "A10"
-
-#: lib/strings_in_db.rb:47
-msgid "A2"
-msgstr "A2"
-
-#: lib/strings_in_db.rb:48
-msgid "A3"
-msgstr "A3"
-
-#: lib/strings_in_db.rb:49
-msgid "A4"
-msgstr "A4"
-
-#: lib/strings_in_db.rb:50
-msgid "A5"
-msgstr "A5"
-
-#: lib/strings_in_db.rb:51
-msgid "A6"
-msgstr "A6"
-
-#: lib/strings_in_db.rb:52
-msgid "A7"
-msgstr "A7"
-
-#: lib/strings_in_db.rb:53
-msgid "A8"
-msgstr "A8"
-
-#: lib/strings_in_db.rb:54
-msgid "A9"
-msgstr "A9"
-
-#: lib/strings_in_db.rb:55
-msgid "B0"
-msgstr "B0"
-
-#: lib/strings_in_db.rb:56
-msgid "B1"
-msgstr "B1"
-
-#: lib/strings_in_db.rb:57
-msgid "B10"
-msgstr "B10"
-
-#: lib/strings_in_db.rb:58
-msgid "B2"
-msgstr "B2"
-
-#: lib/strings_in_db.rb:59
-msgid "B3"
-msgstr "B3"
-
-#: lib/strings_in_db.rb:60
-msgid "B4"
-msgstr "B4"
-
-#: lib/strings_in_db.rb:61
-msgid "B5"
-msgstr "B5"
-
-#: lib/strings_in_db.rb:62
-msgid "B6"
-msgstr "B6"
-
-#: lib/strings_in_db.rb:63
-msgid "B7"
-msgstr "B7"
-
-#: lib/strings_in_db.rb:64
-msgid "B8"
-msgstr "B8"
-
-#: lib/strings_in_db.rb:65
-msgid "B9"
-msgstr "B9"
-
-#: lib/strings_in_db.rb:66
-msgid "C0"
-msgstr "C0"
-
-#: lib/strings_in_db.rb:67
-msgid "C1"
-msgstr "C1"
-
-#: lib/strings_in_db.rb:68
-msgid "C10"
-msgstr "C10"
-
-#: lib/strings_in_db.rb:69
-msgid "C2"
-msgstr "C2"
-
-#: lib/strings_in_db.rb:70
-msgid "C3"
-msgstr "C3"
-
-#: lib/strings_in_db.rb:71
-msgid "C4"
-msgstr "C4"
-
-#: lib/strings_in_db.rb:72
-msgid "C5"
-msgstr "C5"
-
-#: lib/strings_in_db.rb:73
-msgid "C6"
-msgstr "C6"
-
-#: lib/strings_in_db.rb:74
-msgid "C7"
-msgstr "C7"
-
-#: lib/strings_in_db.rb:75
-msgid "C8"
-msgstr "C8"
-
-#: lib/strings_in_db.rb:76
-msgid "C9"
-msgstr "C9"
-
-#: lib/strings_in_db.rb:77
-msgid "EXECUTIVE"
-msgstr "EJECUTIVO"
-
-#: lib/strings_in_db.rb:78
-msgid "FOLIO"
-msgstr "FOLIO"
-
-#: lib/strings_in_db.rb:79
-msgid "LEGAL"
-msgstr "OFICIO"
-
-#: lib/strings_in_db.rb:80
-msgid "LETTER"
-msgstr "CARTA"
-
-#: lib/strings_in_db.rb:81
-msgid "RA0"
-msgstr "RA0"
-
-#: lib/strings_in_db.rb:82
-msgid "RA1"
-msgstr "RA1"
-
-#: lib/strings_in_db.rb:83
-msgid "RA2"
-msgstr "RA2"
-
-#: lib/strings_in_db.rb:84
-msgid "RA3"
-msgstr "RA3"
-
-#: lib/strings_in_db.rb:85
-msgid "RA4"
-msgstr "RA4"
-
-#: lib/strings_in_db.rb:86
-msgid "SRA0"
-msgstr "SRA0"
-
-#: lib/strings_in_db.rb:87
-msgid "SRA1"
-msgstr "SRA1"
-
-#: lib/strings_in_db.rb:88
-msgid "SRA2"
-msgstr "SRA2"
-
-#: lib/strings_in_db.rb:89
-msgid "SRA3"
-msgstr "SRA3"
-
-#: lib/strings_in_db.rb:90
-msgid "SRA4"
-msgstr "SRA4"
-
 #: lib/pdf_dimensions.rb:3
 msgid "Portrait"
 msgstr "Vertical"
@@ -3110,7 +2914,11 @@ msgstr "Especificó una unidad fuente desconocida: %s"
 msgid "Unknown target unit specified: %s"
 msgstr "Especificó una unidad destino desconocida: %s"
 
-#: lib/pdf_dimensions.rb:42
+#: lib/pdf_dimensions.rb:44
+msgid "Systemwide page units (SysConf key page_units) has not yet been defined"
+msgstr "Las unidades a usar globalmente (llave page_units de SysConf) no han sido definidas"
+
+#: lib/pdf_dimensions.rb:47
 msgid "Unknown page units %s in system configuration"
 msgstr "Unidades de página desconocidas en la configuración del sistema: %s"
 
