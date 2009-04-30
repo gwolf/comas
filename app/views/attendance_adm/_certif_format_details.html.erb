@@ -1,13 +1,13 @@
-<%= start_table %>
-  <%= table_head_row %>
+<% table do %>
+  <% table_head_row do %>
     <th><%= _('ID') %></th>
     <th><%= _('Name') %></th>
     <th><%= _('Paper size') %></th>
     <th><%= _('Orientation') %></th>
     <th></th>
-  <%= end_table_row %>
+  <% end %>
   <% formats.each do |format| %>
-    <%= table_row %>
+    <% table_row do %>
       <td><%= link_to format.id, :action => 'certif_format', 
                       :format_id => format.id %></td>
       <td><%= link_to format.name, :action => 'certif_format',
@@ -19,16 +19,16 @@
                         :format_id => format.id},
                       { :confirm => _('Are you sure you want to delete ' +
 				      'this format?')} %></td>
-    <%= end_table_row %>
+    <% end %>
   <% end %>
   <% form_for :certif_format, edit_fmt, 
               :url => {:action => action, :format_id => edit_fmt } do |f| %>
-    <%= table_row %>
+    <% table_row do %>
       <td><%= edit_fmt.id %></td>
       <td><%= f.text_field :name, :size => 15 %></td>
       <td><%= paper_size_select f, :paper_size %></td>
       <td><%= orientation_select f, :orientation %></td>
       <td><%= f.submit label %></td>
-    <%= end_table_row %>
+    <% end %>
   <% end %>
-<%= end_table %>
+<% end %>

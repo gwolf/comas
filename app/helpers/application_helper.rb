@@ -98,24 +98,43 @@ module ApplicationHelper
     ['listing-even', 'listing-odd']
   end
 
-  def start_table
+  def table(&block)
     @table_rows = 0
-    '<table>'
+    concat '<table>', block.binding
+    yield
+    concat '</table>', block.binding
   end
 
-  def end_table; '</table>'; end
-  def table_head_row; '<tr class="listing-head">'; end
+  def table_tag; @table_rows=0; '<table>'; end
+  def end_table_tag; '</table>'; end
+
+  def table_head_row (&block)
+    concat '<tr class="listing-head">', block.binding
+    yield
+    concat '</tr>', block.binding
+  end
+
+  def table_head_row_tag; '<tr class="listing-head">'; end
 
   def table_head_row_for(*items)
     [table_head_row, items.map {|it| "<th>#{it}</th>"}, '</tr>'].join("\n")
   end
 
-  def table_row
+  def table_row_tag
     @table_rows += 1
     "<tr class=\"#{list_row_classes[@table_rows % list_row_classes.size]}\">"
   end
 
-  def end_table_row; '</tr>'; end
+  def end_table_row_tag; '</tr>'; end
+
+  def table_row(&block)
+    @table_rows += 1
+    concat('<tr class="%s">' %
+           list_row_classes[@table_rows % list_row_classes.size],
+           block.binding)
+    yield
+    concat '</tr>', block.binding
+  end
 
   def table_col(*items)
     "<td>#{items.join("\n")}</td>"

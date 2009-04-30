@@ -5,19 +5,19 @@
 <% else %>
   <%= pagination_header @tslots %>
   <%= will_paginate @tslots %>
-  <%= start_table %>
-    <%= table_head_row %>
+  <% table do %>
+    <% table_head_row do %>
       <th><%= _'Start time' %></th>
       <th><%= _'Tolerance (pre)' %></th>
       <th><%= _'Tolerance (post)' %></th>
       <th><%= _'Attendances' %></th>
       <th><%= _'Room' %></th>
       <th></th>
-    <%= end_table_row %>
+    <% end %>
     <% @tslots.each do |tslot| %>
       <%= row_for_timeslot_listing(tslot) %>
     <% end %>
-  <%= end_table %>
+  <% end %>
 <% end %>
 
 <h3><%= _'Create a new timeslot for this conference' %></h3>

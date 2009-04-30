@@ -1,8 +1,8 @@
 module SysConfAdmHelper
   def attributes_table(attrs, modifiable=false)
-    [ start_table, attributes_head(modifiable), 
+    [ table_tag, attributes_head(modifiable),
       attrs.map {|a| attributes_row(a, modifiable)},
-      end_table ].join("\n")
+      end_table_tag ].join("\n")
     
   end
 
@@ -10,7 +10,8 @@ module SysConfAdmHelper
     columns = [_('Field name'), _('Field type')]
     columns << _('Null OK') << _('Default') << _('Action') if modifiable
 
-    table_head_row + columns.map {|col| "<th>#{col}</th>"}.join + end_table_row
+    table_head_row_tag + columns.map {|col| "<th>#{col}</th>"}.join +
+    end_table_row_tag
   end
 
   def attributes_row(attr, modifiable=false)
@@ -33,7 +34,7 @@ module SysConfAdmHelper
                :field => attr.name)
       ].join(' - ') if modifiable
 
-    table_row + columns.map {|col| "<td>#{col}</td>" }.join + end_table_row
+    table_row_tag + columns.map {|col| "<td>#{col}</td>" }.join + end_table_row_tag
   end
 
 
