@@ -121,14 +121,15 @@ class ConferencesController < ApplicationController
   def get_conference
     begin
       if params[:id]
-        @conference = Conference.find(params[:id])
+        conf = params[:id]
+        @conference = Conference.find(conf)
       elsif params[:short_name]
-        @conference = Conference.find_by_short_name(params[:short_name])
-      else
-        raise ActiveRecord::RecordNotFound
+        conf = params[:short_name]
+        @conference = Conference.find_by_short_name(conf)
       end
+      raise ActiveRecord::RecordNotFound unless @conference
     rescue ActiveRecord::RecordNotFound
-      flash[:error] << _('Invalid conference requested')
+      flash[:error] << _('Invalid conference <em>%s</em> requested') % conf
       redirect_to :action => :list
       return false
     end
