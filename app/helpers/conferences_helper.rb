@@ -1,26 +1,24 @@
 module ConferencesHelper
   def conf_list_table(confs)
-    rows = 0 
     row_classes = list_row_classes
     ret = []
-    ret << '<table>' << conf_list_head_row
+    ret << table_tag << conf_list_head_row
     ret << confs.map do |conf| 
-      rows+=1
-      conf_list_row(row_classes[rows%row_classes.size], conf)
+      conf_list_row(conf)
     end
-    ret << '</table>'
+    ret << end_table_tag
 
     ret.join("\n")
   end
 
   def conf_list_head_row
-    '<tr class="listing-head">' <<
+    table_head_row_tag <<
       ['',_('Conference'), _('Dates'), ''].map {|col| "<th>#{col}</th>"}.join <<
-      '</tr>'
+      end_table_row_tag
   end
 
-  def conf_list_row(rowclass, conf)
-    "<tr class=\"#{rowclass}\">" <<
+  def conf_list_row(conf)
+    table_row_tag <<
       [logo_thumb_for(conf),
        link_to(conf.name, :controller => 'conferences', 
                 :action => 'show', 
@@ -28,7 +26,7 @@ module ConferencesHelper
         "#{conf.begins} - #{conf.finishes}",
         sign_up_person_for_conf_link(@user, conf)
       ].map {|col| "<td>#{col}</td>"}.join <<
-      '</tr>'
+      end_table_row_tag
   end
 
   def sign_up_person_for_conf_link(user, conf)

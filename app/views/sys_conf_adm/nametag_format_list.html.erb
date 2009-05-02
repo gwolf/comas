@@ -9,16 +9,16 @@
   <%= _('Disregard this section if your conferences do not require ' +
         'printing nametags, or if you don\'t own a suitable printer.') %>
 </p>
-<%= start_table %>
-  <%= table_head_row %>
+<% table do %>
+  <% table_head_row do %>
     <th><%= _'Name' %></th>
     <th><%= _'Size (pt)' %></th>
     <th><%= _'Size (cm)' %></th>
     <th><%= _'Size (in)' %></th>
     <th></th>
-  <%= end_table_row %>
+  <% end %>
   <% @formats.each do |format| %>
-    <%= table_row %>
+    <% table_row do %>
       <td><%= format.name %></td>
       <td><%= format.size(:pt) %></td>
       <td><%= format.size(:cm) %></td>
@@ -42,8 +42,8 @@
                      :confirm => _('Are you sure you want to delete ' +
                                    'this format?')}
         %></td>
-    <%= end_table_row %>
+    <% end %>
   <% end %>
-<%= end_table %>
+<% end %>
 
 <%= link_to _('Create a new format'), :action => 'nametag_format_new' %>

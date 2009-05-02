@@ -5,21 +5,21 @@
 
 <%= pagination_header @props %>
 <%= will_paginate @props %>
-<%= start_table %>
-  <%= table_head_row %>
+<% table do %>
+  <% table_head_row do %>
     <th><%= _'Title' %></th>
     <th><%= _'Conference' %></th>
     <th><%= _'Proposal type' %></th>
     <th><%= _'Proposal status' %></th>
-  <%= end_table_row %>
+  <% end %>
   <% @props.each do |prop| %>
-    <%= table_row %>
+    <% table_row do %>
       <td><%= link_to(prop.title, :controller => 'proposals',
 	              :action => 'show', :id => prop)%></td>
       <td><%= link_to(prop.conference.name, :controller => 'conferences',
 	              :action => 'show', :id => prop.conference.id) %></td>
       <td><%=h prop.prop_type.name %></td>
       <td><%=h prop.prop_status.name %></td>
-    <%= end_table_row %>
+    <% end %>
   <% end %>
-<%= end_table %>
+<% end %>

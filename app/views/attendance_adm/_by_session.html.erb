@@ -1,24 +1,24 @@
-<%= start_table %>
-  <%= table_head_row %>
+<% table do %>
+  <% table_head_row do %>
     <th colspan="4"><%= _'By session' %></th>
-  <%= end_table_row %>
-  <%= table_head_row %>
+  <% end %>
+  <% table_head_row do %>
     <th><%= _'Session starting at' %></th>
     <th><%= _'Room' %></th>
     <th><%= _'Attendees' %></th>
     <th><%= _'Proposal' %></th>
-  <%= end_table_row %>
+  <% end %>
   <% tslots.sort_by {|ts| ts.start_time}.each do |ts| %>
     <% att = ts.attendances.size
        tslot_link = url_for(:action => 'att_by_tslot', 
                             :conference_id => @conference, 
                             :timeslot_id => ts) %>
-    <%= table_row %>
+    <% table_row do %>
       <td><%= link_to_if att>0, ts.start_time.to_s(:listing),
                          tslot_link  %></td>
       <td><%= ts.room.name %></td>
       <td><%= link_to_if att>0, att, tslot_link %></td>
       <td><%= link_to_proposal(ts.proposal) %></td>
-    <%= end_table_row %>
+    <% end %>
   <% end %>
-<%= end_table %>
+<% end %>

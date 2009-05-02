@@ -3,10 +3,14 @@
        'here might render your system inoperable. Proceed at ' +
        'your own risk, and only if you know what you are doing.'  %></p>
 
-<%= start_table %>
-  <%= table_head_row_for(_('Key'), _('Description'), _('Value'), '') %>
+<% table do %>
+  <% table_head_row do %>
+    <th><%= _('Key') %></th>
+    <th><%= _('Description') %></th>
+    <th><%= _('Value') %></th>
+  <% end %>
 <% @confs.each do |conf| %>
-  <%= table_row %>
+  <% table_row do %>
     <td><%=h conf.key %></td>
     <td><%=h conf.descr %></td>
     <td><%=h conf.value %></td>
@@ -15,9 +19,9 @@
                   {:method => :post, 
                    :confirm => _('Are you sure you want to delete ' +
                                  'this configuration entry?')}) %></td>
-  </tr>
+  <% end %>
 <% end %>
-  <%= table_row %>
+  <% table_row do %>
   <% form_for :sys_conf, @new_conf, 
                :url => {:action => :create} do |f|%>
     <td><%= f.text_field :key, :size => 10 %></td>
@@ -26,4 +30,4 @@
     <td><%= f.submit _'Create' %> </td>
   <% end %>
   </tr>
-<%= end_table %>
+<% end %>

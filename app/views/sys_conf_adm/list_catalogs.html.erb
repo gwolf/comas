@@ -2,16 +2,16 @@
 
 <h3><%= _'The following catalogs are defined in your system' %></h3>
 
-<%= start_table %>
-  <%= table_head_row %>
+<% table do %>
+  <% table_head_row do %>
     <th><%= _'Name' %></th>
     <th><%= _'Records' %></th>
-  <%= end_table_row %>
+  <% end %>
   <% @catalogs.each do |cat| %>
-    <%= table_row %>
+    <% table do %>
       <td><%= link_to(cat.table_name, :action => 'show_catalog',
                       :catalog => cat.table_name) %></td>
       <td><%= cat.count %></td>
-    <%= end_table_row %>
+    <% end %>
   <% end %>
-<%= end_table %>
+<% end %>

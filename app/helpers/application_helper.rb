@@ -65,9 +65,31 @@ module ApplicationHelper
      'conference</div>') %  [ link_to('Please register',
                                       :controller => '/people', 
                                       :action => 'new'),
-                              link_to('log in', 
-                                      :controller => '/people', 
+                              link_to('log in',
+                                      :controller => '/people',
                                       :action => 'login') ]
+  end
+
+  ######################################################################
+  # RedCloth formatting help
+  def redcloth_help
+    render :partial => 'inc/redcloth_help'
+  end
+
+  ######################################################################
+  # Collapsible areas with a title header
+  def collapsed_header(title, &block)
+    # Not collision-proof, right. However, odds are quite low!
+    div_name = 'comas-collapsed-%d' % (rand * 10000)
+
+    concat('<h3>%s - <span class="note">%s</span></h3>' %
+           [title, link_to_function(_('Show'),
+                                    visual_effect(:toggle_blind, div_name))],
+           block.binding)
+    concat('<div id="%s" class="comas-collapsed" style="display: none">' % div_name,
+           block.binding)
+    yield
+    concat '</div>', block.binding
   end
 
   ######################################################################
@@ -76,24 +98,43 @@ module ApplicationHelper
     ['listing-even', 'listing-odd']
   end
 
-  def start_table
+  def table(&block)
     @table_rows = 0
-    '<table>'
+    concat '<table>', block.binding
+    yield
+    concat '</table>', block.binding
   end
 
-  def end_table; '</table>'; end
-  def table_head_row; '<tr class="listing-head">'; end
+  def table_tag; @table_rows=0; '<table>'; end
+  def end_table_tag; '</table>'; end
+
+  def table_head_row (&block)
+    concat '<tr class="listing-head">', block.binding
+    yield
+    concat '</tr>', block.binding
+  end
+
+  def table_head_row_tag; '<tr class="listing-head">'; end
 
   def table_head_row_for(*items)
     [table_head_row, items.map {|it| "<th>#{it}</th>"}, '</tr>'].join("\n")
   end
 
-  def table_row
+  def table_row_tag
     @table_rows += 1
     "<tr class=\"#{list_row_classes[@table_rows % list_row_classes.size]}\">"
   end
 
-  def end_table_row; '</tr>'; end
+  def end_table_row_tag; '</tr>'; end
+
+  def table_row(&block)
+    @table_rows += 1
+    concat('<tr class="%s">' %
+           list_row_classes[@table_rows % list_row_classes.size],
+           block.binding)
+    yield
+    concat '</tr>', block.binding
+  end
 
   def table_col(*items)
     "<td>#{items.join("\n")}</td>"
@@ -201,7 +242,7 @@ module ApplicationHelper
         # field_id and there is a corresponding table? Present the catalog.
         choices = model.qualified_collection_by_id
         return select(field, 
-                      choices.map {|it| [_(it[0]), it[1]]},
+                      choices.map {|it| [Translation.for(it[0]), it[1]]},
                       {:include_blank => true})
       end
 
@@ -312,7 +353,7 @@ module ApplicationHelper
     end
 
     def label_for_field(model, field)
-      [model.class.to_s, field.to_s.humanize].join('|')
+      Translation.for([model.class.to_s, field.to_s.humanize].join('|'))
     end
 
     def table_from_field(field)

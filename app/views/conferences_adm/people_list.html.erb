@@ -1,13 +1,13 @@
 <h1><%= _('People registered for <em>%s</em>') % @conference.name %></h1>
 <%= pagination_header @people %>
 <%= will_paginate @people %>
-<%= start_table %>
-  <%= table_head_row %>
+<% table do %>
+  <% table_head_row do %>
     <th><%= link_to _('ID'), :sort_by => 'id' %></th>
     <th><%= link_to _('First name'), :sort_by => 'famname' %></th>
     <th><%= link_to _('Family name'), :sort_by => 'firstname' %></th>
-  <% end_table_row %>
+  <% end %>
   <% @people.each do |pers| %>
     <%= row_for_attendee_listing(pers) %>
   <% end %>
-<%= end_table %>
+<% end %>

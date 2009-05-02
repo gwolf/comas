@@ -9,29 +9,29 @@
   <p><%= _'You have not sent any proposals yet. ' %></p>
 <% else %>
   <p><%= _('Showing the %d proposals you have submitted') % @props.size %></p>
-  <%= start_table %>
-    <%= table_head_row %>
+  <% table do %>
+    <% table_head_row do %>
       <th><%= _'Title' %></th>
       <th><%= _'Conference' %></th>
       <th><%= _'Proposal type' %></th>
       <th><%= _'Action' %></th>
-    <% end_table_row %>
+    <% end %>
   <% @props.each do |prop| %>
-    <%= table_row %>
+    <% table_row do %>
       <td><%= link_to(prop.title, :controller => 'proposals',
 	              :action => 'show', :id => prop.id) %></td>
       <td><%= link_to(prop.conference.name, :controller => 'conferences',
 	              :action => 'show', :id => prop.conference.id) %></td>
       <td><%= prop.prop_type.name %></td>
       <td>
-	<%= link_to(_('Edit'), :controller => 'proposals', 
+	<%= link_to(_('Edit'), :controller => 'proposals',
 	            :action => 'edit', :id => prop.id) %> |
-	<%= link_to(_('Manage authors'), :controller => 'proposals', 
+	<%= link_to(_('Manage authors'), :controller => 'proposals',
 	            :action => 'authors', :id => prop.id) %> |
-	<%= link_to(_('Files'), :controller => 'proposals', 
-	            :action => 'files', :id => prop.id) %> 
+	<%= link_to(_('Files'), :controller => 'proposals',
+	            :action => 'files', :id => prop.id) %>
       </td>
-    <%= end_table_row %>
+    <% end %>
   <% end %>
-  <%= end_table %>
+  <% end %>
 <% end %>

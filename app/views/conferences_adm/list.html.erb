@@ -2,8 +2,8 @@
 <%= pagination_header @conferences %>
 <p><%= link_to _('Register a new conference'), :action => 'new' %></p>
 <%= will_paginate @conferences %>
-<%= start_table %>
-  <%= table_head_row %>
+<% table do %>
+  <% table_head_row do %>
     <th><%= link_to _('ID'), :sort_by => 'conferences.id' %></th>
     <th><%= link_to _('Name'), :sort_by => 'name' %></th>
     <th><%= link_to _('Begins at'), :sort_by => 'begins' %></th>
@@ -13,10 +13,10 @@
     <th><%= _('Registered attendees') %></th>
     <th><%= _('Homepage') %></th>
     <th></th>
-  <%= end_table_row %>
+  <% end %>
   <% @conferences.each do |conf| %>
     <% att_num = conf.people.size %>
-  <%= table_row %>
+  <% table_row do %>
     <td><%= link_to conf.id, :action => 'show', :id => conf %></td>
     <td><%= link_to h(conf.name), :action => 'show', :id => conf %></td>
     <td><%= conf.begins %></td>
@@ -35,6 +35,6 @@
 		  {:confirm => _("Are you sure you want to " +
 				 "permanently delete %s?") % conf.name,
 		    :method => :post}) %></td>
-  <%= end_table_row %>
   <% end %>
-<%= end_table %>
+  <% end %>
+<% end %>

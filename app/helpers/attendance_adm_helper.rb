@@ -39,7 +39,7 @@ module AttendanceAdmHelper
   # Generates a human representation of the paper size (i.e. the name
   # followed by the dimensions in the user's prefered measuring unit)
   def human_paper_size(paper)
-    '%s (%s)' % [_(paper), CertifFormat.paper_dimensions(paper)]
+    '%s (%s)' % [paper, CertifFormat.paper_dimensions(paper)]
   end
 
   # Select field for paper size. Receives a FormBuilder object and the
@@ -58,9 +58,9 @@ module AttendanceAdmHelper
   def certif_format_line_header
     columns = [_('Vert'), _('Horiz'), _('Max width'), _('Content source'), 
                _('Content'), _('Font size'), _('Align'), '']
-    [table_head_row, 
+    ['<tr class="listing-head">',
      columns.map { |elem| '<th>%s</th>' % elem}, 
-     end_table_row].join("\n")
+     '</tr>'].join("\n")
   end
 
   def certif_format_line_entry(line)
@@ -75,8 +75,8 @@ module AttendanceAdmHelper
                          :method => :post})
               ]
 
-    [table_row, 
+    ['<tr>', 
      columns.map { |elem| '<td>%s</td>' % elem}, 
-     end_table_row].join("\n")
+     '</tr>'].join("\n")
   end
 end

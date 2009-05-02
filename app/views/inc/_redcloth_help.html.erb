@@ -1,0 +1,142 @@
+<% collapsed_header _('Formatting instructions') do %>
+  <% collapsed_header _('About Textile/RedCloth') do %>
+    <p>
+      <%= _('The content you submit via this system is formatted using the ' +
+	    '<em>%s</em> (also known as <em>RedCloth</em>) formatting ' +
+            'mechanism.') % link_to(_('Textile'),
+		  		    'http://www.textism.com/tools/textile/') %>
+    </p>
+
+    <p>
+      <%= _('<em>Textile</em> is a markup language designed to be natural ' +
+	  'to write, and easy to read. Here we cover only the most usual ' +
+	  'tags - for a more complete reference, we suggest you to read ' +
+	  'the %s or the much more complete %s.') %
+	  [ link_to(_('Textile Quick Reference'), 
+                    'http://hobix.com/textile/quick.html'),
+	    link_to('Textile Reference', 'http://hobix.com/textile') ] %>
+    </p>
+  <% end %>
+
+  <% collapsed_header _('General flow of your text') do %>
+    <p>
+      <%= _('The general writing is straightforward: Just type a regular ' +
+	    'paragraph, and it will be displayed as you intended. ') %>
+    </p>
+
+    <p>
+      <%= _('To finish a paragraph and start a new one, separate them ' +
+	    'with an empty line. ') %>
+    </p>
+  <% end %>
+
+  <% collapsed_header _('Emphasis and other text transformations') do %>
+    <ul>
+      <li><%= _('To mark part of a sentence to be <strong>bold</strong>,' +
+                ' surround it by asterisks: *bold*') %></li>
+      <li><%= _('To produce <em>italic text</em>, surround it by ' +
+	        'underscores: _italic_') %></li>
+      <li><%= _('You can combine them to get ' +
+	        '<strong><em>bold italics</em></strong> by nesting them: ' +
+	        '_*bold italics*_') %></li>
+    </ul>
+  <% end %>
+
+  <% collapsed_header _('Headers') do %>
+    <p>
+      <%= _('A header can be declared by starting a paragraph with a ' +
+	  'prefix between <em>h1.</em> and <em>h6.</em> We suggest not ' +
+	  'using headers higher than <em>h3.</em> for consistency with ' +
+	  'other system elements. As an example, the header for this ' +
+	  'paragraph can be specified as:') %>
+    </p>
+
+    <pre>h3. <%= _('Headers') %></pre>
+  <% end %>
+
+  <% collapsed_header _('Linking to other documents') do %>
+    <p>
+      <%= _('To create a link to an external website, "quote" the link text, ' +
+	  'put a colon <em>just next</em> to the closing quote, and the ' +
+	  'full destination page address. For example, in order to create ' +
+	  'a link to the <a href="http://www.comas-code.org/">Main Comas ' +
+	  'site</a> you should write: ' +
+	  '<em>"Main Comas site":http://www.comas-code.org/') %>
+    </p>
+  <% end %>
+
+  <% collapsed_header _('Lists') do %>
+    <p>
+      <%= _('Unnumbered, numbered and nested lists are very easy to ' +
+	  'create: Prefix each bullet point with an asterisk, and it ' +
+	  'will create an unnumbered list. Prefix it with a hash, and ' +
+	  'you will get a numbered list. To nest them, prefix your text' +
+	  'with two elements: ') %>
+    </p>
+    <% list = "* %s
+* %s
+** %s
+** %s
+* %s
+
+# %s
+## %s
+## %s
+
+# %s
+#* %s
+#* %s
+# %s" % [ _('Unnumbered list'), _('Second element'), _('Nested sub-list'),
+          _('Second element of nested list'), _('Original list'),
+          _('Numbered list'), _('Nesting sub-lists'),
+          _('Second element of nested numbered list'),
+          _('Mixed list'), _('Nested sub-list'),
+          _ ('Second element of nested list'), _('Original list'),  ] %>
+    <%= RedCloth.new(list).to_html %>
+
+    <p><%= _('The above lists were created with:') %></p>
+
+    <pre><%= list %></pre>
+  <% end %>
+
+  <% collapsed_header _('Tables') do %>
+    <p>
+      <%= _('You can use the vertical bars to mark each cell ' +
+	  'element. Include the left and right borders of the table:') %>
+    </p>
+
+
+  <% table = "
+| *%s* | *%s* | *%s* |
+| %s | %s | %s |
+| %s | %s | %s |
+" % [ _('Hour'), _('Room'), _('Activity'),
+      _('10:00'), _('Main hall'), _('Welcoming session'),
+      _('11:00'), _('Small auditorium'), _('Designing conferences')] %>
+</pre>
+    <%= RedCloth.new(table).to_html %>
+    <p><%= _('The above table was created with: ') %></p>
+    <pre><%= table %></pre>
+
+
+  <% end %>
+  <% collapsed_header _('Beyond this...') do %>
+
+    <p>
+      <%= _('This should cover most of your needs to publish your ' +
+	  'material. Should you need more advanced formatting, %s ' +
+	  'offers <em>much</em> more than what we can explain in this short ' +
+	  'space, you can refer to the %s or the much more complete ' +
+	  '%s, as we said above. You can also include regular HTML ' +
+	  'tags as part of your text -- We recommend you, however, to ' +
+	  'stick to the Textile format, to ensure a consistent format ' +
+	  'throughout the site.') %
+	  [ link_to(_('Textile'),
+	            'http://www.textism.com/tools/textile/'),
+            link_to(_('Textile Quick Reference'),
+                      'http://hobix.com/textile/quick.html'),
+            link_to(_('Textile Reference'), 'http://hobix.com/textile') ] %>
+    </p>
+  <% end %>
+<% end %>
+

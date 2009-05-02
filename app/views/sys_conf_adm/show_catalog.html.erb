@@ -2,14 +2,14 @@
 
 <%= pagination_header @data %>
 <%= will_paginate @data %>
-<%= start_table %>
-  <%= table_head_row %>
+<% table do %>
+  <% table_head_row do %>
     <th><%= _'ID' %></th>
     <th><%= _'Name' %></th>
     <th></th>
-  <%= end_table_row %>
+  <% end %>
   <% @data.each do |row| %>
-    <%= table_row %>
+    <% table_row do %>
       <td><%= row.id %></td>
       <td><%=h row.name %></td>
       <td><%= link_to(_('Delete'), 
@@ -17,9 +17,9 @@
 			:catalog => @cat_name, 
 			:id => row.id }, 
 		      {:method => 'post'}) %>
-    <%= end_table_row %>
+    <% end %>
   <% end %>
-<%= end_table %>
+<% end %>
 
 <h3><%= _('Add a new record') %></h3>
 <% form_for @blank, :url => {:action => 'add_catalog_row',

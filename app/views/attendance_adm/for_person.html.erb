@@ -1,23 +1,23 @@
 <h1><%= _('Attendances for <em>%s</em> on <em>%s</em>') %
 	[h(@person.name), @conference.name] %></h1>
 
-<%= start_table %>
-  <%= table_head_row %>
+<% table do %>
+  <% table_head_row do %>
     <th><%= _'Session started at' %></th>
     <th><%= _'Attendance taken at' %></th>
     <th><%= _'Proposal' %></th>
-  <%= end_table_row %>
+  <% end %>
   <% @attendances.sort_by {|att| att.created_at}.each do |att| %>
-    <%= table_row %>
+    <% table_row do %>
       <td><%= link_to att.timeslot.start_time.to_s(:listing),
                       :action => 'att_by_tslot',
                       :timeslot_id => att.timeslot,
                       :conference_id => @conference %></td>
       <td><%= att.created_at.to_s(:listing) %></td>
       <td><%= link_to_proposal att.timeslot.proposal %></td>
-    <%= end_table_row %>
+    <% end %>
   <% end %>
-<%= end_table %>
+<% end %>
 
 <h3><%= _('Create certificate') %></h3>
 <% if @formats.empty? %>

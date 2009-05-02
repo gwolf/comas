@@ -49,11 +49,11 @@
                        :action => 'certif_format',
                        :label => _('Modify')} %>
 
-<%= start_table %>
+<% table do %>
   <%= certif_format_line_header %>
   <%= @format.certif_format_lines.map { |l| certif_format_line_entry(l) } %>
 
-  <%= table_row %>
+  <% table_row do %>
     <% form_for :certif_format_line, @new_line, 
                 :url => {:action => 'add_certif_format_line', 
                          :format_id => @format} do |f| %>
@@ -67,9 +67,9 @@
       <td><%= f.select :justification, CertifFormatLine::Justifications %></td>
       <td><%= f.submit _('Add line') %></td>
     <% end %>
-  <%= end_table_row %>
+  <% end %>
 
-<%= end_table %>
+<% end %>
 
 <%= render :partial => 'certif_format_test_form', 
            :locals => {:format => @format} %>

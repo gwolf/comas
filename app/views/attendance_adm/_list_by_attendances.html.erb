@@ -9,15 +9,15 @@
 </h3>
 
 <div id="<%= num %>-att" style="display: none">
-  <%= start_table %>
-    <%= table_head_row %>
+  <% table do %>
+    <% table_head_row do %>
       <th><%= _'Name' %></th>
-    <%= end_table_row %>
+    <% end %>
     <% list.sort_by {|p| p.name.downcase}.each do |person| %>
-      <%= table_row %>
+      <% table_row do %>
         <td><%= link_to(h(person.name), :action => 'for_person',
                         :person_id => person, :conference_id => @conference) %></td>
-      <%= end_table_row %>
+      <% end %>
     <% end %>
-  <%= end_table %>
+  <% end %>
 </div>

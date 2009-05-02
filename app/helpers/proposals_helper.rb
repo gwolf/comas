@@ -14,19 +14,19 @@ module ProposalsHelper
 
   # Receives a list of authorships (NOT people)
   def author_list_edition_table(auths)
-    res=[start_table, table_head_row,
+    res=[table_tag, table_head_row_tag,
          [_('Position'), _('Name'), ''].map {|col| "<th>#{col}</th>"},
-         end_table_row]
+         end_table_row_tag]
 
     authpos = 0
     auths.each do |auth|
-      res << table_row << 
-        table_col(link_author_up(auth), link_author_down(auth), authpos+=1) << 
+      res << table_row_tag <<
+        table_col(link_author_up(auth), link_author_down(auth), authpos+=1) <<
         table_col(auth.person.name) <<
         table_col(link_author_delete(auth)) <<
-        end_table_row
+        end_table_row_tag
     end
-    res << end_table
+    res << end_table_tag
     res.join("\n")
   end
 
@@ -35,7 +35,7 @@ module ProposalsHelper
       confirm_msg = _('Are you sure you want to delete author' +
                       '"%s" from proposal "%s"? ') %
         [auth.person.name, auth.proposal.title]
-    else 
+    else
       confirm_msg = _('Removing the only registered author for this proposal ' +
                       'will also remove the proposal from the system. This ' +
                       'action cannot be undone. Are you sure you want to ' +
