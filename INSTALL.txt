@@ -50,8 +50,8 @@ If you don't specify it, the default will be development.
 You should now configure config/database.yml - It is a #YAML file. You
 can copy it from config/database.yml.orig and edit to suit your
 site. Please note that Comas was developed with PostgreSQL in mind -
-It might work with other databases, but nothing is guaranteed. And
-then again, why would you want to use anything else? ;-)
+It will most probably not work with other databases. And then again,
+why would you want to use anything else? ;-)
 
 Once your database is created, run Rails' _migrations_ to create
 Comas' tables:
@@ -91,12 +91,18 @@ To run the interactive console, enter Comas' main directory and type:
 
     $ ./script/console
 
+Rails defaults to opening the console in the development environment -
+If you intend to perform queries or change values on your production
+environment, specify so when starting the console:
+
+    $ ./script/console production
+
 === Administrative user
 
 The first thing you should do -specially if you are not very
 comfortable with the interactive console- is to create an
 administrative user with enough privileges to do anything else you
-will need via the Web front-end. 
+will need via the Web front-end.
 
 If you are not well-versed in Ruby, you might want to create your
 first administrative user via the provided create_user script. Take
@@ -113,17 +119,18 @@ this example run:
     E-mail: john@doe.org
     Password (WILL be displayed): johnny
 
-    Please select any administrative tasks this person should have. Enter 
+    Please select any administrative tasks this person should have. Enter
     just the task IDs (i.e., just the numbers), separated by commas
 
     1- Attendee administration
     2- Conferences administration
     3- Academic committee
-    4- Attendance tracking
-    5- Attendance management
-    6- System configuration
+    4- Attendance management
+    5- System configuration
+    6- Certificates generation
+    7- Translation management
 
-    Desired tasks for John Doe: 1, 6
+    Desired tasks for John Doe: 1, 5
     The person was created successfully!
 
 You can give any tasks to your administrative user, and create as many
@@ -156,19 +163,15 @@ this user.
 The system is _NOT_ yet ready, however, for you to create a conference
 and start accepting proposals. You should first populate the base
 catalogs with categories meaningful to you. Click on "Catalogs
-management", and fill in some values:
+management", and fill in some values. We suggest you to add said
+values in English - Refer to the Transalations section later on for
+details on translations.
 
-participation_types:: Which is the role of a person in a given
-		      conference? Typical values are attendee,
-		      organizer, etc. Note that this catalog will
-		      probably be dropped soon, as it was introduced
-		      before the Comas clustering/tasks logic was well
-		      settled and might mean nothing... Anyway, add at
-		      least one value for now :-P
+The catalogs that should always be present in your system are:
 
 prop_statuses:: What status can a proposal be? Typical values include
                 new, accepted, rejected, further details
-                requested, withdrawn, etc. 
+                requested, withdrawn, etc.
 		If you don't mark it otherwise in the configuration
                 (explained further on), the PropStatus with the lowest
                 ID will be the default for newly registered proposals,
@@ -185,13 +188,44 @@ rooms:: Provide here a list of the rooms you will have for your
 === SysConf: configuration entries
 
 The #SysConf table is a sort of registry used for global configuration
-settings, and some values are created at database build time. 
+settings, and some values are created at database build time.
 
 The most important value to set here is the _mail_from_ entry - It
 should be an existing mail address (i.e. one which is read by
 humans). It will be used for all the mails sent by Comas. I will
 stress this again: As this will probably be used by your potential
 attendees to contact you, it NEEDS to be a valid address.
+
+=== Translations
+
+Comas has been built with internationalization in mind, and the whole
+system can be translated. As of now, the system is fully available in
+English (the default language) and Spanish.
+
+The translation is achieved through two subsystems:
+
+GetText:: The powerful GNU GetText system is used for all static
+          strings - This means, for all strings that are generated and
+          appear literally in the system's source code. GetText's
+          translation template can be found in po/comas.pot.
+
+Translation:: This is a homegrown, ad-hoc solution, and admittedly not
+              as complete or complex as GetText. This second
+              infrastructure was introduced because GetText has the
+              disadvantage that it needs to be compiled, and it is not
+              well suited to represent the dynamic information not
+              appearing in the sources, such as any dynamic catalog or
+              column names or catalog values.
+
+	      This subsystem is handled through the #Language and
+	      #Translation models, and filling it up should be
+	      automatically. The languages list are automatically
+	      taken from GetText's known languages.
+
+	      In order to complete the translations, you need a user
+	      with the _translation_ administrative task; a
+	      corresponding link will be shown in the Comas main
+	      menu.
 
 == Enjoy!
 
