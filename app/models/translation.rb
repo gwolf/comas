@@ -76,17 +76,6 @@ class Translation < ActiveRecord::Base
     new
   end
 
-  # Gets the pending translations (i.e. those that have a null or
-  # empty translation) for the specified language. This will invoke
-  # #create_blanks, in order to report not only the empty strings, but
-  # the missing ones as well.
-  def self.pending(lang=Language.current)
-    self.create_blanks
-    self.find(:all, :conditions =>
-              ['language_id = ? AND COALESCE(translated, \'\') = ?', 
-               lang.id, ''])
-  end
-
   # Find all the translatable strings and create them (leaving them as
   # empty strings if they are not already defined) in the current
   # language.
@@ -131,5 +120,25 @@ class Translation < ActiveRecord::Base
         Translation.new(:language_id => lang.id, :base => str).save
       end
     end
+  end
+
+  def self.search_for(str, lang=Language.current, on_trans=true, on_base=true)
+    res = []
+    if on_trans
+      res += lang.translations.select {|tr| tr.translated and
+        tr.translated.downcase.include? str.downcase}
+    end
+    if on_base
+      res += lang.translations.select {|tr| tr.base and
+        tr.base.downcase.include? str.downcase}
+    end
+
+    res.flatten.uniq
+  end
+
+  # Is this translation pending? This means, is its translated string
+  # empty or nil?
+  def pending?
+    self.translated.nil? or self.translated.empty?
   end
 end

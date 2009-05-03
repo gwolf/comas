@@ -48,8 +48,8 @@ module ApplicationHelper
 
   def locale_links
     available_locales.map { |loc|
-      '[%s]' % link_to_unless(normalized_locale == loc,
-                              loc, :lang => loc)
+      lang = Translation.for(Language.for_locale(loc).qualified_name)
+      '[%s]' % link_to_unless(normalized_locale == loc, lang, :lang => loc)
     }.join(' ')
   end
 

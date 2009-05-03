@@ -28,4 +28,14 @@ class Language < ActiveRecord::Base
 
     lang
   end
+
+  def translation_stats
+    Translation.create_blanks
+    pending = translations.select {|trans| trans.pending?}.size
+    total = translations.size
+    done = total - pending
+    perc = 100.0 * done / total
+
+    { :total => total, :pending => pending, :done => done, :perc => perc }
+  end
 end
