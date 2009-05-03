@@ -185,6 +185,10 @@ Spreadsheet:: http://spreadsheet.rubyforge.org/
 
 	      libspreadsheet-ruby
 
+Ruby-OLE:: http://code.google.com/p/ruby-ole/
+
+	   libole-ruby
+
 Note that some of the Debian packages are not part of the currently
 stable Debian release (5.0, Lenny), but can be safely installed from
 the unstable repository.
