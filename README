@@ -149,20 +149,40 @@ Comas uses the following modules or plugins - Most of them are
 available as Debian packages (the package name will be indicated next
 to the URL):
 
-Ruby 1.8:: http://www.ruby-lang.org/en/ ruby1.8
-Rails 2.1:: http://www.rubyonrails.org/ rails
+Ruby 1.8:: http://www.ruby-lang.org/en/
+
+     	   ruby1.8
+
+Rails 2.1:: http://www.rubyonrails.org/
+
+      	    rails
+
 Acts as catalog:: http://actsascatalog.rubyforge.org/
+
 Acts as list:: http://github.com/rails/acts_as_list/tree/master
+
 Acts as magic model:: http://magicmodel.rubyforge.org/
+
 Real FK:: http://realfk.rubyforge.org/
+
 Will Paginate:: http://github.com/mislav/will_paginate/wikis
+
                 libwill-paginate-ruby
-PDF Writer:: http://ruby-pdf.rubyforge.org/ libpdf-writer-ruby
+
+PDF Writer:: http://ruby-pdf.rubyforge.org/
+
+    	     libpdf-writer-ruby
+
 GetText:: http://www.yotabanana.com/hiki/ruby-gettext.html
+
 	  libgettext-ruby
+
 Redcloth:: http://rubyforge.org/projects/redcloth/
+
            libredcloth-ruby
+
 Spreadsheet:: http://spreadsheet.rubyforge.org/
+
 	      libspreadsheet-ruby
 
 Note that some of the Debian packages are not part of the currently
