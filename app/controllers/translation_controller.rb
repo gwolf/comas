@@ -44,7 +44,8 @@ class TranslationController < Admin
   def all_for_lang
     session[:translation_list] = {:qry => :lang,
       :lang => @language.id,
-      :head => _('Pending strings for <em>%s</em>') % @language.name}
+      :head => _('Pending strings for %s') %
+               Translation.for('Language|' + @language.name)}
     redirect_to :action => :list, :page => params[:page] || 1
   end
 
