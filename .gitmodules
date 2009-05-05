@@ -13,6 +13,3 @@
 [submodule "vendor/rails"]
 	path = vendor/rails
 	url = git://github.com/rails/rails.git
-[submodule "rails"]
-	path = rails
-	url = /home/gwolf/cvs/comas/vendor/rails/.git
