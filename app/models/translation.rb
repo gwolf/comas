@@ -39,8 +39,11 @@
 #    Translation.for('something to be translated')
 class Translation < ActiveRecord::Base
   validates_presence_of :base
-  validates_presence_of :lang
-  validates_uniqueness_of :base, :scope => :lang
+  belongs_to :language
+  validates_presence_of :language_id
+  validates_numericality_of :language_id
+  validates_associated :language
+  validates_uniqueness_of :base, :scope => :language_id
 
   #:nodoc:
   class NotYetTranslated < Exception; end
@@ -52,10 +55,10 @@ class Translation < ActiveRecord::Base
   # empty Translation will be stored in the database (ready for the
   # system administrator to fill in), and the original string (minus
   # any table qualifiers - see the class' documentation) will be returned.
-  def self.for(str, lang=Locale.current.language)
+  def self.for(str, lang=Language.current)
     begin
       trans = self.find_by_base(str, :conditions =>
-                                ['lang = ?', lang]).translated
+                                ['language_id = ?', lang.id]).translated
       raise NotYetTranslated if trans.nil?
       trans
     rescue NoMethodError, NotYetTranslated => err
@@ -67,20 +70,10 @@ class Translation < ActiveRecord::Base
   # Creates a new, empty Translation object for the specified string
   # and language. The language can be specified as the second argument
   # (defaults to the currently defined language)
-  def self.create_empty_for(str, lang=Locale.current.language)
-    new = self.new(:base => str, :lang => lang)
+  def self.create_empty_for(str, lang=Language.current)
+    new = self.new(:base => str, :language => lang)
     new.save!
     new
-  end
-
-  # Gets the pending translations (i.e. those that have a null or
-  # empty translation) for the specified language. This will invoke
-  # #create_blanks, in order to report not only the empty strings, but
-  # the missing ones as well.
-  def self.pending(lang=Locale.current.language)
-    self.create_blanks
-    self.find(:all, :conditions =>
-              ['lang = ? AND COALESCE(translated, \'\') = ?', lang, ''])
   end
 
   # Find all the translatable strings and create them (leaving them as
@@ -113,20 +106,39 @@ class Translation < ActiveRecord::Base
   # languages, and create blank (empty) translations for whichever
   # languages they are not yet defined
   def self.create_blanks
-    languages = {}
+    languages = Language.find(:all)
     strings = {}
     trans = Translation.find(:all)
     trans.each do |t|
-      languages[t.lang] = 1 unless languages.has_key?(t.lang)
       strings[t.base] ||= {} unless strings.has_key?(t.base)
-      strings[t.base][t.lang] = t.translated
+      strings[t.base][t.language_id] = t.translated
     end
 
-    languages.keys.each do |lang|
+    languages.each do |lang|
       strings.keys.each do |str|
-        next if strings[str].has_key?(lang)
-        Translation.new(:lang => lang, :base => str).save
+        next if strings[str].has_key?(lang.id)
+        Translation.new(:language_id => lang.id, :base => str).save
       end
     end
+  end
+
+  def self.search_for(str, lang=Language.current, on_trans=true, on_base=true)
+    res = []
+    if on_trans
+      res += lang.translations.select {|tr| tr.translated and
+        tr.translated.downcase.include? str.downcase}
+    end
+    if on_base
+      res += lang.translations.select {|tr| tr.base and
+        tr.base.downcase.include? str.downcase}
+    end
+
+    res.flatten.uniq
+  end
+
+  # Is this translation pending? This means, is its translated string
+  # empty or nil?
+  def pending?
+    self.translated.nil? or self.translated.empty?
   end
 end

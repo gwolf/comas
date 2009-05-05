@@ -18,7 +18,97 @@ It is best suited for academic conferences (i.e., conferences where
 the main intrerest are the presentations, not commercial meetings,
 which are also called conferences in some countries).
 
+=== What differentiates it from other similar systems?
+
+* Comas is highly malleable
+
+  Most similar systems provide you fairly rigid definitions for a
+  person or for a proposal. If the system does not provide for a field
+  you are interested in, you will have to modify the database schema
+  and the system's source files in order to get them.
+
+  Comas allows you to easily add fields (including more complex data
+  types, i.e. references to other catalogs) both to people and
+  proposals.
+
+* Comas provides a multiconference setup.
+
+  Many systems require you to set up one full instance per
+  conference. While this is not much of a hurdle for the technically
+  minded system administrators, many academic settings will require
+  the administrator to set up conference management systems, one after
+  another.
+
+  With Comas, you just have to set up one Comas instance, and it can
+  acommodate all the conferences you need. Plus, people that register
+  to your system once will not have to re-submit their personal data -
+  They will just have to check whatever conferences they are
+  interested in.
+
+* Comas aims at following the whole conference workflow
+
+  Several systems provide only the needed utility for a subset of the
+  conference workflow. Comas attempts to cover the process as
+  integrally as possible. As of now, the current functionality is
+  provided:
+
+  * Attendee registration
+
+    The basic information needed from an attendee is their full name
+    and e-mail address. Additional fields may be specified. Each
+    attendee will also be asked whether they are interested in general
+    or conference-specific mailings.
+
+    Lists of attendees, filtered by different criteria, can be easily
+    exported in spreadsheet format for local usage.
+
+  * Conference definition
+
+    Each conference will be defined with a name, an optional
+    conference logo/image, a full description (allowing for
+    RedCloth/Textile-based formatting, which allows this to be the
+    main conference page or link to an external one), and the
+    starting/ending dates for the conference itself, the Call for
+    Papers period, and the attendee registration period.
+
+  * Proposal submision
+
+    Conferences which have a Call for Papers period will allow the
+    attendees to send talk proposals. Proposals can include a number
+    of attachments.
+
+  * Nametag printing and attendance tracking
+
+    The needed infrastructure is in place for printing nametags on
+    Zebra EPL2 printers, the most commonly used kind of barcode
+    printers. The nametag printing format can be defined from the Web
+    interface.
+
+    You can track attendances at each of the conference's sessions,
+    either by using a barcode reader or just by typing the attendee's
+    ID on a regular keyboard.
+
+  * Certificate definition printing
+
+    You can define several certificate formats, which can be used
+    i.e. for printing attendance/participation certificates, talk
+    presentation certificates, etc.
+
+  More functionality is on the way. Most pressing (and probably the
+  next step that will be covered) is implementing the academic
+  committee functionality (deciding on which of the submitted
+  proposals will be accepted, which will require changes, etc.)
+  Probably, more than one scheme of academic committee logic will be
+  implemented, as different conferences handle it in very differing
+  ways — But this is speculatively only right now.
+
 === What is Comas' current status?
+
+We are just starting to implement Comas on a production server - and
+will probably uncover more than one design flaw in the process. Still,
+care will be taken not to break existing instances.
+
+=== Comas' prior incarnation
 
 Comas is in the final stages of a complete reimplementation from
 scratch.
@@ -26,7 +116,7 @@ scratch.
 If you were familiar with the Perl-based Comas originally developed
 for CONSOL by Manuel Rábade and Gunnar Wolf... Well, some of its ideas
 still live on. However, the old Comas code was found to be too rigid,
-too hard to adequate for other conferences' needs. 
+too hard to adequate for other conferences' needs.
 
 The Perl version was actively developed in 2003-2004, and regularly
 maintained until 2006. I played a bit with other technologies to base
@@ -46,7 +136,8 @@ from where you can easily clone it:
 
 As soon as I'm happy with its releasability (this means, as soon as I
 go over the blockers in the TODO list), I will also put up nice
-tarballs.
+tarballs. Right now, the One True way to get Comas is cloning from the
+Git repository.
 
 === What can I do to help?
 
@@ -54,16 +145,53 @@ Hack on!
 
 === Dependencies
 
-Ruby 1.8
-Rails (>= 2.0):: http://www.rubyonrails.org/
+Comas uses the following modules or plugins - Most of them are
+available as Debian packages (the package name will be indicated next
+to the URL):
+
+Ruby 1.8:: http://www.ruby-lang.org/en/
+
+     	   ruby1.8
+
+Rails 2.1:: http://www.rubyonrails.org/
+
+      	    rails
+
 Acts as catalog:: http://actsascatalog.rubyforge.org/
+
 Acts as list:: http://github.com/rails/acts_as_list/tree/master
+
 Acts as magic model:: http://magicmodel.rubyforge.org/
+
 Real FK:: http://realfk.rubyforge.org/
+
 Will Paginate:: http://github.com/mislav/will_paginate/wikis
+
+                libwill-paginate-ruby
+
 PDF Writer:: http://ruby-pdf.rubyforge.org/
+
+    	     libpdf-writer-ruby
+
 GetText:: http://www.yotabanana.com/hiki/ruby-gettext.html
+
+	  libgettext-ruby
+
 Redcloth:: http://rubyforge.org/projects/redcloth/
+
+           libredcloth-ruby
+
+Spreadsheet:: http://spreadsheet.rubyforge.org/
+
+	      libspreadsheet-ruby
+
+Ruby-OLE:: http://code.google.com/p/ruby-ole/
+
+	   libole-ruby
+
+Note that some of the Debian packages are not part of the currently
+stable Debian release (5.0, Lenny), but can be safely installed from
+the unstable repository.
 
 If you _cloned_ the Git repository, the plugins in this list (realfk,
 acts_as_list, magicmodel and actsascatalog) are available as Git
@@ -75,7 +203,7 @@ submodules. From Comas' top directory, just run:
 === Authors and copyright
 
 The original Comas was written mainly by Manuel Rábade and Gunnar
-Wolf. 
+Wolf.
 
 The current implementation, with somewhat different goals and mindset,
 has been so far written by Gunnar Wolf.
@@ -94,11 +222,12 @@ Pseudo gettext:: Masao Mutoh (License: Same as Ruby)
 
 == TO-DO
 
+* Academic committee
 * Check what to-do items we really have!
 * Move the included third-party code out of the tree, make it a clean
-  dependency 
+  dependency
 * Tests!
 * Provide for a better way for themability (not requiring the user to
   modify provided files, as it makes integration with newer versions
-  painful) 
+  painful)
 

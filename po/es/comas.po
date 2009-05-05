@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2009-04-29 18:22-0500\n"
-"PO-Revision-Date: 2009-04-29 18:26-0600\n"
+"POT-Creation-Date: 2009-05-03 00:51-0500\n"
+"PO-Revision-Date: 2009-05-03 01:00-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: Gunnar Wolf <gwolf@gwolf.org>\n"
 "MIME-Version: 1.0\n"
@@ -250,7 +250,6 @@ msgid "The requested e-mail was successfully sent"
 msgstr "El correo electrónico fue enviado exitosamente"
 
 #: app/controllers/people_controller.rb:185
-#: app/controllers/conferences_controller.rb:131
 msgid "Invalid conference requested"
 msgstr "Especificó una actividad inexistente"
 
@@ -509,6 +508,34 @@ msgstr "Catálogo"
 msgid "Access denied"
 msgstr "Acceso denegado"
 
+#: app/controllers/translation_controller.rb:5
+msgid "Statistics by language"
+msgstr "Estadísticas por idioma"
+
+#: app/controllers/translation_controller.rb:47
+msgid "Pending strings for <em>%s</em>"
+msgstr "Cadenas pendientes para <em>%s</em>"
+
+#: app/controllers/translation_controller.rb:57
+msgid "Searching for strings in <em>%s</em> matching <em>%s</em>"
+msgstr "Buscando cadenas en <em>%s</em> que concuerden con <em>%s</em>"
+
+#: app/controllers/translation_controller.rb:67
+msgid "Translation successfully registered"
+msgstr "La traducción fue registrada exitosamente"
+
+#: app/controllers/translation_controller.rb:77
+msgid "Translation successfully removed"
+msgstr "La traducción fue eliminada exitosamente"
+
+#: app/controllers/translation_controller.rb:85
+msgid "Invalid language specified"
+msgstr "Especificó un idioma equivocado"
+
+#: app/controllers/translation_controller.rb:95
+msgid "Invalid translation specified"
+msgstr "Especificó a una traducción inexistente"
+
 #: app/controllers/conferences_controller.rb:5
 msgid "Latest registered conferences"
 msgstr "Últimas actividades registradas"
@@ -554,6 +581,10 @@ msgstr "No fue posible cancelar su registro de «%s»: %s"
 #: app/controllers/conferences_controller.rb:113
 msgid "This conference does not currently accept changing your registration status - please visit its information page for more details"
 msgstr "En este momento, es imposible cambiar su estado de registro para esta actividad. Por favor, visite su página de información para mayores informes."
+
+#: app/controllers/conferences_controller.rb:132
+msgid "Invalid conference <em>%s</em> requested"
+msgstr "Solicitó la actividad inexistente <em>%s</em>"
 
 #: app/controllers/people_adm_controller.rb:4
 msgid "Registered people list"
@@ -681,6 +712,14 @@ msgstr "estado de la propuesta"
 msgid "PropStatus|Name"
 msgstr "Nombre"
 
+#: app/models/language.rb:-
+msgid "language"
+msgstr "idioma"
+
+#: app/models/language.rb:-
+msgid "Language|Name"
+msgstr "Nombre"
+
 #: app/models/attendance.rb:-
 msgid "attendance"
 msgstr "asistencia"
@@ -726,10 +765,6 @@ msgid "Translation|Base"
 msgstr "Base"
 
 #: app/models/translation.rb:-
-msgid "Translation|Lang"
-msgstr "Idioma"
-
-#: app/models/translation.rb:-
 msgid "Translation|Translated"
 msgstr "Traducido"
 
@@ -741,6 +776,10 @@ msgstr "Fecha de creación"
 msgid "Translation|Updated at"
 msgstr "Última actualización"
 
+#: app/models/translation.rb:-
+msgid "Translation|Language"
+msgstr "Idioma"
+
 #: app/models/admin_task.rb:-
 msgid "admin task"
 msgstr "rol administrativo"
@@ -750,7 +789,7 @@ msgid "AdminTask|Name"
 msgstr "Nombre"
 
 #: app/models/admin_task.rb:-
-msgid "AdminTask|Sys name"
+msgid "AdminTask|System name"
 msgstr "Nombre de sistema"
 
 #: app/models/logo.rb:-
@@ -766,7 +805,7 @@ msgid "Logo|Conference"
 msgstr "Actividad"
 
 #: app/models/logo.rb:-
-msgid "Logo|Thumb"
+msgid "Logo|Thumbnail"
 msgstr "Reducido"
 
 #: app/models/logo.rb:-
@@ -794,7 +833,7 @@ msgid "Conference|Name"
 msgstr "Nombre"
 
 #: app/models/conference.rb:-
-msgid "Conference|Descr"
+msgid "Conference|Description"
 msgstr "Descripción"
 
 #: app/models/conference.rb:-
@@ -802,19 +841,19 @@ msgid "Conference|Homepage"
 msgstr "Página de inicio"
 
 #: app/models/conference.rb:-
-msgid "Conference|Reg open date"
+msgid "Conference|Registration opening date"
 msgstr "Fecha de inicio del registro"
 
 #: app/models/conference.rb:-
-msgid "Conference|Reg close date"
+msgid "Conference|Registration closing date"
 msgstr "Fecha de cierre de registro"
 
 #: app/models/conference.rb:-
-msgid "Conference|Cfp open date"
+msgid "Conference|Call for Papers opening date"
 msgstr "Fecha de inicio de la convocatoria de propuestas"
 
 #: app/models/conference.rb:-
-msgid "Conference|Cfp close date"
+msgid "Conference|Call for papers closing date"
 msgstr "Fecha de cierre de convocatoria de propuestas"
 
 #: app/models/conference.rb:-
@@ -871,55 +910,51 @@ msgid "nametag format"
 msgstr "formato de personalizador"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Name"
-msgstr "Ancho del nombre"
-
-#: app/models/nametag_format.rb:-
-msgid "NametagFormat|H size"
-msgstr "Tamaño horizontal"
-
-#: app/models/nametag_format.rb:-
-msgid "NametagFormat|V size"
-msgstr "Tamaño vertical"
-
-#: app/models/nametag_format.rb:-
-msgid "NametagFormat|V gap"
-msgstr "Separación vertical"
-
-#: app/models/nametag_format.rb:-
 msgid "NametagFormat|Name width"
 msgstr "Ancho del nombre"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|H start"
+msgid "NametagFormat|Horizontal size"
+msgstr "Tamaño horizontal"
+
+#: app/models/nametag_format.rb:-
+msgid "NametagFormat|Vertical size"
+msgstr "Tamaño vertical"
+
+#: app/models/nametag_format.rb:-
+msgid "NametagFormat|Vertical gap"
+msgstr "Separación vertical"
+
+#: app/models/nametag_format.rb:-
+msgid "NametagFormat|Horizontal start"
 msgstr "Inicio horizontal"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|V start"
+msgid "NametagFormat|Vertical start"
 msgstr "Inicio vertical"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Id bar hpos"
+msgid "NametagFormat|Barcode horizontal position"
 msgstr "Posición horizontal del código de barras"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Id bar vpos"
+msgid "NametagFormat|Barcode vertical position"
 msgstr "Posición vertical del código de barras"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Id bar orient"
+msgid "NametagFormat|Barcode orientation"
 msgstr "Orientación del código de barras"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Id bar narrow"
+msgid "NametagFormat|Barcode narrow bars width"
 msgstr "Ancho de las barras delgadas"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Id bar wide"
+msgid "NametagFormat|Barcode wide bars width"
 msgstr "Ancho de las barras gruesas"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Id bar height"
+msgid "NametagFormat|Barcode height"
 msgstr "Altura del código de barras"
 
 #: app/models/nametag_format.rb:12
@@ -963,24 +998,20 @@ msgid "Person|Login"
 msgstr "Nombre de usuario"
 
 #: app/models/person.rb:-
-msgid "Person|Passwd"
+msgid "Person|Password"
 msgstr "Contraseña"
 
 #: app/models/person.rb:-
-msgid "Person|Firstname"
+msgid "Person|First name"
 msgstr "Nombre propio"
 
 #: app/models/person.rb:-
-msgid "Person|Famname"
+msgid "Person|Family name"
 msgstr "Apellido"
 
 #: app/models/person.rb:-
 msgid "Person|Email"
 msgstr "Correo electrónico"
-
-#: app/models/person.rb:-
-msgid "Person|Pw salt"
-msgstr "Salt aleatorio de la contraseña"
 
 #: app/models/person.rb:-
 msgid "Person|Created at"
@@ -991,11 +1022,11 @@ msgid "Person|Last login at"
 msgstr "Última entrada"
 
 #: app/models/person.rb:-
-msgid "Person|Ok conf mails"
-msgstr "¿Recibir correos específicos a las actividades a las que se registró?"
+msgid "Person|OK to receive mails relative to the conferences you have registered to?"
+msgstr "¿Recibir correos relativos a las actividades para las cuales se registró?"
 
 #: app/models/person.rb:-
-msgid "Person|Ok general mails"
+msgid "Person|OK to receive general mails?"
 msgstr "¿Recibir correos generales?"
 
 #: app/models/person.rb:20
@@ -1019,7 +1050,7 @@ msgid "certif format"
 msgstr "formato de certificado"
 
 #: app/models/certif_format.rb:-
-msgid "CertifFormat|Name"
+msgid "CertifFormat|Format name"
 msgstr "Nombre del formato"
 
 #: app/models/certif_format.rb:-
@@ -1055,11 +1086,11 @@ msgid "Timeslot|Start time"
 msgstr "Hora de inicio"
 
 #: app/models/proposal.rb:-
-msgid "Timeslot|Tolerance pre"
+msgid "Timeslot|Tolerance (pre)"
 msgstr "Tolerancia (pre)"
 
 #: app/models/proposal.rb:-
-msgid "Timeslot|Tolerance post"
+msgid "Timeslot|Tolerance (post)"
 msgstr "Tolerancia (post)"
 
 #: app/models/proposal.rb:-
@@ -1091,11 +1122,11 @@ msgid "Proposal|Updated at"
 msgstr "Última actualización"
 
 #: app/models/proposal.rb:-
-msgid "Proposal|Prop type"
+msgid "Proposal|Proposal type"
 msgstr "Tipo de la propuesta"
 
 #: app/models/proposal.rb:-
-msgid "Proposal|Prop status"
+msgid "Proposal|Proposal status"
 msgstr "Estado de la propuesta"
 
 #: app/models/proposal.rb:-
@@ -1127,15 +1158,15 @@ msgid "CertifFormatLine|Content"
 msgstr "Contenido"
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|X pos"
+msgid "CertifFormatLine|Horizontal position"
 msgstr "Posición horizontal"
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Y pos"
+msgid "CertifFormatLine|Vertical position"
 msgstr "Posición vertical"
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Max width"
+msgid "CertifFormatLine|Maximum width"
 msgstr "Ancho máximo"
 
 #: app/models/certif_format_line.rb:-
@@ -1147,7 +1178,7 @@ msgid "CertifFormatLine|Justification"
 msgstr "Justificación"
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Certif format"
+msgid "CertifFormatLine|Certificate format"
 msgstr "Formato de certificado"
 
 #: app/models/certif_format_line.rb:4
@@ -1160,7 +1191,7 @@ msgstr "Persona"
 
 #: app/models/certif_format_line.rb:6
 #: app/helpers/attendance_adm_helper.rb:18
-#: app/helpers/conferences_helper.rb:18
+#: app/helpers/conferences_helper.rb:16
 #: app/views/people/profile.html.erb:9
 #: app/views/people/proposals.html.erb:15
 #: app/views/proposals/by_author.html.erb:11
@@ -1201,7 +1232,7 @@ msgid "Document|Filename"
 msgstr "Nombre de archivo"
 
 #: app/models/document.rb:-
-msgid "Document|Descr"
+msgid "Document|Description"
 msgstr "Descripción"
 
 #: app/models/document.rb:-
@@ -1253,7 +1284,7 @@ msgid "SysConf|Key"
 msgstr "Llave"
 
 #: app/models/sys_conf.rb:-
-msgid "SysConf|Descr"
+msgid "SysConf|Description"
 msgstr "Descripción"
 
 #: app/models/sys_conf.rb:-
@@ -1298,31 +1329,32 @@ msgstr "Por omisión"
 msgid "Action"
 msgstr "Acción"
 
-#: app/helpers/sys_conf_adm_helper.rb:19
-#: app/helpers/application_helper.rb:244
+#: app/helpers/sys_conf_adm_helper.rb:20
+#: app/helpers/application_helper.rb:263
 #: app/views/attendance_adm/_certif_format_test_form.html.erb:13
 #: app/views/sys_conf_adm/edit_table_field.html.erb:41
 msgid "Yes"
 msgstr "Sí"
 
-#: app/helpers/sys_conf_adm_helper.rb:19
-#: app/helpers/application_helper.rb:244
+#: app/helpers/sys_conf_adm_helper.rb:20
+#: app/helpers/application_helper.rb:263
 #: app/views/attendance_adm/_certif_format_test_form.html.erb:14
 #: app/views/sys_conf_adm/edit_table_field.html.erb:42
 msgid "No"
 msgstr "No"
 
-#: app/helpers/sys_conf_adm_helper.rb:21
+#: app/helpers/sys_conf_adm_helper.rb:22
 #: app/helpers/conferences_adm_helper.rb:21
 #: app/helpers/people_adm_helper.rb:24
 #: app/helpers/attendance_adm_helper.rb:70
 #: app/views/conferences_adm/list.html.erb:34
 #: app/views/sys_conf_adm/show_catalog.html.erb:15
-#: app/views/sys_conf_adm/list.html.erb:14
+#: app/views/sys_conf_adm/list.html.erb:18
+#: app/views/translation/list.html.erb:32
 msgid "Delete"
 msgstr "Eliminar"
 
-#: app/helpers/sys_conf_adm_helper.rb:25
+#: app/helpers/sys_conf_adm_helper.rb:26
 msgid ""
 "Removing this field from the table definition will cause ALL OF ITS DATA to be destroyed. \n"
 "This is an irreversible action.\n"
@@ -1332,9 +1364,9 @@ msgstr ""
 "Esta es una acción irreversible.\n"
 "¿Está seguro?"
 
-#: app/helpers/sys_conf_adm_helper.rb:31
+#: app/helpers/sys_conf_adm_helper.rb:32
 #: app/views/sys_conf_adm/nametag_format_list.html.erb:37
-#: app/views/sys_conf_adm/list.html.erb:13
+#: app/views/sys_conf_adm/list.html.erb:17
 #: app/views/people/proposals.html.erb:27
 #: app/views/proposals/show.html.erb:4
 msgid "Edit"
@@ -1482,77 +1514,77 @@ msgstr "Alineación"
 msgid "Are you sure you want to delete this line?"
 msgstr "¿Está seguro de que desea eliminar esta línea?"
 
-#: app/helpers/conferences_helper.rb:18
+#: app/helpers/conferences_helper.rb:16
 msgid "Dates"
 msgstr "Fechas"
 
-#: app/helpers/conferences_helper.rb:38
+#: app/helpers/conferences_helper.rb:36
 msgid "Registered"
 msgstr "Registrado"
 
-#: app/helpers/conferences_helper.rb:39
+#: app/helpers/conferences_helper.rb:37
 msgid "Registration closed"
 msgstr "Registro cerrado"
 
-#: app/helpers/conferences_helper.rb:43
+#: app/helpers/conferences_helper.rb:41
 msgid "Unregister"
 msgstr "Cancelar registro"
 
-#: app/helpers/conferences_helper.rb:48
+#: app/helpers/conferences_helper.rb:46
 msgid "Confirm: Do you want to unregister from \"%s\"? "
 msgstr "Confirme: ¿Seguro que desea cancelar su registro de «%s»?"
 
-#: app/helpers/conferences_helper.rb:51
+#: app/helpers/conferences_helper.rb:49
 #: app/views/notification/welcome.text.plain.erb:20
 msgid "Sign up"
 msgstr "Registrarme"
 
-#: app/helpers/conferences_helper.rb:61
+#: app/helpers/conferences_helper.rb:59
 msgid "Conference dates"
 msgstr "Fechas de la actividad"
 
-#: app/helpers/conferences_helper.rb:63
-#: app/helpers/conferences_helper.rb:67
-#: app/helpers/conferences_helper.rb:73
+#: app/helpers/conferences_helper.rb:61
+#: app/helpers/conferences_helper.rb:65
+#: app/helpers/conferences_helper.rb:71
 msgid "Begins"
 msgstr "Fecha de inicio"
 
-#: app/helpers/conferences_helper.rb:63
-#: app/helpers/conferences_helper.rb:68
-#: app/helpers/conferences_helper.rb:74
+#: app/helpers/conferences_helper.rb:61
+#: app/helpers/conferences_helper.rb:66
+#: app/helpers/conferences_helper.rb:72
 msgid "Finishes"
 msgstr "Fecha de finalización"
 
-#: app/helpers/conferences_helper.rb:65
+#: app/helpers/conferences_helper.rb:63
 msgid "Registration period"
 msgstr "Periodo de registro"
 
-#: app/helpers/conferences_helper.rb:67
-#: app/helpers/conferences_helper.rb:73
+#: app/helpers/conferences_helper.rb:65
+#: app/helpers/conferences_helper.rb:71
 msgid "Open"
 msgstr "Abierto"
 
-#: app/helpers/conferences_helper.rb:70
+#: app/helpers/conferences_helper.rb:68
 msgid "Call for papers period"
 msgstr "Periodo de convocatoria de propuestas"
 
-#: app/helpers/conferences_helper.rb:76
+#: app/helpers/conferences_helper.rb:74
 msgid "No public call for papers"
 msgstr "No hay una convocatoria de propuestas pública"
 
-#: app/helpers/conferences_helper.rb:84
+#: app/helpers/conferences_helper.rb:82
 msgid "%d registered attendees"
 msgstr "%d asistentes registrados"
 
-#: app/helpers/conferences_helper.rb:87
+#: app/helpers/conferences_helper.rb:85
 msgid "Edit conference"
 msgstr "Editar la actividad"
 
-#: app/helpers/conferences_helper.rb:89
+#: app/helpers/conferences_helper.rb:87
 msgid "Edit timeslots"
 msgstr "Editar horarios"
 
-#: app/helpers/conferences_helper.rb:111
+#: app/helpers/conferences_helper.rb:109
 msgid "Invalid logo size specified: %s"
 msgstr "Especificó un tamaño de logotipo inválido: %s"
 
@@ -1578,23 +1610,23 @@ msgstr "-"
 msgid "Show"
 msgstr "Mostrar"
 
-#: app/helpers/application_helper.rb:158
+#: app/helpers/application_helper.rb:177
 msgid "No items found"
 msgstr "No hay registros que mostrar"
 
-#: app/helpers/application_helper.rb:159
+#: app/helpers/application_helper.rb:178
 msgid "Displaying <b>1</b> item"
 msgstr "Mostrando <b>1</b> registro"
 
-#: app/helpers/application_helper.rb:160
+#: app/helpers/application_helper.rb:179
 msgid "Displaying <b>all %d</b> items"
 msgstr "Mostrando <b>todos los %d</b> registros"
 
-#: app/helpers/application_helper.rb:163
+#: app/helpers/application_helper.rb:182
 msgid "Displaying items <b>%d&nbsp;-&nbsp;%d</b> of <b>%d</b> in total"
 msgstr "Mostrando los registros <b>%d&nbsp;-&nbsp;%d</b> de un total de <b>%d</b>"
 
-#: app/helpers/application_helper.rb:209
+#: app/helpers/application_helper.rb:228
 msgid "Field %s not defined for %s"
 msgstr "El campo %s no está definido para %s"
 
@@ -1907,7 +1939,7 @@ msgstr "Formatos de certificado disponibles"
 #: app/views/people_adm/new.html.erb:3
 #: app/views/conferences_adm/new.html.erb:3
 #: app/views/sys_conf_adm/show_catalog.html.erb:28
-#: app/views/sys_conf_adm/list.html.erb:26
+#: app/views/sys_conf_adm/list.html.erb:30
 #: app/views/sys_conf_adm/nametag_format_new.html.erb:4
 #: app/views/sys_conf_adm/list_table_fields.html.erb:35
 msgid "Create"
@@ -2562,19 +2594,19 @@ msgstr "Entradas de configuración"
 msgid "<b>Caution</b>: Modifying the configuration entries shown here might render your system inoperable. Proceed at your own risk, and only if you know what you are doing."
 msgstr "<b>Precaución</b>: Modificar las entradas de configuración desplegadas a continuación puede dejar a su sistema inutilizable. Hágalo bajo su propio riesgo, y únicamente si sabe lo que hace."
 
-#: app/views/sys_conf_adm/list.html.erb:7
+#: app/views/sys_conf_adm/list.html.erb:8
 msgid "Key"
 msgstr "Llave"
 
-#: app/views/sys_conf_adm/list.html.erb:7
+#: app/views/sys_conf_adm/list.html.erb:9
 msgid "Description"
 msgstr "Descripción"
 
-#: app/views/sys_conf_adm/list.html.erb:7
+#: app/views/sys_conf_adm/list.html.erb:10
 msgid "Value"
 msgstr "Valor"
 
-#: app/views/sys_conf_adm/list.html.erb:16
+#: app/views/sys_conf_adm/list.html.erb:20
 msgid "Are you sure you want to delete this configuration entry?"
 msgstr "¿Está seguro de que desea eliminar esta llave de configuración?"
 
@@ -2777,6 +2809,81 @@ msgstr "Bienvenido, %s"
 #: app/views/people/account.html.erb:4
 msgid "Next conferences you are signed up for"
 msgstr "Próximas actividades para las cuales usted está registrado"
+
+#: app/views/translation/list.html.erb:3
+msgid "The translation strings you can manage through this interface are automatically generated by the catalog and field values present in your database, and thus, manually adding strings is not supported."
+msgstr "Las cadenas de traducción, administradas desde esta interfaz, son generadas automáticamente a partir de los valores de los campos y catálogos presentes en su base de datos, por tanto, agregar cadenas manualmente no está soportado."
+
+#: app/views/translation/list.html.erb:8
+msgid "In order to ensure consistency, when you delete a string in any of the supported languages, it will be removed in all of them. However, every time a given string is required by the system, and every time you visit the %s page, all of the needed strings will be created again."
+msgstr "Para asegurar la consistencia, cuando usted elimine una cadena de cualquiera de los lenguajes soportados, ésta será eliminada de todos. Sin embargo, cada vez que una cadena dada sea requerida por el sistema, así como cada vez que visite la página de %s, todas las cadenas necesarias serán creadas nuevamente."
+
+#: app/views/translation/list.html.erb:13
+#: app/views/translation/stat_by_lang.html.erb:1
+msgid "Translation statistics by language"
+msgstr "Estadísticas de traducción por idioma"
+
+#: app/views/translation/list.html.erb:21
+msgid "Base"
+msgstr "Base"
+
+#: app/views/translation/list.html.erb:22
+msgid "Translated"
+msgstr "Traducido"
+
+#: app/views/translation/list.html.erb:31
+msgid "Update"
+msgstr "Actualizar"
+
+#: app/views/translation/list.html.erb:33
+msgid "Are you sure you want to remove this record?"
+msgstr "¿Está seguro de que desea eliminar este registro?"
+
+#: app/views/translation/stat_by_lang.html.erb:5
+#: app/views/translation/stat_by_lang.html.erb:32
+msgid "Language"
+msgstr "Idioma"
+
+#: app/views/translation/stat_by_lang.html.erb:6
+#: app/views/translation/stat_by_lang.html.erb:44
+msgid "Translated strings"
+msgstr "Cadenas traducidas"
+
+#: app/views/translation/stat_by_lang.html.erb:7
+msgid "Pending strings"
+msgstr "Cadenas pendientes"
+
+#: app/views/translation/stat_by_lang.html.erb:8
+msgid "Percentage"
+msgstr "Porcentaje"
+
+#: app/views/translation/stat_by_lang.html.erb:29
+msgid "Search for specific strings"
+msgstr "Buscar por cadenas específicas"
+
+#: app/views/translation/stat_by_lang.html.erb:36
+msgid "String to search for"
+msgstr "Cadena a buscar"
+
+#: app/views/translation/stat_by_lang.html.erb:38
+msgid "Specify the string (or a portion of it) to look for"
+msgstr "Especifique la cadena (o una porción de la misma) a buscar"
+
+#: app/views/translation/stat_by_lang.html.erb:40
+msgid "Search for coincidence in: "
+msgstr "Buscar coincidencia en:"
+
+#: app/views/translation/stat_by_lang.html.erb:42
+msgid "Source strings"
+msgstr "Cadenas origen"
+
+#: app/views/translation/stat_by_lang.html.erb:46
+msgid "Both"
+msgstr "Ambas"
+
+#: app/views/translation/stat_by_lang.html.erb:47
+msgid "Search"
+msgstr "Buscar"
 
 #: app/views/proposals/edit.html.erb:1
 msgid "Edit your proposal"
@@ -3033,4 +3140,3 @@ msgstr "*** No se agregó ninguna persona: "
 #: script/create_user:76
 msgid "No work done, no harm done. Goodbye!"
 msgstr "No hicimos nada, ni bueno ni malo. ¡Adios!"
-

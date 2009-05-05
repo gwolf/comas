@@ -1,0 +1,48 @@
+<h1><%= _('Translation statistics by language') %></h1>
+
+<% table do %>
+  <% table_head_row do %>
+    <th><%= _('Language') %></th>
+    <th><%= _('Translated strings') %></th>
+    <th><%= _('Pending strings') %></th>
+    <th><%= _('Percentage') %></th>
+    <th></th>
+  <% end %>
+  <% @languages.each do |lang| %>
+    <% stat = lang.translation_stats
+       table_row do %>
+      <td><%= link_to Translation.for(lang.qualified_name),
+                      :action => 'all_for_lang',
+                      :language_id => lang.id%></td>
+      <td><%= link_to stat[:done],
+                      :action => 'done_for_lang',
+                      :language_id => lang.id %></td>
+      <td><%= link_to stat[:pending], 
+                      :action => 'pending_for_lang', 
+                      :language_id => lang.id %></td>
+      <td><%= '%0.2f %%' % stat[:perc] %></td>
+      <td></td>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h3><%= _('Search for specific strings') %></h3>
+
+<% form_tag :action => 'search_for_strings' do |f| %>
+  <%= form_row(_('Language'),
+               select_tag(:language_id,
+                          options_for_select(@languages.map {|l| 
+                             [Translation.for(l.qualified_name), l.id]}))) %>
+  <%= form_row(_('String to search for'),
+               text_field_tag(:string),
+               _('Specify the string (or a portion of it) to look for')) %>
+
+  <%= form_row(_('Search for coincidence in: '),
+               ( radio_button_tag(:search_in, :base, true) +
+                 _('Source strings') +
+                 radio_button_tag(:search_in, :trans, false) +
+                 _('Translated strings') +
+                 radio_button_tag(:search_in, :both, false) +
+                 _('Both') )) %>
+  <%= submit_tag _('Search') %>
+<% end %>
