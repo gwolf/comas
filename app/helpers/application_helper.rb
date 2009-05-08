@@ -61,13 +61,12 @@ module ApplicationHelper
 
   def link_to_login_or_new
     return '' if @user
-    _('<div class="note">%s or %s if you are interested in attending this ' +
-      'conference</div>') %  [ link_to('Please register',
-                                       :controller => '/people', 
-                                       :action => 'new'),
-                               link_to('log in',
-                                       :controller => '/people',
-                                       :action => 'login') ]
+    '<div class="note">' << 
+      (_('%s or %s if you are interested in attending this conference') %
+       [ link_to('Please register', :controller => '/people', 
+                 :action => 'new'),
+         link_to('log in', :controller => '/people',
+                 :action => 'login') ]) << '</div>'
   end
 
   ######################################################################
