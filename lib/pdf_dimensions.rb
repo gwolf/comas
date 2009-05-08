@@ -14,7 +14,7 @@ module PdfDimensions
       :full => _('centimeters'), 
       :abbr => _('cm')},
     :in => {
-      :divisor => 2.54,
+      :divisor => 72,
       :full => _('inches'), 
       :abbr => _('in')}
   }

@@ -87,7 +87,10 @@ module ConferencesHelper
        link_to(_('Edit timeslots'),
                :controller => 'conferences_adm',
                :action => 'timeslots', 
-               :id => conf)
+               :id => conf),
+       link_to(_('Attendance lists'),
+               :controller => 'attendance_adm',
+               :action => 'list', :id => conf)
       ].join(' | ') + '</div>'
   end
 

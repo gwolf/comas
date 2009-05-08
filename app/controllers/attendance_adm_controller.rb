@@ -64,13 +64,8 @@ class AttendanceAdmController < Admin
   # conference, and allows for listing all other past conferences
   # which have timeslots registered
   def list
-    if @conference.nil?
-      redirect_to '/'
-      flash[:error] << _('Could not find which conference to report')
-      return false
-    end
     @other_confs = Conference.past_with_timeslots
-    @totals = Attendance.totalized_for_conference(@conference)
+    @totals = Attendance.totalized_for_conference(@conference) if @conference
   end
 
   # Produces the attendance detail for a given timeslot 
@@ -243,8 +238,8 @@ class AttendanceAdmController < Admin
   end
 
   def register_attendance(person, tslot)
-    if previous = Person.find(1).
-        attendances.find(:first, :conditions =>['timeslot_id = ?', tslot.id])
+    if previous = person.attendances.find(:first, :conditions => 
+                                          ['timeslot_id = ?', tslot.id])
       flash[:notice] << _('This person has already been registered for this ' +
                           'timeslot. No action taken.')
       return false

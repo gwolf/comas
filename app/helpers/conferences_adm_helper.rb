@@ -10,8 +10,8 @@ module ConferencesAdmHelper
       end
     end
 
-    [table_row, res.map {|col| "<td>#{col}</td>"},
-     end_table_row].join("\n")
+    [table_row_tag, res.map {|col| "<td>#{col}</td>"},
+     end_table_row_tag].join("\n")
   end
 
   def row_for_timeslot_listing(tslot)
@@ -26,6 +26,6 @@ module ConferencesAdmHelper
                                    'destroy any attendances it has recorded'),
                      :method => :post} ) ]
 
-    [table_row, res.map {|col| "<td>#{col}</td>"}, end_table_row].join("\n")
+    [table_row_tag, res.map {|col| "<td>#{col}</td>"}, end_table_row_tag].join("\n")
   end
 end

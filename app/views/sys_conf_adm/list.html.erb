@@ -22,12 +22,13 @@
   <% end %>
 <% end %>
   <% table_row do %>
-  <% form_for :sys_conf, @new_conf, 
-               :url => {:action => :create} do |f|%>
-    <td><%= f.text_field :key, :size => 10 %></td>
-    <td><%= f.text_field :descr, :size => 20 %></td>
-    <td><%= f.text_field :value, :size => 10 %></td>
-    <td><%= f.submit _'Create' %> </td>
+    <% form_for :sys_conf, @new_conf, 
+                 :url => {:action => :create} do |f|%>
+      <td><%= f.text_field :key, :size => 10 %></td>
+      <td><%= f.text_field :descr, :size => 20 %></td>
+      <td><%= f.text_field :value, :size => 10 %></td>
+      <td><%= f.submit _'Create' %> </td>
+    <% end %>
   <% end %>
   </tr>
 <% end %>
