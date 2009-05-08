@@ -1,7 +1,4 @@
 <h1><%= _'Personal information' %></h1>
-<% fields = [:firstname, :famname, :email]
-   fields.concat(@user.extra_listable_attributes.map {|fld| fld.name}) %>
-<% comas_form_for(:person, @user, :url => {:id => @user}) do |f| %>
-  <%= fields.map {|fld| f.auto_field fld} %>
-  <%= f.submit _'Save changes' %>
-<% end %>
+<%= render :partial => 'pers_data',
+           :locals => {:person => @user, :url => {:id => @user},
+                       :subm => _('Save changes'), :include_passwd => false} %>
