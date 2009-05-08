@@ -17,7 +17,7 @@
                      'for a new one to be generated and sent to your ' +
                      'e-mail address.')) %>
   <% end %>
-  <% @person.extra_listable_attributes.each do |attr| %>
+  <% person.extra_listable_attributes.each do |attr| %>
     <%= f.auto_field(attr.name) %>
   <% end %>
   <%= f.auto_field(:ok_general_mails, :note => _('Are you interested ' +

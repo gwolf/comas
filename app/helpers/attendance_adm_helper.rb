@@ -75,8 +75,8 @@ module AttendanceAdmHelper
                          :method => :post})
               ]
 
-    ['<tr>', 
+    [table_row_tag, 
      columns.map { |elem| '<td>%s</td>' % elem}, 
-     '</tr>'].join("\n")
+     end_table_row_tag].join("\n")
   end
 end

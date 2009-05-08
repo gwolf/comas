@@ -1,30 +1,37 @@
-<h1><%= _('Attendance list for <em>%s</em>') % @conference.name %></h1>
+<h1><%= @conference.nil? ? _('Attendance lists') : 
+           _('Attendance list for <em>%s</em>') % @conference.name %></h1>
 
-<p><%= _('Select any other conference you want the attendance list for') %></p>
+<% if @conference %>
+  <h3><%= _('Attendance distribution for %d registered timeslots') %
+          @conference.timeslots.size %></h3>
 
-<% form_tag do %>
-  <%= select_tag(:conference_id, 
-                 options_for_select(@other_confs.map {|c| 
-                                    ["#{c.name} (#{c.begins})", c.id]},
-                                    @conference.id),
-                 {:onchange => "this.form.submit()"}) %>
+    <%= render :partial => 'by_session', 
+               :locals => {:tslots => @conference.timeslots} %>
+  <% if @totals.empty? %>
+    <h3><%= _'No attendances registered' %></h3>
+  <% else %>
+    <h2><%= _'Full listing, ordered by number of attendances' %></h2>
+    <% @totals.keys.sort.each do |num| %>
+      <%= render(:partial => 'list_by_attendances', 
+                 :locals => {:num => num, :list => @totals[num],
+                             :or_higher => @totals.keys.map { |k| 
+                                 next if k < num
+                                 @totals[k].size}.select{|k| k}.sum} ) %>
+
+    <% end %>
+  <% end %>
 <% end %>
 
-<h3><%= _('Attendance distribution for %d registered timeslots') %
-        @conference.timeslots.size %></h3>
-
-  <%= render :partial => 'by_session', 
-             :locals => {:tslots => @conference.timeslots} %>
-<% if @totals.empty? %>
-  <h3><%= _'No attendances registered' %></h3>
+<% if @other_confs.empty? %>
+  <p><%= _('No conferences have yet attendance lists') %></p>
 <% else %>
-  <h2><%= _'Full listing, ordered by number of attendances' %></h2>
-  <% @totals.keys.sort.each do |num| %>
-    <%= render(:partial => 'list_by_attendances', 
-               :locals => {:num => num, :list => @totals[num],
-                           :or_higher => @totals.keys.map { |k| 
-                               next if k < num
-                               @totals[k].size}.select{|k| k}.sum} ) %>
+  <p><%= _('Select any other conference you want the attendance list for') %></p>
 
+  <% form_tag do %>
+    <%= select_tag(:conference_id, 
+                   options_for_select(@other_confs.map {|c| 
+                                      ["#{c.name} (#{c.begins})", c.id]},
+                                      @conference.id),
+                   {:onchange => "this.form.submit()"}) %>
   <% end %>
 <% end %>

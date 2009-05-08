@@ -5,6 +5,6 @@
 <% comas_form_for :sys_conf, @conf, 
                   :url => {:action => :update, :id => @conf} do |f| %>
   <%= f.text_field :descr %>
-  <%= f.text_area :value %>
+  <%= f.text_area :value, :rows => 3, :cols => 60 %>
   <%= f.submit _'Save changes' %>
 <% end %>
