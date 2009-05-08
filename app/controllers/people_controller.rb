@@ -38,7 +38,7 @@ class PeopleController < ApplicationController
       flash[:notice] << _('An email has been sent to you, with instructions ' +
                           'on how to enter the system and change your ' +
                           'password.')
-      redirect_to :action => '/'
+      redirect_to :action => 'login'
 
     else
       flash[:error] << _('Nobody was found with the specified login or ' +
