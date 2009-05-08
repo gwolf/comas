@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2009-05-08 14:22-0500\n"
-"PO-Revision-Date: 2009-05-08 14:22-0600\n"
+"POT-Creation-Date: 2009-05-08 18:30-0500\n"
+"PO-Revision-Date: 2009-05-08 18:33-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: Gunnar Wolf <gwolf@gwolf.org>\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgid "Document|Filename"
 msgstr "Nombre de archivo"
 
 #: app/models/document.rb:-
-msgid "Document|Descr"
+msgid "Document|Description"
 msgstr "Descripción"
 
 #: app/models/document.rb:-
@@ -69,7 +69,7 @@ msgid "certif format"
 msgstr "formato de certificado"
 
 #: app/models/certif_format.rb:-
-msgid "CertifFormat|Name"
+msgid "CertifFormat|Format name"
 msgstr "Nombre del formato"
 
 #: app/models/certif_format.rb:-
@@ -89,7 +89,7 @@ msgid "AdminTask|Name"
 msgstr "Nombre"
 
 #: app/models/person.rb:-
-msgid "AdminTask|Sys name"
+msgid "AdminTask|System name"
 msgstr "Nombre de sistema"
 
 #: app/models/person.rb:-
@@ -101,15 +101,15 @@ msgid "Person|Login"
 msgstr "Nombre de usuario"
 
 #: app/models/person.rb:-
-msgid "Person|Passwd"
+msgid "Person|Password"
 msgstr "Contraseña"
 
 #: app/models/person.rb:-
-msgid "Person|Firstname"
+msgid "Person|First name"
 msgstr "Nombre propio"
 
 #: app/models/person.rb:-
-msgid "Person|Famname"
+msgid "Person|Family name"
 msgstr "Apellido"
 
 #: app/models/person.rb:-
@@ -117,7 +117,7 @@ msgid "Person|Email"
 msgstr "Correo electrónico"
 
 #: app/models/person.rb:-
-msgid "Person|Pw salt"
+msgid "Person|Random password salt"
 msgstr "Salt aleatorio de la contraseña"
 
 #: app/models/person.rb:-
@@ -129,11 +129,11 @@ msgid "Person|Last login at"
 msgstr "Última entrada"
 
 #: app/models/person.rb:-
-msgid "Person|Ok conf mails"
-msgstr "¿Recibir correos específicos a sus actividades?"
+msgid "Person|Ok to receive conference-specific mails?"
+msgstr "¿Recibir correos específicos para sus actividades?"
 
 #: app/models/person.rb:-
-msgid "Person|Ok general mails"
+msgid "Person|OK to receive general mails?"
 msgstr "¿Recibir correos generales?"
 
 #: app/models/person.rb:-
@@ -145,7 +145,7 @@ msgid "Conference|Name"
 msgstr "Nombre"
 
 #: app/models/person.rb:-
-msgid "Conference|Descr"
+msgid "Conference|Description"
 msgstr "Descripción"
 
 #: app/models/person.rb:-
@@ -153,19 +153,19 @@ msgid "Conference|Homepage"
 msgstr "Página de inicio"
 
 #: app/models/person.rb:-
-msgid "Conference|Reg open date"
+msgid "Conference|Registration opening date"
 msgstr "Fecha de inicio del registro"
 
 #: app/models/person.rb:-
-msgid "Conference|Reg close date"
+msgid "Conference|Registration closing date"
 msgstr "Fecha de cierre de registro"
 
 #: app/models/person.rb:-
-msgid "Conference|Cfp open date"
+msgid "Conference|Call for Papers opening date"
 msgstr "Fecha de inicio de la convocatoria de propuestas"
 
 #: app/models/person.rb:-
-msgid "Conference|Cfp close date"
+msgid "Conference|Call for papers closing date"
 msgstr "Fecha de cierre de convocatoria de propuestas"
 
 #: app/models/person.rb:-
@@ -242,7 +242,7 @@ msgid "SysConf|Key"
 msgstr "Llave"
 
 #: app/models/sys_conf.rb:-
-msgid "SysConf|Descr"
+msgid "SysConf|Description"
 msgstr "Descripción"
 
 #: app/models/sys_conf.rb:-
@@ -290,11 +290,11 @@ msgid "timeslot"
 msgstr "horario"
 
 #: app/models/timeslot.rb:-
-msgid "Timeslot|Tolerance pre"
+msgid "Timeslot|Tolerance (pre)"
 msgstr "Tolerancia (pre)"
 
 #: app/models/timeslot.rb:-
-msgid "Timeslot|Tolerance post"
+msgid "Timeslot|Tolerance (post)"
 msgstr "Tolerancia (post)"
 
 #: app/models/timeslot.rb:-
@@ -382,11 +382,11 @@ msgid "Proposal|Updated at"
 msgstr "Última actualización"
 
 #: app/models/proposal.rb:-
-msgid "Proposal|Prop type"
+msgid "Proposal|Proposal type"
 msgstr "Tipo de la propuesta"
 
 #: app/models/proposal.rb:-
-msgid "Proposal|Prop status"
+msgid "Proposal|Proposal status"
 msgstr "Estado de la propuesta"
 
 #: app/models/proposal.rb:-
@@ -410,19 +410,19 @@ msgid "nametag format"
 msgstr "formato de personalizador"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Name"
+msgid "NametagFormat|Format name"
 msgstr "Nombre del formato"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|H size"
+msgid "NametagFormat|Horizontal size"
 msgstr "Tamaño horizontal"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|V size"
+msgid "NametagFormat|Vertical size"
 msgstr "Tamaño vertical"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|V gap"
+msgid "NametagFormat|Vertical gap"
 msgstr "Separación vertical"
 
 #: app/models/nametag_format.rb:-
@@ -430,35 +430,31 @@ msgid "NametagFormat|Name width"
 msgstr "Ancho del nombre"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|H start"
+msgid "NametagFormat|Horizontal start"
 msgstr "Inicio horizontal"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|V start"
+msgid "NametagFormat|Vertical start"
 msgstr "Inicio vertical"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Id bar hpos"
+msgid "NametagFormat|Barcode horizontal position"
 msgstr "Posición horizontal del código de barras"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Id bar vpos"
-msgstr "Posición vertical del código de barras"
-
-#: app/models/nametag_format.rb:-
-msgid "NametagFormat|Id bar orient"
+msgid "NametagFormat|Barcode orientation"
 msgstr "Orientación del código de barras"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Id bar narrow"
+msgid "NametagFormat|Barcode narrow bars width"
 msgstr "Ancho de las barras delgadas"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Id bar wide"
+msgid "NametagFormat|Barcode wide bars width"
 msgstr "Ancho de las barras gruesas"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Id bar height"
+msgid "NametagFormat|Barcode height"
 msgstr "Altura del código de barras"
 
 #: app/models/nametag_format.rb:-
@@ -510,15 +506,15 @@ msgid "CertifFormatLine|Content"
 msgstr "Contenido"
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|X pos"
+msgid "CertifFormatLine|Horizontal position"
 msgstr "Posición horizontal"
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Y pos"
+msgid "CertifFormatLine|Vertical position"
 msgstr "Posición vertical"
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Max width"
+msgid "CertifFormatLine|Maximum width"
 msgstr "Ancho máximo"
 
 #: app/models/certif_format_line.rb:-
@@ -530,7 +526,7 @@ msgid "CertifFormatLine|Justification"
 msgstr "Justificación"
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Certif format"
+msgid "CertifFormatLine|Certificate format"
 msgstr "Formato de certificado"
 
 #: app/models/certif_format_line.rb:4
@@ -596,7 +592,7 @@ msgid "Logo|Data"
 msgstr "Datos"
 
 #: app/models/logo.rb:-
-msgid "Logo|Thumb"
+msgid "Logo|Thumbnail"
 msgstr "Reducido"
 
 #: app/models/logo.rb:-
@@ -982,6 +978,8 @@ msgid "Take attendance"
 msgstr "Tomar asistencia"
 
 #: app/controllers/attendance_adm_controller.rb:5
+#: app/helpers/conferences_helper.rb:91
+#: app/views/attendance_adm/list.html.erb:1
 msgid "Attendance lists"
 msgstr "Listas de asistencia"
 
@@ -993,43 +991,39 @@ msgstr "Formatos de certificado"
 msgid "Please select a timeslot to take attendance for"
 msgstr "Seleccione una sesión para la cual tomar asistencia"
 
-#: app/controllers/attendance_adm_controller.rb:69
-msgid "Could not find which conference to report"
-msgstr "Imposible identificar qué actividad reportar"
-
-#: app/controllers/attendance_adm_controller.rb:83
+#: app/controllers/attendance_adm_controller.rb:78
 msgid "Invalid timeslot requested"
 msgstr "Especificó una sesión inválida"
 
-#: app/controllers/attendance_adm_controller.rb:141
+#: app/controllers/attendance_adm_controller.rb:136
 msgid "Format updated successfully"
 msgstr "El formato ha sido actualizado exitosamente"
 
-#: app/controllers/attendance_adm_controller.rb:248
+#: app/controllers/attendance_adm_controller.rb:243
 msgid "This person has already been registered for this timeslot. No action taken."
 msgstr "La persona especificada ya había sido registrada para esta sesión. No se llevó a cabo ninguna acción."
 
-#: app/controllers/attendance_adm_controller.rb:259
+#: app/controllers/attendance_adm_controller.rb:254
 msgid "<em>%s</em> is not registered for <em>%s</em>, and registrations are closed."
 msgstr "La persona <em>%s</em> no estaba aún registrada para esta actividad, y el registro está cerrado"
 
-#: app/controllers/attendance_adm_controller.rb:265
+#: app/controllers/attendance_adm_controller.rb:260
 msgid "Person <em>%s</em> was not yet registered for this conference - Registering."
 msgstr "La persona <em>%s</em> no estaba aún registrada para esta actividad - Registrando."
 
-#: app/controllers/attendance_adm_controller.rb:271
+#: app/controllers/attendance_adm_controller.rb:266
 msgid "Attendance successfully registered"
 msgstr "La asistencia fue registrada exitosamente"
 
-#: app/controllers/attendance_adm_controller.rb:273
+#: app/controllers/attendance_adm_controller.rb:268
 msgid "Could not register person <em>%s</em> for this timeslot: %s"
 msgstr "No fue posible registrar a la persona <em>%s</em> para esta sesión: %s"
 
-#: app/controllers/attendance_adm_controller.rb:291
+#: app/controllers/attendance_adm_controller.rb:286
 msgid "Invalid person specified"
 msgstr "Especificó a una persona inexistente"
 
-#: app/controllers/attendance_adm_controller.rb:298
+#: app/controllers/attendance_adm_controller.rb:293
 msgid "Invalid format specified"
 msgstr "Especificó un formato inexistente"
 
@@ -1453,7 +1447,7 @@ msgstr "Editar la actividad"
 msgid "Edit timeslots"
 msgstr "Editar horarios"
 
-#: app/helpers/conferences_helper.rb:109
+#: app/helpers/conferences_helper.rb:112
 msgid "Invalid logo size specified: %s"
 msgstr "Especificó un tamaño de logotipo inválido: %s"
 
@@ -1823,25 +1817,29 @@ msgstr "Orientación"
 msgid "Are you sure you want to delete this format?"
 msgstr "¿Está seguro de que desea eliminar este formato?"
 
-#: app/views/attendance_adm/list.html.erb:1
+#: app/views/attendance_adm/list.html.erb:2
 msgid "Attendance list for <em>%s</em>"
 msgstr "Lista de asistencia para <em>%s</em>"
 
-#: app/views/attendance_adm/list.html.erb:3
-msgid "Select any other conference you want the attendance list for"
-msgstr "Seleccione otra actividad para la cual quiera la lista de asistencia"
-
-#: app/views/attendance_adm/list.html.erb:13
+#: app/views/attendance_adm/list.html.erb:5
 msgid "Attendance distribution for %d registered timeslots"
 msgstr "Distribución de asistencias para las %d sesiones registradas"
 
-#: app/views/attendance_adm/list.html.erb:19
+#: app/views/attendance_adm/list.html.erb:11
 msgid "No attendances registered"
 msgstr "No hay asistentes registrados"
 
-#: app/views/attendance_adm/list.html.erb:21
+#: app/views/attendance_adm/list.html.erb:13
 msgid "Full listing, ordered by number of attendances"
 msgstr "Listado completo, ordenado por el número de asistencias"
+
+#: app/views/attendance_adm/list.html.erb:26
+msgid "No conferences have yet attendance lists"
+msgstr "Ninguna de las actividades tiene aún listas de asistencia"
+
+#: app/views/attendance_adm/list.html.erb:28
+msgid "Select any other conference you want the attendance list for"
+msgstr "Seleccione otra actividad para la cual quiera la lista de asistencia"
 
 #: app/views/attendance_adm/att_by_tslot.html.erb:1
 msgid "Attendance listing by timeslot"
