@@ -1336,6 +1336,14 @@ msgstr "-"
 msgid "%s or %s if you are interested in attending this conference"
 msgstr "Si está interesado en participar en esta actividad, %s o %s"
 
+#: app/helpers/application_helper.rb:66
+msgid "Please register"
+msgstr "Por favor regístrese"
+
+#: app/helpers/application_helper.rb:68
+msgid "log in"
+msgstr "inicie sesión"
+
 #: app/helpers/application_helper.rb:85
 #: app/views/attendance_adm/_list_by_attendances.html.erb:3
 msgid "Show"

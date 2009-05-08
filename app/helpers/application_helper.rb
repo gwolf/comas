@@ -63,9 +63,9 @@ module ApplicationHelper
     return '' if @user
     '<div class="note">' << 
       (_('%s or %s if you are interested in attending this conference') %
-       [ link_to('Please register', :controller => '/people', 
+       [ link_to(_('Please register'), :controller => '/people', 
                  :action => 'new'),
-         link_to('log in', :controller => '/people',
+         link_to(_('log in'), :controller => '/people',
                  :action => 'login') ]) << '</div>'
   end
 
