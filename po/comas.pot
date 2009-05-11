@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2009-05-08 18:30-0500\n"
+"POT-Creation-Date: 2009-05-11 12:56-0500\n"
 "PO-Revision-Date: 2008-05-07 18:30-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,7 +24,7 @@ msgid "Document|Filename"
 msgstr ""
 
 #: app/models/document.rb:-
-msgid "Document|Description"
+msgid "Document|Descr"
 msgstr ""
 
 #: app/models/document.rb:-
@@ -72,7 +72,7 @@ msgid "certif format"
 msgstr ""
 
 #: app/models/certif_format.rb:-
-msgid "CertifFormat|Format name"
+msgid "CertifFormat|Name"
 msgstr ""
 
 #: app/models/certif_format.rb:-
@@ -93,7 +93,7 @@ msgstr ""
 
 #: app/models/person.rb:-
 #, fuzzy
-msgid "AdminTask|System name"
+msgid "AdminTask|Sys name"
 msgstr "System configuration"
 
 #: app/models/person.rb:-
@@ -105,15 +105,15 @@ msgid "Person|Login"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|Password"
+msgid "Person|Passwd"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|First name"
+msgid "Person|Firstname"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|Family name"
+msgid "Person|Famname"
 msgstr ""
 
 #: app/models/person.rb:-
@@ -121,7 +121,7 @@ msgid "Person|Email"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|Random password salt"
+msgid "Person|Pw salt"
 msgstr ""
 
 #: app/models/person.rb:-
@@ -133,11 +133,11 @@ msgid "Person|Last login at"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|Ok to receive conference-specific mails?"
+msgid "Person|Ok conf mails"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|OK to receive general mails?"
+msgid "Person|Ok general mails"
 msgstr ""
 
 #: app/models/person.rb:-
@@ -149,7 +149,7 @@ msgid "Conference|Name"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Description"
+msgid "Conference|Descr"
 msgstr ""
 
 #: app/models/person.rb:-
@@ -157,19 +157,19 @@ msgid "Conference|Homepage"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Registration opening date"
+msgid "Conference|Reg open date"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Registration closing date"
+msgid "Conference|Reg close date"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Call for Papers opening date"
+msgid "Conference|Cfp open date"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Call for papers closing date"
+msgid "Conference|Cfp close date"
 msgstr ""
 
 #: app/models/person.rb:-
@@ -247,7 +247,7 @@ msgid "SysConf|Key"
 msgstr ""
 
 #: app/models/sys_conf.rb:-
-msgid "SysConf|Description"
+msgid "SysConf|Descr"
 msgstr ""
 
 #: app/models/sys_conf.rb:-
@@ -268,6 +268,36 @@ msgstr ""
 
 #: app/models/notification.rb:59
 msgid "Invitation to %s, sent by %s"
+msgstr ""
+
+#: app/models/notification.rb:75
+msgid "general information mails"
+msgstr ""
+
+#: app/models/notification.rb:87
+msgid "mails regarding the conferences they have signed up for"
+msgstr ""
+
+#: app/models/notification.rb:129
+msgid ""
+"============================================================\n"
+"\n"
+"This mail was sent via the Conference Administration System at %s. It is "
+"sent only to people who agreed to receive %s. If you do not want to recive "
+"them, please log in to:\n"
+"\n"
+"%s\n"
+"\n"
+"Select the \"%s\" link, and specify which kind of mails you are interested "
+"in receiving.\n"
+"\n"
+"This mail was sent to you by %s, local administrator for this system. If you "
+"want to directly contact %s, the registered mail address is %s.\n"
+msgstr ""
+
+#: app/models/notification.rb:139 app/controllers/application.rb:77
+#: app/views/people/personal.html.erb:1
+msgid "Personal information"
 msgstr ""
 
 #: app/models/attendance.rb:-
@@ -295,11 +325,11 @@ msgid "timeslot"
 msgstr ""
 
 #: app/models/timeslot.rb:-
-msgid "Timeslot|Tolerance (pre)"
+msgid "Timeslot|Tolerance pre"
 msgstr ""
 
 #: app/models/timeslot.rb:-
-msgid "Timeslot|Tolerance (post)"
+msgid "Timeslot|Tolerance post"
 msgstr ""
 
 #: app/models/timeslot.rb:-
@@ -387,11 +417,11 @@ msgid "Proposal|Updated at"
 msgstr ""
 
 #: app/models/proposal.rb:-
-msgid "Proposal|Proposal type"
+msgid "Proposal|Prop type"
 msgstr ""
 
 #: app/models/proposal.rb:-
-msgid "Proposal|Proposal status"
+msgid "Proposal|Prop status"
 msgstr ""
 
 #: app/models/proposal.rb:-
@@ -416,19 +446,19 @@ msgid "nametag format"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Format name"
+msgid "NametagFormat|Name"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Horizontal size"
+msgid "NametagFormat|H size"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Vertical size"
+msgid "NametagFormat|V size"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Vertical gap"
+msgid "NametagFormat|V gap"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
@@ -436,31 +466,35 @@ msgid "NametagFormat|Name width"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Horizontal start"
+msgid "NametagFormat|H start"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Vertical start"
+msgid "NametagFormat|V start"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Barcode horizontal position"
+msgid "NametagFormat|Id bar hpos"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Barcode orientation"
+msgid "NametagFormat|Id bar vpos"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Barcode narrow bars width"
+msgid "NametagFormat|Id bar orient"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Barcode wide bars width"
+msgid "NametagFormat|Id bar narrow"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Barcode height"
+msgid "NametagFormat|Id bar wide"
+msgstr ""
+
+#: app/models/nametag_format.rb:-
+msgid "NametagFormat|Id bar height"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
@@ -512,15 +546,15 @@ msgid "CertifFormatLine|Content"
 msgstr ""
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Horizontal position"
+msgid "CertifFormatLine|X pos"
 msgstr ""
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Vertical position"
+msgid "CertifFormatLine|Y pos"
 msgstr ""
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Maximum width"
+msgid "CertifFormatLine|Max width"
 msgstr ""
 
 #: app/models/certif_format_line.rb:-
@@ -532,7 +566,7 @@ msgid "CertifFormatLine|Justification"
 msgstr ""
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Certificate format"
+msgid "CertifFormatLine|Certif format"
 msgstr ""
 
 #: app/models/certif_format_line.rb:4
@@ -596,7 +630,7 @@ msgid "Logo|Data"
 msgstr ""
 
 #: app/models/logo.rb:-
-msgid "Logo|Thumbnail"
+msgid "Logo|Thumb"
 msgstr ""
 
 #: app/models/logo.rb:-
@@ -680,13 +714,9 @@ msgid "Log in"
 msgstr ""
 
 #: app/controllers/application.rb:73
-#: app/views/notification/conference_invitation.text.plain.erb:22
+#: app/views/notification/conference_invitation.text.plain.erb:16
 #: app/views/people/new.html.erb:1
 msgid "New account"
-msgstr ""
-
-#: app/controllers/application.rb:77 app/views/people/personal.html.erb:1
-msgid "Personal information"
 msgstr ""
 
 #: app/controllers/application.rb:79 app/views/people/password.html.erb:24
@@ -779,29 +809,32 @@ msgid ""
 "deleted?"
 msgstr ""
 
-#: app/controllers/conferences_adm_controller.rb:128
-#: app/controllers/people_adm_controller.rb:131
-msgid "You must specify both email title and body"
+#: app/controllers/conferences_adm_controller.rb:129
+msgid ""
+"You must specify email title and body, and select at least one conference to "
+"mail to."
 msgstr ""
 
-#: app/controllers/conferences_adm_controller.rb:133
-msgid "Invalid conference specified"
+#: app/controllers/conferences_adm_controller.rb:137
+msgid "Invalid conference specified: %s"
 msgstr ""
 
-#: app/controllers/conferences_adm_controller.rb:143
+#: app/controllers/conferences_adm_controller.rb:149
 #: app/controllers/people_adm_controller.rb:140
 msgid ""
 "User %s (ID: %s) is registered with an invalid email address (%s). "
 "Skipping..."
 msgstr ""
 
-#: app/controllers/conferences_adm_controller.rb:150
+#: app/controllers/conferences_adm_controller.rb:156
 msgid ""
-"No registered attendees for %s have chosen to receive mails - Not sending."
+"No registered attendees for the requested conferences have chosen to receive "
+"mails - Not sending."
 msgstr ""
 
-#: app/controllers/conferences_adm_controller.rb:153
-msgid "The %d requested mails for \"%s\" attendees have been sent."
+#: app/controllers/conferences_adm_controller.rb:160
+#: app/controllers/people_adm_controller.rb:146
+msgid "The %d requested mails have been sent."
 msgstr ""
 
 #: app/controllers/proposals_controller.rb:15
@@ -1098,8 +1131,8 @@ msgstr ""
 msgid "Error removing requested attendee: "
 msgstr ""
 
-#: app/controllers/people_adm_controller.rb:146
-msgid "The %d requested mails have been sent."
+#: app/controllers/people_adm_controller.rb:131
+msgid "You must specify both email title and body"
 msgstr ""
 
 #: app/controllers/sys_conf_adm_controller.rb:14
@@ -2132,7 +2165,7 @@ msgid ""
 msgstr ""
 
 #: app/views/people_adm/mass_mail.html.erb:10
-#: app/views/conferences_adm/mail_attendees.html.erb:12
+#: app/views/conferences_adm/mail_attendees.html.erb:11
 #: app/views/people/proposals.html.erb:14 app/views/people/profile.html.erb:10
 #: app/views/proposals/by_author.html.erb:10
 #: app/views/conferences/proposals.html.erb:8
@@ -2140,19 +2173,19 @@ msgid "Title"
 msgstr ""
 
 #: app/views/people_adm/mass_mail.html.erb:11
-#: app/views/conferences_adm/mail_attendees.html.erb:13
+#: app/views/conferences_adm/mail_attendees.html.erb:12
 msgid "Mail body"
 msgstr ""
 
 #: app/views/people_adm/mass_mail.html.erb:13
-#: app/views/conferences_adm/mail_attendees.html.erb:15
+#: app/views/conferences_adm/mail_attendees.html.erb:14
 msgid ""
 "Please enter the body for the mass-mailing you will send. General "
 "information regarding this site will be automatically added."
 msgstr ""
 
 #: app/views/people_adm/mass_mail.html.erb:16
-#: app/views/conferences_adm/mail_attendees.html.erb:18
+#: app/views/conferences_adm/mail_attendees.html.erb:17
 msgid "Send mail"
 msgstr ""
 
@@ -2244,38 +2277,6 @@ msgid ""
 "\n"
 msgstr ""
 
-#: app/views/notification/admin_mail.text.plain.erb:1
-msgid ""
-"Hi, \n"
-"\n"
-"This is an auto-generated mail, sent by the conference administration\n"
-"system for the Conference Management System at %s."
-msgstr ""
-
-#: app/views/notification/admin_mail.text.plain.erb:6
-#: app/views/notification/conf_attendees_mail.text.plain.erb:6
-msgid ""
-"You are getting this mail because you stated in your personal\n"
-"profile you agreed to receive general information - You can select not\n"
-"to receive any more mails by logging in at the following URL, and\n"
-"clicking on the \"%s\" link:"
-msgstr ""
-
-#: app/views/notification/admin_mail.text.plain.erb:13
-msgid ""
-"%s, administrator for the Conference Management System,\n"
-"requested the following message to be delivered to registered people\n"
-"who chose to receive informative mails:"
-msgstr ""
-
-#: app/views/notification/admin_mail.text.plain.erb:23
-#: app/views/notification/conference_invitation.text.plain.erb:24
-#: app/views/notification/conf_attendees_mail.text.plain.erb:23
-msgid ""
-"If you want to directly contact %s, the registered mail address\n"
-"is %s."
-msgstr ""
-
 #: app/views/notification/added_as_coauthor.text.plain.erb:1
 msgid ""
 "Hi, %s\n"
@@ -2299,43 +2300,33 @@ msgid ""
 "\n"
 msgstr ""
 
-#: app/views/notification/conference_invitation.text.plain.erb:1
-#: app/views/notification/conf_attendees_mail.text.plain.erb:1
+#: app/views/notification/conference_invitation.text.plain.erb:4
 msgid ""
-"Hi, \n"
-"\n"
 "This is an auto-generated mail, sent by the conference administration\n"
 "system for %s."
 msgstr ""
 
-#: app/views/notification/conference_invitation.text.plain.erb:6
+#: app/views/notification/conference_invitation.text.plain.erb:7
 msgid ""
 "The reason you are getting this mail is because %s\n"
 "(a registered user for this conference) considered it could be\n"
 "interesting for you."
 msgstr ""
 
-#: app/views/notification/conference_invitation.text.plain.erb:10
+#: app/views/notification/conference_invitation.text.plain.erb:11
 msgid "For further information on the conference, please enter:"
 msgstr ""
 
-#: app/views/notification/conference_invitation.text.plain.erb:14
-msgid ""
-"The person that invited you provided requested the following text to\n"
-"be sent to you:"
-msgstr ""
-
-#: app/views/notification/conference_invitation.text.plain.erb:21
+#: app/views/notification/conference_invitation.text.plain.erb:15
 msgid ""
 "In case you are interested, you can register for it by creating an\n"
 "account, by clicking on the \"%s\" link."
 msgstr ""
 
-#: app/views/notification/conf_attendees_mail.text.plain.erb:13
+#: app/views/notification/conference_invitation.text.plain.erb:18
 msgid ""
-"%s, administrator for the Conference Management System,\n"
-"requested the following message to be delivered to registered people\n"
-"who chose to receive conference-specific mails:"
+"If you want to directly contact %s, the registered mail address\n"
+"is %s."
 msgstr ""
 
 #: app/views/conferences_adm/mail_attendees.html.erb:1
@@ -2343,7 +2334,7 @@ msgid "Mail a conference's registered attendees"
 msgstr ""
 
 #: app/views/conferences_adm/mail_attendees.html.erb:7
-msgid "Choose which conference's attendees to mail"
+msgid "Choose which conferences' attendees to mail"
 msgstr ""
 
 #: app/views/conferences_adm/people_list.html.erb:1

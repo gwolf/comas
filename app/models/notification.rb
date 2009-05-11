@@ -132,8 +132,10 @@ This mail was sent via the Conference Administration System at %s. It is sent on
 
 %s
 
+Select the "%s" link, and specify which kind of mails you are interested in receiving.
+
 This mail was sent to you by %s, local administrator for this system. If you want to directly contact %s, the registered mail address is %s.
 ') % [ SysConf.value_for('title_text'), mail_type, login_url,
-       sender.name, sender.name, sender.email]
+       _('Personal information'), sender.name, sender.name, sender.email]
   end
 end
