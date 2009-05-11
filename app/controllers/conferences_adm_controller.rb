@@ -124,20 +124,26 @@ class ConferencesAdmController < Admin
     return true unless request.post?
 
     if params[:title].nil? or params[:title].empty? or 
-        params[:body].nil? or params[:body].empty?
-      flash[:error] << _('You must specify both email title and body')
+        params[:body].nil? or params[:body].empty? or
+        params[:dest_conf_ids].nil? or params[:dest_conf_ids].empty?
+      flash[:error] << _('You must specify email title and body, and select ' +
+                         'at least one conference to mail to.')
       return false
     end
 
-    unless conf = Conference.find_by_id(params[:dest_conf_id])
-      flash[:error] << _('Invalid conference specified')
+    begin
+      confs = params[:dest_conf_ids].map {|c| Conference.find_by_id(c)}
+    rescue ActiveRecord::RecordNotFound, ActiveRecord::StatementInvalid => err
+      flash[:error] << _('Invalid conference specified: %s') % err.message
       return false
     end
 
-    rcpts = conf.people_for_mailing
+    # Only one mail per person, no matter to how many conferences he
+    # has registered to
+    rcpts = confs.map {|c| c.people_for_mailing}.flatten.uniq
     rcpts.each do |rcpt|
       begin
-        Notification.deliver_conf_attendees_mail(@user, rcpt, conf,
+        Notification.deliver_conf_attendees_mail(@user, rcpt, confs,
                                        params[:title], params[:body])
       rescue Notification::InvalidEmail
         flash[:warning] << _('User %s (ID: %s) is registered with an ' +
@@ -147,11 +153,11 @@ class ConferencesAdmController < Admin
     end
 
     if rcpts.empty?
-      flash[:notice] << _('No registered attendees for %s have chosen to '+
-                          'receive mails - Not sending.') % conf.name
+      flash[:notice] << _('No registered attendees for the requested ' +
+                          'conferences have chosen to receive mails - ' +
+                          'Not sending.') 
     else
-      flash[:notice] << _('The %d requested mails for "%s" attendees have ' +
-                          'been sent.') % [rcpts.size, conf.name]
+      flash[:notice] << _('The %d requested mails have been sent.')%rcpts.size
     end
     redirect_to :action => 'list'
   end

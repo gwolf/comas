@@ -72,27 +72,21 @@ class Notification < ActionMailer::Base
     recipients dest.name_and_email
     from comas_mail_from
     subject comas_title(title)
-    body(:comas_title => SysConf.value_for('title_text'),
-         :mail_title => title,
-         :mail_body => mail_body,
-         :admin_name => sender.name,
-         :admin_mail => sender.email,
-         :login_url => login_url)
+    body(:disclaimer => mail_disclaimer(_('general information mails'),
+                                        sender),
+         :mail_body => mail_body)
   end
 
   # Mail sent to registered conference membres (who opted in)
-  def conf_attendees_mail(sender, dest, conf, title, mail_body)
+  def conf_attendees_mail(sender, dest, confs, title, mail_body)
     checks_for_open_mails(dest.email, mail_body)
 
     recipients dest.name_and_email
     from comas_mail_from
     subject comas_title(title)
-    body(:conf_name => conf.name,
-         :conf_url => conf_url(conf),
-         :mail_title => title,
-         :mail_body => mail_body,
-         :admin_name => sender.name,
-         :admin_mail => sender.email)
+    body(:disclaimer => mail_disclaimer(_('mails regarding the conferences ' +
+                                          'they have signed up for'), sender),
+         :mail_body => mail_body)
   end
 
   private
@@ -127,5 +121,19 @@ class Notification < ActionMailer::Base
   def comas_mail_from
     '%s <%s>' % [SysConf.value_for('title_text'), 
                  SysConf.value_for('mail_from')]
+  end
+
+  # Informative text regarding why this mail is sent to a person and
+  # detailing how to desubscribe
+  def mail_disclaimer(mail_type, sender)
+    text = _('============================================================
+
+This mail was sent via the Conference Administration System at %s. It is sent only to people who agreed to receive %s. If you do not want to recive them, please log in to:
+
+%s
+
+This mail was sent to you by %s, local administrator for this system. If you want to directly contact %s, the registered mail address is %s.
+') % [ SysConf.value_for('title_text'), mail_type, login_url,
+       sender.name, sender.name, sender.email]
   end
 end
