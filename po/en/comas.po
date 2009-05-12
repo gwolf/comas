@@ -1385,11 +1385,11 @@ msgid "-"
 msgstr ""
 
 #: app/helpers/application_helper.rb:65
-msgid "%s or %s if you are interested in attending this conference"
+msgid "Please %s or %s if you are interested in attending"
 msgstr ""
 
 #: app/helpers/application_helper.rb:66
-msgid "Please register"
+msgid "register"
 msgstr ""
 
 #: app/helpers/application_helper.rb:68

@@ -1362,12 +1362,12 @@ msgid "-"
 msgstr "-"
 
 #: app/helpers/application_helper.rb:65
-msgid "%s or %s if you are interested in attending this conference"
-msgstr "Si está interesado en participar en esta actividad, %s o %s"
+msgid "Please %s or %s if you are interested in attending"
+msgstr "Si está interesado en participar, por favor %s o %s"
 
 #: app/helpers/application_helper.rb:66
-msgid "Please register"
-msgstr "Por favor regístrese"
+msgid "register"
+msgstr "regístrese"
 
 #: app/helpers/application_helper.rb:68
 msgid "log in"

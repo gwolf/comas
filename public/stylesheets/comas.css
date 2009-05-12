@@ -21,7 +21,7 @@ body {
 #header { 
           border-collapse: collapse;
           width: 100%;
-          color: #face89;
+          color: #face78;
           background: #5c5c8b;
           padding-bottom: 0.3em;
           font-size: 150%;
@@ -50,7 +50,7 @@ body {
 }
 
 #locales a { 
-          color: #face89; 
+          color: #face78; 
 }
 
 /* Login request */
@@ -273,6 +273,13 @@ td, th {
 .note { 
     font-style: italic;
     font-size: 70%;
+}
+
+.please-register {  
+    color: #c00;
+    font-size: 80%;
+    text-align: right;
+    margin: 0.3em;
 }
 
 .comas-show-prompt {  

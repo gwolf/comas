@@ -5,16 +5,8 @@
      title = _'Upcoming conferences'
      link = link_to _('Show also past conferences'), :show_old => 1 
    end %>
+<%= link_to_login_or_new if @user.nil? %>
 <h1><%= title %></h1>
-<% if @user.nil? %>
-<p class="note">
-  <%= _('To register for any of the conferences shown, please %s or %s') %
-        [ link_to(_('create a new account'), 
-                  :controller => 'people', :action => 'new'),
-          link_to(_('log in to your account'), 
-                  :controller => 'people', :action => 'login') ]
-      %></p>
-<% end %>
 <%= pagination_header @conferences %>
 <%= will_paginate @conferences %>
 <%= conf_list_table @conferences %>
