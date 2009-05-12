@@ -112,7 +112,6 @@ body {
 
 #main { float: left;
         background-repeat: repeat-y;
-        min-height: 500px;
         background-color:#FFF;
 	font-family: Verdana, "Trebuchet MS", Arial, sans-serif;
 	font-size:90%;
