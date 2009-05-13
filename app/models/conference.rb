@@ -134,7 +134,7 @@ class Conference < ActiveRecord::Base
   # conference beginning date as a deadline (i.e. no proposals might
   # be submitted once the conference has started)
   def accepts_proposals?
-    return false unless !has_cfp?
+    return false unless has_cfp?
     Date.today.between?(cfp_open_date || Date.today,
                         last_cfp_date || Date.today)
   end
@@ -142,15 +142,24 @@ class Conference < ActiveRecord::Base
   # Does this conference have a Call For Papers period? (even if it is
   # not current) 
   def has_cfp?
-    return false if cfp_open_date.nil? and cfp_close_date.nil?
-    true
+    !(cfp_open_date.nil? and cfp_close_date.nil?)
   end
 
   # What is the last valid date for the Call For Papers period? This
   # will return cfp_close_date if defined, or the conference beginning
-  # date otherwise
+  # date otherwise. If the conference does not accept proposals (see
+  # #has_cfp?), returns nil.
   def last_cfp_date
+    return nil unless has_cfp?
     cfp_close_date || begins
+  end
+
+  # How far is the CfP deadline in the future? (in days) 
+  # Returns nil if the CfP deadline has already passed
+  def cfp_deadline_in
+    deadline = last_cfp_date
+    return nil if deadline.nil? or Date.today > deadline 
+    (deadline - Date.today).to_i
   end
 
   # Is this conference taking place now?

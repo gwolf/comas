@@ -12,6 +12,9 @@ ActionController::Routing::Routes.draw do |map|
   map.connect('proposals/:id/doc/:document_id', 
               :controller => 'proposals',
               :action => 'get_document')
+  map.connect('proposals/:conference_id/new',
+              :controller => 'proposals',
+              :action => 'new')
 
   map.connect('sys_conf_adm/list_people_fields',
               :controller => 'sys_conf_adm',

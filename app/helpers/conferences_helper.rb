@@ -18,13 +18,15 @@ module ConferencesHelper
   end
 
   def conf_list_row(conf)
+    links = [sign_up_person_for_conf_link(@user, conf), cfp_link_for(conf)]
+
     table_row_tag <<
       [logo_thumb_for(conf),
        link_to(conf.name, :controller => 'conferences', 
                 :action => 'show', 
                 :short_name => conf.short_name),
         "#{conf.begins} - #{conf.finishes}",
-        sign_up_person_for_conf_link(@user, conf)
+       links.select {|elem| elem}.join(' - ')
       ].map {|col| "<td>#{col}</td>"}.join <<
       end_table_row_tag
   end
@@ -37,14 +39,18 @@ module ConferencesHelper
       return _('Registration closed')
     end
 
-    if user.conferences.include? conf
-      return link_to(_('Unregister'),
-                     { :controller => 'conferences',
-                       :action => 'unregister',
-                       :id => conf},
-                     { :method => :post,
-                       :confirm => _('Confirm: Do you want to unregister ' +
-                                     'from "%s"? ') % conf.name})
+    if user.conferences.include?(conf)
+      if @user.has_proposal_for?(conf)
+        return _('Registered, proposal submitted')
+      else
+        return link_to(_('Unregister'),
+                       { :controller => 'conferences',
+                         :action => 'unregister',
+                         :id => conf},
+                       { :method => :post,
+                         :confirm => _('Confirm: Do you want to unregister ' +
+                                       'from "%s"? ') % conf.name})
+      end
     else
       return link_to(_('Sign up'),
                      { :controller => 'conferences', 
@@ -52,6 +58,15 @@ module ConferencesHelper
                        :id => conf}, 
                      { :method => :post })
     end
+  end
+
+  def cfp_link_for(conf)
+    return nil unless @user and conf.accepts_proposals? and 
+      @user.conferences.include?(conf)
+    link_to(_('Submit a proposal (%d days left)') % conf.cfp_deadline_in,
+            { :controller => 'proposals',
+              :action => 'new',
+              :conference_id => conf.id})
   end
 
   def all_details_for(conf)
