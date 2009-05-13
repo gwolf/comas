@@ -40,7 +40,8 @@ class Proposal < ActiveRecord::Base
 
   # A proposal should not be moved between different conferences
   def dont_change_conference
-    prev_state = self.class.find_by_id(self.id)
+    prev_state = self.class.find_by_id(self.id) or 
+      return true # Don't barf when we are deleting the proposal
     return true if self.conference_id == prev_state.conference_id
     self.errors.add(:conference_id,
                     _('An already submitted proposal can not be moved ' +

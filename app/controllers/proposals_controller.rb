@@ -1,8 +1,8 @@
 class ProposalsController < ApplicationController
-  before_filter :get_proposal, :except => [:new, :create, :list, :by_author]
+  before_filter :get_proposal, :except => [:new, :create, :by_author]
   before_filter :get_person_by_login, :only => [:author_add, :author_add_confirm]
   before_filter :ck_document, :only => [:get_document, :delete_document]
-  before_filter :ck_ownership, :except => [:new, :create, :show, :list, 
+  before_filter :ck_ownership, :except => [:new, :create, :show, 
                                            :by_author, :get_document]
   class NotPost < Exception; end
   class AlreadyAnAuthor < Exception; end
@@ -12,18 +12,19 @@ class ProposalsController < ApplicationController
   def new
     @confs = @user.conferences_for_submitting
     if @confs.empty?
-      flash[:warnings] << _('There are currently no conferences for which ' +
+      flash[:warning] << _('There are currently no conferences for which ' +
                             'you can submit proposals. Please register first.')
       redirect_to :controller => 'people', :action => 'proposals'
       return false
     end
     @proposal = Proposal.new
+    # If a conference_id is received, set it in the newly created object
     @proposal[:conference_id] = params[:conference_id]
   end
 
   def create
     if ! request.post?
-      redirect_to :action => 'list'
+      redirect_to :controller => 'people', :action => 'proposals'
       return false
     end
 
@@ -48,9 +49,6 @@ class ProposalsController < ApplicationController
 
   def show
     @can_edit = @proposal.people.include?(@user)
-  end
-
-  def list
   end
 
   def edit
@@ -86,23 +84,35 @@ class ProposalsController < ApplicationController
   end
 
   def author_delete
-    redirect_to :action => :authors, :id => @proposal
-    return true unless request.post?
+    unless request.post?
+      redirect_to :action => :authors, :id => @proposal
+      return true 
+    end
 
     auth = Authorship.find_by_id(params[:authorship_id].to_i)
-    unless auth and @proposal.authorships.include? auth
+    person = auth.person
+
+    if auth and @proposal.authorships.include?(auth) 
+      if @proposal.authorships.delete(auth)
+        flash[:notice] << _('Requested author (%s) was successfully removed ' +
+                            'from this proposal') % person.name
+      else
+        flash[:error] << _('Unexpected error removing requested author. ' +
+                           'Please try again, or contact system administrator')
+      end
+
+      if Proposal.find_by_id(@proposal).nil?
+        flash[:warning] << _('The requested proposal has been deleted as its ' + 
+                            'last author was removed.')
+        redirect_to :controller => 'conferences', :action => 'list'
+        return true
+      end
+
       flash[:error] << _('Requested author does not exist or is not listed ' +
                          'in this proposal. Maybe you already deleted him?')
-      return false
     end
 
-    if @proposal.authorships.delete(auth) and @proposal.save
-      flash[:notice] << _('Requested author (%s) was successfully removed ' +
-                          'from this proposal') % auth.person.name
-    else
-      flash[:error] << _('Unexpected error removing requested author. Please ' +
-                         'try again, or contact system administrator')
-    end
+    redirect_to :action => :authors, :id => @proposal
   end
 
   def author_add_confirm
@@ -148,8 +158,8 @@ class ProposalsController < ApplicationController
   def by_author
     @author = Person.find_by_id(params[:author_id].to_i)
     unless @author
-      redirect_to :action => 'list'
-      flash[:error] << _('No author specified - rendering general list')
+      # What can we do? Well, nothing - Back to the conferences listing.
+      redirect_to :controller => 'conferences', :action => 'list'
       return false
     end
 
@@ -200,7 +210,7 @@ class ProposalsController < ApplicationController
 
   protected
   def check_auth
-    public = [:show, :list, :by_author]
+    public = [:show, :by_author]
     return true if public.include? request.path_parameters['action'].to_sym
   end
 
@@ -208,7 +218,7 @@ class ProposalsController < ApplicationController
     @proposal = Proposal.find_by_id(params[:id])
     if @proposal.nil?
       flash[:error] << _('Invalid proposal requested')
-      redirect_to :action => 'list'
+      redirect_to :controller => 'conferences', :action => 'list'
       return false
     end
   end
@@ -217,9 +227,7 @@ class ProposalsController < ApplicationController
     unless @person = Person.find_by_login(params[:login])
       flash[:error] << _('The specified login is not valid or does not match ' +
                          'any valid users')
-      redirect_to ( @proposal ? 
-                    {:action => 'authors', :id => @proposal} :
-                    {:action => 'list'})
+      redirect_to ( :action => 'authors', :id => @proposal)
       return false
     end
   end
