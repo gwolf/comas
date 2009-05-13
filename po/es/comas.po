@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2009-05-11 12:56-0500\n"
-"PO-Revision-Date: 2009-05-11 12:58-0600\n"
+"POT-Creation-Date: 2009-05-13 16:06-0500\n"
+"PO-Revision-Date: 2009-05-13 16:16-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: Gunnar Wolf <gwolf@gwolf.org>\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgid "Document|Filename"
 msgstr "Nombre de archivo"
 
 #: app/models/document.rb:-
-msgid "Document|Descr"
+msgid "Document|Description"
 msgstr "Descripción"
 
 #: app/models/document.rb:-
@@ -69,7 +69,7 @@ msgid "certif format"
 msgstr "formato de certificado"
 
 #: app/models/certif_format.rb:-
-msgid "CertifFormat|Name"
+msgid "CertifFormat|Format name"
 msgstr "Nombre del formato"
 
 #: app/models/certif_format.rb:-
@@ -81,6 +81,14 @@ msgid "CertifFormat|Orientation"
 msgstr "Orientación"
 
 #: app/models/person.rb:-
+msgid "state"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "State|Name"
+msgstr "Nombre"
+
+#: app/models/person.rb:-
 msgid "admin task"
 msgstr "rol administrativo"
 
@@ -89,7 +97,7 @@ msgid "AdminTask|Name"
 msgstr "Nombre"
 
 #: app/models/person.rb:-
-msgid "AdminTask|Sys name"
+msgid "AdminTask|System name"
 msgstr "Nombre de sistema"
 
 #: app/models/person.rb:-
@@ -101,15 +109,15 @@ msgid "Person|Login"
 msgstr "Nombre de usuario"
 
 #: app/models/person.rb:-
-msgid "Person|Passwd"
+msgid "Person| Password"
 msgstr "Contraseña"
 
 #: app/models/person.rb:-
-msgid "Person|Firstname"
+msgid "Person|First name"
 msgstr "Nombre propio"
 
 #: app/models/person.rb:-
-msgid "Person|Famname"
+msgid "Person|Family name"
 msgstr "Apellido"
 
 #: app/models/person.rb:-
@@ -117,7 +125,7 @@ msgid "Person|Email"
 msgstr "Correo electrónico"
 
 #: app/models/person.rb:-
-msgid "Person|Pw salt"
+msgid "Person|Random password salt"
 msgstr "Salt aleatorio de la contraseña"
 
 #: app/models/person.rb:-
@@ -129,12 +137,16 @@ msgid "Person|Last login at"
 msgstr "Última entrada"
 
 #: app/models/person.rb:-
-msgid "Person|Ok conf mails"
-msgstr "¿Recibir correos específicos a sus actividades?"
+msgid "Person|OK to receive mails for the conferences you have signed up for?"
+msgstr "¿Le interesa recibir correos relativos a las actividades para las cuales se registró?"
 
 #: app/models/person.rb:-
-msgid "Person|Ok general mails"
+msgid "Person|OK to receive general mails?"
 msgstr "¿Recibir correos generales?"
+
+#: app/models/person.rb:-
+msgid "Person|State"
+msgstr ""
 
 #: app/models/person.rb:-
 msgid "conference"
@@ -145,7 +157,7 @@ msgid "Conference|Name"
 msgstr "Nombre"
 
 #: app/models/person.rb:-
-msgid "Conference|Descr"
+msgid "Conference|Description"
 msgstr "Descripción"
 
 #: app/models/person.rb:-
@@ -153,19 +165,19 @@ msgid "Conference|Homepage"
 msgstr "Página de inicio"
 
 #: app/models/person.rb:-
-msgid "Conference|Reg open date"
+msgid "Conference|Registration opening date"
 msgstr "Fecha de inicio del registro"
 
 #: app/models/person.rb:-
-msgid "Conference|Reg close date"
+msgid "Conference|Registration closing date"
 msgstr "Fecha de cierre de registro"
 
 #: app/models/person.rb:-
-msgid "Conference|Cfp open date"
+msgid "Conference|Call for Papers opening date"
 msgstr "Fecha de inicio de la convocatoria de propuestas"
 
 #: app/models/person.rb:-
-msgid "Conference|Cfp close date"
+msgid "Conference|Call for papers closing date"
 msgstr "Fecha de cierre de convocatoria de propuestas"
 
 #: app/models/person.rb:-
@@ -196,40 +208,40 @@ msgstr "La actividad %s actualmente no acepta registros"
 msgid "Cannot leave %s - This user still has proposals on this conference"
 msgstr "No puede abandonar %s - El usuario tiene aún propuestas para esta actividad"
 
-#: app/models/conference.rb:213
-#: app/models/conference.rb:214
+#: app/models/conference.rb:222
+#: app/models/conference.rb:223
 msgid "%{fn} can't be blank"
 msgstr "%{fn} requiere ser llenado"
 
-#: app/models/conference.rb:217
+#: app/models/conference.rb:226
 msgid "Conference must end after its start date"
 msgstr "La actividad debe terminar después de su fecha de inicio"
 
-#: app/models/conference.rb:220
+#: app/models/conference.rb:229
 msgid "Call for papers must end after its start date"
 msgstr "La convocatoria de participación debe concluir después de su fecha de inicio"
 
-#: app/models/conference.rb:223
+#: app/models/conference.rb:232
 msgid "Call for papers must finish before the conference begins"
 msgstr "La convocatoria de participación debe concluir antes de que inicie la actividad"
 
-#: app/models/conference.rb:227
+#: app/models/conference.rb:236
 msgid "Registration must end after its start date"
 msgstr "El registro debe concluir después de su fecha de inicio"
 
-#: app/models/conference.rb:230
+#: app/models/conference.rb:239
 msgid "Registration must finish before the conference ends"
 msgstr "El registro debe finalizar antes de que la actividad concluya"
 
-#: app/models/conference.rb:241
+#: app/models/conference.rb:250
 msgid "There are %d timeslots for this conference outside its time span: %s"
 msgstr "Hay %d espacios para esta actividad fuera de sus días: %s"
 
-#: app/models/conference.rb:258
+#: app/models/conference.rb:267
 msgid "This conference does not currently accept registrations"
 msgstr "Esta actividad actualmente no acepta registros"
 
-#: app/models/conference.rb:264
+#: app/models/conference.rb:273
 msgid "Cannot remove %s from this conference - Remove or reassign his proposals first"
 msgstr "No es posible eliminar a %s de esta actividad - Elimine o reasigne sus propuestas primero"
 
@@ -242,7 +254,7 @@ msgid "SysConf|Key"
 msgstr "Llave"
 
 #: app/models/sys_conf.rb:-
-msgid "SysConf|Descr"
+msgid "SysConf|Description"
 msgstr "Descripción"
 
 #: app/models/sys_conf.rb:-
@@ -326,11 +338,11 @@ msgid "timeslot"
 msgstr "horario"
 
 #: app/models/timeslot.rb:-
-msgid "Timeslot|Tolerance pre"
+msgid "Timeslot|Tolerance (pre)"
 msgstr "Tolerancia (pre)"
 
 #: app/models/timeslot.rb:-
-msgid "Timeslot|Tolerance post"
+msgid "Timeslot|Tolerance (post)"
 msgstr "Tolerancia (post)"
 
 #: app/models/timeslot.rb:-
@@ -418,11 +430,11 @@ msgid "Proposal|Updated at"
 msgstr "Última actualización"
 
 #: app/models/proposal.rb:-
-msgid "Proposal|Prop type"
+msgid "Proposal|Proposal type"
 msgstr "Tipo de la propuesta"
 
 #: app/models/proposal.rb:-
-msgid "Proposal|Prop status"
+msgid "Proposal|Proposal status"
 msgstr "Estado de la propuesta"
 
 #: app/models/proposal.rb:-
@@ -437,7 +449,7 @@ msgstr "Actividad"
 msgid "Call for papers period for this conference is not current"
 msgstr "Esta actividad no está dentro del periodo definido para convocatoria de ponencias"
 
-#: app/models/proposal.rb:46
+#: app/models/proposal.rb:47
 msgid "An already submitted proposal can not be moved to a different conference"
 msgstr "Una ponencia ya recibida no puede ser asignada a una actividad diferente"
 
@@ -446,19 +458,19 @@ msgid "nametag format"
 msgstr "formato de personalizador"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Name"
+msgid "NametagFormat|Format name"
 msgstr "Nombre del formato"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|H size"
+msgid "NametagFormat|Horizontal size"
 msgstr "Tamaño horizontal"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|V size"
+msgid "NametagFormat|Vertical size"
 msgstr "Tamaño vertical"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|V gap"
+msgid "NametagFormat|Vertical gap"
 msgstr "Separación vertical"
 
 #: app/models/nametag_format.rb:-
@@ -466,35 +478,35 @@ msgid "NametagFormat|Name width"
 msgstr "Ancho del nombre"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|H start"
+msgid "NametagFormat|Horizontal start"
 msgstr "Inicio horizontal"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|V start"
+msgid "NametagFormat|Vertical start"
 msgstr "Inicio vertical"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Id bar hpos"
-msgstr "Posición horizontal del código de barras"
+msgid "NametagFormat|Horizontal position"
+msgstr "Posición horizontal"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Id bar vpos"
-msgstr "Posición vertical del código de barras"
+msgid "NametagFormat|Vertical position"
+msgstr "Posición vertical"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Id bar orient"
+msgid "NametagFormat|Barcode orientation"
 msgstr "Orientación del código de barras"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Id bar narrow"
+msgid "NametagFormat|Barcode narrow bars width"
 msgstr "Ancho de las barras delgadas"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Id bar wide"
-msgstr "Ancho del código de barras"
+msgid "NametagFormat|Barcode wide bars width"
+msgstr "Ancho de las barras gruesas"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Id bar height"
+msgid "NametagFormat|Barcode height"
 msgstr "Altura del código de barras"
 
 #: app/models/nametag_format.rb:-
@@ -546,15 +558,15 @@ msgid "CertifFormatLine|Content"
 msgstr "Contenido"
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|X pos"
+msgid "CertifFormatLine|Horizontal position"
 msgstr "Posición horizontal"
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Y pos"
+msgid "CertifFormatLine|Vertical position"
 msgstr "Posición vertical"
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Max width"
+msgid "CertifFormatLine|Maximum width"
 msgstr "Ancho máximo"
 
 #: app/models/certif_format_line.rb:-
@@ -566,7 +578,7 @@ msgid "CertifFormatLine|Justification"
 msgstr "Justificación"
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Certif format"
+msgid "CertifFormatLine|Certificate format"
 msgstr "Formato de certificado"
 
 #: app/models/certif_format_line.rb:4
@@ -583,7 +595,7 @@ msgstr "Persona"
 #: app/views/people/proposals.html.erb:15
 #: app/views/people/profile.html.erb:9
 #: app/views/proposals/by_author.html.erb:11
-#: app/views/proposals/_form.html.erb:13
+#: app/views/proposals/_form.html.erb:16
 msgid "Conference"
 msgstr "Actividad"
 
@@ -632,7 +644,7 @@ msgid "Logo|Data"
 msgstr "Datos"
 
 #: app/models/logo.rb:-
-msgid "Logo|Thumb"
+msgid "Logo|Thumbnail"
 msgstr " Reducido"
 
 #: app/models/logo.rb:-
@@ -840,80 +852,80 @@ msgstr "Los %d correos electrónicos fueron enviados exitosamente"
 msgid "There are currently no conferences for which you can submit proposals. Please register first."
 msgstr "En este momento no hay ninguna actividad para la cual usted pueda enviar una ponencia. Por favor, regístrese primero."
 
-#: app/controllers/proposals_controller.rb:38
+#: app/controllers/proposals_controller.rb:39
 msgid "Error saving your proposal: %s"
 msgstr "Error registrando su ponencia: %s"
 
-#: app/controllers/proposals_controller.rb:45
+#: app/controllers/proposals_controller.rb:46
 msgid "Your proposal was successfully registered"
 msgstr "Su ponencia fue registrada exitosamente"
 
-#: app/controllers/proposals_controller.rb:59
+#: app/controllers/proposals_controller.rb:57
 msgid "The proposal has been modified successfully"
 msgstr "Los datos de la ponencia han sido actualizados exitosamente"
 
-#: app/controllers/proposals_controller.rb:62
+#: app/controllers/proposals_controller.rb:60
 msgid "Error updating the proposal: "
 msgstr "Error actualizando do su ponencia: "
 
-#: app/controllers/proposals_controller.rb:94
-msgid "Requested author does not exist or is not listed in this proposal. Maybe you already deleted him?"
-msgstr "El autor especificado no existe o no está registrado en esta propuesta. Posiblemente ya lo había eliminado."
-
-#: app/controllers/proposals_controller.rb:100
+#: app/controllers/proposals_controller.rb:97
 msgid "Requested author (%s) was successfully removed from this proposal"
 msgstr "El autor especificado (%s) fue eliminado exitosamente de esta propuesta"
 
-#: app/controllers/proposals_controller.rb:103
+#: app/controllers/proposals_controller.rb:100
 msgid "Unexpected error removing requested author. Please try again, or contact system administrator"
 msgstr "Error inesperado al eliminar al autor. Por favor intente nuevamente, o contacte al administrador del sistema."
 
-#: app/controllers/proposals_controller.rb:115
-#: app/controllers/proposals_controller.rb:128
+#: app/controllers/proposals_controller.rb:105
+msgid "The requested proposal has been deleted as its last author was removed."
+msgstr "La ponencia indicada ha sido eliminada, dado que su último autor fue removido."
+
+#: app/controllers/proposals_controller.rb:111
+msgid "Requested author does not exist or is not listed in this proposal. Maybe you already deleted him?"
+msgstr "El autor especificado no existe o no está registrado en esta propuesta. Posiblemente ya lo había eliminado."
+
+#: app/controllers/proposals_controller.rb:125
+#: app/controllers/proposals_controller.rb:138
 msgid "The requested author (%s) was already registered as an author for this proposal"
 msgstr "La persona especificada (%s) ya había sido registrada como coautor de esta propuesta"
 
-#: app/controllers/proposals_controller.rb:136
+#: app/controllers/proposals_controller.rb:146
 msgid "Error adding person (%s) to requested proposal: "
 msgstr "Error agregando a esta persona (%s) a la propuesta especificada "
 
-#: app/controllers/proposals_controller.rb:142
+#: app/controllers/proposals_controller.rb:152
 msgid "%s was successfully added as an author to this proposal"
 msgstr "%s fue agregado exitosamente a su propuesta"
 
-#: app/controllers/proposals_controller.rb:152
-msgid "No author specified - rendering general list"
-msgstr "No especificó ningún autor - Presentando la lista general"
-
-#: app/controllers/proposals_controller.rb:182
+#: app/controllers/proposals_controller.rb:192
 msgid "The document was successfully saved"
 msgstr "El documento fue recibido exitosamente"
 
-#: app/controllers/proposals_controller.rb:184
+#: app/controllers/proposals_controller.rb:194
 msgid "Error receiving the document:"
 msgstr "Error recibiendo el documento:"
 
-#: app/controllers/proposals_controller.rb:194
+#: app/controllers/proposals_controller.rb:204
 msgid "The document was successfully deleted"
 msgstr "El archivo especificado fue eliminado exitosamente"
 
-#: app/controllers/proposals_controller.rb:196
+#: app/controllers/proposals_controller.rb:206
 msgid "Error removing requested document. Please try again later, or contact the system administrator."
 msgstr "Error eliminando el documento solicitado. Por favor intente de nuevo, o contacte al administrador del sistema"
 
-#: app/controllers/proposals_controller.rb:210
+#: app/controllers/proposals_controller.rb:220
 msgid "Invalid proposal requested"
 msgstr "Especificó una ponencia inexistente"
 
-#: app/controllers/proposals_controller.rb:218
+#: app/controllers/proposals_controller.rb:228
 msgid "The specified login is not valid or does not match any valid users"
 msgstr "El nombre de usuario especificado no es válido, o no pertenece a ningún usuario registrado"
 
-#: app/controllers/proposals_controller.rb:230
+#: app/controllers/proposals_controller.rb:238
 msgid "Invalid document requested for this proposal"
 msgstr "Solicitó un documento inválido para esta propuesta"
 
-#: app/controllers/proposals_controller.rb:238
+#: app/controllers/proposals_controller.rb:246
 msgid "You are not allowed to modify this proposal"
 msgstr "No está autorizado a modificar esta propuesta"
 
@@ -1013,7 +1025,7 @@ msgid "Take attendance"
 msgstr "Tomar asistencia"
 
 #: app/controllers/attendance_adm_controller.rb:5
-#: app/helpers/conferences_helper.rb:91
+#: app/helpers/conferences_helper.rb:106
 #: app/views/attendance_adm/list.html.erb:1
 msgid "Attendance lists"
 msgstr "Listas de asistencia"
@@ -1416,73 +1428,81 @@ msgstr "No"
 msgid "Dates"
 msgstr "Fechas"
 
-#: app/helpers/conferences_helper.rb:36
+#: app/helpers/conferences_helper.rb:38
 msgid "Registered"
 msgstr "Registrado"
 
-#: app/helpers/conferences_helper.rb:37
+#: app/helpers/conferences_helper.rb:39
 msgid "Registration closed"
 msgstr "Registro cerrado"
 
-#: app/helpers/conferences_helper.rb:41
+#: app/helpers/conferences_helper.rb:44
+msgid "Registered, proposal submitted"
+msgstr "Registrado, ponencia enviada"
+
+#: app/helpers/conferences_helper.rb:46
 msgid "Unregister"
 msgstr "Cancelar registro"
 
-#: app/helpers/conferences_helper.rb:46
+#: app/helpers/conferences_helper.rb:51
 msgid "Confirm: Do you want to unregister from \"%s\"? "
 msgstr "Confirme: ¿Seguro que desea cancelar su registro de «%s»?"
 
-#: app/helpers/conferences_helper.rb:49
+#: app/helpers/conferences_helper.rb:55
 #: app/views/notification/welcome.text.plain.erb:20
 msgid "Sign up"
 msgstr "Registrarme"
 
-#: app/helpers/conferences_helper.rb:59
+#: app/helpers/conferences_helper.rb:66
+msgid "Submit a proposal (%d days left)"
+msgstr "Enviar una ponencia (quedan %d días)"
+
+#: app/helpers/conferences_helper.rb:74
 msgid "Conference dates"
 msgstr "Fechas de la actividad"
 
-#: app/helpers/conferences_helper.rb:61
-#: app/helpers/conferences_helper.rb:65
-#: app/helpers/conferences_helper.rb:71
+#: app/helpers/conferences_helper.rb:76
+#: app/helpers/conferences_helper.rb:80
+#: app/helpers/conferences_helper.rb:86
 msgid "Begins"
 msgstr "Fecha de inicio"
 
-#: app/helpers/conferences_helper.rb:61
-#: app/helpers/conferences_helper.rb:66
-#: app/helpers/conferences_helper.rb:72
+#: app/helpers/conferences_helper.rb:76
+#: app/helpers/conferences_helper.rb:81
+#: app/helpers/conferences_helper.rb:87
 msgid "Finishes"
 msgstr "Fecha de finalización"
 
-#: app/helpers/conferences_helper.rb:63
+#: app/helpers/conferences_helper.rb:78
 msgid "Registration period"
 msgstr "Periodo de registro"
 
-#: app/helpers/conferences_helper.rb:65
-#: app/helpers/conferences_helper.rb:71
+#: app/helpers/conferences_helper.rb:80
+#: app/helpers/conferences_helper.rb:86
 msgid "Open"
 msgstr "Abierto"
 
-#: app/helpers/conferences_helper.rb:68
+#: app/helpers/conferences_helper.rb:83
 msgid "Call for papers period"
 msgstr "Periodo de convocatoria de propuestas"
 
-#: app/helpers/conferences_helper.rb:74
+#: app/helpers/conferences_helper.rb:89
 msgid "No public call for papers"
 msgstr "No hay una convocatoria de propuestas pública"
 
-#: app/helpers/conferences_helper.rb:82
+#: app/helpers/conferences_helper.rb:97
 msgid "%d registered attendees"
 msgstr "%d asistentes registrados"
 
-#: app/helpers/conferences_helper.rb:85
+#: app/helpers/conferences_helper.rb:100
 msgid "Edit conference"
 msgstr "Editar la actividad"
 
-#: app/helpers/conferences_helper.rb:87
+#: app/helpers/conferences_helper.rb:102
 msgid "Edit timeslots"
 msgstr "Editar horarios"
 
-#: app/helpers/conferences_helper.rb:112
+#: app/helpers/conferences_helper.rb:127
 msgid "Invalid logo size specified: %s"
 msgstr "Especificó un tamaño de logotipo inválido: %s"
 
@@ -2680,11 +2700,15 @@ msgstr "%d ponencias han sido enviadas por%s"
 msgid "Proposal status"
 msgstr "Estado de la propuesta"
 
-#: app/views/proposals/_form.html.erb:6
+#: app/views/proposals/_form.html.erb:5
+msgid "%s (%d days left)"
+msgstr "%s (quedan %d días)"
+
+#: app/views/proposals/_form.html.erb:9
 msgid "In order to submit a proposal for a conference not listed below, please %s. <br/>Take into account that not all conferences will accept proposals submission."
 msgstr "Para enviar una propuesta para una actividad que no aparezca listada a continuación, por favor %s<br/>Tome en cuenta que no todas las actividades aceptarán nuevas propuestas."
 
-#: app/views/proposals/_form.html.erb:10
+#: app/views/proposals/_form.html.erb:13
 msgid "register as an attendee"
 msgstr "regístrese como asistente"
 
@@ -2772,18 +2796,6 @@ msgstr "Ocultar las actividades pasadas"
 #: app/views/conferences/list.html.erb:6
 msgid "Show also past conferences"
 msgstr "Mostrar también las actividades pasadas"
-
-#: app/views/conferences/list.html.erb:11
-msgid "To register for any of the conferences shown, please %s or %s"
-msgstr "Para registrarse para alguna de las actividades aquí mostradas, por favor %s o %s"
-
-#: app/views/conferences/list.html.erb:12
-msgid "create a new account"
-msgstr "Registrar una nueva cuenta"
-
-#: app/views/conferences/list.html.erb:14
-msgid "log in to your account"
-msgstr "entre a su cuenta"
 
 #: app/views/sys_conf_adm/list_table_fields.html.erb:1
 msgid "Manage fields for table <em>%s</em>"

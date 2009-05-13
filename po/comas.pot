@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2009-05-11 12:56-0500\n"
+"POT-Creation-Date: 2009-05-13 16:06-0500\n"
 "PO-Revision-Date: 2008-05-07 18:30-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,7 +24,7 @@ msgid "Document|Filename"
 msgstr ""
 
 #: app/models/document.rb:-
-msgid "Document|Descr"
+msgid "Document|Description"
 msgstr ""
 
 #: app/models/document.rb:-
@@ -72,7 +72,7 @@ msgid "certif format"
 msgstr ""
 
 #: app/models/certif_format.rb:-
-msgid "CertifFormat|Name"
+msgid "CertifFormat|Format name"
 msgstr ""
 
 #: app/models/certif_format.rb:-
@@ -81,6 +81,14 @@ msgstr ""
 
 #: app/models/certif_format.rb:-
 msgid "CertifFormat|Orientation"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "state"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "State|Name"
 msgstr ""
 
 #: app/models/person.rb:-
@@ -93,7 +101,7 @@ msgstr ""
 
 #: app/models/person.rb:-
 #, fuzzy
-msgid "AdminTask|Sys name"
+msgid "AdminTask|System name"
 msgstr "System configuration"
 
 #: app/models/person.rb:-
@@ -105,15 +113,15 @@ msgid "Person|Login"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|Passwd"
+msgid "Person| Password"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|Firstname"
+msgid "Person|First name"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|Famname"
+msgid "Person|Family name"
 msgstr ""
 
 #: app/models/person.rb:-
@@ -121,7 +129,7 @@ msgid "Person|Email"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|Pw salt"
+msgid "Person|Random password salt"
 msgstr ""
 
 #: app/models/person.rb:-
@@ -133,11 +141,15 @@ msgid "Person|Last login at"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|Ok conf mails"
+msgid "Person|OK to receive mails for the conferences you have signed up for?"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|Ok general mails"
+msgid "Person|OK to receive general mails?"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Person|State"
 msgstr ""
 
 #: app/models/person.rb:-
@@ -149,7 +161,7 @@ msgid "Conference|Name"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Descr"
+msgid "Conference|Description"
 msgstr ""
 
 #: app/models/person.rb:-
@@ -157,19 +169,19 @@ msgid "Conference|Homepage"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Reg open date"
+msgid "Conference|Registration opening date"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Reg close date"
+msgid "Conference|Registration closing date"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Cfp open date"
+msgid "Conference|Call for Papers opening date"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Cfp close date"
+msgid "Conference|Call for papers closing date"
 msgstr ""
 
 #: app/models/person.rb:-
@@ -200,39 +212,39 @@ msgstr ""
 msgid "Cannot leave %s - This user still has proposals on this conference"
 msgstr ""
 
-#: app/models/conference.rb:213 app/models/conference.rb:214
+#: app/models/conference.rb:222 app/models/conference.rb:223
 msgid "%{fn} can't be blank"
 msgstr ""
 
-#: app/models/conference.rb:217
+#: app/models/conference.rb:226
 msgid "Conference must end after its start date"
 msgstr ""
 
-#: app/models/conference.rb:220
+#: app/models/conference.rb:229
 msgid "Call for papers must end after its start date"
 msgstr ""
 
-#: app/models/conference.rb:223
+#: app/models/conference.rb:232
 msgid "Call for papers must finish before the conference begins"
 msgstr ""
 
-#: app/models/conference.rb:227
+#: app/models/conference.rb:236
 msgid "Registration must end after its start date"
 msgstr ""
 
-#: app/models/conference.rb:230
+#: app/models/conference.rb:239
 msgid "Registration must finish before the conference ends"
 msgstr ""
 
-#: app/models/conference.rb:241
+#: app/models/conference.rb:250
 msgid "There are %d timeslots for this conference outside its time span: %s"
 msgstr ""
 
-#: app/models/conference.rb:258
+#: app/models/conference.rb:267
 msgid "This conference does not currently accept registrations"
 msgstr ""
 
-#: app/models/conference.rb:264
+#: app/models/conference.rb:273
 msgid ""
 "Cannot remove %s from this conference - Remove or reassign his proposals "
 "first"
@@ -247,7 +259,7 @@ msgid "SysConf|Key"
 msgstr ""
 
 #: app/models/sys_conf.rb:-
-msgid "SysConf|Descr"
+msgid "SysConf|Description"
 msgstr ""
 
 #: app/models/sys_conf.rb:-
@@ -325,11 +337,11 @@ msgid "timeslot"
 msgstr ""
 
 #: app/models/timeslot.rb:-
-msgid "Timeslot|Tolerance pre"
+msgid "Timeslot|Tolerance (pre)"
 msgstr ""
 
 #: app/models/timeslot.rb:-
-msgid "Timeslot|Tolerance post"
+msgid "Timeslot|Tolerance (post)"
 msgstr ""
 
 #: app/models/timeslot.rb:-
@@ -417,11 +429,11 @@ msgid "Proposal|Updated at"
 msgstr ""
 
 #: app/models/proposal.rb:-
-msgid "Proposal|Prop type"
+msgid "Proposal|Proposal type"
 msgstr ""
 
 #: app/models/proposal.rb:-
-msgid "Proposal|Prop status"
+msgid "Proposal|Proposal status"
 msgstr ""
 
 #: app/models/proposal.rb:-
@@ -436,7 +448,7 @@ msgstr ""
 msgid "Call for papers period for this conference is not current"
 msgstr ""
 
-#: app/models/proposal.rb:46
+#: app/models/proposal.rb:47
 msgid ""
 "An already submitted proposal can not be moved to a different conference"
 msgstr ""
@@ -446,19 +458,19 @@ msgid "nametag format"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Name"
+msgid "NametagFormat|Format name"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|H size"
+msgid "NametagFormat|Horizontal size"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|V size"
+msgid "NametagFormat|Vertical size"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|V gap"
+msgid "NametagFormat|Vertical gap"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
@@ -466,35 +478,35 @@ msgid "NametagFormat|Name width"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|H start"
+msgid "NametagFormat|Horizontal start"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|V start"
+msgid "NametagFormat|Vertical start"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Id bar hpos"
+msgid "NametagFormat|Horizontal position"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Id bar vpos"
+msgid "NametagFormat|Vertical position"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Id bar orient"
+msgid "NametagFormat|Barcode orientation"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Id bar narrow"
+msgid "NametagFormat|Barcode narrow bars width"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Id bar wide"
+msgid "NametagFormat|Barcode wide bars width"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Id bar height"
+msgid "NametagFormat|Barcode height"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
@@ -546,15 +558,15 @@ msgid "CertifFormatLine|Content"
 msgstr ""
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|X pos"
+msgid "CertifFormatLine|Horizontal position"
 msgstr ""
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Y pos"
+msgid "CertifFormatLine|Vertical position"
 msgstr ""
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Max width"
+msgid "CertifFormatLine|Maximum width"
 msgstr ""
 
 #: app/models/certif_format_line.rb:-
@@ -566,7 +578,7 @@ msgid "CertifFormatLine|Justification"
 msgstr ""
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Certif format"
+msgid "CertifFormatLine|Certificate format"
 msgstr ""
 
 #: app/models/certif_format_line.rb:4
@@ -581,7 +593,7 @@ msgstr ""
 #: app/helpers/attendance_adm_helper.rb:18
 #: app/views/people/proposals.html.erb:15 app/views/people/profile.html.erb:9
 #: app/views/proposals/by_author.html.erb:11
-#: app/views/proposals/_form.html.erb:13
+#: app/views/proposals/_form.html.erb:16
 msgid "Conference"
 msgstr ""
 
@@ -630,7 +642,7 @@ msgid "Logo|Data"
 msgstr ""
 
 #: app/models/logo.rb:-
-msgid "Logo|Thumb"
+msgid "Logo|Thumbnail"
 msgstr ""
 
 #: app/models/logo.rb:-
@@ -843,88 +855,88 @@ msgid ""
 "Please register first."
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:38
+#: app/controllers/proposals_controller.rb:39
 msgid "Error saving your proposal: %s"
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:45
+#: app/controllers/proposals_controller.rb:46
 msgid "Your proposal was successfully registered"
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:59
+#: app/controllers/proposals_controller.rb:57
 msgid "The proposal has been modified successfully"
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:62
+#: app/controllers/proposals_controller.rb:60
 msgid "Error updating the proposal: "
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:94
-msgid ""
-"Requested author does not exist or is not listed in this proposal. Maybe you "
-"already deleted him?"
-msgstr ""
-
-#: app/controllers/proposals_controller.rb:100
+#: app/controllers/proposals_controller.rb:97
 msgid "Requested author (%s) was successfully removed from this proposal"
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:103
+#: app/controllers/proposals_controller.rb:100
 msgid ""
 "Unexpected error removing requested author. Please try again, or contact "
 "system administrator"
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:115
-#: app/controllers/proposals_controller.rb:128
+#: app/controllers/proposals_controller.rb:105
+msgid "The requested proposal has been deleted as its last author was removed."
+msgstr ""
+
+#: app/controllers/proposals_controller.rb:111
+msgid ""
+"Requested author does not exist or is not listed in this proposal. Maybe you "
+"already deleted him?"
+msgstr ""
+
+#: app/controllers/proposals_controller.rb:125
+#: app/controllers/proposals_controller.rb:138
 msgid ""
 "The requested author (%s) was already registered as an author for this "
 "proposal"
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:136
+#: app/controllers/proposals_controller.rb:146
 msgid "Error adding person (%s) to requested proposal: "
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:142
+#: app/controllers/proposals_controller.rb:152
 msgid "%s was successfully added as an author to this proposal"
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:152
-msgid "No author specified - rendering general list"
-msgstr ""
-
-#: app/controllers/proposals_controller.rb:182
+#: app/controllers/proposals_controller.rb:192
 msgid "The document was successfully saved"
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:184
+#: app/controllers/proposals_controller.rb:194
 msgid "Error receiving the document:"
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:194
+#: app/controllers/proposals_controller.rb:204
 msgid "The document was successfully deleted"
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:196
+#: app/controllers/proposals_controller.rb:206
 msgid ""
 "Error removing requested document. Please try again later, or contact the "
 "system administrator."
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:210
+#: app/controllers/proposals_controller.rb:220
 msgid "Invalid proposal requested"
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:218
+#: app/controllers/proposals_controller.rb:228
 msgid "The specified login is not valid or does not match any valid users"
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:230
+#: app/controllers/proposals_controller.rb:238
 msgid "Invalid document requested for this proposal"
 msgstr ""
 
-#: app/controllers/proposals_controller.rb:238
+#: app/controllers/proposals_controller.rb:246
 msgid "You are not allowed to modify this proposal"
 msgstr ""
 
@@ -1031,7 +1043,7 @@ msgid "Take attendance"
 msgstr ""
 
 #: app/controllers/attendance_adm_controller.rb:5
-#: app/helpers/conferences_helper.rb:91
+#: app/helpers/conferences_helper.rb:106
 #: app/views/attendance_adm/list.html.erb:1
 msgid "Attendance lists"
 msgstr ""
@@ -1444,70 +1456,78 @@ msgstr ""
 msgid "Dates"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:36
+#: app/helpers/conferences_helper.rb:38
 msgid "Registered"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:37
+#: app/helpers/conferences_helper.rb:39
 msgid "Registration closed"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:41
-msgid "Unregister"
+#: app/helpers/conferences_helper.rb:44
+msgid "Registered, proposal submitted"
 msgstr ""
 
 #: app/helpers/conferences_helper.rb:46
+msgid "Unregister"
+msgstr ""
+
+#: app/helpers/conferences_helper.rb:51
 msgid "Confirm: Do you want to unregister from \"%s\"? "
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:49
+#: app/helpers/conferences_helper.rb:55
 #: app/views/notification/welcome.text.plain.erb:20
 msgid "Sign up"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:59
-msgid "Conference dates"
-msgstr ""
-
-#: app/helpers/conferences_helper.rb:61 app/helpers/conferences_helper.rb:65
-#: app/helpers/conferences_helper.rb:71
-msgid "Begins"
-msgstr ""
-
-#: app/helpers/conferences_helper.rb:61 app/helpers/conferences_helper.rb:66
-#: app/helpers/conferences_helper.rb:72
-msgid "Finishes"
-msgstr ""
-
-#: app/helpers/conferences_helper.rb:63
-msgid "Registration period"
-msgstr ""
-
-#: app/helpers/conferences_helper.rb:65 app/helpers/conferences_helper.rb:71
-msgid "Open"
-msgstr ""
-
-#: app/helpers/conferences_helper.rb:68
-msgid "Call for papers period"
+#: app/helpers/conferences_helper.rb:66
+msgid "Submit a proposal (%d days left)"
 msgstr ""
 
 #: app/helpers/conferences_helper.rb:74
+msgid "Conference dates"
+msgstr ""
+
+#: app/helpers/conferences_helper.rb:76 app/helpers/conferences_helper.rb:80
+#: app/helpers/conferences_helper.rb:86
+msgid "Begins"
+msgstr ""
+
+#: app/helpers/conferences_helper.rb:76 app/helpers/conferences_helper.rb:81
+#: app/helpers/conferences_helper.rb:87
+msgid "Finishes"
+msgstr ""
+
+#: app/helpers/conferences_helper.rb:78
+msgid "Registration period"
+msgstr ""
+
+#: app/helpers/conferences_helper.rb:80 app/helpers/conferences_helper.rb:86
+msgid "Open"
+msgstr ""
+
+#: app/helpers/conferences_helper.rb:83
+msgid "Call for papers period"
+msgstr ""
+
+#: app/helpers/conferences_helper.rb:89
 msgid "No public call for papers"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:82
+#: app/helpers/conferences_helper.rb:97
 msgid "%d registered attendees"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:85
+#: app/helpers/conferences_helper.rb:100
 msgid "Edit conference"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:87
+#: app/helpers/conferences_helper.rb:102
 msgid "Edit timeslots"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:112
+#: app/helpers/conferences_helper.rb:127
 msgid "Invalid logo size specified: %s"
 msgstr ""
 
@@ -2730,14 +2750,18 @@ msgstr ""
 msgid "Proposal status"
 msgstr ""
 
-#: app/views/proposals/_form.html.erb:6
+#: app/views/proposals/_form.html.erb:5
+msgid "%s (%d days left)"
+msgstr ""
+
+#: app/views/proposals/_form.html.erb:9
 msgid ""
 "In order to submit a proposal for a conference not listed below, please %s. "
 "<br/>Take into account that not all conferences will accept proposals "
 "submission."
 msgstr ""
 
-#: app/views/proposals/_form.html.erb:10
+#: app/views/proposals/_form.html.erb:13
 msgid "register as an attendee"
 msgstr ""
 
@@ -2827,18 +2851,6 @@ msgstr ""
 
 #: app/views/conferences/list.html.erb:6
 msgid "Show also past conferences"
-msgstr ""
-
-#: app/views/conferences/list.html.erb:11
-msgid "To register for any of the conferences shown, please %s or %s"
-msgstr ""
-
-#: app/views/conferences/list.html.erb:12
-msgid "create a new account"
-msgstr ""
-
-#: app/views/conferences/list.html.erb:14
-msgid "log in to your account"
 msgstr ""
 
 #: app/views/sys_conf_adm/list_table_fields.html.erb:1
