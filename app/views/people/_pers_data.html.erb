@@ -1,0 +1,29 @@
+<% comas_form_for :person, person, :url => url do |f| %>
+  <%= f.auto_field(:firstname, :note => _('Please provide your ' +
+                   'first and family names exactly as you want them ' +
+                   'to appear to other users, and as you want them ' +
+		   'to be printed in nametags and certificates')) %>
+  <%= f.auto_field(:famname) %>
+  <%= f.auto_field(:email) %>
+  <% if include_passwd %>
+    <%= f.auto_field(:login, :note => _('Please choose a user login. ' + 
+                     'It will be used whenever you want to enter this ' +
+                     'system to update your personal data, register ' +
+                     'and take part in any additional activities.')) %>
+    <%= f.auto_field(:passwd, :note => _('Please choose a private password ' +
+                     '- It should be something you can easily remember ' +
+                     'but cannot be easily guessed.<br/> ' +
+                     'In case you forget your password, you can request ' +
+                     'for a new one to be generated and sent to your ' +
+                     'e-mail address.')) %>
+  <% end %>
+  <% person.extra_listable_attributes.each do |attr| %>
+    <%= f.auto_field(attr.name) %>
+  <% end %>
+  <%= f.auto_field(:ok_general_mails, :note => _('Are you interested ' +
+                   'in receiving general information mails from us?')) %>
+  <%= f.auto_field(:ok_conf_mails, :note => _('Are you interested ' +
+                   'in receiving mails from us relative to the ' +
+                   'conferences you have signed up for?')) %>
+  <%= f.submit subm %>
+<% end %>

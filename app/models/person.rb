@@ -32,7 +32,9 @@ class Person < ActiveRecord::Base
 
   def self.core_attributes
     %w(created_at email famname firstname id last_login_at login passwd 
-       pw_salt).map {|attr| self.columns.select{|col| col.name == attr}[0] }
+       pw_salt ok_conf_mails ok_general_mails).map do |attr| 
+      self.columns.select{|col| col.name == attr}[0] 
+    end
   end
   def core_attributes; self.class.core_attributes; end
 

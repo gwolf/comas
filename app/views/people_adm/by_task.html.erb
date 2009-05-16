@@ -1,7 +1,7 @@
 <h1><%= _"Administrative tasks" %></h1>
 <% @tasks.sort_by {|t| t.id}.each do |task| %>
   <% collapsed_header _('%s (%d people)') % 
-                      [_(task.qualified_name), task.people.size] do %>
+                      [Translation.for(task.qualified_name), task.people.size] do %>
     <% if task.people.empty? %>
       <p><%= _'No people authorized for this task' %></p>
     <% else %>

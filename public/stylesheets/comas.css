@@ -12,7 +12,7 @@
 
 body {
        margin:0px;
-       background-color:#333366;
+       background-color:#FFF;
        font-family: Verdana, "Trebuchet MS", Arial, sans-serif;
 }
 
@@ -21,34 +21,36 @@ body {
 #header { 
           border-collapse: collapse;
           width: 100%;
-          color: #face89;
+          color: #face78;
+          background: #5c5c8b;
+          padding-bottom: 0.3em;
           font-size: 150%;
-          height: 86px;
-          background-image:url(header.png); 
           padding-left: 1em;
 }
 
 
 #footer { clear: both;
-          height: 84px; 
+          min-height: 3em;
           width:100%; 
-          background-color: #666699; 
-          background-image:url(footer.png);
+          border-top: solid 2px #A9A9C0;
+          background-color: #CBCBE1;
+          color: #999;
           text-align: center;
           font-size: 70%;
 }
 
+#footer a { color: #aaa390; }
+
 /* Language selection */
 #locales {  
           text-align: right;
-         margin-top: 2em;
+          margin-top: 2em;
           margin-right: 3em;
-          font-size: 50%
+          font-size: 50%;
 }
 
 #locales a { 
-          color: #face89; 
-          background-image:url(header.png); 
+          color: #face78; 
 }
 
 /* Login request */
@@ -69,9 +71,11 @@ body {
 /* Menu */
 
 #menu { float: left;
-/*         background-color: #CBCBE1; */
-        width: 20%;
-/*         background-image: url(menu.png); */
+        border: solid 2px #CBCBE1;
+        margin: 0.5em;
+        padding-bottom: 0.5em;
+        background-color: #EDEDF3; 
+        width: 19%;
         vertical-align: top;
         font-family:"Trebuchet MS", Tahoma, Verdana, Arial, sans-serif;
         font-size: 80%;
@@ -106,16 +110,12 @@ body {
 }
 
 
-#main { /*float: left;*/
-        padding-left: 20%;
-        background-image: url(background.png);
-        background-position: 20% 0;
+#main { float: left;
         background-repeat: repeat-y;
-        min-height: 500px;
         background-color:#FFF;
 	font-family: Verdana, "Trebuchet MS", Arial, sans-serif;
 	font-size:90%;
-        width: 80%;
+        width: 78%;
 }
 
 #contents { 
@@ -273,6 +273,13 @@ td, th {
 .note { 
     font-style: italic;
     font-size: 70%;
+}
+
+.please-register {  
+    color: #c00;
+    font-size: 80%;
+    text-align: right;
+    margin: 0.3em;
 }
 
 .comas-show-prompt {  

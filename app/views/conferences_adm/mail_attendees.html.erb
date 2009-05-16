@@ -4,11 +4,10 @@
        'for your audience! <b>Use this feature sparingly</b>.' %></p>
 
 <% form_tag do |f| %>
-  <%= form_row _("Choose which conference's attendees to mail"),
-        select_tag(:dest_conf_id,
-                   options_for_select(@conferences.map do |c|
-                     ["#{c.name} (#{c.begins})", c.id]
-                   end ) ) %>
+  <%= form_row _("Choose which conferences' attendees to mail"),
+        @conferences.map { |conf|
+          check_box_tag('dest_conf_ids[]', conf.id) +
+          "#{conf.name} (#{conf.begins})" }.join("<br/>") %>
   <%= form_row _('Title'), text_field_tag(:title, '', :size => 60) %>
   <%= form_row _('Mail body'), 
                text_area_tag(:body, '', :size => '60x10'),

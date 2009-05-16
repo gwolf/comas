@@ -2,7 +2,10 @@
 <% comas_form_for :proposal, proposal, 
                   :url => {:action => action, :id => proposal} do |f| %>
 <% if choose_confs %>
-  <%= f.select :conference_id, confs.map {|c| [c.name, c.id]},
+  <%= f.select :conference_id, confs.map {|c| [_('%s (%d days left)') %
+					       [c.name,
+						c.cfp_deadline_in],
+					       c.id]},
                :note => _('In order to submit a proposal for a conference ' +
                           'not listed below, please %s. <br/>' +
 			  'Take into account that not all conferences ' + 
