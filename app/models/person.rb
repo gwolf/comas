@@ -45,12 +45,6 @@ class Person < ActiveRecord::Base
   end
   def extra_listable_attributes; self.class.extra_listable_attributes; end
 
-  # Returns the person's publicly listable attributes - this means,
-  # the extra attributes whose names start with pub_
-  def public_attributes
-    extra_listable_attributes.select {|a| a.name =~ /^pub_/}
-  end
-
   # Returns a flattened list of attributes, good to be used in a
   # generic listing. This means, the attributes are by themselves both
   # good enough as a column header and valid methods that can be sent
