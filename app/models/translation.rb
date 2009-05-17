@@ -57,6 +57,7 @@ class Translation < ActiveRecord::Base
   # any table qualifiers - see the class' documentation) will be returned.
   def self.for(str, lang=Language.current)
     begin
+      str = str.to_s
       trans = self.find_by_base(str, :conditions =>
                                 ['language_id = ?', lang.id]).translated
       raise NotYetTranslated if trans.nil?
