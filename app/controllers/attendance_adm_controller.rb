@@ -104,7 +104,7 @@ class AttendanceAdmController < Admin
 
     totals = Attendance.totalized_for_conference(@conference)
     people = totals.keys.map {|num| next if num < min; totals[num]}.
-      select {|p| p}.flatten
+      select {|p| p}.flatten.sort_by {|p| p.famname}
 
     send_data(certificate_pdf_for(people, CertifFormat.find(1)),
               :filename => 'certificate.pdf', 
