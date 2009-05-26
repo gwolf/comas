@@ -15,17 +15,9 @@
                  props, :action => 'proposals', :id => @conference) %></p>
 <% end %>
 
-<p><%= RedCloth.new(@conference.descr).to_html %></p>
+<%= RedCloth.new(@conference.descr).to_html %>
 
-<p><%= @conference.begins %> - <%= @conference.finishes %></p>
-
-<% if @user %>
-  <% if @user.conferences_for_submitting.include? @conference %>
-    <%= link_to(_('Submit a proposal for this conference'),
-	        :controller => 'proposals', :action => 'new',
-                :conference_id => @conference) %>
-  <% end %>
-<% end %>
+<%= date_details_for @conference %>
 
 <% if !@conference.homepage.blank? %>
   <p><%= link_to _('Web site'), @conference.homepage %></p>

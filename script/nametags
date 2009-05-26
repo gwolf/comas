@@ -38,7 +38,7 @@ end
 # Application window controller, based on Glade's generated template
 class NametagsGlade
   include GetText
-  bindtextdomain("comas", 'locale')
+  bindtextdomain("comas", ENV['GETTEXT_PATH'])
   attr :glade
 
   def initialize(path_or_data, root = nil, domain = 'comas', 
