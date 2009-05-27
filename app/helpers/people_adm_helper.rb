@@ -8,7 +8,9 @@ module PeopleAdmHelper
      [_('Last login at'), 'last_login_at'],
      ['',nil]
     ].each { |col|
-      res << link_to(col[0], :sort_by => col[1], :filter_by => @filter_by) 
+      res << link_to(col[0], :sort_by => col[1],
+                     :filter_by => @filter_by,
+                     :conference_id => @conf ? @conf.id : nil) 
     }
 
     join_for_row 'th', res
@@ -32,5 +34,15 @@ module PeopleAdmHelper
 
   def join_for_row(celltype, data)
     data.map {|col| "<%s>%s</%s>" % [celltype, col, celltype]}.join("\n")
+  end
+
+  def xls_list_link(order, filter, conf)
+    params = {}
+    params[:order_by] = order unless order.nil? or order.blank?
+    params[:filter_by] = filter unless filter.nil? or filter.blank?
+    params[:conference_id] = conf.id unless conf.nil?
+    params[:xls_output] = true
+
+    link_to(_('Download this listing'), params)
   end
 end

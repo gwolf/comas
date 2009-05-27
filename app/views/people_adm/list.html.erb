@@ -1,14 +1,18 @@
 <h1><%= _"Attendee administration" %></h1>
 <div class="filter">
   <% form_tag do %>
-    <%= _'Filter by: (on login, firstname or family name)' %><br/>
-    <%= text_field_tag :filter_by, h(@filter_by) %>
+    <p><%= _('Filter by: (on login, firstname or family name)') %><br/>
+      <%= text_field_tag :filter_by, h(@filter_by) %></p>
+    <p><%= _('Filter by conference') %><br/>
+      <%= select_tag(:conference_id, 
+                     options_for_select([''] + @conferences.map {|c| 
+	                                ["#{c.name} (#{c.begins})", c.id]},
+	                                @conf ? @conf.id : nil)
+                     ) %></p>
     <%= submit_tag _'Filter' %>
   <% end %>
 </div>
-<p><%= link_to(_('Download this listing'), 
-               :sort_by => params[:sort_by], :filter_by => @filter_by,
-               :xls_output => true) %></p>
+<p><%= xls_list_link(@order_by, @filter_by, @conf) %></p>
 <%= pagination_header(@people) %>
 <%= will_paginate @people %>
 <% table do %>

@@ -74,7 +74,7 @@ class Person < ActiveRecord::Base
   #
   # The resulting list will be paginated if the :paginate attribute is
   # true.
-  def self.search(name=nil, params={})
+  def self.search(name=nil, conf=nil, params={})
     paginated = params.delete :paginate
     params.merge!(:conditions=>['firstname ~* ? or famname ~* ? or login ~* ?',
                                 name, name, name]) unless name.nil?
@@ -85,6 +85,12 @@ class Person < ActiveRecord::Base
     else
       self.find(:all, params)
     end
+  end
+
+  def self.name_find(name=nil, params = {})
+    params[:conditions] = ['firstname ~* ? or famname ~* ? or login ~* ?', 
+                           name, name, name] if name
+    self.find(:all, params)
   end
 
   # Sets the encrypted password - Regenerates the random salt and
