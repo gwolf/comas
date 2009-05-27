@@ -92,7 +92,7 @@ class Translation < ActiveRecord::Base
       rescue NameError
         # This looks like a catalog, but is not defined. Skip it.
       end
-    }.reject(&:nil)
+    }.reject(&:nil?)
     # Add some tables not recognized as catalogs, but which work as such
     catalogs << AdminTask
 
