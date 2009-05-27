@@ -315,3 +315,9 @@ td, th {
     border: solid #face78 1px;
     padding-left: 1em;
 }
+
+.fieldWithErrors input {
+    border: solid red 2px;
+    color: red;
+    background: #fee;
+}

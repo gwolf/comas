@@ -108,7 +108,7 @@ class PeopleController < ApplicationController
                           @person.errors.full_messages].flatten
       end
     end
-    redirect_to :action => 'new'
+    render :action => 'new'
   end
 
   # Base data shown when logging in (i.e. account index)
