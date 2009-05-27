@@ -55,7 +55,7 @@ class Conference < ActiveRecord::Base
   # by their beginning date (i.e. the closest first)
   def self.upcoming_for_person(person)
     p_id = person.is_a?(Fixnum) ? person : person.id
-    person.conferences.sort_by {|c| c.begins}.select {|c| c.upcoming?}
+    person.conferences.sort_by(&:begins).select(&:upcoming?)
   end
 
   # Produce a list of conferences which already begun (and might have
@@ -84,7 +84,7 @@ class Conference < ActiveRecord::Base
   # (i.e. most recent first)
   def self.past_for_person(person)
     p_id = person.is_a?(Fixnum) ? person : person.id
-    person.conferences.order_by {|c| c.begins}.select {|c| c.past?}
+    person.conferences.order_by(&:begins).select(&:past?)
   end
 
   # How many days is this conference's beginning date from today? The
@@ -176,7 +176,7 @@ class Conference < ActiveRecord::Base
   # List of people who are registered for this conference and who have
   # accepted the "ok_conf_mails" boolean
   def people_for_mailing
-    self.people.select {|p| p.ok_conf_mails?}
+    self.people.select(&:ok_conf_mails?)
   end
 
   def has_logo?

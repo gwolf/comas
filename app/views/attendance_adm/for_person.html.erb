@@ -7,7 +7,7 @@
     <th><%= _'Attendance taken at' %></th>
     <th><%= _'Proposal' %></th>
   <% end %>
-  <% @attendances.sort_by {|att| att.created_at}.each do |att| %>
+  <% @attendances.sort_by(&:created_at).each do |att| %>
     <% table_row do %>
       <td><%= link_to att.timeslot.start_time.to_s(:listing),
                       :action => 'att_by_tslot',

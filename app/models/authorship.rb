@@ -24,7 +24,7 @@ class Authorship < ActiveRecord::Base
     if others.blank?
       self.position = 1
     else
-      self.position = others.map {|a| a.position}.sort.last + 1
+      self.position = others.map(&:position).sort.last + 1
     end
   end
 

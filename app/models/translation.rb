@@ -92,11 +92,11 @@ class Translation < ActiveRecord::Base
       rescue NameError
         # This looks like a catalog, but is not defined. Skip it.
       end
-    }.reject {|c| c.nil?}
+    }.reject(&:nil)
     # Add some tables not recognized as catalogs, but which work as such
     catalogs << AdminTask
 
-    catalogs.uniq.sort_by {|c| c.to_s}.each do |cat|
+    catalogs.uniq.sort_by(&:to_s).each do |cat|
       cat.find(:all).each do |elem|
         self.for('%s|%s' % [cat.to_s, elem.name])
       end

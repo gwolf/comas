@@ -22,13 +22,13 @@ class TranslationController < Admin
 
     if list[:qry] == :lang
       data = @language.translations
-      data = data.select {|tr| tr.pending? } if list[:cond] == :pending
-      data = data.reject {|tr| tr.pending? } if list[:cond] == :done
+      data = data.select(&:pending?)  if list[:cond] == :pending
+      data = data.reject(&:pending? ) if list[:cond] == :done
     elsif list[:qry] == :str
       data = Translation.search_for(list[:str], @language,
                                     list[:on_trans], list[:on_base])
     end
-    @strings = data.sort_by {|elem| elem.base}.paginate(:page => params[:page])
+    @strings = data.sort_by(&:base).paginate(:page => params[:page])
   end
 
   def pending_for_lang
@@ -74,7 +74,7 @@ class TranslationController < Admin
     # Delete all the translations for this base string - otherwise,
     # they will all reappear as soon as stat_by_lang is next invoked
     Translation.find(:all, :conditions =>
-                     ['base = ?', @trans.base]).each { |tr| tr.destroy}
+                     ['base = ?', @trans.base]).each(&:destroy)
     flash[:notice] << _('Translation successfully removed')
   end
 

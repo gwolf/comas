@@ -80,7 +80,7 @@ class AttendanceAdmController < Admin
       return false
     end
 
-    @attendances = @tslot.attendances.sort_by {|a| a.created_at}
+    @attendances = @tslot.attendances.sort_by(&:created_at)
   end
 
   # Gives the attendances detail for the specified person on the
@@ -104,7 +104,7 @@ class AttendanceAdmController < Admin
 
     totals = Attendance.totalized_for_conference(@conference)
     people = totals.keys.map {|num| next if num < min; totals[num]}.
-      select {|p| p}.flatten.sort_by {|p| p.famname}
+      select {|p| p}.flatten.sort_by(&:famname)
 
     send_data(certificate_pdf_for(people, CertifFormat.find(1)),
               :filename => 'certificate.pdf', 

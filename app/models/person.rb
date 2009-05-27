@@ -113,7 +113,7 @@ class Person < ActiveRecord::Base
   def has_proposal_for?(conf)
     # Accept either a conference object or a conference ID
     conf = Conference.find_by_id(conf) if conf.is_a? Integer
-    self.proposals.map {|p| p.conference}.include?(conf)
+    self.proposals.map(&:conference).include?(conf)
   end
 
   def has_admin_task?(task)
@@ -126,11 +126,11 @@ class Person < ActiveRecord::Base
   end
 
   def upcoming_conferences
-    self.conferences.select {|c| c.upcoming?}.sort_by {|c| c.begins}
+    self.conferences.select(&:upcoming?).sort_by(&:begins)
   end
 
   def conferences_for_submitting
-    self.upcoming_conferences.select {|conf| conf.accepts_proposals?}
+    self.upcoming_conferences.select(&:accepts_proposals?)
   end
 
   def register_for(conf)

@@ -14,7 +14,7 @@ class Document < ActiveRecord::Base
   # from our result set. Operation should be _almost_ transparent (see note by
   # self#data=)
   def self.find (*args)
-    select = self.columns.map {|c| c.name}.select{|c| c != 'data'}.join(', ')
+    select = self.columns.map(&:name).select{|c| c != 'data'}.join(', ')
 
     if args[-1].is_a?(Hash)
       if args[1].has_key? :select

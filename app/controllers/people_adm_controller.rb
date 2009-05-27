@@ -15,7 +15,7 @@ class PeopleAdmController < Admin
     @order_by = 'people.' + sort_for_fields(['id', 'login', 'firstname', 
                                          'famname', 'last_login_at'])
     @filter_by = params[:filter_by]
-    @conferences = Conference.find(:all).sort_by {|c| c.begins}
+    @conferences = Conference.find(:all).sort_by(&:begins)
     if params[:conference_id].blank?
       people = Person.name_find(@filter_by, :order => @order_by)
     else

@@ -10,7 +10,7 @@ class Logo < ActiveRecord::Base
   # The binary values should not be directly modified - Use
   # self#from_blob instead.
   def self.find (*args)
-    select = self.columns.map {|c| c.name}.
+    select = self.columns.map(&:name).
       select {|c| ! ['data', 'medium', 'thumb'].include? c}.join(', ')
 
     if args[-1].is_a?(Hash)
