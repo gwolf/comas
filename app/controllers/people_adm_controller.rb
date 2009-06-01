@@ -29,7 +29,9 @@ class PeopleAdmController < Admin
       xls.add_header(columns)
 
       people.each do |pers|
-        xls.add_row( columns.map {|col| pers.send(col) } )
+        # We might be calling somecatalog_name - So we'd better rescue
+        # to nil.
+        xls.add_row( columns.map {|col| pers.send(col) rescue nil } )
       end
 
       send_data(xls.to_s, :type => 'application/vnd.ms-excel', 
