@@ -10,9 +10,10 @@
 
 <%= display_logo(@conference) %>
 
-<% if (props=@conference.proposals.size) > 0 %>
+<% if @props_to_show.size > 0 %>
   <p><%= link_to(_('%d proposals registered for this conference') %
-                 props, :action => 'proposals', :id => @conference) %></p>
+                 @props_to_show.size,
+		 :action => 'proposals', :id => @conference) %></p>
 <% end %>
 
 <%= RedCloth.new(@conference.descr).to_html %>

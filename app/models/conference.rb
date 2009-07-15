@@ -2,7 +2,7 @@ class Conference < ActiveRecord::Base
   has_many :timeslots, :dependent => :destroy
   has_many :proposals
   has_one :logo, :dependent => :destroy
-  has_and_belongs_to_many(:people, 
+  has_and_belongs_to_many(:people,
                           :before_add => :ck_accepts_registrations,
                           :before_remove => :dont_unregiser_if_has_proposals)
 
@@ -12,21 +12,23 @@ class Conference < ActiveRecord::Base
   validate :ensure_short_name
   validate :dates_are_correct
   validate :timeslots_during_conference
+  validate :cfp_data_only_if_manages_proposals
+  validate :no_proposals_unless_manages_proposals
 
   # Produce a list of conferences which have not yet finished, ordered
   # by their beginning date (i.e. the closest first)
-  # 
+  #
   # It can take whatever parameters you would send to a
   # Conference#find call.
   def self.upcoming(req={})
-    self.find(:all, { :conditions => 'finishes >= now()::date', 
+    self.find(:all, { :conditions => 'finishes >= now()::date',
                 :order => :begins}.merge(req))
   end
 
   # Produce a list of conferences which are in their registration
   # period (this means, for which a person can currently register as
   # an attendee)
-  # 
+  #
   # It can take whatever parameters you would send to a
   # Conference#find call.
   def self.in_reg_period(req={})
@@ -35,11 +37,11 @@ class Conference < ActiveRecord::Base
                 'COALESCE(reg_close_date, finishes, now()::date)',
                 :order => :begins}.merge(req))
   end
-  
+
   # Produce a list of conferences which are in their Call For Papers
   # period (this means, for which a person can currently submit a
   # proposal)
-  # 
+  #
   # It can take whatever parameters you would send to a
   # Conference#find call.
   def self.in_cfp_period(req={})
@@ -61,11 +63,11 @@ class Conference < ActiveRecord::Base
   # Produce a list of conferences which already begun (and might have
   # finished), inversely ordered by their beginning date (i.e. most
   # recent first)
-  # 
+  #
   # It can take whatever parameters you would send to a Person#find
   # call.
   def self.past(req={})
-    self.find(:all, 
+    self.find(:all,
               { :conditions => 'begins < now()',
                 :order => 'begins desc'
               }.merge(req))
@@ -85,6 +87,10 @@ class Conference < ActiveRecord::Base
   def self.past_for_person(person)
     p_id = person.is_a?(Fixnum) ? person : person.id
     person.conferences.order_by(&:begins).select(&:past?)
+  end
+
+  def publicly_showable_proposals
+    self.proposals.select {|p| p.publicly_showable?}
   end
 
   # How many days is this conference's beginning date from today? The
@@ -124,11 +130,11 @@ class Conference < ActiveRecord::Base
   # What is the last valid date for registration? This will return
   # reg_close_date if defined, or the conference finish date otherwise
   def last_reg_date
-    reg_close_date || finishes 
+    reg_close_date || finishes
   end
 
   # Does this conference accept registering new proposals? This means,
-  # does it have a Call For Papers (CFP)? Are we in that period?  
+  # does it have a Call For Papers (CFP)? Are we in that period?
   #
   # If it has a cfp_open_date but not a cfp_close_date, take
   # conference beginning date as a deadline (i.e. no proposals might
@@ -140,7 +146,7 @@ class Conference < ActiveRecord::Base
   end
 
   # Does this conference have a Call For Papers period? (even if it is
-  # not current) 
+  # not current)
   def has_cfp?
     !(cfp_open_date.nil? and cfp_close_date.nil?)
   end
@@ -154,11 +160,11 @@ class Conference < ActiveRecord::Base
     cfp_close_date || begins
   end
 
-  # How far is the CfP deadline in the future? (in days) 
+  # How far is the CfP deadline in the future? (in days)
   # Returns nil if the CfP deadline has already passed
   def cfp_deadline_in
     deadline = last_cfp_date
-    return nil if deadline.nil? or Date.today > deadline 
+    return nil if deadline.nil? or Date.today > deadline
     (deadline - Date.today).to_i
   end
 
@@ -194,8 +200,8 @@ class Conference < ActiveRecord::Base
     self.short_name.gsub! /[^a-zA-Z0-9_+\-]/, ''
 
     # No short name? Duplicated? Just auto-generate a new one
-    if short_name.nil? or short_name.blank? or 
-        ( other = self.class.find_by_short_name(short_name) and 
+    if short_name.nil? or short_name.blank? or
+        ( other = self.class.find_by_short_name(short_name) and
           other.id != self.id )
       # Try to get the first 10 characters of the conference name - And
       # keep adding characters if needed (first from the name, then just
@@ -219,8 +225,8 @@ class Conference < ActiveRecord::Base
   # Verify the submitted dates are coherent (i.e. none of the periods
   # we care about finishes before it begins)
   def dates_are_correct
-    errors.add(:begins, _("%{fn} can't be blank")) if begins.nil? 
-    errors.add(:finishes, _("%{fn} can't be blank")) if finishes.nil? 
+    errors.add(:begins, _("%{fn} can't be blank")) if begins.nil?
+    errors.add(:finishes, _("%{fn} can't be blank")) if finishes.nil?
 
     dates_in_order?(begins, finishes) or
       errors.add(:begins, _('Conference must end after its start date'))
@@ -243,15 +249,34 @@ class Conference < ActiveRecord::Base
   # If we change the beginning/finishing dates for the conference,
   # make sure we don't end up with timeslots outside our dates.
   def timeslots_during_conference
-    outside = self.timeslots.reject do |ts| 
+    outside = self.timeslots.reject do |ts|
       ts.start_time.to_date.between? begins, finishes
     end
     return true if outside.empty?
     errors.add_to_base(_('There are %d timeslots for this conference ' +
-                         'outside its time span: %s') % 
-                       [outside.size, 
-                        outside.map {|ts| "%s (%s)" % 
+                         'outside its time span: %s') %
+                       [outside.size,
+                        outside.map {|ts| "%s (%s)" %
                           [ts.start_time, ts.room.name]}.join(', ')])
+  end
+
+  # If this conference does not handle proposals, CfP dates should be
+  # null
+  def cfp_data_only_if_manages_proposals
+    return true if manages_proposals
+    self.cfp_open_date = self.cfp_close_date = nil
+    self.public_proposals = false
+    true
+  end
+
+  # Do not allow the manages_proposals flag to be false if we already
+  # have registered proposals
+  def no_proposals_unless_manages_proposals
+    return true if manages_proposals or proposals.empty?
+    errors.add(:manages_proposals,
+               _('This conference already has received %d proposals (%s) - ' +
+                 'Cannot specify not to handle them.') %
+               [self.proposals.size, self.proposals.map {|p| p.id}.join(', ')])
   end
 
   # Are the two received dates in chronological order? (If either or
@@ -269,7 +294,7 @@ class Conference < ActiveRecord::Base
 
   def dont_unregister_if_has_proposals(person)
     return true if self.proposals_by_person(person).empty?
-    raise(ActiveRecord::RecordNotSaved, 
+    raise(ActiveRecord::RecordNotSaved,
           _('Cannot remove %s from this conference - Remove or reassign '+
             'his proposals first') % person.name)
   end

@@ -2,13 +2,60 @@
 <% comas_form_for(:conference, @conference,
                   :url => {:action => action, :id => @conference},
 		  :html => { :multipart => true }) do |f| %>
-  <%= %w(name short_name).map { |attr| f.auto_field(attr) } %>
+  <%= f.auto_field('name', :note => _('Full name for the conference')) %>
+  <%= f.auto_field('short_name',
+		   :note => _('Shortened name for the conference; ' +
+			      'will be used to generate URLs ')) %>
   <%= form_row(_('Conference|Logo'),
 	       file_field_tag(:data),
 	       logo_thumb_for(@conference)) %>
-  <% %w(descr homepage begins finishes reg_open_date
-        reg_close_date cfp_open_date cfp_close_date).each do |attr| %>
-    <%= f.auto_field attr %>
-  <% end %>
+  <%= f.auto_field('descr',
+                   :note => _('Full description for this conference. ' +
+			      'RedCloth formatting might be used ' +
+			      '(see formatting instructions above)')) %>
+  <%= f.auto_field('homepage',
+		   :note => _('Does the conference have a homepage ' +
+			      'besides the information in this system? ' +
+			      'Enter it here, and a link will be ' +
+			      'presented.')) %>
+  <%= f.auto_field('begins',
+		   :note => _('Conference beginning date')) %>
+  <%= f.auto_field('finishes',
+		   :note => _('Conference finishing date')) %>
+  <%= f.auto_field('manages_proposals',
+                   :note => _('If you specify this conference should ' +
+			      'not manage proposals, the <b>Public ' +
+			      'Proposals</b> will be set to false, ' +
+			      'and both the <b>Cfp open date</b> and ' +
+			      '<b>Cfp close date</b> fields will be ' +
+			      'set to null.')) %>
+  <%= f.auto_field('public_proposals',
+		   :note => _("Should this conference's proposals be " +
+			      'visible to the public as they are sent, ' +
+			      'before they are explicitly marked as ' +
+			      'accepted')) %>
+  <%= f.auto_field('reg_open_date',
+		   :note => _('When should the attendee registration ' +
+			      'period start? If left empty, attendees ' +
+			      'can register as soon as the conference ' +
+			      'is created.')) %>
+  <%= f.auto_field('reg_close_date',
+		   :note => _('When should the attendee registration ' +
+			      'period close? If left empty, attendees ' +
+			      'can register until the last day of the ' +
+			      'conference (<b>finishes</b>). Must be ' +
+			      'posterior to <b>reg open date</b>.')) %>
+  <%= f.auto_field('cfp_open_date',
+		   :note => _('When should the Call for Papers period ' +
+			      'open? If this field is left empty but ' +
+			      'the closing date is set, the period ' +
+			      'will start as soon as the conference is ' +
+			      'created.')) %>
+  <%= f.auto_field('cfp_close_date',
+		   :note => _('When should the Call for Papers period ' +
+			      'close? If this field is left empty but ' +
+			      'the opening date is set, the period ' +
+			      'will close at the conference beginning ' +
+			      'date.')) %>
   <%= f.submit submit %>
 <% end %>

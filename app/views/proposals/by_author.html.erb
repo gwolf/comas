@@ -1,6 +1,11 @@
 <h1><%= _('Proposals submitted by author') %></h1>
 
-<h3><%= _('%d proposals have been submitted by %s') % 
+<% if @show_all %>
+  <p><%= _("Showing all of the author's proposals (not only the " +
+	   "accepted ones)") %></p>
+<% end %>
+
+<h3><%= _('%d proposals have been submitted by %s') %
 	  [@props.size, @author.name] %></h3>
 
 <%= pagination_header @props %>
@@ -10,7 +15,9 @@
     <th><%= _'Title' %></th>
     <th><%= _'Conference' %></th>
     <th><%= _'Proposal type' %></th>
-    <th><%= _'Proposal status' %></th>
+    <% if @show_all %>
+      <th><%= _'Proposal status' %></th>
+    <% end %>
   <% end %>
   <% @props.each do |prop| %>
     <% table_row do %>
@@ -19,7 +26,9 @@
       <td><%= link_to(prop.conference.name, :controller => 'conferences',
 	              :action => 'show', :id => prop.conference.id) %></td>
       <td><%=h prop.prop_type.name %></td>
-      <td><%=h prop.prop_status.name %></td>
+      <% if @show_all %>
+        <td><%=h prop.status_name %></td>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>

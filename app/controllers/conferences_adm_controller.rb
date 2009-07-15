@@ -1,5 +1,5 @@
 class ConferencesAdmController < Admin
-  before_filter :get_conference, :except => [:index, :list, :new, :create, 
+  before_filter :get_conference, :except => [:index, :list, :new, :create,
                                              :mail_attendees]
   helper :conferences
   Menu = [[_('Registered conferences'), :list],
@@ -11,10 +11,10 @@ class ConferencesAdmController < Admin
   end
 
   def list
-    order = sort_for_fields(['conferences.id', 'name', 'begins', 
+    order = sort_for_fields(['conferences.id', 'name', 'begins',
                              'reg_open_date'])
 
-    @conferences = Conference.paginate(:all, :order => order, 
+    @conferences = Conference.paginate(:all, :order => order,
                                        :page => params[:page],
                                        :include => [:people, :timeslots])
   end
@@ -36,7 +36,7 @@ class ConferencesAdmController < Admin
   end
 
   def show
-    @conference.transaction do 
+    @conference.transaction do
       if request.post? and @conference.update_attributes(params[:conference])
         if upload = params[:data] and !upload.is_a? String
           begin
@@ -50,7 +50,7 @@ class ConferencesAdmController < Admin
         end
         flash[:warning] << _('Conference data successfully updated')
         redirect_to( :controller => 'conferences',
-                     :action => 'show', 
+                     :action => 'show',
                      :id => @conference )
       end
     end
@@ -59,7 +59,7 @@ class ConferencesAdmController < Admin
   def destroy
     redirect_to :action => 'list'
 
-    if request.post? 
+    if request.post?
       if @conference.destroy
         flash[:notice] << _('Successfully removed requested conference')
       else
@@ -74,7 +74,7 @@ class ConferencesAdmController < Admin
   def people_list
     order = sort_for_fields(['famname'])
 
-    @people = @conference.people.paginate(:all, :order => order, 
+    @people = @conference.people.paginate(:all, :order => order,
                                           :page => params[:page])
   end
 
@@ -98,7 +98,7 @@ class ConferencesAdmController < Admin
     ts.conference = @conference
     if ts.save
       flash[:notice] << _('The requested timeslot was successfully created')
-    else 
+    else
       flash[:error] << _('Error creating the requested timeslot:<br/> %s') %
         ts.errors.full_messages.join("<br/>")
     end
@@ -112,7 +112,7 @@ class ConferencesAdmController < Admin
       flash[:notice] << _('The requested timeslot was successfully deleted')
     else
       flash[:error] << _('Could not find requested timeslot (%d) for ' +
-                         'deletion - Maybe it was already deleted?') % 
+                         'deletion - Maybe it was already deleted?') %
         params[:timeslot_id]
     end
   end
@@ -123,7 +123,7 @@ class ConferencesAdmController < Admin
     @conferences = Conference.upcoming + Conference.past
     return true unless request.post?
 
-    if params[:title].nil? or params[:title].empty? or 
+    if params[:title].nil? or params[:title].empty? or
         params[:body].nil? or params[:body].empty? or
         params[:dest_conf_ids].nil? or params[:dest_conf_ids].empty?
       flash[:error] << _('You must specify email title and body, and select ' +
@@ -155,7 +155,7 @@ class ConferencesAdmController < Admin
     if rcpts.empty?
       flash[:notice] << _('No registered attendees for the requested ' +
                           'conferences have chosen to receive mails - ' +
-                          'Not sending.') 
+                          'Not sending.')
     else
       flash[:notice] << _('The %d requested mails have been sent.')%rcpts.size
     end
@@ -165,7 +165,7 @@ class ConferencesAdmController < Admin
   ############################################################
   private
   def get_conference
-    return true if params[:id] and 
+    return true if params[:id] and
       @conference = Conference.find_by_id(params[:id])
     redirect_to :action => :list
   end

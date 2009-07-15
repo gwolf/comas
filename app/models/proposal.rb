@@ -1,10 +1,12 @@
 class Proposal < ActiveRecord::Base
+  New, Pending, Rejected, Accepted = 1, 2, 3, 4
+  Status = {New => _('New'), Pending => _('Details pending'),
+    Rejected => _('Rejected'), Accepted => _('Accepted')}
   acts_as_magic_model
   has_many :authorships, :dependent => :destroy, :order => :position
   has_many :people, :through => :authorships, :order => 'authorships.position'
   has_many :documents, :dependent => :destroy
   belongs_to :prop_type
-  belongs_to :prop_status
   belongs_to :timeslot
   belongs_to :conference
 
@@ -13,7 +15,7 @@ class Proposal < ActiveRecord::Base
   validate :default_status_if_empty
   validates_presence_of :conference_id
   validates_uniqueness_of :timeslot_id, :allow_nil => true
-  validates_associated :prop_type, :prop_status, :timeslot, :conference
+  validates_associated :prop_type, :timeslot, :conference
   validate_on_create :in_conference_cfp_period
   validate_on_update :dont_change_conference
 
@@ -22,12 +24,21 @@ class Proposal < ActiveRecord::Base
   end
 
   def accepted?
-    self.prop_status == PropStatus.accepted
+    self.status == Status[Accepted]
+  end
+
+  def publicly_showable?
+    return true if self.conference.public_proposals? or
+      self.accepted?
+  end
+
+  def status_name
+    Status[self.status]
   end
 
   protected
   def default_status_if_empty
-    self.prop_status ||= PropStatus.default
+    self.status ||= Status[New]
   end
 
   def in_conference_cfp_period
@@ -40,7 +51,7 @@ class Proposal < ActiveRecord::Base
 
   # A proposal should not be moved between different conferences
   def dont_change_conference
-    prev_state = self.class.find_by_id(self.id) or 
+    prev_state = self.class.find_by_id(self.id) or
       return true # Don't barf when we are deleting the proposal
     return true if self.conference_id == prev_state.conference_id
     self.errors.add(:conference_id,
