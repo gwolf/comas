@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
   protected
   def get_user
     return false unless id = session[:user_id]
-    @user = Person.find(id)
+    @user = Person.find_by_id(id)
   end
 
   def require_user_for_non_public_areas
