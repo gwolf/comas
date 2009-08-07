@@ -3,6 +3,10 @@ class Person < ActiveRecord::Base
   has_one :rescue_session, :dependent => :destroy
   has_many :authorships, :dependent => :destroy
   has_many :proposals, :through => :authorships
+  has_many(:sent_invites, :foreign_key => 'sender_id',
+           :class_name => 'ConfInvite')
+  has_many(:claimed_invites, :foreign_key => 'claimer_id', 
+           :class_name => 'ConfInvite')
   has_and_belongs_to_many :admin_tasks
   has_and_belongs_to_many(:conferences, :order => :begins, 
                           :before_add => :ck_accepts_registrations,
@@ -131,6 +135,18 @@ class Person < ActiveRecord::Base
 
   def conferences_for_submitting
     self.upcoming_conferences.select(&:accepts_proposals?)
+  end
+
+  # Which conferences can this person invite a friend to? (see
+  # PeopleController#invite) 
+  def conferences_for_invite
+    # Conference administrators can invite people to any future
+    # conference
+    return Conference.upcoming if has_admin_task? :conferences_adm
+    # And regular users can invite people to any conference they are
+    # signed up for (except for those marked invite-only — Those are
+    # only for administrators!)
+    self.conferences.reject {|c| c.invite_only?}
   end
 
   def register_for(conf)

@@ -1,6 +1,7 @@
 class Conference < ActiveRecord::Base
   has_many :timeslots, :dependent => :destroy
   has_many :proposals
+  has_many :conf_invites
   has_one :logo, :dependent => :destroy
   has_and_belongs_to_many(:people,
                           :before_add => :ck_accepts_registrations,
@@ -121,8 +122,16 @@ class Conference < ActiveRecord::Base
 
   # Can people sign up for this conference? This means, are we in the
   # registration period (or is it blank), and the conference has not
-  # yet finished?
+  # yet finished? Is the conference not set to invitation only?
   def accepts_registrations?
+    in_reg_period? and !invite_only?
+  end
+
+  # Are we in the valid registration period for this conference? (main
+  # difference with #accepts_registrations: Users who get invitations
+  # are allowed to register if #in_reg_period?, users who try to join
+  # by themselves only if #accepts_registrations?)
+  def in_reg_period?
     (reg_open_date || Date.today) <= Date.today and
     (last_reg_date || Date.today) >= Date.today
   end

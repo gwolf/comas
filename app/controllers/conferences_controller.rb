@@ -119,14 +119,21 @@ class ConferencesController < ApplicationController
     redirect_to :controller => 'people', :action => 'account'
     return false unless request.post?
     return false unless @user
+    reject = false
+
+    if @conference.invite_only?
+      flash[:error] << _('This conference is by invitation only.')
+      reject = true
+    end
 
     if !@conference.accepts_registrations?
       flash[:error] << _('This conference does not currently accept ' +
                          'changing your registration status - please visit ' +
                          'its information page for more details')
-      return false
+      reject = true
     end
-    return true
+
+    return reject
   end
 
   def get_conference

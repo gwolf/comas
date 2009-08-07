@@ -36,7 +36,8 @@ module ConferencesHelper
 
     if ! conf.accepts_registrations?
       return _('Registered') if user.conferences.include?(conf)
-      return _('Registration closed')
+      return _('Registration closed') if !conf.invite_only?
+      return _('By invitation only')
     end
 
     if user.conferences.include?(conf)

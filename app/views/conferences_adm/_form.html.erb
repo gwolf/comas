@@ -22,6 +22,13 @@
 		   :note => _('Conference beginning date')) %>
   <%= f.auto_field('finishes',
 		   :note => _('Conference finishing date')) %>
+  <%= f.auto_field('invite_only',
+		   :note => _('If set to <em>yes</em>, people will not ' +
+			      'be allowed to register for this ' +
+			      'conference, only people invited by ' +
+			      'somebody with <em>conferences_adm</em> ' +
+			      'access rights will be admitted as ' +
+			      'attendees')) %>
   <%= f.auto_field('manages_proposals',
                    :note => _('If you specify this conference should ' +
 			      'not manage proposals, the <b>Public ' +
