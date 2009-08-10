@@ -19,9 +19,10 @@
 #   where the output should be sent to. Defaults to /dev/lp0.
 # * NAMETAG_CHARSET - The character set this printer supports. Zebra printers 
 #   support 8-bit charsets only, which means we will have to translate via
-#   Iconv. Defaults to ISO-8859-15. Note that if an invalid encoding is 
-#   requested, the strings will be sent to the printer as they are (i.e. in 
-#   UTF8), resulting in garbled results whenever they are not 7-bit clean.
+#   Iconv. Defaults to CP850 (EPL2 printers' default). Note that if an invalid
+#   encoding is requested, the strings will be sent to the printer as they are 
+#   (i.e. in UTF8), resulting in garbled results whenever they are not 7-bit 
+#   clean.
 
 require File.dirname(__FILE__) + '/../config/boot'
 require 'environment'
@@ -237,9 +238,9 @@ class ZebraLabel
   end
 
   # Specifies which charset to use for printing; defaults to
-  # ISO-8859-15
+  # CP850
   def self.set_charset(dest)
-    @@printer_charset = dest || 'ISO-8859-15'
+    @@printer_charset = dest || 'CP850'
   end
 
   # Prints the specified nametag label using the specified format. If
