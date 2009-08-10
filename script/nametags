@@ -171,8 +171,9 @@ class NametagsGlade
     Conference.find(:all, :include => :people).sort_by {|c| 
       c.distance_to_begins}.each do |conf|
       iter = model.append
-      iter[0] = _("%s attendees\t%s (%s days)\t%s") % 
-        [conf.people.size, conf.begins, conf.days_to_begins, conf.name]
+      iter[0] = _("%s att.\t%s (%s days)\t%s") %
+        [conf.people.size, conf.begins, conf.days_to_begins,
+         (conf.name.size > 40 ? conf.name[0..39]+'…' : conf.name)]
       iter[1] = conf.id
     end
   end
