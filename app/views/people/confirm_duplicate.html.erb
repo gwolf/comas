@@ -1,0 +1,38 @@
+<h3><%= _('You have probably already registered — Please confirm') %></h3>
+
+<p><%= _('We have record of other people with data similar to ' +
+         'yours. Please make sure you have not yet registered with ' +
+         'us before creating a new account.') %></p>
+
+<p><%= _('In case you can not remember the password for your account, ' +
+         'remember you can %s to be mailed to you.') % 
+         link_to('request a new password', :action => 'request_passwd' ) %></p>
+
+<p><%= _('For your information, this check was done based on your ' +
+         'full name and e-mail address. The matching accounts are:') %></p>
+
+<% table do %>
+  <% table_head_row do %>
+    <th><%= _('First name') %></th>
+    <th><%= _('Family name') %></th>
+    <th><%= _('Login') %></th>
+    <th><%= _('Email (partial)') %></th>
+    <th><%= _('Registration date') %></th>
+    <th><%= _('Last login date') %></th>
+  <% end %>
+  <% @duplicates.each do |dup| %>
+    <% table_row do %>
+      <td><%= dup.firstname %></td>
+      <td><%= dup.famname %></td>
+      <td><%= dup.login %></td>
+      <td><%= dup.email.gsub(/@.+\./, '@(…).') %></td>
+      <td><%= dup.created_date %></td>
+      <td><%= dup.last_login_date %></td>
+    <% end  %>
+  <% end %>
+<% end %>
+
+<p><%= _('If you recognize none of the above accounts, you can %s') %
+       link_to(_('proceed to create the requested account'), 
+         params.merge(:action => 'register', :confirm_possible_dup => true),
+         :method => 'post') %></p>

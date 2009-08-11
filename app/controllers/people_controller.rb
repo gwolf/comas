@@ -102,6 +102,15 @@ class PeopleController < ApplicationController
   def register
     if request.post?
       @person = Person.new(params[:person])
+
+      # Is this person a likely duplicate? Request confirmation before
+      # continuing
+      if !params.has_key?(:confirm_possible_dup) and
+          @duplicates = @person.probable_duplicate?
+        render :action => 'confirm_duplicate'
+        return true
+      end
+
       # If we got here as the result from a conference invite, ensure
       # atomicity. No person will be created if said person cannot
       # join the requested conference.

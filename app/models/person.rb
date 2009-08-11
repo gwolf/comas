@@ -170,6 +170,37 @@ class Person < ActiveRecord::Base
     ! conferences_for_submitting.empty?
   end
 
+  # It is common for people to forget they have already registered at
+  # the site. The controllers can call this method to check whether a
+  # person is a probable duplicate:
+  #
+  # - Is somebody already registered with this same mail address?
+  # - Is somebody already registered with this full name? (somewhat
+  #   fuzzily - Case insensitive, spaces stripped
+  #
+  # Returns false if no probable duplicates are found, or a list of
+  # candidates if they are.
+  def probable_duplicate?
+    res = Person.find :all, :conditions =>
+      ['id != ? AND (email = ? OR (firstname ~* ? AND famname ~* ?))',
+       id||0, email||'', '^\s*%s\s*$' % firstname, '^\s*%s\s*$' % famname]
+    res.size > 0 && res
+  end
+
+  def last_login_date
+    begin
+      last_login_at.to_date
+    rescue NoMethodError
+    end
+  end
+
+  def created_date
+    begin
+      created_at.to_date
+    rescue NoMethodError
+    end
+  end
+
   private
   def pw_salt
     self[:pw_salt]
