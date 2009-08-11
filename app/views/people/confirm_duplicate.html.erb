@@ -9,7 +9,9 @@
          link_to('request a new password', :action => 'request_passwd' ) %></p>
 
 <p><%= _('For your information, this check was done based on your ' +
-         'full name and e-mail address. The matching accounts are:') %></p>
+         'full name and e-mail address. If you recognize any of them ' +
+         'as yours, click on its login in order to identify with it. ' +
+         'The matching accounts are:') %></p>
 
 <% table do %>
   <% table_head_row do %>
@@ -22,12 +24,13 @@
   <% end %>
   <% @duplicates.each do |dup| %>
     <% table_row do %>
+      <a href="/people/login?login=<%= dup.login%>">
       <td><%= dup.firstname %></td>
       <td><%= dup.famname %></td>
-      <td><%= dup.login %></td>
+      <td><%= link_to dup.login, :action => 'login', :login => dup.login %></td>
       <td><%= dup.email.gsub(/@.+\./, '@(…).') %></td>
       <td><%= dup.created_date %></td>
-      <td><%= dup.last_login_date %></td>
+      <td><%= dup.last_login_date %></td></a>
     <% end  %>
   <% end %>
 <% end %>

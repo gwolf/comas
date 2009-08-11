@@ -22,6 +22,7 @@ class Person < ActiveRecord::Base
   validates_format_of(:email,
                       :with => RFC822::EmailAddress,
                       :message => _('A valid e-mail address is required'))
+  before_validation :trim_base_attr
 
   def self.ck_login(given_login, given_passwd)
     person = Person.find_by_login(given_login)
@@ -182,8 +183,8 @@ class Person < ActiveRecord::Base
   # candidates if they are.
   def probable_duplicate?
     res = Person.find :all, :conditions =>
-      ['id != ? AND (email = ? OR (firstname ~* ? AND famname ~* ?))',
-       id||0, email||'', '^\s*%s\s*$' % firstname, '^\s*%s\s*$' % famname]
+      ['id != ? AND (email = ? OR (trim(upper(firstname)) = trim(upper(?)) AND ' +
+       'trim(upper(famname)) = trim(upper(?))))', id||0, email||'', firstname||'', famname||'']
     res.size > 0 && res
   end
 
@@ -218,5 +219,14 @@ class Person < ActiveRecord::Base
     raise(ActiveRecord::RecordNotSaved, 
           _('Cannot leave %s - This user still has proposals '+
             'on this conference') % conf.name)
+  end
+
+  # Removes whitespace before and after the "real" values on
+  # firstname, famname, login and email (the fields where such
+  # mistakes are most frequently seen and should always be corrected)
+  def trim_base_attr
+    %w(firstname famname email login).each do |attr|
+      self.send("#{attr}=", self.send(attr).gsub(/^\s*/,'').gsub(/\s*$/,''))
+    end
   end
 end

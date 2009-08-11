@@ -1,13 +1,15 @@
 <div id="loginreq">
-<% form_tag url_for(:action => 'validate'), :id=>'login' do %>
-<p><%= _'User name' %>: <input type="text" size="20" name="login"></p>
+<% form_tag url_for(:action => 'validate') do %>
+<p><%= _'User name' %>:
+  <%= text_field_tag 'login', params[:login], :size => 20 %></p>
 
-<p><%= _'Password' %>: <input type="password" size="20" name="passwd"></p>
-<p><input type="submit" name="ok" value="<%= _'Log in' %>"></p>
+<p><%= _'Password' %>:
+  <%= password_field_tag 'passwd', nil, :size => 20 %></p>
+<p><%= submit_tag _('Log in') %></p>
 <% end %>
 </div>
 <script language="JavaScript"> 
-  document.getElementById("login").elements[0].focus()
+  document.getElementById("login").focus()
 </script>
 <p><%= _'Cannot log in?' %> 
   <%= link_to _('Request a new password'), :action => 'request_passwd' %></p>
