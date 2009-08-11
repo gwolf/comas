@@ -6,7 +6,8 @@
 
 <p><%= _('In case you can not remember the password for your account, ' +
          'remember you can %s to be mailed to you.') % 
-         link_to('request a new password', :action => 'request_passwd' ) %></p>
+         link_to(_('request a new password'), :action => 'request_passwd') 
+  %></p>
 
 <p><%= _('For your information, this check was done based on your ' +
          'full name and e-mail address. If you recognize any of them ' +

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2009-08-07 19:01-0500\n"
+"POT-Creation-Date: 2009-08-11 17:46-0500\n"
 "PO-Revision-Date: 2008-05-07 18:30-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,7 +24,7 @@ msgid "Document|Filename"
 msgstr ""
 
 #: app/models/document.rb:-
-msgid "Document|Description"
+msgid "Document|Descr"
 msgstr ""
 
 #: app/models/document.rb:-
@@ -72,7 +72,7 @@ msgid "certif format"
 msgstr ""
 
 #: app/models/certif_format.rb:-
-msgid "CertifFormat|Format name"
+msgid "CertifFormat|Name"
 msgstr ""
 
 #: app/models/certif_format.rb:-
@@ -92,7 +92,7 @@ msgid "Conference|Name"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Description"
+msgid "Conference|Descr"
 msgstr ""
 
 #: app/models/person.rb:-
@@ -100,19 +100,19 @@ msgid "Conference|Homepage"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Registration opening date"
+msgid "Conference|Reg open date"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Registration closing date"
+msgid "Conference|Reg close date"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Call for Papers opening date"
+msgid "Conference|Cfp open date"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Call for papers closing date"
+msgid "Conference|Cfp close date"
 msgstr ""
 
 #: app/models/person.rb:-
@@ -128,15 +128,15 @@ msgid "Conference|Short name"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Manages proposals?"
+msgid "Conference|Manages proposals"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Public proposals?"
+msgid "Conference|Public proposals"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Invite only"
+msgid "Conference|Invite only?"
 msgstr ""
 
 #: app/models/person.rb:-
@@ -149,7 +149,7 @@ msgstr ""
 
 #: app/models/person.rb:-
 #, fuzzy
-msgid "AdminTask|System name"
+msgid "AdminTask|Sys name"
 msgstr "System configuration"
 
 #: app/models/person.rb:-
@@ -161,15 +161,15 @@ msgid "Person|Login"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|Password"
+msgid "Person|Passwd"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|First name"
+msgid "Person|Firstname"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|Family name"
+msgid "Person|Famname"
 msgstr ""
 
 #: app/models/person.rb:-
@@ -177,7 +177,7 @@ msgid "Person|Email"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|Random password salt"
+msgid "Person|Pw salt"
 msgstr ""
 
 #: app/models/person.rb:-
@@ -189,28 +189,26 @@ msgid "Person|Last login at"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid ""
-"Person|OK to receive mails specific to the conferences you have signed up "
-"for?"
+msgid "Person|Ok conf mails"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|OK to receive general mails?"
+msgid "Person|Ok general mails"
 msgstr ""
 
 #: app/models/person.rb:24
 msgid "A valid e-mail address is required"
 msgstr ""
 
-#: app/models/person.rb:163
+#: app/models/person.rb:164
 msgid "Registrations for this conference are closed"
 msgstr ""
 
-#: app/models/person.rb:181
+#: app/models/person.rb:213
 msgid "Conference %s does not currently accept registrations"
 msgstr ""
 
-#: app/models/person.rb:188
+#: app/models/person.rb:220
 msgid "Cannot leave %s - This user still has proposals on this conference"
 msgstr ""
 
@@ -267,7 +265,7 @@ msgid "SysConf|Key"
 msgstr ""
 
 #: app/models/sys_conf.rb:-
-msgid "SysConf|Description"
+msgid "SysConf|Descr"
 msgstr ""
 
 #: app/models/sys_conf.rb:-
@@ -345,11 +343,11 @@ msgid "timeslot"
 msgstr ""
 
 #: app/models/timeslot.rb:-
-msgid "Timeslot|Tolerance (pre)"
+msgid "Timeslot|Tolerance pre"
 msgstr ""
 
 #: app/models/timeslot.rb:-
-msgid "Timeslot|Tolerance (post)"
+msgid "Timeslot|Tolerance post"
 msgstr ""
 
 #: app/models/timeslot.rb:-
@@ -429,7 +427,7 @@ msgid "Proposal|Updated at"
 msgstr ""
 
 #: app/models/proposal.rb:-
-msgid "Proposal|Proposal type"
+msgid "Proposal|Prop type"
 msgstr ""
 
 #: app/models/proposal.rb:-
@@ -478,15 +476,15 @@ msgid "NametagFormat|Name"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Horizontal size"
+msgid "NametagFormat|H size"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Vertical size"
+msgid "NametagFormat|V size"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Vertical gap"
+msgid "NametagFormat|V gap"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
@@ -494,35 +492,35 @@ msgid "NametagFormat|Name width"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Horizontal start"
+msgid "NametagFormat|H start"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Vertical start"
+msgid "NametagFormat|V start"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Horizontal position for barcode"
+msgid "NametagFormat|Id bar hpos"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Vertical position for barcode"
+msgid "NametagFormat|Id bar vpos"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Barcode orientation"
+msgid "NametagFormat|Id bar orient"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Barcode narrow bars width"
+msgid "NametagFormat|Id bar narrow"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Barcode wide bars width"
+msgid "NametagFormat|Id bar wide"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Barcode height"
+msgid "NametagFormat|Id bar height"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
@@ -574,15 +572,15 @@ msgid "CertifFormatLine|Content"
 msgstr ""
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Horizontal position"
+msgid "CertifFormatLine|X pos"
 msgstr ""
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Vertical position"
+msgid "CertifFormatLine|Y pos"
 msgstr ""
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Maximum width"
+msgid "CertifFormatLine|Max width"
 msgstr ""
 
 #: app/models/certif_format_line.rb:-
@@ -594,7 +592,7 @@ msgid "CertifFormatLine|Justification"
 msgstr ""
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Certificate format"
+msgid "CertifFormatLine|Certif format"
 msgstr ""
 
 #: app/models/certif_format_line.rb:4
@@ -626,11 +624,11 @@ msgid "conf invite"
 msgstr ""
 
 #: app/models/conf_invite.rb:-
-msgid "ConfInvite|Firstname"
+msgid "ConfInvite|First name"
 msgstr ""
 
 #: app/models/conf_invite.rb:-
-msgid "ConfInvite|Famname"
+msgid "ConfInvite|Family name"
 msgstr ""
 
 #: app/models/conf_invite.rb:-
@@ -642,15 +640,15 @@ msgid "ConfInvite|Link"
 msgstr ""
 
 #: app/models/conf_invite.rb:-
+msgid "ConfInvite|Conference"
+msgstr ""
+
+#: app/models/conf_invite.rb:-
 msgid "ConfInvite|Sender"
 msgstr ""
 
 #: app/models/conf_invite.rb:-
 msgid "ConfInvite|Claimer"
-msgstr ""
-
-#: app/models/conf_invite.rb:-
-msgid "ConfInvite|Conference"
 msgstr ""
 
 #: app/models/rescue_session.rb:-
@@ -690,7 +688,7 @@ msgid "Logo|Data"
 msgstr ""
 
 #: app/models/logo.rb:-
-msgid "Logo|Thumbnail"
+msgid "Logo|Thumb"
 msgstr ""
 
 #: app/models/logo.rb:-
@@ -769,7 +767,7 @@ msgstr ""
 msgid "Conference listing"
 msgstr ""
 
-#: app/controllers/application.rb:71 app/views/people/login.html.erb:6
+#: app/controllers/application.rb:71 app/views/people/login.html.erb:8
 msgid "Log in"
 msgstr ""
 
@@ -1028,68 +1026,68 @@ msgid ""
 msgstr ""
 
 #: app/controllers/people_controller.rb:78
-#: app/controllers/people_controller.rb:164
+#: app/controllers/people_controller.rb:173
 msgid "New password does not match confirmation"
 msgstr ""
 
 #: app/controllers/people_controller.rb:85
-#: app/controllers/people_controller.rb:178
+#: app/controllers/people_controller.rb:187
 msgid "Your password was successfully changed"
 msgstr ""
 
-#: app/controllers/people_controller.rb:112
+#: app/controllers/people_controller.rb:121
 msgid "New person successfully registered"
 msgstr ""
 
-#: app/controllers/people_controller.rb:118
+#: app/controllers/people_controller.rb:127
 msgid "You have successfully registered for conference <em>%s</em>"
 msgstr ""
 
-#: app/controllers/people_controller.rb:127
+#: app/controllers/people_controller.rb:136
 msgid "Could not register person: "
 msgstr ""
 
-#: app/controllers/people_controller.rb:150
+#: app/controllers/people_controller.rb:159
 msgid "Your personal data has been updated successfully"
 msgstr ""
 
-#: app/controllers/people_controller.rb:152
+#: app/controllers/people_controller.rb:161
 msgid "Error updating your personal data: "
 msgstr ""
 
-#: app/controllers/people_controller.rb:162
+#: app/controllers/people_controller.rb:171
 msgid "All fields are required"
 msgstr ""
 
-#: app/controllers/people_controller.rb:166
+#: app/controllers/people_controller.rb:175
 msgid "Current password is not valid"
 msgstr ""
 
-#: app/controllers/people_controller.rb:170
+#: app/controllers/people_controller.rb:179
 msgid "Error changing your password: "
 msgstr ""
 
-#: app/controllers/people_controller.rb:192
+#: app/controllers/people_controller.rb:201
 msgid "Requested person is not registered"
 msgstr ""
 
-#: app/controllers/people_controller.rb:204
+#: app/controllers/people_controller.rb:213
 msgid "You are not allowed to send invitations for the specified conference."
 msgstr ""
 
-#: app/controllers/people_controller.rb:211
+#: app/controllers/people_controller.rb:220
 msgid "The requested e-mail was successfully sent"
 msgstr ""
 
-#: app/controllers/people_controller.rb:214
+#: app/controllers/people_controller.rb:223
 msgid "Invalid conference requested"
 msgstr ""
 
-#: app/controllers/people_controller.rb:216
+#: app/controllers/people_controller.rb:225
 msgid "You must supply a body for your mail"
 msgstr ""
 
-#: app/controllers/people_controller.rb:218
+#: app/controllers/people_controller.rb:227
 msgid "The specified e-mail address (%s) is not valid"
 msgstr ""
 
@@ -1620,26 +1618,29 @@ msgstr ""
 #: app/views/people_adm/_people_for_task.html.erb:3
 #: app/views/conferences_adm/people_list.html.erb:6
 #: app/views/conferences_adm/list.html.erb:7
-#: app/views/sys_conf_adm/show_catalog.html.erb:7 script/nametags:101
+#: app/views/sys_conf_adm/show_catalog.html.erb:7 script/nametags:107
 msgid "ID"
 msgstr ""
 
 #: app/helpers/people_adm_helper.rb:5
-#: app/views/people_adm/_people_for_task.html.erb:4 script/nametags:101
+#: app/views/people_adm/_people_for_task.html.erb:4
+#: app/views/people/confirm_duplicate.html.erb:20 script/nametags:107
 msgid "Login"
 msgstr ""
 
 #: app/helpers/people_adm_helper.rb:6
 #: app/views/people_adm/_people_for_task.html.erb:5
 #: app/views/conferences_adm/people_list.html.erb:7
-#: app/views/people/invite.html.erb:12 script/nametags:101
+#: app/views/people/invite.html.erb:12
+#: app/views/people/confirm_duplicate.html.erb:18 script/nametags:107
 msgid "First name"
 msgstr ""
 
 #: app/helpers/people_adm_helper.rb:7
 #: app/views/people_adm/_people_for_task.html.erb:6
 #: app/views/conferences_adm/people_list.html.erb:8
-#: app/views/people/invite.html.erb:14 script/nametags:101
+#: app/views/people/invite.html.erb:14
+#: app/views/people/confirm_duplicate.html.erb:19 script/nametags:107
 msgid "Family name"
 msgstr ""
 
@@ -2688,15 +2689,15 @@ msgstr ""
 msgid "User name"
 msgstr ""
 
-#: app/views/people/login.html.erb:5
+#: app/views/people/login.html.erb:6
 msgid "Password"
 msgstr ""
 
-#: app/views/people/login.html.erb:12
+#: app/views/people/login.html.erb:14
 msgid "Cannot log in?"
 msgstr ""
 
-#: app/views/people/login.html.erb:13
+#: app/views/people/login.html.erb:15
 msgid "Request a new password"
 msgstr ""
 
@@ -2768,6 +2769,54 @@ msgstr ""
 
 #: app/views/people/proposals.html.erb:31
 msgid "Files"
+msgstr ""
+
+#: app/views/people/confirm_duplicate.html.erb:1
+msgid "You have probably already registered — Please confirm"
+msgstr ""
+
+#: app/views/people/confirm_duplicate.html.erb:3
+msgid ""
+"We have record of other people with data similar to yours. Please make sure "
+"you have not yet registered with us before creating a new account."
+msgstr ""
+
+#: app/views/people/confirm_duplicate.html.erb:7
+msgid ""
+"In case you can not remember the password for your account, remember you can "
+"%s to be mailed to you."
+msgstr ""
+
+#: app/views/people/confirm_duplicate.html.erb:9
+msgid ""
+"request a new password"
+msgstr ""
+
+#: app/views/people/confirm_duplicate.html.erb:11
+msgid ""
+"For your information, this check was done based on your full name and e-mail "
+"address. If you recognize any of them as yours, click on its login in order "
+"to identify with it. The matching accounts are:"
+msgstr ""
+
+#: app/views/people/confirm_duplicate.html.erb:21
+msgid "Email (partial)"
+msgstr ""
+
+#: app/views/people/confirm_duplicate.html.erb:22
+msgid "Registration date"
+msgstr ""
+
+#: app/views/people/confirm_duplicate.html.erb:23
+msgid "Last login date"
+msgstr ""
+
+#: app/views/people/confirm_duplicate.html.erb:38
+msgid "If you recognize none of the above accounts, you can %s"
+msgstr ""
+
+#: app/views/people/confirm_duplicate.html.erb:39
+msgid "proceed to create the requested account"
 msgstr ""
 
 #: app/views/people/_pers_data.html.erb:2
@@ -3367,20 +3416,24 @@ msgstr ""
 msgid "gtk-quit"
 msgstr ""
 
-#: script/nametags:146
+#: script/nametags:152
 msgid "Displaying %d people"
 msgstr ""
 
-#: script/nametags:168
-msgid "%s attendees\t%s (%s days)\t%s"
+#: script/nametags:174
+msgid "%s att.\t%s (%s days)\t%s"
 msgstr ""
 
-#: script/nametags:189
+#: script/nametags:196
 msgid "%s cm\t%s"
 msgstr ""
 
-#: script/nametags:220
+#: script/nametags:227
 msgid "Error printing label: %s"
+msgstr ""
+
+#: script/nametags:254
+msgid "Invalid output charset \"%s\" specified - Printing as UTF-8"
 msgstr ""
 
 #: script/create_user:18
