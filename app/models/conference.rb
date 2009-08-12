@@ -183,6 +183,10 @@ class Conference < ActiveRecord::Base
     Logo.count(:conditions => ['conference_id = ?', self.id]) > 0
   end
 
+  def logo
+    Logo.find(:first, :conditions => ['conference_id = ?', self.id])
+  end
+
   private
   # Ensure the conference has a short name. If none was provided, come
   # up with one - It is basically a readable-URL-helper, so it can be

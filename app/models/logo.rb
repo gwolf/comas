@@ -29,7 +29,7 @@ class Logo < ActiveRecord::Base
   ['data', 'medium', 'thumb'].each do |col|
     eval "def #{col}
             return self[:#{col}] if self.attributes.has_key?('#{col}')
-            logo = self.class.find(self.id, :select => '*')
+            logo = self.class.find(self.id, :select => 'id, conference_id, #{col}')
             logo[:#{col}]
           end"
   end
