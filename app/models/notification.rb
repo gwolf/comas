@@ -69,7 +69,7 @@ class Notification < ActionMailer::Base
          :invitation_url => url_for(:only_path => false,
                                     :controller => 'people',
                                     :action => 'new',
-                                    :link => invite.link),
+                                    :invite => invite.link),
          :invitation_text => invitation_text)
   end
 

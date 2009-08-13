@@ -1,5 +1,8 @@
 class PeopleController < ApplicationController
   helper :conferences
+  before_filter :get_invite, :only => [:claim_invite, :login, :new, :register,
+                                       :account, :validate]
+
   ############################################################
   # Session handling
   def login
@@ -15,10 +18,10 @@ class PeopleController < ApplicationController
   def validate
     user = Person.ck_login(params[:login], params[:passwd])
     if user
-      dest_url = session[:returnto] || url_for(:action => 'account')
-
       session[:user_id] = user.id
-      redirect_to dest_url
+      dest = {:action => 'account'}
+      dest[:invite] = @invite.link if @invite
+      redirect_to url_for(dest)
     else
       flash[:warning] << _('Incorrect user/password')
       redirect_to :action => 'login'
@@ -90,7 +93,7 @@ class PeopleController < ApplicationController
   # Person registration, personal data editing, ...
   def new
     @person = Person.new
-    if params[:link] and @invite = ConfInvite.find_by_link(params[:link])
+    if @invite
       @conference = @invite.conference
       @accepts_reg = @conference.in_reg_period?
       @person.firstname = @invite.firstname
@@ -111,31 +114,11 @@ class PeopleController < ApplicationController
         return true
       end
 
-      # If we got here as the result from a conference invite, ensure
-      # atomicity. No person will be created if said person cannot
-      # join the requested conference.
-      begin
-        @person.transaction do
-          @person.save!
-          session[:user_id] = @person.id
-          flash[:notice] << _('New person successfully registered')
+      @person.save!
+      session[:user_id] = @person.id
+      flash[:notice] << _('New person successfully registered')
 
-          if invite = ConfInvite.find_by_link(params[:link])
-            invite.claimer = @person
-            invite.save!
-            @person.conferences << invite.conference
-            flash[:notice] << _('You have successfully registered for ' +
-                                'conference <em>%s</em>') % 
-              invite.conference.name
-          end
-
-          redirect_to :action => 'account'
-        end
-      rescue
-        render :action => 'new'
-        flash[:error] << [_('Could not register person: '),
-                          @person.errors.full_messages].flatten
-      end
+      redirect_to :action => 'account'
 
       Notification.deliver_welcome(@person)
     else
@@ -147,6 +130,20 @@ class PeopleController < ApplicationController
 
   # Base data shown when logging in (i.e. account index)
   def account
+    begin
+      if @invite and (@invite.claimer.nil? or @invite.claimer == @user)
+        @invite.claimer = @user
+        @invite.save!
+        @user.conferences << @invite.conference
+        flash[:notice] << _('You have successfully registered for ' +
+                            'conference <em>%s</em>') %
+          @invite.conference.name
+      end
+    rescue ActiveRecord::RecordNotSaved => msg
+      flash[:error] << _('Cannot register you for the conference you ' +
+                         'were invited to: %s') % msg
+    end
+
     @upcoming = Conference.upcoming.paginate(:per_page=>5, 
                                              :page => params[:page])
     @mine = Conference.upcoming_for_person(@user)
@@ -229,6 +226,14 @@ class PeopleController < ApplicationController
     end
   end
 
+  def claim_invite
+    if @user
+      redirect_to :action => 'account', :invite => @invite.link
+    else
+      redirect_to :action => 'new', :invite => @invite.link
+    end
+  end
+
   ############################################################
   # Internal use...
   protected
@@ -237,7 +242,12 @@ class PeopleController < ApplicationController
   end
 
   def check_auth
-    public = [:login, :validate, :new, :register, :request_passwd]
+    public = [:login, :validate, :new, :register, :request_passwd,
+              :claim_invite]
     return true if public.include? request.path_parameters['action'].to_sym
+  end
+
+  def get_invite
+    @invite = ConfInvite.find_by_link(params[:invite])
   end
 end

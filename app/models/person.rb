@@ -208,7 +208,7 @@ class Person < ActiveRecord::Base
   end
 
   def ck_accepts_registrations(conf)
-    return true if conf.accepts_registrations?
+    return true if conf.in_reg_period?
     raise(ActiveRecord::RecordNotSaved,
           _('Conference %s does not currently accept registrations') % 
           conf.name)

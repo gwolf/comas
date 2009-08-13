@@ -13,6 +13,11 @@
              'not currently active. You can, however, still register ' +
              'with a new account for our other conferences.')%></p>
   <% end %>
+
+  <p><%= _('If you have already registered in our system, please %s') %
+	 link_to(_('log into the system by following this link'),
+	         :action => 'login', :invite => @invite.link)
+ %></p>
 <% end %>
 
 <p><%= _'Please fill in the following required details for your '+

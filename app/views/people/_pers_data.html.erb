@@ -26,7 +26,7 @@
                    'in receiving mails from us relative to the ' +
                    'conferences you have signed up for?')) %>
   <% if @invite %>
-    <%= hidden_field_tag :link, @invite.link %>
+    <%= hidden_field_tag :invite, @invite.link %>
   <% end %>
   <%= f.submit subm %>
 <% end %>

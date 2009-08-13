@@ -1,3 +1,5 @@
+<%= text_for_invite(@invite) %>
+
 <div id="loginreq">
 <% form_tag url_for(:action => 'validate') do %>
 <p><%= _'User name' %>:
@@ -5,6 +7,9 @@
 
 <p><%= _'Password' %>:
   <%= password_field_tag 'passwd', nil, :size => 20 %></p>
+
+<%= hidden_field_tag('invite', @invite.link) if @invite %>
+
 <p><%= submit_tag _('Log in') %></p>
 <% end %>
 </div>

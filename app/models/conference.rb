@@ -4,8 +4,8 @@ class Conference < ActiveRecord::Base
   has_many :conf_invites
   has_one :logo, :dependent => :destroy
   has_and_belongs_to_many(:people,
-                          :before_add => :ck_accepts_registrations,
-                          :before_remove => :dont_unregiser_if_has_proposals)
+                          :before_add => :ck_in_reg_period,
+                          :before_remove => :dont_unregister_if_has_proposals)
 
   validates_presence_of :name
   validates_uniqueness_of :name
@@ -299,8 +299,8 @@ class Conference < ActiveRecord::Base
     false
   end
 
-  def ck_accepts_registrations(person)
-    return true if self.accepts_registrations?
+  def ck_in_reg_period(person)
+    return true if self.in_reg_period?
     raise(ActiveRecord::RecordNotSaved,
           _('This conference does not currently accept registrations'))
   end

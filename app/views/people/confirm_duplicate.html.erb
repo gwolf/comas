@@ -28,7 +28,7 @@
       <a href="/people/login?login=<%= dup.login%>">
       <td><%= dup.firstname %></td>
       <td><%= dup.famname %></td>
-      <td><%= link_to dup.login, :action => 'login', :login => dup.login %></td>
+      <td><%= link_to_dup(dup, @invite) %></td>
       <td><%= dup.email.gsub(/@.+\./, '@(…).') %></td>
       <td><%= dup.created_date %></td>
       <td><%= dup.last_login_date %></td></a>
