@@ -51,18 +51,26 @@ class Notification < ActionMailer::Base
   end
 
   # Inviting a friend to a conference
-  def conference_invitation(sender, dest, conference, invitation_text)
-    checks_for_open_mails(dest.email, mail_body)
+  def conference_invitation(invite, invitation_text)
+    dest = invite.email
+    conf = invite.conference
+    sender = invite.sender
+
+    checks_for_open_mails(dest, invitation_text)
 
     recipients dest
     from SysConf.value_for('mail_from')
     subject comas_title(_('Invitation to %s, sent by %s') % 
-                        [conference.name, sender.name])
-    body :conference => conference.name,
+                        [conf.name, sender.name])
+    body(:conference => conf.name,
          :sender_name => sender.name,
          :sender_email => sender.email,
-         :conference_url => conf_url(conference),
-         :invitation_text => invitation_text
+         :conference_url => conf_url(conf),
+         :invitation_url => url_for(:only_path => false,
+                                    :controller => 'people',
+                                    :action => 'new',
+                                    :invite => invite.link),
+         :invitation_text => invitation_text)
   end
 
   # Arbitrary administrator-generated mail

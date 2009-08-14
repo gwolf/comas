@@ -32,11 +32,11 @@ class ConferencesController < ApplicationController
 
   def rss
     conf = []
-    how_many = params[:how_many].to_i 
+    how_many = params[:how_many].to_i
     how_many = 10 if how_many == 0
     @rss_descr = RssLinks[params[:id]]
 
-    case params[:id] 
+    case params[:id]
     when 'latest'
       conf = Conference.find(:all,
                              :order => 'id DESC')
@@ -53,15 +53,20 @@ class ConferencesController < ApplicationController
   end
 
   def show
-    @can_edit = true if @user and @user.has_admin_task? 'conferences_adm'
+    @can_edit = true if @user and @user.has_admin_task? :conferences_adm
+    @props_to_show = listable_proposals
   end
 
   def proposals
-    @props = @conference.proposals.
+    @props = listable_proposals.
       paginate(:page => params[:page],
                :per_page => params[:per_page] || 20,
-               :include => [:authorships, :people, :prop_type, :prop_status],
+               :include => [:authorships, :people, :prop_type],
                :order => 'title, authorships.position')
+    if @props.empty?
+      redirect_to :action => 'show', :id => @conference.id
+      flash[:warning] << _('No listable proposals found for this conference')
+    end
   end
 
   ############################################################
@@ -104,18 +109,31 @@ class ConferencesController < ApplicationController
   end
 
   protected
+  def listable_proposals
+    return @conference.proposals if @user and
+      @user.has_admin_task? :academic_adm
+    @conference.publicly_showable_proposals
+  end
+
   def registrations_sanity_checks
     redirect_to :controller => 'people', :action => 'account'
     return false unless request.post?
     return false unless @user
+    reject = false
+
+    if @conference.invite_only?
+      flash[:error] << _('This conference is by invitation only.')
+      reject = true
+    end
 
     if !@conference.accepts_registrations?
       flash[:error] << _('This conference does not currently accept ' +
                          'changing your registration status - please visit ' +
-                         'its information page for more details') 
-      return false
+                         'its information page for more details')
+      reject = true
     end
-    return true
+
+    return reject
   end
 
   def get_conference

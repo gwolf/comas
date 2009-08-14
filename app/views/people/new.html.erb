@@ -1,4 +1,25 @@
 <h1><%= _'New account' %></h1>
+
+<% if @invite %>
+  <p><%= _('You followed an invitation link for the <em>%s</em> ' +
+	   'conference (%s - %s).') % 
+         [@conference.name, @conference.begins, @conference.finishes] %></p>
+  <% if @accepts_reg %>
+    <p><%= _('In order to registered you as an attendee, we ' +
+	     'need some of your personal and contact information, to ' +
+	     'create an account for you in our system.')%></p>
+  <% else %>
+    <p><%= _('Sadly, the registration period for this conference is ' +
+             'not currently active. You can, however, still register ' +
+             'with a new account for our other conferences.')%></p>
+  <% end %>
+
+  <p><%= _('If you have already registered in our system, please %s') %
+	 link_to(_('log into the system by following this link'),
+	         :action => 'login', :invite => @invite.link)
+ %></p>
+<% end %>
+
 <p><%= _'Please fill in the following required details for your '+
         'account creation' %></p>
 <%= render :partial => 'pers_data', 

@@ -17,6 +17,12 @@
 #   exists)
 # * NAMETAG_PRINTER - The port where the printer is connected, or the file 
 #   where the output should be sent to. Defaults to /dev/lp0.
+# * NAMETAG_CHARSET - The character set this printer supports. Zebra printers 
+#   support 8-bit charsets only, which means we will have to translate via
+#   Iconv. Defaults to CP850 (EPL2 printers' default). Note that if an invalid
+#   encoding is requested, the strings will be sent to the printer as they are 
+#   (i.e. in UTF8), resulting in garbled results whenever they are not 7-bit 
+#   clean.
 
 require File.dirname(__FILE__) + '/../config/boot'
 require 'environment'
@@ -165,8 +171,9 @@ class NametagsGlade
     Conference.find(:all, :include => :people).sort_by {|c| 
       c.distance_to_begins}.each do |conf|
       iter = model.append
-      iter[0] = _("%s attendees\t%s (%s days)\t%s") % 
-        [conf.people.size, conf.begins, conf.days_to_begins, conf.name]
+      iter[0] = _("%s att.\t%s (%s days)\t%s") %
+        [conf.people.size, conf.begins, conf.days_to_begins,
+         (conf.name.size > 40 ? conf.name[0..39]+'…' : conf.name)]
       iter[1] = conf.id
     end
   end
@@ -224,17 +231,29 @@ end
 
 # Actually generates the physical nametags labels
 class ZebraLabel
-  # Specifies which printer port to use
+  include GetText
+
+  # Specifies which printer port to use; defaults to /dev/lp0
   def self.set_printer_port(dest)
-    @@printer_port = dest
+    @@printer_port = dest || '/dev/lp0'
+  end
+
+  # Specifies which charset to use for printing; defaults to
+  # CP850
+  def self.set_charset(dest)
+    @@printer_charset = dest || 'CP850'
   end
 
   # Prints the specified nametag label using the specified format. If
-  # no printer port was defined via #set_printer_port, defaults to
-  # /dev/lp0.
+  # no printer port was defined via #set_printer_port
   def initialize(person, format)
-    @@printer_port ||= '/dev/lp0'
     data = format.generate_for(person)
+    begin
+      data = Iconv.conv(@@printer_charset, 'UTF-8', data)
+    rescue Iconv::InvalidEncoding
+      warn _('Invalid output charset "%s" specified - Printing as UTF-8') %
+        @@printer_charset
+    end
     File.open(@@printer_port, 'a') {|out| out.print(data)}
   end
 end
@@ -242,6 +261,7 @@ end
 # Real application initialization starts here.
 ENV['GETTEXT_PATH'] ||= File.join(File.dirname(__FILE__), 'locale')
 Locale.set(ENV['LANG']) if ENV['LANG']
-ZebraLabel.set_printer_port(ENV['NAMETAG_PRINTER']) if ENV['NAMETAG_PRINTER']
+ZebraLabel.set_printer_port(ENV['NAMETAG_PRINTER'])
+ZebraLabel.set_charset(ENV['NAMETAG_CHARSET'])
 
 NametagApp.new

@@ -4,7 +4,7 @@ module ProposalsHelper
 
   def authors_list_for_proposal(prop)
     prop.people.map do |p|
-      '%s (%s)' % [link_to(p.name, :controller => 'people', 
+      '%s (%s)' % [link_to(h(p.name), :controller => 'people',
                            :action => 'profile', :id => p),
                    link_to(_('%d registered proposals') % p.proposals.size,
                            :controller => 'proposals', :action => 'by_author',
@@ -22,7 +22,7 @@ module ProposalsHelper
     auths.each do |auth|
       res << table_row_tag <<
         table_col(link_author_up(auth), link_author_down(auth), authpos+=1) <<
-        table_col(auth.person.name) <<
+        table_col(h auth.person.name) <<
         table_col(link_author_delete(auth)) <<
         end_table_row_tag
     end
@@ -42,10 +42,10 @@ module ProposalsHelper
                       'continue?')
     end
 
-    link_to( icon_trash, 
+    link_to( icon_trash,
              { :action => 'author_delete', :id => auth.proposal.id,
-               :authorship_id => auth.id}, 
-             { :method => 'post', 
+               :authorship_id => auth.id},
+             { :method => 'post',
                :confirm => confirm_msg})
   end
 
@@ -74,13 +74,13 @@ module ProposalsHelper
                              :id => @proposal, :document_id => doc},
                            :method => 'post',
                            :confirm => _('Are you sure you want to delete ' +
-                                         'this document?')) : 
+                                         'this document?')) :
                    '')
     _('%s %s: %s (%s)') % [delete_link,
-                           link_to(doc.filename, :action => 'get_document', 
+                           link_to(h(doc.filename), :action => 'get_document',
                                    :id => @proposal, :document_id => doc.id,
-                                   :filename => doc.filename),
+                                   :filename => h(doc.filename)),
                            doc.descr, doc.human_size ]
-      
+
   end
 end

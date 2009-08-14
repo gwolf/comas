@@ -1,5 +1,8 @@
 class PeopleController < ApplicationController
   helper :conferences
+  before_filter :get_invite, :only => [:claim_invite, :login, :new, :register,
+                                       :account, :validate]
+
   ############################################################
   # Session handling
   def login
@@ -15,10 +18,10 @@ class PeopleController < ApplicationController
   def validate
     user = Person.ck_login(params[:login], params[:passwd])
     if user
-      dest_url = session[:returnto] || url_for(:action => 'account')
-
       session[:user_id] = user.id
-      redirect_to dest_url
+      dest = {:action => 'account'}
+      dest[:invite] = @invite.link if @invite
+      redirect_to url_for(dest)
     else
       flash[:warning] << _('Incorrect user/password')
       redirect_to :action => 'login'
@@ -90,29 +93,57 @@ class PeopleController < ApplicationController
   # Person registration, personal data editing, ...
   def new
     @person = Person.new
+    if @invite
+      @conference = @invite.conference
+      @accepts_reg = @conference.in_reg_period?
+      @person.firstname = @invite.firstname
+      @person.famname = @invite.famname
+      @person.email = @invite.email
+    end
   end
 
   def register
     if request.post?
       @person = Person.new(params[:person])
-      if @person.save
-        session[:user_id] = @person.id
-        flash[:notice] << _('New person successfully registered')
-        redirect_to :action => 'account'
 
-        Notification.deliver_welcome(@person)
-
+      # Is this person a likely duplicate? Request confirmation before
+      # continuing
+      if !params.has_key?(:confirm_possible_dup) and
+          @duplicates = @person.probable_duplicate?
+        render :action => 'confirm_duplicate'
         return true
-      else
-        flash[:error] << [_('Could not register person: '),
-                          @person.errors.full_messages].flatten
       end
+
+      @person.save!
+      session[:user_id] = @person.id
+      flash[:notice] << _('New person successfully registered')
+
+      redirect_to :action => 'account'
+
+      Notification.deliver_welcome(@person)
+    else
+      # If we hit this method without being posted, pretend nothing
+      # bad happened
+      render :action => 'new'
     end
-    render :action => 'new'
   end
 
   # Base data shown when logging in (i.e. account index)
   def account
+    begin
+      if @invite and (@invite.claimer.nil? or @invite.claimer == @user)
+        @invite.claimer = @user
+        @invite.save!
+        @user.conferences << @invite.conference
+        flash[:notice] << _('You have successfully registered for ' +
+                            'conference <em>%s</em>') %
+          @invite.conference.name
+      end
+    rescue ActiveRecord::RecordNotSaved => msg
+      flash[:error] << _('Cannot register you for the conference you ' +
+                         'were invited to: %s') % msg
+    end
+
     @upcoming = Conference.upcoming.paginate(:per_page=>5, 
                                              :page => params[:page])
     @mine = Conference.upcoming_for_person(@user)
@@ -171,13 +202,17 @@ class PeopleController < ApplicationController
 
   # Invite a friend (to a specific conference)
   def invite
-    @my_confs = @user.upcoming_conferences
     return true unless request.post?
 
     begin
       conf = Conference.find_by_id(params[:dest_conf_id])
-      Notification.deliver_conference_invitation(@user, params[:email], 
-                                                 conf, params[:body])
+      if ! @user.conferences_for_invite.include?(conf)
+        flash[:error] << _('You are not allowed to send invitations for ' +
+                           'the specified conference.')
+      end
+      invite = ConfInvite.for(conf, @user, params[:email], 
+                              params[:firstname], params[:famname])
+      Notification.deliver_conference_invitation(invite, params[:body])
 
       flash[:notice] << _('The requested e-mail was successfully sent')
       redirect_to :action => 'account'
@@ -185,9 +220,17 @@ class PeopleController < ApplicationController
       flash[:error] << _('Invalid conference requested')
     rescue Notification::MustSupplyBody
       flash[:error] << _('You must supply a body for your mail')
-    rescue Notification::InvalidEmail
+    rescue ActiveRecord::RecordInvalid, Notification::InvalidEmail
       flash[:error] << _('The specified e-mail address (%s) is not valid') %
         params[:email]
+    end
+  end
+
+  def claim_invite
+    if @user
+      redirect_to :action => 'account', :invite => @invite.link
+    else
+      redirect_to :action => 'new', :invite => @invite.link
     end
   end
 
@@ -199,7 +242,12 @@ class PeopleController < ApplicationController
   end
 
   def check_auth
-    public = [:login, :validate, :new, :register, :request_passwd]
+    public = [:login, :validate, :new, :register, :request_passwd,
+              :claim_invite]
     return true if public.include? request.path_parameters['action'].to_sym
+  end
+
+  def get_invite
+    @invite = ConfInvite.find_by_link(params[:invite])
   end
 end

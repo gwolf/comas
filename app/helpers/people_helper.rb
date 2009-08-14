@@ -61,4 +61,19 @@ module PeopleHelper
       end
     end
   end
+
+  def text_for_invite(invite)
+    return nil unless invite
+    conf = invite.conference
+    '<p>%s</p>' %
+      (_('You followed an invitation link for the <em>%s</em> conference ' +
+         '(%s - %s).') % [conf.name, conf.begins, conf.finishes])
+  end
+
+  def link_to_dup(dup,invite)
+    return nil unless dup
+    dest = {:action => 'login', :login => dup.login}
+    dest[:invite] = invite.link if invite
+    link_to dup.login, dest
+  end
 end

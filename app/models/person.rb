@@ -3,6 +3,10 @@ class Person < ActiveRecord::Base
   has_one :rescue_session, :dependent => :destroy
   has_many :authorships, :dependent => :destroy
   has_many :proposals, :through => :authorships
+  has_many(:sent_invites, :foreign_key => 'sender_id',
+           :class_name => 'ConfInvite')
+  has_many(:claimed_invites, :foreign_key => 'claimer_id', 
+           :class_name => 'ConfInvite')
   has_and_belongs_to_many :admin_tasks
   has_and_belongs_to_many(:conferences, :order => :begins, 
                           :before_add => :ck_accepts_registrations,
@@ -18,6 +22,7 @@ class Person < ActiveRecord::Base
   validates_format_of(:email,
                       :with => RFC822::EmailAddress,
                       :message => _('A valid e-mail address is required'))
+  before_validation :trim_base_attr
 
   def self.ck_login(given_login, given_passwd)
     person = Person.find_by_login(given_login)
@@ -133,6 +138,18 @@ class Person < ActiveRecord::Base
     self.upcoming_conferences.select(&:accepts_proposals?)
   end
 
+  # Which conferences can this person invite a friend to? (see
+  # PeopleController#invite) 
+  def conferences_for_invite
+    # Conference administrators can invite people to any future
+    # conference
+    return Conference.upcoming if has_admin_task? :conferences_adm
+    # And regular users can invite people to any conference they are
+    # signed up for (except for those marked invite-only — Those are
+    # only for administrators!)
+    self.conferences.reject {|c| c.invite_only?}
+  end
+
   def register_for(conf)
     conf = Conference.find(conf) if conf.is_a?(Fixnum)
     if conf.accepts_registrations?
@@ -154,13 +171,44 @@ class Person < ActiveRecord::Base
     ! conferences_for_submitting.empty?
   end
 
+  # It is common for people to forget they have already registered at
+  # the site. The controllers can call this method to check whether a
+  # person is a probable duplicate:
+  #
+  # - Is somebody already registered with this same mail address?
+  # - Is somebody already registered with this full name? (somewhat
+  #   fuzzily - Case insensitive, spaces stripped
+  #
+  # Returns false if no probable duplicates are found, or a list of
+  # candidates if they are.
+  def probable_duplicate?
+    res = Person.find :all, :conditions =>
+      ['id != ? AND (email = ? OR (trim(upper(firstname)) = trim(upper(?)) AND ' +
+       'trim(upper(famname)) = trim(upper(?))))', id||0, email||'', firstname||'', famname||'']
+    res.size > 0 && res
+  end
+
+  def last_login_date
+    begin
+      last_login_at.to_date
+    rescue NoMethodError
+    end
+  end
+
+  def created_date
+    begin
+      created_at.to_date
+    rescue NoMethodError
+    end
+  end
+
   private
   def pw_salt
     self[:pw_salt]
   end
 
   def ck_accepts_registrations(conf)
-    return true if conf.accepts_registrations?
+    return true if conf.in_reg_period?
     raise(ActiveRecord::RecordNotSaved,
           _('Conference %s does not currently accept registrations') % 
           conf.name)
@@ -171,5 +219,14 @@ class Person < ActiveRecord::Base
     raise(ActiveRecord::RecordNotSaved, 
           _('Cannot leave %s - This user still has proposals '+
             'on this conference') % conf.name)
+  end
+
+  # Removes whitespace before and after the "real" values on
+  # firstname, famname, login and email (the fields where such
+  # mistakes are most frequently seen and should always be corrected)
+  def trim_base_attr
+    %w(firstname famname email login).each do |attr|
+      self.send("#{attr}=", self.send(attr).gsub(/^\s*/,'').gsub(/\s*$/,''))
+    end
   end
 end

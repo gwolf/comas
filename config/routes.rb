@@ -53,6 +53,10 @@ ActionController::Routing::Routes.draw do |map|
               :controller => 'conferences',
               :action => 'show')
 
+  map.connect('invite/:invite',
+              :controller => 'people',
+              :action => 'claim_invite')
+
   # Allow downloading Web Service WSDL as a file with an extension
   # instead of a file named 'wsdl'
   map.connect ':controller/service.wsdl', :action => 'wsdl'

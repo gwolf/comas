@@ -12,11 +12,11 @@
   <% end %>
   <% @props.each do |prop| %>
     <% table_row do %>
-      <td><%= link_to(prop.title, :controller => 'proposals',
+      <td><%= link_to(h(prop.title), :controller => 'proposals',
 	              :action => 'show', :id => prop)%></td>
       <td><%= authors_list_for_proposal(prop).join('<br/>') %></td>
-      <td><%=h prop.prop_type.name %></td>
-      <td><%=h prop.prop_status.name %></td>
+      <td><%= prop.prop_type.name %></td>
+      <td><%= prop.status_name %></td>
     <% end %>
   <% end %>
 <% end %>
