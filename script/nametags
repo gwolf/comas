@@ -92,8 +92,14 @@ class NametagsGlade
   end
 
   def on_refresh_button_clicked(button)
-    populate_people(@glade["peoplelist_treeview"].model,
-                    @glade["conference_combobox"].active_iter[1])
+    confs = @glade['conference_combobox']
+    people = @glade['peoplelist_treeview']
+
+    # Select the first iterator if needed - Things will break horribly
+    # otherwise (i.e. the program dies :-/ )
+    confs.active_iter ||= confs.model.iter_first
+
+    populate_people(people.model, confs.active_iter[1])
   end
 
   ############################################################
