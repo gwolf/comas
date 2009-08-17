@@ -114,13 +114,20 @@ class PeopleController < ApplicationController
         return true
       end
 
-      @person.save!
-      session[:user_id] = @person.id
-      flash[:notice] << _('New person successfully registered')
+      begin
+        @person.transaction do
+          @person.save!
+          session[:user_id] = @person.id
+          flash[:notice] << _('New person successfully registered')
 
-      redirect_to :action => 'account'
+          redirect_to :action => 'account'
 
-      Notification.deliver_welcome(@person)
+          Notification.deliver_welcome(@person)
+        end
+      rescue ActiveRecord::RecordInvalid => msg
+        flash[:error] << _('Error registering requested user') << msg
+        render :action => 'new'
+      end
     else
       # If we hit this method without being posted, pretend nothing
       # bad happened
