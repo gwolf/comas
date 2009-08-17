@@ -121,6 +121,9 @@ class NametagsGlade
       colnum += 1
     end
 
+    treeview.enable_search = true
+    treeview.search_column = 2
+
     populate_people(model)
   end
 
