@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2009-08-24 13:32-0500\n"
+"POT-Creation-Date: 2009-08-24 13:45-0500\n"
 "PO-Revision-Date: 2008-05-07 18:30-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2881,8 +2881,8 @@ msgstr ""
 
 #: app/views/people/account.html.erb:8
 msgid ""
-"There are no conferences yet for which you are registered. You can select "
-"any active conference from the listing below:"
+"There are no upcoming conferences yet for which you are registered. You can "
+"select any active conference from the listing below:"
 msgstr ""
 
 #: app/views/people/new.html.erb:8

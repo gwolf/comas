@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2009-08-24 13:32-0500\n"
-"PO-Revision-Date: 2009-08-24 13:38-0600\n"
+"POT-Creation-Date: 2009-08-24 13:45-0500\n"
+"PO-Revision-Date: 2009-08-24 13:45-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: Gunnar Wolf <gwolf@gwolf.org>\n"
 "MIME-Version: 1.0\n"
@@ -2810,7 +2810,7 @@ msgid "Next conferences you are signed up for"
 msgstr "Próximas actividades para las cuales usted está registrado"
 
 #: app/views/people/account.html.erb:8
-msgid "There are no conferences yet for which you are registered. You can select any active conference from the listing below:"
+msgid "There are no upcoming conferences yet for which you are registered. You can select any active conference from the listing below:"
 msgstr "No hay ninguna actividad futura para la cual usted esté registrado. Puede seleccionar actividades del listado a continuación:"
 
 #: app/views/people/new.html.erb:8
@@ -3390,21 +3390,3 @@ msgstr "*** No se agregó ninguna persona: "
 #: script/create_user:76
 msgid "No work done, no harm done. Goodbye!"
 msgstr "No hicimos nada, ni bueno ni malo. ¡Adios!"
-
-#~ msgid "Person|Ok conf mails"
-#~ msgstr "¿Le interesa recibir correos específicos a sus actividades?"
-#~ msgid "NametagFormat|Id bar hpos"
-#~ msgstr "Posición vertical del código de barras"
-#~ msgid "NametagFormat|Id bar vpos"
-#~ msgstr "Posición horizontal del código de barras"
-#~ msgid "NametagFormat|Id bar narrow"
-#~ msgstr "Ancho de las barras delgadas"
-#~ msgid "NametagFormat|Id bar wide"
-#~ msgstr "Ancho de las barras gruesas"
-#~ msgid "CertifFormatLine|X pos"
-#~ msgstr "Posición horizontal"
-#~ msgid "CertifFormatLine|Y pos"
-#~ msgstr "Posición vertical"
-#~ msgid "Could not register person: "
-#~ msgstr "No fue posible registrar a la persona especificada:"
-
