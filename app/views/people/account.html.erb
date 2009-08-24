@@ -1,8 +1,14 @@
 <h1><%= _('Welcome, %s') % @user.name %></h1>
 
 <div id="my-upcoming">
-  <h3><%= _'Next conferences you are signed up for' %></h3>
-  <%= conf_list_table @mine %>
+  <% if !@mine.empty? %>
+    <h3><%= _'Next conferences you are signed up for' %></h3>
+    <%= conf_list_table @mine %>
+  <% else %>
+    <p><%= _('There are no upcoming conferences yet for which you are ' +
+	     'registered. You can select any active conference from ' +
+	     'the listing below:') %></p>
+  <% end %>
 </div>
 
 <div id="upcoming">
