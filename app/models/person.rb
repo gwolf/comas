@@ -157,6 +157,8 @@ class Person < ActiveRecord::Base
 
   def register_for(conf)
     conf = Conference.find(conf) if conf.is_a?(Fixnum)
+    # Already registered? Don't panic! Act naturally!
+    return true if self.conferences.include?(conf)
     if conf.accepts_registrations?
       self.conferences << conf
       return true

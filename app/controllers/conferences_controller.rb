@@ -74,8 +74,6 @@ class ConferencesController < ApplicationController
   def sign_up
     registrations_sanity_checks or return false
 
-    # Avoid silly mistakes due to reloads
-    return if @user.conferences.include? @conference
     if @user.register_for(@conference)
       flash[:notice] << _('You have successfully registered for ' +
                           'conference "%s"') % @conference.name
@@ -133,7 +131,7 @@ class ConferencesController < ApplicationController
       reject = true
     end
 
-    return reject
+    return !reject
   end
 
   def get_conference
