@@ -6,9 +6,8 @@ class Notification < ActionMailer::Base
   def welcome(person)
     sys_name = SysConf.value_for('title_text')
     recipients person.name_and_email
-    from SysConf.value_for('mail_from')
-    subject comas_title(_('Welcome! You have successfully registered at %s') % 
-                        sys_name)
+    basic_info(_('Welcome! You have successfully registered at %s') %
+               sys_name)
     body :name => person.name, 
          :login => person.login,
          :sys_name => sys_name,
@@ -21,8 +20,7 @@ class Notification < ActionMailer::Base
     sys_name = SysConf.value_for('title_text')
 
     recipients person.name_and_email
-    from SysConf.value_for('mail_from')
-    subject comas_title(_('New password request for %s') % sys_name)
+    base_info(_('New password request for %s') % sys_name)
     body :name => person.name,
          :login => person.login,
          :sys_name => sys_name,
@@ -37,8 +35,7 @@ class Notification < ActionMailer::Base
   def added_as_coauthor(new_author, proposal, author)
     recipients new_author.name_and_email
     cc author.name_and_email
-    from SysConf.value_for('mail_from')
-    subject comas_title(_("You have been added as a coauthor"))
+    base_info(_("You have been added as a coauthor"))
     body :conference_name => proposal.conference.name,
          :orig_author_name => author.name, 
          :new_author_name => new_author.name,
@@ -59,9 +56,8 @@ class Notification < ActionMailer::Base
     checks_for_open_mails(dest, invitation_text)
 
     recipients dest
-    from SysConf.value_for('mail_from')
-    subject comas_title(_('Invitation to %s, sent by %s') % 
-                        [conf.name, sender.name])
+    base_info(_('Invitation to %s, sent by %s') %
+              [conf.name, sender.name])
     body(:conference => conf.name,
          :sender_name => sender.name,
          :sender_email => sender.email,
@@ -78,8 +74,7 @@ class Notification < ActionMailer::Base
     checks_for_open_mails(dest.email, mail_body)
 
     recipients dest.name_and_email
-    from comas_mail_from
-    subject comas_title(title)
+    base_info(title)
     body(:disclaimer => mail_disclaimer(_('general information mails'),
                                         sender),
          :mail_body => mail_body)
@@ -90,14 +85,20 @@ class Notification < ActionMailer::Base
     checks_for_open_mails(dest.email, mail_body)
 
     recipients dest.name_and_email
-    from comas_mail_from
-    subject comas_title(title)
+    base_info(title)
     body(:disclaimer => mail_disclaimer(_('mails regarding the conferences ' +
                                           'they have signed up for'), sender),
          :mail_body => mail_body)
   end
 
   private
+  # Set basic fields which are common to all of our generated mails
+  def base_info(title='')
+    from comas_mail_from
+    headers 'return-path' => SysConf.value_for('mail-from')
+    subject comas_title(title)
+  end
+
   # Basic sanity checks for mails sent with user-supplied data: Email
   # address looks sane? Does it have a nonempty body?
   def checks_for_open_mails(dest, body)
@@ -127,7 +128,7 @@ class Notification < ActionMailer::Base
 
   # Who should system-generated mails be sent as?
   def comas_mail_from
-    '%s <%s>' % [SysConf.value_for('title_text'), 
+    '%s <%s>' % [SysConf.value_for('title_text'),
                  SysConf.value_for('mail_from')]
   end
 
