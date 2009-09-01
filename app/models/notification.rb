@@ -6,8 +6,8 @@ class Notification < ActionMailer::Base
   def welcome(person)
     sys_name = SysConf.value_for('title_text')
     recipients person.name_and_email
-    basic_info(_('Welcome! You have successfully registered at %s') %
-               sys_name)
+    base_info(_('Welcome! You have successfully registered at %s') %
+              sys_name)
     body :name => person.name, 
          :login => person.login,
          :sys_name => sys_name,
