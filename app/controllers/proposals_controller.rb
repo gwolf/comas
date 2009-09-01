@@ -263,7 +263,8 @@ class ProposalsController < ApplicationController
     # committee. Otherwise, filter out those which are not yet
     # publicly showable.
     @can_edit = @proposal.people.include?(@user)
-    return true if @can_edit or @user.has_admin_task?(:academic_adm) or
+    return true if @can_edit or
+      (@user and @user.has_admin_task?(:academic_adm)) or
       @proposal.conference.public_proposals?
     redirect_to(:controller => 'conferences', :action => 'show',
                 :id => @proposal.conference)

@@ -155,6 +155,33 @@ module ApplicationHelper
        </div>)
   end
 
+  def auto_info_row_for(object, column)
+    begin
+      attr = column.name
+      type = column.type
+      value = object.send(attr)
+
+      # Text fields should be formatted with RedCloth
+      return redcloth_info_row(attr, value) if type == :text
+
+      # Catalog fields should show the referred entry
+      if attr =~ /_id$/
+        klass = attr.gsub(/_id$/,'').classify.constantize
+        return info_row(attr, klass.find_by_id(value).name)
+      end
+
+      # Everything else should show itself :)
+      return info_row(attr, value)
+    rescue NameError
+      # Looks like a catalog reference, but is not
+      return info_row(attr, value)
+    rescue NoMethodError
+      # This is just guesswork... If any NoMethodError is raised, just
+      # return nil and go on with it.
+      return nil
+    end
+  end
+
   ############################################################
   # From rows (for regular layout, whether we use ComasFormBuilder or not)
   def form_row(title, input, note=nil)

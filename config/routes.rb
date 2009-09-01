@@ -16,6 +16,14 @@ ActionController::Routing::Routes.draw do |map|
               :controller => 'proposals',
               :action => 'new')
 
+  map.connect('sys_conf_adm/list_conference_fields',
+              :controller => 'sys_conf_adm',
+              :action => 'list_table_fields',
+              :table => 'conferences')
+  map.connect('sys_conf_adm/list_proposals_fields',
+              :controller => 'sys_conf_adm',
+              :action => 'list_table_fields',
+              :table => 'proposals')
   map.connect('sys_conf_adm/list_people_fields',
               :controller => 'sys_conf_adm',
               :action => 'list_table_fields',
