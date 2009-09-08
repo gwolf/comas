@@ -16,8 +16,9 @@ class SysConfAdmController < Admin
                                         :edit_table_field]
 
   Menu = [[_('Show configuration'), :list],
-          [_('Manage fields for people'), :list_people_fields],
+          [_('Manage fields for conferences'), :list_conferences_fields],
           [_('Manage fields for proposals'), :list_proposals_fields],
+          [_('Manage fields for people'), :list_people_fields],
           [_('Catalogs management'), :list_catalogs],
           [_('Nametag printing formats'), :nametag_format_list]]
 
@@ -298,7 +299,7 @@ class SysConfAdmController < Admin
   end
 
   def get_table
-    valid_tables = [:people, :proposals]  # :conferences to be added later on..?
+    valid_tables = [:people, :proposals, :conferences]
 
     begin
       @table = params[:table].to_sym
@@ -357,6 +358,7 @@ class SysConfAdmController < Admin
   def touch_dynamic_classes
     # Just "touch" the dynamic classes, to generate their MagicModels
     # to avoid catalogs not showing up due to NameErrors (see below)
+    Conference
     Proposal
     Person
   end

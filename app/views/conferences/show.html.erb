@@ -23,3 +23,7 @@
 <% if !@conference.homepage.blank? %>
   <p><%= link_to _('Web site'), @conference.homepage %></p>
 <% end %>
+
+<% @conference.extra_listable_attributes.each do |attr| %>
+   <%= auto_info_row_for @conference, attr %>
+<% end %>

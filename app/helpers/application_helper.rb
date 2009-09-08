@@ -159,7 +159,7 @@ module ApplicationHelper
     begin
       attr = column.name
       type = column.type
-      value = object.send(attr)
+      value = object.send(attr) || ''
 
       # Text fields should be formatted with RedCloth
       return redcloth_info_row(attr, value) if type == :text
