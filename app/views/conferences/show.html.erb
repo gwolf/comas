@@ -16,14 +16,16 @@
 		 :action => 'proposals', :id => @conference) %></p>
 <% end %>
 
-<%= RedCloth.new(@conference.descr).to_html %>
-
-<%= date_details_for @conference %>
-
 <% if !@conference.homepage.blank? %>
   <p><%= link_to _('Web site'), @conference.homepage %></p>
 <% end %>
 
+<%= RedCloth.new(@conference.descr).to_html %>
+
+<% collapsed_header _('Important dates') do %>
+  <%= date_details_for @conference  %>
+<% end %>
+
 <% @conference.extra_listable_attributes.each do |attr| %>
-   <%= auto_info_row_for @conference, attr %>
+  <%= auto_info_row_for @conference, attr %>
 <% end %>
