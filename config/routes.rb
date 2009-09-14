@@ -38,6 +38,10 @@ ActionController::Routing::Routes.draw do |map|
   map.connect('sys_conf_adm/add_catalog_row/:catalog',
               :controller => 'sys_conf_adm',
               :action => 'add_catalog_row')
+  map.connect('sys_conf_adm/edit/:key',
+              :controller => 'sys_conf_adm', :action => 'edit')
+  map.connect('sys_conf_adm/update/:key',
+              :controller => 'sys_conf_adm', :action => 'update')
 
   map.connect('attendance_adm/list/:conference_id',
               :controller => 'attendance_adm',

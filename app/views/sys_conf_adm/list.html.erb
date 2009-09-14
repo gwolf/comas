@@ -8,14 +8,15 @@
     <th><%= _('Key') %></th>
     <th><%= _('Description') %></th>
     <th><%= _('Value') %></th>
+    <th></th>
   <% end %>
 <% @confs.each do |conf| %>
   <% table_row do %>
     <td><%=h conf.key %></td>
     <td><%=h conf.descr %></td>
     <td><%=h conf.value %></td>
-    <td><%= link_to _('Edit'), :action => :edit, :id => conf %>
-      <%= link_to(_('Delete'), {:action => :delete, :id => conf},
+    <td><%= link_to _('Edit'), :action => :edit, :key => conf.key %>
+      <%= link_to(_('Delete'), {:action => :delete, :key => conf.key},
                   {:method => :post, 
                    :confirm => _('Are you sure you want to delete ' +
                                  'this configuration entry?')}) %></td>

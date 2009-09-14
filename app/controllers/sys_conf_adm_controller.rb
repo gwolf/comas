@@ -288,9 +288,8 @@ class SysConfAdmController < Admin
   ############################################################
   protected
   def get_sysconf
-    begin
-      @conf = SysConf.find(params[:id])
-    rescue ActiveRecord::RecordNotFound
+    @conf = SysConf.find_by_key(params[:key])
+    if @conf.nil?
       flash[:error] << _('Invalid configuration entry %d requested') % 
         params[:id]
       redirect_to :action => :list
