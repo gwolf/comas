@@ -74,10 +74,13 @@ class ApplicationController < ActionController::Base
                 url_for(:controller => '/people', :action => 'new'))
     else
       personal = MenuTree.new
-      personal.add(_('Personal information'),
+      personal.add(_('Update your personal information'),
                    url_for(:controller => '/people', :action => 'personal'))
       personal.add(_('Change password'),
                    url_for(:controller => '/people', :action => 'password'))
+      personal.add(_('My public profile'),
+                   url_for(:controller => '/people', :action => 'profile', 
+                        :id => @user.id))
       @user.can_submit_proposals_now? and
         personal.add(_('My proposals'),
                      url_for(:controller=>'/people', :action => 'proposals')) 

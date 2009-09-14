@@ -121,6 +121,16 @@ class Person < ActiveRecord::Base
     !attendances.select {|a| a.conference_id==conf.id}.empty?
   end
 
+  # Avoid moving the full query of a photo if we just want to check
+  # for the photo's existence
+  def has_photo?
+    ! Photo.find_by_person_id(self.id, :select=>'id').nil?
+  end
+
+  def photo
+    Photo.find(:first, :conditions => ['person_id = ?', self.id])
+  end
+
   def has_proposal_for?(conf)
     # Accept either a conference object or a conference ID
     conf = Conference.find_by_id(conf) if conf.is_a? Integer

@@ -1,4 +1,5 @@
-<% comas_form_for :person, person, :url => url do |f| %>
+<% comas_form_for(:person, person, :url => url,
+		  :html => { :multipart => true }) do |f| %>
   <%= f.auto_field(:firstname, :note => _('Please provide your ' +
                    'first and family names exactly as you want them ' +
                    'to appear to other users, and as you want them ' +
@@ -20,6 +21,10 @@
   <% person.extra_listable_attributes.each do |attr| %>
     <%= f.auto_field(attr.name) %>
   <% end %>
+  <%= f.file_field(:photo, :note => person.has_photo? ? 
+                   _('You have already uploaded your photo to the ' +
+                     'system. If you upload a new one, the current ' +
+                     'will be overwritten.') : '') %>
   <%= f.auto_field(:ok_general_mails, :note => _('Are you interested ' +
                    'in receiving general information mails from us?')) %>
   <%= f.auto_field(:ok_conf_mails, :note => _('Are you interested ' +
