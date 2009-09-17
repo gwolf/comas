@@ -1,24 +1,34 @@
 module PdfDimensions
   include GetText
-  Orientations = {'portrait' => _('Portrait'), 'landscape' => _('Landscape')}
-  PaperSizes = PDF::Writer::PAGE_SIZES.keys
+  Orientations = {:portrait => _('Portrait'), :landscape => _('Landscape')}
+  PaperSizes = Prawn::Document::PageGeometry::SIZES.keys
   # Our base unit is points, :divisor marks the relation of any other
   # unit to points.
+  #
+  # Prawn::Measurments handles many more units (cm, dm, ft, in, m, mm,
+  # pt, yd), but as they are very seldom used in this domain... For
+  # simplicity sake, lets just ignore them.
   ValidUnits = {
     :pt => {
-      :divisor => 1.0, 
+      :divisor => 1.pt,
       :full => _('points'), 
       :abbr => _('pt')},
     :cm => {
-      :divisor => 28.3446712018141,
+      :divisor => 1.cm,
       :full => _('centimeters'), 
       :abbr => _('cm')},
     :in => {
-      :divisor => 72,
+      :divisor => 1.in,
       :full => _('inches'), 
       :abbr => _('in')}
   }
 
+  # If we were implementing PDF generation for the first time, based
+  # on Prawn, this module might be basically pointless (as it deals
+  # with converting between different measurement systems, and is
+  # mostly covered by prawn/measurment_extensions). However, it is
+  # still handy and provides some protection (and
+  # operator-friendliness), so... We keep it.
   module ClassMethods
     def convert_unit(from, to, amount)
       from_scale = ValidUnits[from.to_sym][:divisor] or 

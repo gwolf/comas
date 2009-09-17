@@ -10,13 +10,15 @@ class CertifFormat < ActiveRecord::Base
   validates_inclusion_of :orientation, :in => Orientations.keys
 
   def self.height_of(paper, unit=nil)
-    unit ||= human_units
-    convert_unit :pt, unit, PDF::Writer::PAGE_SIZES[paper][3]
+    unit ||= sys_units
+    paper = paper.to_s.upcase
+    convert_unit :pt, unit, Prawn::Document::PageGeometry::SIZES[paper][1]
   end
 
   def self.width_of(paper, unit=nil)
-    unit ||= human_units
-    convert_unit :pt, unit, PDF::Writer::PAGE_SIZES[paper][2]
+    unit ||= sys_units
+    paper = paper.to_s.upcase
+    convert_unit :pt, unit, Prawn::Document::PageGeometry::SIZES[paper][0]
   end
 
   def self.paper_dimensions(paper)

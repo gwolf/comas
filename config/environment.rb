@@ -81,8 +81,10 @@ end
 
 # Include your application configuration below
 require 'classinherit'
+require 'prawn'
+require 'prawn/measurement_extensions'
 require 'pseudo_gettext'
-require 'pdf/writer'
+require 'pdf/writer' ## To disappear soon
 require 'redcloth'
 require 'RMagick'
 require 'simplexls'
