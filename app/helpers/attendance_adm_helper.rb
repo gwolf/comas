@@ -56,8 +56,9 @@ module AttendanceAdmHelper
   end
 
   def certif_format_line_header
-    columns = [_('Vert'), _('Horiz'), _('Max width'), _('Content source'), 
-               _('Content'), _('Font size'), _('Align'), '']
+    columns = [_('Vert'), _('Horiz'), _('Max width'), _('Max height'),
+               _('Content source'), _('Content'), 
+               _('Font size'), _('Align'), '']
     ['<tr class="listing-head">',
      columns.map { |elem| '<th>%s</th>' % elem}, 
      '</tr>'].join("\n")
@@ -65,6 +66,7 @@ module AttendanceAdmHelper
 
   def certif_format_line_entry(line)
     columns = [line.human_y_pos, line.human_x_pos, line.human_max_width, 
+               line.human_max_height, 
                CertifFormatLine::ContentSources[line.content_source],
                line.content, line.font_size, line.justification,
                link_to(_('Delete'), 

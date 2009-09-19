@@ -32,6 +32,14 @@
   </p> 
 
   <p>
+    <%= _("Keep in mind that the maximum height for each of the " +
+	  "lines must be enough to fit approximately 1.3 times the " +
+	  "font size (as it takes into account interline spacing). " +
+	  "If your certificates are broken across multiple pages, " +
+	  "increase the maximum height for the field where it breaks.") %>
+  </p>
+
+  <p>
    <%= _("Regarding <em>content source</em> and <em>content</em>: When  " +
 	 "the content source is set to <em>Static</em>, the text " +
          "provided as content will be present verbatim in the " +
@@ -60,6 +68,7 @@
       <td><%= f.text_field :human_y_pos, :size => 3%></td>
       <td><%= f.text_field :human_x_pos, :size => 3 %></td>
       <td><%= f.text_field :human_max_width, :size => 3 %></td>
+      <td><%= f.text_field :human_max_height, :size => 3 %></td>
       <td><%= f.select :content_source, 
                  CertifFormatLine::ContentSources.map {|k,v| [v,k]} %></td>
       <td><%= f.text_field :content, :size => 20 %></td>

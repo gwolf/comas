@@ -1,6 +1,6 @@
 module PdfDimensions
   include GetText
-  Orientations = {:portrait => _('Portrait'), :landscape => _('Landscape')}
+  Orientations = {'portrait' => _('Portrait'), 'landscape' => _('Landscape')}
   PaperSizes = Prawn::Document::PageGeometry::SIZES.keys
   # Our base unit is points, :divisor marks the relation of any other
   # unit to points.
