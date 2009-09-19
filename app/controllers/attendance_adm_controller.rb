@@ -106,7 +106,8 @@ class AttendanceAdmController < Admin
     people = totals.keys.map {|num| next if num < min; totals[num]}.
       select {|p| p}.flatten.sort_by(&:famname)
 
-    send_data(certificate_pdf_for(people, CertifFormat.find(1)),
+    ### /!\ I am hard-wiring the first CertifFormat here. Not nice! :-/
+    send_data(certificate_pdf_for(people, CertifFormat.find(:first)),
               :filename => 'certificate.pdf', 
               :type => 'application/pdf')
   end
@@ -192,49 +193,38 @@ class AttendanceAdmController < Admin
   # as the first parameter, using the format specified as the second
   # parameter.
   def certificate_pdf_for(people, fmt, with_boxes=false)
-    pdf = PDF::Writer.new(:orientation => fmt.orientation.to_sym,
-                          :paper => fmt.paper_size)
-    pdf.stroke_color(Color::RGB::Black) 
+    pdf = Prawn::Document.new(:page_layout => fmt.orientation.to_sym,
+                              :page_size => fmt.paper_size,
+                              :skip_page_creation => true)
+#    pdf.stroke_color='000000' # Black is beautiful. Black for teh win!
     
     people.each do |person|
+      pdf.start_new_page
+    
       fmt.certif_format_lines.each do |line|
-        ### PDF::Writer does not currently (as of version 1.1.7) support
-        ### UTF8... Sorry, we will lose on some charsets :-/ At least,
-        ### Iconv is in the standard Ruby library
-        pdf_draw_field_box(pdf, line) if with_boxes
+        # For the future, it might be nice to provide for nested
+        # bounding boxes. As of right now, KISS.
+        pdf.bounding_box([pdf.bounds.left + line.x_pos, 
+                          pdf.bounds.bottom + line.y_pos],
+                         :width => line.max_width,
+                         :height => line.max_height) do
+          # When testing formats, the user might want to show boxes
+          # around each element
+          if with_boxes
+            stroke = pdf.stroke_color
+            pdf.stroke_color = 'CBCBE1'
+            pdf.stroke_bounds
+            pdf.stroke_color = stroke
+          end
 
-        pdf.add_text_wrap(line.x_pos, line.y_pos, line.max_width,
-                          Iconv.conv('ISO-8859-15', 'UTF-8',
-                                     line.text_for(person, @conference)), 
-                          line.font_size, line.justification.to_sym)
+          pdf.font_size line.font_size
+          pdf.text(line.text_for(person, @conference), 
+                   :align => line.justification.to_sym)
+        end
       end
-      pdf.start_new_page unless person == people.last
     end
 
     return pdf.render
-  end
-
-  # Draws a box in the PDF for the specified field
-  # (CertifFormatLine). This method is basically meant to be called
-  # from within certificate_pdf_for.
-  def pdf_draw_field_box(pdf, line)
-    pdf.save_state
-
-    pdf.stroke_color Color::RGB::Grey80
-    stroke = PDF::Writer::StrokeStyle.new(1)
-    stroke.dash = {:pattern => [3,3]}
-    pdf.stroke_style stroke
-
-    x1 = line.x_pos
-    x2 = line.x_pos + line.max_width
-    y1 = line.y_pos
-    y2 = line.y_pos + line.font_size
-
-    pdf.move_to(x1, y1).line_to(x1, y2).line_to(x2, y2).
-      line_to(x2, y1).line_to(x1, y1).line_to(x2, y2).
-      line_to(x1, y2).line_to(x2, y1).close_stroke
-
-    pdf.restore_state
   end
 
   def register_attendance(person, tslot)

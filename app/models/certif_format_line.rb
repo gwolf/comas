@@ -15,7 +15,7 @@ class CertifFormatLine < ActiveRecord::Base
   validates_inclusion_of :justification, :in => Justifications
   validates_associated :certif_format
 
-  # font_size <= 0: Default font size (PDF::Writer.font_size)
+  # font_size <= 0: Default font size (Prawn::Document.new.font_size)
 
   def text_for(person,conference)
     case content_source
@@ -54,6 +54,10 @@ class CertifFormatLine < ActiveRecord::Base
 
   def human_max_width
     '%.2f' % points_to_human(max_width) unless max_width.nil?
+  end
+
+  def human_max_height
+    '%.2f' % points_to_human(max_height) unless max_height.nil?
   end
 
   def human_max_width=(new)
