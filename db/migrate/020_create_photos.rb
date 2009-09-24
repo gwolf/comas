@@ -1,9 +1,10 @@
 class CreatePhotos < ActiveRecord::Migration
   def self.up
     create_table :photos do |t|
-      t.binary :data
-      t.integer :width
-      t.integer :height
+      t.column :width, :integer
+      t.column :height, :integer
+      t.column :data, :binary
+      t.column :thumb, :binary
       t.timestamps
     end
     add_reference :photos, :people, :null => false

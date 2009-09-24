@@ -13,10 +13,20 @@ module ApplicationHelper
 
   def login_data
     return '' unless @user
-    '<div id="logindata">%s (%s) - %s</div>' % 
+    '<div id="logindata">%s (%s) - %s</div>%s' % 
       [h(@user.login), h(@user.name), 
        link_to(_('Log out'), {:controller => '/people', 
-         :action => 'logout'})]
+         :action => 'logout'}),
+       my_photo]
+  end
+
+  def my_photo
+    return '' unless @user and @user.has_photo?
+    ratio = Photo.thumb_ratio
+    '<div id="myphoto"><img src="%s" width="%d" height="%d" /></div>'%
+        [ url_for(:controller => '/people', :action => 'get_photo', 
+                  :id => @user.id, :size => 'thumb'),
+          @user.photo.width * ratio, @user.photo.height * ratio]
   end
 
   def rss_links

@@ -106,8 +106,9 @@ class AttendanceAdmController < Admin
     people = totals.keys.map {|num| next if num < min; totals[num]}.
       select {|p| p}.flatten.sort_by(&:famname)
 
-    ### /!\ I am hard-wiring the first CertifFormat here. Not nice! :-/
-    send_data(certificate_pdf_for(people, CertifFormat.find(:first)),
+    ### /!\ I am hard-wiring the first CertifFormat here. Not nice!
+    ###     :-/ Provide a way to choose one... soon :-}
+    send_data(CertifFormat.find(:first).generate_pdf_for(people, @conference),
               :filename => 'certificate.pdf', 
               :type => 'application/pdf')
   end
@@ -115,7 +116,7 @@ class AttendanceAdmController < Admin
   # Generates a certificate for the specified person / conference /
   # format
   def certificate_for_person
-    send_data(certificate_pdf_for([@person], @format),
+    send_data(@format.generate_pdf_for(@person, @conference),
               :filename => 'certificate.pdf', 
               :type => 'application/pdf')
   end
@@ -183,50 +184,12 @@ class AttendanceAdmController < Admin
   # Generate a sample certificate for the currently logged on user
   def gen_sample_certif
     draw_boxes = params[:pdf_draw_boxes].to_i == 1
-    send_data(certificate_pdf_for([@user], @format, draw_boxes),
+    send_data(@format.generate_pdf_for(@user, @conference, draw_boxes),
               :filename => 'test_certificate.pdf',
               :type => 'application/pdf')
   end
 
   protected
-  # Genereates the PDF with the certificates for the people specified
-  # as the first parameter, using the format specified as the second
-  # parameter.
-  def certificate_pdf_for(people, fmt, with_boxes=false)
-    pdf = Prawn::Document.new(:page_layout => fmt.orientation.to_sym,
-                              :page_size => fmt.paper_size,
-                              :skip_page_creation => true)
-#    pdf.stroke_color='000000' # Black is beautiful. Black for teh win!
-    
-    people.each do |person|
-      pdf.start_new_page
-    
-      fmt.certif_format_lines.each do |line|
-        # For the future, it might be nice to provide for nested
-        # bounding boxes. As of right now, KISS.
-        pdf.bounding_box([pdf.bounds.left + line.x_pos, 
-                          pdf.bounds.bottom + line.y_pos],
-                         :width => line.max_width,
-                         :height => line.max_height) do
-          # When testing formats, the user might want to show boxes
-          # around each element
-          if with_boxes
-            stroke = pdf.stroke_color
-            pdf.stroke_color = 'CBCBE1'
-            pdf.stroke_bounds
-            pdf.stroke_color = stroke
-          end
-
-          pdf.font_size line.font_size
-          pdf.text(line.text_for(person, @conference), 
-                   :align => line.justification.to_sym)
-        end
-      end
-    end
-
-    return pdf.render
-  end
-
   def register_attendance(person, tslot)
     if previous = person.attendances.find(:first, :conditions => 
                                           ['timeslot_id = ?', tslot.id])

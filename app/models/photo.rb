@@ -4,8 +4,7 @@ class Photo < ActiveRecord::Base
   validates_uniqueness_of :person_id
   validates_associated :person
 
-  # Maximum size to which to resize a newly uploaded photo
-  MAX_DIMENSIONS=400
+  HideColumns = %w(data thumb)
 
   # We override find to exclude the whole file contents from our
   # result set.
@@ -13,7 +12,7 @@ class Photo < ActiveRecord::Base
   # The binary values should not be directly modified - Use
   # self#from_blob instead.
   def self.find (*args)
-    select = (self.columns.map(&:name) - ['data']).join(', ')
+    select = (self.columns.map(&:name) - HideColumns).join(', ')
 
     if args[-1].is_a?(Hash)
       if args[1].has_key? :select
@@ -28,6 +27,19 @@ class Photo < ActiveRecord::Base
     super(*args)
   end
 
+  # Maximum  dimensions  to  store  a  photo with  —  Taken  from  the
+  # «logo_thumb_height» SysConf key, defaulting to 500.
+  def self.max_size
+    SysConf.value_for('logo_medium_height').to_i || 500
+  end
+
+  # The size ratio between the thumb and the regular photo dimensions
+  # — Taken from max_size and the «logo_thumb_height» SysConf
+  # key, defaulting to 65.
+  def self.thumb_ratio
+    (SysConf.value_for('logo_thumb_height') || 65).to_f / self.max_size
+  end
+
   # Resizes the image specified (as a blob) as the only parameter to
   # whatever MAX_DIMENSIONS specifies; sets the related information
   # and saves the object
@@ -35,21 +47,27 @@ class Photo < ActiveRecord::Base
     img = Magick::Image.from_blob(value)[0]
     x = img.columns
     y = img.rows
-    if x > y
-      self.width, self.height = MAX_DIMENSIONS, (MAX_DIMENSIONS.to_f * y / x).to_i
-    else
-      self.width, self.height = (MAX_DIMENSIONS.to_f * x / y).to_i, MAX_DIMENSIONS
-    end
-    img.resize!(width, height)
 
+    max = self.class.max_size
+    ratio = self.class.thumb_ratio
+
+    if x > y
+      self.width, self.height = max, (max.to_f * y / x).to_i
+    else
+      self.width, self.height = (max.to_f * x / y).to_i, max
+    end
     img.format = 'jpg'
 
-    self.data = img.to_blob 
+    self.data = img.resize(width, height).to_blob 
+    self.thumb = img.resize(width * ratio,
+                            height * ratio).to_blob 
     save!
   end
 
-  def data
-    return self[:data] if self.attributes.has_key?('data')
-    self.class.find(self.id, :select => 'id, data')[:data]
+  HideColumns.each do |col|
+    eval "def #{col}
+            return self[:#{col}] if self.attributes.has_key?('#{col}')
+            self.class.find(self.id, :select => 'id, #{col}')[:#{col}]
+          end"
   end
 end

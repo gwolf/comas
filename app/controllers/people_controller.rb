@@ -231,9 +231,16 @@ class PeopleController < ApplicationController
       redirect_to :action => :profile, :id => @person
       return nil
     end
+    size = params[:size] || 'normal'
 
     response.headers['Last-Modified'] = photo.updated_at.httpdate
-    send_data photo.data, :type => 'image/jpeg', :disposition => 'inline'
+    case size
+    when 'thumb'
+      img = photo.thumb
+    else
+      img = photo.data
+    end
+    send_data img, :type => 'image/jpeg', :disposition => 'inline'
   end
 
   # Invite a friend (to a specific conference)

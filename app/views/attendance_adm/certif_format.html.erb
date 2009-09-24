@@ -5,50 +5,82 @@
 <%= link_to_function(_('Help'), 
                      visual_effect(:toggle_blind, "comas-help")) %>
 <div id="comas-help" style="display:none">
-  <p>
-   <%= _("All measurments except for font size are expressed in " +
-         "<em>%s</em>. You will notice the values you enter are " +
-         "approximated (i.e. 10.99 instead of 11), as they are " +
-         "stored internally in %s and converted only to be shown " +
-         "here.") % [_(@units), 
-                     _(PdfDimensions::ValidUnits[:pt][:full]) ] 
-        %>
-  </p>
+  <dl>
+    <dt><%= _('Measurements') %></dt><dd>
+      <%= _("All measurments except for font size are expressed in " +
+            "<em>%s</em>. You will notice the values you enter are " +
+            "approximated (i.e. 10.99 instead of 11), as they are " +
+            "stored internally in %s and converted only to be shown " +
+            "here.") % [_(@units), 
+                        _(PdfDimensions::ValidUnits[:pt][:full]) ] 
+      %>
 
-  <p>
-   <%= _("This format's lines are sorted according to their vertical " +
-	 "position, to better match what you will see on the paper. " +
-         "Measurement (0, 0) starts at the lower-left corner, and the " +
-         "indicated point marks the lower-left corner of the designated " +
-         "text area.") %>
-  </p>
+    </dd><dt><%= _('Positioning') %></dt><dd>
+      <%= _("This format's lines are sorted according to their vertical " +
+	    "position, to better match what you will see on the paper. " +
+            "Measurement (0, 0) starts at the lower-left corner, and the " +
+            "indicated point marks the lower-left corner of the designated " +
+            "text area.") %>
 
-  <p>
-   <%= _("This means, if you want to provide a <em>centered</em> 15cm "+
-         "field in <em>Landscape Letter</em> (27.94cm wide) paper, " +
-         "you should set the <em>horizontal</em> position to 6.47 " +
-         "(which is (27.94 - 15) / 2) and the <em>maximum width</em> " +
-         "to 15.") %>
-  </p> 
+    <br/>
+      <%= _("This means, if you want to provide a <em>centered</em> 15cm "+
+            "field in <em>Landscape Letter</em> (27.94cm wide) paper, " +
+            "you should set the <em>horizontal</em> position to 6.47 " +
+            "(which is (27.94 - 15) / 2) and the <em>maximum width</em> " +
+            "to 15.") %>
 
-  <p>
+    </dd><dt><%= _('Minimum heights') %></dt><dd>
     <%= _("Keep in mind that the maximum height for each of the " +
 	  "lines must be enough to fit approximately 1.3 times the " +
 	  "font size (as it takes into account interline spacing). " +
 	  "If your certificates are broken across multiple pages, " +
 	  "increase the maximum height for the field where it breaks.") %>
-  </p>
 
-  <p>
-   <%= _("Regarding <em>content source</em> and <em>content</em>: When  " +
-	 "the content source is set to <em>Static</em>, the text " +
-         "provided as content will be present verbatim in the " +
-         "certificate; when <em>Person</em> or <em>Conference</em> " +
-         "are selected, they will accept a suitable <em>attribute " +
-         "name</em>. If when generating certificates you get a system " +
-         "error (<tt>Undefined attribute</tt>), you should check for " +
-         "the validity of your <em>content</em> columns." ) %>
-  </p>
+    </dd><dt><%= _('Content sources') %></dt><dd>
+    <%= _("When the content source is set to <em>%s</em>, the text " +
+          "provided as content will be present verbatim in the " +
+          "certificate; when <em>%s</em> or <em>%s</em> (to which we " +
+          "will refer as <em>non-static sources</em>)) are selected, " +
+          "they will accept a suitable <em>attribute name</em>. When " +
+	  "<em>%s</em> is selected, no content will be generated, just " +
+	  "a solid, black frame for the specified area.") % 
+	  [0, 1, 2, -1].map {|src| CertifFormatLine::ContentSources[src]} %>
+
+    </dd><dt><%= _('Attributes') %></dt><dd>
+    <%= _("For non-static content sources, you can specify any " +
+          "valid <em>method name</em> for said model classes as the " +
+	  "content. For further information, please check the Comas " +
+	  "API. All database column names are valid method names.") %>
+
+    <br/>
+    <%= _("Some values specified as attributes for non-static sources " +
+          "get special treatment even though they do not exist " +
+	  "directly as methods. They are:") %> 
+
+    <dl>
+      <dt><tt>id+code</tt></dt>
+      <dd>
+	<%= _("The ID for the requested object, not only represented " +
+	      "as text, but with its barcode. The minimum dimensions " +
+	      "you should allocate to this column are a 3cm/1.1in width " + 
+	      "a 1.3cm/0.5in height.") %></dd>
+
+      <dt><tt>image</tt></dt>
+      <dd>
+	<%= _("Will include the person's photo or the conference's " +
+	      "logo, filling up the best way possible (respecting " +
+	      "the aspect ratio) the given size. If the " +
+	      "person/conference does not have such field specified, " +
+	      "nothing will be displayed (no error will be " +
+	      "generated)") %></dd> 
+    </dl>
+    <br/>
+
+    <%= _("If when generating certificates you get a system " +
+          "error (<tt>Undefined attribute</tt>), you should check for " +
+          "the validity of your <em>content</em> columns." ) %>
+    </dd>
+  </dl>
 </div>
 
 <%= render :partial => 'certif_format_details', 

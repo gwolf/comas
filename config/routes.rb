@@ -53,6 +53,15 @@ ActionController::Routing::Routes.draw do |map|
               :controller => 'attendance_adm',
               :action => 'for_person')
 
+  map.connect('photo/:id',
+              :controller => 'people', :action => 'get_photo')
+  map.connect('photo/:id',
+              :controller => 'people', :action => 'get_photo',
+              :size => 'normal')
+  map.connect('thumb/:id',
+              :controller => 'people', :action => 'get_photo',
+              :size => 'thumb')
+  
   # Sample of named route:
   # map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'
   # This route can be invoked with purchase_url(:id => product.id)
