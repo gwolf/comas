@@ -151,9 +151,8 @@ class PeopleController < ApplicationController
                          'were invited to: %s') % msg
     end
 
-    @upcoming = Conference.upcoming.paginate(:per_page=>5, 
-                                             :page => params[:page])
     @mine = Conference.upcoming_for_person(@user)
+    @can_define_nametag = @user and @user.has_admin_task?('sys_conf_adm')
   end
 
   # General personal information
@@ -182,6 +181,18 @@ class PeopleController < ApplicationController
         flash[:error] << _('Error updating your personal data: ') +
           @user.errors.full_messages.join('<br>')
       end
+    end
+  end
+
+  # Nametag printing
+  def my_nametag
+    nametag = CertifFormat.for_personal_nametag
+    if nametag
+      send_data(nametag.generate_pdf_for(@user),
+                :filename => 'nametag.pdf', :type => 'application/pdf')
+    else
+      flash[:error] << _('No format has yet been defined for nametag printing')
+      redirect_to :action => 'account'
     end
   end
 

@@ -66,6 +66,9 @@ class ApplicationController < ActionController::Base
     @menu = MenuTree.new
     @menu.add( _('Conference listing'),
                url_for(:controller => '/conferences', :action => 'list') )
+    # A link will be generated here and at some other views all over,
+    # so we declare a dirty, ugly @link_to_nametags
+    @link_to_nametag = CertifFormat.for_personal_nametag
 
     if @user.nil?
       @menu.add(_('Log in'),
@@ -81,6 +84,8 @@ class ApplicationController < ActionController::Base
       personal.add(_('My public profile'),
                    url_for(:controller => '/people', :action => 'profile', 
                         :id => @user.id))
+      @link_to_nametag and personal.add(_('Generate nametag'), 
+                   url_for(:controller => '/people', :action => 'my_nametag'))
       @user.can_submit_proposals_now? and
         personal.add(_('My proposals'),
                      url_for(:controller=>'/people', :action => 'proposals')) 

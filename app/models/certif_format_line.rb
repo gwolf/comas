@@ -55,19 +55,6 @@ class CertifFormatLine < ActiveRecord::Base
     # bounding boxes. As of right now, KISS.
     pdf.bounding_box([pdf.bounds.left + x_pos, pdf.bounds.bottom + y_pos],
                      :width => max_width, :height => max_height) do
-      # When testing formats, the user might want to show boxes
-      # around each element
-      if with_boxes
-        stroke = pdf.stroke_color
-        pdf.stroke_color = 'CBCBE1'
-        pdf.stroke_bounds
-        pdf.line([pdf.bounds.bottom, pdf.bounds.left],
-                 [pdf.bounds.top, pdf.bounds.right])
-        pdf.line([pdf.bounds.bottom, pdf.bounds.right],
-                 [pdf.bounds.top, pdf.bounds.left])
-        pdf.stroke_color = stroke
-      end
-
       pdf.font_size(font_size)
       text = value_for(person, conference)
 
@@ -89,6 +76,20 @@ class CertifFormatLine < ActiveRecord::Base
         # Finally, the base case: Regular text appears as it should.
         pdf.text(text, :align => justification.to_sym)
       end
+
+      # When testing formats, the user might want to show boxes
+      # around and crossing each element
+      if with_boxes
+        stroke = pdf.stroke_color
+        pdf.stroke_color = 'CBCBE1'
+        pdf.stroke_bounds
+        pdf.line([pdf.bounds.left, pdf.bounds.bottom],
+                 [pdf.bounds.right, pdf.bounds.top])
+        pdf.line([pdf.bounds.right, pdf.bounds.bottom],
+                 [pdf.bounds.left, pdf.bounds.top])
+        pdf.stroke_color = stroke
+      end
+
     end
   end
 
