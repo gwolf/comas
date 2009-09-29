@@ -15,12 +15,16 @@ class SysConfAdmController < Admin
   before_filter :field_types, :only => [:list_table_fields, :create_table_field,
                                         :edit_table_field]
 
-  Menu = [[_('Show configuration'), :list],
-          [_('Manage fields for conferences'), :list_conferences_fields],
-          [_('Manage fields for proposals'), :list_proposals_fields],
-          [_('Manage fields for people'), :list_people_fields],
+  Menu = [[_('Configuration entries'), :list],
           [_('Catalogs management'), :list_catalogs],
-          [_('Nametag printing formats'), :nametag_format_list]]
+          [_('Basic table fields handling'), nil,
+           [ [_('Conferences'), :list_conferences_fields],
+             [_('Proposals'), :list_proposals_fields],
+             [_('People'), :list_people_fields]
+           ]],
+          [_('Printing format'), nil,
+           [ [_('Nametags (EPL2)'), :nametag_format_list]]
+          ]]
 
   ############################################################
   # SysConf entries management

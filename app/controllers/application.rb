@@ -109,7 +109,7 @@ class ApplicationController < ActionController::Base
                 url_for(:controller => '/people', :action => 'account'),
                 personal)
 
-      @user.admin_tasks.each do |task|
+      @user.admin_tasks.sort_by(&:sys_name).each do |task|
         begin
           control = "#{task.sys_name.camelcase}Controller".constantize
           menu = menu_subtree_for((control.constants.include?('Menu') ? 
