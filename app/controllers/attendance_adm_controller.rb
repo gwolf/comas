@@ -1,23 +1,16 @@
 class AttendanceAdmController < Admin
-  class NotForUs < Exception; end
+  helper :certificates_adm
   Menu = [[_('Choose a timeslot'), :choose_session],
           [_('Take attendance'), :take],
-          [_('Attendance lists'), :list],
-          [_('Certificate formats'), :certif_formats_list]]
+          [_('Attendance lists'), :list]
+         ]
 
-  before_filter :get_person, :only => [:take, :for_person, 
-                                       :certificate_for_person]
+  before_filter :get_person, :only => [:take, :for_person]
   before_filter :get_conference, :only => [:list, :for_person,
                                            :certificates_by_attendances,
                                            :certificate_for_person,
-                                           :att_by_tslot,
-                                           :gen_sample_certif ]
-  before_filter :get_format, :only => [:certif_format,
-                                       :delete_certif_format,
-                                       :add_certif_format_line,
-                                       :delete_certif_format_line,
-                                       :gen_sample_certif,
-                                       :certificate_for_person]
+                                           :att_by_tslot
+                                          ]
 
   # Prompts the user which session to use for taking attendance. By
   # default, shows only active sessions (those for which we are in the
@@ -113,82 +106,6 @@ class AttendanceAdmController < Admin
               :type => 'application/pdf')
   end
 
-  # Generates a certificate for the specified person / conference /
-  # format
-  def certificate_for_person
-    send_data(@format.generate_pdf_for(@person, @conference),
-              :filename => 'certificate.pdf', 
-              :type => 'application/pdf')
-  end
-
-  # Lists the registered certificate formats
-  def certif_formats_list
-    @formats = CertifFormat.paginate(:all, :order => :id, 
-                                     :include => :certif_format_lines,
-                                     :page => params[:page])
-    @new_fmt = CertifFormat.new
-  end
-
-  def certif_format
-    @new_line = CertifFormatLine.new
-    @conferences = Conference.find(:all)
-    @units = CertifFormat.full_units
-    if request.post?
-      @format.update_attributes(params[:certif_format])
-      flash[:notice] << _('Format updated successfully')
-    end
-  end
-
-  def new_certif_format
-    begin
-      raise NotForUs unless request.post?
-      @format = CertifFormat.new
-      @format.update_attributes(params[:certif_format])
-      @format.save!
-      redirect_to :action => 'certif_format', :format_id => @format
-    rescue NotForUs, ActiveRecord::RecordInvalid  => err
-      flash[:error] << err.to_s
-      redirect_to :action => 'certif_formats_list'
-    end
-  end
-
-  def delete_certif_format
-    @format.destroy
-    redirect_to :action => 'certif_formats_list'
-  end
-
-  def add_certif_format_line
-    begin
-      raise NotForUs unless request.post?
-      line = CertifFormatLine.new(params[:certif_format_line])
-      line.certif_format = @format
-      line.save!
-    rescue NotForUs, ActiveRecord::RecordNotFound, NoMethodError => err
-    end
-
-    redirect_to :action => 'certif_format', :format_id => @format
-  end
-
-  def delete_certif_format_line
-    begin
-      raise NotForUs unless request.post?
-      line = CertifFormatLine.find(params[:line_id])
-      raise NotForUs unless line.certif_format = @format
-      line.destroy
-    rescue NotForUs, ActiveRecord::RecordNotFound, NoMethodError
-    end
-
-    redirect_to :action => 'certif_format', :format_id => @format
-  end
-
-  # Generate a sample certificate for the currently logged on user
-  def gen_sample_certif
-    draw_boxes = params[:pdf_draw_boxes].to_i == 1
-    send_data(@format.generate_pdf_for(@user, @conference, draw_boxes),
-              :filename => 'test_certificate.pdf',
-              :type => 'application/pdf')
-  end
-
   protected
   def register_attendance(person, tslot)
     if previous = person.attendances.find(:first, :conditions => 
@@ -238,12 +155,4 @@ class AttendanceAdmController < Admin
     @person = Person.find_by_id(pers_id)
     flash[:error] << _('Invalid person specified') if @person.nil?
   end
-
-  def get_format
-    @format = CertifFormat.find_by_id(params[:format_id], 
-                                      :include => :certif_format_lines)
-    return true if @format
-    flash[:error] << _('Invalid format specified')
-    false
-  end  
 end

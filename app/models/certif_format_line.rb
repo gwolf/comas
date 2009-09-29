@@ -62,13 +62,13 @@ class CertifFormatLine < ActiveRecord::Base
       if content_source == -1
         # Just draw the empty frame
         pdf.stroke_bounds
-      elsif content == 'image' and [1, 2].include?(content_source)
+      elsif content == 'image' and dynamic_source?
         pdf.image(StringIO.new(text),
                   :at => [pdf.bounds.left, pdf.bounds.top],
                   :fit => [pdf.bounds.width, pdf.bounds.height],
                   :position => justification.to_sym,
-                  :vposition => justification.to_sym)
-      elsif content == 'id+code'
+                  :vposition => justification.to_sym) unless text.nil?
+      elsif content == 'id+code' and dynamic_source?
         # If a person or conference's «id+code» are requested, we lay
         # them out as barcodes for their id, not just as text.
         barcode_box(pdf, text)
@@ -101,38 +101,32 @@ class CertifFormatLine < ActiveRecord::Base
     self.max_height = human_to_points(new)
   end
 
+  def dynamic_source?
+    [1, 2].include?(content_source)
+  end
+
   private
   def value_for(person,conference)
-    case content_source
-    when -1
-      return ''
-    when 0
-      return content
-    when 1
-      obj = person
-      # Special-cased pseudoattributes
-      if content == 'id+code'
-        return person.id
-      elsif content == 'image'
-        return person.has_photo? ? person.photo.data : nil
-      end
-    when 2
-      obj = conference
-      raise ConferenceRequired if conference.nil?
-      # Special-cased pseudoattributes
-      if content == 'image'
-        return conference.has_logo? ? conference.logo.data : nil 
-      end
-    else
-      raise NoMethodError, _('Undefined content source %d for %d (%d)') % 
-        [content_source, id, certif_format_id]
-    end
+    return '' if content_source == -1 
+    return content if content_source == 0
 
-    # In case we are being queried for an ID barcode generation
-    return obj.send(content) if obj.respond_to? content
-    raise NoMethodError, _('Undefined attribute %s for %s in format ' <<
-                           'line %d (%d)') % [content, obj.class, 
-                                              id, certif_format_id]
+    # So we are dealing with a dynamic source...
+    raise ConferenceRequired if content_source == 2 and conference.nil?
+    obj = content_source == 1 ? person : conference
+
+    # Special-cased pseudoattributes
+    case content
+    when 'id+code'
+      return obj.id
+    when 'image'
+      img = obj==person ? obj.photo : obj.logo
+      return img ? img.data : nil
+    else
+      return obj.send(content) if obj.respond_to? content
+      raise NoMethodError, _('Undefined attribute %s for %s in format ' <<
+                             'line %d (%d)') % [content, obj.class, 
+                                                id, certif_format_id]
+    end
   end
 
   # Compound bounding box with the barcode and the text elements

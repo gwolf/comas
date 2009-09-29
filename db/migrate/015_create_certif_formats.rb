@@ -27,8 +27,8 @@ class CreateCertifFormats < ActiveRecord::Migration
                 :descr => 'Preferred units in which you measure page sizes ' +
                 '(cm, in, pt)',
                 :value => 'cm').save!
-    AdminTask.new(:name => 'Certificates generation',
-                  :sys_name => 'certif_gen').save!
+    AdminTask.new(:name => 'Certificates administration',
+                  :sys_name => 'certificates_adm').save!
   end
 
   def self.down

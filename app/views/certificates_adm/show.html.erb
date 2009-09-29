@@ -83,10 +83,10 @@
   </dl>
 </div>
 
-<%= render :partial => 'certif_format_details', 
+<%= render :partial => 'details', 
            :locals => {:formats => [], 
                        :edit_fmt => @format, 
-                       :action => 'certif_format',
+                       :action => 'show',
                        :label => _('Modify')} %>
 
 <% table do %>
@@ -95,8 +95,8 @@
 
   <% table_row do %>
     <% form_for :certif_format_line, @new_line, 
-                :url => {:action => 'add_certif_format_line', 
-                         :format_id => @format} do |f| %>
+                :url => {:action => 'add_line', 
+                         :id => @format} do |f| %>
       <td><%= f.text_field :human_y_pos, :size => 3%></td>
       <td><%= f.text_field :human_x_pos, :size => 3 %></td>
       <td><%= f.text_field :human_max_width, :size => 3 %></td>
@@ -112,5 +112,5 @@
 
 <% end %>
 
-<%= render :partial => 'certif_format_test_form', 
+<%= render :partial => 'test_form', 
            :locals => {:format => @format} %>
