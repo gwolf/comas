@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2009-09-24 11:17-0500\n"
-"PO-Revision-Date: 2009-09-24 11:29-0600\n"
+"POT-Creation-Date: 2009-09-29 16:14-0500\n"
+"PO-Revision-Date: 2009-09-29 16:21-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: Gunnar Wolf <gwolf@gwolf.org>\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgid "Document|Filename"
 msgstr "Nombre de archivo"
 
 #: app/models/document.rb:-
-msgid "Document|Description"
+msgid "Document|Descr"
 msgstr "Descripción"
 
 #: app/models/document.rb:-
@@ -69,7 +69,7 @@ msgid "certif format"
 msgstr "formato de certificado"
 
 #: app/models/certif_format.rb:-
-msgid "CertifFormat|Format name"
+msgid "CertifFormat|Name"
 msgstr "Nombre del formato"
 
 #: app/models/certif_format.rb:-
@@ -81,6 +81,18 @@ msgid "CertifFormat|Orientation"
 msgstr "Orientación"
 
 #: app/models/person.rb:-
+msgid "admin task"
+msgstr "rol administrativo"
+
+#: app/models/person.rb:-
+msgid "AdminTask|Name"
+msgstr "Nombre"
+
+#: app/models/person.rb:-
+msgid "AdminTask|Sys name"
+msgstr "Nombre de sistema"
+
+#: app/models/person.rb:-
 msgid "conference"
 msgstr "Actividad"
 
@@ -89,7 +101,7 @@ msgid "Conference|Name"
 msgstr "Nombre"
 
 #: app/models/person.rb:-
-msgid "Conference|Description"
+msgid "Conference|Descr"
 msgstr "Descripción"
 
 #: app/models/person.rb:-
@@ -97,19 +109,19 @@ msgid "Conference|Homepage"
 msgstr "Página de inicio"
 
 #: app/models/person.rb:-
-msgid "Conference|Registration opening date"
+msgid "Conference|Reg open date"
 msgstr "Fecha de inicio del registro"
 
 #: app/models/person.rb:-
-msgid "Conference|Registration closing date"
+msgid "Conference|Reg close date"
 msgstr "Fecha de cierre de registro"
 
 #: app/models/person.rb:-
-msgid "Conference|Call for Papers opening date"
+msgid "Conference|Cfp open date"
 msgstr "Fecha de inicio de la convocatoria de propuestas"
 
 #: app/models/person.rb:-
-msgid "Conference|Call for papers closing date"
+msgid "Conference|Cfp close date"
 msgstr "Fecha de cierre de convocatoria de propuestas"
 
 #: app/models/person.rb:-
@@ -125,28 +137,16 @@ msgid "Conference|Short name"
 msgstr "Nombre corto"
 
 #: app/models/person.rb:-
-msgid "Conference|Manages proposals?"
+msgid "Conference|Manages proposals"
 msgstr "¿Maneja propuestas?"
 
 #: app/models/person.rb:-
-msgid "Conference|Public proposals?"
+msgid "Conference|Public proposals"
 msgstr "¿Propuestas públicas?"
 
 #: app/models/person.rb:-
-msgid "Conference|Invite only"
+msgid "Conference|Invite only?"
 msgstr "¿Sólo por invitación?"
-
-#: app/models/person.rb:-
-msgid "admin task"
-msgstr "rol administrativo"
-
-#: app/models/person.rb:-
-msgid "AdminTask|Name"
-msgstr "Nombre"
-
-#: app/models/person.rb:-
-msgid "AdminTask|System name"
-msgstr " Nombre de sistema"
 
 #: app/models/person.rb:-
 msgid "person"
@@ -157,15 +157,15 @@ msgid "Person|Login"
 msgstr "Nombre de usuario"
 
 #: app/models/person.rb:-
-msgid "Person|Password"
+msgid "Person|Passwd"
 msgstr "Contraseña"
 
 #: app/models/person.rb:-
-msgid "Person|First name"
+msgid "Person|Firstname"
 msgstr "Nombre propio"
 
 #: app/models/person.rb:-
-msgid "Person|Family name"
+msgid "Person|Famname"
 msgstr "Apellido"
 
 #: app/models/person.rb:-
@@ -173,8 +173,8 @@ msgid "Person|Email"
 msgstr "Correo electrónico"
 
 #: app/models/person.rb:-
-msgid "Person|Random password salt"
-msgstr "Salt aleatorio de la contraseña"
+msgid "Person|Pw salt"
+msgstr "Salt aleatoria de la contraseña"
 
 #: app/models/person.rb:-
 msgid "Person|Created at"
@@ -185,11 +185,11 @@ msgid "Person|Last login at"
 msgstr "Última entrada"
 
 #: app/models/person.rb:-
-msgid "Person|OK to receive conference-specific mails?"
-msgstr "¿Desea recibir correos específicos a sus actividades?"
+msgid "Person|Ok conf mails"
+msgstr "¿Le interesa recibir correos específicos a sus actividades?"
 
 #: app/models/person.rb:-
-msgid "Person|OK to receive general mails?"
+msgid "Person|Ok general mails"
 msgstr "¿Le interesa recibir correos generales?"
 
 #: app/models/person.rb:25
@@ -258,7 +258,7 @@ msgid "SysConf|Key"
 msgstr "Llave"
 
 #: app/models/sys_conf.rb:-
-msgid "SysConf|Description"
+msgid "SysConf|Descr"
 msgstr "Descripción"
 
 #: app/models/sys_conf.rb:-
@@ -345,11 +345,11 @@ msgid "Timeslot|Start time"
 msgstr "Hora de inicio"
 
 #: app/models/timeslot.rb:-
-msgid "Timeslot|Tolerance (pre)"
+msgid "Timeslot|Tolerance pre"
 msgstr "Tolerancia (pre)"
 
 #: app/models/timeslot.rb:-
-msgid "Timeslot|Tolerance (post)"
+msgid "Timeslot|Tolerance post"
 msgstr "Tolerancia (post)"
 
 #: app/models/timeslot.rb:-
@@ -401,7 +401,7 @@ msgid "Photo|Person"
 msgstr "Persona"
 
 #: app/models/photo.rb:-
-msgid "Photo|Thumb"
+msgid "Photo|Thumbnail"
 msgstr "Reducido"
 
 #: app/models/authorship.rb:-
@@ -457,7 +457,7 @@ msgid "Proposal|Updated at"
 msgstr "Última actualización"
 
 #: app/models/proposal.rb:-
-msgid "Proposal|Proposal type"
+msgid "Proposal|Prop type"
 msgstr "Tipo de la propuesta"
 
 #: app/models/proposal.rb:-
@@ -509,15 +509,15 @@ msgid "NametagFormat|Position"
 msgstr "Posición"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Horizontal size"
+msgid "NametagFormat|H size"
 msgstr "Tamaño horizontal"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Vertical size"
+msgid "NametagFormat|V size"
 msgstr "Tamaño vertical"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Vertical gap"
+msgid "NametagFormat|V gap"
 msgstr "Separación vertical"
 
 #: app/models/nametag_format.rb:-
@@ -525,35 +525,35 @@ msgid "NametagFormat|Name width"
 msgstr "Ancho del nombre"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Horizontal start"
+msgid "NametagFormat|H start"
 msgstr "Inicio horizontal"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Vertical start"
+msgid "NametagFormat|V start"
 msgstr "Inicio vertical"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Barcode horizontal position"
+msgid "NametagFormat|Id bar hpos"
 msgstr "Posición horizontal del código de barras"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Barcode vertical position"
+msgid "NametagFormat|Id bar vpos"
 msgstr "Posición vertical del código de barras"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Barcode orientation"
+msgid "NametagFormat|Id bar orient"
 msgstr "Orientación del código de barras"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Barcode narrow bars width"
+msgid "NametagFormat|Id bar narrow"
 msgstr "Ancho de las barras delgadas"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Barcode wide bars width"
+msgid "NametagFormat|Id bar wide"
 msgstr "Ancho de las barras gruesas"
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Barcode height"
+msgid "NametagFormat|Id bar height"
 msgstr "Altura del código de barras"
 
 #: app/models/nametag_format.rb:12
@@ -601,15 +601,15 @@ msgid "CertifFormatLine|Content"
 msgstr "Contenido"
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Horizontal position"
+msgid "CertifFormatLine|X pos"
 msgstr "Posición horizontal"
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Vertical position"
+msgid "CertifFormatLine|Y pos"
 msgstr "Posición vertical"
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Maximum width"
+msgid "CertifFormatLine|Max width"
 msgstr "Ancho máximo"
 
 #: app/models/certif_format_line.rb:-
@@ -621,11 +621,11 @@ msgid "CertifFormatLine|Justification"
 msgstr "Justificación"
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Certificate format"
+msgid "CertifFormatLine|Certif format"
 msgstr "Formato de certificado"
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Max height"
+msgid "CertifFormatLine|Maximum height"
 msgstr "Altura máxima"
 
 #: app/models/certif_format_line.rb:5
@@ -651,10 +651,6 @@ msgid "Empty (frame)"
 msgstr "Vacío (marco)"
 
 #: app/models/certif_format_line.rb:126
-msgid "Undefined content source %d for %d (%d)"
-msgstr "Fuente de contenido no definida %d para %d (%d)"
-
-#: app/models/certif_format_line.rb:132
 msgid "Undefined attribute %s for %s in format "
 msgstr "Atributo %s no definido para %s en el formato"
 
@@ -663,11 +659,11 @@ msgid "conf invite"
 msgstr "invitación"
 
 #: app/models/conf_invite.rb:-
-msgid "ConfInvite|Firstname"
+msgid "ConfInvite|First name"
 msgstr "Nombre propio"
 
 #: app/models/conf_invite.rb:-
-msgid "ConfInvite|Famname"
+msgid "ConfInvite|Family name"
 msgstr "Apellido"
 
 #: app/models/conf_invite.rb:-
@@ -727,7 +723,7 @@ msgid "Logo|Conference"
 msgstr "Actividad"
 
 #: app/models/logo.rb:-
-msgid "Logo|Thumbnail"
+msgid "Logo|Thumb"
 msgstr "Reducido"
 
 #: app/models/logo.rb:-
@@ -770,6 +766,23 @@ msgstr "Última actualización"
 msgid "Translation|Language"
 msgstr "Idioma"
 
+#: app/controllers/certificates_adm_controller.rb:3
+msgid "Certificate formats"
+msgstr "Formatos de certificado"
+
+#: app/controllers/certificates_adm_controller.rb:32
+msgid "Format updated successfully"
+msgstr "El formato ha sido actualizado exitosamente"
+
+#: app/controllers/certificates_adm_controller.rb:99
+#: app/controllers/attendance_adm_controller.rb:156
+msgid "Invalid person specified"
+msgstr "Especificó a una persona inexistente"
+
+#: app/controllers/certificates_adm_controller.rb:106
+msgid "Invalid format specified"
+msgstr "Especificó un formato inexistente"
+
 #: app/controllers/translation_controller.rb:5
 msgid "Statistics by language"
 msgstr "Estadísticas por idioma"
@@ -802,58 +815,62 @@ msgstr "Especificó a una traducción inexistente"
 msgid "Controller %s must implement check_auth"
 msgstr "El controlador %s debe implementar check_auth"
 
-#: app/controllers/application.rb:67
+#: app/controllers/application.rb:79
 msgid "Conference listing"
 msgstr "Listado de actividades"
 
-#: app/controllers/application.rb:71
+#: app/controllers/application.rb:86
 #: app/views/people/login.html.erb:13
 msgid "Log in"
 msgstr "Entrar"
 
-#: app/controllers/application.rb:73
+#: app/controllers/application.rb:88
 #: app/views/notification/conference_invitation.text.plain.erb:21
 #: app/views/people/new.html.erb:1
 msgid "New account"
 msgstr "Nueva cuenta"
 
-#: app/controllers/application.rb:77
+#: app/controllers/application.rb:92
 msgid "Update your personal information"
 msgstr "Actualizar su información personal"
 
-#: app/controllers/application.rb:79
+#: app/controllers/application.rb:94
 #: app/views/people/password.html.erb:24
 msgid "Change password"
 msgstr "Cambiar contraseña"
 
-#: app/controllers/application.rb:81
+#: app/controllers/application.rb:96
 msgid "My public profile"
 msgstr "Mi perfil público"
 
-#: app/controllers/application.rb:85
+#: app/controllers/application.rb:99
+msgid "Generate nametag"
+msgstr "Generar identificador"
+
+#: app/controllers/application.rb:102
 #: app/views/people/proposals.html.erb:1
 msgid "My proposals"
 msgstr "Mis ponencias"
 
-#: app/controllers/application.rb:88
+#: app/controllers/application.rb:105
 #: app/views/people/invite.html.erb:1
 msgid "Invite a friend"
 msgstr "Invitar a un amigo"
 
-#: app/controllers/application.rb:91
+#: app/controllers/application.rb:108
 #: app/views/notification/welcome.text.plain.erb:20
 msgid "My account"
 msgstr "Mi cuenta"
 
-#: app/controllers/application.rb:105
+#: app/controllers/application.rb:120
 msgid "-*- Unimplemented"
 msgstr "-*- No implementado"
 
-#: app/controllers/application.rb:120
+#: app/controllers/application.rb:144
 msgid "&laquo; Previous"
 msgstr "&laquo; Anterior"
 
-#: app/controllers/application.rb:121
+#: app/controllers/application.rb:145
 msgid "Next &raquo;"
 msgstr "Siguiente &raquo;"
 
@@ -1053,12 +1070,12 @@ msgid "Timeout waiting for your new password - You can request for a new passwor
 msgstr "Tiempo agotado esperando a que proporcione una nueva contraseña - Puede solicitar una nueva reposición si lo requiere."
 
 #: app/controllers/people_controller.rb:81
-#: app/controllers/people_controller.rb:195
+#: app/controllers/people_controller.rb:206
 msgid "New password does not match confirmation"
 msgstr "La nueva contraseña no concuerda con la confirmación"
 
 #: app/controllers/people_controller.rb:88
-#: app/controllers/people_controller.rb:209
+#: app/controllers/people_controller.rb:220
 msgid "Your password was successfully changed"
 msgstr "Su nueva contraseña fue registrada exitosamente"
 
@@ -1078,51 +1095,55 @@ msgstr "Fue registrado exitosamente para «%s»"
 msgid "Cannot register you for the conference you were invited to: %s"
 msgstr "No fue posible registrarlo para la actividad para la cual fue invitado: %s"
 
-#: app/controllers/people_controller.rb:172
+#: app/controllers/people_controller.rb:171
 msgid "You have submitted an invalid document as your photo. Please check its format and send it again."
 msgstr "Envió un archivo inválido como fotografía. Por favor verifique que el formato sea correcto, y envíela de nuevo."
 
-#: app/controllers/people_controller.rb:180
+#: app/controllers/people_controller.rb:179
 msgid "Your personal data has been updated successfully"
 msgstr "Sus datos personales han sido actualizados exitosamente"
 
-#: app/controllers/people_controller.rb:182
+#: app/controllers/people_controller.rb:181
 msgid "Error updating your personal data: "
 msgstr "Error actualizando sus datos personales"
 
-#: app/controllers/people_controller.rb:193
+#: app/controllers/people_controller.rb:194
+msgid "No format has yet been defined for nametag printing"
+msgstr "No se ha definido ningún formato para la impresión de personalizadores"
+
+#: app/controllers/people_controller.rb:204
 msgid "All fields are required"
 msgstr "Todos los campos son requeridos"
 
-#: app/controllers/people_controller.rb:197
+#: app/controllers/people_controller.rb:208
 msgid "Current password is not valid"
 msgstr "La contraseña actual no es válida"
 
-#: app/controllers/people_controller.rb:201
+#: app/controllers/people_controller.rb:212
 msgid "Error changing your password: "
 msgstr "Error cambiando su contraseña"
 
-#: app/controllers/people_controller.rb:223
+#: app/controllers/people_controller.rb:234
 msgid "Requested person is not registered"
 msgstr "La persona especificada no está registrada"
 
-#: app/controllers/people_controller.rb:253
+#: app/controllers/people_controller.rb:264
 msgid "You are not allowed to send invitations for the specified conference."
 msgstr "No puede enviar invitaciones para esa actividad."
 
-#: app/controllers/people_controller.rb:260
+#: app/controllers/people_controller.rb:271
 msgid "The requested e-mail was successfully sent"
 msgstr "El correo electrónico fue enviado exitosamente"
 
-#: app/controllers/people_controller.rb:263
+#: app/controllers/people_controller.rb:274
 msgid "Invalid conference requested"
 msgstr "Especificó una actividad inexistente"
 
-#: app/controllers/people_controller.rb:265
+#: app/controllers/people_controller.rb:276
 msgid "You must supply a body for your mail"
 msgstr "Debe especificar un cuerpo para el correo"
 
-#: app/controllers/people_controller.rb:267
+#: app/controllers/people_controller.rb:278
 msgid "The specified e-mail address (%s) is not valid"
 msgstr "La dirección de correo especificada (%s) no es válida"
 
@@ -1141,49 +1162,33 @@ msgstr "Tomar asistencia"
 msgid "Attendance lists"
 msgstr "Listas de asistencia"
 
-#: app/controllers/attendance_adm_controller.rb:6
-msgid "Certificate formats"
-msgstr "Formatos de certificado"
-
-#: app/controllers/attendance_adm_controller.rb:45
+#: app/controllers/attendance_adm_controller.rb:38
 msgid "Please select a timeslot to take attendance for"
 msgstr "Seleccione una sesión para la cual tomar asistencia"
 
-#: app/controllers/attendance_adm_controller.rb:78
+#: app/controllers/attendance_adm_controller.rb:71
 msgid "Invalid timeslot requested"
 msgstr "Especificó una sesión inválida"
 
-#: app/controllers/attendance_adm_controller.rb:138
-msgid "Format updated successfully"
-msgstr "El formato ha sido actualizado exitosamente"
-
-#: app/controllers/attendance_adm_controller.rb:196
+#: app/controllers/attendance_adm_controller.rb:113
 msgid "This person has already been registered for this timeslot. No action taken."
 msgstr "La persona especificada ya había sido registrada para esta sesión. No se llevó a cabo ninguna acción."
 
-#: app/controllers/attendance_adm_controller.rb:207
+#: app/controllers/attendance_adm_controller.rb:124
 msgid "<em>%s</em> is not registered for <em>%s</em>, and registrations are closed."
 msgstr "La persona <em>%s</em> no estaba aún registrada para esta actividad, y el registro está cerrado"
 
-#: app/controllers/attendance_adm_controller.rb:213
+#: app/controllers/attendance_adm_controller.rb:130
 msgid "Person <em>%s</em> was not yet registered for this conference - Registering."
 msgstr "La persona <em>%s</em> no estaba aún registrada para esta actividad - Registrando."
 
-#: app/controllers/attendance_adm_controller.rb:219
+#: app/controllers/attendance_adm_controller.rb:136
 msgid "Attendance successfully registered"
 msgstr "La asistencia fue registrada exitosamente"
 
-#: app/controllers/attendance_adm_controller.rb:221
+#: app/controllers/attendance_adm_controller.rb:138
 msgid "Could not register person <em>%s</em> for this timeslot: %s"
 msgstr "No fue posible registrar a la persona <em>%s</em> para esta sesión: %s"
-
-#: app/controllers/attendance_adm_controller.rb:239
-msgid "Invalid person specified"
-msgstr "Especificó a una persona inexistente"
-
-#: app/controllers/attendance_adm_controller.rb:246
-msgid "Invalid format specified"
-msgstr "Especificó un formato inexistente"
 
 #: app/controllers/admin.rb:10
 msgid "Access denied"
@@ -1236,192 +1241,201 @@ msgid "You must specify both email title and body"
 msgstr "Debe especificar tanto el título como el cuerpo del correo."
 
 #: app/controllers/sys_conf_adm_controller.rb:18
-msgid "Show configuration"
-msgstr "Mostrar la configuración"
+#: app/views/people/account.html.erb:35
+#: app/views/sys_conf_adm/list.html.erb:1
+msgid "Configuration entries"
+msgstr "Entradas de configuración"
 
 #: app/controllers/sys_conf_adm_controller.rb:19
-msgid "Manage fields for conferences"
-msgstr "Administrar los campos de actividades"
-
-#: app/controllers/sys_conf_adm_controller.rb:20
-msgid "Manage fields for proposals"
-msgstr "Administrar los campos para las propuestas"
-
-#: app/controllers/sys_conf_adm_controller.rb:21
-msgid "Manage fields for people"
-msgstr "Administrar los campos para las personas"
-
-#: app/controllers/sys_conf_adm_controller.rb:22
 #: app/views/sys_conf_adm/list_catalogs.html.erb:1
 msgid "Catalogs management"
 msgstr "Administración de catálogos"
 
-#: app/controllers/sys_conf_adm_controller.rb:23
-#: app/views/sys_conf_adm/nametag_format_list.html.erb:1
-msgid "Nametag printing formats"
-msgstr "Formatos para la impresión de personalizadores"
+#: app/controllers/sys_conf_adm_controller.rb:20
+msgid "Basic table fields handling"
+msgstr "Manejo de los campos de tablas base"
 
-#: app/controllers/sys_conf_adm_controller.rb:36
+#: app/controllers/sys_conf_adm_controller.rb:21
+msgid "Conferences"
+msgstr "Actividades"
+
+#: app/controllers/sys_conf_adm_controller.rb:22
+msgid "Proposals"
+msgstr "Propuestas"
+
+#: app/controllers/sys_conf_adm_controller.rb:23
+msgid "People"
+msgstr "Personas"
+
+#: app/controllers/sys_conf_adm_controller.rb:25
+msgid "Printing format"
+msgstr "Formato de impresión"
+
+#: app/controllers/sys_conf_adm_controller.rb:26
+msgid "Nametags (EPL2)"
+msgstr "Personalizadores (EPL2)"
+
+#: app/controllers/sys_conf_adm_controller.rb:40
 msgid "Error destroying requested entry: "
 msgstr "Error eliminando la llave de configuración indicado:"
 
-#: app/controllers/sys_conf_adm_controller.rb:44
+#: app/controllers/sys_conf_adm_controller.rb:48
 msgid "Error creating requested entry: "
 msgstr "Error creando la entrada de configuración solicitada:"
 
-#: app/controllers/sys_conf_adm_controller.rb:56
+#: app/controllers/sys_conf_adm_controller.rb:60
 msgid "The configuration entry was successfully updated"
 msgstr "La entrada de configuración fue actualizada exitosamente"
 
-#: app/controllers/sys_conf_adm_controller.rb:58
+#: app/controllers/sys_conf_adm_controller.rb:62
 msgid "Error updating requested configuration entry: "
 msgstr "Error actualizando la entrada de configuración solicitada:"
 
-#: app/controllers/sys_conf_adm_controller.rb:84
+#: app/controllers/sys_conf_adm_controller.rb:88
 msgid "Invalid column name"
 msgstr "Nombre de columna inválido"
 
-#: app/controllers/sys_conf_adm_controller.rb:85
+#: app/controllers/sys_conf_adm_controller.rb:89
 msgid "A field by that name is already defined"
 msgstr "Ya existe un campo con ese nombre"
 
-#: app/controllers/sys_conf_adm_controller.rb:87
+#: app/controllers/sys_conf_adm_controller.rb:91
 msgid "Invalid data type specified"
 msgstr "Especificó un tipo de datos equivocado"
 
-#: app/controllers/sys_conf_adm_controller.rb:101
+#: app/controllers/sys_conf_adm_controller.rb:105
 msgid "Successfully created %s field in %s"
 msgstr "El campo %s fue creado exitosamente en %s"
 
-#: app/controllers/sys_conf_adm_controller.rb:105
+#: app/controllers/sys_conf_adm_controller.rb:109
 msgid "Unable to create requested column: %s"
 msgstr "Error creando la columna solicitada:"
 
-#: app/controllers/sys_conf_adm_controller.rb:116
+#: app/controllers/sys_conf_adm_controller.rb:120
 msgid "Attempting to remove invalid field: %s"
 msgstr "Intentando eliminar un campo inválido: %s"
 
-#: app/controllers/sys_conf_adm_controller.rb:122
+#: app/controllers/sys_conf_adm_controller.rb:126
 msgid "Successfully removed field %s"
 msgstr "El campo %s fue eliminado exitosamente"
 
-#: app/controllers/sys_conf_adm_controller.rb:124
+#: app/controllers/sys_conf_adm_controller.rb:128
 msgid "Error removing specified field: %s"
 msgstr "Error eliminando al campo solicitado:"
 
-#: app/controllers/sys_conf_adm_controller.rb:129
+#: app/controllers/sys_conf_adm_controller.rb:133
 msgid "Please note we have _not_ dropped the corresponding catalog for this column, <em>%s</em>, to avoid data loss. You can manually remove it."
 msgstr "Por favor recuerde que _no_ eliminamos el catálogo correspondiente a esta columna, <em>%s</em>, para evitar pérdidas de datos. Usted puede eliminarlo manualmente."
 
-#: app/controllers/sys_conf_adm_controller.rb:143
+#: app/controllers/sys_conf_adm_controller.rb:147
 msgid "Invalid field specified"
 msgstr "Especificó un campo inválido"
 
-#: app/controllers/sys_conf_adm_controller.rb:160
+#: app/controllers/sys_conf_adm_controller.rb:164
 msgid "Error setting the requested default value: %s"
 msgstr "Error marcando el valor por omisión solicitado: %s"
 
-#: app/controllers/sys_conf_adm_controller.rb:182
+#: app/controllers/sys_conf_adm_controller.rb:186
 msgid "Error setting the field as not null: %s"
 msgstr "Error marcando al campo como no nulo: %s"
 
-#: app/controllers/sys_conf_adm_controller.rb:187
+#: app/controllers/sys_conf_adm_controller.rb:191
 msgid "Cannot set field %s to reject null values: No default value "
 msgstr "Es imposible configurar el campo %s para que rechace los valores nulos: No tiene un valor por omisión especificado "
 
-#: app/controllers/sys_conf_adm_controller.rb:193
+#: app/controllers/sys_conf_adm_controller.rb:197
 msgid "The field's values were correctly updated"
 msgstr "Los valores del campo fueron actualizados correctamente"
 
-#: app/controllers/sys_conf_adm_controller.rb:218
+#: app/controllers/sys_conf_adm_controller.rb:222
 msgid "The requested record was successfully deleted"
 msgstr "El registro especificado fue eliminado exitosamente"
 
-#: app/controllers/sys_conf_adm_controller.rb:220
+#: app/controllers/sys_conf_adm_controller.rb:224
 msgid "Requested record not found - Maybe it had already been deleted?"
 msgstr "No fue posible encontrar al registro especificado - Posiblemente ya lo había eliminado."
 
-#: app/controllers/sys_conf_adm_controller.rb:223
+#: app/controllers/sys_conf_adm_controller.rb:227
 msgid "Error deleting the requested record - A catalog entry will not be deleted if it is still referenced."
 msgstr "Error eliminando el registro solicitado - Un registro de catálogo no puede ser eliminado si aún está siendo referenciado (utilizado)."
 
-#: app/controllers/sys_conf_adm_controller.rb:236
+#: app/controllers/sys_conf_adm_controller.rb:240
 msgid "The new %s was successfully registered"
 msgstr "El nuevo %s fue registrado exitosamente"
 
-#: app/controllers/sys_conf_adm_controller.rb:238
+#: app/controllers/sys_conf_adm_controller.rb:242
 msgid "Could not create new %s: %s"
 msgstr "No fue posible crear un nuevo %s: %s"
 
-#: app/controllers/sys_conf_adm_controller.rb:253
+#: app/controllers/sys_conf_adm_controller.rb:257
 msgid "The requested format was successfully created"
 msgstr "El formato especificado fue creado exitosamente"
 
-#: app/controllers/sys_conf_adm_controller.rb:256
+#: app/controllers/sys_conf_adm_controller.rb:260
 msgid "Error creating requested format: "
 msgstr "Error creando el formato especificado:"
 
-#: app/controllers/sys_conf_adm_controller.rb:264
+#: app/controllers/sys_conf_adm_controller.rb:268
 msgid "The requested format was successfully updated"
 msgstr "El formato especificado fue actualizado exitosamente"
 
-#: app/controllers/sys_conf_adm_controller.rb:267
+#: app/controllers/sys_conf_adm_controller.rb:271
 msgid "Error updating requested format: "
 msgstr "Error actualizando el formato especificado:"
 
-#: app/controllers/sys_conf_adm_controller.rb:274
+#: app/controllers/sys_conf_adm_controller.rb:278
 msgid "The requested format was successfully deleted"
 msgstr "El formato especificado fue eliminado exitosamente"
 
-#: app/controllers/sys_conf_adm_controller.rb:293
+#: app/controllers/sys_conf_adm_controller.rb:297
 msgid "Invalid configuration entry %d requested"
 msgstr "Especificó una entrada de configuración inválida: %d"
 
-#: app/controllers/sys_conf_adm_controller.rb:308
+#: app/controllers/sys_conf_adm_controller.rb:312
 msgid "Invalid table requested"
 msgstr "Especificó una tabla inválida"
 
-#: app/controllers/sys_conf_adm_controller.rb:318
+#: app/controllers/sys_conf_adm_controller.rb:322
 msgid "Invalid nametag format %d specified"
 msgstr "Especificó un formato inexistente (%d)"
 
-#: app/controllers/sys_conf_adm_controller.rb:329
+#: app/controllers/sys_conf_adm_controller.rb:333
 msgid "Invalid catalog requested: %s"
 msgstr "Especificó una catálogo inválido"
 
-#: app/controllers/sys_conf_adm_controller.rb:345
+#: app/controllers/sys_conf_adm_controller.rb:349
 msgid "Boolean"
 msgstr "Booleano"
 
-#: app/controllers/sys_conf_adm_controller.rb:346
+#: app/controllers/sys_conf_adm_controller.rb:350
 msgid "Date"
 msgstr "Fecha"
 
-#: app/controllers/sys_conf_adm_controller.rb:347
+#: app/controllers/sys_conf_adm_controller.rb:351
 msgid "Timestamp"
 msgstr "Hora y fecha"
 
-#: app/controllers/sys_conf_adm_controller.rb:348
+#: app/controllers/sys_conf_adm_controller.rb:352
 msgid "String"
 msgstr "Cadena"
 
-#: app/controllers/sys_conf_adm_controller.rb:349
+#: app/controllers/sys_conf_adm_controller.rb:353
 msgid "Text"
 msgstr "Texto"
 
-#: app/controllers/sys_conf_adm_controller.rb:350
+#: app/controllers/sys_conf_adm_controller.rb:354
 msgid "Integer"
 msgstr "Entero"
 
-#: app/controllers/sys_conf_adm_controller.rb:351
+#: app/controllers/sys_conf_adm_controller.rb:355
 msgid "Decimal"
 msgstr "Decimal"
 
-#: app/controllers/sys_conf_adm_controller.rb:352
+#: app/controllers/sys_conf_adm_controller.rb:356
 msgid "Float"
 msgstr "Flotante"
 
-#: app/controllers/sys_conf_adm_controller.rb:353
+#: app/controllers/sys_conf_adm_controller.rb:357
 msgid "Catalog"
 msgstr "Catálogo"
 
@@ -1430,7 +1444,6 @@ msgid "Latest registered conferences"
 msgstr "Últimas actividades registradas"
 
 #: app/controllers/conferences_controller.rb:6
-#: app/views/people/account.html.erb:15
 #: app/views/conferences/list.html.erb:6
 msgid "Upcoming conferences"
 msgstr "Próximas actividades"
@@ -1482,6 +1495,53 @@ msgstr "En este momento, es imposible cambiar su estado de registro para esta ac
 #: app/controllers/conferences_controller.rb:148
 msgid "Invalid conference <em>%s</em> requested"
 msgstr "Solicitó la actividad inexistente <em>%s</em>"
+
+#: app/helpers/certificates_adm_helper.rb:22
+msgid "Vert"
+msgstr "Vert"
+
+#: app/helpers/certificates_adm_helper.rb:22
+msgid "Horiz"
+msgstr "Horiz"
+
+#: app/helpers/certificates_adm_helper.rb:22
+msgid "Max width"
+msgstr "Ancho máximo"
+
+#: app/helpers/certificates_adm_helper.rb:22
+msgid "Max height"
+msgstr "Altura máxima"
+
+#: app/helpers/certificates_adm_helper.rb:23
+msgid "Content source"
+msgstr "Fuente del contenido"
+
+#: app/helpers/certificates_adm_helper.rb:23
+msgid "Content"
+msgstr "Contenido"
+
+#: app/helpers/certificates_adm_helper.rb:24
+msgid "Font size"
+msgstr "Tamaño del font"
+
+#: app/helpers/certificates_adm_helper.rb:24
+msgid "Align"
+msgstr "Alineación"
+
+#: app/helpers/certificates_adm_helper.rb:35
+#: app/helpers/conferences_adm_helper.rb:21
+#: app/helpers/people_adm_helper.rb:26
+#: app/helpers/sys_conf_adm_helper.rb:22
+#: app/views/conferences_adm/list.html.erb:34
+#: app/views/translation/list.html.erb:32
+#: app/views/sys_conf_adm/show_catalog.html.erb:15
+#: app/views/sys_conf_adm/list.html.erb:19
+msgid "Delete"
+msgstr "Eliminar"
+
+#: app/helpers/certificates_adm_helper.rb:38
+msgid "Are you sure you want to delete this line?"
+msgstr "¿Está seguro de que desea eliminar esta línea?"
 
 #: app/helpers/application_helper.rb:18
 msgid "Log out"
@@ -1539,14 +1599,14 @@ msgstr "El campo %s no está definido para %s"
 
 #: app/helpers/application_helper.rb:331
 #: app/helpers/sys_conf_adm_helper.rb:20
-#: app/views/attendance_adm/_certif_format_test_form.html.erb:13
+#: app/views/certificates_adm/_test_form.html.erb:13
 #: app/views/sys_conf_adm/edit_table_field.html.erb:41
 msgid "Yes"
 msgstr "Sí"
 
 #: app/helpers/application_helper.rb:331
 #: app/helpers/sys_conf_adm_helper.rb:20
-#: app/views/attendance_adm/_certif_format_test_form.html.erb:14
+#: app/views/certificates_adm/_test_form.html.erb:14
 #: app/views/sys_conf_adm/edit_table_field.html.erb:42
 msgid "No"
 msgstr "No"
@@ -1642,26 +1702,15 @@ msgstr "Editar horarios"
 msgid "Invalid logo size specified: %s"
 msgstr "Especificó un tamaño de logotipo inválido: %s"
 
-#: app/helpers/conferences_adm_helper.rb:21
-#: app/helpers/people_adm_helper.rb:26
-#: app/helpers/sys_conf_adm_helper.rb:22
-#: app/helpers/attendance_adm_helper.rb:72
-#: app/views/conferences_adm/list.html.erb:34
-#: app/views/translation/list.html.erb:32
-#: app/views/sys_conf_adm/show_catalog.html.erb:15
-#: app/views/sys_conf_adm/list.html.erb:19
-msgid "Delete"
-msgstr "Eliminar"
-
 #: app/helpers/conferences_adm_helper.rb:24
 msgid "Are you sure you want to permanently delete this timeslot? This will also destroy any attendances it has recorded"
 msgstr "¿Está seguro que desea eliminar permanentemente esta sesión? Eso eliminará también todas las asistencias que ha registrado en ella"
 
 #: app/helpers/people_adm_helper.rb:4
-#: app/views/attendance_adm/_certif_format_details.html.erb:3
 #: app/views/people_adm/_people_for_task.html.erb:3
 #: app/views/conferences_adm/people_list.html.erb:6
 #: app/views/conferences_adm/list.html.erb:7
+#: app/views/certificates_adm/_details.html.erb:3
 #: app/views/sys_conf_adm/show_catalog.html.erb:7
 #: script/nametags:113
 msgid "ID"
@@ -1781,42 +1830,6 @@ msgstr "Tolerancia (post)"
 msgid "Choose"
 msgstr "Elegir"
 
-#: app/helpers/attendance_adm_helper.rb:59
-msgid "Vert"
-msgstr "Vert"
-
-#: app/helpers/attendance_adm_helper.rb:59
-msgid "Horiz"
-msgstr "Horiz"
-
-#: app/helpers/attendance_adm_helper.rb:59
-msgid "Max width"
-msgstr "Ancho máximo"
-
-#: app/helpers/attendance_adm_helper.rb:59
-msgid "Max height"
-msgstr "Altura máxima"
-
-#: app/helpers/attendance_adm_helper.rb:60
-msgid "Content source"
-msgstr "Fuente del contenido"
-
-#: app/helpers/attendance_adm_helper.rb:60
-msgid "Content"
-msgstr "Contenido"
-
-#: app/helpers/attendance_adm_helper.rb:61
-msgid "Font size"
-msgstr "Tamaño del font"
-
-#: app/helpers/attendance_adm_helper.rb:61
-msgid "Align"
-msgstr "Alineación"
-
-#: app/helpers/attendance_adm_helper.rb:75
-msgid "Are you sure you want to delete this line?"
-msgstr "¿Está seguro de que desea eliminar esta línea?"
-
 #: app/helpers/proposals_helper.rb:9
 msgid "%d registered proposals"
 msgstr "%d propuestas registradas"
@@ -1827,8 +1840,8 @@ msgstr "Posición"
 
 #: app/helpers/proposals_helper.rb:18
 #: app/views/attendance_adm/_list_by_attendances.html.erb:14
-#: app/views/attendance_adm/_certif_format_details.html.erb:4
 #: app/views/conferences_adm/list.html.erb:8
+#: app/views/certificates_adm/_details.html.erb:4
 #: app/views/sys_conf_adm/nametag_format_list.html.erb:14
 #: app/views/sys_conf_adm/show_catalog.html.erb:8
 #: app/views/sys_conf_adm/show_catalog.html.erb:27
@@ -1864,26 +1877,6 @@ msgstr "Registrar la asistencia"
 msgid "Last attendances registered for this timeslot"
 msgstr "Últimas asistencias registradas para esta sesión"
 
-#: app/views/attendance_adm/_certif_format_test_form.html.erb:1
-msgid "Test format"
-msgstr "Formato de prueba"
-
-#: app/views/attendance_adm/_certif_format_test_form.html.erb:2
-msgid "You can generate a sample of this format for your user."
-msgstr "Usted puede generar una prueba utilizando este formato para su usuario."
-
-#: app/views/attendance_adm/_certif_format_test_form.html.erb:10
-msgid "Conference to generate the sample certificate for"
-msgstr "Actividad para la cual generar el certificado de prueba"
-
-#: app/views/attendance_adm/_certif_format_test_form.html.erb:16
-msgid "Draw boxes specifying field sizes?"
-msgstr "¿Dibujar cajas indicando el tamaño de los campos?"
-
-#: app/views/attendance_adm/_certif_format_test_form.html.erb:18
-msgid "Generate test certificate"
-msgstr "Generar certificado de prueba"
-
 #: app/views/attendance_adm/choose_session.html.erb:1
 msgid "Choose a session to take attendance for"
 msgstr "Elija una sesión para tomar asistencia"
@@ -1903,87 +1896,6 @@ msgstr "%d sesiones activas"
 #: app/views/attendance_adm/choose_session.html.erb:9
 msgid "Show all registered timeslots"
 msgstr "Mostrar todas las sesiones registradas"
-
-#: app/views/attendance_adm/certif_format.html.erb:1
-msgid "Editing certificate format <em>%s</em>"
-msgstr "Editando el formato de certificado <em>%s</em>"
-
-#: app/views/attendance_adm/certif_format.html.erb:3
-msgid "General format information"
-msgstr "Información general de contacto"
-
-#: app/views/attendance_adm/certif_format.html.erb:5
-msgid "Help"
-msgstr "Ayuda"
-
-#: app/views/attendance_adm/certif_format.html.erb:9
-msgid "Measurements"
-msgstr "Medidas"
-
-#: app/views/attendance_adm/certif_format.html.erb:10
-msgid "All measurments except for font size are expressed in <em>%s</em>. You will notice the values you enter are approximated (i.e. 10.99 instead of 11), as they are stored internally in %s and converted only to be shown here."
-msgstr "Todas las medidas a excepción del tamaño del font están expresadas en <em>%s</em>. Notará que los valores que proporcione quedarán aproximados (p.ej. 10.99 en vez de 11), dado que internamente son guardados en %s, y se convierten únicamente para su presentación en esta interfaz."
-
-#: app/views/attendance_adm/certif_format.html.erb:18
-msgid "Positioning"
-msgstr "Posicionamiento"
-
-#: app/views/attendance_adm/certif_format.html.erb:19
-msgid "This format's lines are sorted according to their vertical position, to better match what you will see on the paper. Measurement (0, 0) starts at the lower-left corner, and the indicated point marks the lower-left corner of the designated text area."
-msgstr "Las líneas de este formato están ordenadas acorde a su posición vertical, reflejando la posición que tendrán en el papel. La coordenada (0, 0) está ubicada en la esquina inferior izquierda, y el punto que usted especifique se refiere a la esquina inferior izquierda del área de texto designada."
-
-#: app/views/attendance_adm/certif_format.html.erb:26
-msgid "This means, if you want to provide a <em>centered</em> 15cm field in <em>Landscape Letter</em> (27.94cm wide) paper, you should set the <em>horizontal</em> position to 6.47 (which is (27.94 - 15) / 2) and the <em>maximum width</em> to 15."
-msgstr "Esto significa que, si desea proveer un campo <em>centrado</em> de 15 centímetros en una hoja <em>tamaño carta horizontal</em> (con un ancho de 27.94cm), deberá especificar la posición <em>horizontal</em> a 6.47 (resultado de (27.94 - 15) / 2), y el <em>ancho máximo</em> a 15."
-
-#: app/views/attendance_adm/certif_format.html.erb:32
-msgid "Minimum heights"
-msgstr "Alturas mínimas"
-
-#: app/views/attendance_adm/certif_format.html.erb:33
-msgid "Keep in mind that the maximum height for each of the lines must be enough to fit approximately 1.3 times the font size (as it takes into account interline spacing). If your certificates are broken across multiple pages, increase the maximum height for the field where it breaks."
-msgstr "Recuerde que la altura máxima para cada una de las líneas debe ser suficiente para que quepa aproximadamente 1.3 veces el tamaño del font (dado que debe incluir el espacio de entrelineado). Si sus certificados aparecen rotos en varias páginas, aumente la altura máxima para el campo donde se rompe."
-
-#: app/views/attendance_adm/certif_format.html.erb:39
-msgid "Content sources"
-msgstr "Fuentes del contenido"
-
-#: app/views/attendance_adm/certif_format.html.erb:40
-msgid "When the content source is set to <em>%s</em>, the text provided as content will be present verbatim in the certificate; when <em>%s</em> or <em>%s</em> (to which we will refer as <em>non-static sources</em>)) are selected, they will accept a suitable <em>attribute name</em>. When <em>%s</em> is selected, no content will be generated, just a solid, black frame for the specified area."
-msgstr "Cuando la fuente del contenido es <em>%s</em>, el texto que usted provea como contenido aparecerá literalmente en el certificado; si selecciona <em>%s</em> o <em>%s</em> (a las cuales nos referiremos como <em>fuentes no estáticas</em>), éstos aceptarán un <em>nombre de atributo</em> correspondiente. Si selecciona <em>%s</em>, no se generará contenido, sólo se dibujará un marco negro sólido alrededor del área especificada."
-
-#: app/views/attendance_adm/certif_format.html.erb:49
-msgid "Attributes"
-msgstr "Atributos"
-
-#: app/views/attendance_adm/certif_format.html.erb:50
-msgid "For non-static content sources, you can specify any valid <em>method name</em> for said model classes as the content. For further information, please check the Comas API. All database column names are valid method names."
-msgstr "Para las fuentes no estáticas de contenido, puede especificar por contenido cualquier <em>nombre de método</em> válido para dichas clases modelo. Para mayores detalles, por favor consulte el API de Comas. Todos los nombres de columna en la base de datos son nombres válidos de métodos."
-
-#: app/views/attendance_adm/certif_format.html.erb:56
-msgid "Some values specified as attributes for non-static sources get special treatment even though they do not exist directly as methods. They are:"
-msgstr "Algunos valores especificados como atributos para las fuentes no estáticas reciben tratamiento especial, aunque no existan directamente como métodos. Estos son:"
-
-#: app/views/attendance_adm/certif_format.html.erb:63
-msgid "The ID for the requested object, not only represented as text, but with its barcode. The minimum dimensions you should allocate to this column are a 3cm/1.1in width a 1.3cm/0.5in height."
-msgstr "El ID para el objeto solicitado, no sólo representado como texto, sino que con un código de barras. Las dimensiones mínimas que recomendamos para asignar a esta columna son 3.3cm/1.1pulg de ancho por 1.3cm/0.5pulg de altura."
-
-#: app/views/attendance_adm/certif_format.html.erb:70
-msgid "Will include the person's photo or the conference's logo, filling up the best way possible (respecting the aspect ratio) the given size. If the person/conference does not have such field specified, nothing will be displayed (no error will be generated)"
-msgstr "Incluirá la fotografía de la persona o el logotipo de la actividad, llenando de la mejor manera posible (respetando la relación horizontal-vertical del original) el tamaño indicado. Si la persona/actividad no tienen ningún valor especificado en el campo, no se mostrará nada (no se generará ningún mensaje de error)"
-
-#: app/views/attendance_adm/certif_format.html.erb:79
-msgid "If when generating certificates you get a system error (<tt>Undefined attribute</tt>), you should check for the validity of your <em>content</em> columns."
-msgstr "Si cuando genera certificados recibe un error de sistema (<tt>Undefined attribute</tt>), verifique la validez de la columna de <em>contenido</em>."
-
-#: app/views/attendance_adm/certif_format.html.erb:90
-#: app/views/sys_conf_adm/edit_table_field.html.erb:47
-msgid "Modify"
-msgstr "Modificar"
-
-#: app/views/attendance_adm/certif_format.html.erb:109
-msgid "Add line"
-msgstr "Agregar línea"
 
 #: app/views/attendance_adm/for_person.html.erb:1
 msgid "Attendances for <em>%s</em> on <em>%s</em>"
@@ -2018,20 +1930,6 @@ msgstr "defina uno primero"
 msgid "Select which format to generate the certificate with"
 msgstr "Seleccione con qué formato generar el certificado"
 
-#: app/views/attendance_adm/certif_formats_list.html.erb:1
-msgid "Available certificate formats"
-msgstr "Formatos de certificado disponibles"
-
-#: app/views/attendance_adm/certif_formats_list.html.erb:9
-#: app/views/people_adm/new.html.erb:3
-#: app/views/conferences_adm/new.html.erb:3
-#: app/views/sys_conf_adm/list_table_fields.html.erb:46
-#: app/views/sys_conf_adm/nametag_format_new.html.erb:4
-#: app/views/sys_conf_adm/show_catalog.html.erb:28
-#: app/views/sys_conf_adm/list.html.erb:31
-msgid "Create"
-msgstr "Crear"
-
 #: app/views/attendance_adm/_list_by_attendances.html.erb:1
 msgid "%d attendances: %d people (exact), %d people (including higher)"
 msgstr "%d asistencias: %d personas (exacto), %d personas (incluyendo aquellos con más registros)"
@@ -2051,19 +1949,6 @@ msgstr "Inicio de sesión"
 #: app/views/attendance_adm/_by_session.html.erb:8
 msgid "Attendees"
 msgstr "Asistentes"
-
-#: app/views/attendance_adm/_certif_format_details.html.erb:5
-msgid "Paper size"
-msgstr "Tamaño del papel"
-
-#: app/views/attendance_adm/_certif_format_details.html.erb:6
-msgid "Orientation"
-msgstr "Orientación"
-
-#: app/views/attendance_adm/_certif_format_details.html.erb:20
-#: app/views/sys_conf_adm/nametag_format_list.html.erb:42
-msgid "Are you sure you want to delete this format?"
-msgstr "¿Está seguro de que desea eliminar este formato?"
 
 #: app/views/attendance_adm/list.html.erb:2
 msgid "Attendance list for <em>%s</em>"
@@ -2344,6 +2229,16 @@ msgstr "No hay gente autorizada para esta tarea"
 #: app/views/people_adm/new.html.erb:1
 msgid "Register a new attendee"
 msgstr "Registrar a un nuevo asistente"
+
+#: app/views/people_adm/new.html.erb:3
+#: app/views/conferences_adm/new.html.erb:3
+#: app/views/certificates_adm/list.html.erb:9
+#: app/views/sys_conf_adm/list_table_fields.html.erb:46
+#: app/views/sys_conf_adm/nametag_format_new.html.erb:4
+#: app/views/sys_conf_adm/show_catalog.html.erb:28
+#: app/views/sys_conf_adm/list.html.erb:31
+msgid "Create"
+msgstr "Crear"
 
 #: app/views/people_adm/list.html.erb:1
 msgid "Attendee administration"
@@ -2925,8 +2820,32 @@ msgid "Next conferences you are signed up for"
 msgstr "Próximas actividades para las cuales usted está registrado"
 
 #: app/views/people/account.html.erb:8
-msgid "There are no upcoming conferences yet for which you are registered. You can select any active conference from the listing below:"
-msgstr "No hay ninguna actividad futura para la cual usted esté registrado. Puede seleccionar actividades del listado a continuación:"
+msgid "You are currently not registered for any upcoming conferences. You can %s and sign up."
+msgstr "Usted no está actualmente registrado para ninguna de las próximas actividades. Puede %s y darse de alta."
+
+#: app/views/people/account.html.erb:10
+msgid "go to the list of upcoming conferences"
+msgstr "consultar el listado de próximas actividades"
+
+#: app/views/people/account.html.erb:18
+msgid "Print your nametag"
+msgstr "Imprimir su personalizador"
+
+#: app/views/people/account.html.erb:19
+msgid "For your convenience, you can %s. This will save you time upon arriving to the conference, where you will be able to present it for identification and for attendance tracking."
+msgstr "Para su comodidad, puede %s. Esto le ahorrará tiempo al llegar a la actividad, donde podrá presentarla para su identificación y para toma de asistencia."
+
+#: app/views/people/account.html.erb:23
+msgid "print your nametag"
+msgstr "imprimir su personalizador"
+
+#: app/views/people/account.html.erb:29
+msgid "In order to define or change a nametag format, %s and register its name as the <tt>%s</tt> key in the %s interface"
+msgstr "Para definir o modificar un formato de impresión, %s  y registre su nombre como la llave <tt>%s</tt> en la interfaz %s."
+
+#: app/views/people/account.html.erb:32
+msgid "define a suitable format"
+msgstr "defina un formato adecuado"
 
 #: app/views/people/new.html.erb:8
 msgid "In order to registered you as an attendee, we need some of your personal and contact information, to create an account for you in our system."
@@ -2991,6 +2910,124 @@ msgstr "solicitar que se le envíe una nueva sesión temporal"
 #: app/views/people/recover.html.erb:24
 msgid "Set password"
 msgstr "Establecer contraseña"
+
+#: app/views/certificates_adm/_details.html.erb:5
+msgid "Paper size"
+msgstr "Tamaño del papel"
+
+#: app/views/certificates_adm/_details.html.erb:6
+msgid "Orientation"
+msgstr "Orientación"
+
+#: app/views/certificates_adm/_details.html.erb:20
+#: app/views/sys_conf_adm/nametag_format_list.html.erb:42
+msgid "Are you sure you want to delete this format?"
+msgstr "¿Está seguro de que desea eliminar este formato?"
+
+#: app/views/certificates_adm/show.html.erb:1
+msgid "Editing certificate format <em>%s</em>"
+msgstr "Editando el formato de certificado <em>%s</em>"
+
+#: app/views/certificates_adm/show.html.erb:3
+msgid "General format information"
+msgstr "Información general de contacto"
+
+#: app/views/certificates_adm/show.html.erb:5
+msgid "Help"
+msgstr "Ayuda"
+
+#: app/views/certificates_adm/show.html.erb:9
+msgid "Measurements"
+msgstr "Medidas"
+
+#: app/views/certificates_adm/show.html.erb:10
+msgid "All measurments except for font size are expressed in <em>%s</em>. You will notice the values you enter are approximated (i.e. 10.99 instead of 11), as they are stored internally in %s and converted only to be shown here."
+msgstr "Todas las medidas a excepción del tamaño del font están expresadas en <em>%s</em>. Notará que los valores que proporcione quedarán aproximados (p.ej. 10.99 en vez de 11), dado que internamente son guardados en %s, y se convierten únicamente para su presentación en esta interfaz."
+
+#: app/views/certificates_adm/show.html.erb:18
+msgid "Positioning"
+msgstr "Posicionamiento"
+
+#: app/views/certificates_adm/show.html.erb:19
+msgid "This format's lines are sorted according to their vertical position, to better match what you will see on the paper. Measurement (0, 0) starts at the lower-left corner, and the indicated point marks the lower-left corner of the designated text area."
+msgstr "Las líneas de este formato están ordenadas acorde a su posición vertical, reflejando la posición que tendrán en el papel. La coordenada (0, 0) está ubicada en la esquina inferior izquierda, y el punto que usted especifique se refiere a la esquina inferior izquierda del área de texto designada."
+
+#: app/views/certificates_adm/show.html.erb:26
+msgid "This means, if you want to provide a <em>centered</em> 15cm field in <em>Landscape Letter</em> (27.94cm wide) paper, you should set the <em>horizontal</em> position to 6.47 (which is (27.94 - 15) / 2) and the <em>maximum width</em> to 15."
+msgstr "Esto significa que, si desea proveer un campo <em>centrado</em> de 15 centímetros en una hoja <em>tamaño carta horizontal</em> (con un ancho de 27.94cm), deberá especificar la posición <em>horizontal</em> a 6.47 (resultado de (27.94 - 15) / 2), y el <em>ancho máximo</em> a 15."
+
+#: app/views/certificates_adm/show.html.erb:32
+msgid "Minimum heights"
+msgstr "Alturas mínimas"
+
+#: app/views/certificates_adm/show.html.erb:33
+msgid "Keep in mind that the maximum height for each of the lines must be enough to fit approximately 1.3 times the font size (as it takes into account interline spacing). If your certificates are broken across multiple pages, increase the maximum height for the field where it breaks."
+msgstr "Recuerde que la altura máxima para cada una de las líneas debe ser suficiente para que quepa aproximadamente 1.3 veces el tamaño del font (dado que debe incluir el espacio de entrelineado). Si sus certificados aparecen rotos en varias páginas, aumente la altura máxima para el campo donde se rompe."
+
+#: app/views/certificates_adm/show.html.erb:39
+msgid "Content sources"
+msgstr "Fuentes del contenido"
+
+#: app/views/certificates_adm/show.html.erb:40
+msgid "When the content source is set to <em>%s</em>, the text provided as content will be present verbatim in the certificate; when <em>%s</em> or <em>%s</em> (to which we will refer as <em>non-static sources</em>)) are selected, they will accept a suitable <em>attribute name</em>. When <em>%s</em> is selected, no content will be generated, just a solid, black frame for the specified area."
+msgstr "Cuando la fuente del contenido es <em>%s</em>, el texto que usted provea como contenido aparecerá literalmente en el certificado; si selecciona <em>%s</em> o <em>%s</em> (a las cuales nos referiremos como <em>fuentes no estáticas</em>), éstos aceptarán un <em>nombre de atributo</em> correspondiente. Si selecciona <em>%s</em>, no se generará contenido, sólo se dibujará un marco negro sólido alrededor del área especificada."
+
+#: app/views/certificates_adm/show.html.erb:49
+msgid "Attributes"
+msgstr "Atributos"
+
+#: app/views/certificates_adm/show.html.erb:50
+msgid "For non-static content sources, you can specify any valid <em>method name</em> for said model classes as the content. For further information, please check the Comas API. All database column names are valid method names."
+msgstr "Para las fuentes no estáticas de contenido, puede especificar por contenido cualquier <em>nombre de método</em> válido para dichas clases modelo. Para mayores detalles, por favor consulte el API de Comas. Todos los nombres de columna en la base de datos son nombres válidos de métodos."
+
+#: app/views/certificates_adm/show.html.erb:56
+msgid "Some values specified as attributes for non-static sources get special treatment even though they do not exist directly as methods. They are:"
+msgstr "Algunos valores especificados como atributos para las fuentes no estáticas reciben tratamiento especial, aunque no existan directamente como métodos. Estos son:"
+
+#: app/views/certificates_adm/show.html.erb:63
+msgid "The ID for the requested object, not only represented as text, but with its barcode. The minimum dimensions you should allocate to this column are a 3cm/1.1in width a 1.3cm/0.5in height."
+msgstr "El ID para el objeto solicitado, no sólo representado como texto, sino que con un código de barras. Las dimensiones mínimas que recomendamos para asignar a esta columna son 3.3cm/1.1pulg de ancho por 1.3cm/0.5pulg de altura."
+
+#: app/views/certificates_adm/show.html.erb:70
+msgid "Will include the person's photo or the conference's logo, filling up the best way possible (respecting the aspect ratio) the given size. If the person/conference does not have such field specified, nothing will be displayed (no error will be generated)"
+msgstr "Incluirá la fotografía de la persona o el logotipo de la actividad, llenando de la mejor manera posible (respetando la relación horizontal-vertical del original) el tamaño indicado. Si la persona/actividad no tienen ningún valor especificado en el campo, no se mostrará nada (no se generará ningún mensaje de error)"
+
+#: app/views/certificates_adm/show.html.erb:79
+msgid "If when generating certificates you get a system error (<tt>Undefined attribute</tt>), you should check for the validity of your <em>content</em> columns."
+msgstr "Si cuando genera certificados recibe un error de sistema (<tt>Undefined attribute</tt>), verifique la validez de la columna de <em>contenido</em>."
+
+#: app/views/certificates_adm/show.html.erb:90
+#: app/views/sys_conf_adm/edit_table_field.html.erb:47
+msgid "Modify"
+msgstr "Modificar"
+
+#: app/views/certificates_adm/show.html.erb:109
+msgid "Add line"
+msgstr "Agregar línea"
+
+#: app/views/certificates_adm/_test_form.html.erb:1
+msgid "Test format"
+msgstr "Formato de prueba"
+
+#: app/views/certificates_adm/_test_form.html.erb:2
+msgid "You can generate a sample of this format for your user."
+msgstr "Usted puede generar una prueba utilizando este formato para su usuario."
+
+#: app/views/certificates_adm/_test_form.html.erb:10
+msgid "Conference to generate the sample certificate for"
+msgstr "Actividad para la cual generar el certificado de prueba"
+
+#: app/views/certificates_adm/_test_form.html.erb:16
+msgid "Draw boxes specifying field sizes?"
+msgstr "¿Dibujar cajas indicando el tamaño de los campos?"
+
+#: app/views/certificates_adm/_test_form.html.erb:18
+msgid "Generate test certificate"
+msgstr "Generar certificado de prueba"
+
+#: app/views/certificates_adm/list.html.erb:1
+msgid "Available certificate formats"
+msgstr "Formatos de certificado disponibles"
 
 #: app/views/proposals/authors.html.erb:1
 msgid "Manage the coauthors for your proposal"
@@ -3166,6 +3203,10 @@ msgstr "configuración del sistema"
 msgid "your public profile"
 msgstr "su perfil público"
 
+#: app/views/sys_conf_adm/nametag_format_list.html.erb:1
+msgid "Nametag printing formats"
+msgstr "Formatos para la impresión de personalizadores"
+
 #: app/views/sys_conf_adm/nametag_format_list.html.erb:3
 msgid "The following formats are used by the nametag printing helper program (<tt>./script/nametags</tt>). This script can be used with any label printer which implements the %s language"
 msgstr "Los siguientes formatos son utilizados por el programa de impresión de personalizadores (<tt>./script/nametags</tt>). Este programa puede ser utilizado con cualquier impresora de etiquetas que implemente el lenguaje %s"
@@ -3321,10 +3362,6 @@ msgstr "Su sistema tiene los siguientes catálogos definidos"
 #: app/views/sys_conf_adm/list_catalogs.html.erb:8
 msgid "Records"
 msgstr "Registros"
-
-#: app/views/sys_conf_adm/list.html.erb:1
-msgid "Configuration entries"
-msgstr "Entradas de configuración"
 
 #: app/views/sys_conf_adm/list.html.erb:2
 msgid "<b>Caution</b>: Modifying the configuration entries shown here might render your system inoperable. Proceed at your own risk, and only if you know what you are doing."

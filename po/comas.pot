@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2009-09-24 11:17-0500\n"
+"POT-Creation-Date: 2009-09-29 16:14-0500\n"
 "PO-Revision-Date: 2008-05-07 18:30-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,7 +24,7 @@ msgid "Document|Filename"
 msgstr ""
 
 #: app/models/document.rb:-
-msgid "Document|Description"
+msgid "Document|Descr"
 msgstr ""
 
 #: app/models/document.rb:-
@@ -72,7 +72,7 @@ msgid "certif format"
 msgstr ""
 
 #: app/models/certif_format.rb:-
-msgid "CertifFormat|Format name"
+msgid "CertifFormat|Name"
 msgstr ""
 
 #: app/models/certif_format.rb:-
@@ -84,6 +84,19 @@ msgid "CertifFormat|Orientation"
 msgstr ""
 
 #: app/models/person.rb:-
+msgid "admin task"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "AdminTask|Name"
+msgstr ""
+
+#: app/models/person.rb:-
+#, fuzzy
+msgid "AdminTask|Sys name"
+msgstr "System configuration"
+
+#: app/models/person.rb:-
 msgid "conference"
 msgstr ""
 
@@ -92,7 +105,7 @@ msgid "Conference|Name"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Description"
+msgid "Conference|Descr"
 msgstr ""
 
 #: app/models/person.rb:-
@@ -100,19 +113,19 @@ msgid "Conference|Homepage"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Registration opening date"
+msgid "Conference|Reg open date"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Registration closing date"
+msgid "Conference|Reg close date"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Call for Papers opening date"
+msgid "Conference|Cfp open date"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Call for papers closing date"
+msgid "Conference|Cfp close date"
 msgstr ""
 
 #: app/models/person.rb:-
@@ -128,29 +141,16 @@ msgid "Conference|Short name"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Manages proposals?"
+msgid "Conference|Manages proposals"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Public proposals?"
+msgid "Conference|Public proposals"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Invite only"
+msgid "Conference|Invite only?"
 msgstr ""
-
-#: app/models/person.rb:-
-msgid "admin task"
-msgstr ""
-
-#: app/models/person.rb:-
-msgid "AdminTask|Name"
-msgstr ""
-
-#: app/models/person.rb:-
-#, fuzzy
-msgid "AdminTask|System name"
-msgstr "System configuration"
 
 #: app/models/person.rb:-
 msgid "person"
@@ -161,15 +161,15 @@ msgid "Person|Login"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|Password"
+msgid "Person|Passwd"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|First name"
+msgid "Person|Firstname"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|Family name"
+msgid "Person|Famname"
 msgstr ""
 
 #: app/models/person.rb:-
@@ -177,7 +177,7 @@ msgid "Person|Email"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|Random password salt"
+msgid "Person|Pw salt"
 msgstr ""
 
 #: app/models/person.rb:-
@@ -189,11 +189,11 @@ msgid "Person|Last login at"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|OK to receive conference-specific mails?"
+msgid "Person|Ok conf mails"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|OK to receive general mails?"
+msgid "Person|Ok general mails"
 msgstr ""
 
 #: app/models/person.rb:25
@@ -265,7 +265,7 @@ msgid "SysConf|Key"
 msgstr ""
 
 #: app/models/sys_conf.rb:-
-msgid "SysConf|Description"
+msgid "SysConf|Descr"
 msgstr ""
 
 #: app/models/sys_conf.rb:-
@@ -346,11 +346,11 @@ msgid "Timeslot|Start time"
 msgstr ""
 
 #: app/models/timeslot.rb:-
-msgid "Timeslot|Tolerance (pre)"
+msgid "Timeslot|Tolerance pre"
 msgstr ""
 
 #: app/models/timeslot.rb:-
-msgid "Timeslot|Tolerance (post)"
+msgid "Timeslot|Tolerance post"
 msgstr ""
 
 #: app/models/timeslot.rb:-
@@ -402,7 +402,7 @@ msgid "Photo|Person"
 msgstr ""
 
 #: app/models/photo.rb:-
-msgid "Photo|Thumb"
+msgid "Photo|Thumbnail"
 msgstr ""
 
 #: app/models/authorship.rb:-
@@ -458,7 +458,7 @@ msgid "Proposal|Updated at"
 msgstr ""
 
 #: app/models/proposal.rb:-
-msgid "Proposal|Proposal type"
+msgid "Proposal|Prop type"
 msgstr ""
 
 #: app/models/proposal.rb:-
@@ -511,15 +511,15 @@ msgid "NametagFormat|Position"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Horizontal size"
+msgid "NametagFormat|H size"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Vertical size"
+msgid "NametagFormat|V size"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Vertical gap"
+msgid "NametagFormat|V gap"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
@@ -527,35 +527,35 @@ msgid "NametagFormat|Name width"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Horizontal start"
+msgid "NametagFormat|H start"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Vertical start"
+msgid "NametagFormat|V start"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Barcode horizontal position"
+msgid "NametagFormat|Id bar hpos"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Barcode vertical position"
+msgid "NametagFormat|Id bar vpos"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Barcode orientation"
+msgid "NametagFormat|Id bar orient"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Barcode narrow bars width"
+msgid "NametagFormat|Id bar narrow"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Barcode wide bars width"
+msgid "NametagFormat|Id bar wide"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Barcode height"
+msgid "NametagFormat|Id bar height"
 msgstr ""
 
 #: app/models/nametag_format.rb:12
@@ -603,15 +603,15 @@ msgid "CertifFormatLine|Content"
 msgstr ""
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Horizontal position"
+msgid "CertifFormatLine|X pos"
 msgstr ""
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Vertical position"
+msgid "CertifFormatLine|Y pos"
 msgstr ""
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Maximum width"
+msgid "CertifFormatLine|Max width"
 msgstr ""
 
 #: app/models/certif_format_line.rb:-
@@ -623,11 +623,11 @@ msgid "CertifFormatLine|Justification"
 msgstr ""
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Certificate format"
+msgid "CertifFormatLine|Certif format"
 msgstr ""
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Max height"
+msgid "CertifFormatLine|Maximum height"
 msgstr ""
 
 #: app/models/certif_format_line.rb:5
@@ -651,10 +651,6 @@ msgid "Empty (frame)"
 msgstr ""
 
 #: app/models/certif_format_line.rb:126
-msgid "Undefined content source %d for %d (%d)"
-msgstr ""
-
-#: app/models/certif_format_line.rb:132
 msgid "Undefined attribute %s for %s in format "
 msgstr ""
 
@@ -663,11 +659,11 @@ msgid "conf invite"
 msgstr ""
 
 #: app/models/conf_invite.rb:-
-msgid "ConfInvite|Firstname"
+msgid "ConfInvite|First name"
 msgstr ""
 
 #: app/models/conf_invite.rb:-
-msgid "ConfInvite|Famname"
+msgid "ConfInvite|Family name"
 msgstr ""
 
 #: app/models/conf_invite.rb:-
@@ -727,7 +723,7 @@ msgid "Logo|Conference"
 msgstr ""
 
 #: app/models/logo.rb:-
-msgid "Logo|Thumbnail"
+msgid "Logo|Thumb"
 msgstr ""
 
 #: app/models/logo.rb:-
@@ -770,6 +766,23 @@ msgstr ""
 msgid "Translation|Language"
 msgstr ""
 
+#: app/controllers/certificates_adm_controller.rb:3
+msgid "Certificate formats"
+msgstr ""
+
+#: app/controllers/certificates_adm_controller.rb:32
+msgid "Format updated successfully"
+msgstr ""
+
+#: app/controllers/certificates_adm_controller.rb:99
+#: app/controllers/attendance_adm_controller.rb:156
+msgid "Invalid person specified"
+msgstr ""
+
+#: app/controllers/certificates_adm_controller.rb:106
+msgid "Invalid format specified"
+msgstr ""
+
 #: app/controllers/translation_controller.rb:5
 msgid "Statistics by language"
 msgstr ""
@@ -802,54 +815,58 @@ msgstr ""
 msgid "Controller %s must implement check_auth"
 msgstr ""
 
-#: app/controllers/application.rb:67
+#: app/controllers/application.rb:79
 msgid "Conference listing"
 msgstr ""
 
-#: app/controllers/application.rb:71 app/views/people/login.html.erb:13
+#: app/controllers/application.rb:86 app/views/people/login.html.erb:13
 msgid "Log in"
 msgstr ""
 
-#: app/controllers/application.rb:73
+#: app/controllers/application.rb:88
 #: app/views/notification/conference_invitation.text.plain.erb:21
 #: app/views/people/new.html.erb:1
 msgid "New account"
 msgstr ""
 
-#: app/controllers/application.rb:77
+#: app/controllers/application.rb:92
 msgid "Update your personal information"
 msgstr ""
 
-#: app/controllers/application.rb:79 app/views/people/password.html.erb:24
+#: app/controllers/application.rb:94 app/views/people/password.html.erb:24
 msgid "Change password"
 msgstr ""
 
-#: app/controllers/application.rb:81
+#: app/controllers/application.rb:96
 msgid "My public profile"
 msgstr ""
 
-#: app/controllers/application.rb:85 app/views/people/proposals.html.erb:1
+#: app/controllers/application.rb:99
+msgid "Generate nametag"
+msgstr ""
+
+#: app/controllers/application.rb:102 app/views/people/proposals.html.erb:1
 msgid "My proposals"
 msgstr ""
 
-#: app/controllers/application.rb:88 app/views/people/invite.html.erb:1
+#: app/controllers/application.rb:105 app/views/people/invite.html.erb:1
 msgid "Invite a friend"
 msgstr ""
 
-#: app/controllers/application.rb:91
+#: app/controllers/application.rb:108
 #: app/views/notification/welcome.text.plain.erb:20
 msgid "My account"
 msgstr ""
 
-#: app/controllers/application.rb:105
+#: app/controllers/application.rb:120
 msgid "-*- Unimplemented"
 msgstr ""
 
-#: app/controllers/application.rb:120
+#: app/controllers/application.rb:144
 msgid "&laquo; Previous"
 msgstr ""
 
-#: app/controllers/application.rb:121
+#: app/controllers/application.rb:145
 msgid "Next &raquo;"
 msgstr ""
 
@@ -1073,12 +1090,12 @@ msgid ""
 msgstr ""
 
 #: app/controllers/people_controller.rb:81
-#: app/controllers/people_controller.rb:195
+#: app/controllers/people_controller.rb:206
 msgid "New password does not match confirmation"
 msgstr ""
 
 #: app/controllers/people_controller.rb:88
-#: app/controllers/people_controller.rb:209
+#: app/controllers/people_controller.rb:220
 msgid "Your password was successfully changed"
 msgstr ""
 
@@ -1098,53 +1115,57 @@ msgstr ""
 msgid "Cannot register you for the conference you were invited to: %s"
 msgstr ""
 
-#: app/controllers/people_controller.rb:172
+#: app/controllers/people_controller.rb:171
 msgid ""
 "You have submitted an invalid document as your photo. Please check its "
 "format and send it again."
 msgstr ""
 
-#: app/controllers/people_controller.rb:180
+#: app/controllers/people_controller.rb:179
 msgid "Your personal data has been updated successfully"
 msgstr ""
 
-#: app/controllers/people_controller.rb:182
+#: app/controllers/people_controller.rb:181
 msgid "Error updating your personal data: "
 msgstr ""
 
-#: app/controllers/people_controller.rb:193
+#: app/controllers/people_controller.rb:194
+msgid "No format has yet been defined for nametag printing"
+msgstr ""
+
+#: app/controllers/people_controller.rb:204
 msgid "All fields are required"
 msgstr ""
 
-#: app/controllers/people_controller.rb:197
+#: app/controllers/people_controller.rb:208
 msgid "Current password is not valid"
 msgstr ""
 
-#: app/controllers/people_controller.rb:201
+#: app/controllers/people_controller.rb:212
 msgid "Error changing your password: "
 msgstr ""
 
-#: app/controllers/people_controller.rb:223
+#: app/controllers/people_controller.rb:234
 msgid "Requested person is not registered"
 msgstr ""
 
-#: app/controllers/people_controller.rb:253
+#: app/controllers/people_controller.rb:264
 msgid "You are not allowed to send invitations for the specified conference."
 msgstr ""
 
-#: app/controllers/people_controller.rb:260
+#: app/controllers/people_controller.rb:271
 msgid "The requested e-mail was successfully sent"
 msgstr ""
 
-#: app/controllers/people_controller.rb:263
+#: app/controllers/people_controller.rb:274
 msgid "Invalid conference requested"
 msgstr ""
 
-#: app/controllers/people_controller.rb:265
+#: app/controllers/people_controller.rb:276
 msgid "You must supply a body for your mail"
 msgstr ""
 
-#: app/controllers/people_controller.rb:267
+#: app/controllers/people_controller.rb:278
 msgid "The specified e-mail address (%s) is not valid"
 msgstr ""
 
@@ -1163,51 +1184,35 @@ msgstr ""
 msgid "Attendance lists"
 msgstr ""
 
-#: app/controllers/attendance_adm_controller.rb:6
-msgid "Certificate formats"
-msgstr ""
-
-#: app/controllers/attendance_adm_controller.rb:45
+#: app/controllers/attendance_adm_controller.rb:38
 msgid "Please select a timeslot to take attendance for"
 msgstr ""
 
-#: app/controllers/attendance_adm_controller.rb:78
+#: app/controllers/attendance_adm_controller.rb:71
 msgid "Invalid timeslot requested"
 msgstr ""
 
-#: app/controllers/attendance_adm_controller.rb:138
-msgid "Format updated successfully"
-msgstr ""
-
-#: app/controllers/attendance_adm_controller.rb:196
+#: app/controllers/attendance_adm_controller.rb:113
 msgid ""
 "This person has already been registered for this timeslot. No action taken."
 msgstr ""
 
-#: app/controllers/attendance_adm_controller.rb:207
+#: app/controllers/attendance_adm_controller.rb:124
 msgid ""
 "<em>%s</em> is not registered for <em>%s</em>, and registrations are closed."
 msgstr ""
 
-#: app/controllers/attendance_adm_controller.rb:213
+#: app/controllers/attendance_adm_controller.rb:130
 msgid ""
 "Person <em>%s</em> was not yet registered for this conference - Registering."
 msgstr ""
 
-#: app/controllers/attendance_adm_controller.rb:219
+#: app/controllers/attendance_adm_controller.rb:136
 msgid "Attendance successfully registered"
 msgstr ""
 
-#: app/controllers/attendance_adm_controller.rb:221
+#: app/controllers/attendance_adm_controller.rb:138
 msgid "Could not register person <em>%s</em> for this timeslot: %s"
-msgstr ""
-
-#: app/controllers/attendance_adm_controller.rb:239
-msgid "Invalid person specified"
-msgstr ""
-
-#: app/controllers/attendance_adm_controller.rb:246
-msgid "Invalid format specified"
 msgstr ""
 
 #: app/controllers/admin.rb:10
@@ -1263,197 +1268,204 @@ msgid "You must specify both email title and body"
 msgstr ""
 
 #: app/controllers/sys_conf_adm_controller.rb:18
-#, fuzzy
-msgid "Show configuration"
-msgstr "System configuration"
+#: app/views/people/account.html.erb:35 app/views/sys_conf_adm/list.html.erb:1
+msgid "Configuration entries"
+msgstr ""
 
 #: app/controllers/sys_conf_adm_controller.rb:19
-msgid "Manage fields for conferences"
-msgstr ""
-
-#: app/controllers/sys_conf_adm_controller.rb:20
-msgid "Manage fields for proposals"
-msgstr ""
-
-#: app/controllers/sys_conf_adm_controller.rb:21
-msgid "Manage fields for people"
-msgstr ""
-
-#: app/controllers/sys_conf_adm_controller.rb:22
 #: app/views/sys_conf_adm/list_catalogs.html.erb:1
 msgid "Catalogs management"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:23
-#: app/views/sys_conf_adm/nametag_format_list.html.erb:1
-msgid "Nametag printing formats"
+#: app/controllers/sys_conf_adm_controller.rb:20
+msgid "Basic table fields handling"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:36
+#: app/controllers/sys_conf_adm_controller.rb:21
+msgid "Conferences"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:22
+msgid "Proposals"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:23
+msgid "People"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:25
+msgid "Printing format"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:26
+msgid "Nametags (EPL2)"
+msgstr ""
+
+#: app/controllers/sys_conf_adm_controller.rb:40
 msgid "Error destroying requested entry: "
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:44
+#: app/controllers/sys_conf_adm_controller.rb:48
 msgid "Error creating requested entry: "
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:56
+#: app/controllers/sys_conf_adm_controller.rb:60
 msgid "The configuration entry was successfully updated"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:58
+#: app/controllers/sys_conf_adm_controller.rb:62
 msgid "Error updating requested configuration entry: "
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:84
+#: app/controllers/sys_conf_adm_controller.rb:88
 msgid "Invalid column name"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:85
+#: app/controllers/sys_conf_adm_controller.rb:89
 msgid "A field by that name is already defined"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:87
+#: app/controllers/sys_conf_adm_controller.rb:91
 msgid "Invalid data type specified"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:101
+#: app/controllers/sys_conf_adm_controller.rb:105
 msgid "Successfully created %s field in %s"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:105
+#: app/controllers/sys_conf_adm_controller.rb:109
 msgid "Unable to create requested column: %s"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:116
+#: app/controllers/sys_conf_adm_controller.rb:120
 msgid "Attempting to remove invalid field: %s"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:122
+#: app/controllers/sys_conf_adm_controller.rb:126
 msgid "Successfully removed field %s"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:124
+#: app/controllers/sys_conf_adm_controller.rb:128
 msgid "Error removing specified field: %s"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:129
+#: app/controllers/sys_conf_adm_controller.rb:133
 msgid ""
 "Please note we have _not_ dropped the corresponding catalog for this column, "
 "<em>%s</em>, to avoid data loss. You can manually remove it."
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:143
+#: app/controllers/sys_conf_adm_controller.rb:147
 msgid "Invalid field specified"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:160
+#: app/controllers/sys_conf_adm_controller.rb:164
 msgid "Error setting the requested default value: %s"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:182
+#: app/controllers/sys_conf_adm_controller.rb:186
 msgid "Error setting the field as not null: %s"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:187
+#: app/controllers/sys_conf_adm_controller.rb:191
 msgid "Cannot set field %s to reject null values: No default value "
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:193
+#: app/controllers/sys_conf_adm_controller.rb:197
 msgid "The field's values were correctly updated"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:218
+#: app/controllers/sys_conf_adm_controller.rb:222
 msgid "The requested record was successfully deleted"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:220
+#: app/controllers/sys_conf_adm_controller.rb:224
 msgid "Requested record not found - Maybe it had already been deleted?"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:223
+#: app/controllers/sys_conf_adm_controller.rb:227
 msgid ""
 "Error deleting the requested record - A catalog entry will not be deleted if "
 "it is still referenced."
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:236
+#: app/controllers/sys_conf_adm_controller.rb:240
 msgid "The new %s was successfully registered"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:238
+#: app/controllers/sys_conf_adm_controller.rb:242
 msgid "Could not create new %s: %s"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:253
+#: app/controllers/sys_conf_adm_controller.rb:257
 msgid "The requested format was successfully created"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:256
+#: app/controllers/sys_conf_adm_controller.rb:260
 msgid "Error creating requested format: "
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:264
+#: app/controllers/sys_conf_adm_controller.rb:268
 msgid "The requested format was successfully updated"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:267
+#: app/controllers/sys_conf_adm_controller.rb:271
 msgid "Error updating requested format: "
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:274
+#: app/controllers/sys_conf_adm_controller.rb:278
 msgid "The requested format was successfully deleted"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:293
+#: app/controllers/sys_conf_adm_controller.rb:297
 msgid "Invalid configuration entry %d requested"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:308
+#: app/controllers/sys_conf_adm_controller.rb:312
 msgid "Invalid table requested"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:318
+#: app/controllers/sys_conf_adm_controller.rb:322
 msgid "Invalid nametag format %d specified"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:329
+#: app/controllers/sys_conf_adm_controller.rb:333
 msgid "Invalid catalog requested: %s"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:345
+#: app/controllers/sys_conf_adm_controller.rb:349
 msgid "Boolean"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:346
+#: app/controllers/sys_conf_adm_controller.rb:350
 msgid "Date"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:347
+#: app/controllers/sys_conf_adm_controller.rb:351
 msgid "Timestamp"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:348
+#: app/controllers/sys_conf_adm_controller.rb:352
 msgid "String"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:349
+#: app/controllers/sys_conf_adm_controller.rb:353
 msgid "Text"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:350
+#: app/controllers/sys_conf_adm_controller.rb:354
 msgid "Integer"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:351
+#: app/controllers/sys_conf_adm_controller.rb:355
 msgid "Decimal"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:352
+#: app/controllers/sys_conf_adm_controller.rb:356
 msgid "Float"
 msgstr ""
 
-#: app/controllers/sys_conf_adm_controller.rb:353
+#: app/controllers/sys_conf_adm_controller.rb:357
 msgid "Catalog"
 msgstr ""
 
@@ -1462,7 +1474,7 @@ msgid "Latest registered conferences"
 msgstr ""
 
 #: app/controllers/conferences_controller.rb:6
-#: app/views/people/account.html.erb:15 app/views/conferences/list.html.erb:6
+#: app/views/conferences/list.html.erb:6
 msgid "Upcoming conferences"
 msgstr ""
 
@@ -1516,6 +1528,52 @@ msgstr ""
 
 #: app/controllers/conferences_controller.rb:148
 msgid "Invalid conference <em>%s</em> requested"
+msgstr ""
+
+#: app/helpers/certificates_adm_helper.rb:22
+msgid "Vert"
+msgstr ""
+
+#: app/helpers/certificates_adm_helper.rb:22
+msgid "Horiz"
+msgstr ""
+
+#: app/helpers/certificates_adm_helper.rb:22
+msgid "Max width"
+msgstr ""
+
+#: app/helpers/certificates_adm_helper.rb:22
+msgid "Max height"
+msgstr ""
+
+#: app/helpers/certificates_adm_helper.rb:23
+msgid "Content source"
+msgstr ""
+
+#: app/helpers/certificates_adm_helper.rb:23
+msgid "Content"
+msgstr ""
+
+#: app/helpers/certificates_adm_helper.rb:24
+msgid "Font size"
+msgstr ""
+
+#: app/helpers/certificates_adm_helper.rb:24
+msgid "Align"
+msgstr ""
+
+#: app/helpers/certificates_adm_helper.rb:35
+#: app/helpers/conferences_adm_helper.rb:21
+#: app/helpers/people_adm_helper.rb:26 app/helpers/sys_conf_adm_helper.rb:22
+#: app/views/conferences_adm/list.html.erb:34
+#: app/views/translation/list.html.erb:32
+#: app/views/sys_conf_adm/show_catalog.html.erb:15
+#: app/views/sys_conf_adm/list.html.erb:19
+msgid "Delete"
+msgstr ""
+
+#: app/helpers/certificates_adm_helper.rb:38
+msgid "Are you sure you want to delete this line?"
 msgstr ""
 
 #: app/helpers/application_helper.rb:18
@@ -1572,13 +1630,13 @@ msgid "Field %s not defined for %s"
 msgstr ""
 
 #: app/helpers/application_helper.rb:331 app/helpers/sys_conf_adm_helper.rb:20
-#: app/views/attendance_adm/_certif_format_test_form.html.erb:13
+#: app/views/certificates_adm/_test_form.html.erb:13
 #: app/views/sys_conf_adm/edit_table_field.html.erb:41
 msgid "Yes"
 msgstr ""
 
 #: app/helpers/application_helper.rb:331 app/helpers/sys_conf_adm_helper.rb:20
-#: app/views/attendance_adm/_certif_format_test_form.html.erb:14
+#: app/views/certificates_adm/_test_form.html.erb:14
 #: app/views/sys_conf_adm/edit_table_field.html.erb:42
 msgid "No"
 msgstr ""
@@ -1671,16 +1729,6 @@ msgstr ""
 msgid "Invalid logo size specified: %s"
 msgstr ""
 
-#: app/helpers/conferences_adm_helper.rb:21
-#: app/helpers/people_adm_helper.rb:26 app/helpers/sys_conf_adm_helper.rb:22
-#: app/helpers/attendance_adm_helper.rb:72
-#: app/views/conferences_adm/list.html.erb:34
-#: app/views/translation/list.html.erb:32
-#: app/views/sys_conf_adm/show_catalog.html.erb:15
-#: app/views/sys_conf_adm/list.html.erb:19
-msgid "Delete"
-msgstr ""
-
 #: app/helpers/conferences_adm_helper.rb:24
 msgid ""
 "Are you sure you want to permanently delete this timeslot? This will also "
@@ -1688,10 +1736,10 @@ msgid ""
 msgstr ""
 
 #: app/helpers/people_adm_helper.rb:4
-#: app/views/attendance_adm/_certif_format_details.html.erb:3
 #: app/views/people_adm/_people_for_task.html.erb:3
 #: app/views/conferences_adm/people_list.html.erb:6
 #: app/views/conferences_adm/list.html.erb:7
+#: app/views/certificates_adm/_details.html.erb:3
 #: app/views/sys_conf_adm/show_catalog.html.erb:7 script/nametags:113
 msgid "ID"
 msgstr ""
@@ -1804,42 +1852,6 @@ msgstr ""
 msgid "Choose"
 msgstr ""
 
-#: app/helpers/attendance_adm_helper.rb:59
-msgid "Vert"
-msgstr ""
-
-#: app/helpers/attendance_adm_helper.rb:59
-msgid "Horiz"
-msgstr ""
-
-#: app/helpers/attendance_adm_helper.rb:59
-msgid "Max width"
-msgstr ""
-
-#: app/helpers/attendance_adm_helper.rb:59
-msgid "Max height"
-msgstr ""
-
-#: app/helpers/attendance_adm_helper.rb:60
-msgid "Content source"
-msgstr ""
-
-#: app/helpers/attendance_adm_helper.rb:60
-msgid "Content"
-msgstr ""
-
-#: app/helpers/attendance_adm_helper.rb:61
-msgid "Font size"
-msgstr ""
-
-#: app/helpers/attendance_adm_helper.rb:61
-msgid "Align"
-msgstr ""
-
-#: app/helpers/attendance_adm_helper.rb:75
-msgid "Are you sure you want to delete this line?"
-msgstr ""
-
 #: app/helpers/proposals_helper.rb:9
 msgid "%d registered proposals"
 msgstr ""
@@ -1850,8 +1862,8 @@ msgstr ""
 
 #: app/helpers/proposals_helper.rb:18
 #: app/views/attendance_adm/_list_by_attendances.html.erb:14
-#: app/views/attendance_adm/_certif_format_details.html.erb:4
 #: app/views/conferences_adm/list.html.erb:8
+#: app/views/certificates_adm/_details.html.erb:4
 #: app/views/sys_conf_adm/nametag_format_list.html.erb:14
 #: app/views/sys_conf_adm/show_catalog.html.erb:8
 #: app/views/sys_conf_adm/show_catalog.html.erb:27
@@ -1890,26 +1902,6 @@ msgstr ""
 msgid "Last attendances registered for this timeslot"
 msgstr ""
 
-#: app/views/attendance_adm/_certif_format_test_form.html.erb:1
-msgid "Test format"
-msgstr ""
-
-#: app/views/attendance_adm/_certif_format_test_form.html.erb:2
-msgid "You can generate a sample of this format for your user."
-msgstr ""
-
-#: app/views/attendance_adm/_certif_format_test_form.html.erb:10
-msgid "Conference to generate the sample certificate for"
-msgstr ""
-
-#: app/views/attendance_adm/_certif_format_test_form.html.erb:16
-msgid "Draw boxes specifying field sizes?"
-msgstr ""
-
-#: app/views/attendance_adm/_certif_format_test_form.html.erb:18
-msgid "Generate test certificate"
-msgstr ""
-
 #: app/views/attendance_adm/choose_session.html.erb:1
 msgid "Choose a session to take attendance for"
 msgstr ""
@@ -1928,123 +1920,6 @@ msgstr ""
 
 #: app/views/attendance_adm/choose_session.html.erb:9
 msgid "Show all registered timeslots"
-msgstr ""
-
-#: app/views/attendance_adm/certif_format.html.erb:1
-msgid "Editing certificate format <em>%s</em>"
-msgstr ""
-
-#: app/views/attendance_adm/certif_format.html.erb:3
-msgid "General format information"
-msgstr ""
-
-#: app/views/attendance_adm/certif_format.html.erb:5
-msgid "Help"
-msgstr ""
-
-#: app/views/attendance_adm/certif_format.html.erb:9
-msgid "Measurements"
-msgstr ""
-
-#: app/views/attendance_adm/certif_format.html.erb:10
-msgid ""
-"All measurments except for font size are expressed in <em>%s</em>. You will "
-"notice the values you enter are approximated (i.e. 10.99 instead of 11), as "
-"they are stored internally in %s and converted only to be shown here."
-msgstr ""
-
-#: app/views/attendance_adm/certif_format.html.erb:18
-msgid "Positioning"
-msgstr ""
-
-#: app/views/attendance_adm/certif_format.html.erb:19
-msgid ""
-"This format's lines are sorted according to their vertical position, to "
-"better match what you will see on the paper. Measurement (0, 0) starts at "
-"the lower-left corner, and the indicated point marks the lower-left corner "
-"of the designated text area."
-msgstr ""
-
-#: app/views/attendance_adm/certif_format.html.erb:26
-msgid ""
-"This means, if you want to provide a <em>centered</em> 15cm field in "
-"<em>Landscape Letter</em> (27.94cm wide) paper, you should set the "
-"<em>horizontal</em> position to 6.47 (which is (27.94 - 15) / 2) and the "
-"<em>maximum width</em> to 15."
-msgstr ""
-
-#: app/views/attendance_adm/certif_format.html.erb:32
-msgid "Minimum heights"
-msgstr ""
-
-#: app/views/attendance_adm/certif_format.html.erb:33
-msgid ""
-"Keep in mind that the maximum height for each of the lines must be enough to "
-"fit approximately 1.3 times the font size (as it takes into account "
-"interline spacing). If your certificates are broken across multiple pages, "
-"increase the maximum height for the field where it breaks."
-msgstr ""
-
-#: app/views/attendance_adm/certif_format.html.erb:39
-msgid "Content sources"
-msgstr ""
-
-#: app/views/attendance_adm/certif_format.html.erb:40
-msgid ""
-"When the content source is set to <em>%s</em>, the text provided as content "
-"will be present verbatim in the certificate; when <em>%s</em> or <em>%s</em> "
-"(to which we will refer as <em>non-static sources</em>)) are selected, they "
-"will accept a suitable <em>attribute name</em>. When <em>%s</em> is "
-"selected, no content will be generated, just a solid, black frame for the "
-"specified area."
-msgstr ""
-
-#: app/views/attendance_adm/certif_format.html.erb:49
-msgid "Attributes"
-msgstr ""
-
-#: app/views/attendance_adm/certif_format.html.erb:50
-msgid ""
-"For non-static content sources, you can specify any valid <em>method name</"
-"em> for said model classes as the content. For further information, please "
-"check the Comas API. All database column names are valid method names."
-msgstr ""
-
-#: app/views/attendance_adm/certif_format.html.erb:56
-msgid ""
-"Some values specified as attributes for non-static sources get special "
-"treatment even though they do not exist directly as methods. They are:"
-msgstr ""
-
-#: app/views/attendance_adm/certif_format.html.erb:63
-msgid ""
-"The ID for the requested object, not only represented as text, but with its "
-"barcode. The minimum dimensions you should allocate to this column are a "
-"3cm/1.1in width a 1.3cm/0.5in height."
-msgstr ""
-
-#: app/views/attendance_adm/certif_format.html.erb:70
-msgid ""
-"Will include the person's photo or the conference's logo, filling up the "
-"best way possible (respecting the aspect ratio) the given size. If the "
-"person/conference does not have such field specified, nothing will be "
-"displayed (no error will be generated)"
-msgstr ""
-
-#: app/views/attendance_adm/certif_format.html.erb:79
-msgid ""
-"If when generating certificates you get a system error (<tt>Undefined "
-"attribute</tt>), you should check for the validity of your <em>content</em> "
-"columns."
-msgstr ""
-
-#: app/views/attendance_adm/certif_format.html.erb:90
-#: app/views/sys_conf_adm/edit_table_field.html.erb:47
-msgid "Modify"
-msgstr ""
-
-#: app/views/attendance_adm/certif_format.html.erb:109
-msgid "Add line"
 msgstr ""
 
 #: app/views/attendance_adm/for_person.html.erb:1
@@ -2081,20 +1956,6 @@ msgstr ""
 msgid "Select which format to generate the certificate with"
 msgstr ""
 
-#: app/views/attendance_adm/certif_formats_list.html.erb:1
-msgid "Available certificate formats"
-msgstr ""
-
-#: app/views/attendance_adm/certif_formats_list.html.erb:9
-#: app/views/people_adm/new.html.erb:3
-#: app/views/conferences_adm/new.html.erb:3
-#: app/views/sys_conf_adm/list_table_fields.html.erb:46
-#: app/views/sys_conf_adm/nametag_format_new.html.erb:4
-#: app/views/sys_conf_adm/show_catalog.html.erb:28
-#: app/views/sys_conf_adm/list.html.erb:31
-msgid "Create"
-msgstr ""
-
 #: app/views/attendance_adm/_list_by_attendances.html.erb:1
 msgid "%d attendances: %d people (exact), %d people (including higher)"
 msgstr ""
@@ -2113,19 +1974,6 @@ msgstr ""
 
 #: app/views/attendance_adm/_by_session.html.erb:8
 msgid "Attendees"
-msgstr ""
-
-#: app/views/attendance_adm/_certif_format_details.html.erb:5
-msgid "Paper size"
-msgstr ""
-
-#: app/views/attendance_adm/_certif_format_details.html.erb:6
-msgid "Orientation"
-msgstr ""
-
-#: app/views/attendance_adm/_certif_format_details.html.erb:20
-#: app/views/sys_conf_adm/nametag_format_list.html.erb:42
-msgid "Are you sure you want to delete this format?"
 msgstr ""
 
 #: app/views/attendance_adm/list.html.erb:2
@@ -2446,6 +2294,16 @@ msgstr ""
 
 #: app/views/people_adm/new.html.erb:1
 msgid "Register a new attendee"
+msgstr ""
+
+#: app/views/people_adm/new.html.erb:3
+#: app/views/conferences_adm/new.html.erb:3
+#: app/views/certificates_adm/list.html.erb:9
+#: app/views/sys_conf_adm/list_table_fields.html.erb:46
+#: app/views/sys_conf_adm/nametag_format_new.html.erb:4
+#: app/views/sys_conf_adm/show_catalog.html.erb:28
+#: app/views/sys_conf_adm/list.html.erb:31
+msgid "Create"
 msgstr ""
 
 #: app/views/people_adm/list.html.erb:1
@@ -3018,8 +2876,37 @@ msgstr ""
 
 #: app/views/people/account.html.erb:8
 msgid ""
-"There are no upcoming conferences yet for which you are registered. You can "
-"select any active conference from the listing below:"
+"You are currently not registered for any upcoming conferences. You can %s "
+"and sign up."
+msgstr ""
+
+#: app/views/people/account.html.erb:10
+msgid "go to the list of upcoming conferences"
+msgstr ""
+
+#: app/views/people/account.html.erb:18
+msgid "Print your nametag"
+msgstr ""
+
+#: app/views/people/account.html.erb:19
+msgid ""
+"For your convenience, you can %s. This will save you time upon arriving to "
+"the conference, where you will be able to present it for identification and "
+"for attendance tracking."
+msgstr ""
+
+#: app/views/people/account.html.erb:23
+msgid "print your nametag"
+msgstr ""
+
+#: app/views/people/account.html.erb:29
+msgid ""
+"In order to define or change a nametag format, %s and register its name as "
+"the <tt>%s</tt> key in the %s interface"
+msgstr ""
+
+#: app/views/people/account.html.erb:32
+msgid "define a suitable format"
 msgstr ""
 
 #: app/views/people/new.html.erb:8
@@ -3098,6 +2985,160 @@ msgstr ""
 
 #: app/views/people/recover.html.erb:24
 msgid "Set password"
+msgstr ""
+
+#: app/views/certificates_adm/_details.html.erb:5
+msgid "Paper size"
+msgstr ""
+
+#: app/views/certificates_adm/_details.html.erb:6
+msgid "Orientation"
+msgstr ""
+
+#: app/views/certificates_adm/_details.html.erb:20
+#: app/views/sys_conf_adm/nametag_format_list.html.erb:42
+msgid "Are you sure you want to delete this format?"
+msgstr ""
+
+#: app/views/certificates_adm/show.html.erb:1
+msgid "Editing certificate format <em>%s</em>"
+msgstr ""
+
+#: app/views/certificates_adm/show.html.erb:3
+msgid "General format information"
+msgstr ""
+
+#: app/views/certificates_adm/show.html.erb:5
+msgid "Help"
+msgstr ""
+
+#: app/views/certificates_adm/show.html.erb:9
+msgid "Measurements"
+msgstr ""
+
+#: app/views/certificates_adm/show.html.erb:10
+msgid ""
+"All measurments except for font size are expressed in <em>%s</em>. You will "
+"notice the values you enter are approximated (i.e. 10.99 instead of 11), as "
+"they are stored internally in %s and converted only to be shown here."
+msgstr ""
+
+#: app/views/certificates_adm/show.html.erb:18
+msgid "Positioning"
+msgstr ""
+
+#: app/views/certificates_adm/show.html.erb:19
+msgid ""
+"This format's lines are sorted according to their vertical position, to "
+"better match what you will see on the paper. Measurement (0, 0) starts at "
+"the lower-left corner, and the indicated point marks the lower-left corner "
+"of the designated text area."
+msgstr ""
+
+#: app/views/certificates_adm/show.html.erb:26
+msgid ""
+"This means, if you want to provide a <em>centered</em> 15cm field in "
+"<em>Landscape Letter</em> (27.94cm wide) paper, you should set the "
+"<em>horizontal</em> position to 6.47 (which is (27.94 - 15) / 2) and the "
+"<em>maximum width</em> to 15."
+msgstr ""
+
+#: app/views/certificates_adm/show.html.erb:32
+msgid "Minimum heights"
+msgstr ""
+
+#: app/views/certificates_adm/show.html.erb:33
+msgid ""
+"Keep in mind that the maximum height for each of the lines must be enough to "
+"fit approximately 1.3 times the font size (as it takes into account "
+"interline spacing). If your certificates are broken across multiple pages, "
+"increase the maximum height for the field where it breaks."
+msgstr ""
+
+#: app/views/certificates_adm/show.html.erb:39
+msgid "Content sources"
+msgstr ""
+
+#: app/views/certificates_adm/show.html.erb:40
+msgid ""
+"When the content source is set to <em>%s</em>, the text provided as content "
+"will be present verbatim in the certificate; when <em>%s</em> or <em>%s</em> "
+"(to which we will refer as <em>non-static sources</em>)) are selected, they "
+"will accept a suitable <em>attribute name</em>. When <em>%s</em> is "
+"selected, no content will be generated, just a solid, black frame for the "
+"specified area."
+msgstr ""
+
+#: app/views/certificates_adm/show.html.erb:49
+msgid "Attributes"
+msgstr ""
+
+#: app/views/certificates_adm/show.html.erb:50
+msgid ""
+"For non-static content sources, you can specify any valid <em>method name</"
+"em> for said model classes as the content. For further information, please "
+"check the Comas API. All database column names are valid method names."
+msgstr ""
+
+#: app/views/certificates_adm/show.html.erb:56
+msgid ""
+"Some values specified as attributes for non-static sources get special "
+"treatment even though they do not exist directly as methods. They are:"
+msgstr ""
+
+#: app/views/certificates_adm/show.html.erb:63
+msgid ""
+"The ID for the requested object, not only represented as text, but with its "
+"barcode. The minimum dimensions you should allocate to this column are a "
+"3cm/1.1in width a 1.3cm/0.5in height."
+msgstr ""
+
+#: app/views/certificates_adm/show.html.erb:70
+msgid ""
+"Will include the person's photo or the conference's logo, filling up the "
+"best way possible (respecting the aspect ratio) the given size. If the "
+"person/conference does not have such field specified, nothing will be "
+"displayed (no error will be generated)"
+msgstr ""
+
+#: app/views/certificates_adm/show.html.erb:79
+msgid ""
+"If when generating certificates you get a system error (<tt>Undefined "
+"attribute</tt>), you should check for the validity of your <em>content</em> "
+"columns."
+msgstr ""
+
+#: app/views/certificates_adm/show.html.erb:90
+#: app/views/sys_conf_adm/edit_table_field.html.erb:47
+msgid "Modify"
+msgstr ""
+
+#: app/views/certificates_adm/show.html.erb:109
+msgid "Add line"
+msgstr ""
+
+#: app/views/certificates_adm/_test_form.html.erb:1
+msgid "Test format"
+msgstr ""
+
+#: app/views/certificates_adm/_test_form.html.erb:2
+msgid "You can generate a sample of this format for your user."
+msgstr ""
+
+#: app/views/certificates_adm/_test_form.html.erb:10
+msgid "Conference to generate the sample certificate for"
+msgstr ""
+
+#: app/views/certificates_adm/_test_form.html.erb:16
+msgid "Draw boxes specifying field sizes?"
+msgstr ""
+
+#: app/views/certificates_adm/_test_form.html.erb:18
+msgid "Generate test certificate"
+msgstr ""
+
+#: app/views/certificates_adm/list.html.erb:1
+msgid "Available certificate formats"
 msgstr ""
 
 #: app/views/proposals/authors.html.erb:1
@@ -3293,6 +3334,10 @@ msgstr "System configuration"
 msgid "your public profile"
 msgstr ""
 
+#: app/views/sys_conf_adm/nametag_format_list.html.erb:1
+msgid "Nametag printing formats"
+msgstr ""
+
 #: app/views/sys_conf_adm/nametag_format_list.html.erb:3
 msgid ""
 "The following formats are used by the nametag printing helper program (<tt>./"
@@ -3471,10 +3516,6 @@ msgstr ""
 
 #: app/views/sys_conf_adm/list_catalogs.html.erb:8
 msgid "Records"
-msgstr ""
-
-#: app/views/sys_conf_adm/list.html.erb:1
-msgid "Configuration entries"
 msgstr ""
 
 #: app/views/sys_conf_adm/list.html.erb:2
@@ -3661,3 +3702,7 @@ msgstr ""
 #: script/create_user:76
 msgid "No work done, no harm done. Goodbye!"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Show configuration"
+#~ msgstr "System configuration"
