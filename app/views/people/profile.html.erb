@@ -1,5 +1,5 @@
 <% if @user and @user.has_admin_task? :sys_conf_adm %>
-  <div class="note">
+  <div class="comas-for-admin">
     <%= _('You can configure the field names to appear in the public ' +
 	  'profile under the %s configuration key') %
 	link_to('person_profile_fields', :controller => 'sys_conf_adm', 
