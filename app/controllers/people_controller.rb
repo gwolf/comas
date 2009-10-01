@@ -158,7 +158,7 @@ class PeopleController < ApplicationController
     end
 
     @mine = Conference.upcoming_for_person(@user)
-    @can_define_nametag = @user and @user.has_admin_task?('sys_conf_adm')
+    @can_define_nametag = (@user and @user.has_admin_task?('sys_conf_adm'))
   end
 
   # General personal information
@@ -301,6 +301,7 @@ class PeopleController < ApplicationController
   end
 
   def process_photo(person, photo)
+    return nil if !photo or photo.is_a? String
     begin
       person.photo.destroy if person.has_photo?
       person_photo = person.build_photo
