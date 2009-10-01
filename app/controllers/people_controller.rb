@@ -104,6 +104,9 @@ class PeopleController < ApplicationController
 
   def register
     if request.post?
+      # Strip the photo pointer before creating the person, as
+      # otherwise we will get an AssociationTypeMismatch
+      photo = params[:person].delete(:photo)
       @person = Person.new(params[:person])
 
       # Is this person a likely duplicate? Request confirmation before
@@ -118,6 +121,9 @@ class PeopleController < ApplicationController
         @person.transaction do
           @person.save!
           session[:user_id] = @person.id
+
+          process_photo(@person, photo) if photo
+
           flash[:notice] << _('New person successfully registered')
 
           redirect_to :action => 'account'
@@ -160,19 +166,8 @@ class PeopleController < ApplicationController
     return true unless request.post?
 
     @user.transaction do
-      begin
-        if data = params[:person].delete(:photo) and !data.is_a? String
-          @user.photo.destroy if @user.has_photo?
-          user_photo = @user.build_photo
-          user_photo.from_blob(data.read)
-          user_photo.save!
-        end
-      rescue Magick::ImageMagickError
-        flash[:error] << _('You have submitted an invalid document as ' +
-                           'your photo. Please check its format and send ' +
-                           'it again.')
-        raise ActiveRecord::Rollback
-      end
+      process_photo(@user, data) if data = params[:person].delete(:photo) and
+        !data.is_a? String
 
       if @user.update_attributes(params[:person])
         redirect_to :action => 'account'
@@ -303,5 +298,19 @@ class PeopleController < ApplicationController
 
   def get_invite
     @invite = ConfInvite.find_by_link(params[:invite])
+  end
+
+  def process_photo(person, photo)
+    begin
+      person.photo.destroy if person.has_photo?
+      person_photo = person.build_photo
+      person_photo.from_blob(photo.read)
+      person_photo.save!
+    rescue Magick::ImageMagickError
+      flash[:error] << _('You have submitted an invalid document as ' +
+                         'your photo. Please check its format and send ' +
+                         'it again.')
+      raise ActiveRecord::Rollback
+    end
   end
 end
