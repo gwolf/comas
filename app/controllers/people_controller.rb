@@ -297,7 +297,7 @@ class PeopleController < ApplicationController
 
   def check_auth
     public = [:login, :validate, :new, :register, :request_passwd,
-              :claim_invite]
+              :claim_invite, :get_photo]
     return true if public.include? request.path_parameters['action'].to_sym
   end
 
