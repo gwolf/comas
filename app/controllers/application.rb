@@ -62,10 +62,25 @@ class ApplicationController < ActionController::Base
   #     Menu = [[_('General list'), :list], [_('Status overview'), :status]]
   # 
   # Yes, don't forget i18n.
+  # 
+  # Menu items that have their link set to nil will be shown as labels
+  # only; menu items can stack other menus as their third parameter, thus:
+  #
+  #   def ComplexNestedController < Admin
+  #     Menu = [[_('General actions'), nil,
+  #               [_('Do something'), :do_it],
+  #               [_('Cancel something'), :cancel_it],
+  #        (...)
+  #            ]
+  #
+  # Will do... Well, what you would expect it to ;-)
   def generate_menu
     @menu = MenuTree.new
     @menu.add( _('Conference listing'),
                url_for(:controller => '/conferences', :action => 'list') )
+    # A link will be generated here and at some other views all over,
+    # so we declare a dirty, ugly @link_to_nametags
+    @link_to_nametag = CertifFormat.for_personal_nametag
 
     if @user.nil?
       @menu.add(_('Log in'),
@@ -74,10 +89,15 @@ class ApplicationController < ActionController::Base
                 url_for(:controller => '/people', :action => 'new'))
     else
       personal = MenuTree.new
-      personal.add(_('Personal information'),
+      personal.add(_('Update your personal information'),
                    url_for(:controller => '/people', :action => 'personal'))
       personal.add(_('Change password'),
                    url_for(:controller => '/people', :action => 'password'))
+      personal.add(_('My public profile'),
+                   url_for(:controller => '/people', :action => 'profile', 
+                        :id => @user.id))
+      @link_to_nametag and personal.add(_('Generate nametag'), 
+                   url_for(:controller => '/people', :action => 'my_nametag'))
       @user.can_submit_proposals_now? and
         personal.add(_('My proposals'),
                      url_for(:controller=>'/people', :action => 'proposals')) 
@@ -89,23 +109,30 @@ class ApplicationController < ActionController::Base
                 url_for(:controller => '/people', :action => 'account'),
                 personal)
 
-      @user.admin_tasks.each do |task|
+      @user.admin_tasks.sort_by(&:sys_name).each do |task|
         begin
           control = "#{task.sys_name.camelcase}Controller".constantize
-          menu = (control.constants.include?('Menu') ? 
-                  control::Menu : []).map do |elem|
-            MenuItem.new(elem[0], 
-                         url_for(:controller => task.sys_name, :action => elem[1]))
-          end
+          menu = menu_subtree_for((control.constants.include?('Menu') ? 
+                                   control::Menu : []), task)
         rescue NameError
-          # Probably caused by an unimplemented controller?
-          menu = MenuItem.new(_'-*- Unimplemented')
+          # Probably caused by an unimplemented controller? A
+          # controller which does not implement a menu?
+          menu = menu_subtree_for([[_'-*- Unimplemented']], task)
         end
 
         @menu.add(Translation.for(task.qualified_name),
-                  nil, MenuTree.new(menu))
+                  nil, menu)
       end
     end
+  end
+
+  def menu_subtree_for(tree, task)
+    menu = MenuTree.new(tree.map { |elem|
+                          link = url_for(:controller => task.sys_name, 
+                                         :action => elem[1]) if elem[1]
+                          sub = menu_subtree_for(elem[2], task) if elem[2]
+                          MenuItem.new(elem[0], link, sub)
+                        })
   end
 
   def set_lang

@@ -133,6 +133,16 @@ body {
         font-style: italic;
 }
 
+/* Currently logged-in user's photo */
+
+#myphoto {  
+    float: right; 
+    padding: 0.5em;
+    border: solid 1px #eee6d1; 
+    background-color: #eee6d1;
+    clear: both;
+}
+
 /* Base layout elements */
 
 h1{

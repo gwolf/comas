@@ -1,8 +1,8 @@
 <h3><%= _('Test format') %></h3>
 <p><%= _('You can generate a sample of this format for your user.') %></p>
 <% comas_form_for(:format_line, format, 
-                  :url => {:action => 'gen_sample_certif',
-	                   :format_id => format}) do |f| %>
+                  :url => {:action => 'gen_sample',
+	                   :id => format}) do |f| %>
   
   <%= f.manual_in_row(select_tag(:conference_id, 
                                  options_for_select(@conferences.map {|c| 

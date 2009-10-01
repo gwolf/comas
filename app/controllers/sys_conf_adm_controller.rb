@@ -2,6 +2,10 @@ class SysConfAdmController < Admin
   before_filter :get_sysconf, :only => [:delete, :edit, :update]
   before_filter :get_table, :only => [:list_table_fields, :delete_table_field,
                                       :create_table_field, :edit_table_field]
+  before_filter :touch_dynamic_classes, :only => [:list_catalogs,
+                                                  :show_catalog,
+                                                  :delete_catalog_row,
+                                                  :add_catalog_row]
   before_filter :get_catalog, :only => [:show_catalog, :delete_catalog_row,
                                         :add_catalog_row]
   before_filter :get_nametag_format, :only => [:nametag_format_edit, 
@@ -11,10 +15,16 @@ class SysConfAdmController < Admin
   before_filter :field_types, :only => [:list_table_fields, :create_table_field,
                                         :edit_table_field]
 
-  Menu = [[_('Show configuration'), :list],
-          [_('Manage fields for people'), :list_people_fields],
+  Menu = [[_('Configuration entries'), :list],
           [_('Catalogs management'), :list_catalogs],
-          [_('Nametag printing formats'), :nametag_format_list]]
+          [_('Basic table fields handling'), nil,
+           [ [_('Conferences'), :list_conferences_fields],
+             [_('Proposals'), :list_proposals_fields],
+             [_('People'), :list_people_fields]
+           ]],
+          [_('Printing format'), nil,
+           [ [_('Nametags (EPL2)'), :nametag_format_list]]
+          ]]
 
   ############################################################
   # SysConf entries management
@@ -282,9 +292,8 @@ class SysConfAdmController < Admin
   ############################################################
   protected
   def get_sysconf
-    begin
-      @conf = SysConf.find(params[:id])
-    rescue ActiveRecord::RecordNotFound
+    @conf = SysConf.find_by_key(params[:key])
+    if @conf.nil?
       flash[:error] << _('Invalid configuration entry %d requested') % 
         params[:id]
       redirect_to :action => :list
@@ -293,7 +302,7 @@ class SysConfAdmController < Admin
   end
 
   def get_table
-    valid_tables = [:people]  # :proposals to be added later on..?
+    valid_tables = [:people, :proposals, :conferences]
 
     begin
       @table = params[:table].to_sym
@@ -347,5 +356,13 @@ class SysConfAdmController < Admin
       :float => _('Float'),
       :catalog => _('Catalog') # Not a real type, but hand-mangled by us
     }
+  end
+
+  def touch_dynamic_classes
+    # Just "touch" the dynamic classes, to generate their MagicModels
+    # to avoid catalogs not showing up due to NameErrors (see below)
+    Conference
+    Proposal
+    Person
   end
 end

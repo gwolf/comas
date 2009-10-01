@@ -13,10 +13,20 @@ module ApplicationHelper
 
   def login_data
     return '' unless @user
-    '<div id="logindata">%s (%s) - %s</div>' % 
+    '<div id="logindata">%s (%s) - %s</div>%s' % 
       [h(@user.login), h(@user.name), 
        link_to(_('Log out'), {:controller => '/people', 
-         :action => 'logout'})]
+         :action => 'logout'}),
+       my_photo]
+  end
+
+  def my_photo
+    return '' unless @user and @user.has_photo?
+    ratio = Photo.thumb_ratio
+    '<div id="myphoto"><img src="%s" width="%d" height="%d" /></div>'%
+        [ url_for(:controller => '/people', :action => 'get_photo', 
+                  :id => @user.id, :size => 'thumb'),
+          @user.photo.width * ratio, @user.photo.height * ratio]
   end
 
   def rss_links
@@ -77,18 +87,45 @@ module ApplicationHelper
 
   ######################################################################
   # Collapsible areas with a title header
-  def collapsed_header(title, &block)
+  #
+  # This function can be called either with explicitly given data or
+  # with a block from your view. This means, both following usages will work:
+  # 
+  # <% collapsed_header 'Description' do %>
+  #   <%= @conference.descr %>
+  # <% end %>
+  #
+  # and
+  #
+  # <%= collapsed_header 'Description', @conference.descr %>
+  #
+  # Why? As a matter of taste, and in order not to break the places it
+  # is already used (and to add extra flexibility, allowing for
+  # cleaner inlined code blocks). Even both can be specified:
+  #
+  # <% collapsed_header 'Description', 'Conference description follows:' do %>
+  #   <p><%= @conference.descr %></p>
+  #   <p>…Which is <%= @conference.descr.size %> characters long</p>
+  # <% end %>
+  def collapsed_header(title, data='', &block)
     # Not collision-proof, right. However, odds are quite low!
     div_name = 'comas-collapsed-%d' % (rand * 10000)
 
-    concat('<h3>%s - <span class="note">%s</span></h3>' %
-           [title, link_to_function(_('Show'),
-                                    visual_effect(:toggle_blind, div_name))],
-           block.binding)
-    concat('<div id="%s" class="comas-collapsed" style="display: none">' % div_name,
-           block.binding)
-    yield
-    concat '</div>', block.binding
+    pre = '<h3>%s - <span class="note">%s</span></h3>
+           <div id="%s" class="comas-collapsed" style="display: none">' % 
+      [ title,
+        link_to_function(_('Show'), visual_effect(:toggle_blind, div_name)),
+        div_name ]
+    post = '</div>'
+
+    if block
+      concat pre, block.binding
+      concat data, block.binding
+      yield
+      concat post, block.binding
+    else
+      pre << data << post
+    end
   end
 
   ######################################################################
@@ -153,6 +190,38 @@ module ApplicationHelper
          <span class="info-title">#{title}</span>
          <span class="info-data">#{RedCloth.new(data).to_html}</span>
        </div>)
+  end
+
+  def auto_info_row_for(object, column)
+    begin
+      attr = column.name
+      fldname = attr.to_s.humanize
+      type = column.type
+      value = object.send(attr) || ''
+
+      # Text fields should be formatted with RedCloth and shown collapsed.
+      # And the empty string: So that we do not repeat the attribute name
+      if type == :text
+        return collapsed_header(Translation.for(fldname),
+                                redcloth_info_row('', value)) 
+      end
+
+      # Catalog fields should show the referred entry
+      if attr =~ /_id$/
+        klass = attr.gsub(/_id$/,'').classify.constantize
+        return info_row(fldname, klass.find_by_id(value).name)
+      end
+
+      # Everything else should show itself :)
+      return info_row(fldname, value)
+    rescue NameError
+      # Looks like a catalog reference, but is not
+      return info_row(fldname, value)
+    rescue NoMethodError
+      # This is just guesswork... If any NoMethodError is raised, just
+      # return nil and go on with it.
+      return nil
+    end
   end
 
   ############################################################

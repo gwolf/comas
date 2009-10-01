@@ -1,5 +1,6 @@
 class Person < ActiveRecord::Base
   acts_as_magic_model
+  has_one :photo, :dependent => :destroy
   has_one :rescue_session, :dependent => :destroy
   has_many :authorships, :dependent => :destroy
   has_many :proposals, :through => :authorships
@@ -118,6 +119,16 @@ class Person < ActiveRecord::Base
   # Did this person attend the specified conference?
   def attended?(conf)
     !attendances.select {|a| a.conference_id==conf.id}.empty?
+  end
+
+  # Avoid moving the full query of a photo if we just want to check
+  # for the photo's existence
+  def has_photo?
+    ! Photo.find_by_person_id(self.id, :select=>'id').nil?
+  end
+
+  def photo
+    Photo.find(:first, :conditions => ['person_id = ?', self.id])
   end
 
   def has_proposal_for?(conf)

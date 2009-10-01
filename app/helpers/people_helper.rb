@@ -53,6 +53,9 @@ module PeopleHelper
         # checked at columns_for_profile.
         value = person.send(attr)
       end
+      # Don't show fields that have a nil value
+      return if value.nil?
+
       case column.type
       when :text
         redcloth_info_row name, value
@@ -75,5 +78,13 @@ module PeopleHelper
     dest = {:action => 'login', :login => dup.login}
     dest[:invite] = invite.link if invite
     link_to dup.login, dest
+  end
+
+  def link_to_photo(person)
+    return '' unless person.has_photo?
+    photo = person.photo
+    image_tag(url_for(:action => 'get_photo', :id => person.id), 
+              :size => '%dx%d' % [photo.width, photo.height],
+              :alt => _('Photo for %s' % person.name))
   end
 end

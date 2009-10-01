@@ -1,4 +1,5 @@
 class Conference < ActiveRecord::Base
+  acts_as_magic_model
   has_many :timeslots, :dependent => :destroy
   has_many :proposals
   has_many :conf_invites
@@ -15,6 +16,22 @@ class Conference < ActiveRecord::Base
   validate :timeslots_during_conference
   validate :cfp_data_only_if_manages_proposals
   validate :no_proposals_unless_manages_proposals
+
+  def self.core_attributes
+    %w(begins cfp_close_date cfp_open_date descr finishes homepage id 
+       invite_only manages_proposals name public_proposals reg_close_date 
+       reg_open_date short_name).map do |attr|
+      self.columns.select{|col| col.name == attr}[0]
+    end
+  end
+  def core_attributes; self.class.core_attributes; end
+
+  # Returns a list of any user-listable attributes that are not part of the
+  # base Proposal data
+  def self.extra_listable_attributes
+    self.columns - self.core_attributes
+  end
+  def extra_listable_attributes; self.class.extra_listable_attributes; end
 
   # Produce a list of conferences which have not yet finished, ordered
   # by their beginning date (i.e. the closest first)

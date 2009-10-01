@@ -4,14 +4,16 @@ class Logo < ActiveRecord::Base
   validates_presence_of :conference_id
   validates_associated :conference
 
+  # Fields holding binary content that are specially managed
+  BinFields = ['data', 'medium', 'thumb']
+
   # We override find to exclude the whole file contents (data, medium
   # and thumb columns) from our result set.
   # 
   # The binary values should not be directly modified - Use
   # self#from_blob instead.
   def self.find (*args)
-    select = self.columns.map(&:name).
-      select {|c| ! ['data', 'medium', 'thumb'].include? c}.join(', ')
+    select = (self.columns.map(&:name) - BinFields).join(', ')
 
     if args[-1].is_a?(Hash)
       if args[1].has_key? :select
@@ -26,7 +28,7 @@ class Logo < ActiveRecord::Base
     super(*args)
   end
 
-  ['data', 'medium', 'thumb'].each do |col|
+  BinFields.each do |col|
     eval "def #{col}
             return self[:#{col}] if self.attributes.has_key?('#{col}')
             logo = self.class.find(self.id, :select => 'id, conference_id, #{col}')
@@ -103,5 +105,5 @@ class Logo < ActiveRecord::Base
   end
 
   private
-  ['data', 'medium', 'thumb'].each { |col| eval "def #{col}=(what); end"}
+  BinFields.each { |col| eval "def #{col}=(what); end"}
 end

@@ -81,8 +81,11 @@ end
 
 # Include your application configuration below
 require 'classinherit'
+require 'barby'
+require 'barby/outputter/prawn_outputter'
+require 'prawn'
+require 'prawn/measurement_extensions'
 require 'pseudo_gettext'
-require 'pdf/writer'
 require 'redcloth'
 require 'RMagick'
 require 'simplexls'

@@ -29,9 +29,10 @@
   <ul>
     <% @formats.each do |fmt| %>
       <li><%= link_to(fmt.name,
-               :action => 'certificate_for_person', 
+               :controller => 'certificates_adm',
+               :action => 'for_person', 
                :person_id => @person, :conference_id => @conference,
-               :format_id => fmt) %>
+               :id => fmt) %>
         <%= human_paper_size(fmt.paper_size)%></li>
     <% end %>
   </ul>

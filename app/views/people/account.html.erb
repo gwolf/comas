@@ -5,15 +5,35 @@
     <h3><%= _'Next conferences you are signed up for' %></h3>
     <%= conf_list_table @mine %>
   <% else %>
-    <p><%= _('There are no upcoming conferences yet for which you are ' +
-	     'registered. You can select any active conference from ' +
-	     'the listing below:') %></p>
+    <p><%= _('You are currently not registered for any upcoming ' +
+	     'conferences. You can %s and sign up.') %
+	   link_to(_('go to the list of upcoming conferences'),
+	           :controller => 'conferences', :action => 'list')
+%></p>
   <% end %>
 </div>
 
-<div id="upcoming">
-  <h3><%= _'Upcoming conferences' %></h3>
-  <%= pagination_header @upcoming %>
-  <%= will_paginate @upcoming %>
-  <%= conf_list_table @upcoming %>
-</div>
+<% if @link_to_nametag %>
+  <div id="print-nametag">
+    <h3><%= _('Print your nametag') %></h3>
+    <p><%= _('For your convenience, you can %s. This will save you ' +
+	     'time upon arriving to the conference, where you will be ' +
+	     'able to present it for identification and for ' +
+	     'attendance tracking.' ) %
+	   link_to(_('print your nametag'), :action => 'my_nametag') %></p>
+  </div>
+<% end %>
+
+<% if @can_define_nametag %>
+  <div id="define-nametag">
+    <p><%= _('In order to define or change a nametag format, %s and ' +
+	     'register its name as the ' +
+	     '<tt>%s</tt> key in the %s interface') %
+	   [link_to(_('define a suitable format'),
+	            :controller => 'sys_conf_adm', :action => 'certif_formats'),
+            'personal_nametag_format',
+            link_to(_('Configuration entries'),
+                    :controller => 'sys_conf_adm', :action => 'list')
+           ]%></p>
+  </div>
+<% end %>

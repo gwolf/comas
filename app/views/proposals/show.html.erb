@@ -7,6 +7,9 @@
 <%= info_row _('Submitted for'), @proposal.conference.name %>
 <%= info_row _('Proposal type'), @proposal.prop_type.name %>
 <%= redcloth_info_row _('Abstract'), @proposal.abstract %>
+<% @proposal.extra_listable_attributes.each do |attr| %>
+  <%= auto_info_row_for @proposal, attr %>
+<% end %>
 <% if tslot = @proposal.timeslot %>
   <%= info_row _('Room'), tslot.room.name %>
   <%= info_row _('Start time'), tslot.start_time %>

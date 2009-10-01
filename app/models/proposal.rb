@@ -19,6 +19,21 @@ class Proposal < ActiveRecord::Base
   validate_on_create :in_conference_cfp_period
   validate_on_update :dont_change_conference
 
+  def self.core_attributes
+    %w(abstract conference_id created_at id prop_type_id status timeslot_id
+       title updated_at).map do |attr|
+      self.columns.select{|col| col.name == attr}[0]
+    end
+  end
+  def core_attributes; self.class.core_attributes; end
+
+  # Returns a list of any user-listable attributes that are not part of the
+  # base Proposal data
+  def self.extra_listable_attributes
+    self.columns - self.core_attributes
+  end
+  def extra_listable_attributes; self.class.extra_listable_attributes; end
+
   def scheduled?
     ! self.timeslot.empty?
   end

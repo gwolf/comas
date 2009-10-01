@@ -2,8 +2,8 @@
 
 <%= pagination_header @formats %>
 <%= will_paginate @formats %>
-<%= render :partial => 'certif_format_details',
+<%= render :partial => 'details',
            :locals => {:formats => @formats, 
                        :edit_fmt => @new_fmt,
-                       :action => 'new_certif_format',
+                       :action => 'new',
                        :label =>  _('Create')} %>

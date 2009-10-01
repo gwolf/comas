@@ -64,5 +64,8 @@
 			      'the opening date is set, the period ' +
 			      'will close at the conference beginning ' +
 			      'date.')) %>
+  <% @conference.extra_listable_attributes.each do |attr| %>
+    <%= f.auto_field(attr.name) %>
+  <% end %>
   <%= f.submit submit %>
 <% end %>

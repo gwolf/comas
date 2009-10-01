@@ -16,6 +16,14 @@ ActionController::Routing::Routes.draw do |map|
               :controller => 'proposals',
               :action => 'new')
 
+  map.connect('sys_conf_adm/list_conferences_fields',
+              :controller => 'sys_conf_adm',
+              :action => 'list_table_fields',
+              :table => 'conferences')
+  map.connect('sys_conf_adm/list_proposals_fields',
+              :controller => 'sys_conf_adm',
+              :action => 'list_table_fields',
+              :table => 'proposals')
   map.connect('sys_conf_adm/list_people_fields',
               :controller => 'sys_conf_adm',
               :action => 'list_table_fields',
@@ -30,6 +38,10 @@ ActionController::Routing::Routes.draw do |map|
   map.connect('sys_conf_adm/add_catalog_row/:catalog',
               :controller => 'sys_conf_adm',
               :action => 'add_catalog_row')
+  map.connect('sys_conf_adm/edit/:key',
+              :controller => 'sys_conf_adm', :action => 'edit')
+  map.connect('sys_conf_adm/update/:key',
+              :controller => 'sys_conf_adm', :action => 'update')
 
   map.connect('attendance_adm/list/:conference_id',
               :controller => 'attendance_adm',
@@ -41,6 +53,15 @@ ActionController::Routing::Routes.draw do |map|
               :controller => 'attendance_adm',
               :action => 'for_person')
 
+  map.connect('photo/:id',
+              :controller => 'people', :action => 'get_photo')
+  map.connect('photo/:id',
+              :controller => 'people', :action => 'get_photo',
+              :size => 'normal')
+  map.connect('thumb/:id',
+              :controller => 'people', :action => 'get_photo',
+              :size => 'thumb')
+  
   # Sample of named route:
   # map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'
   # This route can be invoked with purchase_url(:id => product.id)
