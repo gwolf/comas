@@ -21,11 +21,13 @@
 	     'able to present it for identification and for ' +
 	     'attendance tracking.' ) %
 	   link_to(_('print your nametag'), :action => 'my_nametag') %></p>
+    <p><%= _('You will be able to use this nametag for any of the ' +
+	     'conferences organized by us.') %></p>
   </div>
 <% end %>
 
 <% if @can_define_nametag %>
-  <div id="define-nametag">
+  <div class="comas-for-admin">
     <p><%= _('In order to define or change a nametag format, %s and ' +
 	     'register its name as the ' +
 	     '<tt>%s</tt> key in the %s interface') %

@@ -331,3 +331,11 @@ td, th {
     color: red;
     background: #fee;
 }
+
+.comas-for-admin {
+    border: solid black 1px;
+    background-color: #eee;
+    padding-left: 1em;
+    padding-right: 1em;
+    margin: 1em;
+}
