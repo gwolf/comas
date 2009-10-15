@@ -776,8 +776,8 @@ msgstr "El formato ha sido actualizado exitosamente"
 
 #: app/controllers/certificates_adm_controller.rb:99
 #: app/controllers/attendance_adm_controller.rb:156
-msgid "Invalid person specified"
-msgstr "Especificó a una persona inexistente"
+msgid "Invalid person specified: %s"
+msgstr "Especificó a una persona inexistente: %s"
 
 #: app/controllers/certificates_adm_controller.rb:106
 msgid "Invalid format specified"

@@ -152,7 +152,8 @@ class AttendanceAdmController < Admin
   def get_person
     pers_id = params[:person_id]
     return true if pers_id.nil? or pers_id.blank?
-    @person = Person.find_by_id(pers_id)
-    flash[:error] << _('Invalid person specified') if @person.nil?
+    @person = Person.find_by_id(pers_id) rescue nil
+    flash[:error] << _('Invalid person specified: %s') % 
+      h(pers_id) if @person.nil?
   end
 end

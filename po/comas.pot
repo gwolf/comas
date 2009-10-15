@@ -776,7 +776,7 @@ msgstr ""
 
 #: app/controllers/certificates_adm_controller.rb:99
 #: app/controllers/attendance_adm_controller.rb:156
-msgid "Invalid person specified"
+msgid "Invalid person specified: %s"
 msgstr ""
 
 #: app/controllers/certificates_adm_controller.rb:106
