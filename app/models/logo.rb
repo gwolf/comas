@@ -55,8 +55,8 @@ class Logo < ActiveRecord::Base
     logo.width = img.columns
     logo.height = img.rows
 
-    # Re-generate the original, ensuring we have it as a PNG
-    img.format = 'png'
+    # Re-generate the original, ensuring we have it as a JPG
+    img.format = 'jpg'
     logo[:data] = img.to_blob
 
     # Generate medium-resolution and thumbnail
