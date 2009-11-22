@@ -39,7 +39,7 @@ class Conference < ActiveRecord::Base
   # It can take whatever parameters you would send to a
   # Conference#find call.
   def self.upcoming(req={})
-    self.find(:all, { :conditions => 'finishes >= now()::date',
+    self.find(:all, { :conditions => ['finishes >= ?', Date.today],
                 :order => :begins}.merge(req))
   end
 
@@ -86,7 +86,7 @@ class Conference < ActiveRecord::Base
   # call.
   def self.past(req={})
     self.find(:all,
-              { :conditions => 'begins < now()',
+              { :conditions => ['begins < ?', Time.now],
                 :order => 'begins desc'
               }.merge(req))
   end
