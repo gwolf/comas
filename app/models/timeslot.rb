@@ -31,8 +31,9 @@ class Timeslot < ActiveRecord::Base
   # ordering - in which case this would act as a normal paginator 
   def self.by_time_distance(req={})
     self.paginate(:all, 
-                  { :order => 'CASE WHEN start_time > now() THEN start_time ' +
-                    ' - now() ELSE now() - start_time END',
+                  { :order => 'CASE WHEN start_time > ? THEN start_time ' +
+                    ' - ? ELSE ? - start_time END' % 
+                    [Time.now, Time.now, Time.now],
                     :page => 1}.merge(req))
   end
 
