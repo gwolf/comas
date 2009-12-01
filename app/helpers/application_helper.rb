@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
   ######################################################################
@@ -240,18 +241,20 @@ module ApplicationHelper
   # Show a translation-friendly pagination header (similar to WillPaginate's
   # page_entries_info - in fact, derived from it)
   def pagination_header(collection)
-    if collection.total_pages < 2
-      case collection.size
-      when 0; _("No items found")
-      when 1; _("Displaying <b>1</b> item")
-      else;   _("Displaying <b>all %d</b> items") % [collection.size]
-      end
-      else
-      _('Displaying items <b>%d&nbsp;-&nbsp;%d</b> of <b>%d</b> in total') % 
-        [ collection.offset + 1,
-          collection.offset + collection.length,
-          collection.total_entries ]
-    end
+    ['<div class="pagination">',
+     if collection.total_pages < 2
+       case collection.size
+       when 0; _("No items found")
+       when 1; _("Displaying <b>1</b> item")
+       else;   _("Displaying <b>all %d</b> items") % [collection.size]
+       end
+     else
+       _('Displaying items <b>%d&ndash;%d</b> of <b>%d</b> in total') % 
+         [ collection.offset + 1,
+           collection.offset + collection.length,
+           collection.total_entries ]
+     end,
+     '</div>' ].join ''
   end
 
   ############################################################

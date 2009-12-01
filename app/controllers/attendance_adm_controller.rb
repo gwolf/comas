@@ -73,7 +73,10 @@ class AttendanceAdmController < Admin
       return false
     end
 
-    @attendances = @tslot.attendances.sort_by(&:created_at)
+    @attendances = Attendance.paginate(:all, :page => params[:page],
+                                       :conditions => ['timeslot_id = ?',
+                                                      @tslot.id],
+                                       :order => 'created_at')
   end
 
   # Gives the attendances detail for the specified person on the
