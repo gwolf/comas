@@ -39,7 +39,7 @@ class Conference < ActiveRecord::Base
   # It can take whatever parameters you would send to a
   # Conference#find call.
   def self.upcoming(req={})
-    self.find(:all, { :conditions => 'finishes >= now()::date',
+    self.find(:all, { :conditions => ['finishes >= ?', Date.today],
                 :order => :begins}.merge(req))
   end
 
@@ -50,9 +50,10 @@ class Conference < ActiveRecord::Base
   # It can take whatever parameters you would send to a
   # Conference#find call.
   def self.in_reg_period(req={})
-    self.find(:all, { :conditions => 'now()::date BETWEEN ' +
-                'COALESCE(reg_open_date, now()::date) AND ' +
-                'COALESCE(reg_close_date, finishes, now()::date)',
+    self.find(:all, { :conditions => '? BETWEEN ' +
+                'COALESCE(reg_open_date, ?) AND ' +
+                'COALESCE(reg_close_date, finishes, ?)' %
+                [Date.today, Date.today, Date.today],
                 :order => :begins}.merge(req))
   end
 
@@ -64,9 +65,10 @@ class Conference < ActiveRecord::Base
   # Conference#find call.
   def self.in_cfp_period(req={})
     self.find(:all, { :conditions => '(cfp_open_date IS NOT NULL OR ' +
-                'cfp_close_date IS NOT NULL) AND now()::date BETWEEN ' +
-                'COALESCE(cfp_open_date, now()::date) AND ' +
-                'COALESCE(cfp_close_date, begins, now()::date)',
+                'cfp_close_date IS NOT NULL) AND ? BETWEEN ' +
+                'COALESCE(cfp_open_date, ?) AND ' +
+                'COALESCE(cfp_close_date, begins, ?)' %
+                [Date.today, Date.today, Date.today],
                 :order => :begins}.merge(req))
   end
 
@@ -86,7 +88,7 @@ class Conference < ActiveRecord::Base
   # call.
   def self.past(req={})
     self.find(:all,
-              { :conditions => 'begins < now()',
+              { :conditions => ['begins < ?', Time.now],
                 :order => 'begins desc'
               }.merge(req))
   end

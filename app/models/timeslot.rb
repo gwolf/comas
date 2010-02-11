@@ -30,10 +30,18 @@ class Timeslot < ActiveRecord::Base
   # WillPaginate#paginate call. Of course, you can specify a different
   # ordering - in which case this would act as a normal paginator 
   def self.by_time_distance(req={})
-    self.paginate(:all, 
-                  { :order => 'CASE WHEN start_time > now() THEN start_time ' +
-                    ' - now() ELSE now() - start_time END',
-                    :page => 1}.merge(req))
+    # It is much more efficient to do the date comparisons inside the
+    # DB, but the way to do so it is completely RDBMS-specific. So,
+    # attempt to do it efficiently, but fall back if needed.
+    case Timeslot.connection.adapter_name.downcase
+    when 'postgresql'
+      self.paginate(:all, 
+                    { :order => 'abs(extract(epoch from start_time - now()))',
+                      :page => 1}.merge(req))
+    else
+      self.find(:all).merge(req).
+        sort_by {|t| (t.start_time - Time.now).abs}.paginate(:page => 1)
+    end
   end
 
   # Returns the paginated list of current timeslots - those for which

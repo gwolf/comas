@@ -114,11 +114,27 @@ class ConferenceTest < ActiveSupport::TestCase
     
   end
 
+  def test_upcoming_conferences
+    upcoming_conference = new_test_conference; upcoming_conference.save!
+    past_conference = new_test_conference(:name => "Past conference", :begins => Date.today - 10.days, :finishes => Date.today - 8.days); past_conference.save!
+    upcoming = Conference.upcoming
+    assert upcoming.include?(upcoming_conference)
+    assert !upcoming.include?(past_conference)
+  end
+
+  def test_past_conferences
+    upcoming_conference = new_test_conference; upcoming_conference.save!
+    past_conference = new_test_conference(:name => "Past conference", :begins => Date.today - 10.days, :finishes => Date.today - 8.days); past_conference.save!
+    past = Conference.past
+    assert !past.include?(upcoming_conference)
+    assert past.include?(past_conference)
+  end
+
   private
-  def new_test_conference
-    Conference.new(:name => 'A test conference', 
+  def new_test_conference(options = {})
+    Conference.new({:name => 'A test conference',
                    :descr => 'This is a test conference, not for real',
                    :begins => Date.today + 1,
-                   :finishes => Date.today + 2)
+                   :finishes => Date.today + 2}.merge(options))
   end
 end

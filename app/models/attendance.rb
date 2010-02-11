@@ -73,8 +73,12 @@ class Attendance < ActiveRecord::Base
   def person_registered_in_conference
     conf = timeslot.conference
 
-    return true if person.conferences.include? conf
-    person.conferences << conf
-    part.save or errors.add_to_base(part.errors.full_messages.join)
+    return true if conf.people.include? person
+    begin
+      conf.people << person
+    rescue ActiveRecord::RecordNotSaved => err
+      errors.add_to_base(err.message)
+      return false
+    end
   end
 end

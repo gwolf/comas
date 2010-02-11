@@ -1,11 +1,12 @@
 <h1><%= _('Attendance listing by timeslot') %></h1>
 
-<p><%= _('Showing the %d registered attendances for the session ' +
-         'started at <em>%s</em>, room <em>%s</em> (%s)') % 
-       [@attendances.size, @tslot.start_time.to_s(:listing), 
-        @tslot.room.name, 
-        (@tslot.proposal.nil? ? _('No proposal defined') : 
-         link_to_proposal(@tslot.proposal))] %></p>
+<p><%= _('Attendances for the session started at <em>%s</em>, room ' +
+         '<em>%s</em> (%s)') % 
+         [ @tslot.start_time.to_s(:listing), @tslot.room.name, 
+           ( @tslot.proposal.nil? ? _('No proposal defined') : 
+             link_to_proposal(@tslot.proposal))] %></p>
+<%= pagination_header(@attendances) %>
+<%= will_paginate @attendances %>
 
 <% table do %>
   <% table_head_row do %>
