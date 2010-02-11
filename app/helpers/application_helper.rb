@@ -209,6 +209,7 @@ module ApplicationHelper
 
       # Catalog fields should show the referred entry
       if attr =~ /_id$/
+        return '' if value == ''
         klass = attr.gsub(/_id$/,'').classify.constantize
         return info_row(fldname, klass.find_by_id(value).name)
       end
