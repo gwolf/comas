@@ -1,13 +1,8 @@
-<% if session[:conf_list_include_past] 
-     title = _'Registered conferences'
-     link = link_to _('Hide past conferences'), :hide_old => 1
-   else
-     title = _'Upcoming conferences'
-     link = link_to _('Show also past conferences'), :show_old => 1 
-   end %>
+<% title = session[:conf_list_include_past] ? 
+     _('Registered conferences') :  _('Upcoming conferences') %>
 <%= link_to_login_or_new if @user.nil? %>
 <h1><%= title %></h1>
+<%= list_filters %>
 <%= pagination_header @conferences %>
 <%= will_paginate @conferences %>
 <%= conf_list_table @conferences %>
-<div class="note"><%= link %></div>

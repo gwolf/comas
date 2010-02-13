@@ -35,7 +35,7 @@ module ApplicationHelper
     @rss_links.keys.map { |source|
       ( '<link rel="alternate" type="application/rss+xml" ' +
         'title="%s" href="%s" />' ) % 
-      [@rss_links[source], url_for(:action => 'rss', :id => source)]
+      [source, @rss_links[source]]
     }.join("\n")
   end
 
@@ -196,7 +196,7 @@ module ApplicationHelper
   def auto_info_row_for(object, column)
     begin
       attr = column.name
-      fldname = attr.to_s.humanize
+      fldname = Translation.for(attr.to_s.humanize)
       type = column.type
       value = object.send(attr) || ''
 

@@ -74,6 +74,11 @@ ActionController::Routing::Routes.draw do |map|
               :controller => 'conferences',
               :action => 'show')
 
+  map.connect('conferences.rss',
+              :controller => 'conferences',
+              :action => 'list',
+              :format => 'rss')
+
   map.connect('invite/:invite',
               :controller => 'people',
               :action => 'claim_invite')
