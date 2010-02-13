@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 module ConferencesHelper
   def conf_list_table(confs)
     row_classes = list_row_classes
@@ -29,6 +30,20 @@ module ConferencesHelper
        links.select {|elem| elem}.join(' - ')
       ].map {|col| "<td>#{col}</td>"}.join <<
       end_table_row_tag
+  end
+
+  def list_filters
+    res = ['<div class="info-row">']
+    
+    res << (session[:conf_list_include_past] ? 
+            link_to(_('Show only upcoming conferences'), :hide_old => 1):
+            link_to(_('Include past conferences'), :show_old => 1) )
+
+    res << field_filters
+    res << current_filter(@cond) unless @cond.empty?
+    res << '</div>'
+
+    res.join("\n")
   end
 
   def sign_up_person_for_conf_link(user, conf)
@@ -128,7 +143,53 @@ module ConferencesHelper
     logo = conf.logo or return ''
     '<img src="%s" width="%s" height="%s" />' % 
       [ url_for(:controller => 'logos', :action => size,
-                :id => logo.id), 
+                :id => logo.id, :only_path => false), 
         logo.send("#{size}_width"), logo.send("#{size}_height") ]
+  end
+
+  def rss_description_for(conf)
+    res = [ RedCloth.new(conf.descr).to_html ]
+    res	<< ('<p><b>%s</b>: %s -	%s</p>' %
+            [_('Conference dates'), conf.begins, conf.finishes])
+
+    res << ('<p><b>%s</b>: %s - %s</p>' %
+            [_('Registration period'), conf.reg_open_date || _('Open'),
+            conf.last_reg_date])
+
+    res << ('<p><b>%s</b>: %s - %s</p>' %
+	    [_('Call for papers	period'), conf.cfp_open_date || _('Open'),
+	    conf.last_cfp_date]) if conf.has_cfp?
+
+    res = ['<table><tr><td>', link_for_logo(conf, 'thumb'),
+          '</td><td>', res, '</td></tr></table>'].flatten if conf.has_logo?
+
+    res.join("\n")
+  end
+
+  private
+  def field_filters
+    # When showing the conferences listing, we can filter the result
+    # by any defined catalog — Show the selectors for said catalogs
+    blank = [_('- Show all -'), nil]
+    Conference.catalogs.map { |fld,klass|
+      '<form method="post" id="form_%s">%s %s</form>' % 
+      [ fld, 
+        ( '<span class="info-title">%s</span>' %
+          (_('Filter by %s') % Translation.for(fld.humanize)) ),
+        select_tag(fld, 
+                   options_for_select(klass.collection_by_id.
+                                      unshift(blank),
+                                      params[fld.to_s].to_i),
+                   :onchange =>
+                   "document.getElementById('form_%s').submit()" % fld)
+      ]
+    }.join("\n")
+  end
+
+  def current_filter(cond)
+    ('<div class="info-title">%s</div>' +
+     '<div class="info-data"><ul>%s</ul>' +
+     '</div>') %
+      [_('Filtering by: '), cond.map {|c| '<li>%s</li>' % c}]
   end
 end

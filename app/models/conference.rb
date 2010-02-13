@@ -33,6 +33,26 @@ class Conference < ActiveRecord::Base
   end
   def extra_listable_attributes; self.class.extra_listable_attributes; end
 
+  # Returns a hash of catalogs related to this table (where the key is
+  # the field name and the value is the related class). Catalogs are
+  # attributes whose name ends in _id, and for which there is a
+  # suitably named related table with 'id' and 'name' columns.
+  def self.catalogs
+    Hash[self.column_names.map do |col| 
+           begin
+             if col =~ /(.*)_id$/ and 
+                 klass = $1.classify.constantize and
+                 klass.column_names.include? 'id' and
+                 klass.column_names.include? 'name'
+               [col, klass]
+             end
+           rescue NameError
+             false
+           end
+         end.select {|col| col}
+        ]
+  end
+
   # Produce a list of conferences which have not yet finished, ordered
   # by their beginning date (i.e. the closest first)
   #

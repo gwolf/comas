@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
     public = {:people => [:login, :logout, :validate, :new, :register, 
                           :request_passwd, :recover, :profile, :claim_invite,
                           :get_photo],
-      :conferences => [:index, :list, :show, :proposals, :rss],
+      :conferences => [:index, :list, :show, :proposals],
       :proposals => [:index, :list, :show, :by_author, :get_document],
       :logos => [:data, :thumb, :medium]}
 

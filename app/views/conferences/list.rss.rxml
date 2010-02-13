@@ -9,10 +9,10 @@ xml.rss(:version=>"2.0"){
       for conf in @conferences
         xml.item do
           xml.title(conf.name)
-          xml.description(all_details_for(conf))
+          xml.description(rss_description_for(conf))
           xml.link(url_for(:controller => 'conferences',
                            :action => 'show', 
-                           :id => conf,
+                           :short_name => conf.short_name,
                            :only_path => false))
         end
       end
