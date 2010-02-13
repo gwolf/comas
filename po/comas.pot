@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: comas 1.0\n"
-"POT-Creation-Date: 2009-10-01 13:40-0500\n"
+"POT-Creation-Date: 2010-02-12 19:25-0600\n"
 "PO-Revision-Date: 2008-05-07 18:30-0600\n"
 "Last-Translator: Gunnar Wolf <gwolf@gwolf.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,7 +24,7 @@ msgid "Document|Filename"
 msgstr ""
 
 #: app/models/document.rb:-
-msgid "Document|Description"
+msgid "Document|Descr"
 msgstr ""
 
 #: app/models/document.rb:-
@@ -72,7 +72,7 @@ msgid "certif format"
 msgstr ""
 
 #: app/models/certif_format.rb:-
-msgid "CertifFormat|Format name"
+msgid "CertifFormat|Name"
 msgstr ""
 
 #: app/models/certif_format.rb:-
@@ -84,19 +84,6 @@ msgid "CertifFormat|Orientation"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "admin task"
-msgstr ""
-
-#: app/models/person.rb:-
-msgid "AdminTask|Name"
-msgstr ""
-
-#: app/models/person.rb:-
-#, fuzzy
-msgid "AdminTask|System name"
-msgstr "System configuration"
-
-#: app/models/person.rb:-
 msgid "person"
 msgstr ""
 
@@ -105,15 +92,15 @@ msgid "Person|Login"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|Password"
+msgid "Person|Passwd"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|First name"
+msgid "Person|Firstname"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|Family name"
+msgid "Person|Famname"
 msgstr ""
 
 #: app/models/person.rb:-
@@ -121,7 +108,7 @@ msgid "Person|Email"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|Random password salt"
+msgid "Person|Pw salt"
 msgstr ""
 
 #: app/models/person.rb:-
@@ -133,11 +120,19 @@ msgid "Person|Last login at"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|OK to receive conference-specific mails?"
+msgid "Person|Ok conf mails"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Person|OK to receive general mails?"
+msgid "Person|Ok general mails"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "activity type"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "ActivityType|Name"
 msgstr ""
 
 #: app/models/person.rb:-
@@ -149,7 +144,7 @@ msgid "Conference|Name"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Description"
+msgid "Conference|Descr"
 msgstr ""
 
 #: app/models/person.rb:-
@@ -157,19 +152,19 @@ msgid "Conference|Homepage"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Registration opening date"
+msgid "Conference|Reg open date"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Registration closing date"
+msgid "Conference|Reg close date"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Call for Papers opening date"
+msgid "Conference|Cfp open date"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Call for papers closing date"
+msgid "Conference|Cfp close date"
 msgstr ""
 
 #: app/models/person.rb:-
@@ -185,16 +180,41 @@ msgid "Conference|Short name"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Manages proposals?"
+msgid "Conference|Manages proposals"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Public proposals?"
+msgid "Conference|Public proposals"
 msgstr ""
 
 #: app/models/person.rb:-
-msgid "Conference|Invite only"
+msgid "Conference|Invite only?"
 msgstr ""
+
+#: app/models/person.rb:-
+msgid "Conference|Activity type"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Conference|Created at"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "Conference|Updated at"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "admin task"
+msgstr ""
+
+#: app/models/person.rb:-
+msgid "AdminTask|Name"
+msgstr ""
+
+#: app/models/person.rb:-
+#, fuzzy
+msgid "AdminTask|Sys name"
+msgstr "System configuration"
 
 #: app/models/person.rb:25
 msgid "A valid e-mail address is required"
@@ -212,45 +232,45 @@ msgstr ""
 msgid "Cannot leave %s - This user still has proposals on this conference"
 msgstr ""
 
-#: app/models/conference.rb:258 app/models/conference.rb:259
+#: app/models/conference.rb:280 app/models/conference.rb:281
 msgid "%{fn} can't be blank"
 msgstr ""
 
-#: app/models/conference.rb:262
+#: app/models/conference.rb:284
 msgid "Conference must end after its start date"
 msgstr ""
 
-#: app/models/conference.rb:265
+#: app/models/conference.rb:287
 msgid "Call for papers must end after its start date"
 msgstr ""
 
-#: app/models/conference.rb:268
+#: app/models/conference.rb:290
 msgid "Call for papers must finish before the conference begins"
 msgstr ""
 
-#: app/models/conference.rb:272
+#: app/models/conference.rb:294
 msgid "Registration must end after its start date"
 msgstr ""
 
-#: app/models/conference.rb:275
+#: app/models/conference.rb:297
 msgid "Registration must finish before the conference ends"
 msgstr ""
 
-#: app/models/conference.rb:286
+#: app/models/conference.rb:308
 msgid "There are %d timeslots for this conference outside its time span: %s"
 msgstr ""
 
-#: app/models/conference.rb:307
+#: app/models/conference.rb:329
 msgid ""
 "This conference already has received %d proposals (%s) - Cannot specify not "
 "to handle them."
 msgstr ""
 
-#: app/models/conference.rb:322
+#: app/models/conference.rb:344
 msgid "This conference does not currently accept registrations"
 msgstr ""
 
-#: app/models/conference.rb:328
+#: app/models/conference.rb:350
 msgid ""
 "Cannot remove %s from this conference - Remove or reassign his proposals "
 "first"
@@ -265,7 +285,7 @@ msgid "SysConf|Key"
 msgstr ""
 
 #: app/models/sys_conf.rb:-
-msgid "SysConf|Description"
+msgid "SysConf|Descr"
 msgstr ""
 
 #: app/models/sys_conf.rb:-
@@ -346,11 +366,11 @@ msgid "Timeslot|Start time"
 msgstr ""
 
 #: app/models/timeslot.rb:-
-msgid "Timeslot|Tolerance (pre)"
+msgid "Timeslot|Tolerance pre"
 msgstr ""
 
 #: app/models/timeslot.rb:-
-msgid "Timeslot|Tolerance (post)"
+msgid "Timeslot|Tolerance post"
 msgstr ""
 
 #: app/models/timeslot.rb:-
@@ -361,15 +381,15 @@ msgstr ""
 msgid "Timeslot|Conference"
 msgstr ""
 
-#: app/models/timeslot.rb:176
+#: app/models/timeslot.rb:184
 msgid "Must start within the conference dates (%s - %s)"
 msgstr ""
 
-#: app/models/timeslot.rb:188
+#: app/models/timeslot.rb:196
 msgid "Wrong format (should be hh:mm or hh:mm:ss)"
 msgstr ""
 
-#: app/models/timeslot.rb:220
+#: app/models/timeslot.rb:228
 msgid "Timeslot is overlapping on room %s with %s"
 msgstr ""
 
@@ -402,7 +422,7 @@ msgid "Photo|Person"
 msgstr ""
 
 #: app/models/photo.rb:-
-msgid "Photo|Thumb"
+msgid "Photo|Thumbnail"
 msgstr ""
 
 #: app/models/authorship.rb:-
@@ -458,7 +478,7 @@ msgid "Proposal|Updated at"
 msgstr ""
 
 #: app/models/proposal.rb:-
-msgid "Proposal|Proposal type"
+msgid "Proposal|Prop type"
 msgstr ""
 
 #: app/models/proposal.rb:-
@@ -511,15 +531,15 @@ msgid "NametagFormat|Position"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Horizontal size"
+msgid "NametagFormat|H size"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Vertical size"
+msgid "NametagFormat|V size"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Vertical gap"
+msgid "NametagFormat|V gap"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
@@ -527,35 +547,35 @@ msgid "NametagFormat|Name width"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Horizontal start"
+msgid "NametagFormat|H start"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Vertical start"
+msgid "NametagFormat|V start"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Barcode horizontal position"
+msgid "NametagFormat|Id bar hpos"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Barcode vertical position"
+msgid "NametagFormat|Id bar vpos"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Barcode orientation"
+msgid "NametagFormat|Id bar orient"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Barcode narrow bars width"
+msgid "NametagFormat|Id bar narrow"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Barcode wide bars width"
+msgid "NametagFormat|Id bar wide"
 msgstr ""
 
 #: app/models/nametag_format.rb:-
-msgid "NametagFormat|Barcode height"
+msgid "NametagFormat|Id bar height"
 msgstr ""
 
 #: app/models/nametag_format.rb:12
@@ -603,15 +623,15 @@ msgid "CertifFormatLine|Content"
 msgstr ""
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Horizontal position"
+msgid "CertifFormatLine|X pos"
 msgstr ""
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Vertical position"
+msgid "CertifFormatLine|Y pos"
 msgstr ""
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Maximum width"
+msgid "CertifFormatLine|Max width"
 msgstr ""
 
 #: app/models/certif_format_line.rb:-
@@ -623,11 +643,11 @@ msgid "CertifFormatLine|Justification"
 msgstr ""
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Certificate format"
+msgid "CertifFormatLine|Certif format"
 msgstr ""
 
 #: app/models/certif_format_line.rb:-
-msgid "CertifFormatLine|Max height"
+msgid "CertifFormatLine|Maximum height"
 msgstr ""
 
 #: app/models/certif_format_line.rb:5
@@ -638,7 +658,7 @@ msgstr ""
 msgid "Person"
 msgstr ""
 
-#: app/models/certif_format_line.rb:7 app/helpers/conferences_helper.rb:16
+#: app/models/certif_format_line.rb:7 app/helpers/conferences_helper.rb:17
 #: app/helpers/attendance_adm_helper.rb:18
 #: app/views/people/proposals.html.erb:15 app/views/people/profile.html.erb:20
 #: app/views/proposals/by_author.html.erb:16
@@ -659,11 +679,11 @@ msgid "conf invite"
 msgstr ""
 
 #: app/models/conf_invite.rb:-
-msgid "ConfInvite|Firstname"
+msgid "ConfInvite|First name"
 msgstr ""
 
 #: app/models/conf_invite.rb:-
-msgid "ConfInvite|Famname"
+msgid "ConfInvite|Family name"
 msgstr ""
 
 #: app/models/conf_invite.rb:-
@@ -723,7 +743,7 @@ msgid "Logo|Conference"
 msgstr ""
 
 #: app/models/logo.rb:-
-msgid "Logo|Thumbnail"
+msgid "Logo|Thumb"
 msgstr ""
 
 #: app/models/logo.rb:-
@@ -775,8 +795,7 @@ msgid "Format updated successfully"
 msgstr ""
 
 #: app/controllers/certificates_adm_controller.rb:99
-#: app/controllers/attendance_adm_controller.rb:156
-msgid "Invalid person specified: %s"
+msgid "Invalid person specified"
 msgstr ""
 
 #: app/controllers/certificates_adm_controller.rb:106
@@ -871,7 +890,7 @@ msgid "Next &raquo;"
 msgstr ""
 
 #: app/controllers/conferences_adm_controller.rb:5
-#: app/views/conferences/list.html.erb:3
+#: app/views/conferences/list.html.erb:2
 msgid "Registered conferences"
 msgstr ""
 
@@ -1163,7 +1182,7 @@ msgstr ""
 msgid "The specified e-mail address (%s) is not valid"
 msgstr ""
 
-#: app/controllers/people_controller.rb:310
+#: app/controllers/people_controller.rb:311
 msgid ""
 "You have submitted an invalid document as your photo. Please check its "
 "format and send it again."
@@ -1179,7 +1198,7 @@ msgid "Take attendance"
 msgstr ""
 
 #: app/controllers/attendance_adm_controller.rb:5
-#: app/helpers/conferences_helper.rb:105
+#: app/helpers/conferences_helper.rb:120
 #: app/views/attendance_adm/list.html.erb:1
 msgid "Attendance lists"
 msgstr ""
@@ -1192,27 +1211,31 @@ msgstr ""
 msgid "Invalid timeslot requested"
 msgstr ""
 
-#: app/controllers/attendance_adm_controller.rb:113
+#: app/controllers/attendance_adm_controller.rb:116
 msgid ""
 "This person has already been registered for this timeslot. No action taken."
 msgstr ""
 
-#: app/controllers/attendance_adm_controller.rb:124
+#: app/controllers/attendance_adm_controller.rb:127
 msgid ""
 "<em>%s</em> is not registered for <em>%s</em>, and registrations are closed."
 msgstr ""
 
-#: app/controllers/attendance_adm_controller.rb:130
+#: app/controllers/attendance_adm_controller.rb:133
 msgid ""
 "Person <em>%s</em> was not yet registered for this conference - Registering."
 msgstr ""
 
-#: app/controllers/attendance_adm_controller.rb:136
+#: app/controllers/attendance_adm_controller.rb:139
 msgid "Attendance successfully registered"
 msgstr ""
 
-#: app/controllers/attendance_adm_controller.rb:138
+#: app/controllers/attendance_adm_controller.rb:141
 msgid "Could not register person <em>%s</em> for this timeslot: %s"
+msgstr ""
+
+#: app/controllers/attendance_adm_controller.rb:159
+msgid "Invalid person specified: %s"
 msgstr ""
 
 #: app/controllers/admin.rb:10
@@ -1469,65 +1492,53 @@ msgstr ""
 msgid "Catalog"
 msgstr ""
 
-#: app/controllers/conferences_controller.rb:5
-msgid "Latest registered conferences"
+#: app/controllers/conferences_controller.rb:34
+msgid "Conferences where %s"
 msgstr ""
 
-#: app/controllers/conferences_controller.rb:6
-#: app/views/conferences/list.html.erb:6
-msgid "Upcoming conferences"
-msgstr ""
-
-#: app/controllers/conferences_controller.rb:7
-msgid "Conferences for which registration is open"
-msgstr ""
-
-#: app/controllers/conferences_controller.rb:8
-msgid "Conferences on which Call For Papers is open"
-msgstr ""
-
-#: app/controllers/conferences_controller.rb:50
-msgid "No such RSS defined"
-msgstr ""
-
-#: app/controllers/conferences_controller.rb:68
+#: app/controllers/conferences_controller.rb:69
 msgid "No listable proposals found for this conference"
 msgstr ""
 
-#: app/controllers/conferences_controller.rb:78
+#: app/controllers/conferences_controller.rb:79
 msgid "You have successfully registered for conference \"%s\""
 msgstr ""
 
-#: app/controllers/conferences_controller.rb:81
+#: app/controllers/conferences_controller.rb:82
 msgid "Could not register you for conference %s: %s"
 msgstr ""
 
-#: app/controllers/conferences_controller.rb:94
+#: app/controllers/conferences_controller.rb:95
 msgid ""
 "You have %d proposals registered for this conference. Please withdraw them "
 "before unregistering."
 msgstr ""
 
-#: app/controllers/conferences_controller.rb:101
+#: app/controllers/conferences_controller.rb:102
 msgid "You have successfully unregistered from conference \"%s\""
 msgstr ""
 
-#: app/controllers/conferences_controller.rb:104
+#: app/controllers/conferences_controller.rb:105
 msgid "Could not unregister you from conference %s: %s"
 msgstr ""
 
-#: app/controllers/conferences_controller.rb:123
+#: app/controllers/conferences_controller.rb:124
 msgid "This conference is by invitation only."
 msgstr ""
 
-#: app/controllers/conferences_controller.rb:128
+#: app/controllers/conferences_controller.rb:129
 msgid ""
 "This conference does not currently accept changing your registration status "
 "- please visit its information page for more details"
 msgstr ""
 
-#: app/controllers/conferences_controller.rb:148
+#: app/controllers/conferences_controller.rb:149
 msgid "Invalid conference <em>%s</em> requested"
+msgstr ""
+
+#: app/controllers/conferences_controller.rb:162
+#: app/views/conferences/list.html.erb:2
+msgid "Upcoming conferences"
 msgstr ""
 
 #: app/helpers/certificates_adm_helper.rb:22
@@ -1576,66 +1587,66 @@ msgstr ""
 msgid "Are you sure you want to delete this line?"
 msgstr ""
 
-#: app/helpers/application_helper.rb:18
+#: app/helpers/application_helper.rb:19
 msgid "Log out"
 msgstr ""
 
-#: app/helpers/application_helper.rb:44
+#: app/helpers/application_helper.rb:45
 msgid "Up"
 msgstr ""
 
-#: app/helpers/application_helper.rb:48
+#: app/helpers/application_helper.rb:49
 msgid "Down"
 msgstr ""
 
-#: app/helpers/application_helper.rb:52 app/helpers/application_helper.rb:56
+#: app/helpers/application_helper.rb:53 app/helpers/application_helper.rb:57
 msgid "-"
 msgstr ""
 
-#: app/helpers/application_helper.rb:75
+#: app/helpers/application_helper.rb:76
 msgid "Please %s or %s if you are interested in attending"
 msgstr ""
 
-#: app/helpers/application_helper.rb:76
+#: app/helpers/application_helper.rb:77
 msgid "register"
 msgstr ""
 
-#: app/helpers/application_helper.rb:78
+#: app/helpers/application_helper.rb:79
 msgid "log in"
 msgstr ""
 
-#: app/helpers/application_helper.rb:117
+#: app/helpers/application_helper.rb:118
 #: app/views/attendance_adm/_list_by_attendances.html.erb:3
 msgid "Show"
 msgstr ""
 
-#: app/helpers/application_helper.rb:245
+#: app/helpers/application_helper.rb:248
 msgid "No items found"
 msgstr ""
 
-#: app/helpers/application_helper.rb:246
+#: app/helpers/application_helper.rb:249
 msgid "Displaying <b>1</b> item"
 msgstr ""
 
-#: app/helpers/application_helper.rb:247
+#: app/helpers/application_helper.rb:250
 msgid "Displaying <b>all %d</b> items"
 msgstr ""
 
-#: app/helpers/application_helper.rb:250
-msgid "Displaying items <b>%d&nbsp;-&nbsp;%d</b> of <b>%d</b> in total"
+#: app/helpers/application_helper.rb:253
+msgid "Displaying items <b>%d&ndash;%d</b> of <b>%d</b> in total"
 msgstr ""
 
-#: app/helpers/application_helper.rb:296
+#: app/helpers/application_helper.rb:300
 msgid "Field %s not defined for %s"
 msgstr ""
 
-#: app/helpers/application_helper.rb:331 app/helpers/sys_conf_adm_helper.rb:20
+#: app/helpers/application_helper.rb:335 app/helpers/sys_conf_adm_helper.rb:20
 #: app/views/certificates_adm/_test_form.html.erb:13
 #: app/views/sys_conf_adm/edit_table_field.html.erb:41
 msgid "Yes"
 msgstr ""
 
-#: app/helpers/application_helper.rb:331 app/helpers/sys_conf_adm_helper.rb:20
+#: app/helpers/application_helper.rb:335 app/helpers/sys_conf_adm_helper.rb:20
 #: app/views/certificates_adm/_test_form.html.erb:14
 #: app/views/sys_conf_adm/edit_table_field.html.erb:42
 msgid "No"
@@ -1650,83 +1661,108 @@ msgstr ""
 msgid "Photo for %s"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:16
+#: app/helpers/conferences_helper.rb:17
 msgid "Dates"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:38
-msgid "Registered"
-msgstr ""
-
 #: app/helpers/conferences_helper.rb:39
-msgid "Registration closed"
+msgid "Show only upcoming conferences"
 msgstr ""
 
 #: app/helpers/conferences_helper.rb:40
+msgid "Include past conferences"
+msgstr ""
+
+#: app/helpers/conferences_helper.rb:53
+msgid "Registered"
+msgstr ""
+
+#: app/helpers/conferences_helper.rb:54
+msgid "Registration closed"
+msgstr ""
+
+#: app/helpers/conferences_helper.rb:55
 msgid "By invitation only"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:45
+#: app/helpers/conferences_helper.rb:60
 msgid "Registered, proposal submitted"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:47
+#: app/helpers/conferences_helper.rb:62
 msgid "Unregister"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:52
+#: app/helpers/conferences_helper.rb:67
 msgid "Confirm: Do you want to unregister from \"%s\"? "
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:56
+#: app/helpers/conferences_helper.rb:71
 #: app/views/notification/welcome.text.plain.erb:20
 msgid "Sign up"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:67
+#: app/helpers/conferences_helper.rb:82
 msgid "Submit a proposal (%d days left)"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:76
+#: app/helpers/conferences_helper.rb:91 app/helpers/conferences_helper.rb:153
 msgid "Conference dates"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:77 app/helpers/conferences_helper.rb:81
-#: app/helpers/conferences_helper.rb:86
+#: app/helpers/conferences_helper.rb:92 app/helpers/conferences_helper.rb:96
+#: app/helpers/conferences_helper.rb:101
 msgid "Begins"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:78 app/helpers/conferences_helper.rb:82
-#: app/helpers/conferences_helper.rb:87
+#: app/helpers/conferences_helper.rb:93 app/helpers/conferences_helper.rb:97
+#: app/helpers/conferences_helper.rb:102
 msgid "Finishes"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:80
+#: app/helpers/conferences_helper.rb:95 app/helpers/conferences_helper.rb:156
 msgid "Registration period"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:81 app/helpers/conferences_helper.rb:86
+#: app/helpers/conferences_helper.rb:96 app/helpers/conferences_helper.rb:101
+#: app/helpers/conferences_helper.rb:156 app/helpers/conferences_helper.rb:160
 msgid "Open"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:85
+#: app/helpers/conferences_helper.rb:100
 msgid "Call for papers period"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:96
+#: app/helpers/conferences_helper.rb:111
 msgid "%d registered attendees"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:99
+#: app/helpers/conferences_helper.rb:114
 msgid "Edit conference"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:101
+#: app/helpers/conferences_helper.rb:116
 msgid "Edit timeslots"
 msgstr ""
 
-#: app/helpers/conferences_helper.rb:126
+#: app/helpers/conferences_helper.rb:141
 msgid "Invalid logo size specified: %s"
+msgstr ""
+
+#: app/helpers/conferences_helper.rb:160
+msgid "Call for papers\tperiod"
+msgstr ""
+
+#: app/helpers/conferences_helper.rb:173
+msgid "- Show all -"
+msgstr ""
+
+#: app/helpers/conferences_helper.rb:178
+msgid "Filter by %s"
+msgstr ""
+
+#: app/helpers/conferences_helper.rb:193
+msgid "Filtering by: "
 msgstr ""
 
 #: app/helpers/conferences_adm_helper.rb:24
@@ -2007,19 +2043,18 @@ msgstr "Attendance tracking"
 
 #: app/views/attendance_adm/att_by_tslot.html.erb:3
 msgid ""
-"Showing the %d registered attendances for the session started at <em>%s</"
-"em>, room <em>%s</em> (%s)"
+"Attendances for the session started at <em>%s</em>, room <em>%s</em> (%s)"
 msgstr ""
 
-#: app/views/attendance_adm/att_by_tslot.html.erb:7
+#: app/views/attendance_adm/att_by_tslot.html.erb:6
 msgid "No proposal defined"
 msgstr ""
 
-#: app/views/attendance_adm/att_by_tslot.html.erb:12
+#: app/views/attendance_adm/att_by_tslot.html.erb:13
 msgid "Attendee"
 msgstr ""
 
-#: app/views/attendance_adm/att_by_tslot.html.erb:13
+#: app/views/attendance_adm/att_by_tslot.html.erb:14
 msgid "Registration time"
 msgstr ""
 
@@ -3287,14 +3322,6 @@ msgstr ""
 
 #: app/views/conferences/show.html.erb:25
 msgid "Important dates"
-msgstr ""
-
-#: app/views/conferences/list.html.erb:3
-msgid "Hide past conferences"
-msgstr ""
-
-#: app/views/conferences/list.html.erb:6
-msgid "Show also past conferences"
 msgstr ""
 
 #: app/views/sys_conf_adm/list_table_fields.html.erb:1
