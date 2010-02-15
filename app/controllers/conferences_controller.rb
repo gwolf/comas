@@ -28,24 +28,23 @@ class ConferencesController < ApplicationController
                           Translation.for(item.name)]
       cond_k << '%s = ?' % catalog
       cond_v << value
-
     end
-    cond = [cond_k.join(' and '), cond_v]
+
+    if ! session[:conf_list_include_past]
+      cond_k << 'finishes >= ?'
+      cond_v << Date.today
+    end
+
     @rss_links[_('Conferences where %s') % 
                @cond.join(', ')] = rss_link_for(params) unless @cond.empty?
-               
 
+    cond = [cond_k.join(' and '), cond_v].flatten
     per_page = params[:per_page] || 5
-    @conferences = if session[:conf_list_include_past]
-                     Conference.paginate(:per_page => per_page,
-                                         :order => :begins,
-                                         :page => params[:page],
-                                         :conditions => cond)
-                   else
-                     Conference.upcoming.paginate(:page => params[:page],
-                                                  :per_page => per_page,
-                                                  :conditions => cond)
-                   end
+
+    @conferences = Conference.paginate(:per_page => per_page,
+                                       :order => :begins,
+                                       :page => params[:page],
+                                       :conditions => cond)
 
     respond_to do |fmt|
       fmt.html
