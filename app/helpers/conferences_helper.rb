@@ -148,22 +148,21 @@ module ConferencesHelper
   end
 
   def rss_description_for(conf)
-    res = [ RedCloth.new(conf.descr).to_html ]
-    res	<< ('<p><b>%s</b>: %s -	%s</p>' %
-            [_('Conference dates'), conf.begins, conf.finishes])
-
-    res << ('<p><b>%s</b>: %s - %s</p>' %
-            [_('Registration period'), conf.reg_open_date || _('Open'),
-            conf.last_reg_date])
+    res = RedCloth.new(conf.descr).to_html +
+      ('<p><b>%s</b>: %s -	%s</p>' %
+       [_('Conference dates'), conf.begins, conf.finishes]) +
+      ('<p><b>%s</b>: %s - %s</p>' %
+       [_('Registration period'), conf.reg_open_date || _('Open'),
+        conf.last_reg_date])
 
     res << ('<p><b>%s</b>: %s - %s</p>' %
 	    [_('Call for papers	period'), conf.cfp_open_date || _('Open'),
 	    conf.last_cfp_date]) if conf.has_cfp?
 
-    res = ['<table><tr><td>', link_for_logo(conf, 'thumb'),
-          '</td><td>', res, '</td></tr></table>'].flatten if conf.has_logo?
+    res = '<table><tr><td>%s</td><td>%s</td></tr></table>' %
+      [link_for_logo(conf, 'thumb'), res] if conf.has_logo?
 
-    res.join("\n")
+    res
   end
 
   private
