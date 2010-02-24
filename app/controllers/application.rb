@@ -22,6 +22,8 @@ class ApplicationController < ActionController::Base
   before_filter :head_and_foot_text
   before_filter :setup_flash
 
+  layout :choose_layout
+
   protected
   def get_user
     return false unless id = session[:user_id]
@@ -170,5 +172,26 @@ class ApplicationController < ActionController::Base
   # three message levels
   def setup_flash
     [:warning, :error, :notice].each {|level| flash[level] ||= []}
+  end
+
+  def choose_layout
+    # Default layout is Rails' default ('application') if SysConf does
+    # not instruct us otherwise
+    default = 'application'
+    layout_dir = File.join(RAILS_ROOT, 'app/views/layouts')
+
+    return default unless sys_layout = SysConf.value_for('system_layout')
+
+    matching = Dir.open(layout_dir).select {|lay|
+      lay[0..(sys_layout.size)] == '%s.' % sys_layout }
+    return sys_layout unless matching.empty?
+
+    # We are still just declaring the Application class. Not even
+    # the Flash is set up - We can only report this to the default
+    # logger.
+    RAILS_DEFAULT_LOGGER.warn _('Requested layout "%s" not found, ' +
+                                'in "%s" - using default layout') % 
+      [sys_layout, layout_dir]
+    return default
   end
 end
