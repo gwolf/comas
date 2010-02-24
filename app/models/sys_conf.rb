@@ -1,6 +1,49 @@
+# -*- coding: utf-8 -*-
 class SysConf < ActiveRecord::Base
   validates_presence_of :key
   validates_uniqueness_of :key
+
+  # Default entries are _not_ handled through gettext - This will fill
+  # up the DB at first system usage, before even determining the
+  # desired system languages
+  DefaultEntries = {
+    'accepted_prop_status_id' => {
+      :descr => ('The proposal status ID that means a proposal has been ' +
+                 'accepted. Leaving it empty means the status with highest ' +
+                 'available ID should be taken.'),
+      :value => ''},
+    'footer_text' => {
+      :descr => 'Text to display as your page footer',
+      :value => 'Powered by <a href="http://www.comas-code.org/">Comas</a>'},
+    'mail_from' => {
+      :descr => ('E-mail address that should be used for system-generated ' +
+                 'mails'),
+      :value => 'invalid_mail_address@lazy-comas-admin.org'},
+    'new_prop_status_id' => {
+      :descr => ('The proposal status ID a new proposal should be assigned. ' +
+                 'Leaving it empty means the status with lowest available ' +
+                 'ID should be taken.'),
+      :value => ''},
+    'personal_nametag_format' => {
+      :descr => 'The name of the certificate format to use as nametags ' +
+      'to be printed by the attendees',
+      :value => ''},
+    'system_layout' => {
+      :descr => ('Layout to use for presenting the Comas interface. ' +
+                 "Defaults to Rails' default value, 'application'. "),
+      :value => 'application'},
+    'title_text' => {
+      :descr => 'Title for your Comas pages',
+      :value => 'Comas - Conference Management System' },
+    'tolerance_post' => {
+      :descr => ('Default tolerance period after a timeslot has started ' +
+                 '(hh:mm:ss)'),
+      :value => '00:35:00'},
+    'tolerance_pre' => {
+      :descr => ('Default tolerance period before a timeslot has started ' +
+                 '(hh:mm:ss)'),
+      :value => '00:20:00'}
+  }
 
   # A lightweight caching system!  We set it to expire every 2 seconds
   # - It is basically made to avoid querying over and over for the
@@ -14,14 +57,20 @@ class SysConf < ActiveRecord::Base
 
   # Shorthand for find_by_key
   def self.value_for(key)
-    k = key.to_sym
+    k = key.to_s
     now = Time.now
 
     return @@cache[k][1] if @@cache[k] and @@cache[k].is_a?(Array) and
       @@cache[k][0] > now - 2.seconds
 
-    item = self.find_by_key(key.to_s) or return nil
-    @@cache[k] = [now, item.value]
-    @@cache[k][1]
+    if item = self.find_by_key(k)
+      @@cache[k] = [now, item.value]
+      @@cache[k][1]
+    elsif default = DefaultEntries[k]
+      self.new(:key => k, :descr => default[:descr],
+               :value => default[:value]).save and self.value_for(k)
+    else
+      nil
+    end
   end
 end
