@@ -8,3 +8,6 @@ config/database.yml
 config/mongrel_cluster.yml
 config/mail_settings.rb
 db/schema.rb
+public/javascripts/all.js
+!app/views/layouts/application.*
+app/views/layouts/*
