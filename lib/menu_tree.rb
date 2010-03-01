@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class MenuTree  < Array
   attr_accessor :menu_id, :entry_class, :elem_tag, :menu_tag
 
@@ -24,9 +25,7 @@ class MenuTree  < Array
   end
 
   def add(label, link=nil, tree=nil)
-    mi = MenuItem.new(label, link, tree)
-    self << mi
-    mi
+    self << MenuItem.new(label, link, tree)
   end
 
   private

@@ -130,12 +130,16 @@ class ApplicationController < ActionController::Base
   end
 
   def menu_subtree_for(tree, task)
-    menu = MenuTree.new(tree.map { |elem|
-                          link = url_for(:controller => task.sys_name, 
-                                         :action => elem[1]) if elem[1]
-                          sub = menu_subtree_for(elem[2], task) if elem[2]
-                          MenuItem.new(elem[0], link, sub)
-                        })
+    menu = MenuTree.new
+
+    tree.each do |elem|
+      link = url_for(:controller => task.sys_name, 
+                     :action => elem[1]) if elem[1]
+      sub = menu_subtree_for(elem[2], task) if elem[2]
+      menu.add(elem[0], link, sub)
+    end
+
+    menu
   end
 
   def set_lang
