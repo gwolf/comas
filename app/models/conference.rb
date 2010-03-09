@@ -221,6 +221,20 @@ class Conference < ActiveRecord::Base
     Date.today.between?(begins, finishes)
   end
 
+  # How is this conference categorized? If there are any catalogs defined
+  # as extra fields for conferences, the categories are the mapping of each
+  # of those that are selected for a given conference.
+  #
+  # Categories are handed back as a hash where keys are the field name (i.e.
+  # conference_type_id) and values are -again- a hash, with :id and :name
+  # keys
+  def categories
+    Hash[self.class.catalogs.map  { |fld, klass|
+           name = fld.gsub(/_id$/, '_name');
+           [fld, {:id => self.send(fld), :name => self.send(name)}] rescue nil
+         }.reject {|cat| cat.nil?}]
+  end
+
   # Do we have propsals submitted by a given user? Give back the list
   def proposals_by_person(person)
     person=Person.find_by_id(person) if person.is_a? Fixnum
