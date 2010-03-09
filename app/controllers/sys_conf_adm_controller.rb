@@ -102,7 +102,7 @@ class SysConfAdmController < Admin
         @model.connection.add_column(@table, field, type, :default => default)
       end
 
-      flash[:notice] << _("Successfully created %s field in %s") % 
+      notify_modified_structure _("Successfully created %s field in %s") % 
         [field, @table]
 
     rescue TypeError, NameError, ActiveRecord::StatementInvalid => err
@@ -123,7 +123,7 @@ class SysConfAdmController < Admin
 
     begin
       @model.connection.remove_column(@table, field)
-      flash[:notice] << _('Successfully removed field %s') % field
+      notify_modified_structure _('Successfully removed field %s') % field
     rescue Exception => err
       flash[:error] << _('Error removing specified field: %s') % err
     end
@@ -194,7 +194,7 @@ class SysConfAdmController < Admin
       end
     end
 
-    flash[:notice] << _("The field's values were correctly updated")
+    notify_modified_structure _("The field's values were correctly updated")
   end
 
   ############################################################
@@ -308,6 +308,7 @@ class SysConfAdmController < Admin
       @table = params[:table].to_sym
       raise NameError unless valid_tables.include? @table
       @model = @table.to_s.classify.constantize
+      @model.reset_column_information
     rescue NameError, NoMethodError
       flash[:error] << _('Invalid table requested')
       redirect_to '/'
@@ -360,9 +361,18 @@ class SysConfAdmController < Admin
 
   def touch_dynamic_classes
     # Just "touch" the dynamic classes, to generate their MagicModels
-    # to avoid catalogs not showing up due to NameErrors (see below)
+    # to avoid catalogs not showing up due to NameErrors. 
+    Person
     Conference
     Proposal
-    Person
+  end
+
+  def notify_modified_structure(msg)
+    flash[:notice] << msg
+    flash[:warning] << _('The database structure has been modified. ' +
+                         'Typically, when running on a production ' +
+                         'environment, you will want to restart Comas ' +
+                         'to ensure no instances are left assuming the ' +
+                         'previous state.')
   end
 end
