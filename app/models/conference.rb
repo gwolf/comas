@@ -108,7 +108,7 @@ class Conference < ActiveRecord::Base
   # call.
   def self.past(req={})
     self.find(:all,
-              { :conditions => ['begins < ?', Time.now],
+              { :conditions => ['begins <= ?', Time.now],
                 :order => 'begins desc'
               }.merge(req))
   end
