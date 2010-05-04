@@ -15,6 +15,7 @@ xml.rss(:version=>"2.0"){
                            :action => 'show', 
                            :short_name => conf.short_name,
                            :only_path => false))
+          xml.pubDate(conf.begins)
 	  conf.categories.each do |fld, data|
             categ_url = url_for(params.merge(:controller => 'conferences', :action => 'list', :format => 'html', fld => data[:id], :only_path => false))
             xml.category(data[:name], 'domain' => categ_url)
