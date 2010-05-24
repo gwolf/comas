@@ -1,60 +1,48 @@
-/* Comas base stylesheet */
+/* Comas-specific elements */
 /* */
-/* Graphical appearance based on a design by Jessika Camacho, done for */
-/* Instituto de Investigaciones Económicas (Economics Research */
-/* Institute - IIEc), UNAM, http://www.iiec.unam.mx/ */
-/* Laid out for use in Comas by Gunnar Wolf, IIEc UNAM. */
+/* This stylesheet has been created to separate the general appearance */
+/* theme from the Comas-specific elements, so you can personalize your */
+/* site's appearance with the minimum possible pain. */
 /* */
-/* This stylesheet, together with its required graphical elements, */
-/* might be freely used and redistributed, with or without modifications, */
-/* for any means. Using this stylesheet in no way expresses any relation or */
-/* endorsement by IIEc-UNAM. */
+/* This file should include only Comas-specific elements, and should be */
+/* directly includable within other themes. */
+/* */
+/* Of course, bear in mind the separation was done by a programmer, not by */
+/* a designer :-} */
 
-body {
-       margin:0px;
-       background-color:#FFF;
-       font-family: Verdana, "Trebuchet MS", Arial, sans-serif;
+/* General table elements for which we expect consistency */
+/* */
+/* In order to override table row coloring, use the same selectors */
+/* (.listing-head, .listing-even, .listing-odd) and place your CSS after */
+/* this one. */
+
+table { 
+    border-collapse: collapse;
+    margin: 0.5em;
 }
 
-/* General containers: */
-/* Page header and footer */
-#header { 
-          border-collapse: collapse;
-          width: 100%;
-          color: #face78;
-          background: #5c5c8b;
-          padding-bottom: 0.3em;
-          font-size: 150%;
-          padding-left: 1em;
+td, th {  
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    text-align: left;
 }
 
-
-#footer { clear: both;
-          min-height: 3em;
-          width:100%; 
-          border-top: solid 2px #A9A9C0;
-          background-color: #CBCBE1;
-          color: #999;
-          text-align: center;
-          font-size: 70%;
+.listing-head { 
+    background: #fff7e2;
 }
 
-#footer a { color: #aaa390; }
-
-/* Language selection */
-#locales {  
-          text-align: right;
-          margin-top: 2em;
-          margin-right: 3em;
-          font-size: 50%;
+.listing-even { 
+    background: #ccc5b0;
 }
 
-#locales a { 
-          color: #face78; 
+.listing-odd {  
+    background: #eee6d1;
 }
+
+/* Language selection links */
+#locales { font-size: 70%; }
 
 /* Login request */
-
 #loginreq {  
         background-color: #fff7e2;
         border: solid #face78 2px;
@@ -68,117 +56,19 @@ body {
         width: 60%;
 }
 
-/* Menu */
-
-#menu { float: left;
-        border: solid 2px #CBCBE1;
-        margin: 0.5em;
-        padding-bottom: 0.5em;
-        background-color: #EDEDF3; 
-        width: 19%;
-        vertical-align: top;
-        font-family:"Trebuchet MS", Tahoma, Verdana, Arial, sans-serif;
-        font-size: 80%;
-}
-
-#menu ul {  
-        padding-top: 3px;
-        padding-left: 10px;
-        padding-bottom: 0;
-        padding-right: 0;
-        margin: 0;
-}
-
-#menu li {  
-	display: block; 
-        padding-top:3px;
-	padding-bottom: 0px; 
-	padding-left: 0px; 
-	padding-right: 0px; 
-	margin: 0px;
-	list-style-type: none;
-}
-
-#menu a {  
-	color:#036;
-	text-decoration:none;
-	display:block;
-}
-
-#menu a:hover {  
-        color:#663300; 
-}
-
-
-#main { float: left;
-        background-repeat: repeat-y;
-        background-color:#FFF;
-	font-family: Verdana, "Trebuchet MS", Arial, sans-serif;
-	font-size:90%;
-        width: 78%;
-}
-
-#contents { 
-        background-color: #FFF;
-        padding: 1em;
-}
+/* Currently logged-in user's details */
 
 #logindata { 
-        background-color:#fff7e2;
-        padding-top: 0.5em;
-        padding-bottom: 0.5em;
         text-align: right;
         width: 100%;
         font-size: 60%;
         font-style: italic;
 }
 
-/* Currently logged-in user's photo */
-
 #myphoto {  
     float: right; 
     padding: 0.5em;
-    border: solid 1px #eee6d1; 
-    background-color: #eee6d1;
     clear: both;
-}
-
-/* Base layout elements */
-
-h1{
-    font-size:140%;
-    color:#663300;
-    font-weight:bold;
-}
-
-h2 { 
-     color:#663300;
-     font-size:125%;
-}
-
-h3 { 
-     color:#663300;
-     font-size:110%;
-}
-
-p { 
-    font-size:100%;
-    color:#000000;
-    text-indent:2em;
-    line-height:1.3em;
-}
-
-a, a:visited {
-    color:#663300;
-    text-decoration:underline;
-    font-style:normal;
-}
-
-a:hover {
-          color:#000033;
-          text-decoration:underline;
-          font-style:normal;
-          background-color:#FFF7E4;
 }
 
 #loginreq {  
@@ -187,6 +77,7 @@ a:hover {
     background-position: 0.5em 0.5em;
 }
 
+/* Errors, warnings, notices */
 #flash-error, #flash-warning, #flash-notice { 
        padding: 0.2em;
        margin-left: auto;
@@ -217,21 +108,9 @@ a:hover {
        border: solid #557 2px;
 }
 
-table { 
-    border-collapse: collapse;
-    border: solid #face78 2px;
-    margin: 0.5em;
-}
-
-td, th {  
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-    text-align: left;
-}
-
+/* Form and information elements */
 .info-row, .form-row { 
     padding: 0.1em;
-    border: solid 1px #eee;
 }
 
 .info-title, .show-prompt {  
@@ -262,22 +141,8 @@ td, th {
 }
 
 .checkbox {  
-    border: solid 1px #fff;
-    background: #eee;
     padding-left: 0.3em;
     padding-right: 0.3em;
-}
-
-.listing-head { 
-    background: #fff7e2;
-}
-
-.listing-even { 
-    background: #ccc5b0;
-}
-
-.listing-odd {  
-    background: #eee6d1;
 }
 
 .note { 
@@ -315,8 +180,6 @@ td, th {
 }
 
 .comas-checkbox {
-    border: solid 1px #fff;
-    background: #eee;
     padding-left: 0.3em;
     padding-right: 0.3em;
 }

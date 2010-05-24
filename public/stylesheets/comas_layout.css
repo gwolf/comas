@@ -1,0 +1,162 @@
+/* Comas base stylesheet */
+/* */
+/* Graphical appearance based on a design by Jessika Camacho, done for */
+/* Instituto de Investigaciones Económicas (Economics Research */
+/* Institute - IIEc), UNAM, http://www.iiec.unam.mx/ */
+/* Laid out for use in Comas by Gunnar Wolf, IIEc UNAM. */
+/* */
+/* This stylesheet, together with its required graphical elements, */
+/* might be freely used and redistributed, with or without modifications, */
+/* for any means. Using this stylesheet in no way expresses any relation or */
+/* endorsement by IIEc-UNAM. */
+
+body {
+       margin:0px;
+       background-color:#FFF;
+       font-family: Verdana, "Trebuchet MS", Arial, sans-serif;
+}
+
+/* Base layout elements */
+
+h1{
+    font-size:140%;
+    color:#663300;
+    font-weight:bold;
+}
+
+h2 { 
+     color:#663300;
+     font-size:125%;
+}
+
+h3 { 
+     color:#663300;
+     font-size:110%;
+}
+
+p { 
+    font-size:100%;
+    color:#000000;
+    text-indent:2em;
+    line-height:1.3em;
+}
+
+a, a:visited {
+    color:#663300;
+    text-decoration:underline;
+    font-style:normal;
+}
+
+a:hover {
+          color:#000033;
+          text-decoration:underline;
+          font-style:normal;
+          background-color:#FFF7E4;
+}
+
+table { 
+    border: solid #face78 2px;
+}
+
+/* General containers: */
+/* Page header and footer */
+#header { 
+          border-collapse: collapse;
+          width: 100%;
+          color: #face78;
+          background: #5c5c8b;
+          padding-bottom: 0.3em;
+          font-size: 150%;
+          padding-left: 1em;
+}
+
+#footer { clear: both;
+          min-height: 3em;
+          width:100%; 
+          border-top: solid 2px #A9A9C0;
+          background-color: #CBCBE1;
+          color: #999;
+          text-align: center;
+          font-size: 70%;
+}
+
+#footer a { color: #aaa390; }
+
+/* Language selection */
+#locales {  
+          text-align: right;
+          margin-top: 2em;
+          margin-right: 3em;
+}
+
+#locales a { 
+          color: #face78; 
+}
+
+/* Menu */
+
+#menu { float: left;
+        border: solid 2px #CBCBE1;
+        margin: 0.5em;
+        padding-bottom: 0.5em;
+        background-color: #EDEDF3; 
+        width: 19%;
+        vertical-align: top;
+        font-family:"Trebuchet MS", Tahoma, Verdana, Arial, sans-serif;
+        font-size: 80%;
+}
+
+#menu ul {  
+        padding-top: 3px;
+        padding-left: 10px;
+        padding-bottom: 0;
+        padding-right: 0;
+        margin: 0;
+}
+
+#menu li {  
+	display: block; 
+        padding-top:3px;
+	padding-bottom: 0px; 
+	padding-left: 0px; 
+	padding-right: 0px; 
+	margin: 0px;
+	list-style-type: none;
+}
+
+#menu a {  
+	color:#036;
+	text-decoration:none;
+	display:block;
+}
+
+#menu a:hover {  
+        color:#663300; 
+}
+
+
+#main { float: left;
+        background-repeat: repeat-y;
+        background-color:#FFF;
+	font-family: Verdana, "Trebuchet MS", Arial, sans-serif;
+	font-size:90%;
+        width: 78%;
+}
+
+#contents { 
+        background-color: #FFF;
+        padding: 1em;
+}
+
+/* Currently logged-in user's details */
+
+#logindata { 
+        background-color:#fff7e2;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+}
+
+#myphoto {  
+    border: solid 1px #eee6d1; 
+    background-color: #eee6d1;
+}
