@@ -57,10 +57,17 @@ module ApplicationHelper
     image_tag 'trash.png', :border => 0, :alt => _('-'), :size => '16x16'
   end
 
+  # This function disappeared from gettext_rails ~2.1 - Reintroduce it
+  # (a bit simplified) here...
+  def available_locales
+    (Dir.glob(File.join(RAILS_ROOT, 'locale/[a-z]*')).map { |path| 
+       File.basename(path)} << 'en').uniq.sort
+  end
+
   def locale_links
     available_locales.map { |loc|
       lang = Translation.for(Language.for_locale(loc).qualified_name)
-      '[%s]' % link_to_unless(normalized_locale == loc, lang, :lang => loc)
+      '[%s]' % link_to_unless(GetText.locale.to_s == loc, lang, :lang => loc)
     }.join(' ')
   end
 

@@ -1,3 +1,8 @@
+# This looks like a funny NOOP, yes, but... seems to be needed,
+# otherwise GetText freaks out :-/
+include GetText
+_('')
+
 module PdfDimensions
   include GetText
   Orientations = {'portrait' => _('Portrait'), 'landscape' => _('Landscape')}

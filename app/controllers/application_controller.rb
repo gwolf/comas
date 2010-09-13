@@ -1,10 +1,15 @@
+# -*- coding: utf-8 -*-
 # Filters added to this controller apply to all controllers in the application.
 # Likewise, all the methods added will be available for all controllers.
 require 'pseudo_gettext'
 
 class ApplicationController < ActionController::Base
-  init_gettext 'comas'
+  include GetTextRails
+  protect_from_forgery # See ActionController::RequestForgeryProtection for details
   exempt_from_layout :rxml
+
+  before_init_gettext :set_lang
+  init_gettext 'comas'
 
   # Load the Rails Date Kit helpers
   # (http://www.methods.co.nz/rails_date_kit/rails_date_kit.html)
@@ -17,7 +22,6 @@ class ApplicationController < ActionController::Base
   before_filter :require_user_for_non_public_areas
   before_filter :check_auth
   before_filter :generate_menu
-  before_filter :set_lang
   before_filter :set_pagination_labels
   before_filter :head_and_foot_text
   before_filter :setup_flash
@@ -143,8 +147,19 @@ class ApplicationController < ActionController::Base
   end
 
   def set_lang
-    return true unless lang = params[:lang]
-    cookies[:lang] = {:value => lang, :expires => Time.now+1.day, :path => '/'}
+    lang = cookies[:lang]
+    set_lang = params[:lang]
+
+    # No language specified so far? Go for the defaults
+    if (lang.nil? or lang.empty?)
+      set_lang = SysConf.value_for('default_lang') || 'en'
+    end
+
+    if (set_lang and set_lang != lang)
+      cookies[:lang] = {:value => set_lang, 
+        :expires => Time.now+1.day,
+        :path => '/'}
+    end
   end
 
   def set_pagination_labels

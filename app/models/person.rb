@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class Person < ActiveRecord::Base
   acts_as_magic_model
   has_one :photo, :dependent => :destroy
@@ -220,7 +221,7 @@ class Person < ActiveRecord::Base
     end
   end
 
-  private
+  protected
   def pw_salt
     self[:pw_salt]
   end

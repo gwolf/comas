@@ -11,8 +11,12 @@
 =end
 
 begin
-  require 'gettext/rails'
-rescue MissingSourceFile
+  require 'gettext_rails'
+rescue LoadError
+  begin
+    require 'gettext/rails'
+  rescue LoadError
+  end
 end
 
 unless defined? GetText
