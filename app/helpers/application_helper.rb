@@ -300,6 +300,7 @@ module ApplicationHelper
             @object.connection.tables.include?(field) and
             model = field.camelcase.singularize.constantize
           # HABTM relation
+          options[:order_by] ||= :name
           return checkbox_group(field, model.find(:all), options)
         else
           # Don't know how to handle this
@@ -382,11 +383,12 @@ module ApplicationHelper
     def checkbox_group(field, choices, options={})
       title = options.delete(:title) || label_for_field(@object, field)
       note = options.delete(:note)
+      options[:order_by] ||= :id
 
       fieldname = "#{@object_name}[#{field.singularize}_ids][]"
 
       with_format(title,
-                  choices.map { |item|
+                  choices.sort_by(&options[:order_by]).map { |item|
                     res = []
                     res << '<span'
                     res << "class=\"#{options[:class]}\"" if options[:class]
