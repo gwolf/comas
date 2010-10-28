@@ -9,7 +9,8 @@ class AttendanceAdmController < Admin
   before_filter :get_conference, :only => [:list, :for_person,
                                            :certificates_by_attendances,
                                            :certificate_for_person,
-                                           :att_by_tslot
+                                           :att_by_tslot,
+                                           :xls_list
                                           ]
 
   # Prompts the user which session to use for taking attendance. By
@@ -59,6 +60,29 @@ class AttendanceAdmController < Admin
   def list
     @other_confs = Conference.past_with_timeslots
     @totals = Attendance.totalized_for_conference(@conference) if @conference
+  end
+
+  # Generate a XLS listing with all the attendances for a given conference
+  def xls_list
+    xls = SimpleXLS.new
+    columns = [_('Timeslot'), _('Room'), _('Name'), _('Attendance time')]
+
+    xls.add_header [_('Attendances listing for %s') % @conference.name]
+    xls.add_header columns
+
+    atts = {}
+    ts = @conference.timeslots.sort_by {|ts| ts.start_time}
+    ts.each { |t| atts[t.id] = t.attendances.sort_by {|a| a.person.name } }
+
+    ts.map do |ts|
+      atts[ts.id].map do |att|
+        xls.add_row(ts.start_time.to_s(:listing), ts.room.name,
+                    att.person.name, att.created_at.to_s(:time_only))
+      end
+    end
+
+    send_data(xls.to_s, :type => 'application/vnd.ms-excel',
+              :filename => '%s_list.xls' % @conference.short_name)
   end
 
   # Produces the attendance detail for a given timeslot 

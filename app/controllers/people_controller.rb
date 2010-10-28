@@ -166,8 +166,9 @@ class PeopleController < ApplicationController
     return true unless request.post?
 
     @user.transaction do
-      process_photo(@user, data) if data = params[:person].delete(:photo) and
-        !data.is_a? String
+      if data = params[:person].delete(:photo) and !data.is_a? String
+        process_photo(@user, data) 
+      end
 
       if @user.update_attributes(params[:person])
         redirect_to :action => 'account'

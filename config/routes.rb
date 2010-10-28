@@ -46,6 +46,9 @@ ActionController::Routing::Routes.draw do |map|
   map.connect('attendance_adm/list/:conference_id',
               :controller => 'attendance_adm',
               :action => 'list')
+  map.connect('attendance_adm/list/:conference_id.xls',
+              :controller => 'attendance_adm',
+              :action => 'xls_list')
   map.connect('attendance_adm/att_by_tslot/:conference_id/:timeslot_id',
               :controller => 'attendance_adm',
               :action => 'att_by_tslot')
