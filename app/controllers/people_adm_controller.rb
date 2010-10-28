@@ -46,9 +46,16 @@ class PeopleAdmController < Admin
   end
 
   def create
+    person_data = params[:person]
+    conferences = person_data.delete(:conference_ids)
+
     @person = Person.new(params[:person])
     if @person.save
       flash[:notice] << _('New attendee successfully registered')
+      if conferences and !conferences.empty?
+        @person.conference_ids = conferences
+        flash[:notice] << _('Requested conferences registered')
+      end
       redirect_to :action => 'list'
     else
       flash[:error] << [_("Error registering requested attendee: "),
