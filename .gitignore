@@ -1,6 +1,7 @@
 *~
 lib/strings_in_db.rb
 log/*.log
+log/*.gz
 tmp/**/*
 doc/api
 doc/app
