@@ -72,6 +72,11 @@ rescue MissingSourceFile
 end
 
 # Include your application configuration below
+require 'locale'
+require 'locale_rails'
+require 'gettext'
+require 'gettext_activerecord'
+require 'gettext_rails'
 require 'classinherit'
 require 'barby'
 require 'barby/outputter/prawn_outputter'

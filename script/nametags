@@ -1,4 +1,5 @@
-#!/usr/bin/ruby 
+#!/usr/bin/env script/runner
+# -*- coding: utf-8 -*-
 #
 # = Nametags printing
 #
@@ -25,7 +26,6 @@
 #   clean.
 
 require File.dirname(__FILE__) + '/../config/boot'
-require 'environment'
 
 require 'gettext'
 require 'libglade2'

@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   exempt_from_layout :rxml
 
   before_init_gettext :set_lang
-  init_gettext 'comas'
+  bindtextdomain 'comas'
 
   # Load the Rails Date Kit helpers
   # (http://www.methods.co.nz/rails_date_kit/rails_date_kit.html)
