@@ -49,9 +49,17 @@ class NametagsGlade
     @glade = GladeXML.new(path_or_data, root, domain, 
                           localedir, flag) {|handler| method(handler)}
 
-    setup_conferences_list(@glade["conference_combobox"])
-    setup_people_list(@glade["peoplelist_treeview"])
-    setup_formats_list(@glade["format_combobox"])
+    begin
+      setup_conferences_list(@glade["conference_combobox"])
+      setup_people_list(@glade["peoplelist_treeview"])
+      setup_formats_list(@glade["format_combobox"])
+    rescue PGError
+      @err_dialog = @glade['conn_error_dialog']
+      @err_dialog.show_all
+      @err_dialog.signal_connect("destroy") { Gtk.main_quit }
+      Gtk.main
+      exit 1
+    end
   end
 
   # Show the main window
@@ -95,6 +103,10 @@ class NametagsGlade
     confs.active_iter ||= confs.model.iter_first
 
     populate_people(people.model, confs.active_iter[1])
+  end
+
+  def on_conn_error_dialog_button_clicked(button)
+    Gtk.main_quit
   end
 
   ############################################################
