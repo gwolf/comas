@@ -3,6 +3,13 @@
 # Specifies gem version of Rails to use when vendor/rails is not present
 RAILS_GEM_VERSION = '2.3.5' unless defined? RAILS_GEM_VERSION
 
+# Some modules require to be loaded before Rails is initialized in
+# order for the production environment not to break
+require 'gettext'
+require 'prawn'
+require 'prawn/measurement_extensions'
+require 'lib/pdf_dimensions'
+
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 
@@ -74,14 +81,11 @@ end
 # Include your application configuration below
 require 'locale'
 require 'locale_rails'
-require 'gettext'
 require 'gettext_activerecord'
 require 'gettext_rails'
 require 'classinherit'
 require 'barby'
 require 'barby/outputter/prawn_outputter'
-require 'prawn'
-require 'prawn/measurement_extensions'
 require 'pseudo_gettext'
 require 'redcloth'
 require 'RMagick'
