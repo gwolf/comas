@@ -235,7 +235,7 @@ class ProposalsController < ApplicationController
     unless @person = Person.find_by_login(params[:login])
       flash[:error] << _('The specified login is not valid or does not match ' +
                          'any valid users')
-      redirect_to ( :action => 'authors', :id => @proposal)
+      redirect_to :action => 'authors', :id => @proposal
       return false
     end
   end
