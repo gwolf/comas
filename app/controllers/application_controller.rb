@@ -9,7 +9,6 @@ class ApplicationController < ActionController::Base
   exempt_from_layout :rxml
 
   before_init_gettext :set_lang
-  bindtextdomain 'comas'
 
   # Load the Rails Date Kit helpers
   # (http://www.methods.co.nz/rails_date_kit/rails_date_kit.html)
@@ -140,13 +139,14 @@ class ApplicationController < ActionController::Base
       link = url_for(:controller => task.sys_name, 
                      :action => elem[1]) if elem[1]
       sub = menu_subtree_for(elem[2], task) if elem[2]
-      menu.add(elem[0], link, sub)
+      menu.add(_(elem[0]), link, sub)
     end
 
     menu
   end
 
   def set_lang
+    bindtextdomain 'comas'
     lang = cookies[:lang]
     set_lang = params[:lang]
 
