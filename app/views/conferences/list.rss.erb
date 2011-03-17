@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title><%= @title %></title>
+    <link><%= url_for(params.merge(:controller => 'conferences',
+                                  :action => 'list',
+                                  :format => 'html',
+                                  :only_path => false)) %></link>
+    <description><%= @rss_descr %></description>
+    <% @conferences.each do |conf| %>
+      <item>
+	<title><%= conf.name %></title>
+	<description><%= h(rss_description_for(conf)) %></description>
+	<link><%= url_for(:controller => 'conferences',
+                          :action => 'show', 
+                          :short_name => conf.short_name,
+                          :only_path => false) %></link>
+	<guid><%= url_for(:controller => 'conferences',
+	                  :action => 'show',
+	                  :short_name => conf.id,
+	                  :only_path => false) %></guid>
+	<pubDate><%= conf.begins %></pubDate>
+	<% conf.categories.each do |fld, data| %>
+	  <% categ_url =  url_for(params.merge(:controller => 'conferences', :action => 'list', :format => 'html', fld => data[:id], :only_path => false)) %>
+	  <category domain="<%= categ_url %>"><%= data[:name] %></category>
+	<% end %>
+      </item>
+    <% end %>
+  </channel>
+</rss>
