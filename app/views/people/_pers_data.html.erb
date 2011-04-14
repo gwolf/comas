@@ -26,8 +26,8 @@
                     'public personal profile, and during your interfacing ' +
                     'with the system.')
      if person.has_photo?
-       photo_note << '<br/>' << _('You have already uploaded your ' +
-                     'photo to the system. If you upload a new one, ' +
+       photo_note = photo_note + '<br/>' + _('You have already uploaded ' +
+                     'your photo to the system. If you upload a new one, ' +
                      'the current will be overwritten.')
      end
   %>
