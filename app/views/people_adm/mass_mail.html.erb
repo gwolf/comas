@@ -6,6 +6,14 @@
 <p><%= _('There are %d people who have accepted to receive general ' +
          'mails about our conferences. ') % @recipients.size %></p>
 
+<p><%= _('You can also export the list of attendees interested in ' +
+       'receiving further information and perform the mailing from a ' +
+       'separate application: %s, %s.') % [
+         link_to(_('Full listing (including names)'),
+                 :action => 'mailable_list', :mode => 'full'),
+         link_to(_('Mail addresses only'),
+                 :action => 'mailable_list', :mode => 'short')] %></p>
+
 <% form_tag do |f| %>
   <%= form_row _('Title'), text_field_tag(:title, '', :size => 60) %>
   <%= form_row _('Mail body'), 

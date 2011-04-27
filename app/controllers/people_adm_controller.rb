@@ -161,6 +161,20 @@ class PeopleAdmController < Admin
     redirect_to :action => 'list'
   end
 
+  def mailable_list
+    recipients = Person.mailable
+    if params[:mode] == 'full'
+      text = recipients.map {|rcpt| rcpt.name_and_email}
+    else
+      text = recipients.map {|rcpt| rcpt.email}
+    end
+
+    send_data(text.uniq.sort.join("\n"),
+              :type => 'text/plain',
+              :disposition => 'attachment',
+              :filename => 'mailable_list.txt')
+  end
+
   private
   def get_person
     return true if params[:id] and @person = Person.find_by_id(params[:id])
