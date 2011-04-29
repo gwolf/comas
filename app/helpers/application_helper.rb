@@ -127,10 +127,10 @@ module ApplicationHelper
     post = '</div>'
 
     if block
-      concat pre, block.binding
-      concat data, block.binding
+      concat pre
+      concat data
       yield
-      concat post, block.binding
+      concat post
     else
       pre << data << post
     end
@@ -144,18 +144,18 @@ module ApplicationHelper
 
   def table(&block)
     @table_rows = 0
-    concat '<table>', block.binding
+    concat '<table>'
     yield
-    concat '</table>', block.binding
+    concat '</table>'
   end
 
   def table_tag; @table_rows=0; '<table>'; end
   def end_table_tag; '</table>'; end
 
   def table_head_row (&block)
-    concat '<tr class="listing-head">', block.binding
+    concat '<tr class="listing-head">'
     yield
-    concat '</tr>', block.binding
+    concat '</tr>'
   end
 
   def table_head_row_tag; '<tr class="listing-head">'; end
@@ -174,10 +174,9 @@ module ApplicationHelper
   def table_row(&block)
     @table_rows += 1
     concat('<tr class="%s">' %
-           list_row_classes[@table_rows % list_row_classes.size],
-           block.binding)
+           list_row_classes[@table_rows % list_row_classes.size])
     yield
-    concat '</tr>', block.binding
+    concat '</tr>'
   end
 
   def table_col(*items)
