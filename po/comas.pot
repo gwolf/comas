@@ -2522,6 +2522,10 @@ msgstr ""
 msgid "Create timeslot"
 msgstr ""
 
+#: app/views/conferences_adm/_conferences_ckbox_table.html.erb:2
+msgid "No data matches requested criteria"
+msgstr ""
+
 #: app/views/conferences_adm/_form.html.erb:5
 msgid "Full name for the conference"
 msgstr ""

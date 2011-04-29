@@ -2501,6 +2501,10 @@ msgstr "Proporcione la tolerancia en un formato <em>hh:mm:ss</em>. Si no la espe
 msgid "Create timeslot"
 msgstr "Crear sesión"
 
+#: app/views/conferences_adm/_conferences_ckbox_table.html.erb:2
+msgid "No data matches requested criteria"
+msgstr "Ningún registro satisface el criterio especificado"
+
 #: app/views/conferences_adm/_form.html.erb:5
 msgid "Full name for the conference"
 msgstr "Nombre completo de la actividad"
