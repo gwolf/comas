@@ -2214,7 +2214,7 @@ msgid "Mail addresses only"
 msgstr "Únicamente las direcciones de correo"
 
 #: app/views/people_adm/mass_mail.html.erb:18
-#: app/views/conferences_adm/mail_attendees.html.erb:11
+#: app/views/conferences_adm/mail_attendees.html.erb:18
 #: app/views/people/proposals.html.erb:14
 #: app/views/people/profile.html.erb:21
 #: app/views/proposals/by_author.html.erb:15
@@ -2223,17 +2223,17 @@ msgid "Title"
 msgstr "Título"
 
 #: app/views/people_adm/mass_mail.html.erb:19
-#: app/views/conferences_adm/mail_attendees.html.erb:12
+#: app/views/conferences_adm/mail_attendees.html.erb:19
 msgid "Mail body"
 msgstr "Cuerpo del correo"
 
 #: app/views/people_adm/mass_mail.html.erb:21
-#: app/views/conferences_adm/mail_attendees.html.erb:14
+#: app/views/conferences_adm/mail_attendees.html.erb:21
 msgid "Please enter the body for the mass-mailing you will send. General information regarding this site will be automatically added."
 msgstr "Especifique el cuerpo del envío masivo que desea realizar. La información general respecto a este sitio será agregada automáticamente."
 
 #: app/views/people_adm/mass_mail.html.erb:24
-#: app/views/conferences_adm/mail_attendees.html.erb:17
+#: app/views/conferences_adm/mail_attendees.html.erb:24
 msgid "Send mail"
 msgstr "Enviar correo"
 
@@ -2465,9 +2465,13 @@ msgstr ""
 msgid "Mail a conference's registered attendees"
 msgstr "Enviar correo a los asistentes registrados de una actividad"
 
-#: app/views/conferences_adm/mail_attendees.html.erb:7
+#: app/views/conferences_adm/mail_attendees.html.erb:6
 msgid "Choose which conferences' attendees to mail"
 msgstr "Elija a los asistentes de cuáles actividades enviar el correo"
+
+#: app/views/conferences_adm/mail_attendees.html.erb:8
+msgid "Enter the name (or part of it) of the conferences to restrict the listed elements."
+msgstr "Proporcione el nombre (o parte del mismo) de la actividades a las cuales restringir los elementos presentados."
 
 #: app/views/conferences_adm/people_list.html.erb:1
 msgid "People registered for <em>%s</em>"

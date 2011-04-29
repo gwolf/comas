@@ -2200,7 +2200,7 @@ msgid "Mail addresses only"
 msgstr ""
 
 #: app/views/people_adm/mass_mail.html.erb:18
-#: app/views/conferences_adm/mail_attendees.html.erb:11
+#: app/views/conferences_adm/mail_attendees.html.erb:18
 #: app/views/people/proposals.html.erb:14
 #: app/views/people/profile.html.erb:21
 #: app/views/proposals/by_author.html.erb:15
@@ -2209,17 +2209,17 @@ msgid "Title"
 msgstr ""
 
 #: app/views/people_adm/mass_mail.html.erb:18
-#: app/views/conferences_adm/mail_attendees.html.erb:12
+#: app/views/conferences_adm/mail_attendees.html.erb:19
 msgid "Mail body"
 msgstr ""
 
 #: app/views/people_adm/mass_mail.html.erb:21
-#: app/views/conferences_adm/mail_attendees.html.erb:14
+#: app/views/conferences_adm/mail_attendees.html.erb:21
 msgid "Please enter the body for the mass-mailing you will send. General information regarding this site will be automatically added."
 msgstr ""
 
 #: app/views/people_adm/mass_mail.html.erb:24
-#: app/views/conferences_adm/mail_attendees.html.erb:17
+#: app/views/conferences_adm/mail_attendees.html.erb:24
 msgid "Send mail"
 msgstr ""
 
@@ -2384,8 +2384,12 @@ msgstr ""
 msgid "Mail a conference's registered attendees"
 msgstr ""
 
-#: app/views/conferences_adm/mail_attendees.html.erb:7
+#: app/views/conferences_adm/mail_attendees.html.erb:6
 msgid "Choose which conferences' attendees to mail"
+msgstr ""
+
+#: app/views/conferences_adm/mail_attendees.html.erb:8
+msgid "Enter the name (or part of it) of the conferences to restrict the listed elements."
 msgstr ""
 
 #: app/views/conferences_adm/people_list.html.erb:1

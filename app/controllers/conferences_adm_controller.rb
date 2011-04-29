@@ -1,6 +1,6 @@
 class ConferencesAdmController < Admin
   before_filter :get_conference, :except => [:index, :list, :new, :create,
-                                             :mail_attendees]
+                                             :mail_attendees, :confs_by_name]
   helper :conferences
   Menu = [[_('Registered conferences'), :list],
           [_('Register a new conference'), :new],
@@ -160,6 +160,16 @@ class ConferencesAdmController < Admin
       flash[:notice] << _('The %d requested mails have been sent.')%rcpts.size
     end
     redirect_to :action => 'list'
+  end
+
+  def confs_by_name
+    if ! request.xhr?
+      redirect_to :action => 'mail_attendees'
+      return false
+    end
+    qry = params[:conf_name] || ''
+    @conferences = Conference.all(:conditions => ['name ~* ?', qry])
+    render :partial => 'conferences_ckbox_table'
   end
 
   ############################################################
