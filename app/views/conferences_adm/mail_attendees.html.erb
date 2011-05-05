@@ -14,7 +14,8 @@
 
 <% form_tag do |f| %>
   <div id="conf-list">
-  <%= render :partial => 'conferences_ckbox_table' %>
+    <%= render :partial => 'conferences_ckbox_table' %>
+  </div>
   <%= form_row _('Title'), text_field_tag(:title, '', :size => 60) %>
   <%= form_row _('Mail body'), 
                text_area_tag(:body, '', :size => '60x10'),
