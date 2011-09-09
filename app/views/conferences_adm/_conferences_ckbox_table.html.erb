@@ -1,0 +1,18 @@
+<% if @conferences.empty? %>
+  <h3><%= _('No data matches requested criteria') %></h3>
+<% else %>
+  <% table do %>
+    <% table_head_row do %>
+      <th></th>
+      <th><%= _('Conference|Name') %></th>
+      <th><%= _('Conference|Begins') %></th>
+    <% end %>
+    <% @conferences.each do |conf| %>
+      <% table_row do %>
+        <%= table_col check_box_tag('dest_conf_ids[]', conf.id) %>
+        <%= table_col conf.name %>
+        <%= table_col conf.begins %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

@@ -2200,8 +2200,21 @@ msgstr "Tome en cuenta que los correos masivos pueden ser vistos como <b>muy poc
 msgid "There are %d people who have accepted to receive general mails about our conferences. "
 msgstr "Hay %d personas que han aceptado recibir correos generales para nuestras actividades."
 
-#: app/views/people_adm/mass_mail.html.erb:10
-#: app/views/conferences_adm/mail_attendees.html.erb:11
+#: app/views/people_adm/mass_mail.html.erb:9
+msgid ""
+"You can also export the list of attendees interested in receiving further information and perform the mailing from a separate application: %s, %s."
+msgstr "También puede exportar la lista de participantes interesados en recibir información y efectuar el envío de correos desde otra aplicación: %s, %s."
+
+# app/views/people_adm/mass_mail.html.erb:12
+msgid "Full listing (including names)"
+msgstr "Listado completo (incluyendo nombres)"
+
+# app/views/people_adm/mass_mail.html.erb:14
+msgid "Mail addresses only"
+msgstr "Únicamente las direcciones de correo"
+
+#: app/views/people_adm/mass_mail.html.erb:18
+#: app/views/conferences_adm/mail_attendees.html.erb:18
 #: app/views/people/proposals.html.erb:14
 #: app/views/people/profile.html.erb:21
 #: app/views/proposals/by_author.html.erb:15
@@ -2209,18 +2222,18 @@ msgstr "Hay %d personas que han aceptado recibir correos generales para nuestras
 msgid "Title"
 msgstr "Título"
 
-#: app/views/people_adm/mass_mail.html.erb:11
-#: app/views/conferences_adm/mail_attendees.html.erb:12
+#: app/views/people_adm/mass_mail.html.erb:19
+#: app/views/conferences_adm/mail_attendees.html.erb:19
 msgid "Mail body"
 msgstr "Cuerpo del correo"
 
-#: app/views/people_adm/mass_mail.html.erb:13
-#: app/views/conferences_adm/mail_attendees.html.erb:14
+#: app/views/people_adm/mass_mail.html.erb:21
+#: app/views/conferences_adm/mail_attendees.html.erb:21
 msgid "Please enter the body for the mass-mailing you will send. General information regarding this site will be automatically added."
 msgstr "Especifique el cuerpo del envío masivo que desea realizar. La información general respecto a este sitio será agregada automáticamente."
 
-#: app/views/people_adm/mass_mail.html.erb:16
-#: app/views/conferences_adm/mail_attendees.html.erb:17
+#: app/views/people_adm/mass_mail.html.erb:24
+#: app/views/conferences_adm/mail_attendees.html.erb:24
 msgid "Send mail"
 msgstr "Enviar correo"
 
@@ -2452,9 +2465,13 @@ msgstr ""
 msgid "Mail a conference's registered attendees"
 msgstr "Enviar correo a los asistentes registrados de una actividad"
 
-#: app/views/conferences_adm/mail_attendees.html.erb:7
+#: app/views/conferences_adm/mail_attendees.html.erb:6
 msgid "Choose which conferences' attendees to mail"
 msgstr "Elija a los asistentes de cuáles actividades enviar el correo"
+
+#: app/views/conferences_adm/mail_attendees.html.erb:8
+msgid "Enter the name (or part of it) of the conferences to restrict the listed elements."
+msgstr "Proporcione el nombre (o parte del mismo) de la actividades a las cuales restringir los elementos presentados."
 
 #: app/views/conferences_adm/people_list.html.erb:1
 msgid "People registered for <em>%s</em>"
@@ -2483,6 +2500,10 @@ msgstr "Proporcione la tolerancia en un formato <em>hh:mm:ss</em>. Si no la espe
 #: app/views/conferences_adm/timeslots.html.erb:35
 msgid "Create timeslot"
 msgstr "Crear sesión"
+
+#: app/views/conferences_adm/_conferences_ckbox_table.html.erb:2
+msgid "No data matches requested criteria"
+msgstr "Ningún registro satisface el criterio especificado"
 
 #: app/views/conferences_adm/_form.html.erb:5
 msgid "Full name for the conference"
