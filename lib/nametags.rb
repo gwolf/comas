@@ -23,7 +23,11 @@
 #   (i.e. in UTF8), resulting in garbled results whenever they are not 7-bit 
 #   clean.
 
-require 'libglade2'
+begin
+  require 'libglade2'
+rescue MissingSourceFile
+  require 'gtk2'
+end
 require 'singleton'
 
 # The class responsible for starting up the aplication
@@ -43,11 +47,18 @@ class NametagsGlade
   attr :glade
 
   def initialize(path_or_data, root = nil, domain = 'comas', 
-                 localedir = 'locale', flag = GladeXML::FILE)
+                 localedir = 'locale')
     bindtextdomain(domain, localedir, nil, "UTF-8")
 
-    @glade = GladeXML.new(path_or_data, root, domain, 
-                          localedir, flag) {|handler| method(handler)}
+    begin
+      @glade = GladeXML.new(path_or_data, root, domain,
+                            localedir, GladeXML::FILE) {|handler| method(handler)}
+    rescue NameError
+      @glade = Gtk::Builder.new
+      @glade.add_from_file(path_or_data.gsub(/.glade$/, '.xml'))
+      @glade.set_translation_domain(domain)
+      @glade.connect_signals {|handler| method(handler)}
+    end
 
     begin
       setup_conferences_list(@glade["conference_combobox"])

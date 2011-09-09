@@ -1,0 +1,18 @@
+Calling .glade files directly has been deprecated, and libglade is no
+longer available in newer Ruby releases.
+
+Comas is often used in Debian Lenny (5.0) and Squeeze (6.0) systems,
+so -at least for some time- we will continue to support systems both
+with libglade and Gtk::Builder, via an ugly exception-catching
+mechanism (see lib/nametags.rb for details).
+
+This directory holds the UI definition. Both files nametags.glade and
+nametags.xml represent the same UI - The second was generated from the
+first one by running:
+
+  $ gtk-builder-convert lib/nametags/nametags.glade lib/nametags/nametags.xml
+
+Eventually, we will drop libglade support - But for the forseeable
+future, we need to make sure it is still supported. So, modify the
+nametags.glade in an aging machine, and regenerate the XML
+afterwards.
