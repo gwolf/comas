@@ -1,4 +1,5 @@
 #!/bin/sh
+cd $(dirname $0)/..
 ./script/runner 'require "nametags"; 
     ENV["GETTEXT_PATH"] ||= File.join(File.dirname(__FILE__), "locale"); 
     Locale.set(ENV["LANG"]) if ENV["LANG"]; 

@@ -274,7 +274,7 @@ class ZebraLabel
   # Prints the specified nametag label using the specified format. If
   # no printer port was defined via #set_printer_port
   def initialize(person, format)
-    data = format.generate_for(person)
+    data = format.generate_for(person, @@printer_charset)
     begin
       data = Iconv.conv(@@printer_charset, 'UTF-8', data)
     rescue Iconv::InvalidEncoding
