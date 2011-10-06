@@ -156,7 +156,7 @@ class ApplicationController < ActionController::Base
     end
 
     if (set_lang and set_lang != lang)
-      cookies[:lang] = {:value => set_lang, 
+      cookies['lang'] = {:value => set_lang, 
         :expires => Time.now+1.day,
         :path => '/'}
     end
