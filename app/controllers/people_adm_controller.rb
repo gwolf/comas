@@ -197,6 +197,7 @@ class PeopleAdmController < Admin
 
     gruff.title = _('Distribution by %s for all registered people') % table
     col=0
+    gruff.marker_font_size = 15
 
     if graphtype == Gruff::Pie
       data.keys.sort.each do |id|
