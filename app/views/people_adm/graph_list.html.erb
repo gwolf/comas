@@ -1,0 +1,37 @@
+<h1><%= _"Statistical graphs for all registered people" %></h1>
+
+<% table do %>
+  <% table_head_row do %>
+    <th></th>
+    <th colspan="<%= @graphs.size %>"><%= _"Fixed sorting" %></th>
+    <th colspan="<%= @graphs.size %>"><%= _"Sorted by value" %></th>
+  <% end %>
+  <% table_head_row do %>
+    <th></th>
+    <% @graphs.each do |graph| %>
+      <th><%= _ graph.capitalize %></th>
+    <% end %>
+    <% @graphs.each do |graph| %>
+      <th><%= _ graph.capitalize %></th>
+    <% end %>
+  <% end %>
+  <% @types.each do |type| %>
+    <% table_row do %>
+      <th><%= _ type.capitalize %></th>
+      <% @graphs.each do |graph| %>
+        <td><%= link_to(_('View'), 
+                        :action => 'get_graph',
+	                :table => graph,
+	                :sort => 'id',
+	                :graph_type => type) %></td>
+      <% end %>
+      <% @graphs.each do |graph| %>
+        <td><%= link_to(_('View'), 
+                        :action => 'get_graph',
+	                :table => graph,
+	                :sort => 'value',
+	                :graph_type => type) %></td>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

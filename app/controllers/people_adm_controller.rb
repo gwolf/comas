@@ -1,9 +1,11 @@
+# -*- coding: utf-8 -*-
 class PeopleAdmController < Admin
   before_filter :get_person, :only => [:show, :destroy]
 
   Menu = [[_('Registered people list'), :list],
           [_('Administrative tasks'), :by_task],
-          [_('Massive mailing'), :mass_mail]]
+          [_('Massive mailing'), :mass_mail],
+          [_('Statistical graphs'), :graph_list]]
 
   ############################################################
   # Generic CRUD functions for people
@@ -175,7 +177,83 @@ class PeopleAdmController < Admin
               :filename => 'mailable_list.txt')
   end
 
+  def graph_list
+    @graphs =  Person.column_names.select {|cn| cn =~ /_id$/}.
+      map {|cn| cn.gsub(/_id$/, '')}.
+      select {|c| c.singularize.classify.constantize.is_catalog?}
+    types = graph_types
+    @types = types.keys.sort
+  end
+
+  def get_graph
+    type = params[:graph_type]
+    table = params[:table]
+    sort = params[:sort]
+    data = data_for_graph(table) or return false
+
+    graphtype = graph_types[type] || Gruff::Bar
+    gruff = graphtype.new('1024x768')
+    gruff.minimum_value = 0 if gruff.class == Gruff::Line
+
+    gruff.title = _('Distribution by %s for all registered people') % table
+    col=0
+
+    if graphtype == Gruff::Pie
+      data.keys.sort.each do |id|
+        num=0 if num.nil?
+        gruff.data(data[id][:label], [data[id][:value]])
+      end
+    else
+      gruff.hide_legend=true
+      values = []
+      data.keys.sort_by {|id| sort == 'value' ? 1-data[id][:value] : id}.
+        each do |id|
+        gruff.labels[gruff.labels.size] = data[id][:label][0..20]
+        values[values.size] = data[id][:value]
+      end
+      gruff.data('', values)
+    end
+
+    warn gruff.labels.to_yaml
+    send_data(gruff.to_blob('png'), 
+              :type => 'image/png',
+              :disposition => 'inline')
+  end
+
   private
+  def graph_types
+    return {
+      'accumulator' => Gruff::AccumulatorBar,
+      'area' => Gruff::Area,
+      'bar' => Gruff::Bar,
+      'dot' => Gruff::Dot,
+      'net' => Gruff::Net,
+      'pie' => Gruff::Pie,
+      'side_bar' => Gruff::SideBar,
+      'stacked_area' => Gruff::StackedArea,
+      'stacked_bar' => Gruff::StackedBar
+    }
+  end
+
+  def data_for_graph(table)
+    begin
+      model = table.singularize.classify.constantize
+      unless Person.column_names.include?('%s_id' % table) and
+          model.is_catalog?
+        raise NameError, _('Invalid related table specified: %s' % table)
+      end
+    rescue NameError => err
+      flash[:error] << err.message
+      redirect_to :action => :graph_list
+      return false
+    end
+
+    res = {}
+    model.all.map {|item| res[item.id] = {:label => item.name, :value => item.people.size}}
+
+    return res
+  end
+
   def get_person
     return true if params[:id] and @person = Person.find_by_id(params[:id])
     redirect_to :action => :list
