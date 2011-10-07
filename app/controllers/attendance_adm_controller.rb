@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class AttendanceAdmController < Admin
   helper :certificates_adm
   Menu = [[_('Choose a timeslot'), :choose_session],
@@ -10,7 +11,8 @@ class AttendanceAdmController < Admin
                                            :certificates_by_attendances,
                                            :certificate_for_person,
                                            :att_by_tslot,
-                                           :xls_list
+                                           :xls_list,
+                                           :list_graphic
                                           ]
 
   # Prompts the user which session to use for taking attendance. By
@@ -60,6 +62,28 @@ class AttendanceAdmController < Admin
   def list
     @other_confs = Conference.past_with_timeslots
     @totals = Attendance.totalized_for_conference(@conference) if @conference
+  end
+
+  def list_graphic
+    g = Gruff::AccumulatorBar.new('480x300')
+    g.title = _('Number of attendances')
+    g.sort = false
+    g.hide_legend = true
+
+    totals = Attendance.totalized_for_conference(@conference)
+
+    # For easier handling, mangle totals from a hash to a
+    # descending-ordered array
+    attendances = []
+    totals.keys.sort.reverse.each do |att|
+      value = totals[att].size
+      label = '%d: %d' % [att, value]
+      g.labels[g.labels.size] = label
+      attendances << value
+    end
+    g.data _('Attendances'), attendances
+
+    send_data(g.to_blob('png'), :type => 'image/png', :disposition => 'inline')
   end
 
   # Generate a XLS listing with all the attendances for a given conference

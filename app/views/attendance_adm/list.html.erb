@@ -11,6 +11,8 @@
     <h3><%= _'No attendances registered' %></h3>
   <% else %>
     <h2><%= _'Full listing, ordered by number of attendances' %></h2>
+    <img src="<%= url_for(:controller => 'attendance_adm', :action => 'list_graphic', :conference_id => @conference.id) %>",
+	 width = "480", height="300" />
 
     <p><%= link_to(_('Download full listing as a spreadsheet'),
                    :action => 'xls_list', :conference_id => @conference) %></p>

@@ -153,9 +153,9 @@ Ruby 1.8:: http://www.ruby-lang.org/en/
 
      	   ruby1.8
 
-Rails 2.1:: http://www.rubyonrails.org/
+Rails 2.3.x:: http://www.rubyonrails.org/
 
-      	    rails
+      	      rails
 
 Acts as catalog:: http://actsascatalog.rubyforge.org/
 
@@ -201,8 +201,12 @@ Prawn:: http://prawn.majesticseacreature.com/
 
 	  libprawn-ruby
 
+Gruff:: http://nubyonrails.com/pages/gruff
+
+	libgruff-ruby
+
 Note that some of the Debian packages are not part of the currently
-stable Debian release (5.0, Lenny), but can be safely installed from
+stable Debian release (6.0, Squeeze), but can be safely installed from
 the unstable repository.
 
 If you _cloned_ the Git repository, the plugins in this list (realfk,
