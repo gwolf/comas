@@ -12,3 +12,4 @@ db/schema.rb
 public/javascripts/all.js
 !app/views/layouts/application.*
 app/views/layouts/*
+vendor/rails
