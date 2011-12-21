@@ -111,7 +111,7 @@ class ConferenceTest < ActiveSupport::TestCase
     c.reg_close_date = Date.today + 1
     assert c.valid?
     assert c.accepts_registrations?
-    
+
   end
 
   def test_upcoming_conferences

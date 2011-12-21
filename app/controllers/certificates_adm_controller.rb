@@ -11,13 +11,13 @@ class CertificatesAdmController < Admin
   # format
   def for_person
     send_data(@format.generate_pdf_for(@person, @conference),
-              :filename => 'certificate.pdf', 
+              :filename => 'certificate.pdf',
               :type => 'application/pdf')
   end
 
   # Lists the registered certificate formats
   def list
-    @formats = CertifFormat.paginate(:all, :order => :id, 
+    @formats = CertifFormat.paginate(:all, :order => :id,
                                      :include => :certif_format_lines,
                                      :page => params[:page])
     @new_fmt = CertifFormat.new
@@ -87,7 +87,7 @@ class CertificatesAdmController < Admin
   # Get either the conference specified in the parameters, or the
   # latest one with registered timeslots which started already
   def get_conference
-    @conference = Conference.find_by_id(params[:conference_id]) || 
+    @conference = Conference.find_by_id(params[:conference_id]) ||
       Conference.past_with_timeslots[0]
     return false unless @conference
   end
@@ -100,10 +100,10 @@ class CertificatesAdmController < Admin
   end
 
   def get_format
-    @format = CertifFormat.find_by_id(params[:id], 
+    @format = CertifFormat.find_by_id(params[:id],
                                       :include => :certif_format_lines)
     return true if @format
     flash[:error] << _('Invalid format specified')
     false
-  end  
+  end
 end

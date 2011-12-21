@@ -40,7 +40,7 @@ end
 ActionView::Helpers::FormHelper.module_eval { include DateHelper }
 ActionView::Helpers::FormBuilder.class_eval do
   def date_field(method, options = {})
-    @template.send('date_field', @object_name, method, 
+    @template.send('date_field', @object_name, method,
                    options.merge(:object => @object))
   end
 

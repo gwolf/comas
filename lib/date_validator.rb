@@ -95,7 +95,7 @@ module ActiveRecord::Validations::ClassMethods
 
   # Validates date values, these can be dates or any formats accepted by
   # Date.parse_date.
-  # 
+  #
   # For example:
   #
   #   class Person < ActiveRecord::Base

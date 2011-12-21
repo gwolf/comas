@@ -3,7 +3,7 @@ module SysConfAdmHelper
     [ table_tag, attributes_head(modifiable),
       attrs.map {|a| attributes_row(a, modifiable)},
       end_table_tag ].join("\n")
-    
+
   end
 
   def attributes_head(modifiable=false)
@@ -19,10 +19,10 @@ module SysConfAdmHelper
 
     columns << (attr.null ? _('Yes') : _('No') ) <<
       attr.default <<
-      [link_to(_('Delete'), 
+      [link_to(_('Delete'),
                { :action => 'delete_table_field',
                  :table => @table, :field => attr.name},
-               { :method => 'post', 
+               { :method => 'post',
                  :confirm => _("Removing this field from the table " +
                                "definition will cause ALL OF ITS DATA to " +
                                "be destroyed. \n" +
@@ -42,7 +42,7 @@ module SysConfAdmHelper
     type = field.type
     return type unless @types.include?(type)
 
-    if type == :integer and field.name =~ /^(.*)_id$/ 
+    if type == :integer and field.name =~ /^(.*)_id$/
       begin
         ref_model = $1.pluralize.classify.constantize
         type = :catalog

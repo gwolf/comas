@@ -4,7 +4,7 @@
       'strongly suggest working with a PostgreSQL RDBMS - Any other ' +
       'system is not guaranteed to work with the values selected here.'
   %><br/>
-   <%= link_to _('Go back to the table definition'), 
+   <%= link_to _('Go back to the table definition'),
                  :action => 'list_table_fields', :table => @table %></p>
 <% form_tag url_for(:action => 'edit_table_field') do %>
   <%= hidden_field_tag :table, @table %>
@@ -17,7 +17,7 @@
     <span class="comas-form-prompt"><%= _'Default' %></span>
     <span class="comas-form-note">
       <%= _'If you specify a default value, it should be valid for ' +
-	  'its data type. Note that the default value you specify ' + 
+	  'its data type. Note that the default value you specify ' +
 	  'here is trusted to be sane - you can, of course, give ' +
 	  'illegal or dangerous values here. After all, you _are_ ' +
 	  'an administrator! With great power comes great responsability.'  %>

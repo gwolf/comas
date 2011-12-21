@@ -1,9 +1,9 @@
 <h1><%= _("Edit conference data") %></h1>
-<%= render :partial => 'form', 
+<%= render :partial => 'form',
            :locals => {:action => 'show', :submit => _('Save changes')} %>
 
 <h3><%= _('Timeslots management') %></h3>
-<p><%= (@conference.timeslots.size == 0 ? 
+<p><%= (@conference.timeslots.size == 0 ?
         _('No timeslots currently defined') :
         _('%d currently defined timeslots') %
 	  @conference.timeslots.size) %> -

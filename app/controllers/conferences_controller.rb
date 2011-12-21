@@ -24,7 +24,7 @@ class ConferencesController < ApplicationController
       item = klass.find_by_id(value)
       next unless item
 
-     @cond << '%s: %s' % [Translation.for(catalog.humanize), 
+     @cond << '%s: %s' % [Translation.for(catalog.humanize),
                           Translation.for(item.name)]
       cond_k << '%s = ?' % catalog
       cond_v << value
@@ -35,7 +35,7 @@ class ConferencesController < ApplicationController
       cond_v << Date.today
     end
 
-    @rss_links[_('Conferences where %s') % 
+    @rss_links[_('Conferences where %s') %
                @cond.join(', ')] = rss_link_for(params) unless @cond.empty?
 
     cond = [cond_k.join(' and '), cond_v].flatten
@@ -157,13 +157,13 @@ class ConferencesController < ApplicationController
   end
 
   def rss_links
-    @rss_links = { 
+    @rss_links = {
       _('Upcoming conferences') => rss_link_for(:hide_old => 1)
     }
   end
 
   def rss_link_for(params={})
-    url_for(params.merge('action' => 'list', 
+    url_for(params.merge('action' => 'list',
                          'format' => 'rss',
                          'lang' => Locale.get))
   end

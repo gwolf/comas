@@ -6,7 +6,7 @@ module ApplicationHelper
   def show_flash
     flash.map do |level, message|
       message = message.join("<br/>") if message.is_a? Array
-      next if message.blank? 
+      next if message.blank?
       flash.discard(level)
       '<div id="flash-%s">%s</div>' % [level, message]
     end
@@ -14,9 +14,9 @@ module ApplicationHelper
 
   def login_data
     return '' unless @user
-    '<div id="logindata">%s (%s) - %s</div>%s' % 
-      [h(@user.login), h(@user.name), 
-       link_to(_('Log out'), {:controller => '/people', 
+    '<div id="logindata">%s (%s) - %s</div>%s' %
+      [h(@user.login), h(@user.name),
+       link_to(_('Log out'), {:controller => '/people',
          :action => 'logout'}),
        my_photo]
   end
@@ -25,7 +25,7 @@ module ApplicationHelper
     return '' unless @user and @user.has_photo?
     ratio = Photo.thumb_ratio
     '<div id="myphoto"><img src="%s" width="%d" height="%d" /></div>'%
-        [ url_for(:controller => '/people', :action => 'get_photo', 
+        [ url_for(:controller => '/people', :action => 'get_photo',
                   :id => @user.id, :size => 'thumb'),
           @user.photo.width * ratio, @user.photo.height * ratio]
   end
@@ -34,7 +34,7 @@ module ApplicationHelper
     return '' unless @rss_links.is_a? Hash
     @rss_links.keys.map { |source|
       ( '<link rel="alternate" type="application/rss+xml" ' +
-        'title="%s" href="%s" />' ) % 
+        'title="%s" href="%s" />' ) %
       [source, @rss_links[source]]
     }.join("\n")
   end
@@ -60,7 +60,7 @@ module ApplicationHelper
   # This function disappeared from gettext_rails ~2.1 - Reintroduce it
   # (a bit simplified) here...
   def available_locales
-    (Dir.glob(File.join(RAILS_ROOT, 'locale/[a-z]*')).map { |path| 
+    (Dir.glob(File.join(RAILS_ROOT, 'locale/[a-z]*')).map { |path|
        File.basename(path)} << 'en').uniq.sort
   end
 
@@ -73,15 +73,15 @@ module ApplicationHelper
 
   def link_to_proposal(prop)
     return '' unless prop.is_a? Proposal
-    link_to(prop.title, :controller => 'proposals', 
+    link_to(prop.title, :controller => 'proposals',
             :action => 'show', :id => prop)
   end
 
   def link_to_login_or_new
     return '' if @user
-    '<div class="please-register">' << 
+    '<div class="please-register">' <<
       (_('Please %s or %s if you are interested in attending') %
-       [ link_to(_('register'), :controller => '/people', 
+       [ link_to(_('register'), :controller => '/people',
                  :action => 'new'),
          link_to(_('log in'), :controller => '/people',
                  :action => 'login') ]) << '</div>'
@@ -98,7 +98,7 @@ module ApplicationHelper
   #
   # This function can be called either with explicitly given data or
   # with a block from your view. This means, both following usages will work:
-  # 
+  #
   # <% collapsed_header 'Description' do %>
   #   <%= @conference.descr %>
   # <% end %>
@@ -120,7 +120,7 @@ module ApplicationHelper
     div_name = 'comas-collapsed-%d' % (rand * 10000)
 
     pre = '<h3>%s - <span class="note">%s</span></h3>
-           <div id="%s" class="comas-collapsed" style="display: none">' % 
+           <div id="%s" class="comas-collapsed" style="display: none">' %
       [ title,
         link_to_function(_('Show'), visual_effect(:toggle_blind, div_name)),
         div_name ]
@@ -210,7 +210,7 @@ module ApplicationHelper
       # And the empty string: So that we do not repeat the attribute name
       if type == :text
         return collapsed_header(Translation.for(fldname),
-                                redcloth_info_row('', value)) 
+                                redcloth_info_row('', value))
       end
 
       # Catalog fields should show the referred entry
@@ -256,7 +256,7 @@ module ApplicationHelper
        else;   _("Displaying <b>all %d</b> items") % [collection.size]
        end
      else
-       _('Displaying items <b>%d&ndash;%d</b> of <b>%d</b> in total') % 
+       _('Displaying items <b>%d&ndash;%d</b> of <b>%d</b> in total') %
          [ collection.offset + 1,
            collection.offset + collection.length,
            collection.total_entries ]
@@ -271,7 +271,7 @@ module ApplicationHelper
     include ActionView::Helpers::DateHelper
 
     (%w(date_field) +
-     field_helpers - %w(check_box radio_button select 
+     field_helpers - %w(check_box radio_button select
                         hidden_field)).each do |fldtype|
       src = <<-END_SRC
         def #{fldtype}(field, options={})
@@ -287,7 +287,7 @@ module ApplicationHelper
     end
 
     def auto_field(field, options={})
-      column = @object.class.columns.select { |col| 
+      column = @object.class.columns.select { |col|
         col.name.to_s == field.to_s}.first
 
       # To check for specially treated fields, we need the field to be
@@ -295,7 +295,7 @@ module ApplicationHelper
       field = field.to_s
 
       if !column
-        if @object.respond_to?(field) and 
+        if @object.respond_to?(field) and
             @object.connection.tables.include?(field) and
             model = field.camelcase.singularize.constantize
           # HABTM relation
@@ -320,7 +320,7 @@ module ApplicationHelper
           model = table_from_field(field)
         # field_id and there is a corresponding table? Present the catalog.
         choices = model.qualified_collection_by_id
-        return select(field, 
+        return select(field,
                       choices.map {|it| [Translation.for(it[0]), it[1]]},
                       {:include_blank => true})
       end
@@ -328,18 +328,18 @@ module ApplicationHelper
       # Generic fields, based on data type
       case column.type.to_sym
       when :string
-        return text_field(field, options) 
+        return text_field(field, options)
 
       when :text
         options[:size] ||= '70x15'
-        return text_area(field, options) 
+        return text_area(field, options)
 
       when :integer, :decimal, :float
         options[:class] ||= 'numeric'
         return text_field(field, options)
 
       when :boolean
-        return radio_group(field, [[_('Yes'), true], [_('No'), false]], 
+        return radio_group(field, [[_('Yes'), true], [_('No'), false]],
                            options)
 
       when :date
@@ -360,7 +360,7 @@ module ApplicationHelper
       title = options.delete(:title) || label_for_field(@object, field)
       note = options.delete(:note)
       options[:default] = @object.send(field)
-      with_format(title, super(@object_name, field, 
+      with_format(title, super(@object_name, field,
                                {:default=>@object.send(field)}.merge(options)),
                   note)
     end
@@ -397,7 +397,7 @@ module ApplicationHelper
                     end
                     res << "id=\"#{fieldname}\" name=\"#{fieldname}\" "
                     res << "value=\"#{item.id}\"> #{_ item.name}</span><br/>"
-                    
+
                     res.join(' ') }.to_s,
                   note)
     end
@@ -424,7 +424,7 @@ module ApplicationHelper
       res << '<span class="comas-form-note">%s</span>' % _(note) if note
       res << '<span class="comas-form-input">%s</span>' % body
       res << '</div>'
-      
+
       res.join("\n")
     end
 
@@ -439,9 +439,9 @@ module ApplicationHelper
     def table_from_field(field)
       return nil unless field =~ /_id$/
       tablename = field.gsub(/_id$/, '')
-      return nil unless 
+      return nil unless
         ActiveRecord::Base.connection.tables.include? tablename.pluralize
-      begin 
+      begin
         model = tablename.camelcase.constantize
       rescue
         return nil

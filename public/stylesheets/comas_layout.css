@@ -24,17 +24,17 @@ h1{
     font-weight:bold;
 }
 
-h2 { 
+h2 {
      color:#663300;
      font-size:125%;
 }
 
-h3 { 
+h3 {
      color:#663300;
      font-size:110%;
 }
 
-p { 
+p {
     font-size:100%;
     color:#000000;
     text-indent:2em;
@@ -54,13 +54,13 @@ a:hover {
           background-color:#FFF7E4;
 }
 
-table { 
+table {
     border: solid #face78 2px;
 }
 
 /* General containers: */
 /* Page header and footer */
-#header { 
+#header {
           border-collapse: collapse;
           width: 100%;
           color: #face78;
@@ -72,7 +72,7 @@ table {
 
 #footer { clear: both;
           min-height: 3em;
-          width:100%; 
+          width:100%;
           border-top: solid 2px #A9A9C0;
           background-color: #CBCBE1;
           color: #999;
@@ -83,14 +83,14 @@ table {
 #footer a { color: #aaa390; }
 
 /* Language selection */
-#locales {  
+#locales {
           text-align: right;
           margin-top: 2em;
           margin-right: 3em;
 }
 
-#locales a { 
-          color: #face78; 
+#locales a {
+          color: #face78;
 }
 
 /* Menu */
@@ -99,14 +99,14 @@ table {
         border: solid 2px #CBCBE1;
         margin: 0.5em;
         padding-bottom: 0.5em;
-        background-color: #EDEDF3; 
+        background-color: #EDEDF3;
         width: 19%;
         vertical-align: top;
         font-family:"Trebuchet MS", Tahoma, Verdana, Arial, sans-serif;
         font-size: 80%;
 }
 
-#menu ul {  
+#menu ul {
         padding-top: 3px;
         padding-left: 10px;
         padding-bottom: 0;
@@ -114,24 +114,24 @@ table {
         margin: 0;
 }
 
-#menu li {  
-	display: block; 
+#menu li {
+	display: block;
         padding-top:3px;
-	padding-bottom: 0px; 
-	padding-left: 0px; 
-	padding-right: 0px; 
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
 	margin: 0px;
 	list-style-type: none;
 }
 
-#menu a {  
+#menu a {
 	color:#036;
 	text-decoration:none;
 	display:block;
 }
 
-#menu a:hover {  
-        color:#663300; 
+#menu a:hover {
+        color:#663300;
 }
 
 
@@ -143,20 +143,20 @@ table {
         width: 78%;
 }
 
-#contents { 
+#contents {
         background-color: #FFF;
         padding: 1em;
 }
 
 /* Currently logged-in user's details */
 
-#logindata { 
+#logindata {
         background-color:#fff7e2;
         padding-top: 0.5em;
         padding-bottom: 0.5em;
 }
 
-#myphoto {  
-    border: solid 1px #eee6d1; 
+#myphoto {
+    border: solid 1px #eee6d1;
     background-color: #eee6d1;
 }

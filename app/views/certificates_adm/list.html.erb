@@ -3,7 +3,7 @@
 <%= pagination_header @formats %>
 <%= will_paginate @formats %>
 <%= render :partial => 'details',
-           :locals => {:formats => @formats, 
+           :locals => {:formats => @formats,
                        :edit_fmt => @new_fmt,
                        :action => 'new',
                        :label =>  _('Create')} %>

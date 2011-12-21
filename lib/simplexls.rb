@@ -11,7 +11,7 @@ class SimpleXLS
     @xls = Spreadsheet::Workbook.new
     @page = @xls.create_worksheet
 
-    @format = {:head => Spreadsheet::Format.new(:weight => :bold, 
+    @format = {:head => Spreadsheet::Format.new(:weight => :bold,
                                                 :color => :blue)
     }
 

@@ -10,8 +10,8 @@
   <% end %>
   <% tslots.sort_by(&:start_time).each do |ts| %>
     <% att = ts.attendances.size
-       tslot_link = url_for(:action => 'att_by_tslot', 
-                            :conference_id => @conference, 
+       tslot_link = url_for(:action => 'att_by_tslot',
+                            :conference_id => @conference,
                             :timeslot_id => ts) %>
     <% table_row do %>
       <td><%= link_to_if att>0, ts.start_time.to_s(:listing),

@@ -1,8 +1,8 @@
 #!/bin/sh
 cd $(dirname $0)/..
-./script/runner 'require "nametags"; 
-    ENV["GETTEXT_PATH"] ||= File.join(File.dirname(__FILE__), "locale"); 
-    Locale.set(ENV["LANG"]) if ENV["LANG"]; 
-    ZebraLabel.set_printer_port(ENV["NAMETAG_PRINTER"]); 
-    ZebraLabel.set_charset(ENV["NAMETAG_CHARSET"]); 
+./script/runner 'require "nametags";
+    ENV["GETTEXT_PATH"] ||= File.join(File.dirname(__FILE__), "locale");
+    Locale.set(ENV["LANG"]) if ENV["LANG"];
+    ZebraLabel.set_printer_port(ENV["NAMETAG_PRINTER"]);
+    ZebraLabel.set_charset(ENV["NAMETAG_CHARSET"]);
     NametagApp.new'

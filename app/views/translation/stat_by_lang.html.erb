@@ -17,8 +17,8 @@
       <td><%= link_to stat[:done],
                       :action => 'done_for_lang',
                       :language_id => lang.id %></td>
-      <td><%= link_to stat[:pending], 
-                      :action => 'pending_for_lang', 
+      <td><%= link_to stat[:pending],
+                      :action => 'pending_for_lang',
                       :language_id => lang.id %></td>
       <td><%= '%0.2f %%' % stat[:perc] %></td>
       <td></td>
@@ -31,7 +31,7 @@
 <% form_tag :action => 'search_for_strings' do |f| %>
   <%= form_row(_('Language'),
                select_tag(:language_id,
-                          options_for_select(@languages.map {|l| 
+                          options_for_select(@languages.map {|l|
                              [Translation.for(l.qualified_name), l.id]}))) %>
   <%= form_row(_('String to search for'),
                text_field_tag(:string),

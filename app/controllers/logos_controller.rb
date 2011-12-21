@@ -1,7 +1,7 @@
 class LogosController < ApplicationController
   ['data', 'medium', 'thumb'].each do |size|
     eval "def #{size}
-            return render(:text => '', 
+            return render(:text => '',
                           :status => '304 Not Modified') if is_cached?(params[:id])
             logo = Logo.find(params[:id])
             send_logo(logo.updated_at, logo.#{size})

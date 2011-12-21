@@ -4,10 +4,10 @@
        '<em>%s</em>) as a coauthor for your proposal titled ' +
        '<em>%s</em>. <br/>') % [@person.name, @person.login,
                              @proposal.title ] %></p>
-<div class="confirm"> 
-   <%= link_to _('Confirm as a coauthor'), 
-               {:action => 'author_add', :id => @proposal, 
+<div class="confirm">
+   <%= link_to _('Confirm as a coauthor'),
+               {:action => 'author_add', :id => @proposal,
                 :login => @person.login}, {:method => :post} %>, or
-   <%= link_to _('go back to your proposal'), 
+   <%= link_to _('go back to your proposal'),
        :action => 'authors', :id => @proposal %>
 </div>

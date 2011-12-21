@@ -1,15 +1,15 @@
 ActionController::Routing::Routes.draw do |map|
   # The priority is based upon order of creation: first created -> highest priority.
-  
+
   # Sample of regular route:
   #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
   # Keep in mind you can assign values other than :controller and :action
   map.connect 'recover/:r_session', :controller => 'people', :action => 'recover'
 
-  map.connect('proposals/by_author/:author_id', 
-              :controller => 'proposals', 
+  map.connect('proposals/by_author/:author_id',
+              :controller => 'proposals',
               :action => 'by_author')
-  map.connect('proposals/:id/doc/:document_id', 
+  map.connect('proposals/:id/doc/:document_id',
               :controller => 'proposals',
               :action => 'get_document')
   map.connect('proposals/:conference_id/new',
@@ -64,7 +64,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect('thumb/:id',
               :controller => 'people', :action => 'get_photo',
               :size => 'thumb')
-  
+
   # Sample of named route:
   #   map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'
   # This route can be invoked with purchase_url(:id => product.id)
@@ -92,7 +92,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # Sample resource route with sub-resources:
   #   map.resources :products, :has_many => [ :comments, :sales ], :has_one => :seller
-  
+
   # Sample resource route with more complex sub-resources
   #   map.resources :products do |products|
   #     products.resources :comments

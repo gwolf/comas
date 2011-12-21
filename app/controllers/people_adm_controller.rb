@@ -14,7 +14,7 @@ class PeopleAdmController < Admin
   end
 
   def list
-    @order_by = 'people.' + sort_for_fields(['id', 'login', 'firstname', 
+    @order_by = 'people.' + sort_for_fields(['id', 'login', 'firstname',
                                          'famname', 'last_login_at'])
     @filter_by = params[:filter_by]
     @conferences = Conference.find(:all).sort_by(&:begins)
@@ -36,7 +36,7 @@ class PeopleAdmController < Admin
         xls.add_row( columns.map {|col| pers.send(col) rescue nil } )
       end
 
-      send_data(xls.to_s, :type => 'application/vnd.ms-excel', 
+      send_data(xls.to_s, :type => 'application/vnd.ms-excel',
                 :filename => 'list.xls')
     else
       @people = people.paginate(:page => params[:page])
@@ -67,7 +67,7 @@ class PeopleAdmController < Admin
   end
 
   def show
-    return true unless request.post? 
+    return true unless request.post?
     begin
       @person.transaction do
         # Split the HABTM-tasks into each of their components, so in
@@ -90,8 +90,8 @@ class PeopleAdmController < Admin
 
           begin
             if desired
-              @person.conferences += [conf] 
-            else 
+              @person.conferences += [conf]
+            else
               @person.conferences -= [conf]
             end
           rescue ActiveRecord::RecordNotSaved => err
@@ -105,7 +105,7 @@ class PeopleAdmController < Admin
         if @person == @user  and !@person.admin_tasks.include? this_task
           flash[:notice] << _('Removing this administrative task from your ' +
                               'own account is not allowed - Restoring.')
-          @person.admin_tasks << this_task 
+          @person.admin_tasks << this_task
         end
 
         flash[:notice] << _('Person data successfully updated')
@@ -116,7 +116,7 @@ class PeopleAdmController < Admin
   end
 
   def destroy
-    if request.post? 
+    if request.post?
       if @person != @user and @person.destroy
         flash[:notice] << _('Successfully removed requested attendee')
       else
@@ -141,7 +141,7 @@ class PeopleAdmController < Admin
   def mass_mail
     @recipients = Person.mailable
     return true unless request.post?
-    if params[:title].nil? or params[:title].empty? or 
+    if params[:title].nil? or params[:title].empty? or
         params[:body].nil? or params[:body].empty?
       flash[:error] << _('You must specify both email title and body')
       return false
@@ -149,7 +149,7 @@ class PeopleAdmController < Admin
 
     @recipients.each do |rcpt|
       begin
-        Notification.deliver_admin_mail(@user, rcpt, 
+        Notification.deliver_admin_mail(@user, rcpt,
                                         params[:title], params[:body])
       rescue Notification::InvalidEmail
         flash[:warning] << _('User %s (ID: %s) is registered with an ' +
@@ -158,7 +158,7 @@ class PeopleAdmController < Admin
       end
     end
 
-    flash[:notice] << _('The %d requested mails have been sent.') % 
+    flash[:notice] << _('The %d requested mails have been sent.') %
       @recipients.size
     redirect_to :action => 'list'
   end
@@ -216,7 +216,7 @@ class PeopleAdmController < Admin
     end
 
     warn gruff.labels.to_yaml
-    send_data(gruff.to_blob('png'), 
+    send_data(gruff.to_blob('png'),
               :type => 'image/png',
               :disposition => 'inline')
   end

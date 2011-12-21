@@ -16,7 +16,7 @@ class Timeslot < ActiveRecord::Base
   # Returns a paginated list with all of the timeslots for the
   # specified date, ordered by start time
   def self.for_day(date, req={})
-    self.paginate(:all, 
+    self.paginate(:all,
                   {:conditions => ['start_time BETWEEN ? and ?',
                                   date.beginning_of_day, date.end_of_day],
                     :order => :start_time,
@@ -24,18 +24,18 @@ class Timeslot < ActiveRecord::Base
   end
 
   # Produce a paginated list of timeslots, ordered by the absolute
-  # distance between their start_time and the current time. 
+  # distance between their start_time and the current time.
   #
   # It can take whatever parameters you would send to a
   # WillPaginate#paginate call. Of course, you can specify a different
-  # ordering - in which case this would act as a normal paginator 
+  # ordering - in which case this would act as a normal paginator
   def self.by_time_distance(req={})
     # It is much more efficient to do the date comparisons inside the
     # DB, but the way to do so it is completely RDBMS-specific. So,
     # attempt to do it efficiently, but fall back if needed.
     case Timeslot.connection.adapter_name.downcase
     when 'postgresql'
-      self.paginate(:all, 
+      self.paginate(:all,
                     { :order => 'abs(extract(epoch from start_time - now()))',
                       :page => 1}.merge(req))
     else
@@ -45,7 +45,7 @@ class Timeslot < ActiveRecord::Base
   end
 
   # Returns the paginated list of current timeslots - those for which
-  # attendance can be taken now. 
+  # attendance can be taken now.
   #
   # It can take whatever parameters you would send to a
   # WillPaginate#paginate call. Of course, you can specify a different
@@ -66,9 +66,9 @@ class Timeslot < ActiveRecord::Base
   # search criteria - in which case this would act as a normal
   # paginator
   def self.concurrent_with(moment, req={})
-    self.paginate(:all, {:conditions => 
-                    [%Q(? BETWEEN start_time - 
-                        coalesce(tolerance_pre, ?)::interval AND 
+    self.paginate(:all, {:conditions =>
+                    [%Q(? BETWEEN start_time -
+                        coalesce(tolerance_pre, ?)::interval AND
                         start_time +
                         coalesce(tolerance_post, ?)::interval ),
                      moment,
@@ -95,7 +95,7 @@ class Timeslot < ActiveRecord::Base
   # The time difference between now and the timeslot's start_time,
   # returned as the number of seconds for its beginning (i.e. Ruby's
   # natural interval representation).
-  # 
+  #
   # The result will be negative for timeslots which have already
   # begun.
   def seconds_to_start
@@ -172,7 +172,7 @@ class Timeslot < ActiveRecord::Base
     return time if time.nil? or time=~/:/
     seconds = time.to_i
     if seconds >= 2**31 or seconds <= -2**31
-      raise TypeError, "#{time} interval out of range" 
+      raise TypeError, "#{time} interval out of range"
     end
     "#{seconds} seconds"
   end
@@ -190,7 +190,7 @@ class Timeslot < ActiveRecord::Base
   #
   # Nil/blank is acceptable (i.e. it means "default value is OK")
   def tolerances_correctly_formatted
-    [:tolerance_pre, :tolerance_post].each do |attr| 
+    [:tolerance_pre, :tolerance_post].each do |attr|
       field = self.send(attr)
       field.nil? or field.blank? or field =~ /^\d\d?:\d\d(:\d\d)?$/ or
         errors.add(field, _('Wrong format (should be hh:mm or hh:mm:ss)'))
@@ -199,7 +199,7 @@ class Timeslot < ActiveRecord::Base
 
   # Two timeslots are overlapping if they happen at the same room, and
   # their tolerance periods overlap.
-  # 
+  #
   # Evaluate for the future: Will we implement proposal types per
   # timeslot? If so, we could manage timeslot duration and have a more
   # complete and real timeslot overlapping checks... Meanwhile, here
@@ -208,9 +208,9 @@ class Timeslot < ActiveRecord::Base
     # Ugly, ugly, SQL query follows... Still, it's the clearest way I
     # could find to check for overlapping timeslots
     sql_cond = "room_id = ? AND
-        (start_time-COALESCE(tolerance_pre, ?)::interval BETWEEN 
-             ?::timestamp - ?::interval AND ?::timestamp + ?::interval OR 
-         start_time+COALESCE(tolerance_post, ?)::interval BETWEEN 
+        (start_time-COALESCE(tolerance_pre, ?)::interval BETWEEN
+             ?::timestamp - ?::interval AND ?::timestamp + ?::interval OR
+         start_time+COALESCE(tolerance_post, ?)::interval BETWEEN
              ?::timestamp - ?::interval AND ?::timestamp + ?::interval)"
 
     pre = effective_tolerance_pre
@@ -218,7 +218,7 @@ class Timeslot < ActiveRecord::Base
     post = effective_tolerance_post
     d_post = self.class.default_tolerance_pre
 
-    others = self.class.find(:all, 
+    others = self.class.find(:all,
         :conditions => [sql_cond, room_id,
                         d_pre, start_time, pre, start_time, post,
                         d_post, start_time, pre, start_time, post]

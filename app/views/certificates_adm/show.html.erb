@@ -2,7 +2,7 @@
 
 <h3><%= _('General format information') %></h3>
 
-<%= link_to_function(_('Help'), 
+<%= link_to_function(_('Help'),
                      visual_effect(:toggle_blind, "comas-help")) %>
 <div id="comas-help" style="display:none">
   <dl>
@@ -11,8 +11,8 @@
             "<em>%s</em>. You will notice the values you enter are " +
             "approximated (i.e. 10.99 instead of 11), as they are " +
             "stored internally in %s and converted only to be shown " +
-            "here.") % [_(@units), 
-                        _(PdfDimensions::ValidUnits[:pt][:full]) ] 
+            "here.") % [_(@units),
+                        _(PdfDimensions::ValidUnits[:pt][:full]) ]
       %>
 
     </dd><dt><%= _('Positioning') %></dt><dd>
@@ -43,7 +43,7 @@
           "will refer as <em>non-static sources</em>)) are selected, " +
           "they will accept a suitable <em>attribute name</em>. When " +
 	  "<em>%s</em> is selected, no content will be generated, just " +
-	  "a solid, black frame for the specified area.") % 
+	  "a solid, black frame for the specified area.") %
 	  [0, 1, 2, -1].map {|src| CertifFormatLine::ContentSources[src]} %>
 
     </dd><dt><%= _('Attributes') %></dt><dd>
@@ -55,14 +55,14 @@
     <br/>
     <%= _("Some values specified as attributes for non-static sources " +
           "get special treatment even though they do not exist " +
-	  "directly as methods. They are:") %> 
+	  "directly as methods. They are:") %>
 
     <dl>
       <dt><tt>id+code</tt></dt>
       <dd>
 	<%= _("The ID for the requested object, not only represented " +
 	      "as text, but with its barcode. The minimum dimensions " +
-	      "you should allocate to this column are a 3cm/1.1in width " + 
+	      "you should allocate to this column are a 3cm/1.1in width " +
 	      "a 1.3cm/0.5in height.") %></dd>
 
       <dt><tt>image</tt></dt>
@@ -72,7 +72,7 @@
 	      "the aspect ratio) the given size. If the " +
 	      "person/conference does not have such field specified, " +
 	      "nothing will be displayed (no error will be " +
-	      "generated)") %></dd> 
+	      "generated)") %></dd>
     </dl>
     <br/>
 
@@ -83,9 +83,9 @@
   </dl>
 </div>
 
-<%= render :partial => 'details', 
-           :locals => {:formats => [], 
-                       :edit_fmt => @format, 
+<%= render :partial => 'details',
+           :locals => {:formats => [],
+                       :edit_fmt => @format,
                        :action => 'show',
                        :label => _('Modify')} %>
 
@@ -94,14 +94,14 @@
   <%= @format.certif_format_lines.map { |l| certif_format_line_entry(l) } %>
 
   <% table_row do %>
-    <% form_for :certif_format_line, @new_line, 
-                :url => {:action => 'add_line', 
+    <% form_for :certif_format_line, @new_line,
+                :url => {:action => 'add_line',
                          :id => @format} do |f| %>
       <td><%= f.text_field :human_y_pos, :size => 3%></td>
       <td><%= f.text_field :human_x_pos, :size => 3 %></td>
       <td><%= f.text_field :human_max_width, :size => 3 %></td>
       <td><%= f.text_field :human_max_height, :size => 3 %></td>
-      <td><%= f.select :content_source, 
+      <td><%= f.select :content_source,
                  CertifFormatLine::ContentSources.map {|k,v| [v,k]} %></td>
       <td><%= f.text_field :content, :size => 20 %></td>
       <td><%= f.text_field :font_size, :size => 2 %></td>
@@ -112,5 +112,5 @@
 
 <% end %>
 
-<%= render :partial => 'test_form', 
+<%= render :partial => 'test_form',
            :locals => {:format => @format} %>

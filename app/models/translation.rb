@@ -34,7 +34,7 @@
 #
 # === Regular usage
 #
-# To use a Translation-based string, use the #for class method: 
+# To use a Translation-based string, use the #for class method:
 #
 #    Translation.for('something to be translated')
 class Translation < ActiveRecord::Base

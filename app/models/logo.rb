@@ -9,7 +9,7 @@ class Logo < ActiveRecord::Base
 
   # We override find to exclude the whole file contents (data, medium
   # and thumb columns) from our result set.
-  # 
+  #
   # The binary values should not be directly modified - Use
   # self#from_blob instead.
   def self.find (*args)
@@ -101,7 +101,7 @@ class Logo < ActiveRecord::Base
   end
 
   def bigger_than_medium?
-    height > medium_height 
+    height > medium_height
   end
 
   private

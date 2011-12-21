@@ -1,6 +1,6 @@
 <h1><%= _"Manage the coauthors for your proposal" %></h1>
 
-<h3><%= _('Current list of authors for <em>%s</em>') % 
+<h3><%= _('Current list of authors for <em>%s</em>') %
 	@proposal.title %></h3>
 
 <%= author_list_edition_table(@proposal.authorships) %>
@@ -10,7 +10,7 @@
        "must be an exact match (i.e., performing searches on similar " +
        "logins will not work). A mail will be sent to the new " +
        "author notifying him of this operation." %></p>
-  
+
 <% form_tag url_for(:action => 'author_add_confirm', :id => @proposal) do %>
   <p>
     <%= text_field_tag 'login', '', :size => 30 %>

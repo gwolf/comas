@@ -3,7 +3,7 @@ class MenuTree  < Array
   attr_accessor :menu_id, :entry_class, :elem_tag, :menu_tag
 
   def initialize *items
-    options = ( ! items.empty? and 
+    options = ( ! items.empty? and
                 items[-1].is_a?(Hash) ) ? items.delete_at(-1) : {}
 
     self.concat items
@@ -13,13 +13,13 @@ class MenuTree  < Array
     @menu_tag = options.delete(:menu_tag) || 'ul'
     @elem_tag = options.delete(:elem_tag) || 'li'
 
-    options.empty? or raise(ArgumentError, 
+    options.empty? or raise(ArgumentError,
                             _("Unexpected arguments received: ") <<
                             options.keys.sort.join(', '))
   end
 
   def to_s
-    [menu_start, 
+    [menu_start,
      self.map {|elem|  elem_start << elem.to_s << elem_end}.join("\n"),
      menu_end].join("\n")
   end

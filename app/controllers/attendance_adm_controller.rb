@@ -21,7 +21,7 @@ class AttendanceAdmController < Admin
   # is true.
   def choose_session
     options = {:per_page => 10,
-      :include => [:room, :conference], 
+      :include => [:room, :conference],
       :page => params[:page]}
     if params[:show_all]
       @tslots = Timeslot.by_time_distance(options)
@@ -46,10 +46,10 @@ class AttendanceAdmController < Admin
     # Results are received by this same controller, the form is shown
     # again ad nauseam
     if @person
-      register_attendance(@person, @tslot) 
+      register_attendance(@person, @tslot)
     end
 
-    @last_att = Attendance.find(:all, 
+    @last_att = Attendance.find(:all,
                                 :limit => 5,
                                 :order => 'created_at DESC',
                                 :conditions => ['timeslot_id = ?', @tslot.id])
@@ -109,11 +109,11 @@ class AttendanceAdmController < Admin
               :filename => '%s_list.xls' % @conference.short_name)
   end
 
-  # Produces the attendance detail for a given timeslot 
+  # Produces the attendance detail for a given timeslot
   def att_by_tslot
     begin
       @tslot = Timeslot.find_by_id(params[:timeslot_id])
-      raise ActiveRecord::RecordInvalid unless 
+      raise ActiveRecord::RecordInvalid unless
         @conference.timeslots.include? @tslot
     rescue
       flash[:error] << _('Invalid timeslot requested')
@@ -153,13 +153,13 @@ class AttendanceAdmController < Admin
     ### /!\ I am hard-wiring the first CertifFormat here. Not nice!
     ###     :-/ Provide a way to choose one... soon :-}
     send_data(CertifFormat.find(:first).generate_pdf_for(people, @conference),
-              :filename => 'certificate.pdf', 
+              :filename => 'certificate.pdf',
               :type => 'application/pdf')
   end
 
   protected
   def register_attendance(person, tslot)
-    if previous = person.attendances.find(:first, :conditions => 
+    if previous = person.attendances.find(:first, :conditions =>
                                           ['timeslot_id = ?', tslot.id])
       flash[:notice] << _('This person has already been registered for this ' +
                           'timeslot. No action taken.')
@@ -173,7 +173,7 @@ class AttendanceAdmController < Admin
     if ! person.conferences.include?(conf)
       unless conf.accepts_registrations?
         flash[:error] << _('<em>%s</em> is not registered for <em>%s</em>, ' +
-                           'and registrations are closed.') % 
+                           'and registrations are closed.') %
           [person.name, conf.name]
         return false
       end
@@ -187,7 +187,7 @@ class AttendanceAdmController < Admin
       flash[:notice] << _('Attendance successfully registered')
     else
       flash[:error] << _('Could not register person <em>%s</em> for this ' +
-                         'timeslot: %s') % 
+                         'timeslot: %s') %
         [person.name, att.errors.full_messages.join('<br/>')]
     end
   end
@@ -195,7 +195,7 @@ class AttendanceAdmController < Admin
   # Get either the conference specified in the parameters, or the
   # latest one with registered timeslots which started already
   def get_conference
-    @conference = Conference.find_by_id(params[:conference_id]) || 
+    @conference = Conference.find_by_id(params[:conference_id]) ||
       Conference.past_with_timeslots[0]
     return false unless @conference
   end
@@ -204,7 +204,7 @@ class AttendanceAdmController < Admin
     pers_id = params[:person_id]
     return true if pers_id.nil? or pers_id.blank?
     @person = Person.find_by_id(pers_id) rescue nil
-    flash[:error] << _('Invalid person specified: %s') % 
+    flash[:error] << _('Invalid person specified: %s') %
       h(pers_id) if @person.nil?
   end
 end

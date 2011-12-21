@@ -24,7 +24,7 @@ class CertifFormat < ActiveRecord::Base
   def self.paper_dimensions(paper)
     unit = abbr_units
     '%.02f x %.02f %s' % [self.height_of(paper, unit),
-                          self.width_of(paper, unit), 
+                          self.width_of(paper, unit),
                           _(unit)]
   end
 
@@ -60,7 +60,7 @@ class CertifFormat < ActiveRecord::Base
 
     people.each do |person|
       pdf.start_new_page
-    
+
       certif_format_lines.each do |line|
         line.lay_out_in_pdf(pdf, person, conference, with_boxes)
       end
