@@ -19,7 +19,7 @@ module ConferencesAdmHelper
            tslot.effective_tolerance_post, tslot.attendances.size,
            tslot.room.name,
            link_to(_('Delete'),
-                   { :action => 'destroy_timeslot', 
+                   { :action => 'destroy_timeslot',
                      :timeslot_id => tslot.id, :id => @conference.id },
                     {:confirm => _('Are you sure you want to permanently ' +
                                    'delete this timeslot? This will also ' +

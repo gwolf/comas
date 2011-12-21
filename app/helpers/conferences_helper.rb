@@ -4,7 +4,7 @@ module ConferencesHelper
     row_classes = list_row_classes
     ret = []
     ret << table_tag << conf_list_head_row
-    ret << confs.map do |conf| 
+    ret << confs.map do |conf|
       conf_list_row(conf)
     end
     ret << end_table_tag
@@ -23,8 +23,8 @@ module ConferencesHelper
 
     table_row_tag <<
       [logo_thumb_for(conf),
-       link_to(conf.name, :controller => 'conferences', 
-                :action => 'show', 
+       link_to(conf.name, :controller => 'conferences',
+                :action => 'show',
                 :short_name => conf.short_name),
         "#{conf.begins} - #{conf.finishes}",
        links.select {|elem| elem}.join(' - ')
@@ -34,8 +34,8 @@ module ConferencesHelper
 
   def list_filters
     res = ['<div class="info-row">']
-    
-    res << (session[:conf_list_include_past] ? 
+
+    res << (session[:conf_list_include_past] ?
             link_to(_('Show only upcoming conferences'), :hide_old => 1):
             link_to(_('Include past conferences'), :show_old => 1) )
 
@@ -69,15 +69,15 @@ module ConferencesHelper
       end
     else
       return link_to(_('Sign up'),
-                     { :controller => 'conferences', 
+                     { :controller => 'conferences',
                        :action => 'sign_up',
-                       :id => conf}, 
+                       :id => conf},
                      { :method => :post })
     end
   end
 
   def cfp_link_for(conf)
-    return nil unless @user and conf.accepts_proposals? and 
+    return nil unless @user and conf.accepts_proposals? and
       @user.conferences.include?(conf)
     link_to(_('Submit a proposal (%d days left)') % conf.cfp_deadline_in,
             { :controller => 'proposals',
@@ -97,7 +97,7 @@ module ConferencesHelper
                     _('Finishes'), conf.last_reg_date])
 
     if conf.has_cfp?
-      res << ('<h3>%s</h3>' % _('Call for papers period')) 
+      res << ('<h3>%s</h3>' % _('Call for papers period'))
       res << (dates_fmt % [_('Begins'), conf.cfp_open_date || _('Open'),
                            _('Finishes'), conf.last_cfp_date])
       res << cfp_link_for(conf)
@@ -109,13 +109,13 @@ module ConferencesHelper
     return '' unless @can_edit
     '<div class="conf-edit">' +
       [link_to(_('%d registered attendees') % conf.people.size,
-               :controller => 'conferences_adm', 
+               :controller => 'conferences_adm',
                :action => 'people_list', :id => conf),
        link_to(_('Edit conference'), :controller => 'conferences_adm',
                :action => :show, :id => conf),
        link_to(_('Edit timeslots'),
                :controller => 'conferences_adm',
-               :action => 'timeslots', 
+               :action => 'timeslots',
                :id => conf),
        link_to(_('Attendance lists'),
                :controller => 'attendance_adm',
@@ -129,21 +129,21 @@ module ConferencesHelper
 
   def display_logo(conf)
     return '' unless logo=conf.logo
-    '<div class="conf-logo">' + 
-      ( logo.bigger_than_medium? ? 
+    '<div class="conf-logo">' +
+      ( logo.bigger_than_medium? ?
         link_to(link_for_logo(conf, 'medium'),
-                :controller => 'logos', :action => 'data', :id => logo) : 
+                :controller => 'logos', :action => 'data', :id => logo) :
         link_for_logo(conf, 'medium') ) + '</div>'
   end
 
   def link_for_logo(conf, size)
     %w(data medium thumb).include?(size) or
-      raise Exception, _('Invalid logo size specified: %s') % size 
+      raise Exception, _('Invalid logo size specified: %s') % size
 
     logo = conf.logo or return ''
-    '<img src="%s" width="%s" height="%s" />' % 
+    '<img src="%s" width="%s" height="%s" />' %
       [ url_for(:controller => 'logos', :action => size,
-                :id => logo.id, :only_path => false), 
+                :id => logo.id, :only_path => false),
         logo.send("#{size}_width"), logo.send("#{size}_height") ]
   end
 
@@ -171,11 +171,11 @@ module ConferencesHelper
     # by any defined catalog — Show the selectors for said catalogs
     blank = [_('- Show all -'), nil]
     Conference.catalogs.map { |fld,klass|
-      '<form method="post" id="form_%s">%s %s</form>' % 
-      [ fld, 
+      '<form method="post" id="form_%s">%s %s</form>' %
+      [ fld,
         ( '<span class="info-title">%s</span>' %
           (_('Filter by %s') % Translation.for(fld.humanize)) ),
-        select_tag(fld, 
+        select_tag(fld,
                    options_for_select(klass.collection_by_id.
                                       unshift(blank),
                                       params[fld.to_s].to_i),

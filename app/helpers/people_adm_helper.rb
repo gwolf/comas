@@ -10,7 +10,7 @@ module PeopleAdmHelper
     ].each { |col|
       res << link_to(col[0], :sort_by => col[1],
                      :filter_by => @filter_by,
-                     :conference_id => @conf ? @conf.id : nil) 
+                     :conference_id => @conf ? @conf.id : nil)
     }
 
     join_for_row 'th', res
@@ -21,7 +21,7 @@ module PeopleAdmHelper
     [:id, :login, :firstname, :famname].each do |col|
       res << link_to(h(person.send col), :action => :show, :id => person)
     end
-    res << ( person.last_login_at.nil? ? '' : 
+    res << ( person.last_login_at.nil? ? '' :
              person.last_login_at.to_s(:listing) )
     res << link_to_if(@user != person, _('Delete'),
                       {:action => 'destroy', :id => person},

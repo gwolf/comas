@@ -2,7 +2,7 @@
 
 <% if @invite %>
   <p><%= _('You followed an invitation link for the <em>%s</em> ' +
-	   'conference (%s - %s).') % 
+	   'conference (%s - %s).') %
          [@conference.name, @conference.begins, @conference.finishes] %></p>
   <% if @accepts_reg %>
     <p><%= _('In order to registered you as an attendee, we ' +
@@ -22,6 +22,6 @@
 
 <p><%= _'Please fill in the following required details for your '+
         'account creation' %></p>
-<%= render :partial => 'pers_data', 
+<%= render :partial => 'pers_data',
            :locals => {:person => @person, :url => {:action => 'register'},
                        :subm => _('Create account'), :include_passwd => true} %>

@@ -24,21 +24,21 @@
       <td><%= format.size(:cm) %></td>
       <td><%= format.size(:in) %></td>
       <td>
-	<%= if format.first? 
+	<%= if format.first?
               icon_space
             else
               link_to icon_up, :action => :nametag_format_up, :id => format
             end %>
-	<%= if format.last? 
+	<%= if format.last?
               icon_space
             else
               link_to icon_down, :action => :nametag_format_down, :id => format
             end %>
-        <%= link_to _('Edit'), 
+        <%= link_to _('Edit'),
                        :action => :nametag_format_edit, :id => format %>
         <%= link_to icon_trash,
                     {:action => :nametag_format_delete, :id => format},
-                    {:method => :post, 
+                    {:method => :post,
                      :confirm => _('Are you sure you want to delete ' +
                                    'this format?')}
         %></td>

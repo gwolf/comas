@@ -2,7 +2,7 @@
   <div class="comas-for-admin">
     <%= _('You can configure the field names to appear in the public ' +
 	  'profile under the %s configuration key') %
-	link_to('person_profile_fields', :controller => 'sys_conf_adm', 
+	link_to('person_profile_fields', :controller => 'sys_conf_adm',
                 :action => 'edit', :key => 'person_profile_fields') %>
   </div>
 <% end %>
@@ -24,7 +24,7 @@
       <% table_row do %>
 	<td><%= link_to(prop.conference.name, :controller => 'conferences',
 	                :action => 'show', :id => prop.conference) %></td>
-        <td><%= link_to(prop.title, :controller => 'proposals', 
+        <td><%= link_to(prop.title, :controller => 'proposals',
 	                :action => 'show', :id => prop)%></td>
       <% end %>
     <% end %>

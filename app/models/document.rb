@@ -10,7 +10,7 @@ class Document < ActiveRecord::Base
                                         'been uploaded to this proposal'))
   validates_associated :proposal
 
-  # We override find to exclude the whole file contents (the 'data' column) 
+  # We override find to exclude the whole file contents (the 'data' column)
   # from our result set. Operation should be _almost_ transparent (see note by
   # self#data=)
   def self.find (*args)
@@ -53,9 +53,9 @@ class Document < ActiveRecord::Base
   end
 
   # IMPORTANT THING TO REMEMBER:
-  # 
+  #
   # Contrary to most Rails conventions, data is saved AS SOON AS IT IS RECEIVED
-  # in order to free us a bit from the pain of getting the full file data at 
+  # in order to free us a bit from the pain of getting the full file data at
   # every instantiation.
   def data=(value)
     return super(value) if self.attributes.has_key? 'data'
@@ -77,6 +77,6 @@ class Document < ActiveRecord::Base
   def sanitize(name)
     # get only the filename, not the whole path and
     # replace all none alphanumeric, underscore or periods with underscore
-    File.basename(name.gsub('\\', '/')).gsub(/[^\w\.\-]/,'_') 
+    File.basename(name.gsub('\\', '/')).gsub(/[^\w\.\-]/,'_')
   end
 end

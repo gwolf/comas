@@ -7,7 +7,7 @@
     <th><%= link_to _('ID'), :sort_by => 'conferences.id' %></th>
     <th><%= link_to _('Name'), :sort_by => 'name' %></th>
     <th><%= link_to _('Begins at'), :sort_by => 'begins' %></th>
-    <th><%= link_to _('Registration opens'), 
+    <th><%= link_to _('Registration opens'),
 	              :sort_by => 'reg_open_date' %></th>
     <th><%= _('Defined timeslots') %></th>
     <th><%= _('Registered attendees') %></th>
@@ -23,9 +23,9 @@
     <td><%= conf.reg_open_date %></td>
     <td><%= link_to(conf.timeslots.size,
                     {:action => 'timeslots', :id => conf} ) %></td>
-    <td><%= link_to_if(att_num > 0, att_num, 
+    <td><%= link_to_if(att_num > 0, att_num,
                        { :action => 'people_list', :id => conf }) %></td>
-    <td><%= if !conf.homepage.blank? 
+    <td><%= if !conf.homepage.blank?
               link_to(_('Visit'), conf.homepage)
             else
               _'Not defined'

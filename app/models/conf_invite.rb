@@ -1,7 +1,7 @@
 class ConfInvite < ActiveRecord::Base
   belongs_to :conference
-  belongs_to :sender, :class_name => 'Person', :foreign_key => 'sender_id' 
-  belongs_to :claimer, :class_name => 'Person', :foreign_key => 'claimer_id' 
+  belongs_to :sender, :class_name => 'Person', :foreign_key => 'sender_id'
+  belongs_to :claimer, :class_name => 'Person', :foreign_key => 'claimer_id'
 
   validates_presence_of :conference_id
   validates_presence_of :sender_id
@@ -35,7 +35,7 @@ class ConfInvite < ActiveRecord::Base
     end
   end
 
-  # Has this invitation been claimed? 
+  # Has this invitation been claimed?
   def claimed?
     !claimer_id.nil?
   end

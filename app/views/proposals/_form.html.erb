@@ -1,5 +1,5 @@
 <%= redcloth_help %>
-<% comas_form_for :proposal, proposal, 
+<% comas_form_for :proposal, proposal,
                   :url => {:action => action, :id => proposal} do |f| %>
 <% if choose_confs %>
   <%= f.select :conference_id, confs.map {|c| [_('%s (%d days left)') %
@@ -8,9 +8,9 @@
 					       c.id]},
                :note => _('In order to submit a proposal for a conference ' +
                           'not listed below, please %s. <br/>' +
-			  'Take into account that not all conferences ' + 
+			  'Take into account that not all conferences ' +
 			  'will accept proposals submission.') %
-                        link_to(_('register as an attendee'), 
+                        link_to(_('register as an attendee'),
                             :controller => 'conferences', :action => 'list') %>
 <% else %>
   <%= info_row _('Conference'), proposal.conference.name %>

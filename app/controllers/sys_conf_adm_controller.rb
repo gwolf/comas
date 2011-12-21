@@ -8,7 +8,7 @@ class SysConfAdmController < Admin
                                                   :add_catalog_row]
   before_filter :get_catalog, :only => [:show_catalog, :delete_catalog_row,
                                         :add_catalog_row]
-  before_filter :get_nametag_format, :only => [:nametag_format_edit, 
+  before_filter :get_nametag_format, :only => [:nametag_format_edit,
                                                :nametag_format_delete,
                                                :nametag_format_up,
                                                :nametag_format_down]
@@ -58,7 +58,7 @@ class SysConfAdmController < Admin
 
     if @conf.update_attributes(params[:sys_conf])
       flash[:notice] << _('The configuration entry was successfully updated')
-    else 
+    else
       flash[:error] << _('Error updating requested configuration entry: ') +
         @conf.errors.full_messages.join("<br/>")
     end
@@ -85,9 +85,9 @@ class SysConfAdmController < Admin
       default = params[:flddefault]
       default = nil if default.blank?
 
-      field =~ /^\w[\d\w\_]+$/ or raise NameError, _('Invalid column name') 
+      field =~ /^\w[\d\w\_]+$/ or raise NameError, _('Invalid column name')
       raise NameError, _('A field by that name is already defined') if
-        @model.column_names.include?(field) 
+        @model.column_names.include?(field)
       raise TypeError, _('Invalid data type specified') unless
         @types.include?(type)
 
@@ -102,7 +102,7 @@ class SysConfAdmController < Admin
         @model.connection.add_column(@table, field, type, :default => default)
       end
 
-      notify_modified_structure _("Successfully created %s field in %s") % 
+      notify_modified_structure _("Successfully created %s field in %s") %
         [field, @table]
 
     rescue TypeError, NameError, ActiveRecord::StatementInvalid => err
@@ -115,7 +115,7 @@ class SysConfAdmController < Admin
     return true unless request.post?
     field = params[:field].to_sym
 
-    if @model.extra_listable_attributes.select { |attr| 
+    if @model.extra_listable_attributes.select { |attr|
         attr.name.to_sym == field }.empty?
       flash[:error] << _('Attempting to remove invalid field: %s') % field
       return false
@@ -128,7 +128,7 @@ class SysConfAdmController < Admin
       flash[:error] << _('Error removing specified field: %s') % err
     end
 
-    if field.to_s =~ /^(.*)_id$/ and 
+    if field.to_s =~ /^(.*)_id$/ and
         @model.connection.catalogs.include?($1.pluralize)
       flash[:warning] << _('Please note we have _not_ dropped the ' +
                            'corresponding catalog for this column, ' +
@@ -169,7 +169,7 @@ class SysConfAdmController < Admin
     if null
       # Granting permission to set it to null? Ok, just proceed...
       @model.connection.change_column_null(@table, name, true)
-    elsif !@field.null 
+    elsif !@field.null
       # Is the field already rejecting null values? Good, then this is
       # a no-op!
     else
@@ -178,7 +178,7 @@ class SysConfAdmController < Admin
         # needed. Anyway, this is prone to fail, so...
         begin
           @model.connection.select_all("UPDATE %s set %s = %s WHERE %s IS NULL"%
-                                       [@table, name, @field.default, 
+                                       [@table, name, @field.default,
                                         name])
           # And now, the magic!
           @model.connection.change_column_null(@table, name, false)
@@ -231,7 +231,7 @@ class SysConfAdmController < Admin
 
   def add_catalog_row
     redirect_to(:action => 'show_catalog', :catalog => @cat_name)
-    return true unless request.post? 
+    return true unless request.post?
 
     param_cat = @cat_name.singularize
     return true unless params.has_key?(param_cat)
@@ -239,7 +239,7 @@ class SysConfAdmController < Admin
       @catalog.new(:name => params[param_cat][:name]).save!
       flash[:notice] << _('The new %s was successfully registered') % param_cat
     rescue ActiveRecord::RecordInvalid => err
-      flash[:error] << _('Could not create new %s: %s') % 
+      flash[:error] << _('Could not create new %s: %s') %
         [param_cat, err.to_s]
     end
   end
@@ -274,7 +274,7 @@ class SysConfAdmController < Admin
   end
 
   def nametag_format_delete
-    @format.destroy      
+    @format.destroy
     flash[:notice] << _('The requested format was successfully deleted')
     redirect_to :action => 'nametag_format_list'
   end
@@ -294,7 +294,7 @@ class SysConfAdmController < Admin
   def get_sysconf
     @conf = SysConf.find_by_key(params[:key])
     if @conf.nil?
-      flash[:error] << _('Invalid configuration entry %d requested') % 
+      flash[:error] << _('Invalid configuration entry %d requested') %
         params[:id]
       redirect_to :action => :list
       return false
@@ -361,7 +361,7 @@ class SysConfAdmController < Admin
 
   def touch_dynamic_classes
     # Just "touch" the dynamic classes, to generate their MagicModels
-    # to avoid catalogs not showing up due to NameErrors. 
+    # to avoid catalogs not showing up due to NameErrors.
     Person
     Conference
     Proposal

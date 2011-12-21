@@ -1,4 +1,4 @@
-<% title = session[:conf_list_include_past] ? 
+<% title = session[:conf_list_include_past] ?
      _('Registered conferences') :  _('Upcoming conferences') %>
 <%= link_to_login_or_new if @user.nil? %>
 <h1><%= title %></h1>

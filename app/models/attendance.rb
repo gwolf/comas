@@ -18,12 +18,12 @@ class Attendance < ActiveRecord::Base
   # user waiting on a long queue! We provide only a
   # people_not_in_conference finder method to find the list of probable
   # users which have to be registered.
-  # 
+  #
   # Watch out: This is bound to be a VERY heavy query!
 #   def self.people_not_in_conference(conf)
 #     self.find(:all, :include => :person
 #               :conditions => ['timeslot_id not in (?)', conf.timeslot_ids]
-#               ).map {|a| 
+#               ).map {|a|
 #       a.person}.uniq.reject {|p|
 #       p.conferences.include? conf}
 #   end
@@ -35,7 +35,7 @@ class Attendance < ActiveRecord::Base
   end
 
   # All of the attendances registered for a given conference
-  # 
+  #
   # Very often, calling this method will be immediately followed by
   # finding each of its results' associated people - Make it easy on
   # the database by including the people on the query itself.

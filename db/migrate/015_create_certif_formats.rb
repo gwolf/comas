@@ -13,7 +13,7 @@ class CreateCertifFormats < ActiveRecord::Migration
     create_table :certif_format_lines do |t|
       # Valid :content_source, :justification are specified and
       # hard-coded in the corresponding model
-      t.column :content_source, :integer, :null => false 
+      t.column :content_source, :integer, :null => false
       t.column :content, :string, :null => false
       t.column :x_pos, :integer, :null => false
       t.column :y_pos, :integer, :null => false

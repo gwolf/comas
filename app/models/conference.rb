@@ -18,8 +18,8 @@ class Conference < ActiveRecord::Base
   validate :no_proposals_unless_manages_proposals
 
   def self.core_attributes
-    %w(begins cfp_close_date cfp_open_date descr finishes homepage id 
-       invite_only manages_proposals name public_proposals reg_close_date 
+    %w(begins cfp_close_date cfp_open_date descr finishes homepage id
+       invite_only manages_proposals name public_proposals reg_close_date
        reg_open_date short_name).map do |attr|
       self.columns.select{|col| col.name == attr}[0]
     end
@@ -38,9 +38,9 @@ class Conference < ActiveRecord::Base
   # attributes whose name ends in _id, and for which there is a
   # suitably named related table with 'id' and 'name' columns.
   def self.catalogs
-    Hash[self.column_names.map do |col| 
+    Hash[self.column_names.map do |col|
            begin
-             if col =~ /(.*)_id$/ and 
+             if col =~ /(.*)_id$/ and
                  klass = $1.classify.constantize and
                  klass.column_names.include? 'id' and
                  klass.column_names.include? 'name'

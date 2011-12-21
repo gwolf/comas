@@ -16,15 +16,15 @@ module PdfDimensions
   ValidUnits = {
     :pt => {
       :divisor => 1.pt,
-      :full => _('points'), 
+      :full => _('points'),
       :abbr => _('pt')},
     :cm => {
       :divisor => 1.cm,
-      :full => _('centimeters'), 
+      :full => _('centimeters'),
       :abbr => _('cm')},
     :in => {
       :divisor => 1.in,
-      :full => _('inches'), 
+      :full => _('inches'),
       :abbr => _('in')}
   }
 
@@ -36,7 +36,7 @@ module PdfDimensions
   # operator-friendliness), so... We keep it.
   module ClassMethods
     def convert_unit(from, to, amount)
-      from_scale = ValidUnits[from.to_sym][:divisor] or 
+      from_scale = ValidUnits[from.to_sym][:divisor] or
         raise TypeError, _('Unknown source unit specified: %s') % from
       to_scale = ValidUnits[to.to_sym][:divisor] or
         raise TypeError, _('Unknown target unit specified: %s') % to
@@ -59,7 +59,7 @@ module PdfDimensions
         raise TypeError, _('Systemwide page units (SysConf key page_units) ' +
                            'has not yet been defined')
       end
-      raise TypeError, _('Unknown page units %s in system configuration') % 
+      raise TypeError, _('Unknown page units %s in system configuration') %
         unit unless ValidUnits.has_key?(unit)
       unit
     end

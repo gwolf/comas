@@ -11,16 +11,16 @@
 #
 # * GETTEXT_PATH - The path for the GetText translation files (in case
 #   you want an interface language other than English). Defaults to 'locale'.
-# * LANG - Your locale (language) specification. English interface will be 
-#   shown if this variable is not specified (or no suitable translation 
+# * LANG - Your locale (language) specification. English interface will be
+#   shown if this variable is not specified (or no suitable translation
 #   exists)
-# * NAMETAG_PRINTER - The port where the printer is connected, or the file 
+# * NAMETAG_PRINTER - The port where the printer is connected, or the file
 #   where the output should be sent to. Defaults to /dev/lp0.
-# * NAMETAG_CHARSET - The character set this printer supports. Zebra printers 
+# * NAMETAG_CHARSET - The character set this printer supports. Zebra printers
 #   support 8-bit charsets only, which means we will have to translate via
 #   Iconv. Defaults to CP850 (EPL2 printers' default). Note that if an invalid
-#   encoding is requested, the strings will be sent to the printer as they are 
-#   (i.e. in UTF8), resulting in garbled results whenever they are not 7-bit 
+#   encoding is requested, the strings will be sent to the printer as they are
+#   (i.e. in UTF8), resulting in garbled results whenever they are not 7-bit
 #   clean.
 
 begin
@@ -46,7 +46,7 @@ class NametagsGlade
   bindtextdomain("comas", ENV['GETTEXT_PATH'])
   attr :glade
 
-  def initialize(path_or_data, root = nil, domain = 'comas', 
+  def initialize(path_or_data, root = nil, domain = 'comas',
                  localedir = 'locale')
     bindtextdomain(domain, localedir, nil, "UTF-8")
 
@@ -84,7 +84,7 @@ class NametagsGlade
   # Callbacks
 
   def on_conference_combobox_changed(combo)
-    populate_people(@glade['peoplelist_treeview'].model, combo.active_iter[1])    
+    populate_people(@glade['peoplelist_treeview'].model, combo.active_iter[1])
   end
 
   def on_format_combobox_changed(combo)
@@ -129,7 +129,7 @@ class NametagsGlade
 
     colnum = 0
     [_('ID'), _('First name'), _('Family name'), _('Login')].each do |title|
-      col = Gtk::TreeViewColumn.new(title, 
+      col = Gtk::TreeViewColumn.new(title,
                                     Gtk::CellRendererText.new,
                                     'text' => colnum)
       col.clickable = true
@@ -195,7 +195,7 @@ class NametagsGlade
   def populate_conferences_list(model)
     model.clear # Just in case we are being refreshed
     model.append # Add and activate an empty line to begin with
-    Conference.find(:all, :include => :people).sort_by {|c| 
+    Conference.find(:all, :include => :people).sort_by {|c|
       c.distance_to_begins}.each do |conf|
       iter = model.append
       iter[0] = _("%s att.\t%s (%s days)\t%s") %

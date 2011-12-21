@@ -19,14 +19,14 @@
     <% table_row do %>
       <th><%= _ type.capitalize %></th>
       <% @graphs.each do |graph| %>
-        <td><%= link_to(_('View'), 
+        <td><%= link_to(_('View'),
                         :action => 'get_graph',
 	                :table => graph,
 	                :sort => 'id',
 	                :graph_type => type) %></td>
       <% end %>
       <% @graphs.each do |graph| %>
-        <td><%= link_to(_('View'), 
+        <td><%= link_to(_('View'),
                         :action => 'get_graph',
 	                :table => graph,
 	                :sort => 'value',

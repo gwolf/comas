@@ -19,7 +19,7 @@ class RescueSession < ActiveRecord::Base
       sess.destroy
     end
 
-    sess = self.new(:person => person, 
+    sess = self.new(:person => person,
                     :link => Digest::MD5.hexdigest(String.random(16)))
     sess.save!
     return sess
