@@ -1,8 +1,8 @@
-<% # Ordered list of fields we will present to the user 
+<% # Ordered list of fields we will present to the user
   fields = %w(login passwd firstname famname email
               ok_conf_mails ok_general_mails).
   concat(@person.extra_listable_attributes.map(&:name)) %>
-<% comas_form_for(:person, @person, 
+<% comas_form_for(:person, @person,
                   :url => {:action => action, :id => @person}) do |f| %>
   <% fields.each do |attr|%>
     <%= f.auto_field attr %>

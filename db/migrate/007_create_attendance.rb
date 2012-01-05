@@ -23,7 +23,7 @@ class CreateAttendance < ActiveRecord::Migration
   end
 
   def self.down
-    
+
     drop_table :attendances
     drop_habtm :timeslots, :prop_types
     remove_reference :proposals, :timeslots

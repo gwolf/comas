@@ -38,7 +38,7 @@
 # the behavior of classes themselves when they are subclassed.
 # To achieve the same behavior with modules requires some clever
 # Ruby karate. ClassInherit provides a nice solution.
-# Simply place the class inheritable methods in the block 
+# Simply place the class inheritable methods in the block
 # parameter of the special module method ClassInherit.
 #
 #   module Mix
@@ -64,7 +64,7 @@
 # the given block is evaluated, then the ClassInherit module
 # is extended against the current module.
 #
-# The above is actually equivalent to putting the class/module 
+# The above is actually equivalent to putting the class/module
 # methods in a nested ClassInherit module and extending it
 # module _manually_, eg.
 #

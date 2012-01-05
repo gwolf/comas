@@ -17,13 +17,13 @@
     <td><%=h conf.value %></td>
     <td><%= link_to _('Edit'), :action => :edit, :key => conf.key %>
       <%= link_to(_('Delete'), {:action => :delete, :key => conf.key},
-                  {:method => :post, 
+                  {:method => :post,
                    :confirm => _('Are you sure you want to delete ' +
                                  'this configuration entry?')}) %></td>
   <% end %>
 <% end %>
   <% table_row do %>
-    <% form_for :sys_conf, @new_conf, 
+    <% form_for :sys_conf, @new_conf,
                  :url => {:action => :create} do |f|%>
       <td><%= f.text_field :key, :size => 10 %></td>
       <td><%= f.text_field :descr, :size => 20 %></td>

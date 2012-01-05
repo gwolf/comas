@@ -7,10 +7,10 @@ class Person < ActiveRecord::Base
   has_many :proposals, :through => :authorships
   has_many(:sent_invites, :foreign_key => 'sender_id',
            :class_name => 'ConfInvite')
-  has_many(:claimed_invites, :foreign_key => 'claimer_id', 
+  has_many(:claimed_invites, :foreign_key => 'claimer_id',
            :class_name => 'ConfInvite')
   has_and_belongs_to_many :admin_tasks
-  has_and_belongs_to_many(:conferences, :order => :begins, 
+  has_and_belongs_to_many(:conferences, :order => :begins,
                           :before_add => :ck_accepts_registrations,
                           :before_remove => :dont_unregister_if_has_proposals)
   has_many :attendances
@@ -38,16 +38,16 @@ class Person < ActiveRecord::Base
   end
 
   def self.core_attributes
-    %w(created_at email famname firstname id last_login_at login passwd 
-       pw_salt ok_conf_mails ok_general_mails).map do |attr| 
-      self.columns.select{|col| col.name == attr}[0] 
+    %w(created_at email famname firstname id last_login_at login passwd
+       pw_salt ok_conf_mails ok_general_mails).map do |attr|
+      self.columns.select{|col| col.name == attr}[0]
     end
   end
   def core_attributes; self.class.core_attributes; end
 
   # Returns a list of any user-listable attributes that are not part of the
   # base Person data
-  def self.extra_listable_attributes 
+  def self.extra_listable_attributes
     self.columns - self.core_attributes
   end
   def extra_listable_attributes; self.class.extra_listable_attributes; end
@@ -57,7 +57,7 @@ class Person < ActiveRecord::Base
   # good enough as a column header and valid methods that can be sent
   # to the person instance.
   def self.flattributes_for_list
-    self.columns.map do |col| 
+    self.columns.map do |col|
       name = col.name
       if name =~ /^(.*)_id$/
         attr_for_name = "#{$1}_name"
@@ -73,7 +73,7 @@ class Person < ActiveRecord::Base
   end
 
   # Performs a (optionally paginated) search for the specified string
-  # in any of the firstname, famname or login fields. 
+  # in any of the firstname, famname or login fields.
   #
   # If no parameters are specified, it just returns a full listing,
   # ordered by ID. Any additional parameters for the search can be
@@ -95,7 +95,7 @@ class Person < ActiveRecord::Base
   end
 
   def self.name_find(name=nil, params = {})
-    params[:conditions] = ['firstname ~* ? or famname ~* ? or login ~* ?', 
+    params[:conditions] = ['firstname ~* ? or famname ~* ? or login ~* ?',
                            name, name, name] if name
     self.find(:all, params)
   end
@@ -156,7 +156,7 @@ class Person < ActiveRecord::Base
   end
 
   # Which conferences can this person invite a friend to? (see
-  # PeopleController#invite) 
+  # PeopleController#invite)
   def conferences_for_invite
     # Conference administrators can invite people to any future
     # conference
@@ -229,13 +229,13 @@ class Person < ActiveRecord::Base
   def ck_accepts_registrations(conf)
     return true if conf.in_reg_period?
     raise(ActiveRecord::RecordNotSaved,
-          _('Conference %s does not currently accept registrations') % 
+          _('Conference %s does not currently accept registrations') %
           conf.name)
   end
 
   def dont_unregister_if_has_proposals(conf)
     return true unless self.has_proposal_for? conf
-    raise(ActiveRecord::RecordNotSaved, 
+    raise(ActiveRecord::RecordNotSaved,
           _('Cannot leave %s - This user still has proposals '+
             'on this conference') % conf.name)
   end

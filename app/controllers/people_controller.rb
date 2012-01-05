@@ -63,7 +63,7 @@ class PeopleController < ApplicationController
   end
 
   def rec_pass_chg
-    if session[:recovered_at].nil? 
+    if session[:recovered_at].nil?
       redirect_to :action => 'logout'
       flash[:error] << _('Invalid attempt to change password')
       return false
@@ -167,7 +167,7 @@ class PeopleController < ApplicationController
 
     @user.transaction do
       if data = params[:person].delete(:photo) and !data.is_a? String
-        process_photo(@user, data) 
+        process_photo(@user, data)
       end
 
       if @user.update_attributes(params[:person])
@@ -201,11 +201,11 @@ class PeopleController < ApplicationController
       params[:current].blank? or params[:new].blank? or params[:confirm].blank?
     err << _('New password does not match confirmation') unless
       params[:new] == params[:confirm]
-    err << _('Current password is not valid') unless 
+    err << _('Current password is not valid') unless
       Person.ck_login(@user.login, params[:current])
-    
+
     @user.passwd = params[:new]
-    @user.save or err << _('Error changing your password: ') + 
+    @user.save or err << _('Error changing your password: ') +
       @user.errors.full_messages.join('<br/>')
 
     if !err.empty?
@@ -234,7 +234,7 @@ class PeopleController < ApplicationController
 
   def get_photo
     @person = Person.find_by_id(params[:id])
-    unless photo = @person.photo 
+    unless photo = @person.photo
       redirect_to :action => :profile, :id => @person
       return nil
     end
@@ -260,7 +260,7 @@ class PeopleController < ApplicationController
         flash[:error] << _('You are not allowed to send invitations for ' +
                            'the specified conference.')
       end
-      invite = ConfInvite.for(conf, @user, params[:email], 
+      invite = ConfInvite.for(conf, @user, params[:email],
                               params[:firstname], params[:famname])
       Notification.deliver_conference_invitation(invite, params[:body])
 

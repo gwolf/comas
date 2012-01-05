@@ -23,11 +23,11 @@
 <h3><%= _'Create a new timeslot for this conference' %></h3>
 <% tolerance_note = _('Enter the tolerance in <em>hh:mm:ss</em> format. If ' +
 		      'not specified, it will use the system-wide default (%s)')
-   comas_form_for :timeslot, @new_ts, 
-                  :url => {:action => 'create_timeslot', 
+   comas_form_for :timeslot, @new_ts,
+                  :url => {:action => 'create_timeslot',
                            :id => @conference.id} do |f| %>
   <%= f.auto_field :start_time %>
-  <%= f.auto_field :tolerance_pre, 
+  <%= f.auto_field :tolerance_pre,
                {:note => tolerance_note % Timeslot.default_tolerance_pre} %>
   <%= f.auto_field :tolerance_post,
                {:note => tolerance_note % Timeslot.default_tolerance_post} %>

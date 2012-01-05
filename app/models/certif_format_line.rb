@@ -17,7 +17,7 @@ class CertifFormatLine < ActiveRecord::Base
     lin.content = ' ' if lin.content_source == -1
   end
 
-  validates_presence_of(:certif_format_id, :content_source, :content, 
+  validates_presence_of(:certif_format_id, :content_source, :content,
                         :x_pos, :y_pos, :justification)
   validates_numericality_of(:content_source, :x_pos, :y_pos, :max_width)
   validates_numericality_of :font_size, :allow_nil => true
@@ -107,7 +107,7 @@ class CertifFormatLine < ActiveRecord::Base
 
   private
   def value_for(person,conference)
-    return '' if content_source == -1 
+    return '' if content_source == -1
     return content if content_source == 0
 
     # So we are dealing with a dynamic source...
@@ -124,7 +124,7 @@ class CertifFormatLine < ActiveRecord::Base
     else
       return obj.send(content) if obj.respond_to? content
       raise NoMethodError, _('Undefined attribute %s for %s in format ' <<
-                             'line %d (%d)') % [content, obj.class, 
+                             'line %d (%d)') % [content, obj.class,
                                                 id, certif_format_id]
     end
   end

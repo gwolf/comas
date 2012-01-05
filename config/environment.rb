@@ -38,8 +38,8 @@ Rails::Initializer.run do |config|
   # Use the database for sessions instead of the file system
   # (create the session table with 'rake db:sessions:create')
   config.action_controller.session_store = :active_record_store
-  config.action_controller.session = { 
-    :session_key => "_comas_session_id", 
+  config.action_controller.session = {
+    :session_key => "_comas_session_id",
     :secret => "9ffb62fa7055a3f4009b824be282fc38" }
 
 
@@ -63,7 +63,7 @@ end
 # does not exist, mail will just not be sent (they will be handled as
 # if testing)
 begin
-  require('config/mail_settings') 
+  require('config/mail_settings')
 rescue MissingSourceFile
   warn "*** Mail configuration not set"
   warn "Please create config/mail_settings.rb with your mail configuration. "

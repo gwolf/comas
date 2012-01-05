@@ -2,23 +2,23 @@
 class NametagFormat < ActiveRecord::Base
   # EPL2 Programmers Manual available at:
   # http://www.zebra.com/id/zebra/na/en/documentlibrary/manuals/en/epl2_manual__en_.DownloadFile.File.tmp/14245L-001rA_EPL_PG.pdf?dvar1=Manual&dvar2=EPL2%20Programmers%20Manual%20(en)&dvar3=TLP%202844
-  Defaults = {:name_width => 12, 
+  Defaults = {:name_width => 12,
     :h_start => 30,
     :v_start => 5,
     :id_bar_hpos => 480,
-    :id_bar_vpos => 30, 
+    :id_bar_vpos => 30,
     :id_bar_orient => 1,
     :id_bar_narrow => 2,
     :id_bar_wide => 4,
     :id_bar_height => 70
   }
-  Orientations = {0 => _('Horizontal'), 1 => _('Vertical'), 
+  Orientations = {0 => _('Horizontal'), 1 => _('Vertical'),
                   2 => _('Upside down'), 3 => _('Vertical inverted')}
 
   acts_as_list
 
-  %w(h_size v_size v_gap name_width h_start v_start id_bar_hpos 
-     id_bar_vpos id_bar_orient id_bar_narrow id_bar_wide 
+  %w(h_size v_size v_gap name_width h_start v_start id_bar_hpos
+     id_bar_vpos id_bar_orient id_bar_narrow id_bar_wide
      id_bar_height).each do |attr|
     validates_numericality_of attr
     validates_presence_of attr
@@ -27,9 +27,9 @@ class NametagFormat < ActiveRecord::Base
   validates_numericality_of :position, :allow_nil => true
 
   validates_inclusion_of :id_bar_orient, :in => Orientations.keys
-  validates_inclusion_of :id_bar_narrow, :in => 1..10, 
+  validates_inclusion_of :id_bar_narrow, :in => 1..10,
                          :message => _('Not in valid range (1-10)')
-  validates_inclusion_of :id_bar_wide, :in => 2..30, 
+  validates_inclusion_of :id_bar_wide, :in => 2..30,
                          :message => _('Not in valid range (2-30)')
   validate do |fmt|
     if fmt.id_bar_narrow >= fmt.id_bar_wide
@@ -103,7 +103,7 @@ class NametagFormat < ActiveRecord::Base
   # 203dpi)
   def size(unit=:pt)
     divisors = {:pt => 1.0, :in => 203.0, :cm => 80.0}
-    div = divisors[unit] or 
+    div = divisors[unit] or
       raise TypeError, _('Unknown unit specified: %s') % unit
 
     '%.2fx%.2f' % [h_size / div, v_size / div]
@@ -113,7 +113,7 @@ class NametagFormat < ActiveRecord::Base
   def barcode_line(person)
     id_bar_type = 1
     print_numbers = 'B'
-    'B%d,%d,%d,%d,%d,%d,%d,%s,"%s"' % [id_bar_hpos, id_bar_vpos, 
+    'B%d,%d,%d,%d,%d,%d,%d,%s,"%s"' % [id_bar_hpos, id_bar_vpos,
                                        id_bar_orient, id_bar_type,
                                        id_bar_narrow, id_bar_wide,
                                        id_bar_height, print_numbers,
@@ -126,7 +126,7 @@ class NametagFormat < ActiveRecord::Base
     wide = text.size <= name_width ? 2 : 1
     tall = dblheight ? 2 : 1
     reverse = reverse ? 'R' : 'N'
-    'A%d,%d,%d,%d,%d,%d,%s,"%s"' % [hpos, vpos, rotation, fontsize, 
+    'A%d,%d,%d,%d,%d,%d,%s,"%s"' % [hpos, vpos, rotation, fontsize,
                                        wide, tall, reverse, text]
   end
 

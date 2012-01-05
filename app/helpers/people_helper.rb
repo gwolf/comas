@@ -83,7 +83,7 @@ module PeopleHelper
   def link_to_photo(person)
     return '' unless person.has_photo?
     photo = person.photo
-    image_tag(url_for(:action => 'get_photo', :id => person.id), 
+    image_tag(url_for(:action => 'get_photo', :id => person.id),
               :size => '%dx%d' % [photo.width, photo.height],
               :alt => _('Photo for %s' % person.name))
   end

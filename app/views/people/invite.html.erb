@@ -13,20 +13,20 @@
                text_field_tag(:firstname, '', :size => 20)) %>
   <%= form_row(_("Family name"),
                text_field_tag(:famname, '', :size => 20)) %>
-  <%= form_row(_('E-mail address'), 
+  <%= form_row(_('E-mail address'),
                text_field_tag(:email, '', :size => 60)) %>
   <% invite_text = @user.has_admin_task?(:conferences_adm) ?
                    _('Select one of the conferences presented below.') :
                    _('Select one of the conferences presented below. ' +
                      'Note that you can only send invitations to ' +
-                     'conferences you are currently registered for.') 
+                     'conferences you are currently registered for.')
  %>
   <%= form_row(_('Conference to invite to'),
                select_tag(:dest_conf_id,
                           options_from_collection_for_select(@user.conferences_for_invite,
                                                              'id', 'name') ),
                invite_text) %>
-  <%= form_row(_('Text of your message'), 
+  <%= form_row(_('Text of your message'),
                text_area_tag(:body, '', :size => '60x5'),
                _('Please note an auto-generated portion with the ' +
 	         'relevant URL (and including your contact information) ' +

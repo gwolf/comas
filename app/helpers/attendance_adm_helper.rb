@@ -5,10 +5,10 @@ module AttendanceAdmHelper
 
     ret = '<table class="timeslot-list">'
     ret << tslot_head
-    tslots.each do |item| 
+    tslots.each do |item|
       row += 1
       rowclass = classes[row % classes.size]
-      ret << tslot_row(rowclass, item) 
+      ret << tslot_row(rowclass, item)
     end
     ret << '</table>'
   end
@@ -26,10 +26,10 @@ module AttendanceAdmHelper
 
   def tslot_row(rowclass, item)
     ret = "<tr class=\"#{rowclass}\">"
-    [ item.conference.name, item.room.name, item.short_start_time, 
+    [ item.conference.name, item.room.name, item.short_start_time,
       item.time_to_start, item.tolerance_pre, item.tolerance_post,
       link_to(_('Choose'), :action => 'take', :id => item)].each do |col|
-      ret << "<td>#{col}</td>" 
+      ret << "<td>#{col}</td>"
     end
     ret << '</tr>'
 

@@ -4,8 +4,8 @@
     <p><%= _('Filter by: (on login, firstname or family name)') %><br/>
       <%= text_field_tag :filter_by, h(@filter_by) %></p>
     <p><%= _('Filter by conference') %><br/>
-      <%= select_tag(:conference_id, 
-                     options_for_select([''] + @conferences.map {|c| 
+      <%= select_tag(:conference_id,
+                     options_for_select([''] + @conferences.map {|c|
 	                                ["#{c.name} (#{c.begins})", c.id]},
 	                                @conf ? @conf.id : nil)
                      ) %></p>

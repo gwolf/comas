@@ -8,20 +8,20 @@
   <% end %>
   <% formats.each do |format| %>
     <% table_row do %>
-      <td><%= link_to format.id, :action => 'show', 
+      <td><%= link_to format.id, :action => 'show',
                       :id => format.id %></td>
       <td><%= link_to format.name, :action => 'show',
                       :id => format.id %></td>
       <td><%= human_paper_size(format.paper_size) %></td>
       <td><%= format.orientation %></td>
-      <td><%= link_to icon_trash, 
-                      { :action => 'delete', 
+      <td><%= link_to icon_trash,
+                      { :action => 'delete',
                         :id => format.id},
                       { :confirm => _('Are you sure you want to delete ' +
 				      'this format?')} %></td>
     <% end %>
   <% end %>
-  <% form_for :certif_format, edit_fmt, 
+  <% form_for :certif_format, edit_fmt,
               :url => {:action => action, :id => edit_fmt } do |f| %>
     <% table_row do %>
       <td><%= edit_fmt.id %></td>

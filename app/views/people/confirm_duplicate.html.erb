@@ -5,8 +5,8 @@
          'us before creating a new account.') %></p>
 
 <p><%= _('In case you can not remember the password for your account, ' +
-         'remember you can %s to be mailed to you.') % 
-         link_to(_('request a new password'), :action => 'request_passwd') 
+         'remember you can %s to be mailed to you.') %
+         link_to(_('request a new password'), :action => 'request_passwd')
   %></p>
 
 <p><%= _('For your information, this check was done based on your ' +
@@ -37,6 +37,6 @@
 <% end %>
 
 <p><%= _('If you recognize none of the above accounts, you can %s') %
-       link_to(_('proceed to create the requested account'), 
+       link_to(_('proceed to create the requested account'),
          params.merge(:action => 'register', :confirm_possible_dup => true),
          :method => 'post') %></p>

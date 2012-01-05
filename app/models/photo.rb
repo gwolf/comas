@@ -8,7 +8,7 @@ class Photo < ActiveRecord::Base
 
   # We override find to exclude the whole file contents from our
   # result set.
-  # 
+  #
   # The binary values should not be directly modified - Use
   # self#from_blob instead.
   def self.find (*args)
@@ -58,9 +58,9 @@ class Photo < ActiveRecord::Base
     end
     img.format = 'jpg'
 
-    self.data = img.resize(width, height).to_blob 
+    self.data = img.resize(width, height).to_blob
     self.thumb = img.resize(width * ratio,
-                            height * ratio).to_blob 
+                            height * ratio).to_blob
     save!
   end
 

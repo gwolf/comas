@@ -11,7 +11,7 @@ class SizedConfLogos < ActiveRecord::Migration
     add_column :logos, :updated_at, :timestamp
     remove_column :logos, :filename
 
-    SysConf.new(:key => 'logo_thumb_height', 
+    SysConf.new(:key => 'logo_thumb_height',
                 :descr => 'Height for the conference logo thumbnails',
                 :value => '65').save
     SysConf.new(:key => 'logo_medium_height',

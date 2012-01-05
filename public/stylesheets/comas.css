@@ -16,26 +16,26 @@
 /* (.listing-head, .listing-even, .listing-odd) and place your CSS after */
 /* this one. */
 
-table { 
+table {
     border-collapse: collapse;
     margin: 0.5em;
 }
 
-td, th {  
+td, th {
     padding-left: 0.5em;
     padding-right: 0.5em;
     text-align: left;
 }
 
-.listing-head { 
+.listing-head {
     background: #fff7e2;
 }
 
-.listing-even { 
+.listing-even {
     background: #ccc5b0;
 }
 
-.listing-odd {  
+.listing-odd {
     background: #eee6d1;
 }
 
@@ -43,7 +43,7 @@ td, th {
 #locales { font-size: 70%; }
 
 /* Login request */
-#loginreq {  
+#loginreq {
         background-color: #fff7e2;
         border: solid #face78 2px;
         display: block;
@@ -58,27 +58,27 @@ td, th {
 
 /* Currently logged-in user's details */
 
-#logindata { 
+#logindata {
         text-align: right;
         width: 100%;
         font-size: 60%;
         font-style: italic;
 }
 
-#myphoto {  
-    float: right; 
+#myphoto {
+    float: right;
     padding: 0.5em;
     clear: both;
 }
 
-#loginreq {  
+#loginreq {
     background-image:url(usrlogin.png);
     background-repeat: no-repeat;
     background-position: 0.5em 0.5em;
 }
 
 /* Errors, warnings, notices */
-#flash-error, #flash-warning, #flash-notice { 
+#flash-error, #flash-warning, #flash-notice {
        padding: 0.2em;
        margin-left: auto;
        margin-right: auto;
@@ -90,34 +90,34 @@ td, th {
        display: block;
 }
 
-#flash-error { 
+#flash-error {
        color: #f00;
        background-color: #ffd;
        border: solid #f00 2px;
 }
 
-#flash-warning {  
+#flash-warning {
        color: #000;
        background-color: #eee;
        border: solid #000 2px;
 }
 
-#flash-notice {  
+#flash-notice {
        color: #557;
        background-color: #ddf;
        border: solid #557 2px;
 }
 
 /* Form and information elements */
-.info-row, .form-row { 
+.info-row, .form-row {
     padding: 0.1em;
 }
 
-.info-title, .show-prompt {  
+.info-title, .show-prompt {
     font-weight: bold;
 }
 
-.info-data, .show-data {  
+.info-data, .show-data {
 }
 
 .form-prompt {
@@ -135,33 +135,33 @@ td, th {
     display: block;
 }
 
-.form-input textarea {  
+.form-input textarea {
     height: 10em;
     width: 40em;
 }
 
-.checkbox {  
+.checkbox {
     padding-left: 0.3em;
     padding-right: 0.3em;
 }
 
-.note { 
+.note {
     font-style: italic;
     font-size: 70%;
 }
 
-.please-register {  
+.please-register {
     color: #c00;
     font-size: 80%;
     text-align: right;
     margin: 0.3em;
 }
 
-.comas-show-prompt {  
+.comas-show-prompt {
     font-weight: bold;
 }
 
-.comas-show-data {  
+.comas-show-data {
 }
 
 .comas-form-prompt {

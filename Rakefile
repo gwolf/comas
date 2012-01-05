@@ -10,21 +10,21 @@ require 'rake/rdoctask'
 
 require 'tasks/rails'
 
-begin 
+begin
   require 'gettext/utils'
 
-  desc "Create mo-files for L10n" 
+  desc "Create mo-files for L10n"
   task :makemo do
     GetText.create_mofiles(true, "po", "locale")
   end
 
-  desc "Update pot/po files to match new version." 
+  desc "Update pot/po files to match new version."
   task :updatepo do
-    MY_APP_TEXT_DOMAIN = "comas" 
-    MY_APP_VERSION     = "comas 1.0" 
+    MY_APP_TEXT_DOMAIN = "comas"
+    MY_APP_VERSION     = "comas 1.0"
 
-    string_sources = Dir.glob("{app,lib}/**/*.{rb,erb,rhtml,glade}") 
-    string_sources << 'script/nametags' << 'script/create_user' 
+    string_sources = Dir.glob("{app,lib}/**/*.{rb,erb,rhtml,glade}")
+    string_sources << 'script/nametags' << 'script/create_user'
 
     GetText.update_pofiles(MY_APP_TEXT_DOMAIN,
                            string_sources,

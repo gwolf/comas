@@ -1,8 +1,8 @@
 <h1><%= _'Submit a new proposal' %></h1>
 
-<%= render(:partial => 'form', 
-           :locals => {:proposal => @proposal, 
+<%= render(:partial => 'form',
+           :locals => {:proposal => @proposal,
                        :action => 'create',
                        :choose_confs => true,
-                       :confs => @confs, 
+                       :confs => @confs,
                        :submit_label => _('Register proposal') }) %>

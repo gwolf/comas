@@ -8,7 +8,7 @@
   <% task.people.sort_by {|p| p.id}.map do |person| %>
     <% table_row do %>
       <% %w(id login firstname famname).each do |col| %>
-        <td><%= link_to(h(person.send(col)), 
+        <td><%= link_to(h(person.send(col)),
                         :action => :show, :id => person) %></td>
       <% end %>
     <% end %>

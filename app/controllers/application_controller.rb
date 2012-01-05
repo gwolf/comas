@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
   def require_user_for_non_public_areas
     return true if @user
 
-    public = {:people => [:login, :logout, :validate, :new, :register, 
+    public = {:people => [:login, :logout, :validate, :new, :register,
                           :request_passwd, :recover, :profile, :claim_invite,
                           :get_photo],
       :conferences => [:index, :list, :show, :proposals],
@@ -66,9 +66,9 @@ class ApplicationController < ActionController::Base
   #
   #   def SomeThingController < Admin
   #     Menu = [[_('General list'), :list], [_('Status overview'), :status]]
-  # 
+  #
   # Yes, don't forget i18n.
-  # 
+  #
   # Menu items that have their link set to nil will be shown as labels
   # only; menu items can stack other menus as their third parameter, thus:
   #
@@ -100,13 +100,13 @@ class ApplicationController < ActionController::Base
       personal.add(_('Change password'),
                    url_for(:controller => '/people', :action => 'password'))
       personal.add(_('My public profile'),
-                   url_for(:controller => '/people', :action => 'profile', 
+                   url_for(:controller => '/people', :action => 'profile',
                         :id => @user.id))
-      @link_to_nametag and personal.add(_('Generate nametag'), 
+      @link_to_nametag and personal.add(_('Generate nametag'),
                    url_for(:controller => '/people', :action => 'my_nametag'))
       @user.can_submit_proposals_now? and
         personal.add(_('My proposals'),
-                     url_for(:controller=>'/people', :action => 'proposals')) 
+                     url_for(:controller=>'/people', :action => 'proposals'))
       @user.conferences.size > 0 and
         personal.add(_('Invite a friend'),
                      url_for(:controller=>'/people', :action => 'invite'))
@@ -118,7 +118,7 @@ class ApplicationController < ActionController::Base
       @user.admin_tasks.sort_by(&:sys_name).each do |task|
         begin
           control = "#{task.sys_name.camelcase}Controller".constantize
-          menu = menu_subtree_for((control.constants.include?('Menu') ? 
+          menu = menu_subtree_for((control.constants.include?('Menu') ?
                                    control::Menu : []), task)
         rescue NameError
           # Probably caused by an unimplemented controller? A
@@ -136,7 +136,7 @@ class ApplicationController < ActionController::Base
     menu = MenuTree.new
 
     tree.each do |elem|
-      link = url_for(:controller => task.sys_name, 
+      link = url_for(:controller => task.sys_name,
                      :action => elem[1]) if elem[1]
       sub = menu_subtree_for(elem[2], task) if elem[2]
       menu.add(_(elem[0]), link, sub)
@@ -156,7 +156,7 @@ class ApplicationController < ActionController::Base
     end
 
     if (set_lang and set_lang != lang)
-      cookies['lang'] = {:value => set_lang, 
+      cookies['lang'] = {:value => set_lang,
         :expires => Time.now+1.day,
         :path => '/'}
     end
@@ -209,7 +209,7 @@ class ApplicationController < ActionController::Base
     # the Flash is set up - We can only report this to the default
     # logger.
     RAILS_DEFAULT_LOGGER.warn _('Requested layout "%s" not found, ' +
-                                'in "%s" - using default layout') % 
+                                'in "%s" - using default layout') %
       [sys_layout, layout_dir]
     return default
   end

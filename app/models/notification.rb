@@ -8,7 +8,7 @@ class Notification < ActionMailer::Base
     recipients person.name_and_email
     base_info(_('Welcome! You have successfully registered at %s') %
               sys_name)
-    body :name => person.name, 
+    body :name => person.name,
          :login => person.login,
          :sys_name => sys_name,
          :login_url => login_url
@@ -37,7 +37,7 @@ class Notification < ActionMailer::Base
     cc author.name_and_email
     base_info(_("You have been added as a coauthor"))
     body :conference_name => proposal.conference.name,
-         :orig_author_name => author.name, 
+         :orig_author_name => author.name,
          :new_author_name => new_author.name,
          :proposal_title => proposal.title,
          :proposal_url => url_for(:only_path => false,

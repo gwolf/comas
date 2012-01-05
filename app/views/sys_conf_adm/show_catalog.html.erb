@@ -12,10 +12,10 @@
     <% table_row do %>
       <td><%= row.id %></td>
       <td><%=h row.name %></td>
-      <td><%= link_to(_('Delete'), 
+      <td><%= link_to(_('Delete'),
 		      { :action => 'delete_catalog_row',
-			:catalog => @cat_name, 
-			:id => row.id }, 
+			:catalog => @cat_name,
+			:id => row.id },
 		      {:method => 'post'}) %>
     <% end %>
   <% end %>
@@ -27,5 +27,5 @@
   <%= _'Name' %>: <%= f.text_field :name %><br/>
   <%= f.submit _'Create' %>
 <% end %>
-<p><%= link_to _('Go back to the catalogs listing'), 
+<p><%= link_to _('Go back to the catalogs listing'),
                :action => 'list_catalogs' %>
