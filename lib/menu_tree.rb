@@ -65,7 +65,13 @@ class MenuItem
   def build_link
     @label ||= ''
     return @label if @link.nil?
-    return link_to(@label, @link.html_safe)
+    # Annoying syntax change in a minor Rails version update :-/
+    begin
+      link = @link.html_safe!
+    rescue ActionView::TemplateError
+     link = @link.html_safe
+    end
+    return link_to(@label, link)
   end
   # We can be dirty here, as we know where all this data is coming
   # from. If our menu is mallicious, there are bigger things to worry
