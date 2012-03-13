@@ -146,8 +146,9 @@ class ApplicationController < ActionController::Base
   end
 
   def set_lang
-    params[:lang] = params[:lang].to_s # Ensure gettext gets a string!
     bindtextdomain 'comas'
+    # Ensure gettext gets a string
+    params[:lang] = params[:lang].to_s; params[:lang] = nil if params[:lang].empty?
     lang = cookies[:lang]
     set_lang = params[:lang]
 
