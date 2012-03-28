@@ -1,9 +1,11 @@
+# -*- coding: utf-8 -*-
 ### SimpleXLS - A simplistic wrapper for Spreadsheet
 #
 # Copyright © 2009 Gunnar Wolf <gwolf@gwolf.org>
 # Instituto de Investigaciones Económicas, UNAM
 #
 require 'spreadsheet'
+require 'tempfile'
 
 class SimpleXLS
   # Creates a new, empty spreadsheet consisting of a single workbook
@@ -32,9 +34,10 @@ class SimpleXLS
 
   # Gets the spreadsheet (in binary, XLS format) as a string
   def to_s
-    io = StringIO.new
+    io = Tempfile.new('simplexls')
     @xls.write(io)
     io.rewind
     io.read
+    io.unlink
   end
 end
