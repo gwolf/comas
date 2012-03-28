@@ -7,6 +7,7 @@ doc/api
 doc/app
 config/database.yml
 config/mongrel_cluster.yml
+config/thin.yml
 config/mail_settings.rb
 db/schema.rb
 public/javascripts/all.js
