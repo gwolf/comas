@@ -27,7 +27,7 @@ module AttendanceAdmHelper
   def tslot_row(rowclass, item)
     ret = "<tr class=\"#{rowclass}\">"
     [ item.conference.name, item.room.name, item.short_start_time,
-      item.time_to_start, item.tolerance_pre, item.tolerance_post,
+      time_ago_in_words(item.start_time), item.tolerance_pre, item.tolerance_post,
       link_to(_('Choose'), :action => 'take', :id => item)].each do |col|
       ret << "<td>#{col}</td>"
     end

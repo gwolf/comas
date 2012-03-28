@@ -19,7 +19,7 @@
                       :action => 'for_person',
                       :person_id => att.person,
                       :conference_id => @conference %></td>
-      <td><%= att.created_at %></td>
+      <td><%= att.created_at.localtime.strftime('%d/%m/%Y %H:%M:%S') %></td>
     <% end %>
   <% end %>
 <% end %>

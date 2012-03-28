@@ -17,7 +17,7 @@
 <h3><%= _'Last attendances registered for this timeslot' %></h3>
 <ul>
   <% @last_att.each do |att| %>
-  <li>(<%= att.created_at.strftime('%d/%m/%Y %H:%M:%S') %>) <%= att.person.name %></li>
+  <li>(<%= att.created_at.localtime.strftime('%H:%M:%S') %>) <%= att.person.name %></li>
   <% end %>
 </ul>
 </div>
