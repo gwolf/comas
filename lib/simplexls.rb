@@ -37,7 +37,8 @@ class SimpleXLS
     io = Tempfile.new('simplexls')
     @xls.write(io)
     io.rewind
-    io.read
+    str = io.read
     io.unlink
+    str
   end
 end
