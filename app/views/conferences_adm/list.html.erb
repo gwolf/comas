@@ -6,7 +6,7 @@
   <% table_head_row do %>
     <th><%= link_to _('ID'), :sort_by => 'conferences.id' %></th>
     <th><%= link_to _('Name'), :sort_by => 'name' %></th>
-    <th><%= link_to _('Begins at'), :sort_by => 'begins' %></th>
+    <th><%= link_to _('Begins at'), :sort_by => 'begins desc' %></th>
     <th><%= link_to _('Registration opens'),
 	              :sort_by => 'reg_open_date' %></th>
     <th><%= _('Defined timeslots') %></th>

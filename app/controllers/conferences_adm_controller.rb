@@ -11,7 +11,7 @@ class ConferencesAdmController < Admin
   end
 
   def list
-    order = sort_for_fields(['conferences.id', 'name', 'begins',
+    order = sort_for_fields(['begins desc', 'conferences.id', 'name',
                              'reg_open_date'])
 
     @conferences = Conference.paginate(:all, :order => order,

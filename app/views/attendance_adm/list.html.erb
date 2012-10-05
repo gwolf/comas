@@ -36,7 +36,7 @@
   <% form_tag do %>
     <%= select_tag(:conference_id,
                    options_for_select(@other_confs.map {|c|
-                                      ["#{c.name} (#{c.begins})", c.id]},
+                                      ["#{c.name.size > 70 ? c.name[0..68]+_('…'): c.name} (#{c.begins})", c.id]},
                                       @conference.id),
                    {:onchange => "this.form.submit()"}) %>
   <% end %>
