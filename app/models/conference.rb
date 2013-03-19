@@ -2,7 +2,7 @@ class Conference < ActiveRecord::Base
   acts_as_magic_model
   has_many :timeslots, :dependent => :destroy
   has_many :proposals
-  has_many :conf_invites
+  has_many :conf_invites, :dependent => :destroy
   has_one :logo, :dependent => :destroy
   has_and_belongs_to_many(:people,
                           :before_add => :ck_in_reg_period,
