@@ -95,6 +95,8 @@ class ApplicationController < ActionController::Base
                 url_for(:controller => '/people', :action => 'new'))
     else
       personal = MenuTree.new
+      personal.add(_('Basic information'),
+                   url_for(:controller => '/people', :action => 'account'))
       personal.add(_('Update your personal information'),
                    url_for(:controller => '/people', :action => 'personal'))
       personal.add(_('Change password'),
@@ -111,9 +113,7 @@ class ApplicationController < ActionController::Base
         personal.add(_('Invite a friend'),
                      url_for(:controller=>'/people', :action => 'invite'))
 
-      @menu.add(_('My account'),
-                url_for(:controller => '/people', :action => 'account'),
-                personal)
+      @menu.add(_('My account'), nil, personal)
 
       @user.admin_tasks.sort_by(&:sys_name).each do |task|
         begin

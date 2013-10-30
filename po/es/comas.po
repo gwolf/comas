@@ -829,6 +829,10 @@ msgstr "Entrar"
 msgid "New account"
 msgstr "Nueva cuenta"
 
+#: app/controllers/application.rb:91
+msgid "Basic information"
+msgstr "Información básica"
+
 #: app/controllers/application.rb:93
 msgid "Update your personal information"
 msgstr "Actualizar su información personal"

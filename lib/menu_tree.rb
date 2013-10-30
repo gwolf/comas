@@ -24,6 +24,8 @@ class MenuTree  < Array
      menu_end].join("\n")
   end
 
+  def html_safe; self.to_s; end
+
   def add(label, link=nil, tree=nil)
     self << MenuItem.new(label, link, tree)
   end
@@ -66,11 +68,11 @@ class MenuItem
     @label ||= ''
     return @label if @link.nil?
     # Annoying syntax change in a minor Rails version update :-/
-    begin
-      link = @link.html_safe!
-    rescue ActionView::TemplateError
-     link = @link.html_safe
-    end
+    # begin
+    #   link = @link.html_safe!
+    # rescue ActionView::TemplateError
+    link = @link.html_safe
+    # end
     return link_to(@label, link)
   end
   # We can be dirty here, as we know where all this data is coming

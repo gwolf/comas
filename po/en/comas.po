@@ -818,6 +818,10 @@ msgstr ""
 msgid "New account"
 msgstr ""
 
+#: app/controllers/application.rb:91
+msgid "Basic information"
+msgstr ""
+
 #: app/controllers/application.rb:93
 msgid "Update your personal information"
 msgstr ""
