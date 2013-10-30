@@ -287,6 +287,7 @@ module ApplicationHelper
     end
 
     def auto_field(field, options={})
+return nil if @object.nil?
       column = @object.class.columns.select { |col|
         col.name.to_s == field.to_s}.first
 

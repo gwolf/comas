@@ -106,7 +106,7 @@ class PeopleController < ApplicationController
     if request.post?
       # Strip the photo pointer before creating the person, as
       # otherwise we will get an AssociationTypeMismatch
-      photo = params[:person].delete(:photo)
+      photo = params[:person].delete(:photo) rescue nil
       @person = Person.new(params[:person])
 
       # Is this person a likely duplicate? Request confirmation before
@@ -137,7 +137,7 @@ class PeopleController < ApplicationController
     else
       # If we hit this method without being posted, pretend nothing
       # bad happened
-      render :action => 'new'
+      redirect_to :action => 'new'
     end
   end
 

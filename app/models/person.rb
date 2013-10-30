@@ -245,7 +245,8 @@ class Person < ActiveRecord::Base
   # mistakes are most frequently seen and should always be corrected)
   def trim_base_attr
     %w(firstname famname email login).each do |attr|
-      self.send("#{attr}=", self.send(attr).gsub(/^\s*/,'').gsub(/\s*$/,''))
+      val = self.send(attr) || ''
+      self.send("#{attr}=", val.gsub(/^\s*/,'').gsub(/\s*$/,''))
     end
   end
 end
