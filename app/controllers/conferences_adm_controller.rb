@@ -41,7 +41,8 @@ class ConferencesAdmController < Admin
         if upload = params[:data] and !upload.is_a? String
           begin
             img = upload.read
-            logo = Logo.from_blob(img, @conference)
+            logo = Logo.new(:conference => @conference)
+            logo.process_img(img)
           rescue Magick::ImageMagickError => err
             flash[:error] << _('The uploaded file could not be processed ' +
                                'as an image: %s') % err.message

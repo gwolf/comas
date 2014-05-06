@@ -1,6 +1,7 @@
 *~
 lib/strings_in_db.rb
 log/*.log
+log/*.1
 log/*.gz
 tmp/**/*
 doc/api
@@ -14,3 +15,5 @@ public/javascripts/all.js
 !app/views/layouts/application.*
 app/views/layouts/*
 vendor/rails
+public/logos
+public/photos

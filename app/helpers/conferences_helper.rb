@@ -131,20 +131,18 @@ module ConferencesHelper
     return '' unless logo=conf.logo
     '<div class="conf-logo">' +
       ( logo.bigger_than_medium? ?
-        link_to(link_for_logo(conf, 'medium'),
-                :controller => 'logos', :action => 'data', :id => logo) :
+        link_to(link_for_logo(conf, 'medium'), logo.url) :
         link_for_logo(conf, 'medium') ) + '</div>'
   end
 
   def link_for_logo(conf, size)
-    %w(data medium thumb).include?(size) or
+    logo = conf.logo or return ''
+    urls = { :data => logo.url, :medium => logo.url_med, :thumb => logo.url_thumb}
+    url = urls[size.to_sym] or
       raise Exception, _('Invalid logo size specified: %s') % size
 
-    logo = conf.logo or return ''
     '<img src="%s" width="%s" height="%s" />' %
-      [ url_for(:controller => 'logos', :action => size,
-                :id => logo.id, :only_path => false),
-        logo.send("#{size}_width"), logo.send("#{size}_height") ]
+      [ url, logo.send("#{size}_width"), logo.send("#{size}_height") ]
   end
 
   def rss_description_for(conf)

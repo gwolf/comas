@@ -15,6 +15,12 @@ class SysConf < ActiveRecord::Base
     'footer_text' => {
       :descr => 'Text to display as your page footer',
       :value => 'Powered by <a href="http://www.comas-code.org/">Comas</a>'},
+    'logo_base_dir' => {
+      :descr => 'Server directory in which conference logos are to be stored',
+      :value => File.join(RAILS_ROOT, 'public/logos') },
+    'logo_base_url' => {
+      :descr => 'URL in which conference logos are to be found (following logo_base_dir)',
+      :value => '/logos' },
     'mail_from' => {
       :descr => ('E-mail address that should be used for system-generated ' +
                  'mails'),
@@ -28,6 +34,12 @@ class SysConf < ActiveRecord::Base
       :descr => 'The name of the certificate format to use as nametags ' +
       'to be printed by the attendees',
       :value => ''},
+    'photo_base_dir' => {
+      :descr => 'Server directory in which user photos are to be stored',
+      :value => File.join(RAILS_ROOT, 'public/photos') },
+    'photo_base_url' => {
+      :descr => 'URL in which user photos are to be found (following photo_base_dir)',
+      :value => '/photos' },
     'system_layout' => {
       :descr => ('Layout to use for presenting the Comas interface. ' +
                  "Defaults to Rails' default value, 'application'. "),

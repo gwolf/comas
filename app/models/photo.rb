@@ -1,31 +1,26 @@
+# -*- coding: utf-8 -*-
 class Photo < ActiveRecord::Base
   belongs_to :person
   validates_presence_of :person_id
   validates_uniqueness_of :person_id
   validates_associated :person
 
-  HideColumns = %w(data thumb)
-
-  # We override find to exclude the whole file contents from our
-  # result set.
-  #
-  # The binary values should not be directly modified - Use
-  # self#from_blob instead.
-  def self.find (*args)
-    select = (self.columns.map(&:name) - HideColumns).join(', ')
-
-    if args[-1].is_a?(Hash)
-      if args[1].has_key? :select
-        select = args[-1][:select]
-      else
-        args[-1][:select] = select
-      end
-    else
-      args << {:select => select}
+  before_save {|photo| photo.create_conf_dir}
+  before_destroy do |photo|
+    # Do not destroy the images if more than one photo is found for
+    # this person
+    if Photo.find_all_by_person_id(photo.person_id).size == 1
+      # Attempt to remove the photos from the filesystem. Ignore errors
+      # (as we would only be keeping data not linked anymore)
+      #
+      # We leave the empty directory (except for the last component), as
+      # it might have other photos in it
+      File.unlink photo.filename
+      File.unlink photo.filename_thumb
+      Dir.rmdir photo._photo_dir
     end
-
-    super(*args)
   end
+
 
   # Maximum  dimensions  to  store  a  photo with  —  Taken  from  the
   # «logo_thumb_height» SysConf key, defaulting to 500.
@@ -44,6 +39,8 @@ class Photo < ActiveRecord::Base
   # whatever MAX_DIMENSIONS specifies; sets the related information
   # and saves the object
   def from_blob(value)
+    create_photo_dir
+
     img = Magick::Image.from_blob(value)[0]
     x = img.columns
     y = img.rows
@@ -58,16 +55,55 @@ class Photo < ActiveRecord::Base
     end
     img.format = 'jpg'
 
-    self.data = img.resize(width, height).to_blob
-    self.thumb = img.resize(width * ratio,
-                            height * ratio).to_blob
+    File.open(filename, 'w') {|f| f.puts img.resize(width, height).to_blob }
+    File.open(filename_thumb, 'w') {|f| f.puts img.resize(width * ratio,
+                                                          height * ratio).to_blob }
     save!
   end
 
-  HideColumns.each do |col|
-    eval "def #{col}
-            return self[:#{col}] if self.attributes.has_key?('#{col}')
-            self.class.find(self.id, :select => 'id, #{col}')[:#{col}]
-          end"
+  # Keep old interface (mainly as it is used by the nametags)
+  def data
+    File.open(self.filename).read
+  end
+
+  def filename; File.join(_photo_dir, 'photo.jpg'); end
+  def filename_thumb; File.join(_photo_dir, 'thumb.jpg'); end
+
+  def url; File.join(_photo_url, 'photo.jpg'); end
+  def url_thumb; File.join(_photo_url, 'thumb.jpg'); end
+
+  def _photo_dir
+    File.join(SysConf.value_for('photo_base_dir'), _photo_partial_path)
+  end
+
+  def _photo_url
+    File.join(SysConf.value_for('photo_base_url'), _photo_partial_path)
+  end
+
+  def _photo_partial_path
+    self.person_id.to_s.split('')
+  end
+
+  def create_photo_dir
+    base = SysConf.value_for('photo_base_dir')
+    path = self._photo_partial_path
+
+    (File.exists?(base) and File.directory?(base)) or 
+      raise Errno::ENOENT, _('Photo base directory %s does not exist') % base
+    File.writable?(base) or
+      raise Errno::EACCES, _('Photo base directory %s is not writable') % base
+
+    (0..path.size-1).each do |item|
+      partial = File.join(base, path[0..item])
+      File.exists?(partial) or Dir.mkdir(partial)
+      File.directory?(partial) or
+        raise(Errno::ENOTDIR, _('Partial path %s for person ID %s ' +
+                                'exists, but is not a directory') %
+              [partial, conference_id])
+      File.writable?(partial) or
+        raise(Errno::EACCES, _('Partial path %s for person ID %s ' +
+                               'exists, but is not writable'),
+              [partial, conference_id])
+    end
   end
 end

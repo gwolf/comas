@@ -24,10 +24,9 @@ module ApplicationHelper
   def my_photo
     return '' unless @user and @user.has_photo?
     ratio = Photo.thumb_ratio
+    photo = @user.photo
     '<div id="myphoto"><img src="%s" width="%d" height="%d" /></div>'%
-        [ url_for(:controller => '/people', :action => 'get_photo',
-                  :id => @user.id, :size => 'thumb'),
-          @user.photo.width * ratio, @user.photo.height * ratio]
+        [ photo.url_thumb, @user.photo.width * ratio, @user.photo.height * ratio]
   end
 
   def rss_links

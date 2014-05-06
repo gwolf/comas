@@ -4,78 +4,72 @@ class Logo < ActiveRecord::Base
   validates_presence_of :conference_id
   validates_associated :conference
 
-  # Fields holding binary content that are specially managed
-  BinFields = ['data', 'medium', 'thumb']
-
-  # We override find to exclude the whole file contents (data, medium
-  # and thumb columns) from our result set.
-  #
-  # The binary values should not be directly modified - Use
-  # self#from_blob instead.
-  def self.find (*args)
-    select = (self.columns.map(&:name) - BinFields).join(', ')
-
-    if args[-1].is_a?(Hash)
-      if args[1].has_key? :select
-        select = args[-1][:select]
-      else
-        args[-1][:select] = select
-      end
-    else
-      args << {:select => select}
+  before_save {|logo| logo.create_conf_dir}
+  before_destroy do |logo|
+    # Do not destroy the images if more than one logo is found for
+    # this conference
+    if Logo.find_all_by_conference_id(logo.conference_id).size == 1
+      # Attempt to remove the logos from the filesystem. Ignore errors
+      # (as we would only be keeping data not linked anymore)
+      #
+      # We leave the empty directory (except for the last component), as
+      # it might have other conferences' logos in it
+      File.unlink logo.filename
+      File.unlink logo.filename_med
+      File.unlink logo.filename_thumb
+      Dir.rmdir logo._conf_dir
     end
-
-    super(*args)
   end
 
-  BinFields.each do |col|
-    eval "def #{col}
-            return self[:#{col}] if self.attributes.has_key?('#{col}')
-            logo = self.class.find(self.id, :select => 'id, conference_id, #{col}')
-            logo[:#{col}]
-          end"
-  end
-
-  # Creates or updates the logo for the conference (specified as the
-  # second parameter) with the data received as a raw image as the
-  # first parameter. Creates the medium resolution and thumbnail
+  # Stores the actual logo with the data received as a raw image as
+  # its only parameter. Creates the medium resolution and thumbnail
   # versions as well - RMagick calculations will only be done when
   # storing images, not when serving them.
   #
   # RMagick will throw out a Magick::ImageMagickError if an invalid
   # image is received
-  def self.from_blob(data, conf)
-    conf = Conference.find_by_id(conf) if conf.is_a?(Fixnum)
-    logo = self.find(:first, :conditions => ['conference_id = ?', conf.id]) ||
-      self.new
-    logo.conference_id = conf.id
+  def process_img(data)
+    create_conf_dir
 
     # Generate the Magick::Image object
     img = Magick::Image.from_blob(data)[0]
-    logo.width = img.columns
-    logo.height = img.rows
+    self.width = img.columns
+    self.height = img.rows
 
     # Re-generate the original, ensuring we have it as a JPG
     img.format = 'jpg'
-    logo[:data] = img.to_blob
+    File.open(filename, 'w') {|f| f.puts img.to_blob}
 
     # Generate medium-resolution and thumbnail
-    med = img.thumbnail(logo.medium_width, logo.medium_height)
-    logo[:medium] = med.to_blob
+    med = img.thumbnail(medium_width, medium_height)
+    File.open(filename_med, 'w') {|f| f.puts med.to_blob}
 
-    thb = img.thumbnail(logo.thumb_width, logo.thumb_height)
-    logo[:thumb] = thb.to_blob
+    thb = img.thumbnail(thumb_width, thumb_height)
+    File.open(filename_thumb, 'w') {|f| f.puts thb.to_blob}
 
-    logo.save!
-
-    logo
+    save!
   end
+
+  def has_data?
+    File.exists?(filename) and File.readable?(filename)
+  end
+
+  def filename; File.join(_conf_dir, 'logo.jpg'); end
+  def filename_med; File.join(_conf_dir, 'med.jpg'); end
+  def filename_thumb; File.join(_conf_dir, 'thumb.jpg'); end
+
+  def url; File.join(_conf_url, 'logo.jpg'); end
+  def url_med; File.join(_conf_url, 'med.jpg'); end
+  def url_thumb; File.join(_conf_url, 'thumb.jpg'); end
 
   # Thumbnail height: Stored in the 'logo_thumb_height' SysConf entry
   # (defaults to 65 if not set)
   def thumb_height
     ( SysConf.value_for('logo_thumb_height') || 65 ).to_i
   end
+
+  def data_width; width; end
+  def data_height; height; end
 
   # Thumbnail width (proportional to #thumb_height, preserving the
   # original image's aspect ratio)
@@ -104,6 +98,38 @@ class Logo < ActiveRecord::Base
     height > medium_height
   end
 
-  private
-  BinFields.each { |col| eval "def #{col}=(what); end"}
+  def _conf_partial_path
+    self.conference_id.to_s.split('')
+  end
+
+  def _conf_dir
+    File.join(SysConf.value_for('logo_base_dir'), _conf_partial_path)
+  end
+
+  def _conf_url
+    File.join(SysConf.value_for('logo_base_url'), _conf_partial_path)
+  end
+
+  def create_conf_dir
+    base = SysConf.value_for('logo_base_dir')
+    path = self._conf_partial_path
+
+    (File.exists?(base) and File.directory?(base)) or 
+      raise Errno::ENOENT, _('Logo base directory %s does not exist') % base
+    File.writable?(base) or
+      raise Errno::EACCES, _('Logo base directory %s is not writable') % base
+
+    (0..path.size-1).each do |item|
+      partial = File.join(base, path[0..item])
+      File.exists?(partial) or Dir.mkdir(partial)
+      File.directory?(partial) or
+        raise(Errno::ENOTDIR, _('Partial path %s for conference ID %s ' +
+                                'exists, but is not a directory') %
+              [partial, conference_id])
+      File.writable?(partial) or
+        raise(Errno::EACCES, _('Partial path %s for conference ID %s ' +
+                               'exists, but is not writable'),
+              [partial, conference_id])
+    end
+  end
 end
