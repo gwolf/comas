@@ -5,7 +5,7 @@ class Photo < ActiveRecord::Base
   validates_uniqueness_of :person_id
   validates_associated :person
 
-  before_save {|photo| photo.create_conf_dir}
+  before_save {|photo| photo.create_photo_dir}
   before_destroy do |photo|
     # Do not destroy the images if more than one photo is found for
     # this person
