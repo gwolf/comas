@@ -272,7 +272,12 @@ class Conference < ActiveRecord::Base
       # Try to get the first 10 characters of the conference name - And
       # keep adding characters if needed (first from the name, then just
       # '+' signs) if it is not unique.
-      prepared = name.gsub(/\s/, '_').gsub(/[^\w]/,'').downcase
+      #
+      # Strip any high characters, as we are cutting the string, and
+      # the scissor blade can fall within a wide character, yielding
+      # a fugly error
+      prepared = name.mb_chars.normalize(:kd).downcase.
+        gsub(/\s/, '_').gsub(/[^\w]/,'').gsub(/[^\x00-\x7F]/n,'').to_s
       cutoff = 10
       short = prepared[0..cutoff]
       while self.class.find_by_short_name(short)
