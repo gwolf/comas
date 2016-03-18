@@ -17,3 +17,8 @@ app/views/layouts/*
 vendor/rails
 public/logos
 public/photos
+!public/stylesheets/comas.css
+!public/stylesheets/comas_layout.css
+!public/stylesheets/calendar.css
+!public/stylesheets/usrlogin.png
+public/stylesheets/*
