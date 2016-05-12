@@ -2934,7 +2934,7 @@ msgid "Confirm new password"
 msgstr ""
 
 #: app/views/people/account.html.erb:1
-msgid "Welcome, %s"
+msgid "Welcome, %s (ID: %d)"
 msgstr ""
 
 #: app/views/people/account.html.erb:5

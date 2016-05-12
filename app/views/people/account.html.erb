@@ -1,4 +1,4 @@
-<h1><%= _('Welcome, %s') % @user.name %></h1>
+<h1><%= _('Welcome, %s (ID: %d)') % [@user.name, @user.id] %></h1>
 
 <div id="my-upcoming">
   <% if !@mine.empty? %>
