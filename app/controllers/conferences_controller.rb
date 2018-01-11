@@ -42,7 +42,7 @@ class ConferencesController < ApplicationController
     per_page = params[:per_page] || 5
 
     @conferences = Conference.paginate(:per_page => per_page,
-                                       :order => :begins,
+                                       :order => 'begins, id',
                                        :page => params[:page],
                                        :conditions => cond)
 
