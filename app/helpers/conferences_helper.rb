@@ -169,8 +169,9 @@ module ConferencesHelper
     # by any defined catalog — Show the selectors for said catalogs
     blank = [_('- Show all -'), nil]
     Conference.catalogs.map { |fld,klass|
-      '<form method="post" id="form_%s">%s %s</form>' %
+      '<form method="post" id="form_%s">%s %s %s</form>' %
       [ fld,
+        token_tag,
         ( '<span class="info-title">%s</span>' %
           (_('Filter by %s') % Translation.for(fld.humanize)) ),
         select_tag(fld,
