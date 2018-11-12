@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class ConferencesAdmController < Admin
   before_filter :get_conference, :except => [:index, :list, :new, :create,
                                              :mail_attendees, :confs_by_name]
@@ -38,15 +39,17 @@ class ConferencesAdmController < Admin
   def show
     @conference.transaction do
       if request.post? and @conference.update_attributes(params[:conference])
-        if upload = params[:data] and !upload.is_a? String
-          begin
-            img = upload.read
-            logo = Logo.new(:conference => @conference)
-            logo.process_img(img)
-          rescue Magick::ImageMagickError => err
-            flash[:error] << _('The uploaded file could not be processed ' +
-                               'as an image: %s') % err.message
-            raise ActiveRecord::Rollback
+        [['logo_data', false], ['certif_data', true]].each do |img_type|
+          if upload = params[img_type[0]] and !upload.is_a? String
+            begin
+              img = upload.read
+              logo = Logo.new(:conference => @conference, :is_certificate => img_type[1])
+              logo.process_img(img)
+            rescue Magick::ImageMagickError => err
+              flash[:error] << _('The uploaded file could not be processed ' +
+                                 'as an image: %s') % err.message
+              raise ActiveRecord::Rollback
+            end
           end
         end
         flash[:warning] << _('Conference data successfully updated')

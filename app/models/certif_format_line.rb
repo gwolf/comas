@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class CertifFormatLine < ActiveRecord::Base
   class ConferenceRequired < Exception; end
   include PdfDimensions
@@ -62,7 +63,7 @@ class CertifFormatLine < ActiveRecord::Base
       if content_source == -1
         # Just draw the empty frame
         pdf.stroke_bounds
-      elsif content == 'image' and dynamic_source?
+      elsif (content == 'image' or content == 'certif') and dynamic_source?
         pdf.image(StringIO.new(text),
                   :at => [pdf.bounds.left, pdf.bounds.top],
                   :fit => [pdf.bounds.width, pdf.bounds.height],
@@ -120,6 +121,9 @@ class CertifFormatLine < ActiveRecord::Base
       return obj.id
     when 'image'
       img = obj==person ? obj.photo : obj.logo
+      return img ? img.data : nil
+    when 'certif'
+      img = obj==conference ?  obj.certificate : ''
       return img ? img.data : nil
     else
       return obj.send(content) if obj.respond_to? content

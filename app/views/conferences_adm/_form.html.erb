@@ -7,12 +7,21 @@
 		   :note => _('Shortened name for the conference; ' +
 			      'will be used to generate URLs ')) %>
   <%= form_row(_('Conference|Logo'),
-	       file_field_tag(:data),
+	       file_field_tag(:logo_data),
 	       logo_thumb_for(@conference)) %>
   <%= f.auto_field('descr',
                    :note => _('Full description for this conference. ' +
 			      'RedCloth formatting might be used ' +
 			      '(see formatting instructions above)')) %>
+  <%= f.auto_field('min_attendances',
+		   :note => _('Minimum attendances required for an ' +
+			      'attendee to have the right to print a ' +
+			      'participation certificate. <br/>' +
+			      '<em>0</em> means no participation ' +
+			      'certificates will be generated.')) %>
+  <%= form_row(_('Conference|CertifImage'),
+	       file_field_tag(:certif_data),
+	       certif_thumb_for(@conference)) %>
   <%= f.auto_field('homepage',
 		   :note => _('Does the conference have a homepage ' +
 			      'besides the information in this system? ' +

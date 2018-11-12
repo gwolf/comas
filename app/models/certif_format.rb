@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class CertifFormat < ActiveRecord::Base
   include PdfDimensions
 
@@ -30,6 +31,10 @@ class CertifFormat < ActiveRecord::Base
 
   def self.for_personal_nametag
     self.find_by_name(SysConf.value_for('personal_nametag_format'))
+  end
+
+  def self.for_conference_certificate
+    self.find_by_name(SysConf.value_for('personal_certificate_format'))
   end
 
   def height(unit=:pt)

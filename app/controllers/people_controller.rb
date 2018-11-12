@@ -192,6 +192,14 @@ class PeopleController < ApplicationController
     end
   end
 
+  # Attendance certificates printing: Get the listing of available certificates
+  def my_certificates
+  end
+
+  # Attendance certificates printing: Get a specific certificate
+  def certificate_for
+  end
+
   # Password change
   def password
     return true unless request.post?

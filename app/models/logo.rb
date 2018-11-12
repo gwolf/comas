@@ -54,13 +54,30 @@ class Logo < ActiveRecord::Base
     File.exists?(filename) and File.readable?(filename)
   end
 
-  def filename; File.join(_conf_dir, 'logo.jpg'); end
-  def filename_med; File.join(_conf_dir, 'med.jpg'); end
-  def filename_thumb; File.join(_conf_dir, 'thumb.jpg'); end
+  def data
+    return nil unless has_data?
+    return File.open(filename,'r') {|f| f.read}
+  end
 
-  def url; File.join(_conf_url, 'logo.jpg'); end
-  def url_med; File.join(_conf_url, 'med.jpg'); end
-  def url_thumb; File.join(_conf_url, 'thumb.jpg'); end
+  def filename; File.join(_conf_dir, _my_name_for(:full)); end
+  def filename_med; File.join(_conf_dir, _my_name_for(:med)); end
+  def filename_thumb; File.join(_conf_dir, _my_name_for(:thumb)); end
+
+  def url; File.join(_conf_url, _my_name_for(:full)); end
+  def url_med; File.join(_conf_url, _my_name_for(:med)); end
+  def url_thumb; File.join(_conf_url, _my_name_for(:thumb)); end
+
+  def _my_name_for(size)
+    if is_certificate?
+      return 'certif.jpg' if size == :full
+      return 'c_med.jpg' if size == :med
+      return 't_med.jpg' if size == :thumb
+    else
+      return 'logo.jpg' if size == :full
+      return 'med.jpg' if size == :med
+      return 'thumb.jpg' if size == :thumb
+    end
+  end
 
   # Thumbnail height: Stored in the 'logo_thumb_height' SysConf entry
   # (defaults to 65 if not set)

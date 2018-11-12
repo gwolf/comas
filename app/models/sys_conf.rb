@@ -34,6 +34,10 @@ class SysConf < ActiveRecord::Base
       :descr => 'The name of the certificate format to use as nametags ' +
       'to be printed by the attendees',
       :value => ''},
+    'personal_certificate_format' => {
+      :descr => 'The name of the certificate format to use as attendance ' +
+      'certificate to be printed by the attendees',
+      :value => ''},
     'photo_base_dir' => {
       :descr => 'Server directory in which user photos are to be stored',
       :value => File.join(RAILS_ROOT, 'public/photos') },

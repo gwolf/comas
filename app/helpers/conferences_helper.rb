@@ -127,6 +127,10 @@ module ConferencesHelper
     link_for_logo(conf, 'thumb')
   end
 
+  def certif_thumb_for(conf)
+    link_for_certif(conf, 'thumb')
+  end
+
   def display_logo(conf)
     return '' unless logo=conf.logo
     '<div class="conf-logo">' +
@@ -137,6 +141,16 @@ module ConferencesHelper
 
   def link_for_logo(conf, size)
     logo = conf.logo or return ''
+    urls = { :data => logo.url, :medium => logo.url_med, :thumb => logo.url_thumb}
+    url = urls[size.to_sym] or
+      raise Exception, _('Invalid logo size specified: %s') % size
+
+    '<img src="%s" width="%s" height="%s" />' %
+      [ url, logo.send("#{size}_width"), logo.send("#{size}_height") ]
+  end
+
+  def link_for_certif(conf, size)
+    logo = conf.certificate or return ''
     urls = { :data => logo.url, :medium => logo.url_med, :thumb => logo.url_thumb}
     url = urls[size.to_sym] or
       raise Exception, _('Invalid logo size specified: %s') % size

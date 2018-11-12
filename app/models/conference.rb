@@ -3,7 +3,7 @@ class Conference < ActiveRecord::Base
   has_many :timeslots, :dependent => :destroy
   has_many :proposals
   has_many :conf_invites, :dependent => :destroy
-  has_one :logo, :dependent => :destroy
+  has_many :logos, :dependent => :destroy
   has_and_belongs_to_many(:people,
                           :before_add => :ck_in_reg_period,
                           :before_remove => :dont_unregister_if_has_proposals)
@@ -16,11 +16,12 @@ class Conference < ActiveRecord::Base
   validate :timeslots_during_conference
   validate :cfp_data_only_if_manages_proposals
   validate :no_proposals_unless_manages_proposals
+  validate :valid_num_attendances_for_certif
 
   def self.core_attributes
     %w(begins cfp_close_date cfp_open_date descr finishes homepage id
-       invite_only manages_proposals name public_proposals reg_close_date
-       reg_open_date short_name).map do |attr|
+       invite_only manages_proposals min_attendances name public_proposals
+       reg_close_date reg_open_date short_name).map do |attr|
       self.columns.select{|col| col.name == attr}[0]
     end
   end
@@ -248,11 +249,25 @@ class Conference < ActiveRecord::Base
   end
 
   def has_logo?
-    Logo.count(:conditions => ['conference_id = ?', self.id]) > 0
+    Logo.count(:conditions => ['conference_id = ? AND NOT is_certificate', self.id]) > 0
   end
 
   def logo
-    Logo.find(:first, :conditions => ['conference_id = ?', self.id])
+    Logo.find(:first, :conditions => ['conference_id = ? AND NOT is_certificate', self.id])
+  end
+
+  def has_certificate?
+    Logo.count(:conditions => ['conference_id = ? AND is_certificate', self.id]) > 0
+  end
+
+  def certificate
+    Logo.find(:first, :conditions => ['conference_id = ? AND is_certificate', self.id])
+  end
+
+  def can_issue_certificate?
+    return false unless has_certificate?
+    return false if min_attendances == 0
+    true
   end
 
   private
@@ -348,6 +363,16 @@ class Conference < ActiveRecord::Base
                _('This conference already has received %d proposals (%s) - ' +
                  'Cannot specify not to handle them.') %
                [self.proposals.size, self.proposals.map {|p| p.id}.join(', ')])
+  end
+
+  # The number of required attendances to print a certificate must be
+  # 0 (no certificates will be printed) or positive. We cannot set an
+  # upper bound at this point. So, this only forbids negative values
+  # and sets 0 for null values :-P
+  def valid_num_attendances_for_certif
+    self.min_attendances = 0 if self.min_attendances.nil?
+    return false if self.min_attendances < 0
+    true
   end
 
   # Are the two received dates in chronological order? (If either or
