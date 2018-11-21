@@ -59,7 +59,8 @@ class CertifFormat < ActiveRecord::Base
   def generate_pdf_for(people, conference=nil, with_boxes=false)
     pdf = Prawn::Document.new(:page_layout => orientation.to_sym,
                               :page_size => paper_size,
-                              :skip_page_creation => true)
+                              :skip_page_creation => true,
+                              :margin => [0,0,0,0])
 #    pdf.stroke_color='000000' # Black is beautiful. Black for teh win!
     people = [people] if people.is_a? Person
 

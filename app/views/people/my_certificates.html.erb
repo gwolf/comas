@@ -1,0 +1,23 @@
+<% if @conferences.empty? %>
+  <h2><%= _('No certificates available') %></h2>
+  <p><%= _('You have not yet received any certificate from our conferences.') %></p>
+<% else %>
+  <h3><%= _('Available certificates') %></h3>
+  <p><%= _('You have the following attendance certificates available:') %></p>
+  <% table do %>
+    <% rows=0 %>
+    <% table_head_row do %>
+      <th></th>
+      <th><%= _'Conference' %></th>
+      <th><%= _'Date' %></th>
+    <% end %>
+    <% @conferences.each do |conf| %>
+      <% table_row do %>
+        <td><%= rows+=1 %></td>
+        <td><%= link_to(conf.name, :controller => 'people',
+	                :action => 'certificate_for', :conference_id => conf) %></td>
+	<td><%= conf.begins.to_s %></td>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

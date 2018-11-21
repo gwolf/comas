@@ -194,10 +194,27 @@ class PeopleController < ApplicationController
 
   # Attendance certificates printing: Get the listing of available certificates
   def my_certificates
+    @conferences = @user.conferences_with_certificate.sort_by {|c| c.begins}
   end
 
   # Attendance certificates printing: Get a specific certificate
   def certificate_for
+    # Ensure the person is entitled for the requested certificate
+    conf = @user.conferences_with_certificate.select { |c|
+      c.id == params[:conference_id].to_i}.first rescue nil
+    if ! conf
+      flash[:error] << _('Invalid conference for certificate')
+      redirect_to :controller => 'conferences', :action => 'list'
+      return false
+    end
+
+    certif = CertifFormat.for_conference_certificate
+    if certif
+      send_data(certif.generate_pdf_for(@user, conf),
+                :filename => 'certif.pdf', :type => 'application/pdf')
+    else
+      true
+    end
   end
 
   # Password change

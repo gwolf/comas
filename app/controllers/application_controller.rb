@@ -112,6 +112,9 @@ class ApplicationController < ActionController::Base
       @user.conferences.size > 0 and
         personal.add(_('Invite a friend'),
                      url_for(:controller=>'/people', :action => 'invite'))
+      @user.conferences_with_certificate.size > 0 and
+        personal.add(_('Attendance certificates'),
+                     url_for(:controller=>'/people', :action => 'my_certificates'))
 
       @menu.add(_('My account'), nil, personal)
 

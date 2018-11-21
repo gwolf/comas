@@ -119,7 +119,11 @@ class Person < ActiveRecord::Base
 
   # Did this person attend the specified conference?
   def attended?(conf)
-    !attendances.select {|a| a.conference_id==conf.id}.empty?
+    num_attendances(conf) != 0
+  end
+
+  def num_attendances(conf)
+    attendances.select {|a| a.conference_id == conf.id}.size
   end
 
   # Avoid moving the full query of a photo if we just want to check
@@ -151,6 +155,10 @@ class Person < ActiveRecord::Base
     self.conferences.select(&:upcoming?).sort_by(&:begins)
   end
 
+  def past_conferences
+    self.conferences.select(&:past?).sort_by(&:begins)
+  end
+
   def conferences_for_submitting
     self.upcoming_conferences.select(&:accepts_proposals?)
   end
@@ -165,6 +173,19 @@ class Person < ActiveRecord::Base
     # signed up for (except for those marked invite-only — Those are
     # only for administrators!)
     self.conferences.reject {|c| c.invite_only?}
+  end
+
+  # Which conferences is this person registered for that have already
+  # been held and can issue attendance certificates?
+  def conferences_that_certificate
+    return self.past_conferences.select {|c| c.can_issue_certificate?}
+  end
+
+  # From #conferences_that_certificate, which conferences has this
+  # person actually been granted a certificate for?
+  def conferences_with_certificate
+    return self.conferences_that_certificate.select {|c|
+      self.num_attendances(c) >= c.min_attendances}
   end
 
   def register_for(conf)
