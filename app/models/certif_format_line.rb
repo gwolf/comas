@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 class CertifFormatLine < ActiveRecord::Base
+  include ActionController::UrlWriter
   class ConferenceRequired < Exception; end
   include PdfDimensions
   Justifications = %w(left center right full)
@@ -73,6 +74,8 @@ class CertifFormatLine < ActiveRecord::Base
         # If a person or conference's «id+code» are requested, we lay
         # them out as barcodes for their id, not just as text.
         barcode_box(pdf, text)
+      elsif content == 'id+qr' and dynamic_source?
+        qr_box(pdf, text)
       else
         # Finally, the base case: Regular text appears as it should.
         pdf.text(text, :align => justification.to_sym)
@@ -118,7 +121,12 @@ class CertifFormatLine < ActiveRecord::Base
     # Special-cased pseudoattributes
     case content
     when 'id+code'
+      # Might be conference or person, both have an ID
       return obj.id
+    when 'id+qr'
+      # Compose the person and conference IDs into a single string
+      return '%s/%05d/%05d' % [SysConf.value_for('verif_url'),
+                               conference.id.to_s, person.id.to_s]
     when 'image'
       img = obj==person ? obj.photo : obj.logo
       return img ? img.data : nil
@@ -139,17 +147,36 @@ class CertifFormatLine < ActiveRecord::Base
     code_height = pdf.bounds.height - text_height
     code = '%05d' % value
 
-    # Barcode above..
+    # Text below
     pdf.bounding_box([pdf.bounds.left, pdf.bounds.top - code_height],
                      :width => pdf.bounds.width, :height => text_height) do
       pdf.text(code, :align => justification.to_sym)
     end
 
-    # Text below
+    # Barcode above
     pdf.bounding_box([pdf.bounds.left, pdf.bounds.top],
                      :width => pdf.bounds.width, :height => code_height) do
       barcode = Barby::Code39.new(code)
       barcode.annotate_pdf(pdf, :xdim => 0.75, :height => code_height * 0.8)
+    end
+  end
+
+  def qr_box(pdf, value)
+    text_height = font_size * 1.5
+    code_height = pdf.bounds.height - text_height
+    code = value
+
+    # QR code above
+    pdf.bounding_box([pdf.bounds.left, pdf.bounds.top],
+                     :width => pdf.bounds.width, :height => code_height) do
+      barcode = Barby::QrCode.new(code)
+      barcode.annotate_pdf(pdf, :xdim => 1.5, :height => code_height)
+    end
+
+    # Text below
+    pdf.bounding_box([pdf.bounds.left, pdf.bounds.top - code_height],
+                     :width => pdf.bounds.width, :height => text_height) do
+      pdf.text(code, :align => justification.to_sym)
     end
   end
 end

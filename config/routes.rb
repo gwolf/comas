@@ -64,6 +64,8 @@ ActionController::Routing::Routes.draw do |map|
   map.connect('thumb/:id',
               :controller => 'people', :action => 'get_photo',
               :size => 'thumb')
+  map.connect('v/:conference_id/:person_id',
+              :controller => 'certificates', :action => 'verif')
 
   # Sample of named route:
   #   map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'

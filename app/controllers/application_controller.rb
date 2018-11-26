@@ -40,6 +40,7 @@ class ApplicationController < ActionController::Base
                           :request_passwd, :recover, :profile, :claim_invite,
                           :get_photo],
       :conferences => [:index, :list, :show, :proposals],
+      :certificates => [:verif],
       :proposals => [:index, :list, :show, :by_author, :get_document],
       :logos => [:data, :thumb, :medium]}
 

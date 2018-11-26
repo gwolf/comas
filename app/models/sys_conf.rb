@@ -58,7 +58,10 @@ class SysConf < ActiveRecord::Base
     'tolerance_pre' => {
       :descr => ('Default tolerance period before a timeslot has started ' +
                  '(hh:mm:ss)'),
-      :value => '00:20:00'}
+      :value => '00:20:00'},
+    'verif_url' => {
+      :descr => ('Base URL for the certificate verification'),
+      :value => 'https://example.org/v/'},
   }
 
   # A lightweight caching system!  We set it to expire every 2 seconds

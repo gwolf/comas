@@ -1,0 +1,9 @@
+<h1><%= _('Certificate validation') %></h1>
+
+<% if @has_certif %>
+  <p><%= _('We hereby confirm that <em>%s</em> has participated in ' +
+	 '<em>%s</em> and earned an attendance certificate.') %
+	 [@pers_name, @conf_name] %></p>
+<% else %>
+  <h3><%= _('The specified person does not have a certificate for this activity.') %></h3>
+<% end %>

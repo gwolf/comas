@@ -188,6 +188,11 @@ class Person < ActiveRecord::Base
       self.num_attendances(c) >= c.min_attendances}
   end
 
+  # Does this person have a certificate for the specified conference?
+  def certificate_for?(conf)
+    return self.conferences_with_certificate.include?(conf)
+  end
+
   def register_for(conf)
     conf = Conference.find(conf) if conf.is_a?(Fixnum)
     # Already registered? Don't panic! Act naturally!
