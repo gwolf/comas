@@ -439,8 +439,10 @@ return nil if @object.nil?
     def table_from_field(field)
       return nil unless field =~ /_id$/
       tablename = field.gsub(/_id$/, '')
-      return nil unless
-        ActiveRecord::Base.connection.tables.include? tablename.pluralize
+      # 2019.01.16: ActiveRecord::Base.connection me está dando una lista vacía y no
+      # encuentro la razón :( Asumamos que esto funciona en vez de verificar.
+      # return nil unless
+      #   ActiveRecord::Base.connection.tables.include? tablename.pluralize
       begin
         model = tablename.camelcase.constantize
       rescue

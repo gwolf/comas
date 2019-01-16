@@ -1,9 +1,9 @@
 class Conference < ActiveRecord::Base
-  acts_as_magic_model
   has_many :timeslots, :dependent => :destroy
   has_many :proposals
   has_many :conf_invites, :dependent => :destroy
   has_many :logos, :dependent => :destroy
+  belongs_to :conference_type
   has_and_belongs_to_many(:people,
                           :before_add => :ck_in_reg_period,
                           :before_remove => :dont_unregister_if_has_proposals)
@@ -11,6 +11,7 @@ class Conference < ActiveRecord::Base
   validates_presence_of :name
   validates_uniqueness_of :name
   validates_presence_of :descr
+  validates_associated :conference_type
   validate :ensure_short_name
   validate :dates_are_correct
   validate :timeslots_during_conference
@@ -19,8 +20,8 @@ class Conference < ActiveRecord::Base
   validate :valid_num_attendances_for_certif
 
   def self.core_attributes
-    %w(begins cfp_close_date cfp_open_date descr finishes homepage id
-       invite_only manages_proposals min_attendances name public_proposals
+    %w(begins cfp_close_date cfp_open_date descr conference_type_id finishes homepage id
+       invite_only manages_proposals min_attendances name program public_proposals
        reg_close_date reg_open_date short_name).map do |attr|
       self.columns.select{|col| col.name == attr}[0]
     end

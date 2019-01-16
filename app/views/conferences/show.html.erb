@@ -22,10 +22,14 @@
 
 <%= RedCloth.new(@conference.descr).to_html %>
 
-<% collapsed_header _('Important dates') do %>
+<% collapsed_header Translation.for('Important dates') do %>
   <%= date_details_for @conference  %>
 <% end %>
 
-<% @conference.extra_listable_attributes.each do |attr| %>
-  <%= auto_info_row_for @conference, attr %>
+<%# program, conference_type_id %>
+
+<% collapsed_header Translation.for('Program') do %>
+  <%= RedCloth.new(@conference.program).to_html %>
 <% end %>
+
+<%= info_row Translation.for('Activity type'), @conference.conference_type.name %>
