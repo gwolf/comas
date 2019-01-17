@@ -6,7 +6,7 @@
 
   <%= f.manual_in_row(select_tag(:conference_id,
                                  options_for_select(@conferences.map {|c|
-                                                    [c.name, c.id]})),
+                                                    ['%d. %s'%[c.id, c.name], c.id]})),
                       :title => _('Conference to generate the sample ' +
                                   'certificate for')) %>
 

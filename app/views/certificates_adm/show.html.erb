@@ -112,6 +112,7 @@
       <td><%= f.text_field :content, :size => 20 %></td>
       <td><%= f.text_field :font_size, :size => 2 %></td>
       <td><%= f.select :justification, CertifFormatLine::Justifications %></td>
+      <td><%= f.text_field :angle, :size => 3 %></td>
       <td><%= f.submit _('Add line') %></td>
     <% end %>
   <% end %>

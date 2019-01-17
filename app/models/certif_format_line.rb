@@ -23,6 +23,7 @@ class CertifFormatLine < ActiveRecord::Base
                         :x_pos, :y_pos, :justification)
   validates_numericality_of(:content_source, :x_pos, :y_pos, :max_width)
   validates_numericality_of :font_size, :allow_nil => true
+  validates_numericality_of :angle, :greater_than_or_equal_to => 0, :less_than => 360
   validates_inclusion_of :content_source, :in => ContentSources.keys
   validates_inclusion_of :justification, :in => Justifications
   validates_associated :certif_format
@@ -57,43 +58,44 @@ class CertifFormatLine < ActiveRecord::Base
     # bounding boxes. As of right now, KISS.
     pdf.bounding_box([pdf.bounds.left + x_pos, pdf.bounds.bottom + y_pos],
                      :width => max_width, :height => max_height) do
-      pdf.font_size(font_size)
-      text = value_for(person, conference)
+      pdf.rotate(angle, :origin => [0,0]) do
+        pdf.font_size(font_size)
+        text = value_for(person, conference)
 
-      # Handle all special-casing, yay!
-      if content_source == -1
-        # Just draw the empty frame
-        pdf.stroke_bounds
-      elsif (content == 'image' or content == 'certif') and dynamic_source?
-        pdf.image(StringIO.new(text),
-                  :at => [pdf.bounds.left, pdf.bounds.top],
-                  :fit => [pdf.bounds.width, pdf.bounds.height],
-                  :position => justification.to_sym,
-                  :vposition => justification.to_sym) unless text.nil?
-      elsif content == 'id+code' and dynamic_source?
-        # If a person or conference's «id+code» are requested, we lay
-        # them out as barcodes for their id, not just as text.
-        barcode_box(pdf, text)
-      elsif content == 'id+qr' and dynamic_source?
-        qr_box(pdf, text)
-      else
-        # Finally, the base case: Regular text appears as it should.
-        pdf.text(text, :align => justification.to_sym)
+        # Handle all special-casing, yay!
+        if content_source == -1
+          # Just draw the empty frame
+          pdf.stroke_bounds
+        elsif (content == 'image' or content == 'certif') and dynamic_source?
+          pdf.image(StringIO.new(text),
+                    :at => [pdf.bounds.left, pdf.bounds.top],
+                    :fit => [pdf.bounds.width, pdf.bounds.height],
+                    :position => justification.to_sym,
+                    :vposition => justification.to_sym) unless text.nil?
+        elsif content == 'id+code' and dynamic_source?
+          # If a person or conference's «id+code» are requested, we lay
+          # them out as barcodes for their id, not just as text.
+          barcode_box(pdf, text)
+        elsif content == 'id+qr' and dynamic_source?
+          qr_box(pdf, text)
+        else
+          # Finally, the base case: Regular text appears as it should.
+          pdf.text(text, :align => justification.to_sym)
+        end
+
+        # When testing formats, the user might want to show boxes
+        # around and crossing each element
+        if with_boxes
+          stroke = pdf.stroke_color
+          pdf.stroke_color = 'CBCBE1'
+          pdf.stroke_bounds
+          pdf.line([pdf.bounds.left, pdf.bounds.bottom],
+                   [pdf.bounds.right, pdf.bounds.top])
+          pdf.line([pdf.bounds.right, pdf.bounds.bottom],
+                   [pdf.bounds.left, pdf.bounds.top])
+          pdf.stroke_color = stroke
+        end
       end
-
-      # When testing formats, the user might want to show boxes
-      # around and crossing each element
-      if with_boxes
-        stroke = pdf.stroke_color
-        pdf.stroke_color = 'CBCBE1'
-        pdf.stroke_bounds
-        pdf.line([pdf.bounds.left, pdf.bounds.bottom],
-                 [pdf.bounds.right, pdf.bounds.top])
-        pdf.line([pdf.bounds.right, pdf.bounds.bottom],
-                 [pdf.bounds.left, pdf.bounds.top])
-        pdf.stroke_color = stroke
-      end
-
     end
   end
 

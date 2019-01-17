@@ -21,7 +21,7 @@ module CertificatesAdmHelper
   def certif_format_line_header
     columns = [_('Vert'), _('Horiz'), _('Max width'), _('Max height'),
                _('Content source'), _('Content'),
-               _('Font size'), _('Align'), '']
+               _('Font size'), _('Align'), _('Angle'), '']
     ['<tr class="listing-head">',
      columns.map { |elem| '<th>%s</th>' % elem},
      '</tr>'].join("\n")
@@ -31,7 +31,7 @@ module CertificatesAdmHelper
     columns = [line.human_y_pos, line.human_x_pos, line.human_max_width,
                line.human_max_height,
                CertifFormatLine::ContentSources[line.content_source],
-               line.content, line.font_size, line.justification,
+               line.content, line.font_size, line.justification, line.angle,
                link_to(_('Delete'),
                        {:action => 'delete_line',
                          :id => @format, :line_id => line},
