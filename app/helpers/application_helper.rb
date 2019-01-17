@@ -396,7 +396,7 @@ return nil if @object.nil?
                       res << 'checked="checked"'
                     end
                     res << "id=\"#{fieldname}\" name=\"#{fieldname}\" "
-                    res << "value=\"#{item.id}\"> #{_ item.name}</span><br/>"
+                    res << "value=\"#{item.id}\"> #{_ item.name}</span><br/>\n"
 
                     res.join(' ') }.to_s,
                   note)

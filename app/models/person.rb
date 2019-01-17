@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 class Person < ActiveRecord::Base
-  acts_as_magic_model
   has_one :photo, :dependent => :destroy
   has_one :rescue_session, :dependent => :destroy
   has_many :authorships, :dependent => :destroy
@@ -9,6 +8,9 @@ class Person < ActiveRecord::Base
            :class_name => 'ConfInvite')
   has_many(:claimed_invites, :foreign_key => 'claimer_id',
            :class_name => 'ConfInvite')
+  belongs_to :study
+  belongs_to :state
+  belongs_to :refer
   has_and_belongs_to_many :admin_tasks
   has_and_belongs_to_many(:conferences, :order => :begins,
                           :before_add => :ck_accepts_registrations,
@@ -21,6 +23,9 @@ class Person < ActiveRecord::Base
   validates_presence_of :passwd
   validates_presence_of :email
   validates_uniqueness_of :login
+  validates_associated :study
+  validates_associated :state
+  validates_associated :refer
   validates_format_of(:email,
                       :with => RFC822::EmailAddress,
                       :message => _('A valid e-mail address is required'))
@@ -39,7 +44,8 @@ class Person < ActiveRecord::Base
 
   def self.core_attributes
     %w(created_at email famname firstname id last_login_at login passwd
-       pw_salt ok_conf_mails ok_general_mails).map do |attr|
+       pw_salt ok_conf_mails ok_general_mails organization post phone 
+       refer_id state_id study_id).map do |attr|
       self.columns.select{|col| col.name == attr}[0]
     end
   end

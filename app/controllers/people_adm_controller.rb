@@ -67,6 +67,7 @@ class PeopleAdmController < Admin
   end
 
   def show
+    @tasks = AdminTask.find(:all)
     return true unless request.post?
     begin
       @person.transaction do
@@ -78,26 +79,26 @@ class PeopleAdmController < Admin
 
         @person.update_attributes(params[:person])
 
-        # Conferences: The cleanest thing I could come up with is to
-        # go over the complete list of conferences, one by one. Just
-        # assigning the conference_ids hash to person#conference_ids
-        # raises an exception upon the first mishap, and we want to
-        # continue.
-        Conference.find(:all, :order => 'id').each do |conf|
-          present = @person.conferences.include?(conf)
-          desired = conference_ids.include?(conf.id.to_s)
-          next if present == desired
+        # # Conferences: The cleanest thing I could come up with is to
+        # # go over the complete list of conferences, one by one. Just
+        # # assigning the conference_ids hash to person#conference_ids
+        # # raises an exception upon the first mishap, and we want to
+        # # continue.
+        # Conference.find(:all, :order => 'id').each do |conf|
+        #   present = @person.conferences.include?(conf)
+        #   desired = conference_ids.include?(conf.id.to_s)
+        #   next if present == desired
 
-          begin
-            if desired
-              @person.conferences += [conf]
-            else
-              @person.conferences -= [conf]
-            end
-          rescue ActiveRecord::RecordNotSaved => err
-            flash[:warning] << err.message
-          end
-        end
+        #   begin
+        #     if desired
+        #       @person.conferences += [conf]
+        #     else
+        #       @person.conferences -= [conf]
+        #     end
+        #   rescue ActiveRecord::RecordNotSaved => err
+        #     flash[:warning] << err.message
+        #   end
+        # end
 
         # Admin tasks - Just ensure you are not removing people_adm
         # privileges from yourself

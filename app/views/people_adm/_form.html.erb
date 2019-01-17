@@ -1,13 +1,21 @@
 <% # Ordered list of fields we will present to the user
   fields = %w(login passwd firstname famname email
-              ok_conf_mails ok_general_mails).
-  concat(@person.extra_listable_attributes.map(&:name)) %>
+              study_id state_id refer_id organization post
+              ok_conf_mails ok_general_mails ) %>
 <% comas_form_for(:person, @person,
                   :url => {:action => action, :id => @person}) do |f| %>
+
   <% fields.each do |attr|%>
     <%= f.auto_field attr %>
   <% end %>
-  <%= f.auto_field :admin_tasks %>
-  <%= f.auto_field :conferences %>
+
+  <%= f.checkbox_group('admin_tasks', @tasks,
+                        {:title => Translation.for('Person|Admin tasks')}) 
+  %>
+
+  <%= f.checkbox_group('conferences', @person.conferences,
+                        {:title => Translation.for('Person|Conferences')}) 
+  %>
+
 <%= f.submit submit %>
 <% end %>
