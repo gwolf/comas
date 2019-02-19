@@ -32,4 +32,6 @@
   <%= RedCloth.new(@conference.program).to_html %>
 <% end %>
 
-<%= info_row Translation.for('Activity type'), @conference.conference_type.name %>
+<% if ! @conference.conference_type.nil? %>
+<%= info_row(Translation.for('Activity type'), @conference.conference_type.name) %>
+<% end %>
