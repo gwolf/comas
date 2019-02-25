@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+require 'tempfile'
 class Logo < ActiveRecord::Base
   belongs_to :conference
 
@@ -33,6 +35,29 @@ class Logo < ActiveRecord::Base
 
     # Generate the Magick::Image object
     img = Magick::Image.from_blob(data)[0]
+    if img.format == 'PDF'
+      # Read the PDF and specify it to be of a resolution adequate for
+      # printing in A4 / Letter, 300dpi
+      #
+      # To do this, instead of working with the data we received as a
+      # blob, we have to use an external file :-/
+      tf = Tempfile.new(['comas', '.pdf'])
+      tf.print(data)
+      tmpfilename = tf.path
+      tf.flush
+
+      tmpimg = Magick::ImageList.new(tf.path) {
+        self.quality=80
+        self.density=300
+      }
+      tmpimg[0].resize_to_fit(3300) # 11 inches, 300dpi
+      tmpimg[0].format='jpg'
+
+      # Seems a bit backwards to take an in-mem object, put it through
+      # to_blob and from_blob in this same call... :-Þ
+      img = Magick::Image.from_blob( tmpimg[0].to_blob )[0]
+    end
+
     self.width = img.columns
     self.height = img.rows
 
