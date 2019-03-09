@@ -93,15 +93,9 @@ class Logo < ActiveRecord::Base
   def url_thumb; File.join(_conf_url, _my_name_for(:thumb)); end
 
   def _my_name_for(size)
-    if is_certificate?
-      return 'certif.jpg' if size == :full
-      return 'c_med.jpg' if size == :med
-      return 't_med.jpg' if size == :thumb
-    else
-      return 'logo.jpg' if size == :full
-      return 'med.jpg' if size == :med
-      return 'thumb.jpg' if size == :thumb
-    end
+    return 'logo.jpg' if size == :full
+    return 'med.jpg' if size == :med
+    return 'thumb.jpg' if size == :thumb
   end
 
   # Thumbnail height: Stored in the 'logo_thumb_height' SysConf entry

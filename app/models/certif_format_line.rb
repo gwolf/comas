@@ -66,7 +66,7 @@ class CertifFormatLine < ActiveRecord::Base
         if content_source == -1
           # Just draw the empty frame
           pdf.stroke_bounds
-        elsif (content == 'image' or content == 'certif') and dynamic_source?
+        elsif content == 'image' and dynamic_source?
           pdf.image(StringIO.new(text),
                     :at => [pdf.bounds.left, pdf.bounds.top],
                     :fit => [pdf.bounds.width, pdf.bounds.height],
@@ -132,9 +132,6 @@ class CertifFormatLine < ActiveRecord::Base
     when 'image'
       img = obj==person ? obj.photo : obj.logo
       return img ? img.data : nil
-    when 'certif'
-      img = obj==conference ?  obj.certificate : ''
-      return img ? img.data : nil
     else
       return obj.send(content) if obj.respond_to? content
       raise NoMethodError, _('Undefined attribute %s for %s in format ' <<
@@ -163,21 +160,28 @@ class CertifFormatLine < ActiveRecord::Base
     end
   end
 
-  def qr_box(pdf, value)
+  def qr_box(pdf, code)
     text_height = font_size * 1.5
-    code_height = pdf.bounds.height - text_height
-    code = value
 
-    # QR code above
+    # QRs are square, so we take its width from its height. The qr_box
+    # should be, of course, wide and short.
+    code_width = code_height = pdf.bounds.height
+
+    # QR code to the left.
+    #
     pdf.bounding_box([pdf.bounds.left, pdf.bounds.top],
-                     :width => pdf.bounds.width, :height => code_height) do
+                     :width => code_width, :height => code_height) do
       barcode = Barby::QrCode.new(code)
       barcode.annotate_pdf(pdf, :xdim => 1.5, :height => code_height)
     end
 
-    # Text below
-    pdf.bounding_box([pdf.bounds.left, pdf.bounds.top - code_height],
-                     :width => pdf.bounds.width, :height => text_height) do
+    # Text to the right. First line, static label; second line, the relevant URL
+    pdf.bounding_box([pdf.bounds.left + code_width, (pdf.bounds.top - code_width) + 2 * text_height],
+                     :width => pdf.bounds.width - code_width, :height => text_height) do
+      pdf.text(_('Validation:'), :align => justification.to_sym)
+    end
+    pdf.bounding_box([pdf.bounds.left + code_width, pdf.bounds.top - code_width + text_height],
+                     :width => pdf.bounds.width - code_width, :height => text_height) do
       pdf.text(code, :align => justification.to_sym)
     end
   end

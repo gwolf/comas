@@ -250,23 +250,14 @@ class Conference < ActiveRecord::Base
   end
 
   def has_logo?
-    Logo.count(:conditions => ['conference_id = ? AND NOT is_certificate', self.id]) > 0
+    Logo.count(:conditions => ['conference_id = ?', self.id]) > 0
   end
 
   def logo
-    Logo.find(:first, :conditions => ['conference_id = ? AND NOT is_certificate', self.id])
-  end
-
-  def has_certificate?
-    Logo.count(:conditions => ['conference_id = ? AND is_certificate', self.id]) > 0
-  end
-
-  def certificate
-    Logo.find(:first, :conditions => ['conference_id = ? AND is_certificate', self.id])
+    Logo.find(:first, :conditions => ['conference_id = ?', self.id])
   end
 
   def can_issue_certificate?
-    return false unless has_certificate?
     return false if min_attendances == 0
     true
   end

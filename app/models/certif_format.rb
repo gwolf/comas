@@ -37,6 +37,10 @@ class CertifFormat < ActiveRecord::Base
     self.find_by_name(SysConf.value_for('personal_certificate_format'))
   end
 
+  def is_for_conference_certificate?
+    SysConf.value_for('personal_certificate_format') == self.name
+  end
+
   def height(unit=:pt)
     self.height_of(paper_size, unit)
   end
@@ -61,11 +65,25 @@ class CertifFormat < ActiveRecord::Base
                               :page_size => paper_size,
                               :skip_page_creation => true,
                               :margin => [0,0,0,0])
+
 #    pdf.stroke_color='000000' # Black is beautiful. Black for teh win!
     people = [people] if people.is_a? Person
 
     people.each do |person|
       pdf.start_new_page
+
+      if is_for_conference_certificate?
+        img_file = SysConf.value_for('personal_certificate_format_img')
+      
+        if img_file.nil? or ! File.readable?(img_file)
+          raise RuntimeError, 'personal certificate format image not found or invalid'
+        end
+
+        pdf.image(img_file,
+                  :at => [pdf.bounds.left, pdf.bounds.top],
+                  :fit => [pdf.bounds.width, pdf.bounds.height],
+                  :position => :center, :vposition => :center)
+      end
 
       certif_format_lines.each do |line|
         line.lay_out_in_pdf(pdf, person, conference, with_boxes)

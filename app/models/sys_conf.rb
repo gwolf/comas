@@ -38,6 +38,9 @@ class SysConf < ActiveRecord::Base
       :descr => 'The name of the certificate format to use as attendance ' +
       'certificate to be printed by the attendees',
       :value => ''},
+    'personal_certificate_format_img' => {
+      :descr => 'The filename for the certificate format\'s background image',
+      :value => ''},
     'photo_base_dir' => {
       :descr => 'Server directory in which user photos are to be stored',
       :value => File.join(RAILS_ROOT, 'public/photos') },
