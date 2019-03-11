@@ -18,12 +18,18 @@ class Language < ActiveRecord::Base
   end
 
   # Returns the corresponding language for a locale string ('en',
-  # 'es', and so on). If no such language exists yet, it is created.
+  # 'es', and so on). If no such language exists yet and the
+  # identifier conforms to sane criteria (two lowercase characters),
+  # create it
   def self.for_locale(name)
     lang = self.find_by_name(name)
     if lang.nil?
-      lang = self.create(:name => name)
-      lang.save!
+      if name =~ /^[a-z][a-z](?:_[A-Z][A-Z])?$/
+        lang = self.create(:name => name)
+        lang.save!
+      else
+        raise RuntimeError, 'Invalid language format: %s' % name
+      end
     end
 
     lang
