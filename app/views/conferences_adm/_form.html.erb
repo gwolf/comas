@@ -6,6 +6,7 @@
   <%= f.auto_field('short_name',
 		   :note => _('Shortened name for the conference; ' +
 			      'will be used to generate URLs ')) %>
+  <%= f.auto_field('conference_type_id') %>
   <%= form_row(_('Conference|Logo'),
 	       file_field_tag(:logo_data),
 	       logo_thumb_for(@conference)) %>
@@ -13,15 +14,6 @@
                    :note => _('Full description for this conference. ' +
 			      'RedCloth formatting might be used ' +
 			      '(see formatting instructions above)')) %>
-  <%= f.auto_field('min_attendances',
-		   :note => _('Minimum attendances required for an ' +
-			      'attendee to have the right to print a ' +
-			      'participation certificate. <br/>' +
-			      '<em>0</em> means no participation ' +
-			      'certificates will be generated.')) %>
-  <%= form_row(_('Conference|CertifImage'),
-	       file_field_tag(:certif_data),
-	       certif_thumb_for(@conference)) %>
   <%= f.auto_field('homepage',
 		   :note => _('Does the conference have a homepage ' +
 			      'besides the information in this system? ' +
@@ -38,6 +30,30 @@
 			      'somebody with <em>conferences_adm</em> ' +
 			      'access rights will be admitted as ' +
 			      'attendees')) %>
+    <%= f.auto_field('reg_open_date',
+		     :note => _('When should the attendee registration ' +
+			        'period start? If left empty, attendees ' +
+			        'can register as soon as the conference ' +
+			        'is created.')) %>
+    <%= f.auto_field('reg_close_date',
+		     :note => _('When should the attendee registration ' +
+				'period close? If left empty, attendees ' +
+				'can register until the last day of the ' +
+				'conference (<b>finishes</b>). Must be ' +
+				'posterior to <b>reg open date</b>.')) %>
+  <% collapsed_header _('Options for handling a Call for Papers') do %>
+    <%= f.auto_field('cfp_open_date',
+		     :note => _('When should the Call for Papers period ' +
+				'open? If this field is left empty but ' +
+				'the closing date is set, the period ' +
+				'will start as soon as the conference is ' +
+				'created.')) %>
+    <%= f.auto_field('cfp_close_date',
+		     :note => _('When should the Call for Papers period ' +
+				'close? If this field is left empty but ' +
+				'the opening date is set, the period ' +
+				'will close at the conference beginning ' +
+                                'date.')) %>
   <%= f.auto_field('manages_proposals',
                    :note => _('If you specify this conference should ' +
 			      'not manage proposals, the <b>Public ' +
@@ -50,31 +66,24 @@
 			      'visible to the public as they are sent, ' +
 			      'before they are explicitly marked as ' +
 			      'accepted')) %>
-  <%= f.auto_field('reg_open_date',
-		   :note => _('When should the attendee registration ' +
-			      'period start? If left empty, attendees ' +
-			      'can register as soon as the conference ' +
-			      'is created.')) %>
-  <%= f.auto_field('reg_close_date',
-		   :note => _('When should the attendee registration ' +
-			      'period close? If left empty, attendees ' +
-			      'can register until the last day of the ' +
-			      'conference (<b>finishes</b>). Must be ' +
-			      'posterior to <b>reg open date</b>.')) %>
-  <%= f.auto_field('cfp_open_date',
-		   :note => _('When should the Call for Papers period ' +
-			      'open? If this field is left empty but ' +
-			      'the closing date is set, the period ' +
-			      'will start as soon as the conference is ' +
-			      'created.')) %>
-  <%= f.auto_field('cfp_close_date',
-		   :note => _('When should the Call for Papers period ' +
-			      'close? If this field is left empty but ' +
-			      'the opening date is set, the period ' +
-			      'will close at the conference beginning ' +
-			      'date.')) %>
+  <% end %>
   <%= f.auto_field('program') %>
-  <%= f.auto_field('conference_type_id') %>
+  <% collapsed_header _('Attendance certificate generation') do %>
+
+    <%= f.auto_field('min_attendances',
+		     :note => _('Minimum attendances required for an ' +
+				'attendee to have the right to print a ' +
+				'participation certificate. <br/>' +
+				'<em>0</em> means no participation ' +
+				'certificates will be generated.')) %>
+    <%= f.auto_field('pre_title',
+	             :note => _('Text to lay out before the title')) %>
+    <%= f.auto_field('post_title',
+	             :note => _('Text to lay out before the title')) %>
+    <%= f.auto_field('cert_conf_dates',
+	             :note => _('Text presenting the conference dates' +
+                                'in a formate suitable for printing')) %>
+  <% end %>
   <% @conference.extra_listable_attributes.each do |attr| %>
     <%= f.auto_field(attr.name) %>
   <% end %>

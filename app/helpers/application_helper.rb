@@ -118,7 +118,7 @@ module ApplicationHelper
     # Not collision-proof, right. However, odds are quite low!
     div_name = 'comas-collapsed-%d' % (rand * 10000)
 
-    pre = '<h3>%s - <span class="note">%s</span></h3>
+    pre = '<h3>‣ %s - <span class="note">%s</span></h3>
            <div id="%s" class="comas-collapsed" style="display: none">' %
       [ title,
         link_to_function(_('Show'), visual_effect(:toggle_blind, div_name)),

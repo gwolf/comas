@@ -61,6 +61,7 @@ class CertifFormatLine < ActiveRecord::Base
       pdf.rotate(angle, :origin => [0,0]) do
         pdf.font_size(font_size)
         text = value_for(person, conference)
+        text = '' if text.nil?
 
         # Handle all special-casing, yay!
         if content_source == -1
@@ -80,7 +81,7 @@ class CertifFormatLine < ActiveRecord::Base
           qr_box(pdf, text)
         else
           # Finally, the base case: Regular text appears as it should.
-          pdf.text(text, :align => justification.to_sym)
+          pdf.text(text, :align => justification.to_sym, :overflow => :shrink_to_fit)
         end
 
         # When testing formats, the user might want to show boxes
@@ -149,7 +150,7 @@ class CertifFormatLine < ActiveRecord::Base
     # Text below
     pdf.bounding_box([pdf.bounds.left, pdf.bounds.top - code_height],
                      :width => pdf.bounds.width, :height => text_height) do
-      pdf.text(code, :align => justification.to_sym)
+      pdf.text(code, :align => justification.to_sym, :overflow => :shrink_to_fit)
     end
 
     # Barcode above
@@ -178,11 +179,17 @@ class CertifFormatLine < ActiveRecord::Base
     # Text to the right. First line, static label; second line, the relevant URL
     pdf.bounding_box([pdf.bounds.left + code_width, (pdf.bounds.top - code_width) + 2 * text_height],
                      :width => pdf.bounds.width - code_width, :height => text_height) do
-      pdf.text(_('Validation:'), :align => justification.to_sym)
+      pdf.text(_("<color rgb='CBCBE1'>Validation:</color>"),
+               :align => justification.to_sym,
+               :inline_format => true)
     end
     pdf.bounding_box([pdf.bounds.left + code_width, pdf.bounds.top - code_width + text_height],
                      :width => pdf.bounds.width - code_width, :height => text_height) do
-      pdf.text(code, :align => justification.to_sym)
+      pdf.text("<color rgb='CBCBE1'><link href='%s'>%s</link></color>" % [code,code] , 
+               :align => justification.to_sym, 
+               :color => 'CBCBE1',
+               :inline_format => true, 
+               :overflow => :shrink_to_fit)
     end
   end
 end

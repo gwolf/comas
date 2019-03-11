@@ -1,4 +1,4 @@
-class CertifImages < ActiveRecord::Migration
+class NoCertifImages < ActiveRecord::Migration
   # Reverts migration #24
   class Logo < ActiveRecord::Base; end
 

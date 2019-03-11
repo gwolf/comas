@@ -20,9 +20,10 @@ class Conference < ActiveRecord::Base
   validate :valid_num_attendances_for_certif
 
   def self.core_attributes
-    %w(begins cfp_close_date cfp_open_date descr conference_type_id finishes homepage id
-       invite_only manages_proposals min_attendances name program public_proposals
-       reg_close_date reg_open_date short_name).map do |attr|
+    %w(begins cfp_close_date cfp_open_date descr cert_conf_dates conference_type_id
+       finishes homepage id invite_only manages_proposals min_attendances name
+       post_title pre_title program public_proposals reg_close_date 
+       reg_open_date short_name).map do |attr|
       self.columns.select{|col| col.name == attr}[0]
     end
   end
