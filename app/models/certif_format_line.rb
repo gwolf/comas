@@ -176,16 +176,11 @@ class CertifFormatLine < ActiveRecord::Base
       barcode.annotate_pdf(pdf, :xdim => 1.5, :height => code_height)
     end
 
-    # Text to the right. First line, static label; second line, the relevant URL
-    pdf.bounding_box([pdf.bounds.left + code_width, (pdf.bounds.top - code_width) + 2 * text_height],
-                     :width => pdf.bounds.width - code_width, :height => text_height) do
-      pdf.text(_("<color rgb='CBCBE1'>Validation:</color>"),
-               :align => justification.to_sym,
-               :inline_format => true)
-    end
+    # Text to the right of the QR code.
     pdf.bounding_box([pdf.bounds.left + code_width, pdf.bounds.top - code_width + text_height],
                      :width => pdf.bounds.width - code_width, :height => text_height) do
-      pdf.text("<color rgb='CBCBE1'><link href='%s'>%s</link></color>" % [code,code] , 
+      pdf.text(_("<color rgb='CBCBE1'>%s <link href='%s'>%s</link></color>") % 
+               [SysConf.value_for('personal_certificate_legend'), code, code] , 
                :align => justification.to_sym, 
                :color => 'CBCBE1',
                :inline_format => true, 

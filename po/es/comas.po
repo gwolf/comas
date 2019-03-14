@@ -1489,8 +1489,8 @@ msgid "Undefined attribute %s for %s in format "
 msgstr "Atributo %s no definido para %s en el formato"
 
 #: script/../app/models/certif_format_line.rb:182
-msgid "<color rgb='CBCBE1'>Validation:</color>"
-msgstr ""
+msgid "<color rgb='CBCBE1'>%s <link href='%s'>%s</link></color>"
+msgstr "<color rgb='CBCBE1'>%s <link href='%s'>%s</link></color>"
 
 #: script/../app/models/nametag_format.rb:15
 msgid "Horizontal"
@@ -2880,10 +2880,12 @@ msgid ""
 "We hereby confirm that <em>%s</em> has participated in <em>%s</em> and "
 "earned an attendance certificate."
 msgstr ""
+"Sirva la presente para confirmar que <em>%s</em> participó en "
+"<em>%s</em>, obteniendo un certificado de asistencia."
 
 #: script/../app/views/certificates/verif.html.erb:8
 msgid "The specified person does not have a certificate for this activity."
-msgstr ""
+msgstr "La persona especificada no obtuvo un certificado para esta actividad."
 
 #: script/../app/views/translation/stat_by_lang.html.erb:1
 #: script/../app/views/translation/list.html.erb:13

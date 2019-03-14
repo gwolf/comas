@@ -1414,7 +1414,7 @@ msgid "Undefined attribute %s for %s in format "
 msgstr ""
 
 #: script/../app/models/certif_format_line.rb:182
-msgid "<color rgb='CBCBE1'>Validation:</color>"
+msgid "<color rgb='CBCBE1'>%s <link href='%s'>%s</link></color>"
 msgstr ""
 
 #: script/../app/models/nametag_format.rb:15
