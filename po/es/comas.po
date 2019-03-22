@@ -1981,11 +1981,23 @@ msgstr ""
 msgid "go to the list of upcoming conferences"
 msgstr "consultar el listado de próximas actividades"
 
-#: script/../app/views/people/account.html.erb:18
+#: ./script/../app/views/people/account.html.erb:17
+msgid "Get your attendance certificates"
+msgstr "Obtener sus certificados de asistencia"
+
+#: ./script/../app/views/people/account.html.erb:18
+msgid "If you have taken part in our activities, you can %s."
+msgstr "Si ha participado en nuestras actividades, usted puede %s."
+
+#: ./script/../app/views/people/account.html.erb:19
+msgid "get your attendance certificates online"
+msgstr "obtener sus certificados de asistencia en línea"
+
+#: script/../app/views/people/account.html.erb:26
 msgid "Print your nametag"
 msgstr "Imprimir su personalizador"
 
-#: script/../app/views/people/account.html.erb:19
+#: script/../app/views/people/account.html.erb:27
 msgid ""
 "For your convenience, you can %s. This will save you time upon arriving to "
 "the conference, where you will be able to present it for identification and "
@@ -1995,11 +2007,11 @@ msgstr ""
 "actividad, donde podrá presentarla para su identificación y para toma de "
 "asistencia."
 
-#: script/../app/views/people/account.html.erb:23
+#: script/../app/views/people/account.html.erb:31
 msgid "print your nametag"
 msgstr "imprimir su personalizador"
 
-#: script/../app/views/people/account.html.erb:24
+#: script/../app/views/people/account.html.erb:32
 msgid ""
 "You will be able to use this nametag for any of the conferences organized by "
 "us."
@@ -2007,7 +2019,7 @@ msgstr ""
 "Puede utilizar este personalizador (gafete) para cualquiera de las "
 "actividades que organicemos."
 
-#: script/../app/views/people/account.html.erb:31
+#: script/../app/views/people/account.html.erb:39
 msgid ""
 "In order to define or change a nametag format, %s and register its name as "
 "the <tt>%s</tt> key in the %s interface"
@@ -2015,7 +2027,7 @@ msgstr ""
 "Para definir o modificar un formato de impresión, %s  y registre su nombre "
 "como la llave <tt>%s</tt> en la interfaz %s."
 
-#: script/../app/views/people/account.html.erb:34
+#: script/../app/views/people/account.html.erb:42
 msgid "define a suitable format"
 msgstr "defina un formato adecuado"
 

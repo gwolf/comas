@@ -13,6 +13,14 @@
   <% end %>
 </div>
 
+<div id="print-certificates">
+  <h3><%= _('Get your attendance certificates') %></h3>
+  <p><%= _('If you have taken part in our activities, you can %s.') %
+	 link_to(_('get your attendance certificates online'),
+	         :controller => 'people', :action => 'my_certificates')
+    %></p>
+</div>
+
 <% if @link_to_nametag %>
   <div id="print-nametag">
     <h3><%= _('Print your nametag') %></h3>

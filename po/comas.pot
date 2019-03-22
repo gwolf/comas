@@ -1855,52 +1855,55 @@ msgstr ""
 msgid "Set password"
 msgstr ""
 
-#: script/../app/views/people/account.html.erb:1
+#: ./script/../app/views/people/account.html.erb:1
 msgid "Welcome, %s (ID: %d)"
 msgstr ""
 
-#: script/../app/views/people/account.html.erb:5
+#: ./script/../app/views/people/account.html.erb:5
 msgid "Next conferences you are signed up for"
 msgstr ""
 
-#: script/../app/views/people/account.html.erb:8
-msgid ""
-"You are currently not registered for any upcoming conferences. You can %s "
-"and sign up."
+#: ./script/../app/views/people/account.html.erb:8
+msgid "You are currently not registered for any upcoming conferences. You can %s and sign up."
 msgstr ""
 
-#: script/../app/views/people/account.html.erb:10
+#: ./script/../app/views/people/account.html.erb:10
 msgid "go to the list of upcoming conferences"
 msgstr ""
 
-#: script/../app/views/people/account.html.erb:18
+#: ./script/../app/views/people/account.html.erb:17
+msgid "Get your attendance certificates"
+msgstr ""
+
+#: ./script/../app/views/people/account.html.erb:18
+msgid "If you have taken part in our activities, you can %s."
+msgstr ""
+
+#: ./script/../app/views/people/account.html.erb:19
+msgid "get your attendance certificates online"
+msgstr ""
+
+#: ./script/../app/views/people/account.html.erb:26
 msgid "Print your nametag"
 msgstr ""
 
-#: script/../app/views/people/account.html.erb:19
-msgid ""
-"For your convenience, you can %s. This will save you time upon arriving to "
-"the conference, where you will be able to present it for identification and "
-"for attendance tracking."
+#: ./script/../app/views/people/account.html.erb:27
+msgid "For your convenience, you can %s. This will save you time upon arriving to the conference, where you will be able to present it for identification and for attendance tracking."
 msgstr ""
 
-#: script/../app/views/people/account.html.erb:23
+#: ./script/../app/views/people/account.html.erb:31
 msgid "print your nametag"
 msgstr ""
 
-#: script/../app/views/people/account.html.erb:24
-msgid ""
-"You will be able to use this nametag for any of the conferences organized by "
-"us."
+#: ./script/../app/views/people/account.html.erb:32
+msgid "You will be able to use this nametag for any of the conferences organized by us."
 msgstr ""
 
-#: script/../app/views/people/account.html.erb:31
-msgid ""
-"In order to define or change a nametag format, %s and register its name as "
-"the <tt>%s</tt> key in the %s interface"
+#: ./script/../app/views/people/account.html.erb:39
+msgid "In order to define or change a nametag format, %s and register its name as the <tt>%s</tt> key in the %s interface"
 msgstr ""
 
-#: script/../app/views/people/account.html.erb:34
+#: ./script/../app/views/people/account.html.erb:42
 msgid "define a suitable format"
 msgstr ""
 
