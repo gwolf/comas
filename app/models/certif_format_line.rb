@@ -67,7 +67,8 @@ class CertifFormatLine < ActiveRecord::Base
         if content_source == -1
           # Just draw the empty frame
           pdf.stroke_bounds
-        elsif content == 'image' and dynamic_source?
+        elsif content == 'image' and dynamic_source? and !(text.size == 0)
+
           pdf.image(StringIO.new(text),
                     :at => [pdf.bounds.left, pdf.bounds.top],
                     :fit => [pdf.bounds.width, pdf.bounds.height],

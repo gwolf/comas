@@ -2710,9 +2710,8 @@ msgstr ""
 
 #: script/../app/views/translation/stat_by_lang.html.erb:1
 #: script/../app/views/translation/list.html.erb:13
-#, fuzzy
 msgid "Translation statistics by language"
-msgstr "Language"
+msgstr "Translation statistics by language"
 
 #: script/../app/views/translation/stat_by_lang.html.erb:5
 #: script/../app/views/translation/stat_by_lang.html.erb:32

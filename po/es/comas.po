@@ -2887,17 +2887,15 @@ msgstr "Editar formato de personalizador"
 msgid "Certificate validation"
 msgstr "Validación de certificado"
 
-#: script/../app/views/certificates/verif.html.erb:4
-msgid ""
-"We hereby confirm that <em>%s</em> has participated in <em>%s</em> and "
-"earned an attendance certificate."
-msgstr ""
-"Sirva la presente para confirmar que <em>%s</em> participó en "
-"<em>%s</em>, obteniendo un certificado de asistencia."
+#: ./script/../app/views/certificates/verif.html.erb:4
+msgid "We hereby confirm that %s has participated in %s and earned an attendance certificate."
+msgstr "Sirva la presente para confirmar que <em>%s</em> participó en "
+"%s, obteniendo un certificado de asistencia."
 
-#: script/../app/views/certificates/verif.html.erb:8
-msgid "The specified person does not have a certificate for this activity."
-msgstr "La persona especificada no obtuvo un certificado para esta actividad."
+#: ./script/../app/views/certificates/verif.html.erb:9
+msgid "The specified person <span class=\"not-certif\">does not have</span> a certificate for this activity."
+msgstr "La persona especificada <span class=\"not-certif\">no "
+"obtuvo</span> un certificado para esta actividad."
 
 #: script/../app/views/translation/stat_by_lang.html.erb:1
 #: script/../app/views/translation/list.html.erb:13

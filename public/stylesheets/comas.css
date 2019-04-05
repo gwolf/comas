@@ -203,3 +203,15 @@ td, th {
     margin: 1em;
     font-size: 70%;
 }
+
+.not-certif {
+    color: red;
+}
+
+.certif-person {
+    color: #009;
+}
+
+.certif-activ {
+    color: #009;
+}

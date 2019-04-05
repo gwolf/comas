@@ -152,7 +152,7 @@ class AttendanceAdmController < Admin
 
     ### /!\ I am hard-wiring the first CertifFormat here. Not nice!
     ###     :-/ Provide a way to choose one... soon :-}
-    send_data(CertifFormat.find(:first).generate_pdf_for(people, @conference),
+    send_data(CertifFormat.for_conference_certificate.generate_pdf_for(people, @conference),
               :filename => 'certificate.pdf',
               :type => 'application/pdf')
   end

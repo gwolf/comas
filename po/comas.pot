@@ -2645,14 +2645,12 @@ msgstr ""
 msgid "Certificate validation"
 msgstr ""
 
-#: script/../app/views/certificates/verif.html.erb:4
-msgid ""
-"We hereby confirm that <em>%s</em> has participated in <em>%s</em> and "
-"earned an attendance certificate."
+#: ./script/../app/views/certificates/verif.html.erb:4
+msgid "We hereby confirm that %s has participated in %s and earned an attendance certificate."
 msgstr ""
 
-#: script/../app/views/certificates/verif.html.erb:8
-msgid "The specified person does not have a certificate for this activity."
+#: ./script/../app/views/certificates/verif.html.erb:9
+msgid "The specified person <span class=\"not-certif\">does not have</span> a certificate for this activity."
 msgstr ""
 
 #: script/../app/views/translation/stat_by_lang.html.erb:1
