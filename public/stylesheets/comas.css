@@ -28,15 +28,15 @@ td, th {
 }
 
 .listing-head {
-    background: #fff7e2;
+    background: #c0c0c0;
 }
 
 .listing-even {
-    background: #ccc5b0;
+    background: #ffffff;
 }
 
 .listing-odd {
-    background: #eee6d1;
+    background: #ededed;
 }
 
 /* Language selection links */
