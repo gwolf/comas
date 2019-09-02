@@ -8,19 +8,15 @@ class Logo < ActiveRecord::Base
 
   before_save {|logo| logo.create_conf_dir}
   before_destroy do |logo|
-    # Do not destroy the images if more than one logo is found for
-    # this conference
-    if Logo.find_all_by_conference_id(logo.conference_id).size == 1
-      # Attempt to remove the logos from the filesystem. Ignore errors
-      # (as we would only be keeping data not linked anymore)
-      #
-      # We leave the empty directory (except for the last component), as
-      # it might have other conferences' logos in it
-      File.unlink logo.filename
-      File.unlink logo.filename_med
-      File.unlink logo.filename_thumb
-      Dir.rmdir logo._conf_dir
+    # Attempt to remove the logos from the filesystem. Ignore errors
+    # (as we would only be keeping data not linked anymore)
+    #
+    # We leave the empty directory (except for the last component), as
+    # it might have other conferences' logos in it
+    [logo.filename_thumb, logo.filename_med, logo.filename].each do |img|
+      File.unlink(img) rescue nil
     end
+    Dir.rmdir(logo._conf_dir) rescue nil
   end
 
   # Stores the actual logo with the data received as a raw image as
