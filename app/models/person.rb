@@ -15,7 +15,7 @@ class Person < ActiveRecord::Base
   has_and_belongs_to_many(:conferences, :order => :begins,
                           :before_add => :ck_accepts_registrations,
                           :before_remove => :dont_unregister_if_has_proposals)
-  has_many :attendances
+  has_many :attendances, :dependent => :destroy
 
   validates_presence_of :firstname
   validates_presence_of :famname
